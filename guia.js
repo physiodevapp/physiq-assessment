@@ -233,9 +233,22 @@ function leerRuta() {
   return { region: REGIONES.includes(r) ? r : 'lumbar', hoja: PINTAR[h] ? h : 'cribado', elemento: el || '' };
 }
 
+// El <select> de la región es el título: tan ancho como el nombre elegido, para que el ▾ vaya pegado
+function anchoRegion() {
+  const sel = document.getElementById('guiaRegion');
+  const m = document.createElement('span');
+  const cs = getComputedStyle(sel);
+  m.style.cssText = `position:absolute;visibility:hidden;white-space:pre;font:${cs.font};letter-spacing:${cs.letterSpacing}`;
+  m.textContent = sel.options[sel.selectedIndex]?.text || '';
+  document.body.appendChild(m);
+  sel.style.width = `calc(${Math.ceil(m.getBoundingClientRect().width)}px + 1.3em + 2px)`;
+  m.remove();
+}
+
 function pintar() {
   const { region, hoja, elemento } = leerRuta();
   document.getElementById('guiaRegion').value = region;
+  anchoRegion();
   document.getElementById('guiaHojas').innerHTML = Object.entries(HOJAS_GUIA)
     .map(([k, n]) => `<a href="#${region}/${k}"${k === hoja ? ' aria-current="page"' : ''}>${n}</a>`).join('');
   document.getElementById('guiaContenido').innerHTML = PINTAR[hoja](region);
@@ -255,6 +268,7 @@ async function iniciar() {
   // Las fuentes se enlazan con el registro; si no carga, se pintan sin enlace
   try { REF = await registroReferencias(); } catch { REF = null; }
   window.addEventListener('hashchange', pintar);
+  document.fonts?.ready.then(anchoRegion);   // la fuente del título llega después
   pintar();
   const v = textoVersion();
   document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;

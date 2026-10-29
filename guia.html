@@ -26,12 +26,17 @@
 <style>
   /* Solo de la guía: el resto (tema, «¿Por qué?», citas, «✨ IA») es styles.css */
   .guia { max-width: 780px; margin: 0 auto; padding: 1rem 1rem 3rem; position: relative; }
-  .guia-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 4px; }
-  .guia-cab h1 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.6rem; color: var(--text); }
+  /* La región es el título: un <select> sin caja, tocable (cambia poco: el QR ya la trae) */
+  .guia-region { margin: 2px 0 4px; }
+  .guia-region label { position: relative; display: inline-flex; align-items: center; }
+  .guia-region select { appearance: none; -webkit-appearance: none; border: none; background: transparent; color: var(--text); font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.9rem; line-height: 1.2; padding: 4px 1.3em 4px 0; min-height: 44px; cursor: pointer; border-radius: 8px; }
+  .guia-region select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .guia-region label::after { content: '▾'; position: absolute; right: 0.15em; pointer-events: none; color: var(--accent); font-size: 1.2rem; }
+  .guia-region option { font-family: 'Outfit', sans-serif; font-size: 1rem; color: var(--text); background: var(--surface); }
+  .guia-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .guia-marca { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); }
   .guia-intro { font-size: 0.82rem; color: var(--text2); margin-bottom: 12px; line-height: 1.5; }
   .guia-nav { position: sticky; top: 0; z-index: 20; background: var(--bg); margin: 0 -1rem 14px; padding: 8px 1rem; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 1px solid var(--border); }
-  .guia-nav select { font: inherit; font-size: 0.85rem; color: var(--text); background: var(--surface); border: 1px solid var(--border2); border-radius: 8px; padding: 8px 10px; min-height: 40px; }
   .guia-hojas { display: flex; gap: 6px; flex: 1 1 auto; }
   .guia-hojas a { flex: 1 1 0; text-align: center; text-decoration: none; font-size: 0.85rem; color: var(--text2); border: 1px solid var(--border2); border-radius: 8px; padding: 9px 6px; min-height: 40px; }
   .guia-hojas a[aria-current="page"] { color: var(--accent); border-color: var(--accent); font-weight: 500; }
@@ -84,17 +89,17 @@
   .guia-irr-ops .option-btn { width: 100%; min-height: 44px; font-size: 0.82rem; padding: 6px 8px; text-align: left; }
   .guia-irr-n { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text3); margin-right: 2px; }
   .guia-irr-pie { display: flex; justify-content: flex-end; padding-top: 8px; }
-  @media (max-width: 480px) { .guia-irr-ops { grid-template-columns: 1fr; } .guia-hojas { flex: 1 1 100%; } .guia-hojas a { font-size: 0.8rem; padding: 9px 2px; } }
+  @media (max-width: 480px) { .guia-irr-ops { grid-template-columns: 1fr; } .guia-hojas a { font-size: 0.8rem; padding: 9px 2px; } }
   .guia-vacio { color: var(--text3); font-size: 0.85rem; }
   @media (max-width: 480px) { .guia-bloque { margin-left: -1rem; margin-right: -1rem; border-left: none; border-right: none; border-radius: 0; } }
 </style>
 </head>
 <body>
 <main class="guia" id="guia">
-  <div class="guia-cab"><h1>Guía de consulta</h1><span class="guia-marca">PhysiQ-Assessment</span></div>
+  <div class="guia-marca">Guía de consulta · PhysiQ-Assessment</div>
+  <h1 class="guia-region"><label><span class="guia-vh">Región</span><select id="guiaRegion"></select></label></h1>
   <p class="guia-intro">El porqué de cada pregunta, paso y test de los esquemas impresos, con sus fuentes. Es la misma información que la app; esta página no pide ni guarda datos del paciente.</p>
-  <nav class="guia-nav" aria-label="Región y hoja">
-    <select id="guiaRegion" aria-label="Región"></select>
+  <nav class="guia-nav" aria-label="Hoja">
     <div class="guia-hojas" id="guiaHojas"></div>
   </nav>
   <div id="guiaContenido"></div>
