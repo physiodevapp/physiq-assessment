@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de consulta · PhysiQ-Assessment</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#0a0d12">
+<script>
+// Tema y tamaño de letra antes de pintar, como index.html (misma preferencia guardada)
+(function () {
+  var t = 'dark';
+  try {
+    var p = localStorage.getItem('physiq-assessment-theme');
+    t = p === 'light' || p === 'dark' ? p
+      : (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  } catch (e) {}
+  document.documentElement.setAttribute('data-theme', t);
+  var m = document.querySelector('meta[name="theme-color"]');
+  if (m) m.setAttribute('content', t === 'light' ? '#ffffff' : '#0a0d12');
+  try { if (localStorage.getItem('physiq-assessment-letra') === 'grande') document.documentElement.setAttribute('data-letra', 'grande'); } catch (e) {}
+})();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Solo de la guía: el resto (tema, «¿Por qué?», citas, «✨ IA») es styles.css */
+  .guia { max-width: 780px; margin: 0 auto; padding: 1rem 1rem 3rem; position: relative; }
+  .guia-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 4px; }
+  .guia-cab h1 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.6rem; color: var(--text); }
+  .guia-marca { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); }
+  .guia-intro { font-size: 0.82rem; color: var(--text2); margin-bottom: 12px; line-height: 1.5; }
+  .guia-nav { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+  .guia-nav select { font: inherit; font-size: 0.85rem; color: var(--text); background: var(--surface); border: 1px solid var(--border2); border-radius: 8px; padding: 8px 10px; min-height: 40px; }
+  .guia-hojas { display: flex; gap: 6px; flex: 1 1 auto; }
+  .guia-hojas a { flex: 1 1 0; text-align: center; text-decoration: none; font-size: 0.85rem; color: var(--text2); border: 1px solid var(--border2); border-radius: 8px; padding: 9px 6px; min-height: 40px; }
+  .guia-hojas a[aria-current="page"] { color: var(--accent); border-color: var(--accent); font-weight: 500; }
+  .guia h2 { font-size: 1.05rem; font-weight: 500; color: var(--text); margin: 18px 0 8px; }
+  .guia-nota { font-size: 0.78rem; color: var(--text3); margin: -4px 0 10px; }
+  .guia-bloque { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+  .guia-bloque.especial { border-color: color-mix(in srgb, #7c4ddb 55%, var(--border)); }
+  .guia-bloque > h3 { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 4px; display: flex; gap: 6px; align-items: baseline; }
+  .guia-cond { font-size: 0.75rem; color: var(--text3); margin-bottom: 6px; }
+  .guia-item { padding: 8px 0; border-top: 1px solid var(--border); scroll-margin-top: 72px; }
+  .guia-item:first-of-type { border-top: none; }
+  .guia-item:target, .guia-item.destacado { background: color-mix(in srgb, var(--accent) 10%, transparent); border-radius: 6px; }
+  .guia-num { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); margin-right: 6px; }
+  .guia-texto { font-size: 0.9rem; color: var(--text); line-height: 1.45; }
+  .guia-chip { display: inline-block; font-size: 0.62rem; font-weight: 600; border-radius: 8px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }
+  .guia-chip.urg { background: var(--red); color: #fff; }
+  .guia-chip.der { background: var(--orange); color: #fff; }
+  .guia-chip.cuando { background: var(--surface2); color: var(--text2); font-weight: 400; font-style: italic; }
+  .guia-crit { font-size: 0.78rem; color: var(--text2); border-top: 1px dashed var(--border2); margin-top: 6px; padding-top: 6px; }
+  .guia-ops { list-style: none; margin: 6px 0 0; display: grid; gap: 6px; }
+  .guia-ops li { font-size: 0.85rem; color: var(--text2); line-height: 1.4; }
+  .guia-ops b { color: var(--text); font-weight: 500; }
+  .guia-hip { color: #8b5cf6; font-weight: 500; }
+  .guia-der { color: var(--red); }
+  .guia-lr { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text3); margin: 2px 0; }
+  .guia-lr .util { color: var(--green); font-weight: 500; }
+  .guia-peso { font-size: 0.8rem; color: var(--text2); margin: 2px 0; }
+  .guia-criterio { font-size: 0.82rem; color: var(--text2); margin: 4px 0; line-height: 1.45; }
+  .guia .razon-cuerpo .razon-seccion { margin: 6px 0; }
+  .guia .razon-cuerpo ul, .guia .razon-cuerpo ol { padding-left: 18px; margin: 2px 0 4px; }
+  .guia-pie { margin-top: 24px; font-size: 0.75rem; color: var(--text3); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 10px; }
+  .guia-urg { border: 1px solid var(--red); background: color-mix(in srgb, var(--red) 8%, var(--surface)); color: var(--text); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; font-size: 0.82rem; line-height: 1.45; }
+  .guia-urg b { color: var(--red); display: block; margin-bottom: 2px; }
+  .guia-pie a { color: var(--accent); }
+  .guia-vacio { color: var(--text3); font-size: 0.85rem; }
+  @media (max-width: 480px) { .guia-bloque { margin-left: -1rem; margin-right: -1rem; border-left: none; border-right: none; border-radius: 0; } }
+</style>
+</head>
+<body>
+<main class="guia" id="guia">
+  <div class="guia-cab"><h1>Guía de consulta</h1><span class="guia-marca">PhysiQ-Assessment</span></div>
+  <p class="guia-intro">El porqué de cada pregunta, paso y test de los esquemas impresos, con sus fuentes. Es la misma información que la app; esta página no pide ni guarda datos del paciente.</p>
+  <nav class="guia-nav" aria-label="Región y hoja">
+    <select id="guiaRegion" aria-label="Región"></select>
+    <div class="guia-hojas" id="guiaHojas"></div>
+  </nav>
+  <div id="guiaContenido"></div>
+  <div class="guia-pie" id="guiaPie"></div>
+</main>
+<script type="module" src="./guia.js"></script>
+</body>
+</html>

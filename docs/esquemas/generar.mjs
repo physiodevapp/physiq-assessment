@@ -9,15 +9,17 @@
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
 //   confirmacion → fase 4b, A4 (vertical o apaisado, la de letra más grande): tests de cada hipótesis con sus LR y si puntúan
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
-// importa lrEfectiva y testPuntua de phase4b.js, cargado con el mismo shim que tests/unit.js.
+// importa lrEfectiva y testPuntua de lib/tests-4b.js (las mismas que usa phase4b.js).
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import '../../tests/dom-shim.mjs';
 
 const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } = await import('../../data.js');
-const { lrEfectiva, testPuntua } = await import('../../phase4b.js');
-const { resolveOptionTargets } = await import('../../phase4.js');
+const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
+const { resolveOptionTargets } = await import('../../lib/arbol.js');
+const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
+const { qrSVG } = await import('./qr.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -28,6 +30,8 @@ const NOMBRES = { hombro: 'Hombro', cadera: 'Cadera', cervical: 'Cervical', lumb
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const fmtLR = n => n >= 10 ? n.toFixed(0) : n.toFixed(n < 1 ? 2 : 1);   // igual que phase4b.js
 const hoy = new Date().toLocaleDateString('es-ES');
+// QR a la página de esta hoja en la guía de consulta (guia.html): el porqué de cada elemento, sus fuentes e IA
+const qrGuia = (region, hoja) => `<div class="qr-guia">${qrSVG(urlGuia(region, hoja), 80)}<span>Porqués, fuentes e IA</span></div>`;
 
 const CSS = `
   * { box-sizing: border-box; }
@@ -38,6 +42,10 @@ const CSS = `
   .pie { color: #6b7280; font-size: 9px; margin-top: 8px; }
   .chip { display: inline-block; border-radius: 10px; padding: 0 6px; font-size: 9px; font-weight: bold; }
   .urg { background: #d0342c; color: #fff; } .alerta { background: #fff1dc; color: #9a5b00; }
+  .cab-hoja { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 6px; }
+  .cab-txt { flex: 1; min-width: 0; }
+  .qr-guia { flex: none; text-align: center; font-size: 8.5px; color: #4b5563; line-height: 1.15; width: 80px; }
+  .qr-guia svg { display: block; }
   .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 18px; padding: 0 4px; }
 `;
 
@@ -98,52 +106,22 @@ function scriptAjuste(W, H, sel) {
 // condiciones especiales (solo con su tarjeta o el mecanismo marcados en la fase 1),
 // cada pregunta con la condición que la muestra. Cada página a la mayor escala que
 // cabe; la leyenda es el pie fijo de cada página.
-const CONDICION_SISTEMA = {
-  soloPosquirurgico: 'mecanismo «Post-quirúrgico» en la fase 1',
-  soloHipermovilidad: 'tarjeta «Hipermovilidad / Ehlers-Danlos» marcada',
-  soloDisautonomia: 'tarjeta «Disautonomía / POTS» marcada',
-  soloLupus: 'tarjeta «Lupus (LES)» marcada',
-  soloMastocitos: 'tarjeta «Trastorno mastocitario o anafilaxia» marcada',
-  soloOsteoporosis: 'tarjeta «Osteoporosis o fragilidad ósea» marcada',
-  soloEmbarazo: 'tarjeta «Embarazo o posparto» marcada',
-  soloAnticoagulado: 'tarjeta «Paciente anticoagulado o antiagregado» marcada',
-};
-// Cuándo se ve una pregunta dentro de su sistema (mismas reglas que lib/<condición>.js)
-function condicionPregunta(q) {
-  const t = [];
-  if (q.hm === 'urgencia') t.push('con «Sospecha» o subtipo vascular');
-  if (q.hm === 'sospecha') t.push('con «Sospecha» o subtipo sin saber');
-  if (q.les === 'diagnosticado') t.push('solo «Diagnosticado»');
-  if (q.op === 'sinFractura') t.push('sin fractura vertebral conocida');
-  if (q.op === 'antirresortivo') t.push('con bifosfonato o denosumab');
-  if (q.ac === 'cabeza') t.push('no con aspirina sola');
-  if (q.ac === 'anticoagulante') t.push('solo con anticoagulante');
-  if (q.em) {
-    const tramo = (nombre, r, uds) => r ? nombre + (r.desde ? ` desde la semana ${r.desde}` : '') + (r.hasta ? ` hasta la semana ${r.hasta}${uds}` : '') : null;
-    const partes = [tramo('embarazo', q.em.embarazo, ''), tramo('posparto', q.em.posparto, ' tras el parto')].filter(Boolean);
-    if (partes.length === 1) t.push('solo ' + partes[0]);
-    else if (partes.some(x => /semana/.test(x))) t.push(partes.join(' o '));
-  }
-  return t.join(' · ');
-}
-
 function htmlCribado(region) {
   const sc = SYSTEMIC_SCREENING[region];
-  const soloDe = s => Object.keys(CONDICION_SISTEMA).find(k => s[k]);
   const seccion = s => {
-    const preguntas = s.preguntas.filter(q => !q.regiones || q.regiones.includes(region));
+    const preguntas = preguntasDeRegion(s, region);
     const idx = Object.fromEntries(preguntas.map((q, i) => [q.id, i + 1]));
     const conds = preguntas.map(condicionPregunta);
     // Si todas las preguntas comparten condición, va una sola vez en la cabecera
     const comun = conds.length && conds.every(c => c && c === conds[0]) ? conds[0] : '';
-    const solo = soloDe(s);
+    const solo = soloDeSistema(s);
     const cab = solo ? `<div class="cond-sis">Solo con ${esc(CONDICION_SISTEMA[solo])}${comun ? ` · ${esc(comun)}` : ''}</div>` : '';
     const crit = s.criterioCompuesto
       ? `<div class="crit"><b>${esc(s.criterioCompuesto.etiqueta)}</b> — ${s.criterioCompuesto.minPositivas} o más de las preguntas ${s.criterioCompuesto.ids.map(id => idx[id]).join(', ')}${s.criterioCompuesto.filtro?.edadMax ? ` · edad ≤ ${s.criterioCompuesto.filtro.edadMax}` : ''}${s.criterioCompuesto.filtro?.evolucion ? ` · evolución: ${esc(s.criterioCompuesto.filtro.evolucion)}` : ''}</div>` : '';
     return `<section class="sis"><h2>${esc(s.icon || '')} ${esc(s.nombre)}</h2>${cab}<ol>${preguntas.map((q, k) => `
       <li class="${q.urgencia ? 'qurg' : q.derivacion ? 'qder' : ''}">${esc(q.text)}${q.urgencia ? ' <span class="chip urg">URGENCIA</span>' : q.derivacion ? ' <span class="chip der">DERIVACIÓN</span>' : ''}${conds[k] && !comun ? ` <span class="cond">${esc(conds[k])}</span>` : ''}</li>`).join('')}</ol>${crit}</section>`;
   };
-  const siempre = sc.sistemas.filter(s => !soloDe(s)), especiales = sc.sistemas.filter(soloDe);
+  const { siempre, especiales } = sistemasCribado(SYSTEMIC_SCREENING, region);
   const urg = sc.urgencia ? `<div class="aviso">${esc(sc.urgencia.titulo)}${sc.urgencia.lineas.map(l => `<div>· ${esc(l)}</div>`).join('')}</div>` : '';
   const pie = `<div class="pie-fijo">
       <span class="ley"><span class="chip urg">URGENCIA</span> derivar hoy</span>
@@ -179,8 +157,10 @@ function htmlCribado(region) {
     .pie-fijo .gen { color: #6b7280; font-size: 8.5px; }
   </style>
   <div class="pagina" data-grupo="siempre">
+    <div class="cab-hoja"><div class="cab-txt">
     <h1>Cribado sistémico · ${NOMBRES[region]}</h1>
-    <div class="sub">PhysiQ-Assessment · fase 2. Lo que se pregunta siempre en ${NOMBRES[region].toLowerCase()}.${especiales.length ? ' Las condiciones especiales, en la página siguiente.' : ''}</div>
+    <div class="sub">PhysiQ-Assessment · fase 2. Lo que se pregunta siempre en ${NOMBRES[region].toLowerCase()}.${especiales.length ? ' Las condiciones especiales, en la página siguiente.' : ''} El porqué de cada pregunta, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).</div>
+    </div>${qrGuia(region, 'cribado')}</div>
     ${urg}
     <div class="cols">${siempre.map(seccion).join('')}</div>
     ${pie}
@@ -195,24 +175,6 @@ function htmlCribado(region) {
 }
 
 // ── Fase 4 · árbol ───────────────────────────────────────────────────────────
-// Pasos «principales»: los que están en todos los recorridos; el resto son desvíos.
-function pasosPrincipales(tree) {
-  const steps = tree.steps, ids = steps.map(s => s.id);
-  const sig = id => { const i = ids.indexOf(id); return steps[i].options.flatMap(o => resolveOptionTargets(tree, i, o).map(t => t.id)); };
-  const llegaAlFinSin = evitar => {
-    const vistos = new Set(), pila = [ids[0]];
-    if (ids[0] === evitar) return false;
-    while (pila.length) {
-      const id = pila.pop(); if (vistos.has(id)) continue; vistos.add(id);
-      const i = ids.indexOf(id);
-      if (steps[i].options.some(o => resolveOptionTargets(tree, i, o).length === 0)) return true;
-      sig(id).filter(n => n !== evitar).forEach(n => pila.push(n));
-    }
-    return false;
-  };
-  return new Set(ids.filter(id => !llegaAlFinSin(id)));
-}
-
 // Diseño de flujo (A3 apaisado): los pasos principales en columnas de izquierda a
 // derecha (4 por banda; si hay más, la banda siguiente continúa debajo), los
 // desvíos encima del paso del que salen, y debajo de cada paso sus respuestas con
@@ -263,7 +225,6 @@ const CSS_A4 = `
     .conecta-vuelta { margin-top: 5px; }
 `;
 const numHip = h => (h.id.match(/\d+/) || [''])[0];
-function etiquetaPaso(st, i) { const m = /Paso\s+([0-9]+[a-z]?)/i.exec(st.tag || ''); return m ? m[1] : String(i + 1); }
 
 function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = {}) {
   // A4: la misma maqueta en una hoja más pequeña, compacta (no reducida) para leerla de un vistazo
@@ -410,8 +371,10 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
     ${a4 ? CSS_A4 : ''}
   </style>
   <div class="pagina" id="pag0">
+    <div class="cab-hoja"><div class="cab-txt">
     <h1>${esc(tree.title || `Árbol de decisión CIF · ${NOMBRES[region]}`)}</h1>
-    <div class="sub">PhysiQ-Assessment · fase 4 · ${NOMBRES[region]}. Cada respuesta puede sumar una hipótesis; se acumulan y todas se confirman con tests en la fase 4b.</div>
+    <div class="sub">PhysiQ-Assessment · fase 4 · ${NOMBRES[region]}. Cada respuesta puede sumar una hipótesis; se acumulan y todas se confirman con tests en la fase 4b.${a4 ? ' El porqué de cada paso, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).' : ''}</div>
+    </div>${a4 ? qrGuia(region, 'arbol') : ''}</div>
     <div class="aviso">REQUISITO PREVIO · Banderas rojas (fase 1) y cribado sistémico (fase 2). Si hay una urgencia, derivar: este árbol no se aplica.</div>
     ${htmlBandas}
     <div class="final" id="final">
@@ -575,7 +538,10 @@ function htmlConfirmacion(region, { vertical = false } = {}) {
     .pie-fijo .gen { color: #6b7280; font-size: 8.5px; margin-top: 2px; }
   </style>
   <div class="pagina" data-grupo="hipotesis">
+    <div class="cab-hoja"><div class="cab-txt">
     <h1>Confirmación de hipótesis · ${NOMBRES[region]}</h1>
+    <div class="sub">PhysiQ-Assessment · fase 4b. Los tests de cada hipótesis, sus LR y si puntúan. El criterio de cada test, por qué se hace, cuánto pesa, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).</div>
+    </div>${qrGuia(region, 'confirmacion')}</div>
     <div class="cols">${bloques}</div>
     <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterios de cada test y fuentes, en la app.
       <div class="gen">PhysiQ-Assessment · fase 4b · ${NOMBRES[region]}. Generado desde los datos de la app el ${hoy}.</div></div>

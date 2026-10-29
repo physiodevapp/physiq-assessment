@@ -6305,6 +6305,73 @@ async function checkLetra(browser, errors) {
   return r;
 }
 
+// Guía de consulta (guia.html): la página que abre el QR de cada esquema impreso
+async function checkGuia(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  const fallidas = [];
+  page.on('pageerror', err => errors.push(`pageerror (guía): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (guía): ${msg.text()}`); });
+  page.on('requestfailed', r => { if (r.url().startsWith(BASE_URL)) fallidas.push(r.url()); });
+  const base = BASE_URL.replace(/\/$/, '') + '/guia.html';
+  const r = {};
+  try {
+    await page.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-item', { timeout: 10000 });
+    // La numeración y el orden son los de la hoja: lib/esquemas.js, igual que docs/esquemas/generar.mjs
+    r.cribado = await page.evaluate(async () => {
+      const { SYSTEMIC_SCREENING } = await import('./data.js');
+      const { sistemasCribado, preguntasDeRegion } = await import('./lib/esquemas.js');
+      const { siempre, especiales } = sistemasCribado(SYSTEMIC_SCREENING, 'lumbar');
+      const esperado = [...siempre, ...especiales].flatMap(s => preguntasDeRegion(s, 'lumbar').map((q, i) => `${q.id}:${i + 1}`));
+      const pintado = [...document.querySelectorAll('.guia-item')].map(el => `${el.id.slice(2)}:${el.querySelector('.guia-num').textContent}`);
+      return { mismo: JSON.stringify(esperado) === JSON.stringify(pintado), n: pintado.length,
+        urgencias: document.querySelectorAll('.guia-chip.urg').length,
+        ia: !!document.getElementById('iaBarra') && document.querySelectorAll('.razon-cuerpo[data-ia-ctx] .ia-parrafo-ir').length > 0,
+        enlaces: document.querySelectorAll('.razon-enlace[target="_blank"]').length };
+    });
+    // Una cita abre su ficha
+    await page.locator('details.razon').first().evaluate(d => { d.open = true; });
+    await page.locator('details.razon .cita').first().click();
+    r.ficha = await page.locator('#citaFicha').isVisible().catch(() => false);
+    // Enlace directo a un elemento: resaltado y con su «Por qué» abierto
+    await page.goto(`${base}#lumbar/cribado/q-l6`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#q-l6.destacado');
+    r.ancla = await page.evaluate(() => document.querySelector('#q-l6 details.razon')?.open === true);
+    // Pestañas y región
+    await page.click('.guia-hojas a:has-text("Árbol")');
+    await page.waitForSelector('#paso-lu_step1');
+    r.arbol = await page.evaluate(async () => {
+      const { CIF_TREES } = await import('./data.js');
+      return document.querySelectorAll('[id^="paso-"]').length === CIF_TREES.lumbar.steps.length;
+    });
+    await page.click('.guia-hojas a:has-text("Confirmación")');
+    await page.waitForSelector('[id^="test-"]');
+    r.confirmacion = await page.evaluate(async () => {
+      const { HYPOTHESES } = await import('./data.js');
+      const n = Object.values(HYPOTHESES).filter(h => h.region === 'lumbar').reduce((a, h) => a + h.tests.length, 0);
+      return document.querySelectorAll('[id^="test-"]').length === n && document.querySelectorAll('.guia-peso').length === n;
+    });
+    await page.selectOption('#guiaRegion', 'codo');
+    await page.waitForFunction(() => location.hash === '#codo/confirmacion');
+    r.region = await page.evaluate(() => !!document.getElementById('hip-co1'));
+    // Cabe a 320 px sin desbordar
+    await page.setViewportSize({ width: 320, height: 700 });
+    for (const h of ['cribado', 'arbol', 'confirmacion']) {
+      await page.goto(`${base}#lumbar/${h}`, { waitUntil: 'networkidle' });
+      await page.evaluate(() => document.querySelectorAll('details.razon').forEach(d => { d.open = true; }));
+      r[`ancho_${h}`] = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+    }
+    // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
+    r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
+  } catch (e) { r.error = e.message; }
+  await context.close();
+  r.fallidas = fallidas;
+  r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
+    && r.confirmacion && r.region && r.ancho_cribado && r.ancho_arbol && r.ancho_confirmacion && r.sinSesion && !fallidas.length;
+  return r;
+}
+
 async function abrirApp(page, url = BASE_URL) {
   if (!page.__fallidas) {
     page.__fallidas = [];
@@ -6826,6 +6893,12 @@ const SECCIONES = [
     const tejidos = await checkTiemposTejido(browser, errors);
     console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, «Este paciente» según las hipótesis activas, el mecanismo y la cronología (y aviso de las que no tienen plazo), tarjeta de una barra con sus fuentes enlazadas en línea con « · » (líneas de 24 px y toque de 32 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
+  } },
+
+  { id: 'guia', titulo: 'Guía de consulta (guia.html, la del QR de los esquemas):', run: async ({ browser, errors }) => {
+    const c = await checkGuia(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; cambiar de región; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
   } },
 
   { id: 'citas', titulo: 'Citas tocables (fuentes de las fases 2–6 y de la calculadora):', run: async ({ browser, errors }) => {
