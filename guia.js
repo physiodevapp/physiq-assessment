@@ -6,7 +6,7 @@ import { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } from './data.js';
 import { citasHTML, citasEnTexto, registroReferencias, enlaceCita } from './lib/citas.js';
 import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, ctxIrritabilidad, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
 import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/irritabilidad.js';
-import { nivelMatriz, NOMBRE_NIVEL } from './lib/irritabilidad.js';
+import { nivelMatriz, NOMBRE_NIVEL, reglaIrritabilidad } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
 import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido } from './lib/esquemas.js';
@@ -205,17 +205,14 @@ function filaIrritabHTML(it) {
     <div class="option-group guia-irr-ops" role="group" aria-label="${esc(it.nombre)}">${it.opciones.map((o, i) =>
       `<button type="button" class="option-btn${v === o.valor ? ' selected' : ''}" data-irr="${it.clave}" data-valor="${esc(o.valor)}" aria-pressed="${v === o.valor}"><span class="guia-irr-n">${i}</span> ${esc(o.valor)}</button>`).join('')}</div></div>`;
 }
-function htmlIrritabilidad(region) {
-  const c = CORTES_OTROS;
-  return `<h2>Irritabilidad (fase 3)</h2>
+function htmlIrritabilidad(region, { conTitulo = true } = {}) {
+  return `${conTitulo ? '<h2>Irritabilidad (fase 3)</h2>' : ''}
     <p class="guia-nota">La misma matriz y la misma regla que la fase 3 de la app (y la fase 6). Marca lo que refiere el paciente; un segundo toque desmarca. No se guarda nada: se borra al recargar.</p>
     <div id="guiaIrrRes">${resultadoIrritabHTML(region)}</div>
     <section class="guia-bloque">${ITEMS_IRRITABILIDAD.map(filaIrritabHTML).join('')}
       <div class="guia-irr-pie"><button type="button" class="guia-borrar" data-irr-borrar>Borrar respuestas</button></div></section>
     <details class="razon guia-irr-regla"><summary>ⓘ Cómo se calcula</summary><div class="razon-cuerpo">
-      <p>El <b>tiempo en calmarse</b> marca el suelo: minutos → baja, horas → moderada, día siguiente → alta (Maitland 2005, cap. 6, p. 117; Petersen 2021).</p>
-      <p><b>Reposo + movimiento + tolerancia</b> (0–2 cada uno, el número de cada botón) solo pueden subirlo: 0–${c.bajaHasta} baja, ${c.bajaHasta + 1}–${c.moderadaHasta} moderada, ${c.moderadaHasta + 1}–6 alta.</p>
-      <p>El nivel es el más alto de los dos. Se calcula con lo contestado y avisa si falta alguna fila, porque quedarse corto es el error peligroso. El impacto en las actividades es gravedad y no cuenta aquí.</p>
+      ${reglaIrritabilidad().map(p => `<p>${p}</p>`).join('')}
     </div></details>`;
 }
 document.addEventListener('click', e => {
@@ -315,6 +312,7 @@ function htmlHojas() {
 // La clave es la de la hoja impresa (docs/esquemas/<clave>.pdf), para el aviso de papel viejo.
 const SUELTAS = {
   condiciones: { titulo: 'Condiciones especiales', html: () => condicionesHTML({}, { guia: true }) },
+  irritabilidad: { titulo: 'Irritabilidad (fase 3)', html: () => htmlIrritabilidad('', { conTitulo: false }) },
   farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>` },
 };
 
@@ -419,7 +417,7 @@ async function iniciar() {
   document.fonts?.ready.then(anchoRegion);   // la fuente del título llega después
   pintar();
   const v = textoVersion();
-  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#condiciones">Condiciones especiales</a> · <a href="#farmacos">Fármacos</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
+  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#condiciones">Condiciones especiales</a> · <a href="#farmacos">Fármacos</a> · <a href="#irritabilidad">Irritabilidad</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
   initAmpliarIA();
 }
 iniciar();

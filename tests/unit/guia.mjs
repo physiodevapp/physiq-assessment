@@ -16,6 +16,8 @@ const COND_LIB = await import('../../lib/condiciones.js');
 const FARM = await import('../../data/farmacos.js');
 const FARM_P = await import('../../data/farmacos-paciente.js');
 const FARM_L = await import('../../lib/farmacos.js');
+const IRR_DATOS = await import('../../data/irritabilidad.js');
+const IRR_LIB = await import('../../lib/irritabilidad.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
 
@@ -155,4 +157,14 @@ test('hoja de fármacos: cada familia escrita con sus ejemplos y todas las frase
   }
   assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'farmacos' && h.ruta === 'farmacos'));
   assert.ok(!/onclick=/.test(FARM_L.farmacosHTML()) || FARM_L.familiasPendientes().length > 0, 'en la guía no queda ningún botón de la app');
+});
+
+test('hoja de irritabilidad: la matriz de data/irritabilidad.js, la misma regla que la guía y lo que implica cada nivel', () => {
+  const html = HOJAS.htmlIrritabilidad();
+  const { ITEMS_IRRITABILIDAD, TEXTOS_IRRITABILIDAD: T } = IRR_DATOS;
+  for (const it of ITEMS_IRRITABILIDAD) for (const o of it.opciones) assert.ok(html.includes(o.valor), o.valor);
+  for (const p of IRR_LIB.reglaIrritabilidad()) assert.ok(html.includes(p), p.slice(0, 30));
+  for (const k of ['hastaLimite', 'hastaDolor', 'alta', 'margen']) assert.ok(html.includes(T[k]), k);
+  assert.ok(leer('guia.js').includes('reglaIrritabilidad()'), 'la guía usa la misma regla');
+  assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'irritabilidad' && h.ruta === 'irritabilidad'));
 });

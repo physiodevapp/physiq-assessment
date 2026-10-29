@@ -17,6 +17,8 @@ const { posicionDia, tieneBarra } = await import('../../lib/tejidos.js');
 const { dolorInespecifico } = await import('../../lib/region.js');
 const { qrSVG } = await import('./qr.mjs');
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
+const { ITEMS_IRRITABILIDAD, ITEM_IMPACTO, TEXTOS_IRRITABILIDAD } = await import('../../data/irritabilidad.js');
+const { reglaIrritabilidad } = await import('../../lib/irritabilidad.js');
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
@@ -774,6 +776,44 @@ export function htmlFarmacos() {
   });
 }
 
+// ── Irritabilidad (fase 3): la matriz para marcar en papel, la regla y qué implica cada nivel ──
+export function htmlIrritabilidad() {
+  const T = TEXTOS_IRRITABILIDAD;
+  const filas = ITEMS_IRRITABILIDAD.map(it => `<tr><th>${esc(it.nombre)}${it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : ''}</th>
+    ${it.opciones.map((o, i) => `<td><span class="caja"></span><span class="n">${i}</span> ${esc(o.valor)}</td>`).join('')}</tr>`).join('');
+  const nivel = (n, clase, textos) => `<div class="nivel ${clase}"><b>${n}</b>${textos.map(t => `<p>${esc(t)}</p>`).join('')}</div>`;
+  return paginaUna({
+    titulo: 'Irritabilidad (fase 3)',
+    sub: `La misma matriz y la misma regla que la app (fases 3 y 6). Marca una casilla por fila. ${esc(T.pistaBreve)}`,
+    qr: 'Calculadora e IA',
+    cuerpo: `<table class="matriz"><thead><tr><th></th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>${filas}</tbody></table>
+      <div class="regla"><h2>Cómo se calcula</h2>${reglaIrritabilidad().map(p => `<p>${p}</p>`).join('')}
+        <div class="calc"><span>Suelo (tiempo en calmarse): ____</span><span>Reposo + movimiento + tolerancia = ____ → ____</span><span><b>Nivel</b> (el más alto): ____</span></div></div>
+      <h2 class="t-niveles">Qué implica cada nivel</h2>
+      <div class="niveles">${nivel('Baja', 'baja', [T.hastaLimite])}${nivel('Moderada', 'moderada', [T.hastaDolor])}${nivel('Alta', 'alta', [T.hastaDolor, T.alta])}</div>
+      <p class="margen">${esc(T.margen)} ${esc(T.incompleta)}</p>`,
+    pie: `<span>El impacto en las actividades (${ITEM_IMPACTO.opciones.map(o => esc(o.valor).toLowerCase()).join(' · ')}) es gravedad: se anota aparte, junto al NRS.</span><span class="pie">Generado desde los datos de la app (data/irritabilidad.js, lib/irritabilidad.js) el ${FECHA}.</span>`,
+    css: `
+      body { font-size: 11.5px; }
+      .matriz { width: 100%; border-collapse: collapse; margin: 4px 0 12px; }
+      .matriz th, .matriz td { border: 1.5px solid #cbd5e1; padding: 8px 8px; text-align: left; vertical-align: top; }
+      .matriz thead th { background: #eef2ff; text-align: center; font-size: 11px; color: #3730a3; padding: 4px; }
+      .matriz tbody th { width: 30%; font-size: 12.5px; }
+      .ayuda { font-weight: normal; font-size: 9.5px; color: #6b7280; margin-top: 3px; }
+      .caja { display: inline-block; width: 13px; height: 13px; border: 1.6px solid #475569; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
+      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 15px; margin-right: 3px; }
+      h2 { font-size: 14px; margin: 0 0 5px; color: #1e3a8a; }
+      .regla { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; } .regla p { margin: 0 0 5px; }
+      .calc { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 11px; }
+      .niveles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .nivel { border-radius: 8px; padding: 8px 10px; border: 1.5px solid; } .nivel b { font-size: 13px; } .nivel p { margin: 4px 0 0; font-size: 10.5px; }
+      .nivel.baja { border-color: #16a34a; background: #f0fdf4; } .nivel.baja b { color: #15803d; }
+      .nivel.moderada { border-color: #ea580c; background: #fff7ed; } .nivel.moderada b { color: #c2410c; }
+      .nivel.alta { border-color: #dc2626; background: #fef2f2; } .nivel.alta b { color: #b91c1c; }
+      .margen { color: #4b5563; font-size: 10px; margin: 10px 0 0; }`,
+  });
+}
+
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
 export function fnv(texto) {
@@ -795,6 +835,7 @@ export function hojasImpresas() {
   for (const hoja of Object.keys(HOJAS_TEJIDO)) hojas.push({ clave: `tejidos-${hoja}`, ruta: `tejidos/${hoja}`, html: () => htmlTejidos(hoja) });
   hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones });
   hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
+  hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
   return hojas;
 }
 export const huellaHoja = html => fnv(html);

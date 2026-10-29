@@ -6473,13 +6473,19 @@ async function checkGuia(browser, errors) {
       const { familiasConContenido } = await import('./lib/farmacos.js');
       return document.querySelectorAll('.farm-familia').length === familiasConContenido().length && document.documentElement.scrollWidth <= innerWidth;
     }) && (await page.evaluate(() => navigator.clipboard.readText())) === nombreCima && (await page.textContent('#guiaAviso')).includes(nombreCima);
+    // Irritabilidad suelta (#irritabilidad, el QR de su hoja): la misma calculadora, sin región
+    await page.goto(`${base}#irritabilidad`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('[data-irr]');
+    await page.click('[data-irr="calma"][data-valor="Tarda horas"]');
+    r.irrSuelta = /Irritabilidad moderada/i.test(await page.textContent('#guiaIrrRes'))
+      && /Irritabilidad/.test(await page.textContent('#guiaTitulo')) && !(await page.$('#guiaContenido h2'));
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
     r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
   } catch (e) { r.error = e.message; }
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.condiciones && r.farmacos && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.condiciones && r.farmacos && r.irrSuelta && r.sinSesion && !fallidas.length;
   return r;
 }
 
@@ -7008,7 +7014,7 @@ const SECCIONES = [
 
   { id: 'guia', titulo: 'Guía de consulta (guia.html, la del QR de los esquemas):', run: async ({ browser, errors }) => {
     const c = await checkGuia(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con la versión de cada hoja y su PDF; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con la versión de cada hoja y su PDF; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA; irritabilidad suelta (#irritabilidad); cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
