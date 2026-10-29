@@ -16,7 +16,6 @@ const LC = await import('../../lib/lector-cuestionarios.js');
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const tipoDe = it => it.tipo || 'escala';
-const textoOpcion = o => (typeof o === 'string' ? o : o.t);
 
 export const cuestionariosConHoja = () => CUESTIONARIOS.filter(LC.tieneHojaRespuestas);
 
@@ -35,31 +34,43 @@ const CSS = `
   .etq { flex: 0 0 34%; color: #374151; font-size: 10px; }
   .casillas { flex: 1; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: flex-end; }
   .cas { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 10px; font-weight: bold; }
+  .cas-palabra { width: 52px; text-align: center; font-size: 9px; line-height: 1.15; justify-content: flex-end; }
   .caja { width: 22px; height: 22px; border: 1.8px solid #111827; border-radius: 3px; background: #fff; }
   .op { display: flex; align-items: center; gap: 5px; font-size: 10px; max-width: 100%; }
   .op .n { font-weight: bold; min-width: 12px; text-align: right; }
   .op-lista { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .na { margin-left: 8px; padding-left: 10px; border-left: 1px dashed #9ca3af; }
+  .na { margin-left: 2px; padding-left: 8px; border-left: 1px dashed #9ca3af; }
   .fuera { color: #6b7280; font-style: italic; font-size: 10px; }
 `;
 
 // Casilla de un valor: el número o el texto encima y la caja vacía debajo
-const casilla = (txt) => `<span class="cas"><span>${esc(txt)}</span><span class="caja"></span></span>`;
+const casilla = (txt, palabra = false) => `<span class="cas${palabra ? ' cas-palabra' : ''}"><span>${esc(txt)}</span><span class="caja"></span></span>`;
 const casillaOpcion = (i, txt) => `<span class="op"><span class="n">${i}</span><span class="caja"></span><span>${esc(txt)}</span></span>`;
 
-function casillasItem(def, it) {
+// Casillas de una fila, rotuladas como el papel oficial (LC.casillasItem)
+function casillasFila(def, it) {
   const tipo = tipoDe(it);
   if (!LC.itemLegible(it)) return '<span class="fuera">Lo apunta el fisioterapeuta en la app (no se lee en la foto)</span>';
+  const cas = LC.casillasItem(def, it);
   let html;
-  if (tipo === 'escala') html = LC.valoresItem(def, it).map(v => casilla(v)).join('');
-  else if (tipo === 'sino') html = casilla('Sí') + casilla('No');
+  if (tipo === 'escala' || tipo === 'sino') html = cas.map(c => casilla(c.rotulo, def.hoja?.casillas === 'palabras' && tipo === 'escala')).join('');
   else {
-    const largas = it.opciones.some(o => textoOpcion(o).length > 22) || it.opciones.length > 6;
-    html = `<span class="casillas ${largas ? 'op-lista' : ''}">${it.opciones.map((o, i) => casillaOpcion(i + 1, textoOpcion(o))).join('')}</span>`;
+    const largas = cas.some(c => c.texto.length > 22) || cas.length > 6;
+    html = `<span class="casillas ${largas ? 'op-lista' : ''}">${cas.map(c => casillaOpcion(c.rotulo, c.texto)).join('')}</span>`;
     if (tipo === 'marcas') html = `<span class="fuera">Puede marcar varias</span>${html}`;
   }
-  if (it.na) html += `<span class="na">${casilla('N/A')}</span>`;
+  const na = LC.casillaNA(def, it);
+  if (na) html += `<span class="na">${casilla(na.rotulo, na.rotulo.length > 4)}</span>`;
   return html;
+}
+
+// Bajo las instrucciones: con casillas numeradas, la leyenda de los números (la
+// del papel); con letras, cómo se cuenta la posición; con palabras, nada (cada
+// casilla ya dice la respuesta)
+function leyendaHoja(def) {
+  const h = def.hoja?.casillas;
+  const txt = h === 'letras' ? def.hoja.nota : h === 'palabras' ? 'Marca la casilla con la misma respuesta que elegiste en el cuestionario.' : def.leyenda;
+  return txt ? `<div class="leyenda">${esc(txt)}</div>` : '';
 }
 
 export function htmlRespuestas(def) {
@@ -67,7 +78,7 @@ export function htmlRespuestas(def) {
   let seccion = null;
   const filas = def.items.map(it => {
     const cab = it.seccion && it.seccion !== seccion ? `<div class="seccion">${esc((seccion = it.seccion))}</div>` : '';
-    return `${cab}<div class="fila" data-n="${it.n}"><span class="num">${it.n}</span><span class="etq">${esc(LC.etiquetaFila(it))}</span><span class="casillas">${casillasItem(def, it)}</span></div>`;
+    return `${cab}<div class="fila" data-n="${it.n}"><span class="num">${it.n}</span><span class="etq">${esc(LC.etiquetaFila(it))}</span><span class="casillas">${casillasFila(def, it)}</span></div>`;
   }).join('');
   return `<style>${CSS}</style>
   <h1>Hoja de respuestas · ${esc(def.nombre)}</h1>
@@ -75,7 +86,7 @@ export function htmlRespuestas(def) {
   <div class="instr"><b>Lee cada pregunta en el cuestionario y marca aquí con una X la casilla de tu respuesta, en la fila con el mismo número.</b>
     Una sola casilla por fila, salvo donde dice que puedes marcar varias. Si te equivocas, tacha la casilla y marca la buena.
     <div class="privado">No escribas tu nombre ni ningún otro dato en esta hoja.</div></div>
-  ${def.leyenda ? `<div class="leyenda">${esc(def.leyenda)}</div>` : ''}
+  ${leyendaHoja(def)}
   ${filas}`;
 }
 

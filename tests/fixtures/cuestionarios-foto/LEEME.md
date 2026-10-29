@@ -14,7 +14,7 @@ Respuestas correctas de hojas de respuestas reales, rellenadas a mano y fotograf
 ```json
 {
   "cuestionario": "phq9",
-  "version": "6bd71bcd",
+  "version": "08c7add1",
   "fotos": ["phq9-01.jpg"],
   "condiciones": ["móvil A", "plana", "buena luz"],
   "correctas": { "1": 2, "2": 1, "3": "blanco", "4": "ambiguo", "5": 0, "6": 3, "7": 1, "8": 0, "9": 0 }
@@ -24,12 +24,14 @@ Respuestas correctas de hojas de respuestas reales, rellenadas a mano y fotograf
 - `version`: la «v.» impresa en la hoja. Si no coincide con la de hoy, la herramienta avisa.
 - `fotos`: los archivos, por orden de página, relativos a la carpeta de `--fotos`.
 - `condiciones`: etiquetas libres, para ver el resultado por condición. Sugeridas: el móvil, `plana` o `inclinada`, `buena luz` o `sombra`, `doblada`.
-- `correctas`: una entrada por cada fila que se lee, con su número (la `n` impresa en el recuadro oscuro) como clave:
-  - escala: el número de la casilla (`2`);
+- `correctas`: una entrada por cada fila que se lee, con su número (la `n` impresa en el recuadro oscuro) como clave, y como valor **lo que está impreso en la casilla marcada** (mayúsculas y tildes dan igual):
+  - casillas con número: el número (`2`);
+  - casillas con letra (KOOS, ODI, NDI): la letra (`"B"`);
+  - casillas con palabra (WOMAC, HOS, FAAM, función del ASES): la palabra (`"Leve"`, `"Muchísimo"`);
   - opciones: la posición impresa junto a la casilla, empezando en 1 (`3`);
   - sí/no: `"si"` o `"no"`;
   - marcas múltiples: la lista de posiciones (`[1, 4]`);
-  - N/A: `"na"`;
+  - la casilla N/A, o «No responde» (HOS), o «No conduzco» (NDI): `"na"` o su rótulo;
   - fila sin marca: `"blanco"`;
   - marca que ni tú sabrías leer: `"ambiguo"`. Lo correcto para ella es que el lector diga «dudoso».
 

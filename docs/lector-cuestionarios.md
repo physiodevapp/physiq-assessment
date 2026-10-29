@@ -21,7 +21,14 @@ Un botón «📷 Leer la hoja» dentro de la calculadora de cuestionarios (`docs
    - **En contra:** cambia la forma de pasar el cuestionario (dos papeles), y esa forma no está validada. Ver «Pendiente antes de usarla con pacientes».
 2. **Las escalas visuales en mm o cm no se leen** (usuario, 2026-10). Medir milímetros en una foto inclinada no es fiable, y 5 mm de error cambian la puntuación. Por eso el iHOT-12 se queda sin hoja, y la EVA del ASES la apunta el fisioterapeuta en la app; la hoja lo dice en esa fila.
 3. **Las fotos no entran en el repo** (usuario, 2026-10). Junto a la hoja pueden salir el texto de cuestionarios con licencia, letra, caras o metadatos. Se pasan a la herramienta con `--fotos`; en el repo solo quedan las respuestas correctas y las lecturas. Un test falla si aparece una imagen en `tests/fixtures/cuestionarios-foto/`.
-4. **Umbral aceptado** (usuario, 2026-10). Lo comprueba `UMBRAL`, en `lib/lector-cuestionarios.js`; un cuestionario tiene lector solo si cumple las tres condiciones en la peor pasada:
+4. **Las casillas se rotulan como el papel oficial** (usuario, 2026-10: «según el orden del papel oficial o lo que recomiendes»). Lo que se recomendó y se hizo: la casilla lleva lo mismo que el paciente ve en el cuestionario, para que no tenga que traducir nada.
+   - **Número**, donde el papel imprime el número que el paciente rodea o marca (PHQ-2, PHQ-9, GAD-7, TSK-11, FABQ, PCS, CADC, Örebro, SPADI, PRTEE, DASH, LEFS, VISA-P, VISA-A). La hoja repite la leyenda de los números.
+   - **Palabra**, donde el papel tiene columnas con palabras y sin números (WOMAC, HOS, FAAM y la función del ASES), en el orden del papel: en el HOS y el FAAM la primera columna es «Ninguna dificultad» / «Sin dificultad», que vale 4 (`hoja.orden: 'descendente'`). Como cada casilla dice la respuesta, aunque el orden de una hoja concreta fuera otro, el paciente no se equivoca de casilla.
+   - **Letra de la posición** (A = la primera), donde cada ítem tiene sus propias frases o respuestas (ODI, NDI —su papel ya usa A–F— y KOOS, cuyas respuestas cambian de un ítem a otro). La hoja explica cómo se cuenta.
+   - La casilla N/A lleva el rótulo del papel: «No responde» en el HOS, «No conduzco» en el ítem de conducir del NDI; el ODI no la lleva (quien no se identifica con ninguna frase deja la fila en blanco, y el fisioterapeuta pone N/A).
+   - Se define en `hoja` (`data/cuestionarios.js`); no cambia cómo puntúa la calculadora. El lector devuelve el rótulo de la casilla y `casillasItem()` lo traduce al valor.
+   - **Por comprobar con la hoja española de cada uno:** el orden de las columnas del HOS y del FAAM está tomado de su leyenda en la app (la primera, la de 4 puntos), no de la hoja; y que el PHQ, el GAD-7, el TSK-11, el DASH y el LEFS impriman los números en el papel.
+5. **Umbral aceptado** (usuario, 2026-10). Lo comprueba `UMBRAL`, en `lib/lector-cuestionarios.js`; un cuestionario tiene lector solo si cumple las tres condiciones en la peor pasada:
    - menos del 0,5 % de ítems peligrosos;
    - ninguno peligroso en un ítem con alerta de seguridad (el 9 del PHQ-9);
    - como mucho el 15 % de los ítems a revisar.
@@ -33,11 +40,11 @@ La genera `docs/esquemas/respuestas.mjs` y la imprime `node docs/esquemas/genera
 **Qué lleva:**
 
 - Una fila por ítem: su número `n` en un recuadro oscuro, nuestra etiqueta corta y las casillas.
-- Las casillas, según el tipo de ítem, con los mismos valores que la calculadora:
-  - escala: una casilla por número;
+- Las casillas, rotuladas como el papel oficial (decisión 4):
+  - escala: una casilla por número, por palabra o por letra de posición;
   - opciones y marcas múltiples: casillas numeradas desde 1, cada una con el texto corto de la opción;
   - sí/no: «Sí» y «No»;
-  - N/A, en los ítems que lo admiten.
+  - N/A, con el rótulo del papel, en los ítems que lo admiten.
 - La instrucción «No escribas tu nombre ni ningún otro dato en esta hoja».
 - Cuatro marcas negras en las esquinas de cada página.
 - Un pie con el cuestionario, la versión y la página.
@@ -51,10 +58,10 @@ Es un módulo puro, para que lo que se mida sea exactamente lo que después se i
 - **Lo que se envía:** la foto (una por página, en orden) y `promptLectura(def)`, que describe cada fila con sus casillas.
 - **La salida forzada:** `esquemaLectura(def)` es un objeto con una entrada por ítem, `{ estado, valor }`.
   - `estado` es `marcado`, `dudoso` (con la mejor lectura), `en_blanco` o `ilegible`.
-  - `valor` solo admite lo que la casilla imprime, o `null`.
+  - `valor` solo admite el rótulo de una casilla (el número, la letra, la palabra, la posición de la opción, `si`/`no` o `na`), o `null`.
 - **La foto:** se reduce a 1568 px de lado largo (`LADO_FOTO`) y se recodifica en JPEG, lo que quita el EXIF y aplica la orientación.
 - **Validación:** `normalizarLectura()` trata como ilegible cualquier valor fuera de las casillas o cualquier combinación incoherente.
-- **Paso a la calculadora:** `propuestaConfirmacion()` pasa lo leído al formato de la calculadora (posición → índice) y separa los dudosos y los pendientes.
+- **Paso a la calculadora:** `casillasItem()` da, para cada ítem, las casillas en el orden del papel con su rótulo y su valor; `propuestaConfirmacion()` pasa lo leído al formato de la calculadora y separa los dudosos y los pendientes.
 
 ## Protocolo de medición
 
@@ -99,11 +106,6 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 
-- **Cómo pasa el paciente su respuesta del cuestionario oficial a la casilla.** Las casillas usan los valores de la calculadora, que no siempre son el orden del papel oficial:
-  - en el HOS, la primera respuesta del papel («ninguna dificultad») vale 4;
-  - en el ODI y el NDI, la casilla es la posición de la frase (0–5);
-  - en el KOOS, la posición de la casilla.
-
-  Para medir la lectura da igual (las respuestas son inventadas), pero con pacientes hay que decidir cuestionario a cuestionario cómo se rotulan las casillas para que no se equivoquen.
+- **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del HOS y del FAAM; números impresos en el PHQ, el GAD-7, el TSK-11, el DASH y el LEFS). Si una difiere, se cambia su `hoja` y se regenera.
 - **Validez del formato:** pasar el cuestionario con una hoja de respuestas aparte no es el formato validado. Es una decisión clínica pendiente.
 - **Diseño del paso 2:** la ruta nueva del worker (physiq-report), el botón, la pantalla de confirmación, el aviso de privacidad, las pruebas y el smoke. Se explica al usuario antes de escribirlo.

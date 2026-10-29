@@ -61,8 +61,10 @@ test('lector: una lectura fuera de las casillas o incoherente se trata como ileg
   assert.equal(LC.normalizarItem(d, it, { estado: 'en_blanco', valor: 1 }).incoherente, true);
   assert.equal(LC.normalizarItem(d, it, { estado: 'marcado', valor: NA }).incoherente, true, 'sin N/A en el PHQ-9');
   assert.equal(LC.normalizarItem(d, it, undefined).estado, 'ilegible');
+  const hos = def('hos');
+  assert.deepEqual(LC.normalizarItem(hos, hos.items[0], { estado: 'marcado', valor: NA }), { estado: 'marcado', valor: NA });
   const odi = def('odi');
-  assert.deepEqual(LC.normalizarItem(odi, odi.items[0], { estado: 'marcado', valor: NA }), { estado: 'marcado', valor: NA });
+  assert.equal(LC.normalizarItem(odi, odi.items[0], { estado: 'marcado', valor: NA }).incoherente, true, 'la hoja del ODI no lleva N/A: se deja en blanco');
   const ore = def('orebro'), zonas = ore.items.find(i => i.tipo === 'marcas');
   assert.equal(LC.normalizarItem(ore, zonas, { estado: 'marcado', valor: [1, 1] }).incoherente, true, 'marcas repetidas');
   assert.equal(LC.normalizarItem(ore, zonas, { estado: 'marcado', valor: [] }).incoherente, true);
@@ -75,7 +77,7 @@ test('lector: la lectura confirmada se puntúa igual que tocando la calculadora 
     const { respuestas, dudosos, pendientes } = LC.propuestaConfirmacion(d, lect);
     assert.deepEqual([dudosos, pendientes], [[], []], d.id);
     // A mano: el primer valor de cada casilla, en el formato de la calculadora
-    const aMano = Object.fromEntries(LC.itemsLegibles(d).map(it => [it.n, it.tipo === 'opciones' ? 0 : it.tipo === 'marcas' ? [0] : LC.valoresItem(d, it)[0]]));
+    const aMano = Object.fromEntries(LC.itemsLegibles(d).map(it => [it.n, it.tipo === 'opciones' ? 0 : it.tipo === 'marcas' ? [0] : LC.casillasItem(d, it)[0].valor]));
     assert.deepEqual(respuestas, aMano, d.id);
     if (d.items.every(LC.itemLegible)) assert.ok(puntuar(d, respuestas).completo, `${d.id}: completo`);
   }
@@ -160,4 +162,44 @@ test('hoja de respuestas: al día con data/cuestionarios.js, con todas las filas
 
 test('lector: la app no lo carga todavía (fase de medición)', () => {
   for (const f of ['app.js', 'index.html', 'informe-ia.js', 'lib/cuestionarios.js']) assert.ok(!leer(f).includes('lector-cuestionarios'), f);
+});
+
+test('hoja de respuestas: las casillas se rotulan como el papel oficial (número, palabra o letra) y puntúan igual', () => {
+  const rotulos = (id, n = 1) => LC.casillasItem(def(id), def(id).items.find(it => it.n === n)).map(c => [c.rotulo, c.valor]);
+  assert.deepEqual(rotulos('phq9'), [['0', 0], ['1', 1], ['2', 2], ['3', 3]], 'número rodeado');
+  assert.deepEqual(rotulos('hos'), [['Ninguna dificultad', 4], ['Leve', 3], ['Moderada', 2], ['Extrema', 1], ['Incapaz', 0]], 'HOS: primera columna = 4');
+  assert.deepEqual(rotulos('womac')[4], ['Muchísimo', 4]);
+  assert.deepEqual(rotulos('odi').map(([r]) => r).join(''), 'ABCDEF');
+  assert.deepEqual(rotulos('odi')[0], ['A', 0]);
+  assert.equal(LC.casillaNA(def('odi'), def('odi').items[0]), null, 'ODI: sin casilla N/A');
+  const ndi7 = def('ndi').items.find(it => it.na);
+  assert.equal(LC.casillaNA(def('ndi'), ndi7).rotulo, 'No conduzco');
+  assert.equal(LC.casillaNA(def('hos'), def('hos').items[0]).rotulo, 'No responde');
+  // Toda hoja con palabras o letras cubre cada valor de sus ítems escala, sin repetir
+  for (const d of CUESTIONARIOS.filter(x => x.hoja)) {
+    assert.ok(['letras', 'palabras'].includes(d.hoja.casillas), d.id);
+    for (const it of d.items.filter(i => (i.tipo || 'escala') === 'escala')) {
+      const cas = LC.casillasItem(d, it);
+      assert.ok(cas.every(c => c.rotulo), `${d.id} ${it.n}: rótulo`);
+      assert.equal(new Set(cas.map(c => c.clave)).size, cas.length, `${d.id} ${it.n}`);
+    }
+  }
+  // De la clave leída a la respuesta de la calculadora
+  const hos = def('hos'), it = hos.items[0];
+  assert.equal(LC.aRespuesta(hos, it, 'Ninguna dificultad'), 4);
+  assert.equal(LC.aRespuesta(def('odi'), def('odi').items[0], 'C'), 2);
+  // Las respuestas correctas se pueden anotar con el rótulo, sin mayúsculas ni tildes
+  assert.equal(LC.claveCorrecta(hos, it, 'ninguna dificultad'), 'Ninguna dificultad');
+  assert.equal(LC.claveCorrecta(def('womac'), def('womac').items[0], 'muchisimo'), 'Muchísimo');
+  assert.equal(LC.claveCorrecta(def('odi'), def('odi').items[0], 'b'), 'B');
+  assert.equal(LC.claveCorrecta(def('rmdq'), def('rmdq').items[0], 'Sí'), 'si');
+  assert.equal(LC.claveCorrecta(hos, it, 'no responde'), NA);
+  assert.deepEqual(LC.validarCorrectas(def('odi'), Object.fromEntries(def('odi').items.map(i => [i.n, 'a']))), []);
+  // La hoja imprime los mismos rótulos, y la leyenda numérica solo donde el papel lleva números
+  const html = HR.htmlRespuestas(hos);
+  assert.ok(html.includes('Ninguna dificultad') && html.includes('No responde'));
+  assert.ok(!html.includes(hos.leyenda), 'HOS: sin la leyenda de valores');
+  assert.ok(HR.htmlRespuestas(def('phq9')).includes(def('phq9').leyenda));
+  assert.match(LC.promptLectura(def('odi')), /casillas con las letras A, B, C, D, E, F/);
+  assert.match(LC.promptLectura(hos), /«No responde» \(devuélvela como «na»\)/);
 });
