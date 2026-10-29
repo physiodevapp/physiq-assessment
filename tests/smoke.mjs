@@ -6305,6 +6305,190 @@ async function checkLetra(browser, errors) {
   return r;
 }
 
+// Guía de consulta (guia.html): la página que abre el QR de cada esquema impreso
+async function checkGuia(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  await portapapelesPropio(context);   // la copia del nombre para CIMA, sin el portapapeles del navegador
+  const page = await context.newPage();
+  const fallidas = [];
+  page.on('pageerror', err => errors.push(`pageerror (guía): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (guía): ${msg.text()}`); });
+  page.on('requestfailed', r => { if (r.url().startsWith(BASE_URL)) fallidas.push(r.url()); });
+  const base = BASE_URL.replace(/\/$/, '') + '/guia.html';
+  const r = {};
+  try {
+    await page.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-item', { timeout: 10000 });
+    // La numeración y el orden son los de la hoja: lib/esquemas.js, igual que docs/esquemas/generar.mjs
+    r.cribado = await page.evaluate(async () => {
+      const { SYSTEMIC_SCREENING } = await import('./data.js');
+      const { sistemasCribado, preguntasDeRegion } = await import('./lib/esquemas.js');
+      const { siempre, especiales } = sistemasCribado(SYSTEMIC_SCREENING, 'lumbar');
+      const esperado = [...siempre, ...especiales].flatMap(s => preguntasDeRegion(s, 'lumbar').map((q, i) => `${q.id}:${i + 1}`));
+      const pintado = [...document.querySelectorAll('.guia-item')].map(el => `${el.id.slice(2)}:${el.querySelector('.guia-num').textContent}`);
+      return { mismo: JSON.stringify(esperado) === JSON.stringify(pintado), n: pintado.length,
+        urgencias: document.querySelectorAll('.guia-chip.urg').length,
+        ia: !!document.getElementById('iaBarra') && document.querySelectorAll('.razon-cuerpo[data-ia-ctx] .ia-parrafo-ir').length > 0,
+        enlaces: document.querySelectorAll('.razon-enlace[target="_blank"]').length };
+    });
+    // Una cita abre su ficha
+    await page.locator('details.razon').first().evaluate(d => { d.open = true; });
+    await page.locator('details.razon .cita').first().click();
+    r.ficha = await page.locator('#citaFicha').isVisible().catch(() => false);
+    // Enlace directo a un elemento: resaltado y con su «Por qué» abierto
+    await page.goto(`${base}#lumbar/cribado/q-l6`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#q-l6.destacado');
+    r.ancla = await page.evaluate(() => document.querySelector('#q-l6 details.razon')?.open === true);
+    // Pestañas y región
+    await page.click('.guia-hojas a:has-text("Árbol")');
+    await page.waitForSelector('#paso-lu_step1');
+    r.arbol = await page.evaluate(async () => {
+      const { CIF_TREES } = await import('./data.js');
+      return document.querySelectorAll('[id^="paso-"]').length === CIF_TREES.lumbar.steps.length
+        && /«dolor lumbar inespecífico»/.test(document.getElementById('sin-hipotesis')?.textContent || '');
+    });
+    await page.click('.guia-hojas a:has-text("Confirmación")');
+    await page.waitForSelector('[id^="test-"]');
+    r.confirmacion = await page.evaluate(async () => {
+      const { HYPOTHESES } = await import('./data.js');
+      const n = Object.values(HYPOTHESES).filter(h => h.region === 'lumbar').reduce((a, h) => a + h.tests.length, 0);
+      return document.querySelectorAll('[id^="test-"]').length === n && document.querySelectorAll('.guia-peso').length === n;
+    });
+    // Calculadora: misma etiqueta que calcLRScore de la app; segundo toque desmarca; «Borrar» limpia
+    const marcar = async (hip, k, res) => page.click(`#test-${hip}-${k} .guia-calc [data-res="${res}"]`);
+    await marcar('lu3', 1, 'pos'); await marcar('lu3', 0, 'neg'); await marcar('lu4', 6, 'pos');
+    r.calc = await page.evaluate(async () => {
+      const { HYPOTHESES } = await import('./data.js');
+      const { calcLRScore, etiquetaHipHTML } = await import('./lib/tests-4b.js');
+      const esperado = id => etiquetaHipHTML(calcLRScore(HYPOTHESES[id], id === 'lu3' ? { 1: 'pos', 0: 'neg' } : { 6: 'pos' }).label);
+      return document.querySelector('[data-puntua="lu3"]').innerHTML === esperado('lu3')
+        && document.querySelector('[data-puntua="lu4"]').innerHTML === esperado('lu4')
+        && document.querySelectorAll('.guia-resumen-fila').length === 2
+        && document.querySelector('#test-lu3-1 [data-res="pos"]').classList.contains('selected');
+    });
+    await marcar('lu4', 6, 'pos');
+    r.desmarca = await page.evaluate(() => document.querySelectorAll('.guia-resumen-fila').length === 1 && !document.querySelector('#test-lu4-6 .selected:not(.nd)'));
+    await page.click('[data-borrar]');
+    r.borrar = await page.evaluate(() => !document.querySelector('.guia-resumen-fila') && !document.querySelector('.guia-calc .selected:not(.nd)'));
+    r.sinGuardar = await page.evaluate(() => { try { return localStorage.length === 0 || ![...Array(localStorage.length)].some((_, i) => !/^physiq-assessment-(theme|letra|ia-destino)$/.test(localStorage.key(i))); } catch { return true; } });
+    // Irritabilidad: mismo nivel que nivelMatriz (fases 3 y 6) en varias combinaciones; segundo toque y «Borrar»
+    await page.click('.guia-hojas a:has-text("Irritabilidad")');
+    await page.waitForSelector('[data-irr]');
+    r.irritabilidad = await page.evaluate(async () => {
+      const { ITEMS_IRRITABILIDAD } = await import('./data/irritabilidad.js');
+      const { nivelMatriz, NOMBRE_NIVEL } = await import('./lib/irritabilidad.js');
+      const casos = [{}, { calma: 0 }, { calma: 1, reposo: 2, movimiento: 2, tolerancia: 1 }, { reposo: 1, movimiento: 1, tolerancia: 0 }, { calma: 2 }, { calma: 0, reposo: 0, movimiento: 1, tolerancia: 0 }];
+      const fallos = [];
+      for (const caso of casos) {
+        document.querySelector('[data-irr-borrar]').click();
+        const irr = {};
+        for (const [k, i] of Object.entries(caso)) {
+          const v = ITEMS_IRRITABILIDAD.find(x => x.clave === k).opciones[i].valor; irr[k] = v;
+          document.querySelector(`[data-irr="${k}"][data-valor="${v}"]`).click();
+        }
+        const m = nivelMatriz(irr), txt = document.getElementById('guiaIrrRes').textContent;
+        const ok = m.nivel ? txt.includes(`Irritabilidad ${NOMBRE_NIVEL[m.nivel]}`) && (!m.incompleta || /puede quedarse corto/.test(txt)) : /no registrada/.test(txt);
+        if (!ok) fallos.push(JSON.stringify(caso));
+      }
+      return fallos;
+    });
+    await page.click('[data-irr-borrar]');
+    await page.click('[data-irr="calma"][data-valor="Cede en minutos"]');
+    await page.click('[data-irr="calma"][data-valor="Cede en minutos"]');
+    r.irrDesmarca = await page.evaluate(() => !document.querySelector('[data-irr="calma"].selected'));
+    await page.click('[data-irr="reposo"][data-valor="Presente"]');
+    await page.click('[data-irr-borrar]');
+    r.irrBorrar = await page.evaluate(() => !document.querySelector('[data-irr].selected') && /no registrada/.test(document.getElementById('guiaIrrRes').textContent));
+    await page.selectOption('#guiaRegion', 'codo');
+    await page.waitForFunction(() => location.hash === '#codo/irritabilidad');
+    await page.click('.guia-hojas a:has-text("Confirmación")');
+    await page.waitForSelector('#hip-co1');
+    r.region = await page.evaluate(() => !!document.getElementById('hip-co1'));
+    // Cabe a 320 px sin desbordar
+    await page.setViewportSize({ width: 320, height: 700 });
+    for (const h of ['cribado', 'irritabilidad', 'arbol', 'confirmacion']) {
+      await page.goto(`${base}#lumbar/${h}`, { waitUntil: 'networkidle' });
+      await page.evaluate(() => document.querySelectorAll('details.razon').forEach(d => { d.open = true; }));
+      r[`ancho_${h}`] = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+    }
+    // Tiempos de tejido (#tejidos/<hoja>, el QR de sus dos hojas): solo los grupos de esa hoja,
+    // la ficha de una barra con sus fuentes, el filtro, el eje fijo bajo las pestañas, cabe a 320 px
+    await page.goto(`${base}#tejidos/blandos`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-tejidos .tej-barra', { state: 'attached' });
+    r.tejidos = await page.evaluate(async () => {
+      const { HOJAS_TEJIDO } = await import('./lib/esquemas.js');
+      const grupos = [...document.querySelectorAll('.guia-tejidos .tej-filtro-btn')].map(b => b.dataset.grupo);
+      return JSON.stringify(grupos) === JSON.stringify(HOJAS_TEJIDO.blandos.grupos)
+        && document.getElementById('guiaTitulo').offsetParent !== null && !document.getElementById('guiaRegion').offsetParent
+        && document.documentElement.scrollWidth <= innerWidth;
+    });
+    await page.locator('.guia-tejidos .tej-barra[data-barra]:visible').first().click();
+    r.tejFicha = await page.waitForFunction(() => document.querySelector('#tejInfo:not([hidden]) .tej-fuente-enlace'), null, { timeout: 5000 }).then(() => true, () => false);
+    await page.locator('.guia-tejidos .tej-filtro-btn[data-grupo="menisco"]').click();
+    r.tejFiltro = await page.evaluate(() => [...document.querySelectorAll('.guia-tejidos .tej-grupo')].length === 1 && location.hash === '#tejidos/blandos');
+    await page.click('.guia-hojas a:has-text("Hueso")');
+    await page.waitForFunction(() => location.hash === '#tejidos/hueso' && document.querySelector('.guia-tejidos .tej-filtro-btn')?.dataset.grupo === 'hueso');
+    r.tejHueso = await page.evaluate(() => [...document.querySelectorAll('.guia-tejidos .tej-filtro-btn')].map(b => b.dataset.grupo).join() === 'hueso,articulacion,columna'
+      && document.documentElement.scrollWidth <= innerWidth);
+    // Hoja impresa desfasada: el QR lleva ?h=<huella>; distinta de huellas.json → aviso con el PDF
+    // actual; igual → «al día»; en otra pestaña, nada
+    const huellas = await (await page.request.get(BASE_URL.replace(/\/$/, '') + '/docs/esquemas/huellas.json')).json();
+    await page.goto(`${base.replace(/\.html$/, "")}?h=00000000#lumbar/cribado`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#guiaPapel');
+    const pdf = await page.evaluate(() => document.querySelector('#guiaPapel a')?.getAttribute('href'));
+    r.papelViejo = /versión anterior/.test(await page.textContent('#guiaPapel')) && /cribado-lumbar\.pdf$/.test(pdf || '')
+      && (await page.request.get(new URL(pdf, page.url()).href)).ok();
+    await page.click('.guia-hojas a:has-text("Árbol")');
+    await page.waitForSelector('#paso-lu_step1');
+    r.papelOtraHoja = !(await page.$('#guiaPapel'));
+    await page.goto(`${base.replace(/\.html$/, "")}?h=${huellas["tejidos-hueso"].huella}#tejidos/hueso`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#guiaPapel');
+    r.papelAlDia = /al día/.test(await page.textContent('#guiaPapel'));
+    // Hojas para imprimir (#hojas): una fila por hoja de huellas.json con su versión y su PDF
+    await page.goto(`${base}#hojas`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-hoja');
+    const filasHojas = await page.evaluate(() => [...document.querySelectorAll('.guia-hoja')].map(li => ({ v: li.querySelector('.guia-hoja-v').textContent, pdf: li.querySelector('a').getAttribute('href') })));
+    const pdfsOk = await Promise.all(filasHojas.slice(0, 3).map(f => page.request.head(new URL(f.pdf, page.url()).href).then(x => x.ok())));
+    r.hojas = filasHojas.length === Object.keys(huellas).length
+      && filasHojas.every(f => { const k = f.pdf.match(/([^/]+)\.pdf$/)[1]; return f.v === `v. ${huellas[k]?.huella}`; })
+      && pdfsOk.every(Boolean) && await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+    // Condiciones especiales (#condiciones, el QR de su hoja): todas las filas, sin estado ni botones
+    await page.goto(`${base}#condiciones`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.cond-fila');
+    r.condiciones = await page.evaluate(async () => {
+      const { CONDICIONES } = await import('./data/condiciones.js');
+      return document.querySelectorAll('.cond-fila').length === CONDICIONES.length && !document.querySelector('.cond-estado, .cond-ir')
+        && document.querySelectorAll('.cond-fila .cita').length > 0 && document.documentElement.scrollWidth <= innerWidth;
+    });
+    // Fármacos (#farmacos, el QR de su hoja): la guía de la app; «Ficha técnica (CIMA)» copia el nombre y avisa
+    await page.goto(`${base}#farmacos`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.farm-familia');
+    await page.evaluate(() => { document.querySelector('.farm-familia').open = true; });
+    const enlaceCima = page.locator('#farmCuerpo a[data-cima]').first();
+    const nombreCima = await enlaceCima.getAttribute('data-cima');
+    await enlaceCima.evaluate(a => a.addEventListener('click', e => e.preventDefault()));   // sin abrir CIMA
+    await enlaceCima.click();
+    await page.waitForSelector('#guiaAviso:not([hidden])');
+    r.farmacos = await page.evaluate(async () => {
+      const { familiasConContenido } = await import('./lib/farmacos.js');
+      return document.querySelectorAll('.farm-familia').length === familiasConContenido().length && document.documentElement.scrollWidth <= innerWidth;
+    }) && (await page.evaluate(() => navigator.clipboard.readText())) === nombreCima && (await page.textContent('#guiaAviso')).includes(nombreCima);
+    // Irritabilidad suelta (#irritabilidad, el QR de su hoja): la misma calculadora, sin región
+    await page.goto(`${base}#irritabilidad`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('[data-irr]');
+    await page.click('[data-irr="calma"][data-valor="Tarda horas"]');
+    r.irrSuelta = /Irritabilidad moderada/i.test(await page.textContent('#guiaIrrRes'))
+      && /Irritabilidad/.test(await page.textContent('#guiaTitulo')) && !(await page.$('#guiaContenido h2'));
+    // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
+    r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
+  } catch (e) { r.error = e.message; }
+  await context.close();
+  r.fallidas = fallidas;
+  r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.condiciones && r.farmacos && r.irrSuelta && r.sinSesion && !fallidas.length;
+  return r;
+}
+
 async function abrirApp(page, url = BASE_URL) {
   if (!page.__fallidas) {
     page.__fallidas = [];
@@ -6826,6 +7010,12 @@ const SECCIONES = [
     const tejidos = await checkTiemposTejido(browser, errors);
     console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, «Este paciente» según las hipótesis activas, el mecanismo y la cronología (y aviso de las que no tienen plazo), tarjeta de una barra con sus fuentes enlazadas en línea con « · » (líneas de 24 px y toque de 32 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
+  } },
+
+  { id: 'guia', titulo: 'Guía de consulta (guia.html, la del QR de los esquemas):', run: async ({ browser, errors }) => {
+    const c = await checkGuia(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con la versión de cada hoja y su PDF; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA; irritabilidad suelta (#irritabilidad); cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
   } },
 
   { id: 'citas', titulo: 'Citas tocables (fuentes de las fases 2–6 y de la calculadora):', run: async ({ browser, errors }) => {

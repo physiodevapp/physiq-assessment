@@ -26,11 +26,14 @@ jobs:
         run: |
           rm -rf physiq-hub/assessment
           mkdir -p physiq-hub/assessment/lib physiq-hub/assessment/icons physiq-hub/assessment/formularios physiq-hub/assessment/data
-          cp index.html styles.css app.js state.js phase4.js phase4b.js formulario.js informe-ia.js grabadora.js ampliar-ia.js plan.js plan-ia.js sintomas.js ficha.js filas.js data.js sw.js manifest.json favicon.svg .nojekyll physiq-hub/assessment/
+          cp index.html styles.css app.js state.js phase4.js phase4b.js formulario.js informe-ia.js grabadora.js ampliar-ia.js plan.js plan-ia.js sintomas.js ficha.js filas.js data.js guia.html guia.js sw.js manifest.json favicon.svg .nojekyll physiq-hub/assessment/
           cp formularios/*.js physiq-hub/assessment/formularios/
           cp data/*.js physiq-hub/assessment/data/
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
-          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js lib/posquirurgico.js lib/hipermovilidad.js lib/disautonomia.js lib/lupus.js lib/mastocitos.js lib/osteoporosis.js lib/embarazo.js lib/anticoagulado.js lib/condiciones.js lib/farmacos.js lib/ejercicio.js lib/farmacos-paciente.js lib/version.js lib/region.js lib/resumenes.js lib/revision-informe.js lib/zip.js lib/paquete-revision.js lib/pauta.js lib/reglas-informe.js lib/tejidos.js lib/plan-tratamiento.js lib/sintomas.js lib/pistas.js lib/cuestionarios.js lib/irritabilidad.js lib/citas.js lib/plan-ia.js lib/revision-plan.js lib/turnstile.js lib/silueta.js lib/modo-guia.js physiq-hub/assessment/lib/
+          # Hojas impresas (docs/esquemas): su huella, para que la guía avise si un papel está desfasado, y los PDF para reimprimirlas
+          mkdir -p physiq-hub/assessment/docs/esquemas
+          cp docs/esquemas/huellas.json docs/esquemas/*.pdf physiq-hub/assessment/docs/esquemas/
+          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js lib/posquirurgico.js lib/hipermovilidad.js lib/disautonomia.js lib/lupus.js lib/mastocitos.js lib/osteoporosis.js lib/embarazo.js lib/anticoagulado.js lib/condiciones.js lib/farmacos.js lib/ejercicio.js lib/farmacos-paciente.js lib/version.js lib/region.js lib/resumenes.js lib/revision-informe.js lib/zip.js lib/paquete-revision.js lib/pauta.js lib/reglas-informe.js lib/tejidos.js lib/plan-tratamiento.js lib/sintomas.js lib/pistas.js lib/cuestionarios.js lib/irritabilidad.js lib/citas.js lib/plan-ia.js lib/revision-plan.js lib/turnstile.js lib/silueta.js lib/modo-guia.js lib/tests-4b.js lib/arbol.js lib/esquemas.js physiq-hub/assessment/lib/
 
       - name: Stamp deployed version
         # lib/version.js lleva 'dev' en el repo: aquí se sustituye por el commit

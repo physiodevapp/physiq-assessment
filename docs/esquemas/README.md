@@ -4,11 +4,35 @@ Esquemas para tener a mano en consulta, **generados desde los datos de la app**:
 
 | Esquema | Fase | Formato | Archivo (lumbar) |
 |---|---|---|---|
-| Cribado sistémico: sistemas y preguntas literales, urgencias en rojo, criterio compuesto | 2 | A4 vertical | `cribado-lumbar.pdf` |
+| Cribado sistémico: página 1, lo que se pregunta siempre en la región (caja de urgencia y sistemas); después, las condiciones especiales (posquirúrgico, hipermovilidad, lupus, embarazo…), cada una con la tarjeta de la fase 1 que la muestra y, en gris, cuándo aparece cada pregunta. Solo las preguntas de la región; URGENCIA en rojo y DERIVACIÓN (médica, no urgente) en naranja; criterio compuesto; leyenda como pie fijo de cada página; cada grupo a la mayor escala que cabe | 2 | A4 vertical | `cribado-lumbar.pdf` |
 | Árbol de decisión CIF en flujo con flechas: pasos principales de izquierda a derecha, desvíos encima del paso del que salen, y bajo cada paso sus respuestas con la hipótesis que activan, la derivación o adónde llevan | 4 | A3 apaisado | `arbol-lumbar.pdf` |
-| Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres | 4b | A4 apaisado | `confirmacion-lumbar.pdf` |
+| Árbol de decisión CIF para consultar en papel: el mismo flujo que el A3, maquetado compacto (no reducido) | 4 | A4, vertical o apaisado según la región | `arbol-a4-lumbar.pdf` |
+| Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres; elige A4 vertical o apaisado según dónde quede la letra más grande, con la leyenda como pie fijo | 4b | A4 | `confirmacion-lumbar.pdf` |
+| Condiciones especiales (`data/condiciones.js`): qué es cada una, «piensa en ella si», qué añade marcarla y dónde se marca (el título de la tarjeta, leído de `index.html`); las de una sola región juntas al final | — | A4 vertical | `condiciones.pdf` |
+| Fármacos: qué vigilar en el plan (`data/farmacos.js` + `data/farmacos-paciente.js`): cada familia con sus ejemplos y las frases literales de su aviso de la fase 6, en dos columnas que pasan de página (2 como máximo) | — | A4 vertical | `farmacos.pdf` |
+| Irritabilidad (fase 3, `data/irritabilidad.js`): la matriz con casillas para marcar en papel, la regla (`reglaIrritabilidad()`, la misma que la guía) y qué implica cada nivel | 3 | A4 vertical | `irritabilidad.pdf` |
+| Tiempos de recuperación de tejidos (`data/tejidos.js`), en dos hojas temáticas de una página: partes blandas (tendón, músculo, ligamento, menisco, nervio) y hueso, articulación y columna. Las barras del panel ⏱ de la app (color = gravedad, relleno = qué mide), la leyenda como pie fijo; no dependen de la región | ⏱ | A4 vertical | `tejidos-blandos.pdf`, `tejidos-hueso.pdf` |
 
 Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro, cadera, rodilla, tobillo y pie, y codo; los de cualquier región se generan con el mismo script.
+
+## QR a la guía de consulta
+
+Cribado, árbol A4 y confirmación llevan arriba a la derecha de su primera página un QR («Porqués, fuentes e IA») a su página en la guía de consulta (`guia.html#<región>/<hoja>`, ver `CLAUDE.md`, «Guía de consulta»): el porqué de cada pregunta, paso y test con la misma numeración que la hoja, sus fuentes enlazadas y «Ampliar con IA». El QR lo genera `qr.mjs` (sin dependencias: modo byte, corrección M, versiones 1–10); se comprobó con un lector de QR (zxing) en las 21 direcciones y en las hojas ya maquetadas. Llevan QR las hojas de las 7 regiones.
+
+Las dos hojas de tiempos de tejido (`node docs/esquemas/generar.mjs tejidos`, también con `todas todos`) llevan el suyo («Notas, fuentes e IA») a `guia.html#tejidos/<blandos|hueso>`: la misma gráfica que el panel ⏱ de la app con los grupos de esa hoja, la nota de cada fila y, al tocar una barra, su ficha con las fuentes enlazadas (sin «Este paciente» ni «Hoy»: la guía no tiene datos del paciente). Qué grupo va en cada hoja lo dice `HOJAS_TEJIDO` (`lib/esquemas.js`); un test falla si un grupo nuevo de `data/tejidos.js` no está en ninguna. Cada hoja se ajusta a una página a la mayor escala que cabe (hoy, partes blandas 0,85 y hueso 1,02). **Al cambiar `data/tejidos.js`, regenerarlas.**
+
+## Hojas impresas al día (huella)
+
+Las hojas se imprimen y se reparten, así que cada una lleva una **huella** (8 caracteres, «v. 1f6efdeb» bajo el QR) del contenido que imprime: el HTML de la hoja con el QR, la huella y la fecha como marcadores, así que solo cambia si cambia lo impreso (un LR que se imprime redondeado igual, o un razonamiento que no sale en papel, no la cambian). El contenido de cada hoja lo construye `hojas.mjs`, sin navegador; `generar.mjs` solo lo maqueta e imprime.
+
+- **Ninguna hoja desfasada en `main`.** `generar.mjs` guarda la huella de cada hoja que genera en `huellas.json`, y `node tests/unit.js` («hojas impresas al día») falla si alguna no coincide con los datos de hoy, nombrando las hojas a regenerar. Como la CI pasa las pruebas en cada PR, un cambio de `data/` que afecte a una hoja no entra sin regenerarla.
+- **El papel ya impreso.** El QR lleva la huella (`guia.html?h=<huella>#<región>/<hoja>`). La guía la compara con `huellas.json` (desplegado con los PDF en `docs/esquemas/` del hub): si no coincide, en esa hoja avisa «Tu hoja impresa es de una versión anterior… manda lo que ves aquí» con el enlace al PDF actual para reimprimirla; si coincide, «✓ Tu hoja impresa está al día». En otra pestaña, sin `?h=` o si no carga `huellas.json`, nada.
+- **Qué reimprimir.** La página «Hojas para imprimir» de la guía (`guia.html#hojas`, enlazada en su pie) lista cada hoja con su versión actual, la fecha de su último cambio de contenido y su PDF, y marca «Reciente» las que cambiaron en los últimos 30 días. Quien gestiona las copias compara la «v.» del papel con la lista y reimprime solo las que cambiaron. `huellas.json` guarda `{ huella, fecha }` por hoja: regenerar sin cambios de contenido no mueve la fecha. (Las 23 tienen fecha 2026-10-29, cuando se introdujo la huella.)
+- **Tamaño del QR:** 100 px de base. Con la huella en la dirección tiene 49 módulos; aun a la escala mínima de una hoja queda impreso en unos 21 mm (0,43 mm por módulo). Las 23 hojas comprobadas con un lector (zxing) sobre el PNG a tamaño de pantalla.
+
+Condiciones, fármacos e irritabilidad (`node docs/esquemas/generar.mjs condiciones|farmacos|irritabilidad`, o `sueltas` para todas las que no son de una región) llevan su QR a `guia.html#condiciones` (la guía de condiciones de la app sin estado del paciente ni botones), `#farmacos` (la guía completa de fármacos, con la copia del nombre para CIMA) e `#irritabilidad` (la calculadora, sin región).
+
+**Qué entra en la guía** (decisión del usuario, 2026-10): solo lo que explica o completa una hoja impresa. Las herramientas de la app que no tienen hoja se quedan en la app; la pestaña Irritabilidad ya tiene su hoja (2026-10).
 
 ## Cómo se generan
 
@@ -16,10 +40,15 @@ Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, 
 node docs/esquemas/generar.mjs                      # lumbar, los tres
 node docs/esquemas/generar.mjs cervical             # otra región
 node docs/esquemas/generar.mjs todas arbol          # un tipo, todas las regiones
+node docs/esquemas/generar.mjs todas arbol-a4       # hoja A4 del árbol, todas las regiones
 ```
 
 Necesita Playwright, como `tests/smoke.mjs` (si está instalado globalmente: `NODE_PATH=$(npm root -g) node docs/esquemas/generar.mjs`). Carga los módulos de la app con el mismo shim de DOM que `tests/unit.js` (`tests/dom-shim.mjs`).
 
 En el árbol, las flechas las dibuja el navegador midiendo dónde ha quedado cada caja, así que el mismo diseño sirve para cualquier región: los pasos principales van en filas de hasta 4 (si hay más, la siguiente fila continúa debajo), y si una página se pasa de alto se reduce un poco o se abre otra (lumbar y codo: 1 página; hombro, cadera, cervical y rodilla: 2; tobillo y pie: 3). Las hipótesis van todas en el mismo color porque la app no las agrupa por familias.
+
+Cribado y confirmación usan el mismo ajuste (`scriptAjuste`): cada página a la mayor escala que cabe; si no cabe ni a 0,75, se parte y las secciones se reparten para que las dos páginas admitan la letra más grande posible. Confirmación: rodilla (apaisado) y tobillo y pie en 2 páginas, el resto en 1 vertical.
+
+La hoja A4 del árbol prueba seis distribuciones (A4 apaisado o vertical, con 2, 3 o 4 pasos por fila) y se queda con la que deja la letra más grande; cada página de más cuenta como 0,3 de escala menos, para que una hoja única gane salvo que la diferencia sea grande. En cada una busca la mayor escala con la que todo cabe (sin pasar de 1,15) y, con varias páginas, usa la misma en todas. Los desvíos se reparten el ancho que queda en su fila. La leyenda es el pie de cada página, siempre abajo del todo (en todas las páginas). Entre una fila y la siguiente no hay flechas largas sino dos conectores de texto, como en los diagramas de flujo: «Todas → sigue en el paso 3 ↓» al final de la fila y «↓ Paso 3: viene del paso 2» encima del paso (también cuando un desvío vuelve a un paso de otra fila: «→ sigue en el paso 3» dentro de su caja). El script imprime la distribución elegida y la escala (`DEBUG_A4=1` muestra las seis): con el QR: lumbar 1,00 y hombro 0,87 en 1 página vertical; codo 1,06, cervical 0,94, cadera 0,88, rodilla 0,86 y tobillo y pie 0,79 en 2 páginas verticales.
 
 Qué no incluye a propósito: en la fase 2, las listas de banderas rojas y amarillas de cada sistema (repiten en gran parte las preguntas; están en la app); en la 4b, los criterios de cada test y sus fuentes (están en la app). En las regiones con más contenido, algunos esquemas ocupan 2–3 páginas.

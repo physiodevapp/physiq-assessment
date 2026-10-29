@@ -1,0 +1,849 @@
+// Contenido de los esquemas imprimibles (lo maqueta e imprime generar.mjs, con Playwright).
+// Sin navegador: tests/unit.js calcula aquí la huella de cada hoja impresa para avisar si
+// cambian los datos y la hoja no se ha regenerado, y guia.js la compara con la del papel.
+//
+// Cada hoja se construye con tres marcadores (QR, huella, fecha) que pone rematar(); la
+// huella es la del HTML con los marcadores, así que solo cambia si cambia lo impreso.
+import '../../tests/dom-shim.mjs';
+import { readFileSync } from 'node:fs';
+
+const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } = await import('../../data.js');
+const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
+const { resolveOptionTargets } = await import('../../lib/arbol.js');
+const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
+const { HOJAS_TEJIDO, urlTejidos, urlRuta, datosHojaTejido } = await import('../../lib/esquemas.js');
+const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
+const { posicionDia, tieneBarra } = await import('../../lib/tejidos.js');
+const { dolorInespecifico } = await import('../../lib/region.js');
+const { qrSVG } = await import('./qr.mjs');
+const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
+const { ITEMS_IRRITABILIDAD, ITEM_IMPACTO, TEXTOS_IRRITABILIDAD } = await import('../../data/irritabilidad.js');
+const { reglaIrritabilidad } = await import('../../lib/irritabilidad.js');
+const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
+const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
+const { nombreRegion } = await import('../../lib/region.js');
+
+// 100 px: con la huella en la dirección el QR tiene 49 módulos; aun a la escala mínima (0,75–0,8)
+// queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
+const QR_PX = 100;
+const QR = '<!--QR-->', HUELLA = '<!--HUELLA-->', FECHA = '<!--FECHA-->';
+
+export const NOMBRES = { hombro: 'Hombro', cadera: 'Cadera', cervical: 'Cervical', lumbar: 'Lumbar', rodilla: 'Rodilla', codo: 'Codo', tobillo_pie: 'Tobillo y pie' };
+const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const fmtLR = n => n >= 10 ? n.toFixed(0) : n.toFixed(n < 1 ? 2 : 1);   // igual que phase4b.js
+// QR a la página de esta hoja en la guía de consulta (guia.html): el porqué de cada elemento, sus fuentes e IA
+// (marcadores: el QR, la huella y la fecha los pone rematar(); así la huella no depende de ellos)
+const qrGuia = (region, hoja) => `<div class="qr-guia">${QR}<span>${hoja === 'confirmacion' ? 'Porqués, IA y calculadora' : 'Porqués, fuentes e IA'}</span>${HUELLA}</div>`;
+
+const CSS = `
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Helvetica, Arial, sans-serif; color: #1f2937; font-size: 10.5px; line-height: 1.35; }
+  h1 { font-size: 20px; margin: 0 0 2px; } .sub { color: #6b7280; margin-bottom: 8px; }
+  .aviso { border: 1.5px solid #d0342c; background: #fde8e8; color: #b42318; border-radius: 8px; padding: 6px 10px; font-weight: bold; margin-bottom: 8px; }
+  .aviso div { font-weight: normal; }
+  .pie { color: #6b7280; font-size: 9px; margin-top: 8px; }
+  .chip { display: inline-block; border-radius: 10px; padding: 0 6px; font-size: 9px; font-weight: bold; }
+  .urg { background: #d0342c; color: #fff; } .alerta { background: #fff1dc; color: #9a5b00; }
+  .cab-hoja { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 6px; }
+  .cab-txt { flex: 1; min-width: 0; }
+  .qr-guia { flex: none; text-align: center; font-size: 8.5px; color: #4b5563; line-height: 1.15; width: 100px; }
+  .qr-guia svg { display: block; }
+  .qr-huella { display: block; margin-top: 2px; font-family: monospace; font-size: 7.5px; color: #6b7280; }
+  .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 18px; padding: 0 4px; }
+`;
+
+// Ajuste de páginas de lista (cribado, confirmación): cada .pagina con su .pie-fijo; si una
+// no cabe ni a la escala mínima, sus últimas secciones (sel) pasan a una página de continuación;
+// después, cada grupo de páginas (data-grupo) a la mayor escala que cabe, la misma en todo el grupo.
+function scriptAjuste(W, H, sel) {
+  return `<script>
+  (() => {
+    const W = ${W}, H = ${H}, MIN = 0.75, SEL = '${sel}';
+    const escala = (p, z) => { p.style.width = (W / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z;
+      p.style.paddingBottom = (p.querySelector('.pie-fijo').offsetHeight + 24) + 'px'; };
+    const cabe = (p, z) => { escala(p, z); return p.scrollHeight * z <= H; };
+    // Una página que no cabe ni a la escala mínima pasa su último sistema a una página de continuación
+    const pags = [...document.querySelectorAll('.pagina')];
+    for (let k = 0; k < pags.length; k++) {
+      const p = pags[k];
+      while (!cabe(p, MIN) && p.querySelectorAll(SEL).length > 1) {
+        let sig = pags[k + 1];
+        if (!sig || sig.dataset.grupo !== p.dataset.grupo || !sig.dataset.continua) {
+          sig = document.createElement('div'); sig.className = p.className; sig.dataset.grupo = p.dataset.grupo; sig.dataset.continua = 1;
+          sig.innerHTML = '<div class="grupo">' + (p.querySelector('.grupo, h1').textContent) + ' (continuación)</div><div class="cols"></div>';
+          sig.appendChild(p.querySelector('.pie-fijo').cloneNode(true));
+          p.after(sig); pags.splice(k + 1, 0, sig);
+        }
+        const cols = p.querySelector('.cols');
+        sig.querySelector('.cols').prepend(cols.lastElementChild);
+      }
+    }
+    const mejorZ = p => { let lo = 0.5, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(p, z)) lo = z; else hi = z; } return lo; };
+    // Reparto equilibrado: mientras la página llena admita menos escala que su continuación,
+    // pasa su última sección a la siguiente (si así no empeora la peor de las dos, se queda)
+    for (let k = 0; k + 1 < pags.length; k++) {
+      const p = pags[k], sig = pags[k + 1];
+      if (!sig.dataset.continua || sig.dataset.grupo !== p.dataset.grupo) continue;
+      for (;;) {
+        const antes = Math.min(mejorZ(p), mejorZ(sig));
+        if (mejorZ(p) >= mejorZ(sig) || p.querySelectorAll(SEL).length < 2) break;
+        const el = p.querySelector('.cols').lastElementChild;
+        sig.querySelector('.cols').prepend(el);
+        if (Math.min(mejorZ(p), mejorZ(sig)) <= antes) { p.querySelector('.cols').appendChild(el); break; }
+      }
+    }
+    // La mayor escala que cabe; las páginas de un mismo grupo, con la misma
+    const zs = pags.map(mejorZ);
+    const grupos = [...new Set(pags.map(p => p.dataset.grupo))];
+    const esc = {};
+    for (const g of grupos) esc[g] = Math.min(...pags.map((p, i) => p.dataset.grupo === g ? zs[i] : 9));
+    pags.forEach(p => { const z = esc[p.dataset.grupo]; escala(p, z); p.style.height = (H / z) + 'px'; });
+    document.body.dataset.escala = grupos.length > 1 ? grupos.map(g => g + ' ' + esc[g].toFixed(2)).join(' · ') : esc[grupos[0]].toFixed(2);
+    document.body.dataset.zmin = Math.min(...Object.values(esc)); document.body.dataset.paginas = pags.length;
+  })();
+  </script>`;
+}
+
+// ── Fase 2 · cribado ─────────────────────────────────────────────────────────
+// A4 vertical. Página 1: lo que se pregunta siempre en la región. Después, las
+// condiciones especiales (solo con su tarjeta o el mecanismo marcados en la fase 1),
+// cada pregunta con la condición que la muestra. Cada página a la mayor escala que
+// cabe; la leyenda es el pie fijo de cada página.
+export function htmlCribado(region) {
+  const sc = SYSTEMIC_SCREENING[region];
+  const seccion = s => {
+    const preguntas = preguntasDeRegion(s, region);
+    const idx = Object.fromEntries(preguntas.map((q, i) => [q.id, i + 1]));
+    const conds = preguntas.map(condicionPregunta);
+    // Si todas las preguntas comparten condición, va una sola vez en la cabecera
+    const comun = conds.length && conds.every(c => c && c === conds[0]) ? conds[0] : '';
+    const solo = soloDeSistema(s);
+    const cab = solo ? `<div class="cond-sis">Solo con ${esc(CONDICION_SISTEMA[solo])}${comun ? ` · ${esc(comun)}` : ''}</div>` : '';
+    const crit = s.criterioCompuesto
+      ? `<div class="crit"><b>${esc(s.criterioCompuesto.etiqueta)}</b> — ${s.criterioCompuesto.minPositivas} o más de las preguntas ${s.criterioCompuesto.ids.map(id => idx[id]).join(', ')}${s.criterioCompuesto.filtro?.edadMax ? ` · edad ≤ ${s.criterioCompuesto.filtro.edadMax}` : ''}${s.criterioCompuesto.filtro?.evolucion ? ` · evolución: ${esc(s.criterioCompuesto.filtro.evolucion)}` : ''}</div>` : '';
+    return `<section class="sis"><h2>${esc(s.icon || '')} ${esc(s.nombre)}</h2>${cab}<ol>${preguntas.map((q, k) => `
+      <li class="${q.urgencia ? 'qurg' : q.derivacion ? 'qder' : ''}">${esc(q.text)}${q.urgencia ? ' <span class="chip urg">URGENCIA</span>' : q.derivacion ? ' <span class="chip der">DERIVACIÓN</span>' : ''}${conds[k] && !comun ? ` <span class="cond">${esc(conds[k])}</span>` : ''}</li>`).join('')}</ol>${crit}</section>`;
+  };
+  const { siempre, especiales } = sistemasCribado(SYSTEMIC_SCREENING, region);
+  const urg = sc.urgencia ? `<div class="aviso">${esc(sc.urgencia.titulo)}${sc.urgencia.lineas.map(l => `<div>· ${esc(l)}</div>`).join('')}</div>` : '';
+  const pie = `<div class="pie-fijo">
+      <span class="ley"><span class="chip urg">URGENCIA</span> derivar hoy</span>
+      <span class="ley"><span class="chip der">DERIVACIÓN</span> valoración médica, no urgente</span>
+      <span class="ley"><span class="cond">gris</span> cuándo aparece la pregunta</span>
+      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Preguntas literales de la app; las banderas rojas y amarillas de cada sistema están en la app.</span>
+      <span class="gen">Generado desde los datos de la app el ${FECHA}.</span></div>`;
+  const W = 794, H = 1123;
+  return `<style>${CSS}
+    @page { size: A4 portrait; margin: 0; }
+    body { font-size: 10.5px; }
+    .pagina { position: relative; width: ${W}px; height: ${H}px; padding: 18px 24px; overflow: hidden; page-break-after: always; }
+    .pagina:last-child { page-break-after: auto; }
+    h1 { font-size: 19px; } .sub { font-size: 10px; margin-bottom: 6px; }
+    .aviso { font-size: 10.5px; padding: 5px 9px; }
+    .grupo { font-size: 14px; margin: 0 0 3px; color: #1f2937; }
+    .grupo-sub { color: #6b7280; font-size: 10px; margin-bottom: 8px; }
+    .cols { column-count: 2; column-gap: 10px; }
+    .sis { break-inside: avoid; border: 1.5px solid #3567d6; border-radius: 8px; padding: 6px 8px; margin: 0 0 8px; background: #fbfdff; }
+    .especial .sis { border-color: #7c4ddb; background: #fcfaff; }
+    .sis h2 { font-size: 12px; margin: 0 0 3px; color: #1e3a8a; }
+    .especial .sis h2 { color: #5b21b6; }
+    .cond-sis { font-size: 9.5px; color: #5b21b6; font-weight: bold; margin-bottom: 4px; }
+    ol { margin: 0; padding-left: 18px; } li { margin-bottom: 3px; }
+    li.qurg { color: #b42318; font-weight: bold; }
+    li.qder { color: #9a4a00; }
+    .chip.der { background: #f59e0b; color: #fff; }
+    .cond { display: inline-block; font-size: 8.5px; font-weight: normal; font-style: italic; color: #4b5563; background: #f1f5f9; border-radius: 6px; padding: 0 5px; }
+    .crit { margin-top: 4px; border-top: 1px dashed #94a3b8; padding-top: 4px; font-size: 9.5px; }
+    .pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 3px 14px; border-top: 1px solid #cbd5e1; padding-top: 5px; font-size: 9.5px; }
+    .pie-fijo .ley { display: inline-flex; align-items: center; gap: 4px; }
+    .pie-fijo .txt { flex: 1 1 100%; color: #374151; }
+    .pie-fijo .gen { color: #6b7280; font-size: 8.5px; }
+  </style>
+  <div class="pagina" data-grupo="siempre">
+    <div class="cab-hoja"><div class="cab-txt">
+    <h1>Cribado sistémico · ${NOMBRES[region]}</h1>
+    <div class="sub">PhysiQ-Assessment · fase 2. Lo que se pregunta siempre en ${NOMBRES[region].toLowerCase()}.${especiales.length ? ' Las condiciones especiales, en la página siguiente.' : ''} El porqué de cada pregunta, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).</div>
+    </div>${qrGuia(region, 'cribado')}</div>
+    ${urg}
+    <div class="cols">${siempre.map(seccion).join('')}</div>
+    ${pie}
+  </div>
+  ${especiales.length ? `<div class="pagina especial" data-grupo="especiales">
+    <div class="grupo">Condiciones especiales · ${NOMBRES[region]}</div>
+    <div class="grupo-sub">Estos sistemas solo aparecen en la fase 2 si en la fase 1 está marcada su tarjeta (o el mecanismo «Post-quirúrgico»). Si no, no se preguntan.</div>
+    <div class="cols">${especiales.map(seccion).join('')}</div>
+    ${pie}
+  </div>` : ''}
+  ${scriptAjuste(W, H, '.sis')}`;
+}
+
+// ── Fase 4 · árbol ───────────────────────────────────────────────────────────
+// Diseño de flujo (A3 apaisado): los pasos principales en columnas de izquierda a
+// derecha (4 por banda; si hay más, la banda siguiente continúa debajo), los
+// desvíos encima del paso del que salen, y debajo de cada paso sus respuestas con
+// la hipótesis que activan. Las flechas se dibujan en el navegador, midiendo
+// dónde ha quedado cada caja, así que sirven para el árbol de cualquier región.
+const POR_BANDA = 4;
+const CSS_A4 = `
+    body { font-size: 10px; }
+    .pagina { padding: 18px 24px 14px; }
+    h1 { font-size: 19px; } .sub { font-size: 10.5px; margin-bottom: 5px; }
+    .aviso { font-size: 10.5px; padding: 4px 8px; margin-bottom: 6px; }
+    .banda { padding-left: 22px; padding-right: 30px; margin-bottom: 26px; } /* a la derecha pasan las flechas que bajan */
+    .grid, .drow { column-gap: 40px; }
+    .drow { margin-bottom: 26px; }
+    .dgrupo { padding-left: 40px; }
+    .dnota { font-size: 9.5px; margin-bottom: 2px; }
+    .dcajas { gap: 40px; }
+    .paso { border-width: 2px; border-radius: 10px; padding: 6px 8px; }
+    .paso.desv { width: auto; flex: 1 1 0; min-width: 0; }
+    .cab { gap: 6px; }
+    .badge { min-width: 22px; height: 22px; border-radius: 11px; font-size: 11px; padding: 0 4px; }
+    .preg { font-size: 13px; line-height: 1.25; }
+    .dops { margin-top: 5px; gap: 3px; font-size: 11.5px; }
+    .dop .hip, .dop .nada, .dop .der { padding: 1px 5px; font-size: 11px; }
+    .resp { margin-top: 8px; }
+    .rt { display: none; }
+    .op { grid-template-columns: 1fr 14px 1fr; margin-bottom: 5px; }
+    .opt { border-width: 1px; border-radius: 7px; padding: 3px 6px; }
+    .opt b { font-size: 11.5px; } .opt span { font-size: 10px; line-height: 1.2; }
+    .fl { font-size: 12px; }
+    .hip { gap: 4px; border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 11px; line-height: 1.2; margin: 1px 0; }
+    .nb { min-width: 18px; height: 18px; border-radius: 9px; font-size: 9.5px; padding: 0 3px; }
+    .der { border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 9.5px; margin: 1px 0; }
+    .der span { font-size: 9.5px; line-height: 1.2; }
+    .ruta { border-width: 1.5px; border-radius: 7px; padding: 3px 6px; font-size: 9.5px; }
+    .nada { border-width: 1px; border-radius: 7px; padding: 3px 6px; font-size: 10px; }
+    .final { display: none; }
+    .final-a4 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; border-top: 1px solid #cbd5e1; padding-top: 6px; font-size: 10px; }
+    .final-a4 .ley { display: inline-flex; align-items: center; gap: 5px; }
+    .final-a4 .ley i { display: inline-block; width: 18px; height: 11px; border-radius: 3px; border: 1.5px solid; }
+    .final-a4 .txt { flex: 1 1 420px; }
+    .final-a4 .pie { margin: 0; font-size: 8.5px; }
+    .final-a4.pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 14px; }
+    .continua { font-size: 10px; margin-top: -8px; }
+    .conecta { font-size: 10.5px; font-weight: bold; color: #3567d6; }
+    .conecta-sale { text-align: right; margin-top: 2px; }
+    .conecta-entra { margin: 0 0 5px; }
+    .conecta-vuelta { margin-top: 5px; }
+`;
+const numHip = h => (h.id.match(/\d+/) || [''])[0];
+
+export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = {}) {
+  // A4: la misma maqueta en una hoja más pequeña, compacta (no reducida) para leerla de un vistazo
+  const W = a4 ? (vertical ? 794 : 1123) : 1587, H = a4 ? (vertical ? 1123 : 794) : 1122;
+  const tree = CIF_TREES[region];
+  const steps = tree.steps, ids = steps.map(s => s.id);
+  const principales = pasosPrincipales(tree);
+  const destinos = i => steps[i].options.map(o => resolveOptionTargets(tree, i, o)[0]?.id ?? null);
+  const corto = o => o.label.split('—')[0].trim();
+  const detalle = o => o.label.split('—').slice(1).join('—').trim();
+  const lab = id => etiquetaPaso(steps[ids.indexOf(id)], ids.indexOf(id));
+
+  // Grupos de desvío: cadenas de pasos no principales que salen de un paso principal
+  const grupos = [];
+  ids.forEach((id, i) => {
+    if (!principales.has(id)) return;
+    const porDestino = {};
+    steps[i].options.forEach((o, k) => { const t = destinos(i)[k]; if (t && !principales.has(t)) (porDestino[t] ||= []).push(corto(o)); });
+    Object.entries(porDestino).forEach(([ini, todas]) => {
+      const etiquetas = [...new Set(todas)];
+      const cadena = [ini];
+      let actual = ini;
+      for (;;) {
+        const j = ids.indexOf(actual);
+        const sig = destinos(j).find(t => t && !principales.has(t) && !cadena.includes(t));
+        if (!sig) break;
+        cadena.push(sig); actual = sig;
+      }
+      const ult = ids.indexOf(cadena[cadena.length - 1]);
+      const vuelta = destinos(ult).find(t => t && principales.has(t)) ?? null;
+      grupos.push({ entrada: id, etiquetas, cadena, vuelta });
+    });
+  });
+
+  const resultado = o => {
+    const hips = o.hypothesis.map(h => HYPOTHESES[h]).filter(Boolean)
+      .map(h => `<div class="hip"><span class="nb">${numHip(h)}</span><span>${esc(h.name)}</span></div>`).join('');
+    const der = o.derivacion ? `<div class="der"><b>Derivación médica</b><span>${esc(o.derivacion)}</span></div>` : '';
+    return hips + der || '<div class="nada">sin hipótesis</div>';
+  };
+  const cajaPaso = (id, desvio) => {
+    const i = ids.indexOf(id), st = steps[i];
+    const lineas = desvio ? `<div class="dops">${st.options.map(o => `<div class="dop"><b>${esc(corto(o))}</b> → ${resultado(o)}</div>`).join('')}</div>${vueltaDesvio(id)}` : '';
+    return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}"><div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}</span></div>${lineas}</div>`;
+  };
+  const respuestas = (id, sigPrincipal) => {
+    const i = ids.indexOf(id);
+    return `<div class="resp"><div class="rt">Respuestas</div>${steps[i].options.map((o, k) => {
+      // Si la respuesta no sigue al siguiente paso principal, se dice adónde va
+      const t = destinos(i)[k];
+      const ruta = t && t !== sigPrincipal ? `<div class="ruta">→ ${principales.has(t) ? 'paso' : 'desvío'} ${esc(lab(t))}</div>` : '';
+      const res = o.hypothesis.length || o.derivacion || !ruta ? resultado(o) : '';
+      return `<div class="op"><div class="opt"><b>${esc(corto(o))}</b>${detalle(o) ? `<span>${esc(detalle(o))}</span>` : ''}</div><div class="fl">→</div><div class="res">${res}${ruta}</div></div>`;
+    }).join('')}</div>`;
+  };
+
+  const M = ids.filter(id => principales.has(id));
+  const bandas = [];
+  // Bandas equilibradas: 5 pasos → 3 + 2, no 4 + 1
+  const porFila = a4 ? cols : POR_BANDA;
+  const nBandas = Math.ceil(M.length / porFila), porBanda = Math.ceil(M.length / nBandas);
+  // En A4, tantas columnas como pasos por banda: sin columna vacía, más ancho para el texto
+  const COLS = a4 ? porBanda : POR_BANDA;
+  // Una cadena de desvíos más larga que las columnas no cabe en su fila: esta distribución no sirve
+  if (grupos.some(g => g.cadena.length > COLS)) return null;
+  for (let k = 0; k < M.length; k += porBanda) bandas.push(M.slice(k, k + porBanda));
+  // Datos para dibujar las flechas en el navegador
+  const flechas = [];
+  M.forEach((id, k) => {
+    if (k === M.length - 1) return;
+    const i = ids.indexOf(id);
+    const directas = steps[i].options.filter((o, j) => destinos(i)[j] === M[k + 1]).map(corto);
+    if (directas.length) flechas.push({ tipo: 'sig', de: id, a: M[k + 1], txt: directas.length === steps[i].options.length ? 'todas' : directas.join(' / ') });
+  });
+  grupos.forEach(g => {
+    flechas.push({ tipo: 'entra', de: g.entrada, a: g.cadena[0], txt: g.etiquetas.join(' / ') });
+    g.cadena.slice(1).forEach((id, k) => flechas.push({ tipo: 'cadena', de: g.cadena[k], a: id }));
+    if (g.vuelta) flechas.push({ tipo: 'vuelve', de: g.cadena[g.cadena.length - 1], a: g.vuelta, entrada: g.entrada });
+  });
+
+  // A4: entre una fila y la siguiente, en lugar de una flecha larga, dos conectores de texto
+  const bandaDe = id => bandas.findIndex(bb => bb.includes(id));
+  // (también la vuelta de un desvío a un paso de otra fila)
+  const bandaOrigen = f => bandaDe(f.tipo === 'vuelve' ? f.entrada : f.de);
+  const saltos = a4 ? flechas.filter(f => (f.tipo === 'sig' || f.tipo === 'vuelve') && bandaOrigen(f) !== bandaDe(f.a)) : [];
+  const conectorSale = b => saltos.filter(f => f.tipo === 'sig' && bandaDe(f.de) === b).map(f => `<div class="conecta conecta-sale">${esc(f.txt === 'todas' ? 'Todas' : f.txt)} → sigue en el paso ${esc(lab(f.a))} ↓</div>`).join('');
+  const vueltaDesvio = id => saltos.filter(f => f.tipo === 'vuelve' && f.de === id).map(f => `<div class="conecta conecta-vuelta">→ sigue en el paso ${esc(lab(f.a))}</div>`).join('');
+  const conectorEntra = b => { const de = saltos.filter(f => bandaDe(f.a) === b);
+    return de.length ? `<div class="conecta conecta-entra">↓ Paso ${esc(lab(de[0].a))}: viene del paso ${de.map(f => esc(lab(f.de))).join(' o del ')}</div>` : ''; };
+  const htmlBandas = bandas.map((banda, b) => {
+    const gruposBanda = grupos.filter(g => banda.includes(g.entrada));
+    const filasDesvio = gruposBanda.map(g => {
+      const col = banda.indexOf(g.entrada) + 1;
+      const inicio = Math.max(1, Math.min(col, COLS - g.cadena.length + 1));
+      return `<div class="drow"><div class="dgrupo" style="grid-column:${inicio} / ${COLS + 1}"><div class="dnota">Desvío desde el paso ${esc(lab(g.entrada))} si «${esc(g.etiquetas.join('» o «'))}»</div><div class="dcajas">${g.cadena.map(id => cajaPaso(id, true)).join('')}</div></div></div>`;
+    }).join('');
+    return `<div class="banda" data-banda="${b}">${conectorEntra(b)}${filasDesvio}
+      <div class="grid">${banda.map(id => cajaPaso(id, false)).join('')}</div>
+      <div class="grid">${banda.map(id => respuestas(id, M[M.indexOf(id) + 1])).join('')}</div>${conectorSale(b)}</div>`;
+  }).join('');
+
+
+  return `<style>${CSS}
+    @page { size: ${a4 ? 'A4' : 'A3'} ${vertical ? 'portrait' : 'landscape'}; margin: 0; }
+    body { font-size: 12px; }
+    .pagina { position: relative; width: ${W}px; height: ${H}px; padding: 34px 40px; overflow: hidden; page-break-after: always; }
+    .pagina:last-child { page-break-after: auto; }
+    h1 { font-size: 28px; } .sub { font-size: 14px; }
+    .aviso { font-size: 14px; }
+    .banda { position: relative; padding-left: 34px; margin-bottom: 26px; }
+    .grid { display: grid; grid-template-columns: repeat(${COLS}, 1fr); column-gap: 70px; }
+    .drow { display: grid; grid-template-columns: repeat(${COLS}, 1fr); column-gap: 70px; margin-bottom: 44px; }
+    .dgrupo { padding-left: 60px; }
+    .dnota { font-size: 11.5px; font-style: italic; font-weight: bold; color: #6b7280; margin-bottom: 4px; }
+    .dcajas { display: flex; gap: 70px; align-items: flex-start; }
+    .paso { border: 2.5px solid #3567d6; background: #eaf1ff; border-radius: 14px; padding: 10px 12px; }
+    .paso.desv { width: 330px; }
+    .cab { display: flex; gap: 9px; align-items: flex-start; }
+    .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
+    .preg { font-size: 15.5px; font-weight: bold; line-height: 1.3; }
+    .dops { margin-top: 8px; display: grid; gap: 4px; font-size: 11.5px; }
+    .dop { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+    .dop .hip, .dop .nada, .dop .der { padding: 2px 6px; font-size: 11px; }
+    .dop .der span { display: none; }
+    .resp { margin-top: 14px; }
+    .rt { font-size: 11.5px; font-weight: bold; color: #6b7280; margin-bottom: 4px; }
+    .op { display: grid; grid-template-columns: 1fr 20px 1.05fr; align-items: center; margin-bottom: 7px; }
+    .ruta { border: 2px solid #3567d6; color: #3567d6; background: #fff; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
+    .opt { background: #f8fafc; border: 1.5px solid #94a3b8; border-radius: 10px; padding: 5px 9px; }
+    .opt b { display: block; font-size: 13px; } .opt span { display: block; font-size: 10.5px; color: #6b7280; line-height: 1.25; }
+    .fl { text-align: center; color: #475569; font-weight: bold; font-size: 15px; }
+    .hip { display: flex; gap: 6px; align-items: center; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
+    .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 4px; }
+    .der { background: #fde8e8; border: 2px solid #d0342c; color: #b42318; border-radius: 10px; padding: 5px 8px; font-size: 12px; margin: 2px 0; }
+    .der span { display: block; font-size: 10px; color: #7a271a; font-weight: normal; }
+    .nada { border: 1.5px dashed #94a3b8; border-radius: 10px; padding: 7px 8px; color: #6b7280; text-align: center; background: #fff; }
+    .final { display: grid; grid-template-columns: 1fr 1.6fr 1.2fr; gap: 14px; margin-top: 6px; }
+    .final > div { border-radius: 12px; padding: 10px 12px; font-size: 12.5px; }
+    .ley div { display: flex; align-items: center; gap: 8px; margin: 3px 0; }
+    .ley i { display: inline-block; width: 26px; height: 16px; border-radius: 5px; border: 2px solid; }
+    svg.flechas { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
+    .continua { font-size: 12px; font-weight: bold; color: #3567d6; text-align: right; margin-top: -14px; }
+    .final-a4 { display: none; }
+    ${a4 ? CSS_A4 : ''}
+  </style>
+  <div class="pagina" id="pag0">
+    <div class="cab-hoja"><div class="cab-txt">
+    <h1>${esc(tree.title || `Árbol de decisión CIF · ${NOMBRES[region]}`)}</h1>
+    <div class="sub">PhysiQ-Assessment · fase 4 · ${NOMBRES[region]}. Cada respuesta puede sumar una hipótesis; se acumulan y todas se confirman con tests en la fase 4b.${a4 ? ' El porqué de cada paso, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).' : ''}</div>
+    </div>${a4 ? qrGuia(region, 'arbol') : ''}</div>
+    <div class="aviso">REQUISITO PREVIO · Banderas rojas (fase 1) y cribado sistémico (fase 2). Si hay una urgencia, derivar: este árbol no se aplica.</div>
+    ${htmlBandas}
+    <div class="final" id="final">
+      <div class="ley" style="border:1.5px solid #cbd5e1;"><b>Leyenda</b>
+        <div><i style="background:#eaf1ff;border-color:#3567d6"></i>Pregunta del árbol</div>
+        <div><i style="background:#f1e9ff;border-color:#7c4ddb"></i>Hipótesis que activa la respuesta</div>
+        <div><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación médica (el recorrido sigue)</div>
+        <div><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</div></div>
+      <div style="border:1.5px dashed #94a3b8; background:#f8fafc;"><b>Al terminar sin ninguna hipótesis activa</b><br>La app propone trabajar con «${dolorInespecifico(region)}», revisar los factores psicosociales (fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial es alto, sugiere considerar también sensibilización central.</div>
+      <div style="border:1.5px solid #64748b; background:#f1f5f9;"><b>Fase 4b · confirmar</b><br>Cada hipótesis activa se confirma o descarta con sus tests: ver el esquema de confirmación de ${NOMBRES[region].toLowerCase()}.<div class="pie">Generado desde los datos de la app el ${FECHA}.</div></div>
+    </div>
+    <div class="final-a4" id="final-a4">
+      <span class="ley"><i style="background:#eaf1ff;border-color:#3567d6"></i>Pregunta</span>
+      <span class="ley"><i style="background:#f1e9ff;border-color:#7c4ddb"></i>Hipótesis que activa</span>
+      <span class="ley"><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación (el recorrido sigue)</span>
+      <span class="ley"><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</span>
+      <span class="txt"><b>Sin ninguna hipótesis al final:</b> ${dolorInespecifico(region)}; revisar psicosociales y respuestas. <b>Fase 4b:</b> confirmar cada hipótesis con sus tests.</span>
+      <span class="pie">Generado desde los datos de la app el ${FECHA}.</span>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const FLECHAS = ${JSON.stringify(flechas)};
+    // A4: la leyenda es el pie de cada página, fijo abajo; se saca del flujo y se reserva su sitio
+    const pie = ${a4} ? document.getElementById('final-a4') : null;
+    const reserva = pie ? pie.offsetHeight + 12 : 0;
+    if (pie) pie.remove();
+    const ALTO = ${H} - ${a4 ? 18 : 34} - reserva;
+    // Reparte las bandas en páginas: si una no cabe, pasa a una página nueva
+    const pags = [document.getElementById('pag0')];
+    let pag = pags[0];
+    for (const el of [...pag.querySelectorAll('.banda'), ...(${a4} ? [] : [document.getElementById('final')])]) {
+      if (el.parentElement !== pag) pag.appendChild(el);
+      // No cabe y en la página ya hay otra banda antes que ella: a una página nueva
+      const otras = [...pag.querySelectorAll('.banda')].filter(x => x !== el && (x.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)).length;
+      // Si se pasa poco (≤ 15 %), se queda y la página se reduce después
+      if ((el.offsetTop + el.offsetHeight) > ALTO * ${a4 ? 1.35 : 1.15} && otras > 0) {
+        const nueva = document.createElement('div'); nueva.className = 'pagina'; nueva.id = 'pag' + pags.length;
+        document.body.insertBefore(nueva, pag.nextSibling); pags.push(nueva); pag = nueva;
+        pag.appendChild(el);
+      }
+    }
+    // Una página que aun así se pasa de alto (una banda muy larga) se reduce lo justo
+    // Ninguna caja se sale por la derecha (medido en pantalla, ya con el zoom)
+    const cabeAncho = p => { const lim = p.getBoundingClientRect().right - 8;
+      return [...p.querySelectorAll('.paso, .op, .opt, .hip, .nada, .der, .ruta')].every(e => e.getBoundingClientRect().right <= lim); };
+    if (pie) pags.forEach((p, k) => { const c = k ? pie.cloneNode(true) : pie; c.removeAttribute('id'); c.classList.add('pie-fijo'); p.appendChild(c); });
+    // El pie cambia de alto según el ancho de la página: se le deja su sitio cada vez que cambia la escala
+    const escala = (p, z) => { p.style.width = (${W} / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z;
+      const f = p.querySelector('.pie-fijo'); if (f) p.style.paddingBottom = (f.offsetHeight + 26) + 'px'; };
+    for (const p of pags) {
+      if (${a4}) {
+        // A4: la mayor escala (también por encima de 1) con la que la página cabe entera, para no dejar hueco
+        let lo = 0.5, hi = 1.15;
+        for (let k = 0; k < 14; k++) { const z = (lo + hi) / 2; escala(p, z); if (p.scrollHeight * z <= ${H} && cabeAncho(p)) lo = z; else hi = z; }
+        p._z = lo;
+        continue;
+      }
+      const alto = p.scrollHeight;
+      p._z = alto > ${H} ? ${H} / alto : 1;
+      if (p._z < 1) { p.style.width = (${W} / p._z) + 'px'; p.style.height = (${H} / p._z) + 'px'; p.style.zoom = p._z; }
+    }
+    // A4 con varias páginas: todas con la misma escala (la de la que menos admite), para que la letra no cambie de una a otra
+    if (${a4}) { const z = Math.min(...pags.map(p => p._z)); for (const p of pags) { p._z = z; escala(p, z); p.style.height = (${H} / z) + 'px'; } document.body.dataset.escala = z.toFixed(2); }
+    const NS = 'http://www.w3.org/2000/svg';
+    for (const p of pags) {
+      const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'flechas');
+      svg.setAttribute('width', 3000); svg.setAttribute('height', 3000);
+      svg.innerHTML = '<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#475569"/></marker></defs>';
+      p.appendChild(svg); p._svg = svg;
+    }
+    const caja = id => { const e = document.getElementById('box_' + id); const p = e.closest('.pagina'); const r = e.getBoundingClientRect(), rp = p.getBoundingClientRect();
+      const z = p._z || 1; // con zoom, las medidas del navegador vienen escaladas; el SVG vive dentro de la página sin escalar
+      return { p, x: (r.left - rp.left) / z, y: (r.top - rp.top) / z, w: r.width / z, h: r.height / z, banda: e.closest('.banda') }; };
+    const linea = (svg, pts, txt, tx, ty) => {
+      const d = document.createElementNS(NS, 'path');
+      d.setAttribute('d', 'M' + pts.map(q => q.join(' ')).join(' L'));
+      d.setAttribute('fill', 'none'); d.setAttribute('stroke', '#475569'); d.setAttribute('stroke-width', '${a4 ? 1.8 : 2.5}'); d.setAttribute('stroke-linejoin', 'round'); d.setAttribute('marker-end', 'url(#ah)');
+      svg.appendChild(d);
+      if (txt) { const t = document.createElementNS(NS, 'text'); t.setAttribute('x', tx); t.setAttribute('y', ty); t.setAttribute('text-anchor', 'middle');
+        t.setAttribute('font-size', '${a4 ? 10 : 12}'); t.setAttribute('font-weight', 'bold'); t.setAttribute('fill', '#475569'); t.setAttribute('font-family', 'Helvetica, Arial, sans-serif'); t.textContent = txt; svg.appendChild(t); }
+    };
+    for (const f of FLECHAS) {
+      const a = caja(f.de), b = caja(f.a);
+      if (${a4} && f.tipo === 'vuelve' && a.banda !== b.banda) continue; // ya está el conector de texto
+      if (${a4} && f.tipo === 'sig' && a.banda !== b.banda) { // ya está el conector de texto
+        const n = a.banda.querySelector('.conecta-sale');
+        if (a.p !== b.p && n && !n.dataset.pag) { n.dataset.pag = 1; n.textContent = n.textContent.replace(' ↓', ', en la página siguiente →'); }
+        continue; }
+      if (a.p !== b.p) { // cambia de página: una nota en lugar de la flecha
+        if (!a.banda.querySelector('.continua')) { const n = document.createElement('div'); n.className = 'continua'; n.textContent = 'continúa en la página siguiente →'; a.banda.appendChild(n); }
+        continue; }
+      const svg = a.p._svg;
+      if (f.tipo === 'sig' && a.banda === b.banda) {
+        const y = a.y + Math.min(a.h / 2, 40);
+        linea(svg, [[a.x + a.w, y], [b.x - 4, y]], f.txt, (a.x + a.w + b.x) / 2, y - 7);
+      } else if (f.tipo === 'sig') { // salto de banda: baja por el hueco y entra por la izquierda
+        const fondo = (a.banda.getBoundingClientRect().bottom - a.p.getBoundingClientRect().top) / (a.p._z || 1) + 12;
+        const y = b.y + Math.min(b.h / 2, 40);
+        linea(svg, [[a.x + a.w, a.y + 30], [a.x + a.w + 22, a.y + 30], [a.x + a.w + 22, fondo], [b.x - 22, fondo], [b.x - 22, y], [b.x - 4, y]], f.txt, a.x + a.w + ${a4 ? 16 : 40}, fondo - 6);
+        if (${a4}) svg.lastChild.setAttribute('text-anchor', 'end');
+      } else if (f.tipo === 'entra') {
+        const x0 = a.x + 26, y1 = b.y + Math.min(b.h / 2, 34);
+        const xe = b.x > x0 ? b.x - 4 : b.x + b.w + 4;
+        linea(svg, [[x0, a.y], [x0, y1], [xe, y1]], f.txt, x0 - ${a4 ? 6 : 16}, (a.y + y1) / 2);
+        if (${a4}) svg.lastChild.setAttribute('text-anchor', 'end');
+      } else if (f.tipo === 'cadena') {
+        const y = a.y + Math.min(a.h / 2, 34);
+        linea(svg, [[a.x + a.w, y], [b.x - 4, y]]);
+      } else if (f.tipo === 'vuelve') {
+        const y0 = a.y + Math.min(a.h / 2, 34), xr = a.x + a.w + 26, yb = b.y - 16, xb = b.x + b.w / 2;
+        linea(svg, [[a.x + a.w, y0], [xr, y0], [xr, yb], [xb, yb], [xb, b.y - 4]]);
+      }
+    }
+  })();
+  </script>`;
+}
+
+// ── Fase 4b · confirmación ───────────────────────────────────────────────────
+function lrTxt(t) {
+  const lr = lrEfectiva(t);
+  const cuenta = t.tipo !== 'pronostico';   // un test pronóstico nunca entra en la puntuación
+  const f = (v, o, util) => v == null ? '—' : `<span class="${util && cuenta ? 'util' : 'debil'}">${o === 'calculada' ? '≈' : ''}${fmtLR(v)}</span>`;
+  return [f(lr.pos, lr.origenPos, lr.posUtil), f(lr.neg, lr.origenNeg, lr.negUtil)];
+}
+export function htmlConfirmacion(region, { vertical = false } = {}) {
+  const W = vertical ? 794 : 1123, H = vertical ? 1123 : 794;
+  const hyps = Object.values(HYPOTHESES).filter(h => h.region === region);
+  const bloques = hyps.map(h => {
+    const clusters = Object.entries(h.clusters || {}).map(([cid, c]) => {
+      const n = h.tests.filter(t => t.cluster === cid).length;
+      const lr = lrEfectiva(c);
+      const reglas = [lr.posUtil ? `≥${c.umbralPos} de ${n} positivos → LR+ ${fmtLR(lr.pos)}` : '', lr.negUtil && c.umbralNeg != null ? `${c.umbralNeg === 0 ? 'ninguno' : `≤${c.umbralNeg}`} de ${n} positivos (todos hechos) → LR− ${fmtLR(lr.neg)}` : ''].filter(Boolean).join(' · ');
+      return `<tr class="cl"><td colspan="4">🧩 <b>${esc(c.nombre)}</b>: ${reglas || 'sin LR aplicable'}</td></tr>`;
+    }).join('');
+    const filas = h.tests.map(t => {
+      const [pos, neg] = t.cluster ? ['', ''] : lrTxt(t);
+      const papel = t.tipo === 'pronostico' ? 'pronóstico' : t.cluster ? 'en clúster' : testPuntua(h, t) ? '<b class="si">puntúa</b>' : 'hallazgo';
+      return `<tr><td>${esc(t.name)}</td><td class="c">${pos}</td><td class="c">${neg}</td><td class="c">${papel}</td></tr>`;
+    }).join('');
+    return `<section class="hyp"><h2><span class="num">${esc(h.num || '')}</span> ${esc(h.name)}</h2>
+      <table><thead><tr><th>Test</th><th>LR+</th><th>LR−</th><th>Papel</th></tr></thead><tbody>${clusters}${filas}</tbody></table></section>`;
+  }).join('');
+  return `<style>${CSS}
+    @page { size: A4 ${vertical ? 'portrait' : 'landscape'}; margin: 0; }
+    body { font-size: 10px; }
+    .pagina { position: relative; width: ${W}px; height: ${H}px; padding: 18px 24px; overflow: hidden; page-break-after: always; }
+    .pagina:last-child { page-break-after: auto; }
+    h1, .grupo { font-size: 19px; font-weight: bold; margin: 0 0 6px; }
+    .cols { column-count: 2; column-gap: 10px; }
+    .hyp { break-inside: avoid; border: 1.5px solid #7c4ddb; border-radius: 8px; padding: 5px 7px; margin: 0 0 7px; }
+    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: flex-start; }
+    .hyp h2 .num { flex: none; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 8.5px; color: #6b7280; border-bottom: 1px solid #cbd5e1; }
+    td { border-bottom: 1px solid #eef2f7; padding: 1px 2px; vertical-align: top; }
+    td.c, th:not(:first-child) { text-align: center; white-space: nowrap; width: 52px; }
+    .util { font-weight: bold; color: #0f7a55; } .debil { color: #9ca3af; } b.si { color: #0f7a55; }
+    tr.cl td { background: #f6f1ff; }
+    .pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 12px; border-top: 1px solid #cbd5e1; padding-top: 5px; font-size: 9.5px; color: #374151; }
+    .pie-fijo .gen { color: #6b7280; font-size: 8.5px; margin-top: 2px; }
+  </style>
+  <div class="pagina" data-grupo="hipotesis">
+    <div class="cab-hoja"><div class="cab-txt">
+    <h1>Confirmación de hipótesis · ${NOMBRES[region]}</h1>
+    <div class="sub">PhysiQ-Assessment · fase 4b. Los tests de cada hipótesis, sus LR y si puntúan. El criterio de cada test, por qué se hace, sus fuentes, «Ampliar con IA» y una calculadora que puntúa cada hipótesis con los tests que marques, en la guía de consulta (QR).</div>
+    </div>${qrGuia(region, 'confirmacion')}</div>
+    <div class="cols">${bloques}</div>
+    <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterios de cada test y fuentes, en la app.
+      <div class="gen">PhysiQ-Assessment · fase 4b · ${NOMBRES[region]}. Generado desde los datos de la app el ${FECHA}.</div></div>
+  </div>
+  ${scriptAjuste(W, H, '.hyp')}`;
+}
+
+// ── Tiempos de recuperación de tejidos (A4 vertical, una hoja por tema) ──────
+// Las mismas barras que el panel ⏱ de la app (lib/tejidos.js): columna de inicio a fin
+// del eje no lineal, color = gravedad, relleno = qué mide. Las notas y las fuentes de
+// cada barra no caben: van en la guía (QR). Una sola página, a la mayor escala que cabe.
+const COLOR_GRAVEDAD = { minima: 'rgba(234,120,30,.35)', leve: 'rgba(234,120,30,.55)', moderada: 'rgba(214,72,36,.8)', grave: 'rgba(176,26,26,.9)' };
+const RELLENO = {
+  liso: '', contorno: 'background:none!important;box-shadow:inset 0 0 0 1.6px currentColor;',
+  rayado: 'background-image:repeating-linear-gradient(135deg,transparent 0 3px,#fff 3px 4.6px);',
+  punteado: 'background-image:radial-gradient(#fff 1px,transparent 1.3px);background-size:4.5px 4.5px;',
+  degradado: 'background-image:linear-gradient(90deg,transparent 35%,#fff 100%);',
+};
+const COLOR_FASE = ['#a16207', '#16a34a', '#2563eb', '#93c5fd'];
+export function htmlTejidos(hoja) {
+  const T = datosHojaTejido(TIEMPOS_TEJIDO, hoja), n = T.columnas.length;
+  const barra = (f, g) => {
+    const c = COLOR_GRAVEDAD[g] || COLOR_GRAVEDAD.leve, r = RELLENO[T.medidas[f.mide]?.relleno] || '';
+    return `<div class="pista">${'<i></i>'.repeat(n)}<b style="left:${f.desde * 100 / n}%;width:${(f.hasta - f.desde + 1) * 100 / n}%;background:${c};color:${c};${r}"></b></div>`;
+  };
+  const filas = T.grupos.map(g => `<div class="grupo">${esc(g.tejido)}</div>` + g.filas.map(f => {
+    const conBarra = tieneBarra(f);
+    return `<div class="fila${conBarra ? '' : ' sin'}"><span class="nom">${esc(f.nombre)}</span>${conBarra ? barra(f, f.gravedad)
+      : `<span class="nota">${f.subtipos?.length ? 'Sin barra general: ver los subtipos' : 'Sin barra: ver la guía (QR)'}</span>`}</div>`
+      + (f.subtipos || []).filter(tieneBarra).map(st => `<div class="fila subfila"><span class="nom">${esc(st.nombre)}</span>${barra(st, st.gravedad || f.gravedad)}</div>`).join('');
+  }).join('') + (g.nota ? `<div class="nota-grupo">${esc(g.nota)}</div>` : '')).join('');
+  const fases = T.fases.map((f, k) => {
+    const a = posicionDia(f.desdeDia, T.columnas) * 100, b = posicionDia(f.hastaDia, T.columnas) * 100;
+    return `<b style="left:${a}%;width:${b - a}%;background:${COLOR_FASE[k]}"></b>`;
+  }).join('');
+  const muestra = estilo => `<i class="m" style="${estilo}"></i>`;
+  const W = 794, H = 1123;
+  return `<style>
+    ${CSS}
+    @page { size: A4; margin: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pagina { width: ${W}px; height: ${H}px; padding: 34px 38px 0; display: flex; flex-direction: column; overflow: hidden; }
+    .cuerpo { flex: 1 1 auto; min-height: 0; }
+    .fila { display: grid; grid-template-columns: 34% 1fr; align-items: center; min-height: 16px; border-bottom: 1px solid #eef2f7; }
+    .fila .nom { font-size: 10px; padding-right: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fila.subfila .nom { padding-left: 12px; color: #4b5563; font-size: 9.5px; }
+    .fila.sin .nom { font-weight: bold; } .nota { font-size: 8.5px; color: #94a3b8; font-style: italic; }
+    .nota-grupo { font-size: 8.5px; color: #64748b; font-style: italic; padding: 2px 0 1px; }
+    .pista { position: relative; height: 12px; display: grid; grid-template-columns: repeat(${n}, 1fr); }
+    .pista i { border-left: 1px solid #e2e8f0; font-style: normal; }
+    .pista b { position: absolute; top: 1px; bottom: 1px; border-radius: 3px; }
+    .eje { border-bottom: 1.5px solid #94a3b8; } .eje .pista { height: 15px; }
+    .eje .pista i { font-size: 9px; color: #475569; padding-left: 3px; font-family: monospace; }
+    .fases-t { font-size: 9px !important; color: #64748b; } .tira { height: 7px; } .tira b { top: 0; bottom: 0; border-radius: 0; }
+    .grupo { font-size: 10.5px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: #2563eb; margin-top: 7px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 1px; }
+    .pie-fijo { flex: none; border-top: 1.5px solid #cbd5e1; padding: 6px 0 14px; font-size: 9px; color: #334155; display: flex; flex-direction: column; gap: 3px; }
+    .m { display: inline-block; width: 15px; height: 8px; border-radius: 2px; vertical-align: middle; margin: 0 3px 0 8px; }
+  </style>
+  <div class="pagina">
+    <div class="cab-hoja"><div class="cab-txt"><h1>Tiempos de recuperación · ${esc(HOJAS_TEJIDO[hoja].titulo)}</h1>
+      <div class="sub">Referencia general, no un plazo para este paciente: cada barra dice qué mide (vuelta al deporte, protección, programa…), y con cirugía manda el protocolo del cirujano. La nota y las fuentes de cada barra, en la guía (QR).</div></div>
+      <div class="qr-guia">${QR}<span>Notas, fuentes e IA</span>${HUELLA}</div></div>
+    <div class="fila eje"><span class="nom"></span><div class="pista">${T.columnas.map(c => `<i>${esc(c.corta)}</i>`).join('')}</div></div>
+    <div class="fila"><span class="nom fases-t">Fases de reparación</span><div class="pista tira">${fases}</div></div>
+    <div class="cuerpo">${filas}</div>
+    <div class="pie-fijo">
+      <span><b>Color = gravedad:</b>${Object.entries(T.gravedades).map(([k, v]) => muestra(`background:${COLOR_GRAVEDAD[k]}`) + esc(v)).join('')}</span>
+      <span><b>Relleno = qué mide:</b>${Object.entries(T.medidas).filter(([, m]) => !m.marca).map(([, m]) => muestra(`background:#7c8796;color:#7c8796;${RELLENO[m.relleno]}`) + esc(m.etiqueta)).join('')}</span>
+      <span><b>Fases de reparación:</b>${T.fases.map((f, k) => muestra(`background:${COLOR_FASE[k]}`) + esc(f.nombre)).join('')} · Eje no lineal: cada columna ocupa lo mismo.</span>
+      <span class="pie">Generado desde los datos de la app (data/tejidos.js) el ${FECHA}. La otra hoja: ${esc(Object.entries(HOJAS_TEJIDO).filter(([k]) => k !== hoja).map(([, h]) => h.titulo).join(''))}.</span>
+    </div>
+  </div>
+  <script>
+  (() => {
+    // La mayor escala a la que todo cabe en la página (el pie siempre abajo)
+    const p = document.querySelector('.pagina'), c = p.querySelector('.cuerpo');
+    const cabe = z => { p.style.zoom = z; p.style.width = (${W} / z) + 'px'; p.style.height = (${H} / z) + 'px'; return c.scrollHeight <= c.clientHeight + 1; };
+    let lo = 0.6, hi = 1.5; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(z)) lo = z; else hi = z; }
+    cabe(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+
+// ── Hojas de una página (condiciones, fármacos, irritabilidad) ───────────────
+// Página A4 vertical con cabecera (título, subtítulo, QR), cuerpo y pie fijo abajo;
+// el script la deja a la mayor escala a la que el cuerpo cabe.
+const CSS_UNA = `
+  @page { size: A4; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pagina { width: 794px; height: 1123px; padding: 34px 38px 0; display: flex; flex-direction: column; overflow: hidden; }
+  .cuerpo { flex: 1 1 auto; min-height: 0; }
+  .pie-fijo { flex: none; border-top: 1.5px solid #cbd5e1; padding: 6px 0 14px; font-size: 9px; color: #334155; display: flex; flex-direction: column; gap: 3px; }
+`;
+function paginaUna({ titulo, sub, qr, cuerpo, pie, css = '' }) {
+  return `<style>${CSS}${CSS_UNA}${css}</style>
+  <div class="pagina">
+    <div class="cab-hoja"><div class="cab-txt"><h1>${titulo}</h1><div class="sub">${sub}</div></div>
+      <div class="qr-guia">${QR}<span>${qr}</span>${HUELLA}</div></div>
+    <div class="cuerpo">${cuerpo}</div>
+    <div class="pie-fijo">${pie}</div>
+  </div>
+  <script>
+  (() => {
+    const p = document.querySelector('.pagina'), c = p.querySelector('.cuerpo');
+    const cabe = z => { p.style.zoom = z; p.style.width = (794 / z) + 'px'; p.style.height = (1123 / z) + 'px'; return c.scrollHeight <= c.clientHeight + 1; };
+    let lo = 0.6, hi = 1.5; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(z)) lo = z; else hi = z; }
+    cabe(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+
+// Título de una tarjeta de la fase 1 (index.html): dónde se marca cada condición, sin copiarlo a mano
+const INDEX_HTML = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+function tituloTarjeta(id) {
+  const i = INDEX_HTML.indexOf(`id="${id}"`);
+  const m = i < 0 ? null : /class="card-title"[^>]*>([^<]+)</.exec(INDEX_HTML.slice(i, i + 1500));
+  return m ? m[1].trim() : id;
+}
+
+// ── Condiciones especiales (la guía de la cabecera, data/condiciones.js) ─────
+export function htmlCondiciones() {
+  const T = TEXTOS_CONDICIONES;
+  const donde = c => c.destino?.tarjeta
+    ? `Fase 1 · tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
+    : `Fase 2 · cribado de ${esc(nombreRegion(c.region).toLowerCase())}`;
+  const tarjeta = c => `<section class="cond">
+    <h2>${esc(c.nombre)}</h2>
+    <p class="que">${esc(c.que)}</p>
+    <div class="piensa">${esc(c.piensa)}</div>
+    <ul>${c.pistas.map(p => `<li>${esc(p.texto)}</li>`).join('')}</ul>
+    <p class="anade"><b>Añade:</b> ${esc(c.anade)}</p>
+    <p class="donde">${donde(c)}</p>
+  </section>`;
+  const transversales = CONDICIONES.filter(c => !c.region);
+  // Las de una sola región, juntas en una fila de tres, con la región en su cabecera
+  const deRegion = CONDICIONES.filter(c => c.region);
+  const cuerpo = `<div class="rejilla">${transversales.map(tarjeta).join('')}</div>`
+    + (deRegion.length ? `<div class="grupo-reg">${esc(T.grupoRegion.replace('{region}', 'una región'))}</div>
+      <div class="rejilla rejilla-3">${deRegion.map(c => tarjeta(c).replace('<h2>', `<h2><span class="reg">${esc(nombreRegion(c.region))}</span>`)).join('')}</div>` : '');
+  return paginaUna({
+    titulo: esc(T.titulo),
+    sub: `${esc(T.intro)} ${esc(T.diagnostico)}`,
+    qr: 'Qué es, fuentes e IA',
+    cuerpo,
+    pie: `<span>${esc(T.pie)} Las fuentes de cada condición, en la guía (QR).</span><span class="pie">Generado desde los datos de la app (data/condiciones.js) el ${FECHA}.</span>`,
+    css: `
+      .rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .cond { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 7px 9px; break-inside: avoid; }
+      .cond h2 { font-size: 12.5px; margin: 0 0 2px; color: #1e3a8a; }
+      .que { margin: 0 0 4px; color: #374151; }
+      .piensa { font-weight: bold; font-size: 10px; color: #7c4ddb; }
+      .cond ul { margin: 1px 0 4px; padding-left: 15px; } .cond li { margin: 0; }
+      .anade { margin: 0 0 3px; color: #4b5563; font-size: 9.5px; }
+      .donde { margin: 0; font-size: 9.5px; color: #1f2937; background: #eef2ff; border-radius: 4px; padding: 2px 6px; display: inline-block; }
+      .rejilla-3 { grid-template-columns: 1fr 1fr 1fr; }
+      .reg { display: inline-block; font-size: 8.5px; font-weight: bold; text-transform: uppercase; letter-spacing: .5px; color: #fff; background: #2563eb; border-radius: 6px; padding: 0 5px; margin-right: 5px; vertical-align: 1px; }
+      .grupo-reg { font-size: 10.5px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: #2563eb; margin: 10px 0 5px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 1px; }`,
+  });
+}
+
+// ── Hojas de varias páginas (fármacos): tarjetas en dos columnas que pasan de página ──
+// El script reparte las tarjetas por orden (cada una entera en su columna) y busca la mayor
+// escala con la que caben en `maxPaginas`; la cabecera con el QR, solo en la primera.
+function paginasVarias({ titulo, tituloCont, sub, qr, tarjetas, pie, css = '', maxPaginas = 2 }) {
+  return `<style>${CSS}${CSS_UNA}
+    .pagina + .pagina { break-before: page; }
+    .cuerpo { column-count: 2; column-gap: 12px; column-fill: auto; overflow: hidden; }
+    .tarjeta { break-inside: avoid; margin-bottom: 8px; }
+    .cont { font-size: 15px; font-weight: bold; margin: 0 0 6px; color: #475569; }
+    ${css}</style>
+  <div id="tarjetas" hidden>${tarjetas.join('')}</div>
+  <template id="tCab"><div class="cab-hoja"><div class="cab-txt"><h1>${titulo}</h1><div class="sub">${sub}</div></div>
+    <div class="qr-guia">${QR}<span>${qr}</span>${HUELLA}</div></div></template>
+  <template id="tPie"><div class="pie-fijo">${pie}</div></template>
+  <script>
+  (() => {
+    const fuente = document.getElementById('tarjetas'), MAX = ${maxPaginas};
+    const todas = [...fuente.children];
+    const nueva = (n, z) => {
+      const p = document.createElement('div'); p.className = 'pagina';
+      p.innerHTML = (n === 1 ? document.getElementById('tCab').innerHTML : '<div class="cont">${tituloCont}</div>')
+        + '<div class="cuerpo"></div>' + document.getElementById('tPie').innerHTML;
+      p.style.zoom = z; p.style.width = (794 / z) + 'px'; p.style.height = (1123 / z) + 'px';
+      document.body.appendChild(p); return p.querySelector('.cuerpo');
+    };
+    const desborda = c => c.scrollWidth > c.clientWidth + 1;
+    const repartir = z => {
+      document.querySelectorAll('.pagina').forEach(p => p.remove());
+      let n = 1, c = nueva(1, z);
+      for (const t of todas) {
+        c.appendChild(t);
+        if (desborda(c)) { if (c.children.length === 1 || n >= MAX) return false; n++; c = nueva(n, z); c.appendChild(t); if (desborda(c)) return false; }
+      }
+      return true;
+    };
+    let lo = 0.55, hi = 1.4; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (repartir(z)) lo = z; else hi = z; }
+    repartir(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+
+// ── Fármacos: qué vigilar en el plan (data/farmacos.js + data/farmacos-paciente.js) ──
+// Por familia, sus ejemplos y las frases del aviso de la fase 6 (copiadas literales de la
+// guía, con su cita). La guía completa de cada familia, en el QR. Los antitrombóticos no
+// tienen aviso propio: los cubre su tarjeta de la fase 1.
+export function htmlFarmacos() {
+  const fichas = FAMILIAS_FARMACO.filter(f => f.apartados).map(f => {
+    const fp = FAMILIAS_PACIENTE[f.id];
+    const cuerpo = fp?.plan?.length
+      ? `<ul>${fp.plan.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
+      : f.id === 'antitromboticos'
+        ? `<p class="remite">Se marcan en su propia tarjeta de la fase 1, «${esc(tituloTarjeta('cardAnticoagulado'))}», que añade su cribado, sus avisos y su red de seguridad (ver también la hoja de condiciones especiales).</p>`
+        : '<p class="remite">Sin aviso para el plan: ver la guía (QR).</p>';
+    return `<section class="tarjeta farm"><h2>${esc(f.nombre)}</h2><p class="ej">${esc(f.ejemplos)}</p>${cuerpo}</section>`;
+  });
+  return paginasVarias({
+    titulo: 'Fármacos: qué vigilar en el plan',
+    tituloCont: 'Fármacos: qué vigilar en el plan (cont.)',
+    sub: `${esc(TEXTOS_FARMACOS_PACIENTE.lineaComun)} Aquí, lo que cambia el plan de tratamiento; cómo afecta cada familia al dolor, los síntomas viscerales, el ejercicio y el sueño, y su ficha técnica (CIMA), en la guía (QR).`,
+    qr: 'Guía completa e IA',
+    tarjetas: fichas,
+    pie: `<span>${esc(TEXTOS_FARMACOS.limites)}</span><span class="pie">Generado desde los datos de la app (data/farmacos.js, data/farmacos-paciente.js) el ${FECHA}.</span>`,
+    css: `
+      .farm { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 6px 9px; }
+      .farm h2 { font-size: 12px; margin: 0 0 1px; color: #1e3a8a; }
+      .ej { margin: 0 0 3px; font-size: 9px; color: #6b7280; font-style: italic; }
+      .farm ul { margin: 0; padding-left: 14px; } .farm li { margin: 0 0 2px; }
+      .remite { margin: 0; color: #4b5563; }`,
+  });
+}
+
+// ── Irritabilidad (fase 3): la matriz para marcar en papel, la regla y qué implica cada nivel ──
+export function htmlIrritabilidad() {
+  const T = TEXTOS_IRRITABILIDAD;
+  const filas = ITEMS_IRRITABILIDAD.map(it => `<tr><th>${esc(it.nombre)}${it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : ''}</th>
+    ${it.opciones.map((o, i) => `<td><span class="caja"></span><span class="n">${i}</span> ${esc(o.valor)}</td>`).join('')}</tr>`).join('');
+  const nivel = (n, clase, textos) => `<div class="nivel ${clase}"><b>${n}</b>${textos.map(t => `<p>${esc(t)}</p>`).join('')}</div>`;
+  return paginaUna({
+    titulo: 'Irritabilidad (fase 3)',
+    sub: `La misma matriz y la misma regla que la app (fases 3 y 6). Marca una casilla por fila. ${esc(T.pistaBreve)}`,
+    qr: 'Calculadora e IA',
+    cuerpo: `<table class="matriz"><thead><tr><th></th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>${filas}</tbody></table>
+      <div class="regla"><h2>Cómo se calcula</h2>${reglaIrritabilidad().map(p => `<p>${p}</p>`).join('')}
+        <div class="calc"><span>Suelo (tiempo en calmarse): ____</span><span>Reposo + movimiento + tolerancia = ____ → ____</span><span><b>Nivel</b> (el más alto): ____</span></div></div>
+      <h2 class="t-niveles">Qué implica cada nivel</h2>
+      <div class="niveles">${nivel('Baja', 'baja', [T.hastaLimite])}${nivel('Moderada', 'moderada', [T.hastaDolor])}${nivel('Alta', 'alta', [T.hastaDolor, T.alta])}</div>
+      <p class="margen">${esc(T.margen)} ${esc(T.incompleta)}</p>`,
+    pie: `<span>El impacto en las actividades (${ITEM_IMPACTO.opciones.map(o => esc(o.valor).toLowerCase()).join(' · ')}) es gravedad: se anota aparte, junto al NRS.</span><span class="pie">Generado desde los datos de la app (data/irritabilidad.js, lib/irritabilidad.js) el ${FECHA}.</span>`,
+    css: `
+      body { font-size: 11.5px; }
+      .matriz { width: 100%; border-collapse: collapse; margin: 4px 0 12px; }
+      .matriz th, .matriz td { border: 1.5px solid #cbd5e1; padding: 8px 8px; text-align: left; vertical-align: top; }
+      .matriz thead th { background: #eef2ff; text-align: center; font-size: 11px; color: #3730a3; padding: 4px; }
+      .matriz tbody th { width: 30%; font-size: 12.5px; }
+      .ayuda { font-weight: normal; font-size: 9.5px; color: #6b7280; margin-top: 3px; }
+      .caja { display: inline-block; width: 13px; height: 13px; border: 1.6px solid #475569; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
+      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 15px; margin-right: 3px; }
+      h2 { font-size: 14px; margin: 0 0 5px; color: #1e3a8a; }
+      .regla { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; } .regla p { margin: 0 0 5px; }
+      .calc { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 11px; }
+      .niveles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .nivel { border-radius: 8px; padding: 8px 10px; border: 1.5px solid; } .nivel b { font-size: 13px; } .nivel p { margin: 4px 0 0; font-size: 10.5px; }
+      .nivel.baja { border-color: #16a34a; background: #f0fdf4; } .nivel.baja b { color: #15803d; }
+      .nivel.moderada { border-color: #ea580c; background: #fff7ed; } .nivel.moderada b { color: #c2410c; }
+      .nivel.alta { border-color: #dc2626; background: #fef2f2; } .nivel.alta b { color: #b91c1c; }
+      .margen { color: #4b5563; font-size: 10px; margin: 10px 0 0; }`,
+  });
+}
+
+// ── Huella de cada hoja impresa ──────────────────────────────────────────────
+// FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
+export function fnv(texto) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < texto.length; i++) { h ^= texto.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16).padStart(8, '0');
+}
+
+// Las hojas que llevan QR, con su clave (= nombre de archivo), la dirección de la guía y su
+// HTML canónico (el árbol y la confirmación eligen su distribución con el navegador; la
+// huella se calcula siempre con la distribución por defecto, que tiene el mismo contenido).
+export function hojasImpresas() {
+  const hojas = [];
+  for (const region of Object.keys(CIF_TREES)) {
+    hojas.push({ clave: `cribado-${region}`, ruta: `${region}/cribado`, html: () => htmlCribado(region) });
+    hojas.push({ clave: `arbol-a4-${region}`, ruta: `${region}/arbol`, html: () => htmlArbol(region, { a4: true }) });
+    hojas.push({ clave: `confirmacion-${region}`, ruta: `${region}/confirmacion`, html: () => htmlConfirmacion(region) });
+  }
+  for (const hoja of Object.keys(HOJAS_TEJIDO)) hojas.push({ clave: `tejidos-${hoja}`, ruta: `tejidos/${hoja}`, html: () => htmlTejidos(hoja) });
+  hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones });
+  hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
+  hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
+  return hojas;
+}
+export const huellaHoja = html => fnv(html);
+export function huellasActuales() {
+  return Object.fromEntries(hojasImpresas().map(h => [h.clave, huellaHoja(h.html())]));
+}
+// Pone los marcadores: el QR a la guía con la huella (?h=), la huella visible y la fecha
+export function rematar(html, { ruta, huella, fecha }) {
+  const url = urlRuta(ruta, huella);
+  return html.replaceAll(QR, qrSVG(url, QR_PX)).replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
+}

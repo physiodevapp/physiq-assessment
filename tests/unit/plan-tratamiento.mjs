@@ -9,6 +9,9 @@ const { REFERENCIAS } = await import('../../data/referencias.js');
 const { PHASE_DEFS, PHASE_NAV_IDS } = await import('../../data.js');
 const { leerImportacion } = await import('../../lib/valoracion-json.js');
 const PLAN = await import('../../plan.js');
+const ARBOL_NAV = await import('../../lib/arbol.js');
+const { arbolCompleto } = ARBOL_NAV;
+const { CIF_TREES } = await import('../../data.js');
 
 console.log('\nplan de tratamiento (fase 6)');
 
@@ -1411,4 +1414,26 @@ test('plan: cap. 9 de Peripheral (decisiones 60–63): hoja de registro común c
   const ui = leer('plan.js');
   assert.match(ui, /plan\.fuenteRegistro/); assert.match(ui, /plan\.mes\.retrospectiva/);
   assert.match(ui, /frecuencia: pt\.frecuencia \}\);/);
+});
+
+test('fase 6 sin hipótesis: arbolCompleto() distingue «falta el árbol» de «terminó sin ninguna», en las 7 regiones', () => {
+  const { resolveOptionTargets } = ARBOL_NAV;
+  for (const r of VALID_REGIONS) {
+    const tree = CIF_TREES[r];
+    assert.equal(arbolCompleto(tree, {}), false, `${r}: vacío`);
+    // Recorrido por la primera opción de cada paso: incompleto hasta el último
+    const ans = {}; let idx = 0, pasos = 0;
+    for (;;) {
+      const st = tree.steps[idx], o = st.options[0];
+      assert.equal(arbolCompleto(tree, ans), false, `${r}: falta ${st.id}`);
+      ans[st.id] = o.value; pasos++;
+      const sig = resolveOptionTargets(tree, idx, o)[0];
+      if (!sig) break;
+      idx = tree.steps.indexOf(sig);
+      assert.ok(pasos < 100);
+    }
+    assert.equal(arbolCompleto(tree, ans), true, `${r}: terminado`);
+  }
+  const src = leer('plan.js');
+  assert.ok(src.includes('arbolCompleto(') && src.includes('El árbol terminó sin hipótesis'));
 });
