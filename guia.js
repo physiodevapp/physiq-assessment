@@ -12,6 +12,8 @@ import { resolveOptionTargets } from './lib/arbol.js';
 import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido } from './lib/esquemas.js';
 import { TIEMPOS_TEJIDO } from './data/tejidos.js';
 import { condicionesHTML } from './lib/condiciones.js';
+import { farmacosHTML, textoCima } from './lib/farmacos.js';
+import { TEXTOS_FARMACOS } from './data/farmacos.js';
 import { tiemposTejidoHTML, infoBarraHTML } from './lib/tejidos.js';
 import { alternarFicha, cerrarFicha } from './ficha.js';
 import { nombreRegion, dolorInespecifico } from './lib/region.js';
@@ -313,7 +315,24 @@ function htmlHojas() {
 // La clave es la de la hoja impresa (docs/esquemas/<clave>.pdf), para el aviso de papel viejo.
 const SUELTAS = {
   condiciones: { titulo: 'Condiciones especiales', html: () => condicionesHTML({}, { guia: true }) },
+  farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>` },
 };
+
+// «Ficha técnica (CIMA)»: como en la app, el enlace abre el buscador de CIMA y aquí se copia
+// el nombre para pegarlo; un aviso breve dice dónde (o qué buscar, si no se pudo copiar).
+function avisoGuia(texto) {
+  let el = document.getElementById('guiaAviso');
+  if (!el) { el = document.createElement('div'); el.id = 'guiaAviso'; el.className = 'guia-aviso'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+  el.textContent = texto; el.hidden = false;
+  clearTimeout(avisoGuia.t); avisoGuia.t = setTimeout(() => { el.hidden = true; }, 5000);
+}
+document.addEventListener('click', e => {
+  const a = e.target instanceof Element ? e.target.closest('#farmCuerpo a[data-cima]') : null;
+  if (!a) return;
+  const n = a.dataset.cima;
+  const fallo = () => avisoGuia(textoCima(TEXTOS_FARMACOS.cimaSinCopiar, n));
+  try { navigator.clipboard.writeText(n).then(() => avisoGuia(textoCima(TEXTOS_FARMACOS.cimaCopiado, n)), fallo); } catch { fallo(); }
+}, true);
 
 const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion, irritabilidad: htmlIrritabilidad };
 
@@ -400,7 +419,7 @@ async function iniciar() {
   document.fonts?.ready.then(anchoRegion);   // la fuente del título llega después
   pintar();
   const v = textoVersion();
-  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#condiciones">Condiciones especiales</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
+  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#condiciones">Condiciones especiales</a> · <a href="#farmacos">Fármacos</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
   initAmpliarIA();
 }
 iniciar();

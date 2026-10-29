@@ -13,6 +13,9 @@ const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
 const HOJAS = await import('../../docs/esquemas/hojas.mjs');
 const COND_DATOS = await import('../../data/condiciones.js');
 const COND_LIB = await import('../../lib/condiciones.js');
+const FARM = await import('../../data/farmacos.js');
+const FARM_P = await import('../../data/farmacos-paciente.js');
+const FARM_L = await import('../../lib/farmacos.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
 
@@ -141,4 +144,15 @@ test('hoja y página de condiciones especiales: todas las filas de data/condicio
   assert.equal((guia.match(/class="cond-fila"/g) || []).length, CONDICIONES.length);
   assert.ok(COND_LIB.condicionesHTML({ mecanismo: 'Post-quirúrgico' }).includes('cond-estado-on'), 'la app sigue igual');
   assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'condiciones' && h.ruta === 'condiciones'));
+});
+
+test('hoja de fármacos: cada familia escrita con sus ejemplos y todas las frases de su aviso de la fase 6, literales', () => {
+  const html = HOJAS.htmlFarmacos();
+  const escH = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  for (const f of FARM.FAMILIAS_FARMACO.filter(x => x.apartados)) {
+    assert.ok(html.includes(escH(f.nombre)) && html.includes(escH(f.ejemplos)), f.id);
+    for (const frase of FARM_P.FAMILIAS_PACIENTE[f.id]?.plan || []) assert.ok(html.includes(escH(frase)), `${f.id}: ${frase.slice(0, 40)}`);
+  }
+  assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'farmacos' && h.ruta === 'farmacos'));
+  assert.ok(!/onclick=/.test(FARM_L.farmacosHTML()) || FARM_L.familiasPendientes().length > 0, 'en la guía no queda ningún botón de la app');
 });

@@ -17,6 +17,8 @@ const { posicionDia, tieneBarra } = await import('../../lib/tejidos.js');
 const { dolorInespecifico } = await import('../../lib/region.js');
 const { qrSVG } = await import('./qr.mjs');
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
+const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
+const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
 
 // 100 px: con la huella en la dirección el QR tiene 49 módulos; aun a la escala mínima (0,75–0,8)
@@ -701,6 +703,77 @@ export function htmlCondiciones() {
   });
 }
 
+// ── Hojas de varias páginas (fármacos): tarjetas en dos columnas que pasan de página ──
+// El script reparte las tarjetas por orden (cada una entera en su columna) y busca la mayor
+// escala con la que caben en `maxPaginas`; la cabecera con el QR, solo en la primera.
+function paginasVarias({ titulo, tituloCont, sub, qr, tarjetas, pie, css = '', maxPaginas = 2 }) {
+  return `<style>${CSS}${CSS_UNA}
+    .pagina + .pagina { break-before: page; }
+    .cuerpo { column-count: 2; column-gap: 12px; column-fill: auto; overflow: hidden; }
+    .tarjeta { break-inside: avoid; margin-bottom: 8px; }
+    .cont { font-size: 15px; font-weight: bold; margin: 0 0 6px; color: #475569; }
+    ${css}</style>
+  <div id="tarjetas" hidden>${tarjetas.join('')}</div>
+  <template id="tCab"><div class="cab-hoja"><div class="cab-txt"><h1>${titulo}</h1><div class="sub">${sub}</div></div>
+    <div class="qr-guia">${QR}<span>${qr}</span>${HUELLA}</div></div></template>
+  <template id="tPie"><div class="pie-fijo">${pie}</div></template>
+  <script>
+  (() => {
+    const fuente = document.getElementById('tarjetas'), MAX = ${maxPaginas};
+    const todas = [...fuente.children];
+    const nueva = (n, z) => {
+      const p = document.createElement('div'); p.className = 'pagina';
+      p.innerHTML = (n === 1 ? document.getElementById('tCab').innerHTML : '<div class="cont">${tituloCont}</div>')
+        + '<div class="cuerpo"></div>' + document.getElementById('tPie').innerHTML;
+      p.style.zoom = z; p.style.width = (794 / z) + 'px'; p.style.height = (1123 / z) + 'px';
+      document.body.appendChild(p); return p.querySelector('.cuerpo');
+    };
+    const desborda = c => c.scrollWidth > c.clientWidth + 1;
+    const repartir = z => {
+      document.querySelectorAll('.pagina').forEach(p => p.remove());
+      let n = 1, c = nueva(1, z);
+      for (const t of todas) {
+        c.appendChild(t);
+        if (desborda(c)) { if (c.children.length === 1 || n >= MAX) return false; n++; c = nueva(n, z); c.appendChild(t); if (desborda(c)) return false; }
+      }
+      return true;
+    };
+    let lo = 0.55, hi = 1.4; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (repartir(z)) lo = z; else hi = z; }
+    repartir(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+
+// ── Fármacos: qué vigilar en el plan (data/farmacos.js + data/farmacos-paciente.js) ──
+// Por familia, sus ejemplos y las frases del aviso de la fase 6 (copiadas literales de la
+// guía, con su cita). La guía completa de cada familia, en el QR. Los antitrombóticos no
+// tienen aviso propio: los cubre su tarjeta de la fase 1.
+export function htmlFarmacos() {
+  const fichas = FAMILIAS_FARMACO.filter(f => f.apartados).map(f => {
+    const fp = FAMILIAS_PACIENTE[f.id];
+    const cuerpo = fp?.plan?.length
+      ? `<ul>${fp.plan.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
+      : f.id === 'antitromboticos'
+        ? `<p class="remite">Se marcan en su propia tarjeta de la fase 1, «${esc(tituloTarjeta('cardAnticoagulado'))}», que añade su cribado, sus avisos y su red de seguridad (ver también la hoja de condiciones especiales).</p>`
+        : '<p class="remite">Sin aviso para el plan: ver la guía (QR).</p>';
+    return `<section class="tarjeta farm"><h2>${esc(f.nombre)}</h2><p class="ej">${esc(f.ejemplos)}</p>${cuerpo}</section>`;
+  });
+  return paginasVarias({
+    titulo: 'Fármacos: qué vigilar en el plan',
+    tituloCont: 'Fármacos: qué vigilar en el plan (cont.)',
+    sub: `${esc(TEXTOS_FARMACOS_PACIENTE.lineaComun)} Aquí, lo que cambia el plan de tratamiento; cómo afecta cada familia al dolor, los síntomas viscerales, el ejercicio y el sueño, y su ficha técnica (CIMA), en la guía (QR).`,
+    qr: 'Guía completa e IA',
+    tarjetas: fichas,
+    pie: `<span>${esc(TEXTOS_FARMACOS.limites)}</span><span class="pie">Generado desde los datos de la app (data/farmacos.js, data/farmacos-paciente.js) el ${FECHA}.</span>`,
+    css: `
+      .farm { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 6px 9px; }
+      .farm h2 { font-size: 12px; margin: 0 0 1px; color: #1e3a8a; }
+      .ej { margin: 0 0 3px; font-size: 9px; color: #6b7280; font-style: italic; }
+      .farm ul { margin: 0; padding-left: 14px; } .farm li { margin: 0 0 2px; }
+      .remite { margin: 0; color: #4b5563; }`,
+  });
+}
+
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
 export function fnv(texto) {
@@ -720,7 +793,8 @@ export function hojasImpresas() {
     hojas.push({ clave: `confirmacion-${region}`, ruta: `${region}/confirmacion`, html: () => htmlConfirmacion(region) });
   }
   for (const hoja of Object.keys(HOJAS_TEJIDO)) hojas.push({ clave: `tejidos-${hoja}`, ruta: `tejidos/${hoja}`, html: () => htmlTejidos(hoja) });
-  hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones, nombre: 'Condiciones especiales' });
+  hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones });
+  hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
   return hojas;
 }
 export const huellaHoja = html => fnv(html);
