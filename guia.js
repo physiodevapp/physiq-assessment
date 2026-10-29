@@ -275,10 +275,35 @@ async function cargarHuellas() {
 }
 function avisoHojaHTML(clave) {
   if (!HUELLA_PAPEL || !HUELLAS || !clave || clave !== HOJA_PAPEL || !HUELLAS[clave]) return '';
-  if (HUELLAS[clave] === HUELLA_PAPEL) return `<div class="guia-papel ok" id="guiaPapel">✓ Tu hoja impresa está al día (v. ${esc(HUELLA_PAPEL)}).</div>`;
+  if (HUELLAS[clave].huella === HUELLA_PAPEL) return `<div class="guia-papel ok" id="guiaPapel">✓ Tu hoja impresa está al día (v. ${esc(HUELLA_PAPEL)}).</div>`;
   return `<div class="guia-papel" id="guiaPapel"><b>Tu hoja impresa es de una versión anterior</b>
-    La numeración o el contenido pueden haber cambiado desde que se imprimió (v. ${esc(HUELLA_PAPEL)}; la actual es v. ${esc(HUELLAS[clave])}): manda lo que ves aquí.
+    La numeración o el contenido pueden haber cambiado desde que se imprimió (v. ${esc(HUELLA_PAPEL)}; la actual es v. ${esc(HUELLAS[clave].huella)}): manda lo que ves aquí.
     <a href="./docs/esquemas/${clave}.pdf" target="_blank" rel="noopener">Descargar la hoja actual (PDF) para reimprimirla →</a></div>`;
+}
+
+// ── Hojas para imprimir (#hojas) ─────────────────────────────────────────────
+// Para quien gestiona las copias en papel: cada hoja con su versión actual (la «v.» que
+// lleva bajo el QR), la fecha de su último cambio de contenido y su PDF. Sale de
+// huellas.json, así que se mantiene sola. Las que cambiaron hace poco, marcadas.
+const DIAS_RECIENTE = 30;
+const NOMBRE_HOJA = { cribado: 'Cribado (fase 2)', 'arbol-a4': 'Árbol de decisión (fase 4)', confirmacion: 'Confirmación (fase 4b)' };
+const fechaLarga = iso => new Date(`${iso}T12:00:00`).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+function htmlHojas() {
+  if (!HUELLAS) return '<p class="guia-vacio">No se ha podido cargar la lista de hojas. Prueba a recargar la página.</p>';
+  const hoy = Date.now();
+  const fila = (clave, nombre) => {
+    const h = HUELLAS[clave];
+    if (!h) return '';
+    const reciente = (hoy - new Date(`${h.fecha}T12:00:00`).getTime()) / 864e5 <= DIAS_RECIENTE;
+    return `<li class="guia-hoja${reciente ? ' reciente' : ''}"><div class="guia-hoja-txt"><b>${esc(nombre)}</b>
+      <span class="guia-hoja-v">v. ${esc(h.huella)}</span> · <span>cambió el ${esc(fechaLarga(h.fecha))}</span>${reciente ? ' <span class="guia-hoja-nueva">Reciente</span>' : ''}</div>
+      <a href="./docs/esquemas/${clave}.pdf" target="_blank" rel="noopener" aria-label="Descargar ${esc(nombre)} en PDF">PDF ↗</a></li>`;
+  };
+  const grupo = (titulo, filas) => `<section class="guia-bloque"><h3>${esc(titulo)}</h3><ul class="guia-hojas-lista">${filas.join('')}</ul></section>`;
+  const recientes = Object.values(HUELLAS).filter(h => (hoy - new Date(`${h.fecha}T12:00:00`).getTime()) / 864e5 <= DIAS_RECIENTE).length;
+  return `<p class="guia-nota">Cada hoja impresa lleva su versión bajo el QR («v. …»). Si no coincide con la de esta lista, la hoja ha cambiado: descarga el PDF y reimprímela. «Reciente» = cambió en los últimos ${DIAS_RECIENTE} días (${recientes} de ${Object.keys(HUELLAS).length}).</p>
+    ${REGIONES.map(r => grupo(nombreRegion(r), Object.entries(NOMBRE_HOJA).map(([t, n]) => fila(`${t}-${r}`, n)))).join('')}
+    ${grupo('Tiempos de recuperación de tejidos', Object.entries(HOJAS_TEJIDO).map(([k, h]) => fila(`tejidos-${k}`, h.titulo)))}`;
 }
 
 const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion, irritabilidad: htmlIrritabilidad };
@@ -286,6 +311,7 @@ const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfi
 // ── Navegación ──────────────────────────────────────────────────────────────
 function leerRuta() {
   const [r, h, el] = decodeURIComponent(location.hash.slice(1)).split('/');
+  if (r === 'hojas') return { hojas: true, region: '', hoja: '', elemento: '' };
   if (r === 'tejidos') return { tejidos: true, region: '', hoja: HOJAS_TEJIDO[h] ? h : 'blandos', elemento: '' };
   return { region: REGIONES.includes(r) ? r : 'lumbar', hoja: PINTAR[h] ? h : 'cribado', elemento: el || '' };
 }
@@ -303,8 +329,17 @@ function anchoRegion() {
 }
 
 function pintar({ sinScroll = false } = {}) {
-  const { tejidos, region, hoja, elemento } = leerRuta();
-  document.body.classList.toggle('guia-modo-tejidos', !!tejidos);
+  const { tejidos, hojas, region, hoja, elemento } = leerRuta();
+  document.body.classList.toggle('guia-modo-tejidos', !!tejidos || !!hojas);
+  document.body.classList.toggle('guia-modo-hojas', !!hojas);
+  if (hojas) {
+    document.getElementById('guiaTitulo').textContent = 'Hojas para imprimir';
+    document.getElementById('guiaHojas').innerHTML = '';
+    document.getElementById('guiaContenido').innerHTML = htmlHojas();
+    document.title = 'Hojas para imprimir · Guía de consulta';
+    if (!sinScroll) window.scrollTo(0, 0);
+    return;
+  }
   if (tejidos) {
     document.getElementById('guiaTitulo').textContent = 'Tiempos de recuperación';
     document.getElementById('guiaHojas').innerHTML = Object.entries(HOJAS_TEJIDO)
@@ -336,12 +371,17 @@ async function iniciar() {
   sel.addEventListener('change', () => { const r = leerRuta(); location.hash = `${sel.value}/${r.tejidos ? 'cribado' : r.hoja}`; });
   // Las fuentes se enlazan con el registro; si no carga, se pintan sin enlace
   try { REF = await registroReferencias(); } catch { REF = null; }
-  if (HUELLA_PAPEL) { HOJA_PAPEL = claveHoja(leerRuta()); await cargarHuellas(); }
-  window.addEventListener('hashchange', () => { cerrarFicha({ sinFoco: true }); pintar(); });
+  if (HUELLA_PAPEL) HOJA_PAPEL = claveHoja(leerRuta());
+  if (HUELLA_PAPEL || leerRuta().hojas) await cargarHuellas();
+  window.addEventListener('hashchange', async () => {
+    cerrarFicha({ sinFoco: true });
+    if (leerRuta().hojas && !HUELLAS) await cargarHuellas();
+    pintar();
+  });
   document.fonts?.ready.then(anchoRegion);   // la fuente del título llega después
   pintar();
   const v = textoVersion();
-  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
+  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
   initAmpliarIA();
 }
 iniciar();

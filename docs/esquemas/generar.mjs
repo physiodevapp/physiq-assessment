@@ -34,14 +34,17 @@ const hoy = new Date().toLocaleDateString('es-ES');
 // Huellas de las hojas impresas (docs/esquemas/huellas.json): se actualizan al generar cada una;
 // tests/unit.js falla si no coinciden con los datos, y la guía las compara con la del papel.
 const RUTA_HUELLAS = join(DIR, 'huellas.json');
+// { clave: { huella, fecha } }: `fecha` (AAAA-MM-DD) es la del último cambio de contenido; regenerar
+// sin cambios la deja como estaba. La lee la página «Hojas para imprimir» de la guía.
 const HUELLAS = existsSync(RUTA_HUELLAS) ? JSON.parse(readFileSync(RUTA_HUELLAS, 'utf8')) : {};
+const HOY_ISO = new Date().toISOString().slice(0, 10);
 const IMPRESAS = Object.fromEntries(hojasImpresas().map(h => [h.clave, h]));
 // El HTML final de una hoja: si lleva QR, con su huella (la de su HTML canónico) y la fecha
 function rematarHoja(clave, html) {
   const h = IMPRESAS[clave];
   if (!h) return html.replaceAll('<!--FECHA-->', hoy).replaceAll('<!--QR-->', '').replaceAll('<!--HUELLA-->', '');
   const huella = huellaHoja(h.html());
-  HUELLAS[clave] = huella;
+  if (HUELLAS[clave]?.huella !== huella) HUELLAS[clave] = { huella, fecha: HOY_ISO };
   return rematar(html, { guia: h.guia, huella, fecha: hoy });
 }
 // ── Render ───────────────────────────────────────────────────────────────────

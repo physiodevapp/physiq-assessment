@@ -1,25 +1,94 @@
 {
-  "arbol-a4-cadera": "6cd94a01",
-  "arbol-a4-cervical": "dd890e5d",
-  "arbol-a4-codo": "0915277b",
-  "arbol-a4-hombro": "05ec850c",
-  "arbol-a4-lumbar": "637e05a3",
-  "arbol-a4-rodilla": "1af4e0fc",
-  "arbol-a4-tobillo_pie": "71edd949",
-  "confirmacion-cadera": "94f0c574",
-  "confirmacion-cervical": "f21b2488",
-  "confirmacion-codo": "66018c1f",
-  "confirmacion-hombro": "0b125c02",
-  "confirmacion-lumbar": "3e579245",
-  "confirmacion-rodilla": "ea1924b8",
-  "confirmacion-tobillo_pie": "6fd31862",
-  "cribado-cadera": "5b192a58",
-  "cribado-cervical": "2f845fe5",
-  "cribado-codo": "6c76f3b1",
-  "cribado-hombro": "44d14815",
-  "cribado-lumbar": "506a24d7",
-  "cribado-rodilla": "f7055f62",
-  "cribado-tobillo_pie": "b4a7f27d",
-  "tejidos-blandos": "b6e4d62f",
-  "tejidos-hueso": "fa1d6c27"
+  "arbol-a4-cadera": {
+    "huella": "6cd94a01",
+    "fecha": "2026-10-29"
+  },
+  "arbol-a4-cervical": {
+    "huella": "dd890e5d",
+    "fecha": "2026-10-29"
+  },
+  "arbol-a4-codo": {
+    "huella": "0915277b",
+    "fecha": "2026-10-29"
+  },
+  "arbol-a4-hombro": {
+    "huella": "05ec850c",
+    "fecha": "2026-10-29"
+  },
+  "arbol-a4-lumbar": {
+    "huella": "637e05a3",
+    "fecha": "2026-10-29"
+  },
+  "arbol-a4-rodilla": {
+    "huella": "1af4e0fc",
+    "fecha": "2026-10-29"
+  },
+  "arbol-a4-tobillo_pie": {
+    "huella": "71edd949",
+    "fecha": "2026-10-29"
+  },
+  "confirmacion-cadera": {
+    "huella": "94f0c574",
+    "fecha": "2026-10-29"
+  },
+  "confirmacion-cervical": {
+    "huella": "f21b2488",
+    "fecha": "2026-10-29"
+  },
+  "confirmacion-codo": {
+    "huella": "66018c1f",
+    "fecha": "2026-10-29"
+  },
+  "confirmacion-hombro": {
+    "huella": "0b125c02",
+    "fecha": "2026-10-29"
+  },
+  "confirmacion-lumbar": {
+    "huella": "3e579245",
+    "fecha": "2026-10-29"
+  },
+  "confirmacion-rodilla": {
+    "huella": "ea1924b8",
+    "fecha": "2026-10-29"
+  },
+  "confirmacion-tobillo_pie": {
+    "huella": "6fd31862",
+    "fecha": "2026-10-29"
+  },
+  "cribado-cadera": {
+    "huella": "5b192a58",
+    "fecha": "2026-10-29"
+  },
+  "cribado-cervical": {
+    "huella": "2f845fe5",
+    "fecha": "2026-10-29"
+  },
+  "cribado-codo": {
+    "huella": "6c76f3b1",
+    "fecha": "2026-10-29"
+  },
+  "cribado-hombro": {
+    "huella": "44d14815",
+    "fecha": "2026-10-29"
+  },
+  "cribado-lumbar": {
+    "huella": "506a24d7",
+    "fecha": "2026-10-29"
+  },
+  "cribado-rodilla": {
+    "huella": "f7055f62",
+    "fecha": "2026-10-29"
+  },
+  "cribado-tobillo_pie": {
+    "huella": "b4a7f27d",
+    "fecha": "2026-10-29"
+  },
+  "tejidos-blandos": {
+    "huella": "b6e4d62f",
+    "fecha": "2026-10-29"
+  },
+  "tejidos-hueso": {
+    "huella": "fa1d6c27",
+    "fecha": "2026-10-29"
+  }
 }

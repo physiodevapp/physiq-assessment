@@ -114,7 +114,8 @@ test('hojas impresas al día: docs/esquemas/huellas.json coincide con lo que imp
   const H = HOJAS;
   const guardadas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
   const actuales = H.huellasActuales();
-  const desfasadas = Object.keys(actuales).filter(k => guardadas[k] !== actuales[k]);
+  const desfasadas = Object.keys(actuales).filter(k => guardadas[k]?.huella !== actuales[k]);
+  for (const [k, v] of Object.entries(guardadas)) assert.match(v.fecha || '', /^\d{4}-\d{2}-\d{2}$/, `${k}: fecha del último cambio`);
   assert.deepEqual(desfasadas, [], `Hojas desfasadas: ${desfasadas.join(', ')}. Regenera con «node docs/esquemas/generar.mjs todas todos» (o la región y el tipo) y sube los PDF, los PNG y huellas.json`);
   assert.deepEqual(Object.keys(guardadas).sort(), Object.keys(actuales).sort(), 'huellas.json tiene hojas que ya no existen');
   // La huella no depende de la fecha ni del QR (marcadores), solo de lo impreso
