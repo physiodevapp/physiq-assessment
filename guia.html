@@ -99,6 +99,11 @@
   .guia-modo-tejidos .guia-region, .guia-modo-tejidos .guia-intro { display: none; }
   .guia-tejidos .tej-eje { top: var(--guia-nav-alto, 57px); background: var(--bg); }
   @media (max-width: 480px) { .guia-tejidos { margin: 0 -1rem; padding: 0 1rem; } }
+  /* Aviso de hoja impresa desfasada (?h= del QR distinto de huellas.json) */
+  .guia-papel { border: 1px solid var(--orange); background: color-mix(in srgb, var(--orange) 10%, var(--surface)); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; font-size: 0.82rem; line-height: 1.5; color: var(--text); }
+  .guia-papel b { display: block; color: var(--orange); margin-bottom: 2px; }
+  .guia-papel a { display: inline-block; margin-top: 4px; color: var(--accent); min-height: 32px; line-height: 32px; }
+  .guia-papel.ok { border-color: var(--border2); background: var(--surface2); color: var(--text2); padding: 6px 12px; }
   .guia-vacio { color: var(--text3); font-size: 0.85rem; }
   @media (max-width: 480px) { .guia-bloque { margin-left: -1rem; margin-right: -1rem; border-left: none; border-right: none; border-radius: 0; } }
 </style>

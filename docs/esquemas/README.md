@@ -18,6 +18,14 @@ Cribado, árbol A4 y confirmación llevan arriba a la derecha de su primera pág
 
 Las dos hojas de tiempos de tejido (`node docs/esquemas/generar.mjs tejidos`, también con `todas todos`) llevan el suyo («Notas, fuentes e IA») a `guia.html#tejidos/<blandos|hueso>`: la misma gráfica que el panel ⏱ de la app con los grupos de esa hoja, la nota de cada fila y, al tocar una barra, su ficha con las fuentes enlazadas (sin «Este paciente» ni «Hoy»: la guía no tiene datos del paciente). Qué grupo va en cada hoja lo dice `HOJAS_TEJIDO` (`lib/esquemas.js`); un test falla si un grupo nuevo de `data/tejidos.js` no está en ninguna. Cada hoja se ajusta a una página a la mayor escala que cabe (hoy, partes blandas 0,85 y hueso 1,02). **Al cambiar `data/tejidos.js`, regenerarlas.**
 
+## Hojas impresas al día (huella)
+
+Las hojas se imprimen y se reparten, así que cada una lleva una **huella** (8 caracteres, «v. 1f6efdeb» bajo el QR) del contenido que imprime: el HTML de la hoja con el QR, la huella y la fecha como marcadores, así que solo cambia si cambia lo impreso (un LR que se imprime redondeado igual, o un razonamiento que no sale en papel, no la cambian). El contenido de cada hoja lo construye `hojas.mjs`, sin navegador; `generar.mjs` solo lo maqueta e imprime.
+
+- **Ninguna hoja desfasada en `main`.** `generar.mjs` guarda la huella de cada hoja que genera en `huellas.json`, y `node tests/unit.js` («hojas impresas al día») falla si alguna no coincide con los datos de hoy, nombrando las hojas a regenerar. Como la CI pasa las pruebas en cada PR, un cambio de `data/` que afecte a una hoja no entra sin regenerarla.
+- **El papel ya impreso.** El QR lleva la huella (`guia.html?h=<huella>#<región>/<hoja>`). La guía la compara con `huellas.json` (desplegado con los PDF en `docs/esquemas/` del hub): si no coincide, en esa hoja avisa «Tu hoja impresa es de una versión anterior… manda lo que ves aquí» con el enlace al PDF actual para reimprimirla; si coincide, «✓ Tu hoja impresa está al día». En otra pestaña, sin `?h=` o si no carga `huellas.json`, nada.
+- **Tamaño del QR:** 100 px de base. Con la huella en la dirección tiene 49 módulos; aun a la escala mínima de una hoja queda impreso en unos 21 mm (0,43 mm por módulo). Las 23 hojas comprobadas con un lector (zxing) sobre el PNG a tamaño de pantalla.
+
 **Qué entra en la guía** (decisión del usuario, 2026-10): solo lo que explica o completa una hoja impresa. Las herramientas de la app que no tienen hoja se quedan en la app; la pestaña Irritabilidad es la excepción, porque el árbol y la 4b dependen de ese nivel y en papel no se puede calcular.
 
 ## Cómo se generan

@@ -9,6 +9,9 @@ const { REFERENCIAS } = await import('../../data/referencias.js');
 const { PHASE_DEFS, PHASE_NAV_IDS } = await import('../../data.js');
 const { leerImportacion } = await import('../../lib/valoracion-json.js');
 const PLAN = await import('../../plan.js');
+const ARBOL_NAV = await import('../../lib/arbol.js');
+const { arbolCompleto } = ARBOL_NAV;
+const { CIF_TREES } = await import('../../data.js');
 
 console.log('\nplan de tratamiento (fase 6)');
 
@@ -1413,9 +1416,8 @@ test('plan: cap. 9 de Peripheral (decisiones 60–63): hoja de registro común c
   assert.match(ui, /frecuencia: pt\.frecuencia \}\);/);
 });
 
-test('fase 6 sin hipótesis: arbolCompleto() distingue «falta el árbol» de «terminó sin ninguna», en las 7 regiones', async () => {
-  const { CIF_TREES } = await import('../../data.js');
-  const { arbolCompleto, resolveOptionTargets } = await import('../../lib/arbol.js');
+test('fase 6 sin hipótesis: arbolCompleto() distingue «falta el árbol» de «terminó sin ninguna», en las 7 regiones', () => {
+  const { resolveOptionTargets } = ARBOL_NAV;
   for (const r of VALID_REGIONS) {
     const tree = CIF_TREES[r];
     assert.equal(arbolCompleto(tree, {}), false, `${r}: vacío`);

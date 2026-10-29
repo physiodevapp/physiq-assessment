@@ -8,6 +8,9 @@ const ARBOL = await import('../../lib/arbol.js');
 const P4B = await import('../../phase4b.js');
 const P4 = await import('../../phase4.js');
 const { qrMatriz } = await import('../../docs/esquemas/qr.mjs');
+const { dolorInespecifico } = await import('../../lib/region.js');
+const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
+const HOJAS = await import('../../docs/esquemas/hojas.mjs');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
 
@@ -80,21 +83,19 @@ test('QR: tamaño por versión, buscadores en tres esquinas y siempre la misma m
   assert.throws(() => qrMatriz('x'.repeat(300)));
 });
 
-test('sin hipótesis al final del árbol: un solo nombre por región en la 4b, la fase 5, la guía y los esquemas', async () => {
-  const { dolorInespecifico } = await import('../../lib/region.js');
+test('sin hipótesis al final del árbol: un solo nombre por región en la 4b, la fase 5, la guía y los esquemas', () => {
   assert.equal(dolorInespecifico('lumbar'), 'dolor lumbar inespecífico');
   assert.equal(dolorInespecifico('cervical'), 'dolor cervical inespecífico');
   assert.equal(dolorInespecifico('hombro'), 'dolor de hombro inespecífico');
   assert.equal(dolorInespecifico('tobillo_pie'), 'dolor de tobillo y pie inespecífico');
-  for (const f of ['phase4b.js', 'app.js', 'guia.js', 'docs/esquemas/generar.mjs']) {
+  for (const f of ['phase4b.js', 'app.js', 'guia.js', 'docs/esquemas/hojas.mjs']) {
     const src = leer(...f.split('/'));
     assert.ok(src.includes('dolorInespecifico('), f);
     assert.ok(!/[Dd]olor (de )?\$\{[^}]*\} inespecífico/.test(src), `${f}: compone el nombre a mano`);
   }
 });
 
-test('hojas de tiempos de tejido: cada grupo de data/tejidos.js va en una sola de las dos hojas, y el QR abre su página en la guía', async () => {
-  const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
+test('hojas de tiempos de tejido: cada grupo de data/tejidos.js va en una sola de las dos hojas, y el QR abre su página en la guía', () => {
   const todos = Object.values(ESQ.HOJAS_TEJIDO).flatMap(h => h.grupos);
   assert.deepEqual([...todos].sort(), TIEMPOS_TEJIDO.grupos.map(g => g.id).sort(), 'un grupo nuevo necesita su hoja (lib/esquemas.js, HOJAS_TEJIDO)');
   assert.equal(new Set(todos).size, todos.length);
@@ -107,4 +108,22 @@ test('hojas de tiempos de tejido: cada grupo de data/tejidos.js va en una sola d
   }
   const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
   for (const f of ['lib/tejidos.js', 'data/']) assert.ok(deploy.includes(f), f);
+});
+
+test('hojas impresas al día: docs/esquemas/huellas.json coincide con lo que imprimirían los datos de hoy', () => {
+  const H = HOJAS;
+  const guardadas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
+  const actuales = H.huellasActuales();
+  const desfasadas = Object.keys(actuales).filter(k => guardadas[k] !== actuales[k]);
+  assert.deepEqual(desfasadas, [], `Hojas desfasadas: ${desfasadas.join(', ')}. Regenera con «node docs/esquemas/generar.mjs todas todos» (o la región y el tipo) y sube los PDF, los PNG y huellas.json`);
+  assert.deepEqual(Object.keys(guardadas).sort(), Object.keys(actuales).sort(), 'huellas.json tiene hojas que ya no existen');
+  // La huella no depende de la fecha ni del QR (marcadores), solo de lo impreso
+  const h = H.hojasImpresas()[0];
+  const final = H.rematar(h.html(), { guia: h.guia, huella: actuales[h.clave], fecha: '1/1/2000' });
+  assert.ok(!final.includes('<!--') || !/<!--(QR|HUELLA|FECHA)-->/.test(final));
+  assert.ok(final.includes(`v. ${actuales[h.clave]}`));
+  assert.equal(ESQ.urlGuia('lumbar', 'cribado', 'abc12345'), `${ESQ.URL_GUIA}?h=abc12345#lumbar/cribado`);
+  assert.equal(ESQ.urlTejidos('hueso', 'abc12345'), `${ESQ.URL_GUIA}?h=abc12345#tejidos/hueso`);
+  const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
+  assert.ok(deploy.includes('docs/esquemas/huellas.json') && deploy.includes('docs/esquemas/*.pdf'), 'huellas y PDF se despliegan para la guía');
 });

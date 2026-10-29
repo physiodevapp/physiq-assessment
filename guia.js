@@ -257,6 +257,30 @@ document.addEventListener('click', e => {
   document.querySelector(`.guia-tejidos .tej-filtro-btn[data-grupo="${b.dataset.grupo}"]`)?.focus({ preventScroll: true });
 });
 
+// ── ¿Está al día la hoja impresa? ───────────────────────────────────────────
+// El QR de cada hoja lleva su huella (?h=, docs/esquemas/hojas.mjs). Si no coincide con la
+// actual (docs/esquemas/huellas.json, desplegado en la misma ruta con los PDF), la guía avisa y enlaza el PDF
+// actual para reimprimirla. Solo en la hoja de la que vino el QR; sin ?h= o sin huellas, nada.
+const HUELLA_PAPEL = new URLSearchParams(location.search).get('h') || '';
+let HOJA_PAPEL = '', HUELLAS = null;
+function claveHoja({ tejidos, region, hoja }) {
+  if (tejidos) return `tejidos-${hoja}`;
+  return hoja === 'arbol' ? `arbol-a4-${region}` : hoja === 'irritabilidad' ? '' : `${hoja}-${region}`;
+}
+async function cargarHuellas() {
+  try {
+    const r = await fetch('./docs/esquemas/huellas.json', { cache: 'no-store' });
+    if (r.ok) HUELLAS = await r.json();
+  } catch { /* sin red o sin archivo: sin aviso */ }
+}
+function avisoHojaHTML(clave) {
+  if (!HUELLA_PAPEL || !HUELLAS || !clave || clave !== HOJA_PAPEL || !HUELLAS[clave]) return '';
+  if (HUELLAS[clave] === HUELLA_PAPEL) return `<div class="guia-papel ok" id="guiaPapel">✓ Tu hoja impresa está al día (v. ${esc(HUELLA_PAPEL)}).</div>`;
+  return `<div class="guia-papel" id="guiaPapel"><b>Tu hoja impresa es de una versión anterior</b>
+    La numeración o el contenido pueden haber cambiado desde que se imprimió (v. ${esc(HUELLA_PAPEL)}; la actual es v. ${esc(HUELLAS[clave])}): manda lo que ves aquí.
+    <a href="./docs/esquemas/${clave}.pdf" target="_blank" rel="noopener">Descargar la hoja actual (PDF) para reimprimirla →</a></div>`;
+}
+
 const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion, irritabilidad: htmlIrritabilidad };
 
 // ── Navegación ──────────────────────────────────────────────────────────────
@@ -285,7 +309,7 @@ function pintar({ sinScroll = false } = {}) {
     document.getElementById('guiaTitulo').textContent = 'Tiempos de recuperación';
     document.getElementById('guiaHojas').innerHTML = Object.entries(HOJAS_TEJIDO)
       .map(([k, h]) => `<a href="#tejidos/${k}"${k === hoja ? ' aria-current="page"' : ''}>${h.corto}</a>`).join('');
-    document.getElementById('guiaContenido').innerHTML = htmlTejidos(hoja);
+    document.getElementById('guiaContenido').innerHTML = avisoHojaHTML(claveHoja(leerRuta())) + htmlTejidos(hoja);
     // El eje de tiempo, fijo justo debajo de las pestañas
     document.documentElement.style.setProperty('--guia-nav-alto', `${document.querySelector('.guia-nav').offsetHeight}px`);
     document.title = `Tiempos de recuperación · ${HOJAS_TEJIDO[hoja].titulo} · Guía de consulta`;
@@ -296,7 +320,7 @@ function pintar({ sinScroll = false } = {}) {
   anchoRegion();
   document.getElementById('guiaHojas').innerHTML = Object.entries(HOJAS_GUIA)
     .map(([k, n]) => `<a href="#${region}/${k}"${k === hoja ? ' aria-current="page"' : ''}>${n}</a>`).join('');
-  document.getElementById('guiaContenido').innerHTML = PINTAR[hoja](region);
+  document.getElementById('guiaContenido').innerHTML = avisoHojaHTML(claveHoja({ region, hoja })) + PINTAR[hoja](region);
   document.title = `${HOJAS_GUIA[hoja]} · ${nombreRegion(region)} · Guía de consulta`;
   const destino = elemento && document.getElementById(elemento);
   if (destino) {
@@ -312,6 +336,7 @@ async function iniciar() {
   sel.addEventListener('change', () => { const r = leerRuta(); location.hash = `${sel.value}/${r.tejidos ? 'cribado' : r.hoja}`; });
   // Las fuentes se enlazan con el registro; si no carga, se pintan sin enlace
   try { REF = await registroReferencias(); } catch { REF = null; }
+  if (HUELLA_PAPEL) { HOJA_PAPEL = claveHoja(leerRuta()); await cargarHuellas(); }
   window.addEventListener('hashchange', () => { cerrarFicha({ sinFoco: true }); pintar(); });
   document.fonts?.ready.then(anchoRegion);   // la fuente del título llega después
   pintar();
