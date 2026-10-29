@@ -20,6 +20,7 @@ const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
 const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
 const { qrSVG } = await import('./qr.mjs');
+const { dolorInespecifico } = await import('../../lib/region.js');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -383,7 +384,7 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
         <div><i style="background:#f1e9ff;border-color:#7c4ddb"></i>Hipótesis que activa la respuesta</div>
         <div><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación médica (el recorrido sigue)</div>
         <div><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</div></div>
-      <div style="border:1.5px dashed #94a3b8; background:#f8fafc;"><b>Al terminar sin ninguna hipótesis activa</b><br>La app propone trabajar con «dolor de ${NOMBRES[region].toLowerCase()} inespecífico», revisar los factores psicosociales (fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial es alto, sugiere considerar también sensibilización central.</div>
+      <div style="border:1.5px dashed #94a3b8; background:#f8fafc;"><b>Al terminar sin ninguna hipótesis activa</b><br>La app propone trabajar con «${dolorInespecifico(region)}», revisar los factores psicosociales (fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial es alto, sugiere considerar también sensibilización central.</div>
       <div style="border:1.5px solid #64748b; background:#f1f5f9;"><b>Fase 4b · confirmar</b><br>Cada hipótesis activa se confirma o descarta con sus tests: ver el esquema de confirmación de ${NOMBRES[region].toLowerCase()}.<div class="pie">Generado desde los datos de la app el ${hoy}.</div></div>
     </div>
     <div class="final-a4" id="final-a4">
@@ -391,7 +392,7 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
       <span class="ley"><i style="background:#f1e9ff;border-color:#7c4ddb"></i>Hipótesis que activa</span>
       <span class="ley"><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación (el recorrido sigue)</span>
       <span class="ley"><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</span>
-      <span class="txt"><b>Sin ninguna hipótesis al final:</b> dolor ${NOMBRES[region].toLowerCase()} inespecífico; revisar psicosociales y respuestas. <b>Fase 4b:</b> confirmar cada hipótesis con sus tests.</span>
+      <span class="txt"><b>Sin ninguna hipótesis al final:</b> ${dolorInespecifico(region)}; revisar psicosociales y respuestas. <b>Fase 4b:</b> confirmar cada hipótesis con sus tests.</span>
       <span class="pie">Generado desde los datos de la app el ${hoy}.</span>
     </div>
   </div>

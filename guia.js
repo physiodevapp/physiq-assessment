@@ -10,7 +10,7 @@ import { nivelMatriz, NOMBRE_NIVEL } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
 import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA } from './lib/esquemas.js';
-import { nombreRegion } from './lib/region.js';
+import { nombreRegion, dolorInespecifico } from './lib/region.js';
 import { textoVersion } from './lib/version.js';
 import './ficha.js';   // tarjeta de cada cita al tocarla
 
@@ -95,7 +95,14 @@ function htmlArbol(region) {
       }).join('');
       return `<section class="guia-bloque guia-item" id="paso-${st.id}"><h3><span class="guia-num">${esc(lab(st.id))}</span>${esc(st.question)}</h3>
         <ul class="guia-ops">${ops}</ul>${porQue(ctxArbol(region, st.iaPregunta || st.question), cuerpo)}</section>`;
-    }).join('')}`;
+    }).join('')}
+    <div class="guia-sinhip" id="sin-hipotesis"><b>Si el árbol termina sin ninguna hipótesis</b>
+      <p>No hay un patrón dominante claro: puede ser una presentación atípica o un dolor musculoesquelético inespecífico. La app propone:</p>
+      <ul><li>Trabajar con la hipótesis de trabajo «${esc(dolorInespecifico(region))}».</li>
+        <li>Revisar los factores psicosociales (fase 1 y SINSS).</li>
+        <li>Volver al árbol y reconsiderar las respuestas.</li>
+        <li>Si el cuadro es crónico (más de 3 meses) y el riesgo psicosocial es alto, considerar también sensibilización central como hipótesis complementaria.</li></ul>
+      <p>Es una regla de la app, sin fuente citada. La fase 4b no tiene tests que hacer en ese caso.</p></div>`;
 }
 
 // ── Confirmación (fase 4b) ──────────────────────────────────────────────────

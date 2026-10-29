@@ -6343,7 +6343,8 @@ async function checkGuia(browser, errors) {
     await page.waitForSelector('#paso-lu_step1');
     r.arbol = await page.evaluate(async () => {
       const { CIF_TREES } = await import('./data.js');
-      return document.querySelectorAll('[id^="paso-"]').length === CIF_TREES.lumbar.steps.length;
+      return document.querySelectorAll('[id^="paso-"]').length === CIF_TREES.lumbar.steps.length
+        && /«dolor lumbar inespecífico»/.test(document.getElementById('sin-hipotesis')?.textContent || '');
     });
     await page.click('.guia-hojas a:has-text("Confirmación")');
     await page.waitForSelector('[id^="test-"]');

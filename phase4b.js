@@ -19,6 +19,7 @@ export {
   enlacesAnatomia, anatomiaLineaHTML, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML,
 };
 import { citasHTML, citasEnTexto, registroReferencias, enlaceCita } from './lib/citas.js';
+import { dolorInespecifico } from './lib/region.js';
 import { HM, hmActiva } from './lib/hipermovilidad.js';
 import { DS, dsActiva } from './lib/disautonomia.js';
 import { LES, lesDiagnosticado } from './lib/lupus.js';
@@ -126,7 +127,7 @@ export function buildHypothesisCards() {
 
   const activas = hipotesisActivas();
   if (activas.length === 0) {
-    const regionLabel = state.region ? state.region.charAt(0).toUpperCase() + state.region.slice(1) : 'la región';
+    const dolor = dolorInespecifico(state.region);
     const showCS = state.cronologia === 'Crónico (>3 meses)' && state.riesgoPsico === 'Alto';
     container.innerHTML = `
       <div class="alert alert-warning" style="flex-direction:column; align-items:flex-start; gap:10px;">
@@ -140,7 +141,7 @@ export function buildHypothesisCards() {
         <div style="font-size:0.82rem; color:var(--text2); line-height:1.8;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--orange); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Consideraciones</div>
           <div>· Revise si hay factores psicosociales relevantes (evaluados en Fase 1 y SINSS)</div>
-          <div>· Valore iniciar con hipótesis de trabajo: <em>Dolor de ${regionLabel} inespecífico</em></div>
+          <div>· Valore iniciar con hipótesis de trabajo: <em>${dolor.charAt(0).toUpperCase() + dolor.slice(1)}</em></div>
           <div>· Regrese al Algoritmo CIF y reconsidere las respuestas seleccionadas</div>
           ${showCS ? `<div style="margin-top:6px; padding-top:6px; border-top:1px solid var(--border2);">· Dado el perfil crónico y el riesgo psicosocial elevado, considere también <em>sensibilización central</em> como hipótesis complementaria</div>` : ''}
         </div>

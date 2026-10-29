@@ -79,3 +79,16 @@ test('QR: tamaño por versión, buscadores en tres esquinas y siempre la misma m
   }
   assert.throws(() => qrMatriz('x'.repeat(300)));
 });
+
+test('sin hipótesis al final del árbol: un solo nombre por región en la 4b, la fase 5, la guía y los esquemas', async () => {
+  const { dolorInespecifico } = await import('../../lib/region.js');
+  assert.equal(dolorInespecifico('lumbar'), 'dolor lumbar inespecífico');
+  assert.equal(dolorInespecifico('cervical'), 'dolor cervical inespecífico');
+  assert.equal(dolorInespecifico('hombro'), 'dolor de hombro inespecífico');
+  assert.equal(dolorInespecifico('tobillo_pie'), 'dolor de tobillo y pie inespecífico');
+  for (const f of ['phase4b.js', 'app.js', 'guia.js', 'docs/esquemas/generar.mjs']) {
+    const src = leer(...f.split('/'));
+    assert.ok(src.includes('dolorInespecifico('), f);
+    assert.ok(!/[Dd]olor (de )?\$\{[^}]*\} inespecífico/.test(src), `${f}: compone el nombre a mano`);
+  }
+});
