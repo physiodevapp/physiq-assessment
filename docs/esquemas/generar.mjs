@@ -16,6 +16,8 @@
 //   → farmacos: qué vigilar en el plan por familia (los avisos de la fase 6), dos A4 como máximo.
 //   → irritabilidad: la matriz de la fase 3 para marcar en papel, la regla y qué implica cada nivel.
 //   → ejercicio-paciente: para dar al paciente, las frases «Para explicárselo al paciente» de cada bloque, sin QR.
+//   node docs/esquemas/generar.mjs cuadernos → cuaderno-completo y cuaderno-<región> (a doble cara, de
+//     los PDF ya generados; necesita pdfunite y pdfinfo, de poppler-utils). También con «todas todos».
 //   «sueltas» = todas las que no son de una región.
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
 // importa lrEfectiva y testPuntua de lib/tests-4b.js (las mismas que usa phase4b.js).
@@ -24,11 +26,14 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import '../../tests/dom-shim.mjs';
 
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 
 const { CIF_TREES } = await import('../../data.js');
-const { HOJAS_TEJIDO } = await import('../../lib/esquemas.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar } = await import('./hojas.mjs');
+const { HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
+const { nombreRegion } = await import('../../lib/region.js');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -127,5 +132,54 @@ for (const [grupo, hojas] of Object.entries(SUELTAS)) {
     await page.close();
   }
 }
+// ── Cuadernos de consulta a doble cara (lib/esquemas.js, definicionCuadernos) ──────────────
+// Portada con índice (1 página) + blanca, y cada sección desde página impar. Une los PDF ya
+// generados con pdfunite (poppler-utils, como Playwright: herramienta del generador, no de la app)
+// y cuenta sus páginas con pdfinfo. cuadernos.json guarda las versiones de sus hojas y la fecha del
+// último cambio: tests/unit.js falla si una hoja cambió y el cuaderno no se regeneró.
+const RUTA_CUADERNOS = join(DIR, 'cuadernos.json');
+if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
+  const CUADERNOS = existsSync(RUTA_CUADERNOS) ? JSON.parse(readFileSync(RUTA_CUADERNOS, 'utf8')) : {};
+  const tmp = mkdtempSync(join(tmpdir(), 'cuadernos-'));
+  const pdfDe = async (html, ruta) => {
+    const page = await browser.newPage({ viewport: { width: 794, height: 1123 } });
+    await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${html}</body></html>`);
+    await page.pdf({ path: ruta, format: 'A4', printBackground: true, preferCSSPageSize: true });
+    await page.close();
+  };
+  const paginas = f => +execFileSync('pdfinfo', [f]).toString().match(/^Pages:\s+(\d+)/m)[1];
+  const blanca = join(tmp, 'blanca.pdf');
+  await pdfDe(HTML_PAGINA_BLANCA, blanca);
+  const ISO_A_CORTA = iso => { const [a, m, d] = iso.split('-').map(Number); return `${d}/${m}/${a}`; };
+  for (const lib of definicionCuadernos(Object.keys(CIF_TREES), nombreRegion)) {
+    const hojas = Object.fromEntries(lib.secciones.flatMap(sec => sec.hojas.map(k => [k, HUELLAS[k]?.huella])));
+    const falta = Object.entries(hojas).filter(([, v]) => !v).map(([k]) => k);
+    if (falta.length) throw new Error(`${lib.clave}: faltan hojas sin generar (${falta.join(', ')})`);
+    const fecha = lib.secciones.flatMap(sec => sec.hojas).map(k => HUELLAS[k].fecha).sort().at(-1);
+    // Orden de páginas: portada (1), blanca (2), y cada sección desde impar
+    const archivos = ['PORTADA', blanca];
+    let pag = 2;
+    const secciones = lib.secciones.map(sec => {
+      if (pag % 2 === 1) { archivos.push(blanca); pag++; }
+      const filas = sec.hojas.map(k => {
+        const f = join(DIR, `${k}.pdf`), n = paginas(f), fila = { nombre: nombreHojaImpresa(k, nombreRegion), huella: HUELLAS[k].huella, pagina: pag + 1 };
+        archivos.push(f); pag += n;
+        return fila;
+      });
+      return { titulo: sec.titulo, filas };
+    });
+    if (pag % 2 === 1) { archivos.push(blanca); pag++; }   // termina en par: el siguiente cuaderno, en otra hoja
+    const huella = huellaCuaderno(hojas);
+    const portada = join(tmp, `${lib.clave}-portada.pdf`);
+    await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, secciones, fecha: ISO_A_CORTA(fecha), huella }), `${URL_GUIA}#hojas`), portada);
+    if (paginas(portada) !== 1) throw new Error(`${lib.clave}: la portada no cabe en una página`);
+    execFileSync('pdfunite', [...archivos.map(a => a === 'PORTADA' ? portada : a), join(DIR, `${lib.clave}.pdf`)]);
+    CUADERNOS[lib.clave] = { huella, fecha, paginas: pag, hojas };
+    console.log(`${lib.clave}: ${pag} páginas (${pag / 2} hojas de papel) · v. ${huella}`);
+  }
+  rmSync(tmp, { recursive: true, force: true });
+  writeFileSync(RUTA_CUADERNOS, JSON.stringify(Object.fromEntries(Object.entries(CUADERNOS).sort()), null, 2) + '\n');
+}
+
 await browser.close();
 writeFileSync(RUTA_HUELLAS, JSON.stringify(Object.fromEntries(Object.entries(HUELLAS).sort()), null, 2) + '\n');
