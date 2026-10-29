@@ -32,7 +32,7 @@ jobs:
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
           # Hojas impresas (docs/esquemas): su huella, para que la guía avise si un papel está desfasado, y los PDF para reimprimirlas
           mkdir -p physiq-hub/assessment/docs/esquemas
-          cp docs/esquemas/huellas.json docs/esquemas/libretos.json docs/esquemas/*.pdf physiq-hub/assessment/docs/esquemas/
+          cp docs/esquemas/huellas.json docs/esquemas/cuadernos.json docs/esquemas/*.pdf physiq-hub/assessment/docs/esquemas/
           cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js lib/posquirurgico.js lib/hipermovilidad.js lib/disautonomia.js lib/lupus.js lib/mastocitos.js lib/osteoporosis.js lib/embarazo.js lib/anticoagulado.js lib/condiciones.js lib/farmacos.js lib/ejercicio.js lib/farmacos-paciente.js lib/version.js lib/region.js lib/resumenes.js lib/revision-informe.js lib/zip.js lib/paquete-revision.js lib/pauta.js lib/reglas-informe.js lib/tejidos.js lib/plan-tratamiento.js lib/sintomas.js lib/pistas.js lib/cuestionarios.js lib/irritabilidad.js lib/citas.js lib/plan-ia.js lib/revision-plan.js lib/turnstile.js lib/silueta.js lib/modo-guia.js lib/tests-4b.js lib/arbol.js lib/esquemas.js physiq-hub/assessment/lib/
 
       - name: Stamp deployed version

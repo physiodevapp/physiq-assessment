@@ -16,7 +16,7 @@
 //   → farmacos: qué vigilar en el plan por familia (los avisos de la fase 6), dos A4 como máximo.
 //   → irritabilidad: la matriz de la fase 3 para marcar en papel, la regla y qué implica cada nivel.
 //   → ejercicio-paciente: para dar al paciente, las frases «Para explicárselo al paciente» de cada bloque, sin QR.
-//   node docs/esquemas/generar.mjs libretos → libreto-completo y libreto-<región> (a doble cara, de
+//   node docs/esquemas/generar.mjs cuadernos → cuaderno-completo y cuaderno-<región> (a doble cara, de
 //     los PDF ya generados; necesita pdfunite y pdfinfo, de poppler-utils). También con «todas todos».
 //   «sueltas» = todas las que no son de una región.
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
@@ -31,9 +31,9 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 
 const { CIF_TREES } = await import('../../data.js');
-const { HOJAS_TEJIDO, definicionLibretos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
+const { HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaLibreto, HTML_PAGINA_BLANCA, rematarPortada, huellaLibreto } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -132,15 +132,15 @@ for (const [grupo, hojas] of Object.entries(SUELTAS)) {
     await page.close();
   }
 }
-// ── Libretos a doble cara (lib/esquemas.js, definicionLibretos) ──────────────
+// ── Cuadernos de consulta a doble cara (lib/esquemas.js, definicionCuadernos) ──────────────
 // Portada con índice (1 página) + blanca, y cada sección desde página impar. Une los PDF ya
 // generados con pdfunite (poppler-utils, como Playwright: herramienta del generador, no de la app)
-// y cuenta sus páginas con pdfinfo. libretos.json guarda las versiones de sus hojas y la fecha del
-// último cambio: tests/unit.js falla si una hoja cambió y el libreto no se regeneró.
-const RUTA_LIBRETOS = join(DIR, 'libretos.json');
-if (regArg === 'libretos' || (regArg === 'todas' && tipoArg === 'todos')) {
-  const LIBRETOS = existsSync(RUTA_LIBRETOS) ? JSON.parse(readFileSync(RUTA_LIBRETOS, 'utf8')) : {};
-  const tmp = mkdtempSync(join(tmpdir(), 'libretos-'));
+// y cuenta sus páginas con pdfinfo. cuadernos.json guarda las versiones de sus hojas y la fecha del
+// último cambio: tests/unit.js falla si una hoja cambió y el cuaderno no se regeneró.
+const RUTA_CUADERNOS = join(DIR, 'cuadernos.json');
+if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
+  const CUADERNOS = existsSync(RUTA_CUADERNOS) ? JSON.parse(readFileSync(RUTA_CUADERNOS, 'utf8')) : {};
+  const tmp = mkdtempSync(join(tmpdir(), 'cuadernos-'));
   const pdfDe = async (html, ruta) => {
     const page = await browser.newPage({ viewport: { width: 794, height: 1123 } });
     await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${html}</body></html>`);
@@ -151,7 +151,7 @@ if (regArg === 'libretos' || (regArg === 'todas' && tipoArg === 'todos')) {
   const blanca = join(tmp, 'blanca.pdf');
   await pdfDe(HTML_PAGINA_BLANCA, blanca);
   const ISO_A_CORTA = iso => { const [a, m, d] = iso.split('-').map(Number); return `${d}/${m}/${a}`; };
-  for (const lib of definicionLibretos(Object.keys(CIF_TREES), nombreRegion)) {
+  for (const lib of definicionCuadernos(Object.keys(CIF_TREES), nombreRegion)) {
     const hojas = Object.fromEntries(lib.secciones.flatMap(sec => sec.hojas.map(k => [k, HUELLAS[k]?.huella])));
     const falta = Object.entries(hojas).filter(([, v]) => !v).map(([k]) => k);
     if (falta.length) throw new Error(`${lib.clave}: faltan hojas sin generar (${falta.join(', ')})`);
@@ -168,17 +168,17 @@ if (regArg === 'libretos' || (regArg === 'todas' && tipoArg === 'todos')) {
       });
       return { titulo: sec.titulo, filas };
     });
-    if (pag % 2 === 1) { archivos.push(blanca); pag++; }   // termina en par: el siguiente libreto, en otra hoja
-    const huella = huellaLibreto(hojas);
+    if (pag % 2 === 1) { archivos.push(blanca); pag++; }   // termina en par: el siguiente cuaderno, en otra hoja
+    const huella = huellaCuaderno(hojas);
     const portada = join(tmp, `${lib.clave}-portada.pdf`);
-    await pdfDe(rematarPortada(htmlPortadaLibreto({ titulo: lib.titulo, secciones, fecha: ISO_A_CORTA(fecha), huella }), `${URL_GUIA}#hojas`), portada);
+    await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, secciones, fecha: ISO_A_CORTA(fecha), huella }), `${URL_GUIA}#hojas`), portada);
     if (paginas(portada) !== 1) throw new Error(`${lib.clave}: la portada no cabe en una página`);
     execFileSync('pdfunite', [...archivos.map(a => a === 'PORTADA' ? portada : a), join(DIR, `${lib.clave}.pdf`)]);
-    LIBRETOS[lib.clave] = { huella, fecha, paginas: pag, hojas };
+    CUADERNOS[lib.clave] = { huella, fecha, paginas: pag, hojas };
     console.log(`${lib.clave}: ${pag} páginas (${pag / 2} hojas de papel) · v. ${huella}`);
   }
   rmSync(tmp, { recursive: true, force: true });
-  writeFileSync(RUTA_LIBRETOS, JSON.stringify(Object.fromEntries(Object.entries(LIBRETOS).sort()), null, 2) + '\n');
+  writeFileSync(RUTA_CUADERNOS, JSON.stringify(Object.fromEntries(Object.entries(CUADERNOS).sort()), null, 2) + '\n');
 }
 
 await browser.close();

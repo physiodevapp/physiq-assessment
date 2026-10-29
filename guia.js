@@ -10,7 +10,7 @@ import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/
 import { nivelMatriz, NOMBRE_NIVEL, reglaIrritabilidad } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
-import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido, definicionLibretos } from './lib/esquemas.js';
+import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido, definicionCuadernos } from './lib/esquemas.js';
 import { TIEMPOS_TEJIDO } from './data/tejidos.js';
 import { condicionesHTML } from './lib/condiciones.js';
 import { farmacosHTML, textoCima } from './lib/farmacos.js';
@@ -289,16 +289,16 @@ function claveHoja({ tejidos, suelta, region, hoja }) {
   if (tejidos) return `tejidos-${hoja}`;
   return hoja === 'arbol' ? `arbol-a4-${region}` : hoja === 'irritabilidad' ? '' : `${hoja}-${region}`;
 }
-let LIBRETOS = null;
+let CUADERNOS = null;
 async function cargarHuellas() {
   try {
     const r = await fetch('./docs/esquemas/huellas.json', { cache: 'no-store' });
     if (r.ok) HUELLAS = await r.json();
   } catch { /* sin red o sin archivo: sin aviso */ }
   try {
-    const r = await fetch('./docs/esquemas/libretos.json', { cache: 'no-store' });
-    if (r.ok) LIBRETOS = await r.json();
-  } catch { /* sin libretos: la lista de hojas sigue */ }
+    const r = await fetch('./docs/esquemas/cuadernos.json', { cache: 'no-store' });
+    if (r.ok) CUADERNOS = await r.json();
+  } catch { /* sin cuadernos: la lista de hojas sigue */ }
 }
 function avisoHojaHTML(clave) {
   if (!HUELLA_PAPEL || !HUELLAS || !clave || clave !== HOJA_PAPEL || !HUELLAS[clave]) return '';
@@ -330,16 +330,16 @@ function htmlHojas() {
   };
   const grupo = (titulo, filas) => `<section class="guia-bloque"><h3>${esc(titulo)}</h3><ul class="guia-hojas-lista">${filas.join('')}</ul></section>`;
   const recientes = Object.values(HUELLAS).filter(h => (hoy - new Date(`${h.fecha}T12:00:00`).getTime()) / 864e5 <= DIAS_RECIENTE).length;
-  // Libretos a doble cara (completo y por región), arriba: es lo que se imprime de una vez
-  const libretos = LIBRETOS ? definicionLibretos(REGIONES, nombreRegion).filter(l => LIBRETOS[l.clave]).map(l => {
-    const d = LIBRETOS[l.clave];
+  // Cuadernos de consulta a doble cara (completo y por región), arriba: es lo que se imprime de una vez
+  const cuadernos = CUADERNOS ? definicionCuadernos(REGIONES, nombreRegion).filter(l => CUADERNOS[l.clave]).map(l => {
+    const d = CUADERNOS[l.clave];
     const reciente = (hoy - new Date(`${d.fecha}T12:00:00`).getTime()) / 864e5 <= DIAS_RECIENTE;
     return `<li class="guia-hoja${reciente ? ' reciente' : ''}"><div class="guia-hoja-txt"><b>${esc(l.titulo)}</b>
       <span>${d.paginas} páginas (${d.paginas / 2} hojas de papel)</span> · <span class="guia-hoja-v">v. ${esc(d.huella)}</span> · <span>cambió el ${esc(fechaLarga(d.fecha))}</span>${reciente ? ' <span class="guia-hoja-nueva">Reciente</span>' : ''}</div>
       <a href="./docs/esquemas/${l.clave}.pdf" target="_blank" rel="noopener" aria-label="Descargar ${esc(l.titulo)} en PDF">PDF ↗</a></li>`;
   }) : [];
   return `<p class="guia-nota">Cada hoja impresa lleva su versión bajo el QR («v. …»). Si no coincide con la de esta lista, la hoja ha cambiado: descarga el PDF y reimprímela. «Reciente» = cambió en los últimos ${DIAS_RECIENTE} días (${recientes} de ${Object.keys(HUELLAS).length}).</p>
-    ${libretos.length ? `<section class="guia-bloque"><h3>Libretos para imprimir a doble cara</h3><p class="guia-nota">Todas las hojas de consulta en un PDF, o las de una región con las generales. Cada sección empieza en página impar; la portada lleva el índice con la versión de cada hoja. La hoja del paciente va aparte.</p><ul class="guia-hojas-lista">${libretos.join('')}</ul></section>` : ''}
+    ${cuadernos.length ? `<section class="guia-bloque"><h3>Cuadernos de consulta para imprimir a doble cara</h3><p class="guia-nota">Todas las hojas de consulta en un PDF, o las de una región con las generales. Cada sección empieza en página impar; la portada lleva el índice con la versión de cada hoja. La hoja del paciente va aparte.</p><ul class="guia-hojas-lista">${cuadernos.join('')}</ul></section>` : ''}
     ${REGIONES.map(r => grupo(nombreRegion(r), Object.entries(NOMBRE_HOJA).map(([t, n]) => fila(`${t}-${r}`, n)))).join('')}
     ${grupo('Tiempos de recuperación de tejidos', Object.entries(HOJAS_TEJIDO).map(([k, h]) => fila(`tejidos-${k}`, h.titulo)))}
     ${grupo('Otras hojas', Object.entries(SUELTAS).map(([k, h]) => fila(k, h.titulo)))}

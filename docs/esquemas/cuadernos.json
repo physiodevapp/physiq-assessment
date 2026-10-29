@@ -1,5 +1,5 @@
 {
-  "libreto-cadera": {
+  "cuaderno-cadera": {
     "huella": "c4889aa2",
     "fecha": "2026-10-29",
     "paginas": 14,
@@ -14,7 +14,7 @@
       "tejidos-hueso": "b036bf04"
     }
   },
-  "libreto-cervical": {
+  "cuaderno-cervical": {
     "huella": "32734766",
     "fecha": "2026-10-29",
     "paginas": 14,
@@ -29,7 +29,7 @@
       "tejidos-hueso": "b036bf04"
     }
   },
-  "libreto-codo": {
+  "cuaderno-codo": {
     "huella": "37f1d975",
     "fecha": "2026-10-29",
     "paginas": 14,
@@ -44,7 +44,7 @@
       "tejidos-hueso": "b036bf04"
     }
   },
-  "libreto-completo": {
+  "cuaderno-completo": {
     "huella": "8840c1e2",
     "fecha": "2026-10-29",
     "paginas": 46,
@@ -77,7 +77,7 @@
       "confirmacion-tobillo_pie": "6f1c5457"
     }
   },
-  "libreto-hombro": {
+  "cuaderno-hombro": {
     "huella": "63ccc072",
     "fecha": "2026-10-29",
     "paginas": 12,
@@ -92,7 +92,7 @@
       "tejidos-hueso": "b036bf04"
     }
   },
-  "libreto-lumbar": {
+  "cuaderno-lumbar": {
     "huella": "d245c6c5",
     "fecha": "2026-10-29",
     "paginas": 12,
@@ -107,7 +107,7 @@
       "tejidos-hueso": "b036bf04"
     }
   },
-  "libreto-rodilla": {
+  "cuaderno-rodilla": {
     "huella": "bcd72b29",
     "fecha": "2026-10-29",
     "paginas": 14,
@@ -122,7 +122,7 @@
       "tejidos-hueso": "b036bf04"
     }
   },
-  "libreto-tobillo_pie": {
+  "cuaderno-tobillo_pie": {
     "huella": "3dbf3211",
     "fecha": "2026-10-29",
     "paginas": 14,

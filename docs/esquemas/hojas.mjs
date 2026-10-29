@@ -872,10 +872,10 @@ export function htmlEjercicioPaciente() {
   </script>`;
 }
 
-// ── Libretos (portada con índice y página en blanco; los monta generar.mjs) ──
+// ── Cuadernos (portada con índice y página en blanco; los monta generar.mjs) ──
 // `secciones`: [{ titulo, filas: [{ nombre, huella, pagina }] }]. Una página; el QR lleva a
 // «Hojas para imprimir», donde se comprueba la versión de cada hoja.
-export function htmlPortadaLibreto({ titulo, secciones, fecha, huella }) {
+export function htmlPortadaCuaderno({ titulo, secciones, fecha, huella }) {
   const filas = secciones.map(sec => `<tr class="sec"><td colspan="3">${esc(sec.titulo)}</td></tr>`
     + sec.filas.map(f => `<tr><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.pagina}</td></tr>`).join('')).join('');
   return `<style>${CSS}${CSS_UNA}
@@ -890,7 +890,7 @@ export function htmlPortadaLibreto({ titulo, secciones, fecha, huella }) {
   </style>
   <div class="pagina">
     <div class="cab"><div><div class="marca">PhysiQ-Assessment · hojas de consulta</div><h1>${esc(titulo)}</h1>
-      <div class="nota">Para imprimir <b>a doble cara</b>: cada sección empieza en página impar (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice y da su PDF actual.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · libreto v. ${esc(huella)}</div></div>
+      <div class="nota">Para imprimir <b>a doble cara</b>: cada sección empieza en página impar (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice y da su PDF actual.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
       <div class="qr-guia">${QR}<span>Hojas para imprimir</span></div></div>
     <div class="cuerpo"><table>${filas}</table></div>
     <div class="pie-fijo">${AUTORIA_HTML}</div>
@@ -909,8 +909,8 @@ export const HTML_PAGINA_BLANCA = `<style>@page { size: A4; margin: 0; } body { 
   <div class="b">Página en blanco a propósito (impresión a doble cara)</div>`;
 // La QR de la portada: «Hojas para imprimir», sin huella (cada hoja lleva la suya)
 export const rematarPortada = (html, url) => html.replaceAll(QR, qrSVG(url, QR_PX));
-// Huella del libreto: la de las versiones de sus hojas, en orden
-export const huellaLibreto = huellas => fnv(Object.entries(huellas).map(([k, v]) => `${k}:${v}`).join('|'));
+// Huella del cuaderno: la de las versiones de sus hojas, en orden
+export const huellaCuaderno = huellas => fnv(Object.entries(huellas).map(([k, v]) => `${k}:${v}`).join('|'));
 
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
