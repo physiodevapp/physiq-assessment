@@ -214,3 +214,9 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
   }
   assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos.json'));
 });
+
+test('guía, fármacos: «¿Otro fármaco o duda?» usa el modo «Fármacos» de la app y no guarda el destino', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes("promptPregunta({ pregunta: q, tipo: 'farmacos' })") && src.includes('preguntaFarmacosHTML()'));
+  assert.ok(!src.includes('guardarDestinoIA'), 'la guía no guarda nada');
+});

@@ -5,7 +5,7 @@
 import { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES, DOSIS_DERIVAR } from './data.js';
 import { TEXTO_PAUTA_COMPATIBLE } from './lib/posquirurgico.js';
 import { citasHTML, citasEnTexto, registroReferencias, enlaceCita } from './lib/citas.js';
-import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, ctxIrritabilidad, ctxPauta, ctxPronostico, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
+import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, ctxIrritabilidad, ctxPauta, ctxPronostico, DESTINOS_IA, destinoIA, promptPregunta, urlIA, MAX_TEXTO_IA, NOTA_CUENTAS, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
 import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/irritabilidad.js';
 import { nivelMatriz, NOMBRE_NIVEL, reglaIrritabilidad } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
@@ -351,8 +351,47 @@ function htmlHojas() {
 const SUELTAS = {
   condiciones: { titulo: 'Condiciones especiales', html: () => condicionesHTML({}, { guia: true }) },
   irritabilidad: { titulo: 'Irritabilidad (fase 3)', html: () => htmlIrritabilidad('', { conTitulo: false }) },
-  farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>` },
+  farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>${preguntaFarmacosHTML()}` },
 };
+
+// «¿Otro fármaco o duda?»: el modo «Fármacos» de «✨ Preguntar a la IA» de la app (promptPregunta,
+// mismo guion y destinos), al final de la página de fármacos: completa su hoja con lo que no trae.
+// Solo se envía lo que se escribe; el destino elegido, en memoria (la guía no guarda nada).
+let DESTINO_PREGUNTA = destinoIA();
+function preguntaFarmacosHTML() {
+  const d = DESTINOS_IA[DESTINO_PREGUNTA];
+  return `<section class="guia-bloque guia-pregunta" id="guiaPregunta"><h3>¿Otro fármaco o duda? Pregunta a la IA</h3>
+    <p class="guia-nota">No escribas datos que identifiquen al paciente. Se envía solo lo que escribas, con un guion para fisioterapeutas: dolor e inflamación, síntomas viscerales, ejercicio, sueño y cuándo consultar, sin ajustar nunca la medicación; pide también la ficha técnica de CIMA. PhysiQ no revisa la respuesta.</p>
+    <label class="guia-vh" for="guiaPreguntaTexto">Fármaco o duda</label>
+    <textarea id="guiaPreguntaTexto" class="field-input" rows="3" maxlength="${MAX_TEXTO_IA}" placeholder="Ej.: pregabalina y ejercicio en mayores"></textarea>
+    <div class="option-group guia-destinos" role="group" aria-label="Dónde preguntar">${Object.entries(DESTINOS_IA).map(([k, x]) =>
+      `<button type="button" class="option-btn${k === DESTINO_PREGUNTA ? ' selected' : ''}" data-destino-pregunta="${k}" aria-pressed="${k === DESTINO_PREGUNTA}">${esc(x.nombre)}</button>`).join('')}</div>
+    <p class="guia-nota guia-destino-ventaja">${esc(d.ventaja)}</p>
+    <a class="btn btn-primary guia-preguntar" id="guiaPreguntaIr" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Preguntar en ${esc(d.nombre)} ↗</a>
+    <p class="guia-nota">${esc(NOTA_CUENTAS)}</p></section>`;
+}
+const textoPregunta = () => document.getElementById('guiaPreguntaTexto')?.value.trim() || '';
+document.addEventListener('input', e => {
+  if (e.target?.id !== 'guiaPreguntaTexto') return;
+  document.getElementById('guiaPreguntaIr')?.setAttribute('aria-disabled', String(textoPregunta().length < 3));
+});
+document.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null;
+  const b = t?.closest('[data-destino-pregunta]');
+  if (b) {
+    DESTINO_PREGUNTA = b.dataset.destinoPregunta;
+    document.querySelectorAll('[data-destino-pregunta]').forEach(x => { const on = x === b; x.classList.toggle('selected', on); x.setAttribute('aria-pressed', on); });
+    const d = DESTINOS_IA[DESTINO_PREGUNTA];
+    document.getElementById('guiaPreguntaIr').textContent = `Preguntar en ${d.nombre} ↗`;
+    document.querySelector('.guia-destino-ventaja').textContent = d.ventaja;
+    return;
+  }
+  const a = t?.closest('#guiaPreguntaIr');
+  if (!a) return;
+  const q = textoPregunta();
+  if (q.length < 3) { e.preventDefault(); return; }
+  a.href = urlIA(DESTINO_PREGUNTA, promptPregunta({ pregunta: q, tipo: 'farmacos' }));   // en el propio clic, sin window.open
+});
 
 // «Ficha técnica (CIMA)»: como en la app, el enlace abre el buscador de CIMA y aquí se copia
 // el nombre para pegarlo; un aviso breve dice dónde (o qué buscar, si no se pudo copiar).
