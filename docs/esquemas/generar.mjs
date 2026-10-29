@@ -43,6 +43,7 @@ const RUTA_HUELLAS = join(DIR, 'huellas.json');
 // sin cambios la deja como estaba. La lee la página «Hojas para imprimir» de la guía.
 const HUELLAS = existsSync(RUTA_HUELLAS) ? JSON.parse(readFileSync(RUTA_HUELLAS, 'utf8')) : {};
 const HOY_ISO = new Date().toISOString().slice(0, 10);
+const fechaCorta = iso => { const [a, m, d] = iso.split('-').map(Number); return `${d}/${m}/${a}`; };   // como toLocaleDateString('es-ES')
 const IMPRESAS = Object.fromEntries(hojasImpresas().map(h => [h.clave, h]));
 // El HTML final de una hoja: si lleva QR, con su huella (la de su HTML canónico) y la fecha
 function rematarHoja(clave, html) {
@@ -50,7 +51,9 @@ function rematarHoja(clave, html) {
   if (!h) return html.replaceAll('<!--FECHA-->', hoy).replaceAll('<!--QR-->', '').replaceAll('<!--HUELLA-->', '');
   const huella = huellaHoja(h.html());
   if (HUELLAS[clave]?.huella !== huella) HUELLAS[clave] = { huella, fecha: HOY_ISO };
-  return rematar(html, { ruta: h.ruta, huella, fecha: hoy });
+  // La fecha impresa es la del último cambio de contenido (la de «Hojas para imprimir»), no la de
+  // generación: regenerar sin cambios no la mueve, y el papel y la lista dicen siempre lo mismo
+  return rematar(html, { ruta: h.ruta, huella, fecha: fechaCorta(HUELLAS[clave].fecha) });
 }
 // ── Render ───────────────────────────────────────────────────────────────────
 // [generador, apaisado, formato]

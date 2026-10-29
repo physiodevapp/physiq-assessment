@@ -190,3 +190,8 @@ test('guía, confirmación: cada hipótesis con su pauta y su pronóstico de dat
   assert.ok(src.includes('pautaHipHTML(h, region)') && src.includes('DOSIS_DERIVAR') && src.includes('TEXTO_PAUTA_COMPATIBLE'));
   assert.ok(/if \(h\.dosis === DOSIS_DERIVAR\) return `<div class="guia-urg">/.test(src), 'la derivación no va plegada');
 });
+
+test('la fecha impresa en las hojas es la de su último cambio de contenido (huellas.json), no la de generación', () => {
+  const g = leer('docs', 'esquemas', 'generar.mjs');
+  assert.ok(/fecha: fechaCorta\(HUELLAS\[clave\]\.fecha\)/.test(g));
+});
