@@ -287,6 +287,8 @@ function avisoHojaHTML(clave) {
 // lleva bajo el QR), la fecha de su último cambio de contenido y su PDF. Sale de
 // huellas.json, así que se mantiene sola. Las que cambiaron hace poco, marcadas.
 const DIAS_RECIENTE = 30;
+// Hojas sin QR (no tienen página en la guía): solo se listan aquí, con su versión y su PDF
+const PARA_PACIENTE = { 'ejercicio-paciente': 'El ejercicio: lo que dicen los estudios' };
 const NOMBRE_HOJA = { cribado: 'Cribado (fase 2)', 'arbol-a4': 'Árbol de decisión (fase 4)', confirmacion: 'Confirmación (fase 4b)' };
 const fechaLarga = iso => new Date(`${iso}T12:00:00`).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
 function htmlHojas() {
@@ -305,7 +307,8 @@ function htmlHojas() {
   return `<p class="guia-nota">Cada hoja impresa lleva su versión bajo el QR («v. …»). Si no coincide con la de esta lista, la hoja ha cambiado: descarga el PDF y reimprímela. «Reciente» = cambió en los últimos ${DIAS_RECIENTE} días (${recientes} de ${Object.keys(HUELLAS).length}).</p>
     ${REGIONES.map(r => grupo(nombreRegion(r), Object.entries(NOMBRE_HOJA).map(([t, n]) => fila(`${t}-${r}`, n)))).join('')}
     ${grupo('Tiempos de recuperación de tejidos', Object.entries(HOJAS_TEJIDO).map(([k, h]) => fila(`tejidos-${k}`, h.titulo)))}
-    ${grupo('Otras hojas', Object.entries(SUELTAS).map(([k, h]) => fila(k, h.titulo)))}`;
+    ${grupo('Otras hojas', Object.entries(SUELTAS).map(([k, h]) => fila(k, h.titulo)))}
+    ${grupo('Para dar al paciente', Object.entries(PARA_PACIENTE).map(([k, t]) => fila(k, t)))}`;
 }
 
 // ── Páginas sueltas (#<clave>): el QR de las hojas que no son de una región ──

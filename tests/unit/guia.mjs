@@ -18,6 +18,7 @@ const FARM_P = await import('../../data/farmacos-paciente.js');
 const FARM_L = await import('../../lib/farmacos.js');
 const IRR_DATOS = await import('../../data/irritabilidad.js');
 const IRR_LIB = await import('../../lib/irritabilidad.js');
+const EJ = await import('../../data/ejercicio.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
 
@@ -167,4 +168,19 @@ test('hoja de irritabilidad: la matriz de data/irritabilidad.js, la misma regla 
   for (const k of ['hastaLimite', 'hastaDolor', 'alta', 'margen']) assert.ok(html.includes(T[k]), k);
   assert.ok(leer('guia.js').includes('reglaIrritabilidad()'), 'la guía usa la misma regla');
   assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'irritabilidad' && h.ruta === 'irritabilidad'));
+});
+
+test('hoja de ejercicio para el paciente: todas las frases «Para explicárselo al paciente», literales, con título llano y sin QR', () => {
+  const html = HOJAS.htmlEjercicioPaciente();
+  const escH = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  for (const b of EJ.BLOQUES_EJERCICIO.filter(x => x.apartados?.paciente?.length)) {
+    assert.ok(b.tituloPaciente && ['general', 'condicion'].includes(b.hojaPaciente), `${b.id}: título para el paciente y parte de la hoja`);
+    assert.ok(html.includes(escH(b.tituloPaciente)), b.id);
+    for (const f of b.apartados.paciente) assert.ok(html.includes(escH(f.t)), `${b.id}: ${f.t.slice(0, 40)}`);
+  }
+  const h = HOJAS.hojasImpresas().find(x => x.clave === 'ejercicio-paciente');
+  assert.ok(h && h.ruta === null);
+  const final = HOJAS.rematar(h.html(), { ruta: h.ruta, huella: 'abcd1234', fecha: '1/1/2000' });
+  assert.ok(!final.includes('<svg') && final.includes('v. abcd1234'), 'sin QR, con su versión');
+  assert.ok(leer('guia.js').includes("'ejercicio-paciente'"), 'listada en «Hojas para imprimir»');
 });

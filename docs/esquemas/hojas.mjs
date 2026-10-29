@@ -19,6 +19,7 @@ const { qrSVG } = await import('./qr.mjs');
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const { ITEMS_IRRITABILIDAD, ITEM_IMPACTO, TEXTOS_IRRITABILIDAD } = await import('../../data/irritabilidad.js');
 const { reglaIrritabilidad } = await import('../../lib/irritabilidad.js');
+const { BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercicio.js');
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
@@ -814,6 +815,53 @@ export function htmlIrritabilidad() {
   });
 }
 
+// ── El ejercicio, para el paciente (data/ejercicio.js) ───────────────────────
+// Las frases «Para explicárselo al paciente» de cada bloque, literales (todas se apoyan en
+// afirmaciones de nivel clínico: lo comprueba problemasBloque), bajo el título en lenguaje
+// llano de su bloque; las de una condición, aparte. Sin QR: la guía es para el fisioterapeuta.
+// Lleva su versión («v.»), así que la prueba de hojas desfasadas la cubre igual.
+export function htmlEjercicioPaciente() {
+  const T = TEXTOS_EJERCICIO;
+  const escritos = BLOQUES_EJERCICIO.filter(b => b.apartados?.paciente?.length);
+  const bloque = b => `<section class="bloque"><h2>${esc(b.tituloPaciente || b.titulo)}</h2>
+    <ul>${b.apartados.paciente.map(f => `<li>${esc(f.t)}</li>`).join('')}</ul></section>`;
+  const generales = escritos.filter(b => b.hojaPaciente !== 'condicion');
+  const condiciones = escritos.filter(b => b.hojaPaciente === 'condicion');
+  return `<style>${CSS}${CSS_UNA}
+    body { font-size: 13px; line-height: 1.45; }
+    h1 { font-size: 24px; } .sub { font-size: 12.5px; color: #4b5563; margin-bottom: 12px; }
+    .bloque { margin-bottom: 12px; break-inside: avoid; }
+    .bloque h2 { font-size: 15px; margin: 0 0 4px; color: #1e3a8a; }
+    .bloque ul { margin: 0; padding-left: 18px; } .bloque li { margin: 0 0 4px; }
+    .grupo-c { font-size: 13px; font-weight: bold; letter-spacing: .5px; text-transform: uppercase; color: #2563eb; margin: 16px 0 8px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 2px; }
+    .condiciones { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+    .condiciones .bloque h2 { font-size: 13.5px; } .condiciones .bloque { font-size: 12px; }
+    .mis { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px 10px; margin-top: 10px; }
+    .mis h2 { font-size: 14px; margin: 0 0 4px; color: #1e3a8a; }
+    .linea { border-bottom: 1px solid #94a3b8; height: 26px; }
+    .pie-v .qr-huella { display: inline; margin-left: 4px; }
+  </style>
+  <div class="pagina">
+    <h1>${esc(T.hojaPacienteTitulo)}</h1>
+    <div class="sub">${esc(T.hojaPacienteIntro)}</div>
+    <div class="cuerpo">
+      ${generales.map(bloque).join('')}
+      ${condiciones.length ? `<div class="grupo-c">${esc(T.hojaPacienteCondiciones)}</div><div class="condiciones">${condiciones.map(bloque).join('')}</div>` : ''}
+      <div class="mis"><h2>${esc(T.hojaPacienteMisEjercicios)}</h2>${'<div class="linea"></div>'.repeat(5)}</div>
+      <div style="height:12px"></div>
+    </div>
+    <div class="pie-fijo"><span>${esc(T.hojaPacientePie)}</span><span class="pie pie-v">PhysiQ · ${FECHA} ${HUELLA}</span></div>
+  </div>
+  <script>
+  (() => {
+    const p = document.querySelector('.pagina'), c = p.querySelector('.cuerpo');
+    const cabe = z => { p.style.zoom = z; p.style.width = (794 / z) + 'px'; p.style.height = (1123 / z) + 'px'; return c.scrollHeight <= c.clientHeight + 1; };
+    let lo = 0.6, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(z)) lo = z; else hi = z; }
+    cabe(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
 export function fnv(texto) {
@@ -836,6 +884,7 @@ export function hojasImpresas() {
   hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones });
   hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
   hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
+  hojas.push({ clave: 'ejercicio-paciente', ruta: null, html: htmlEjercicioPaciente, paciente: true });
   return hojas;
 }
 export const huellaHoja = html => fnv(html);
@@ -844,6 +893,6 @@ export function huellasActuales() {
 }
 // Pone los marcadores: el QR a la guía con la huella (?h=), la huella visible y la fecha
 export function rematar(html, { ruta, huella, fecha }) {
-  const url = urlRuta(ruta, huella);
-  return html.replaceAll(QR, qrSVG(url, QR_PX)).replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
+  // Sin ruta (la hoja del paciente) no hay QR, solo la versión
+  return html.replaceAll(QR, ruta ? qrSVG(urlRuta(ruta, huella), QR_PX) : '').replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
 }

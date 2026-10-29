@@ -816,3 +816,19 @@ anticoagulado: { id: 'postrombotico', ayuda: 'enlaceCondicionPostrombotico', mot
     - embarazo o posparto, en los dos estados (2026-10, bloque 8) → «Ejercicio en el embarazo y el posparto»: «Por el embarazo o el posparto: sus frases para el paciente hablan del ánimo, de los escapes y del dolor de espalda o pelvis tras el parto, sin prometer más; la dosis es la del aviso de este plan.» `lu8` y `ca10` no entran en `BLOQUE_POR_HIPOTESIS` (propuesta del bloque 8, punto 4).
   - **Osteoporosis no sale en la fase 6**: «Carga y adaptación del tejido» ya está siempre allí, como principal o como «También».
   - Tests: `tests/unit/ejercicio.mjs` (regla por estado, subtipo vascular y sospecha vascular sin enlace, fase 5 = fase 6, orden y textos) y las secciones smoke `fase6` (las dos líneas, que abren su bloque, y sin la de hipermovilidad con la sospecha cumplida o el vascular diagnosticado) y `hipermovilidad` (sin enlace con dos rasgos menores; con él al quitar uno).
+
+## Hoja impresa para el paciente (2026-10, pendiente de revisión del usuario)
+
+`docs/esquemas/ejercicio-paciente.pdf` (`node docs/esquemas/generar.mjs ejercicio-paciente`): las frases «Para explicárselo al paciente» de cada bloque, **literales** (ya se apoyan solo en afirmaciones de nivel `clinico`), bajo un título en lenguaje llano. Sin QR y sin cifras ni citas. Textos nuevos, a revisar:
+
+| Bloque | `tituloPaciente` | Parte |
+|---|---|---|
+| hipoalgesia | El ejercicio y el dolor | general |
+| mecanotransduccion | Moverse y cargar: músculos y tendones | general |
+| centrales | Ánimo y sueño | general |
+| antiinflamatorio | Si tiene una enfermedad reumática inflamatoria (artritis reumatoide, lupus…) | Si le han dicho que tiene… |
+| ortostatica | Si se marea o se le acelera el corazón al estar de pie (POTS) | Si le han dicho que tiene… |
+| hipermovilidad | Si tiene hipermovilidad articular | Si le han dicho que tiene… |
+| embarazo | Durante el embarazo y después del parto | Si le han dicho que tiene… |
+
+Cabecera, introducción y pie (`TEXTOS_EJERCICIO.hojaPaciente*`): «El ejercicio: lo que dicen los estudios»; «En pocas palabras, lo que se sabe del ejercicio. Su fisioterapeuta le indicará qué ejercicios hacer, cuánto y cómo avanzar.»; «Resumen de estudios revisados. No sustituye a lo que le indiquen su fisioterapeuta o su médico: ante cualquier duda, pregúnteles.» Trato de usted, como las frases. Un bloque nuevo necesita su `tituloPaciente` y `hojaPaciente` (prueba unitaria) y regenerar la hoja.
