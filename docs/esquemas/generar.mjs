@@ -8,6 +8,10 @@
 //   arbol        → fase 4, A3 apaisado: pasos del árbol CIF, respuestas e hipótesis que activan
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
 //   confirmacion → fase 4b, A4 (vertical o apaisado, la de letra más grande): tests de cada hipótesis con sus LR y si puntúan
+//
+//   node docs/esquemas/generar.mjs tejidos
+//   → tejidos-blandos y tejidos-hueso: los tiempos de recuperación de data/tejidos.js en dos A4
+//     verticales temáticas (lib/esquemas.js, HOJAS_TEJIDO). También con «todas todos».
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
 // importa lrEfectiva y testPuntua de lib/tests-4b.js (las mismas que usa phase4b.js).
 import { createRequire } from 'node:module';
@@ -20,6 +24,9 @@ const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
 const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
 const { qrSVG } = await import('./qr.mjs');
+const { HOJAS_TEJIDO, urlTejidos, datosHojaTejido } = await import('../../lib/esquemas.js');
+const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
+const { posicionDia, tieneBarra } = await import('../../lib/tejidos.js');
 const { dolorInespecifico } = await import('../../lib/region.js');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
@@ -550,11 +557,87 @@ function htmlConfirmacion(region, { vertical = false } = {}) {
   ${scriptAjuste(W, H, '.hyp')}`;
 }
 
+// ── Tiempos de recuperación de tejidos (A4 vertical, una hoja por tema) ──────
+// Las mismas barras que el panel ⏱ de la app (lib/tejidos.js): columna de inicio a fin
+// del eje no lineal, color = gravedad, relleno = qué mide. Las notas y las fuentes de
+// cada barra no caben: van en la guía (QR). Una sola página, a la mayor escala que cabe.
+const COLOR_GRAVEDAD = { minima: 'rgba(234,120,30,.35)', leve: 'rgba(234,120,30,.55)', moderada: 'rgba(214,72,36,.8)', grave: 'rgba(176,26,26,.9)' };
+const RELLENO = {
+  liso: '', contorno: 'background:none!important;box-shadow:inset 0 0 0 1.6px currentColor;',
+  rayado: 'background-image:repeating-linear-gradient(135deg,transparent 0 3px,#fff 3px 4.6px);',
+  punteado: 'background-image:radial-gradient(#fff 1px,transparent 1.3px);background-size:4.5px 4.5px;',
+  degradado: 'background-image:linear-gradient(90deg,transparent 35%,#fff 100%);',
+};
+const COLOR_FASE = ['#a16207', '#16a34a', '#2563eb', '#93c5fd'];
+function htmlTejidos(hoja) {
+  const T = datosHojaTejido(TIEMPOS_TEJIDO, hoja), n = T.columnas.length;
+  const barra = (f, g) => {
+    const c = COLOR_GRAVEDAD[g] || COLOR_GRAVEDAD.leve, r = RELLENO[T.medidas[f.mide]?.relleno] || '';
+    return `<div class="pista">${'<i></i>'.repeat(n)}<b style="left:${f.desde * 100 / n}%;width:${(f.hasta - f.desde + 1) * 100 / n}%;background:${c};color:${c};${r}"></b></div>`;
+  };
+  const filas = T.grupos.map(g => `<div class="grupo">${esc(g.tejido)}</div>` + g.filas.map(f => {
+    const conBarra = tieneBarra(f);
+    return `<div class="fila${conBarra ? '' : ' sin'}"><span class="nom">${esc(f.nombre)}</span>${conBarra ? barra(f, f.gravedad)
+      : `<span class="nota">${f.subtipos?.length ? 'Sin barra general: ver los subtipos' : 'Sin barra: ver la guía (QR)'}</span>`}</div>`
+      + (f.subtipos || []).filter(tieneBarra).map(st => `<div class="fila subfila"><span class="nom">${esc(st.nombre)}</span>${barra(st, st.gravedad || f.gravedad)}</div>`).join('');
+  }).join('') + (g.nota ? `<div class="nota-grupo">${esc(g.nota)}</div>` : '')).join('');
+  const fases = T.fases.map((f, k) => {
+    const a = posicionDia(f.desdeDia, T.columnas) * 100, b = posicionDia(f.hastaDia, T.columnas) * 100;
+    return `<b style="left:${a}%;width:${b - a}%;background:${COLOR_FASE[k]}"></b>`;
+  }).join('');
+  const muestra = estilo => `<i class="m" style="${estilo}"></i>`;
+  const W = 794, H = 1123;
+  return `<style>
+    ${CSS}
+    @page { size: A4; margin: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pagina { width: ${W}px; height: ${H}px; padding: 34px 38px 0; display: flex; flex-direction: column; overflow: hidden; }
+    .cuerpo { flex: 1 1 auto; min-height: 0; }
+    .fila { display: grid; grid-template-columns: 34% 1fr; align-items: center; min-height: 16px; border-bottom: 1px solid #eef2f7; }
+    .fila .nom { font-size: 10px; padding-right: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fila.subfila .nom { padding-left: 12px; color: #4b5563; font-size: 9.5px; }
+    .fila.sin .nom { font-weight: bold; } .nota { font-size: 8.5px; color: #94a3b8; font-style: italic; }
+    .nota-grupo { font-size: 8.5px; color: #64748b; font-style: italic; padding: 2px 0 1px; }
+    .pista { position: relative; height: 12px; display: grid; grid-template-columns: repeat(${n}, 1fr); }
+    .pista i { border-left: 1px solid #e2e8f0; font-style: normal; }
+    .pista b { position: absolute; top: 1px; bottom: 1px; border-radius: 3px; }
+    .eje { border-bottom: 1.5px solid #94a3b8; } .eje .pista { height: 15px; }
+    .eje .pista i { font-size: 9px; color: #475569; padding-left: 3px; font-family: monospace; }
+    .fases-t { font-size: 9px !important; color: #64748b; } .tira { height: 7px; } .tira b { top: 0; bottom: 0; border-radius: 0; }
+    .grupo { font-size: 10.5px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: #2563eb; margin-top: 7px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 1px; }
+    .pie-fijo { flex: none; border-top: 1.5px solid #cbd5e1; padding: 6px 0 14px; font-size: 9px; color: #334155; display: flex; flex-direction: column; gap: 3px; }
+    .m { display: inline-block; width: 15px; height: 8px; border-radius: 2px; vertical-align: middle; margin: 0 3px 0 8px; }
+  </style>
+  <div class="pagina">
+    <div class="cab-hoja"><div class="cab-txt"><h1>Tiempos de recuperación · ${esc(HOJAS_TEJIDO[hoja].titulo)}</h1>
+      <div class="sub">Referencia general, no un plazo para este paciente: cada barra dice qué mide (vuelta al deporte, protección, programa…), y con cirugía manda el protocolo del cirujano. La nota y las fuentes de cada barra, en la guía (QR).</div></div>
+      <div class="qr-guia">${qrSVG(urlTejidos(hoja), 80)}<span>Notas, fuentes e IA</span></div></div>
+    <div class="fila eje"><span class="nom"></span><div class="pista">${T.columnas.map(c => `<i>${esc(c.corta)}</i>`).join('')}</div></div>
+    <div class="fila"><span class="nom fases-t">Fases de reparación</span><div class="pista tira">${fases}</div></div>
+    <div class="cuerpo">${filas}</div>
+    <div class="pie-fijo">
+      <span><b>Color = gravedad:</b>${Object.entries(T.gravedades).map(([k, v]) => muestra(`background:${COLOR_GRAVEDAD[k]}`) + esc(v)).join('')}</span>
+      <span><b>Relleno = qué mide:</b>${Object.entries(T.medidas).filter(([, m]) => !m.marca).map(([, m]) => muestra(`background:#7c8796;color:#7c8796;${RELLENO[m.relleno]}`) + esc(m.etiqueta)).join('')}</span>
+      <span><b>Fases de reparación:</b>${T.fases.map((f, k) => muestra(`background:${COLOR_FASE[k]}`) + esc(f.nombre)).join('')} · Eje no lineal: cada columna ocupa lo mismo.</span>
+      <span class="pie">Generado desde los datos de la app (data/tejidos.js) el ${hoy}. La otra hoja: ${esc(Object.entries(HOJAS_TEJIDO).filter(([k]) => k !== hoja).map(([, h]) => h.titulo).join(''))}.</span>
+    </div>
+  </div>
+  <script>
+  (() => {
+    // La mayor escala a la que todo cabe en la página (el pie siempre abajo)
+    const p = document.querySelector('.pagina'), c = p.querySelector('.cuerpo');
+    const cabe = z => { p.style.zoom = z; p.style.width = (${W} / z) + 'px'; p.style.height = (${H} / z) + 'px'; return c.scrollHeight <= c.clientHeight + 1; };
+    let lo = 0.6, hi = 1.5; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(z)) lo = z; else hi = z; }
+    cabe(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+
 // ── Render ───────────────────────────────────────────────────────────────────
 // [generador, apaisado, formato]
 const TIPOS = { cribado: [htmlCribado, false, 'A4'], arbol: [htmlArbol, true, 'A3'], 'arbol-a4': [r => htmlArbol(r, { a4: true }), true, 'A4'], confirmacion: [htmlConfirmacion, true, 'A4'] };
 const [regArg = 'lumbar', tipoArg = 'todos'] = process.argv.slice(2);
-const regiones = regArg === 'todas' ? Object.keys(CIF_TREES) : [regArg];
+const regiones = regArg === 'todas' ? Object.keys(CIF_TREES) : regArg === 'tejidos' ? [] : [regArg];
 const tipos = tipoArg === 'todos' ? Object.keys(TIPOS) : [tipoArg];
 
 const browser = await chromium.launch();
@@ -595,6 +678,19 @@ for (const region of regiones) {
     const paginas = (await page.pdf({ format: formato, landscape: apaisado, preferCSSPageSize: true })).toString('latin1').match(/\/Type\s*\/Page[^s]/g)?.length;
     const esc = await page.evaluate(() => document.body.dataset.escala);
     console.log(`${tipo}-${region}: ${paginas} página${paginas === 1 ? '' : 's'}${esc ? ` · escala ${esc}` : ''}${elegida}`);
+    await page.close();
+  }
+}
+if (regArg === 'tejidos' || (regArg === 'todas' && tipoArg === 'todos')) {
+  for (const hoja of Object.keys(HOJAS_TEJIDO)) {
+    const page = await browser.newPage({ viewport: { width: 794, height: 1123 } });
+    await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${htmlTejidos(hoja)}</body></html>`);
+    const base = join(DIR, `tejidos-${hoja}`);
+    await page.pdf({ path: `${base}.pdf`, format: 'A4', printBackground: true, preferCSSPageSize: true });
+    await page.emulateMedia({ media: 'print' });
+    await page.screenshot({ path: `${base}.png`, fullPage: true });
+    const paginas = (await page.pdf({ format: 'A4', preferCSSPageSize: true })).toString('latin1').match(/\/Type\s*\/Page[^s]/g)?.length;
+    console.log(`tejidos-${hoja}: ${paginas} página${paginas === 1 ? '' : 's'} · escala ${await page.evaluate(() => document.body.dataset.escala)}`);
     await page.close();
   }
 }

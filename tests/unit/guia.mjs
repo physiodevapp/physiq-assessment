@@ -92,3 +92,19 @@ test('sin hipótesis al final del árbol: un solo nombre por región en la 4b, l
     assert.ok(!/[Dd]olor (de )?\$\{[^}]*\} inespecífico/.test(src), `${f}: compone el nombre a mano`);
   }
 });
+
+test('hojas de tiempos de tejido: cada grupo de data/tejidos.js va en una sola de las dos hojas, y el QR abre su página en la guía', async () => {
+  const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
+  const todos = Object.values(ESQ.HOJAS_TEJIDO).flatMap(h => h.grupos);
+  assert.deepEqual([...todos].sort(), TIEMPOS_TEJIDO.grupos.map(g => g.id).sort(), 'un grupo nuevo necesita su hoja (lib/esquemas.js, HOJAS_TEJIDO)');
+  assert.equal(new Set(todos).size, todos.length);
+  for (const k of Object.keys(ESQ.HOJAS_TEJIDO)) {
+    const d = ESQ.datosHojaTejido(TIEMPOS_TEJIDO, k);
+    assert.deepEqual(d.grupos.map(g => g.id), ESQ.HOJAS_TEJIDO[k].grupos);
+    assert.equal(d.columnas, TIEMPOS_TEJIDO.columnas);
+    assert.ok(ESQ.urlTejidos(k).endsWith(`guia.html#tejidos/${k}`));
+    assert.ok(qrMatriz(ESQ.urlTejidos(k)).length > 0);
+  }
+  const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
+  for (const f of ['lib/tejidos.js', 'data/']) assert.ok(deploy.includes(f), f);
+});

@@ -8,12 +8,17 @@ Esquemas para tener a mano en consulta, **generados desde los datos de la app**:
 | Árbol de decisión CIF en flujo con flechas: pasos principales de izquierda a derecha, desvíos encima del paso del que salen, y bajo cada paso sus respuestas con la hipótesis que activan, la derivación o adónde llevan | 4 | A3 apaisado | `arbol-lumbar.pdf` |
 | Árbol de decisión CIF para consultar en papel: el mismo flujo que el A3, maquetado compacto (no reducido) | 4 | A4, vertical o apaisado según la región | `arbol-a4-lumbar.pdf` |
 | Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres; elige A4 vertical o apaisado según dónde quede la letra más grande, con la leyenda como pie fijo | 4b | A4 | `confirmacion-lumbar.pdf` |
+| Tiempos de recuperación de tejidos (`data/tejidos.js`), en dos hojas temáticas de una página: partes blandas (tendón, músculo, ligamento, menisco, nervio) y hueso, articulación y columna. Las barras del panel ⏱ de la app (color = gravedad, relleno = qué mide), la leyenda como pie fijo; no dependen de la región | ⏱ | A4 vertical | `tejidos-blandos.pdf`, `tejidos-hueso.pdf` |
 
 Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro, cadera, rodilla, tobillo y pie, y codo; los de cualquier región se generan con el mismo script.
 
 ## QR a la guía de consulta
 
 Cribado, árbol A4 y confirmación llevan arriba a la derecha de su primera página un QR («Porqués, fuentes e IA») a su página en la guía de consulta (`guia.html#<región>/<hoja>`, ver `CLAUDE.md`, «Guía de consulta»): el porqué de cada pregunta, paso y test con la misma numeración que la hoja, sus fuentes enlazadas y «Ampliar con IA». El QR lo genera `qr.mjs` (sin dependencias: modo byte, corrección M, versiones 1–10); se comprobó con un lector de QR (zxing) en las 21 direcciones y en las hojas ya maquetadas. Llevan QR las hojas de las 7 regiones.
+
+Las dos hojas de tiempos de tejido (`node docs/esquemas/generar.mjs tejidos`, también con `todas todos`) llevan el suyo («Notas, fuentes e IA») a `guia.html#tejidos/<blandos|hueso>`: la misma gráfica que el panel ⏱ de la app con los grupos de esa hoja, la nota de cada fila y, al tocar una barra, su ficha con las fuentes enlazadas (sin «Este paciente» ni «Hoy»: la guía no tiene datos del paciente). Qué grupo va en cada hoja lo dice `HOJAS_TEJIDO` (`lib/esquemas.js`); un test falla si un grupo nuevo de `data/tejidos.js` no está en ninguna. Cada hoja se ajusta a una página a la mayor escala que cabe (hoy, partes blandas 0,85 y hueso 1,02). **Al cambiar `data/tejidos.js`, regenerarlas.**
+
+**Qué entra en la guía** (decisión del usuario, 2026-10): solo lo que explica o completa una hoja impresa. Las herramientas de la app que no tienen hoja se quedan en la app; la pestaña Irritabilidad es la excepción, porque el árbol y la 4b dependen de ese nivel y en papel no se puede calcular.
 
 ## Cómo se generan
 

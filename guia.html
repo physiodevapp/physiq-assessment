@@ -93,6 +93,12 @@
   .guia-irr-n { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text3); margin-right: 2px; }
   .guia-irr-pie { display: flex; justify-content: flex-end; padding-top: 8px; }
   @media (max-width: 480px) { .guia-irr-ops { grid-template-columns: 1fr; } .guia-hojas a { font-size: 0.8rem; padding: 9px 2px; } }
+  /* Tiempos de tejido (#tejidos/<hoja>): título fijo en lugar del selector de región; el eje, bajo las pestañas */
+  .guia-titulo { display: none; font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.9rem; line-height: 1.2; margin: 2px 0 4px; padding: 4px 0; }
+  .guia-modo-tejidos .guia-titulo { display: block; }
+  .guia-modo-tejidos .guia-region, .guia-modo-tejidos .guia-intro { display: none; }
+  .guia-tejidos .tej-eje { top: var(--guia-nav-alto, 57px); background: var(--bg); }
+  @media (max-width: 480px) { .guia-tejidos { margin: 0 -1rem; padding: 0 1rem; } }
   .guia-vacio { color: var(--text3); font-size: 0.85rem; }
   @media (max-width: 480px) { .guia-bloque { margin-left: -1rem; margin-right: -1rem; border-left: none; border-right: none; border-radius: 0; } }
 </style>
@@ -101,6 +107,7 @@
 <main class="guia" id="guia">
   <div class="guia-marca">Guía de consulta · PhysiQ-Assessment</div>
   <h1 class="guia-region"><label><span class="guia-vh">Región</span><select id="guiaRegion"></select></label></h1>
+  <h1 class="guia-titulo" id="guiaTitulo"></h1>
   <p class="guia-intro">El porqué de cada pregunta, paso y test de los esquemas impresos, con sus fuentes. Es la misma información que la app; esta página no pide ni guarda datos del paciente.</p>
   <nav class="guia-nav" aria-label="Hoja">
     <div class="guia-hojas" id="guiaHojas"></div>

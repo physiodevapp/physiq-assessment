@@ -9,10 +9,12 @@ import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/
 import { nivelMatriz, NOMBRE_NIVEL } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
-import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA } from './lib/esquemas.js';
+import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido } from './lib/esquemas.js';
+import { TIEMPOS_TEJIDO } from './data/tejidos.js';
+import { tiemposTejidoHTML, infoBarraHTML } from './lib/tejidos.js';
+import { alternarFicha, cerrarFicha } from './ficha.js';
 import { nombreRegion, dolorInespecifico } from './lib/region.js';
 import { textoVersion } from './lib/version.js';
-import './ficha.js';   // tarjeta de cada cita al tocarla
 
 const REGIONES = Object.keys(CIF_TREES);
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -232,11 +234,35 @@ document.addEventListener('click', e => {
   }
 });
 
+// ── Tiempos de recuperación de tejidos (#tejidos/<hoja>, el QR de sus dos hojas) ──
+// La misma gráfica que el panel ⏱ de la app (lib/tejidos.js), con los grupos de esa hoja;
+// tocar una barra abre su ficha (gravedad, qué mide, plazo y fuentes). Sin «Este paciente»
+// ni «Hoy»: la guía no tiene datos del paciente. El filtro, solo en memoria.
+let FILTRO_TEJ = 'todos';
+const datosTejido = hoja => datosHojaTejido(TIEMPOS_TEJIDO, hoja);
+function htmlTejidos(hoja) {
+  return `<p class="guia-nota">Referencia general, no un plazo para un paciente: cada barra dice qué mide (vuelta al deporte, protección, programa…). Toca una barra para ver su nota y sus fuentes.</p>
+    <div class="guia-tejidos tejidos-cuerpo">${tiemposTejidoHTML(datosTejido(hoja), { filtro: FILTRO_TEJ, REF })}</div>`;
+}
+document.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null;
+  if (!t?.closest('.guia-tejidos')) return;
+  const barra = t.closest('.tej-barra[data-barra]');
+  if (barra) { alternarFicha(barra, infoBarraHTML(datosTejido(leerRuta().hoja), barra.dataset.barra, REF), { id: 'tejInfo', clase: 'tej-info' }); return; }
+  const b = t.closest('[data-filtro-tejido]');
+  if (!b) return;
+  FILTRO_TEJ = b.dataset.filtroTejido;
+  cerrarFicha({ sinFoco: true });
+  pintar({ sinScroll: true });
+  document.querySelector(`.guia-tejidos .tej-filtro-btn[data-grupo="${b.dataset.grupo}"]`)?.focus({ preventScroll: true });
+});
+
 const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion, irritabilidad: htmlIrritabilidad };
 
 // ── Navegación ──────────────────────────────────────────────────────────────
 function leerRuta() {
   const [r, h, el] = decodeURIComponent(location.hash.slice(1)).split('/');
+  if (r === 'tejidos') return { tejidos: true, region: '', hoja: HOJAS_TEJIDO[h] ? h : 'blandos', elemento: '' };
   return { region: REGIONES.includes(r) ? r : 'lumbar', hoja: PINTAR[h] ? h : 'cribado', elemento: el || '' };
 }
 
@@ -252,8 +278,20 @@ function anchoRegion() {
   m.remove();
 }
 
-function pintar() {
-  const { region, hoja, elemento } = leerRuta();
+function pintar({ sinScroll = false } = {}) {
+  const { tejidos, region, hoja, elemento } = leerRuta();
+  document.body.classList.toggle('guia-modo-tejidos', !!tejidos);
+  if (tejidos) {
+    document.getElementById('guiaTitulo').textContent = 'Tiempos de recuperación';
+    document.getElementById('guiaHojas').innerHTML = Object.entries(HOJAS_TEJIDO)
+      .map(([k, h]) => `<a href="#tejidos/${k}"${k === hoja ? ' aria-current="page"' : ''}>${h.corto}</a>`).join('');
+    document.getElementById('guiaContenido').innerHTML = htmlTejidos(hoja);
+    // El eje de tiempo, fijo justo debajo de las pestañas
+    document.documentElement.style.setProperty('--guia-nav-alto', `${document.querySelector('.guia-nav').offsetHeight}px`);
+    document.title = `Tiempos de recuperación · ${HOJAS_TEJIDO[hoja].titulo} · Guía de consulta`;
+    if (!sinScroll) window.scrollTo(0, 0);
+    return;
+  }
   document.getElementById('guiaRegion').value = region;
   anchoRegion();
   document.getElementById('guiaHojas').innerHTML = Object.entries(HOJAS_GUIA)
@@ -271,14 +309,14 @@ function pintar() {
 async function iniciar() {
   const sel = document.getElementById('guiaRegion');
   sel.innerHTML = REGIONES.map(r => `<option value="${r}">${nombreRegion(r)}</option>`).join('');
-  sel.addEventListener('change', () => { location.hash = `${sel.value}/${leerRuta().hoja}`; });
+  sel.addEventListener('change', () => { const r = leerRuta(); location.hash = `${sel.value}/${r.tejidos ? 'cribado' : r.hoja}`; });
   // Las fuentes se enlazan con el registro; si no carga, se pintan sin enlace
   try { REF = await registroReferencias(); } catch { REF = null; }
-  window.addEventListener('hashchange', pintar);
+  window.addEventListener('hashchange', () => { cerrarFicha({ sinFoco: true }); pintar(); });
   document.fonts?.ready.then(anchoRegion);   // la fuente del título llega después
   pintar();
   const v = textoVersion();
-  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
+  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
   initAmpliarIA();
 }
 iniciar();
