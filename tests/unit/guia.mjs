@@ -19,6 +19,7 @@ const FARM_L = await import('../../lib/farmacos.js');
 const IRR_DATOS = await import('../../data/irritabilidad.js');
 const IRR_LIB = await import('../../lib/irritabilidad.js');
 const EJ = await import('../../data/ejercicio.js');
+const REGION_LIB = await import('../../lib/region.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
 
@@ -194,4 +195,22 @@ test('guía, confirmación: cada hipótesis con su pauta y su pronóstico de dat
 test('la fecha impresa en las hojas es la de su último cambio de contenido (huellas.json), no la de generación', () => {
   const g = leer('docs', 'esquemas', 'generar.mjs');
   assert.ok(/fecha: fechaCorta\(HUELLAS\[clave\]\.fecha\)/.test(g));
+});
+
+test('libretos a doble cara al día: docs/esquemas/libretos.json lleva la versión actual de cada hoja que contienen', () => {
+  const { nombreRegion } = REGION_LIB;
+  const huellas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
+  const libretos = JSON.parse(leer('docs', 'esquemas', 'libretos.json'));
+  const def = ESQ.definicionLibretos(Object.keys(CIF_TREES), nombreRegion);
+  assert.deepEqual(Object.keys(libretos).sort(), def.map(l => l.clave).sort(), 'un libreto por definición (completo y uno por región)');
+  for (const l of def) {
+    const d = libretos[l.clave];
+    const claves = l.secciones.flatMap(s => s.hojas);
+    assert.deepEqual(Object.keys(d.hojas), claves, `${l.clave}: mismas hojas y en el mismo orden`);
+    const desfasadas = claves.filter(k => d.hojas[k] !== huellas[k]?.huella);
+    assert.deepEqual(desfasadas, [], `${l.clave}: hojas cambiadas sin regenerar el libreto (${desfasadas.join(', ')}). Regenera con «node docs/esquemas/generar.mjs libretos»`);
+    assert.equal(d.paginas % 2, 0, `${l.clave}: número par de páginas (doble cara)`);
+    assert.ok(!claves.includes('ejercicio-paciente'), 'la hoja del paciente va aparte');
+  }
+  assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/libretos.json'));
 });

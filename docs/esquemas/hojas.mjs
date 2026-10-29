@@ -872,6 +872,46 @@ export function htmlEjercicioPaciente() {
   </script>`;
 }
 
+// ── Libretos (portada con índice y página en blanco; los monta generar.mjs) ──
+// `secciones`: [{ titulo, filas: [{ nombre, huella, pagina }] }]. Una página; el QR lleva a
+// «Hojas para imprimir», donde se comprueba la versión de cada hoja.
+export function htmlPortadaLibreto({ titulo, secciones, fecha, huella }) {
+  const filas = secciones.map(sec => `<tr class="sec"><td colspan="3">${esc(sec.titulo)}</td></tr>`
+    + sec.filas.map(f => `<tr><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.pagina}</td></tr>`).join('')).join('');
+  return `<style>${CSS}${CSS_UNA}
+    .pagina { padding: 48px 48px 0; }
+    .marca { font-family: monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6b7280; }
+    h1 { font-size: 30px; margin: 6px 0 2px; } .tit2 { font-size: 20px; color: #1e3a8a; margin-bottom: 10px; }
+    .cab { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 14px; }
+    .nota { font-size: 11px; color: #374151; line-height: 1.5; max-width: 470px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+    td { padding: 3px 4px; border-bottom: 1px solid #e5e7eb; } .v { font-family: monospace; font-size: 10px; color: #6b7280; width: 90px; } .p { text-align: right; width: 50px; font-weight: bold; }
+    tr.sec td { font-weight: bold; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; font-size: 10.5px; padding-top: 10px; border-bottom: 1.5px solid #bfdbfe; }
+  </style>
+  <div class="pagina">
+    <div class="cab"><div><div class="marca">PhysiQ-Assessment · hojas de consulta</div><h1>${esc(titulo)}</h1>
+      <div class="nota">Para imprimir <b>a doble cara</b>: cada sección empieza en página impar (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice y da su PDF actual.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · libreto v. ${esc(huella)}</div></div>
+      <div class="qr-guia">${QR}<span>Hojas para imprimir</span></div></div>
+    <div class="cuerpo"><table>${filas}</table></div>
+    <div class="pie-fijo">${AUTORIA_HTML}</div>
+  </div>
+  <script>
+  (() => {
+    const p = document.querySelector('.pagina'), c = p.querySelector('.cuerpo');
+    const cabe = z => { p.style.zoom = z; p.style.width = (794 / z) + 'px'; p.style.height = (1123 / z) + 'px'; return c.scrollHeight <= c.clientHeight + 1; };
+    let lo = 0.6, hi = 1.2; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(z)) lo = z; else hi = z; }
+    cabe(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+export const HTML_PAGINA_BLANCA = `<style>@page { size: A4; margin: 0; } body { margin: 0; font-family: Helvetica, Arial, sans-serif; }
+  .b { width: 794px; height: 1123px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px; box-sizing: border-box; color: #9ca3af; font-size: 9px; }</style>
+  <div class="b">Página en blanco a propósito (impresión a doble cara)</div>`;
+// La QR de la portada: «Hojas para imprimir», sin huella (cada hoja lleva la suya)
+export const rematarPortada = (html, url) => html.replaceAll(QR, qrSVG(url, QR_PX));
+// Huella del libreto: la de las versiones de sus hojas, en orden
+export const huellaLibreto = huellas => fnv(Object.entries(huellas).map(([k, v]) => `${k}:${v}`).join('|'));
+
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
 export function fnv(texto) {
