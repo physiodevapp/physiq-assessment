@@ -7,7 +7,7 @@ Esquemas para tener a mano en consulta, **generados desde los datos de la app**:
 | Cribado sistémico: página 1, lo que se pregunta siempre en la región (caja de urgencia y sistemas); después, las condiciones especiales (posquirúrgico, hipermovilidad, lupus, embarazo…), cada una con la tarjeta de la fase 1 que la muestra y, en gris, cuándo aparece cada pregunta. Solo las preguntas de la región; URGENCIA en rojo y DERIVACIÓN (médica, no urgente) en naranja; criterio compuesto; leyenda como pie fijo de cada página; cada grupo a la mayor escala que cabe | 2 | A4 vertical | `cribado-lumbar.pdf` |
 | Árbol de decisión CIF en flujo con flechas: pasos principales de izquierda a derecha, desvíos encima del paso del que salen, y bajo cada paso sus respuestas con la hipótesis que activan, la derivación o adónde llevan | 4 | A3 apaisado | `arbol-lumbar.pdf` |
 | Árbol de decisión CIF para consultar en papel: el mismo flujo que el A3, maquetado compacto (no reducido) | 4 | A4, vertical o apaisado según la región | `arbol-a4-lumbar.pdf` |
-| Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres | 4b | A4 apaisado | `confirmacion-lumbar.pdf` |
+| Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres; elige A4 vertical o apaisado según dónde quede la letra más grande, con la leyenda como pie fijo | 4b | A4 | `confirmacion-lumbar.pdf` (formato nuevo; las demás regiones, con el anterior hasta regenerarlas) |
 
 Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro, cadera, rodilla, tobillo y pie, y codo; los de cualquier región se generan con el mismo script.
 

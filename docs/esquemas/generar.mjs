@@ -7,7 +7,7 @@
 //   cribado      → fase 2, A4 vertical: lo que se pregunta siempre y, aparte, las condiciones especiales
 //   arbol        → fase 4, A3 apaisado: pasos del árbol CIF, respuestas e hipótesis que activan
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
-//   confirmacion → fase 4b, A4 apaisado: tests de cada hipótesis con sus LR y si puntúan
+//   confirmacion → fase 4b, A4 (vertical o apaisado, la de letra más grande): tests de cada hipótesis con sus LR y si puntúan
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
 // importa lrEfectiva y testPuntua de phase4b.js, cargado con el mismo shim que tests/unit.js.
 import { createRequire } from 'node:module';
@@ -40,6 +40,44 @@ const CSS = `
   .urg { background: #d0342c; color: #fff; } .alerta { background: #fff1dc; color: #9a5b00; }
   .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 18px; padding: 0 4px; }
 `;
+
+// Ajuste de páginas de lista (cribado, confirmación): cada .pagina con su .pie-fijo; si una
+// no cabe ni a la escala mínima, sus últimas secciones (sel) pasan a una página de continuación;
+// después, cada grupo de páginas (data-grupo) a la mayor escala que cabe, la misma en todo el grupo.
+function scriptAjuste(W, H, sel) {
+  return `<script>
+  (() => {
+    const W = ${W}, H = ${H}, MIN = 0.75, SEL = '${sel}';
+    const escala = (p, z) => { p.style.width = (W / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z;
+      p.style.paddingBottom = (p.querySelector('.pie-fijo').offsetHeight + 24) + 'px'; };
+    const cabe = (p, z) => { escala(p, z); return p.scrollHeight * z <= H; };
+    // Una página que no cabe ni a la escala mínima pasa su último sistema a una página de continuación
+    const pags = [...document.querySelectorAll('.pagina')];
+    for (let k = 0; k < pags.length; k++) {
+      const p = pags[k];
+      while (!cabe(p, MIN) && p.querySelectorAll(SEL).length > 1) {
+        let sig = pags[k + 1];
+        if (!sig || sig.dataset.grupo !== p.dataset.grupo || !sig.dataset.continua) {
+          sig = document.createElement('div'); sig.className = p.className; sig.dataset.grupo = p.dataset.grupo; sig.dataset.continua = 1;
+          sig.innerHTML = '<div class="grupo">' + (p.querySelector('.grupo, h1').textContent) + ' (continuación)</div><div class="cols"></div>';
+          sig.appendChild(p.querySelector('.pie-fijo').cloneNode(true));
+          p.after(sig); pags.splice(k + 1, 0, sig);
+        }
+        const cols = p.querySelector('.cols');
+        sig.querySelector('.cols').prepend(cols.lastElementChild);
+      }
+    }
+    // La mayor escala que cabe; las páginas de un mismo grupo, con la misma
+    const zs = pags.map(p => { let lo = 0.5, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(p, z)) lo = z; else hi = z; } return lo; });
+    const grupos = [...new Set(pags.map(p => p.dataset.grupo))];
+    const esc = {};
+    for (const g of grupos) esc[g] = Math.min(...pags.map((p, i) => p.dataset.grupo === g ? zs[i] : 9));
+    pags.forEach(p => { const z = esc[p.dataset.grupo]; escala(p, z); p.style.height = (H / z) + 'px'; });
+    document.body.dataset.escala = grupos.length > 1 ? grupos.map(g => g + ' ' + esc[g].toFixed(2)).join(' · ') : esc[grupos[0]].toFixed(2);
+    document.body.dataset.zmin = Math.min(...Object.values(esc)); document.body.dataset.paginas = pags.length;
+  })();
+  </script>`;
+}
 
 // ── Fase 2 · cribado ─────────────────────────────────────────────────────────
 // A4 vertical. Página 1: lo que se pregunta siempre en la región. Después, las
@@ -139,37 +177,7 @@ function htmlCribado(region) {
     <div class="cols">${especiales.map(seccion).join('')}</div>
     ${pie}
   </div>` : ''}
-  <script>
-  (() => {
-    const W = ${W}, H = ${H}, MIN = 0.75;
-    const escala = (p, z) => { p.style.width = (W / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z;
-      p.style.paddingBottom = (p.querySelector('.pie-fijo').offsetHeight + 24) + 'px'; };
-    const cabe = (p, z) => { escala(p, z); return p.scrollHeight * z <= H; };
-    // Una página que no cabe ni a la escala mínima pasa su último sistema a una página de continuación
-    const pags = [...document.querySelectorAll('.pagina')];
-    for (let k = 0; k < pags.length; k++) {
-      const p = pags[k];
-      while (!cabe(p, MIN) && p.querySelectorAll('.sis').length > 1) {
-        let sig = pags[k + 1];
-        if (!sig || sig.dataset.grupo !== p.dataset.grupo || !sig.dataset.continua) {
-          sig = document.createElement('div'); sig.className = p.className; sig.dataset.grupo = p.dataset.grupo; sig.dataset.continua = 1;
-          sig.innerHTML = '<div class="grupo">' + (p.querySelector('.grupo, h1').textContent) + ' (continuación)</div><div class="cols"></div>';
-          sig.appendChild(p.querySelector('.pie-fijo').cloneNode(true));
-          p.after(sig); pags.splice(k + 1, 0, sig);
-        }
-        const cols = p.querySelector('.cols');
-        sig.querySelector('.cols').prepend(cols.lastElementChild);
-      }
-    }
-    // La mayor escala que cabe; las páginas de un mismo grupo, con la misma
-    const zs = pags.map(p => { let lo = 0.5, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(p, z)) lo = z; else hi = z; } return lo; });
-    const grupos = [...new Set(pags.map(p => p.dataset.grupo))];
-    const esc = {};
-    for (const g of grupos) esc[g] = Math.min(...pags.map((p, i) => p.dataset.grupo === g ? zs[i] : 9));
-    pags.forEach(p => { const z = esc[p.dataset.grupo]; escala(p, z); p.style.height = (H / z) + 'px'; });
-    document.body.dataset.escala = grupos.map(g => g + ' ' + esc[g].toFixed(2)).join(' · ');
-  })();
-  </script>`;
+  ${scriptAjuste(W, H, '.sis')}`;
 }
 
 // ── Fase 4 · árbol ───────────────────────────────────────────────────────────
@@ -515,7 +523,8 @@ function lrTxt(t) {
   const f = (v, o, util) => v == null ? '—' : `<span class="${util && cuenta ? 'util' : 'debil'}">${o === 'calculada' ? '≈' : ''}${fmtLR(v)}</span>`;
   return [f(lr.pos, lr.origenPos, lr.posUtil), f(lr.neg, lr.origenNeg, lr.negUtil)];
 }
-function htmlConfirmacion(region) {
+function htmlConfirmacion(region, { vertical = false } = {}) {
+  const W = vertical ? 794 : 1123, H = vertical ? 1123 : 794;
   const hyps = Object.values(HYPOTHESES).filter(h => h.region === region);
   const bloques = hyps.map(h => {
     const clusters = Object.entries(h.clusters || {}).map(([cid, c]) => {
@@ -533,22 +542,31 @@ function htmlConfirmacion(region) {
       <table><thead><tr><th>Test</th><th>LR+</th><th>LR−</th><th>Papel</th></tr></thead><tbody>${clusters}${filas}</tbody></table></section>`;
   }).join('');
   return `<style>${CSS}
-    @page { size: A4 landscape; margin: 8mm; }
-    body { font-size: 9.5px; }
+    @page { size: A4 ${vertical ? 'portrait' : 'landscape'}; margin: 0; }
+    body { font-size: 10px; }
+    .pagina { position: relative; width: ${W}px; height: ${H}px; padding: 18px 24px; overflow: hidden; page-break-after: always; }
+    .pagina:last-child { page-break-after: auto; }
+    h1, .grupo { font-size: 19px; font-weight: bold; margin: 0 0 6px; }
     .cols { column-count: 2; column-gap: 10px; }
     .hyp { break-inside: avoid; border: 1.5px solid #7c4ddb; border-radius: 8px; padding: 5px 7px; margin: 0 0 7px; }
-    .hyp h2 { font-size: 11.5px; margin: 0 0 3px; }
+    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: flex-start; }
+    .hyp h2 .num { flex: none; }
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 8.5px; color: #6b7280; border-bottom: 1px solid #cbd5e1; }
     td { border-bottom: 1px solid #eef2f7; padding: 1px 2px; vertical-align: top; }
     td.c, th:not(:first-child) { text-align: center; white-space: nowrap; width: 52px; }
     .util { font-weight: bold; color: #0f7a55; } .debil { color: #9ca3af; } b.si { color: #0f7a55; }
     tr.cl td { background: #f6f1ff; }
+    .pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 12px; border-top: 1px solid #cbd5e1; padding-top: 5px; font-size: 9.5px; color: #374151; }
+    .pie-fijo .gen { color: #6b7280; font-size: 8.5px; margin-top: 2px; }
   </style>
-  <h1>Confirmación de hipótesis · ${NOMBRES[region]}</h1>
-  <div class="sub">PhysiQ-Assessment · fase 4b. LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en gris: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. «hallazgo»: sin LR aplicable. Criterios de cada test y fuentes, en la app.</div>
-  <div class="cols">${bloques}</div>
-  <div class="pie">Generado desde los datos de la app el ${hoy}.</div>`;
+  <div class="pagina" data-grupo="hipotesis">
+    <h1>Confirmación de hipótesis · ${NOMBRES[region]}</h1>
+    <div class="cols">${bloques}</div>
+    <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterios de cada test y fuentes, en la app.
+      <div class="gen">PhysiQ-Assessment · fase 4b · ${NOMBRES[region]}. Generado desde los datos de la app el ${hoy}.</div></div>
+  </div>
+  ${scriptAjuste(W, H, '.hyp')}`;
 }
 
 // ── Render ───────────────────────────────────────────────────────────────────
@@ -563,20 +581,20 @@ const browser = await chromium.launch();
 // Hoja A4 del árbol: prueba A4 apaisado y vertical con 2, 3 o 4 pasos por fila y se queda con la
 // que deja la letra más grande; cada página de más resta (una hoja de consulta, cuantas menos, mejor).
 const PENALIZA_PAGINA = 0.3;
-async function mejorHojaA4(region) {
+async function mejorHojaA4(region, generar = (vertical, cols) => htmlArbol(region, { a4: true, vertical, cols }), colsPosibles = [2, 3, 4]) {
   const pruebas = [];
-  for (const vertical of [false, true]) for (const cols of [2, 3, 4]) {
-    const html = htmlArbol(region, { a4: true, vertical, cols });
+  for (const vertical of [false, true]) for (const cols of colsPosibles) {
+    const html = generar(vertical, cols);
     if (!html) continue;
     const page = await browser.newPage({ viewport: vertical ? { width: 794, height: 1123 } : { width: 1123, height: 794 } });
     await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${html}</body></html>`);
-    const { escala, paginas } = await page.evaluate(() => ({ escala: +document.body.dataset.escala, paginas: document.querySelectorAll('.pagina').length }));
+    const { escala, paginas } = await page.evaluate(() => ({ escala: +(document.body.dataset.zmin || document.body.dataset.escala), paginas: document.querySelectorAll('.pagina').length }));
     await page.close();
     pruebas.push({ html, vertical, cols, escala, paginas, nota: escala - PENALIZA_PAGINA * (paginas - 1) });
   }
   const mejor = pruebas.reduce((a, b) => b.nota > a.nota + 0.005 ? b : a);
   if (process.env.DEBUG_A4) for (const p of pruebas) console.log(`   ${p.vertical ? 'vertical' : 'apaisado'} ${p.cols}/fila: ${p.paginas} pág · escala ${p.escala.toFixed(2)}`);
-  return { html: mejor.html, apaisado: !mejor.vertical, elegida: ` · ${mejor.vertical ? 'vertical' : 'apaisado'}, ${mejor.cols} pasos por fila` };
+  return { html: mejor.html, apaisado: !mejor.vertical, elegida: ` · ${mejor.vertical ? 'vertical' : 'apaisado'}${colsPosibles.length > 1 ? `, ${mejor.cols} pasos por fila` : ''}` };
 }
 
 for (const region of regiones) {
@@ -585,6 +603,7 @@ for (const region of regiones) {
     let [fn, apaisado, formato] = TIPOS[tipo];
     let html = fn(region), elegida = '';
     if (tipo === 'arbol-a4') ({ html, apaisado, elegida } = await mejorHojaA4(region));
+    if (tipo === 'confirmacion') ({ html, apaisado, elegida } = await mejorHojaA4(region, vertical => htmlConfirmacion(region, { vertical }), [2]));
     const px = formato === 'A3' ? [1587, 1123] : [1123, 794];
     const page = await browser.newPage({ viewport: apaisado ? { width: px[0], height: px[1] } : { width: px[1], height: px[0] } });
     await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${html}</body></html>`);
