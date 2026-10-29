@@ -67,8 +67,22 @@ function scriptAjuste(W, H, sel) {
         sig.querySelector('.cols').prepend(cols.lastElementChild);
       }
     }
+    const mejorZ = p => { let lo = 0.5, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(p, z)) lo = z; else hi = z; } return lo; };
+    // Reparto equilibrado: mientras la página llena admita menos escala que su continuación,
+    // pasa su última sección a la siguiente (si así no empeora la peor de las dos, se queda)
+    for (let k = 0; k + 1 < pags.length; k++) {
+      const p = pags[k], sig = pags[k + 1];
+      if (!sig.dataset.continua || sig.dataset.grupo !== p.dataset.grupo) continue;
+      for (;;) {
+        const antes = Math.min(mejorZ(p), mejorZ(sig));
+        if (mejorZ(p) >= mejorZ(sig) || p.querySelectorAll(SEL).length < 2) break;
+        const el = p.querySelector('.cols').lastElementChild;
+        sig.querySelector('.cols').prepend(el);
+        if (Math.min(mejorZ(p), mejorZ(sig)) <= antes) { p.querySelector('.cols').appendChild(el); break; }
+      }
+    }
     // La mayor escala que cabe; las páginas de un mismo grupo, con la misma
-    const zs = pags.map(p => { let lo = 0.5, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(p, z)) lo = z; else hi = z; } return lo; });
+    const zs = pags.map(mejorZ);
     const grupos = [...new Set(pags.map(p => p.dataset.grupo))];
     const esc = {};
     for (const g of grupos) esc[g] = Math.min(...pags.map((p, i) => p.dataset.grupo === g ? zs[i] : 9));
