@@ -2,6 +2,8 @@
 // impresos (lib/esquemas.js) y el QR de cada hoja (docs/esquemas/qr.mjs).
 // Se ejecuta desde tests/unit.js.
 import { assert, leer, test, SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } from './comun.mjs';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 const ESQ = await import('../../lib/esquemas.js');
 const T4B = await import('../../lib/tests-4b.js');
 const ARBOL = await import('../../lib/arbol.js');
@@ -210,6 +212,8 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
     const desfasadas = claves.filter(k => d.hojas[k] !== huellas[k]?.huella);
     assert.deepEqual(desfasadas, [], `${l.clave}: hojas cambiadas sin regenerar el cuaderno (${desfasadas.join(', ')}). Regenera con «node docs/esquemas/generar.mjs cuadernos»`);
     assert.equal(d.paginas % 2, 0, `${l.clave}: número par de páginas (doble cara)`);
+    const pdf = readFileSync(new URL(`../../docs/esquemas/${l.clave}.pdf`, import.meta.url));
+    assert.equal(d.archivo, createHash('sha256').update(pdf).digest('hex').slice(0, 8), `${l.clave}: «archivo» es la huella del PDF guardado (el enlace de la guía la usa para no abrir una copia vieja)`);
     assert.ok(!claves.includes('ejercicio-paciente'), 'la hoja del paciente va aparte');
   }
   assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos.json'));

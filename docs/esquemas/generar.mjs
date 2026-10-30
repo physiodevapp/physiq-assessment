@@ -29,6 +29,7 @@ import '../../tests/dom-shim.mjs';
 
 import { readFileSync, writeFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 
 const { CIF_TREES } = await import('../../data.js');
@@ -181,7 +182,10 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     // Números de página (ver paginar.py): abajo, en la esquina exterior (impar a la derecha)
     await pdfDe(htmlNumerosCuaderno(pag, numeradas), numeros);
     execFileSync('python3', [join(DIR, 'paginar.py'), unido, numeros, join(DIR, `${lib.clave}.pdf`), [...numeradas.keys()].join(',')]);
-    CUADERNOS[lib.clave] = { huella, fecha, paginas: pag, hojas };
+    // archivo: huella del PDF tal cual, para el enlace (?v=): cambia también cuando cambia la
+    // maqueta (portada, numeración) sin cambiar ninguna hoja, así nadie abre una copia vieja en caché
+    const archivo = createHash('sha256').update(readFileSync(join(DIR, `${lib.clave}.pdf`))).digest('hex').slice(0, 8);
+    CUADERNOS[lib.clave] = { huella, archivo, fecha, paginas: pag, hojas };
     console.log(`${lib.clave}: ${pag} páginas (${pag / 2} hojas de papel) · v. ${huella}`);
   }
   rmSync(tmp, { recursive: true, force: true });

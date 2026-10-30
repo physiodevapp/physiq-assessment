@@ -6439,7 +6439,7 @@ async function checkGuia(browser, errors) {
     await page.goto(`${base.replace(/\.html$/, "")}?h=00000000#lumbar/cribado`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#guiaPapel');
     const pdf = await page.evaluate(() => document.querySelector('#guiaPapel a')?.getAttribute('href'));
-    r.papelViejo = /versión anterior/.test(await page.textContent('#guiaPapel')) && /cribado-lumbar\.pdf$/.test(pdf || '')
+    r.papelViejo = /versión anterior/.test(await page.textContent('#guiaPapel')) && (pdf || '') === `./docs/esquemas/cribado-lumbar.pdf?v=${huellas['cribado-lumbar'].huella}`
       && (await page.request.get(new URL(pdf, page.url()).href)).ok();
     await page.click('.guia-hojas a:has-text("Árbol")');
     await page.waitForSelector('#paso-lu_step1');
@@ -6455,10 +6455,12 @@ async function checkGuia(browser, errors) {
     // Cuadernos (completo y uno por región) arriba, con su PDF
     const cuadernos = await (await page.request.get(BASE_URL.replace(/\/$/, '') + '/docs/esquemas/cuadernos.json')).json();
     const filasCuadernos = await page.evaluate(() => [...document.querySelectorAll('.guia-hoja a[href*="cuaderno-"]')].map(a => a.getAttribute('href')));
-    r.cuadernos = filasCuadernos.length === Object.keys(cuadernos).length && (await page.request.head(new URL(filasCuadernos[0], page.url()).href)).ok();
+    // El enlace lleva ?v=<huella del PDF>: una versión nueva es otra dirección y no sale de la caché
+    r.cuadernos = filasCuadernos.length === Object.keys(cuadernos).length && (await page.request.head(new URL(filasCuadernos[0], page.url()).href)).ok()
+      && filasCuadernos.every(h => { const m = h.match(/(cuaderno-[^/]+)\.pdf\?v=([0-9a-f]{8})$/); return m && cuadernos[m[1]]?.archivo === m[2]; });
     const soloHojas = filasHojas.filter(f => !/cuaderno-/.test(f.pdf));
     r.hojas = soloHojas.length === Object.keys(huellas).length
-      && soloHojas.every(f => { const k = f.pdf.match(/([^/]+)\.pdf$/)[1]; return f.v === `v. ${huellas[k]?.huella}`; })
+      && soloHojas.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${huellas[k]?.huella}` && v === huellas[k]?.huella; })
       && pdfsOk.every(Boolean) && await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
     // Condiciones especiales (#condiciones, el QR de su hoja): todas las filas, sin estado ni botones
     await page.goto(`${base}#condiciones`, { waitUntil: 'networkidle' });
