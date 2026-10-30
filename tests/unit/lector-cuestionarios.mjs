@@ -144,7 +144,8 @@ test('lector: casos de medición válidos y sin fotos en el repo', () => {
 test('hoja de respuestas: al día con data/cuestionarios.js, con todas las filas y pidiendo no escribir el nombre', () => {
   const guardadas = JSON.parse(leer('docs', 'esquemas', 'respuestas', 'huellas.json'));
   const actuales = HR.huellasRespuestas();
-  const desfasadas = Object.keys(actuales).filter(k => guardadas[k] !== actuales[k]);
+  const desfasadas = Object.keys(actuales).filter(k => guardadas[k]?.huella !== actuales[k]);
+  for (const [k, v] of Object.entries(guardadas)) assert.match(v.fecha || '', /^\d{4}-\d{2}-\d{2}$/, `${k}: fecha del último cambio`);
   assert.deepEqual(desfasadas, [], `Hojas de respuestas desfasadas: ${desfasadas.join(', ')}. Regenera con «node docs/esquemas/generar-respuestas.mjs <id>» y sube PDF, PNG y huellas.json`);
   assert.deepEqual(Object.keys(guardadas).sort(), Object.keys(actuales).sort());
   for (const id of Object.keys(actuales)) assert.ok(existsSync(join(RAIZ, 'docs', 'esquemas', 'respuestas', `${id}.pdf`)), `${id}.pdf`);

@@ -3,7 +3,9 @@
 //   node docs/esquemas/generar-respuestas.mjs [id|todos]
 //
 // Escribe docs/esquemas/respuestas/<id>.pdf y .png, y la huella de cada una en
-// docs/esquemas/respuestas/huellas.json (tests/unit.js falla si no coincide con
+// docs/esquemas/respuestas/huellas.json, { id: { huella, fecha } } como docs/esquemas/huellas.json
+// (`fecha`: la del último cambio de contenido; la lee «Hojas para imprimir» de la guía)
+// (tests/unit.js falla si no coincide con
 // data/cuestionarios.js: al cambiar los ítems de un cuestionario, regenerar su hoja).
 // Necesita Playwright, como generar.mjs.
 import { createRequire } from 'node:module';
@@ -40,5 +42,6 @@ await browser.close();
 const ruta = join(DIR, 'huellas.json');
 const guardadas = existsSync(ruta) ? JSON.parse(readFileSync(ruta, 'utf8')) : {};
 const actuales = huellasRespuestas();
-for (const d of defs) guardadas[d.id] = actuales[d.id];
+const hoy = new Date().toISOString().slice(0, 10);
+for (const d of defs) if (guardadas[d.id]?.huella !== actuales[d.id]) guardadas[d.id] = { huella: actuales[d.id], fecha: hoy };
 writeFileSync(ruta, JSON.stringify(Object.fromEntries(Object.entries(guardadas).filter(([k]) => k in actuales).sort()), null, 2) + '\n');
