@@ -143,12 +143,22 @@ const RUTA_CUADERNOS = join(DIR, 'cuadernos.json');
 if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
   const CUADERNOS = existsSync(RUTA_CUADERNOS) ? JSON.parse(readFileSync(RUTA_CUADERNOS, 'utf8')) : {};
   const tmp = mkdtempSync(join(tmpdir(), 'cuadernos-'));
-  const pdfDe = async (html, ruta) => {
+  // medir(page): lo que haya que leer de la página antes de imprimirla (las filas del índice)
+  const pdfDe = async (html, ruta, medir) => {
     const page = await browser.newPage({ viewport: { width: 794, height: 1123 } });
     await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${html}</body></html>`);
+    const medida = medir ? await medir(page) : undefined;
     await page.pdf({ path: ruta, format: 'A4', printBackground: true, preferCSSPageSize: true });
     await page.close();
+    return medida;
   };
+  // Filas del índice de la portada (tr[data-pag]) en puntos PDF: A4 = 794 × 1123 px = 595,28 × 841,89 pt,
+  // origen abajo a la izquierda. getBoundingClientRect ya incluye el zoom que ajusta la portada.
+  const filasIndice = page => page.evaluate(() => [...document.querySelectorAll('tr[data-pag]')].map(tr => {
+    const r = tr.getBoundingClientRect();
+    return { pagina: +tr.dataset.pag, px: [r.left, r.top, r.right, r.bottom] };
+  }));
+  const PT = 595.28 / 794, ALTO_PT = 841.89;
   const paginas = f => +execFileSync('pdfinfo', [f]).toString().match(/^Pages:\s+(\d+)/m)[1];
   const blanca = join(tmp, 'blanca.pdf');
   await pdfDe(HTML_PAGINA_BLANCA, blanca);
@@ -175,13 +185,21 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     if (pag % 2 === 1) { archivos.push(blanca); pag++; }   // termina en par: el siguiente cuaderno, en otra hoja
     const huella = huellaCuaderno(hojas);
     const portada = join(tmp, `${lib.clave}-portada.pdf`);
-    await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), huella }), `${URL_GUIA}#hojas`), portada);
+    const filas = await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), huella }), `${URL_GUIA}#hojas`), portada, filasIndice);
+    if (filas.length !== secciones.flatMap(s => s.filas).length || filas.some(f => f.px[3] > 1123 || f.px[2] > 794)) throw new Error(`${lib.clave}: no se han podido medir las filas del índice`);
     if (paginas(portada) !== 1) throw new Error(`${lib.clave}: la portada no cabe en una página`);
     const unido = join(tmp, `${lib.clave}-unido.pdf`), numeros = join(tmp, `${lib.clave}-numeros.pdf`);
     execFileSync('pdfunite', [...archivos.map(a => a === 'PORTADA' ? portada : a), unido]);
     // Números de página (ver paginar.py): abajo, en la esquina exterior (impar a la derecha)
     await pdfDe(htmlNumerosCuaderno(pag, numeradas), numeros);
-    execFileSync('python3', [join(DIR, 'paginar.py'), unido, numeros, join(DIR, `${lib.clave}.pdf`), [...numeradas.keys()].join(',')]);
+    // Navegación: cada fila del índice enlaza a su página y los marcadores del visor van por sección y hoja
+    const config = join(tmp, `${lib.clave}-config.json`);
+    writeFileSync(config, JSON.stringify({
+      numeradas: [...numeradas.keys()],
+      enlaces: filas.map(f => ({ pagina: f.pagina, rect: [f.px[0] * PT, ALTO_PT - f.px[3] * PT, f.px[2] * PT, ALTO_PT - f.px[1] * PT] })),
+      marcadores: secciones.map(s => ({ titulo: s.titulo, pagina: s.filas[0].pagina, hijos: s.filas.map(f => ({ titulo: f.nombre, pagina: f.pagina })) })),
+    }));
+    execFileSync('python3', [join(DIR, 'paginar.py'), unido, numeros, join(DIR, `${lib.clave}.pdf`), config]);
     // archivo: huella del PDF tal cual, para el enlace (?v=): cambia también cuando cambia la
     // maqueta (portada, numeración) sin cambiar ninguna hoja, así nadie abre una copia vieja en caché
     const archivo = createHash('sha256').update(readFileSync(join(DIR, `${lib.clave}.pdf`))).digest('hex').slice(0, 8);
