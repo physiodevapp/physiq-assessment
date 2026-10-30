@@ -9,12 +9,13 @@
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
 //   confirmacion → fase 4b, A4 vertical (siempre, para que el cuaderno no gire): tests de cada hipótesis con sus LR y si puntúan
 //
-//   node docs/esquemas/generar.mjs tejidos | condiciones | farmacos | irritabilidad | ejercicio-paciente | sueltas
+//   node docs/esquemas/generar.mjs tejidos | condiciones | farmacos | irritabilidad | fase1 | ejercicio-paciente | sueltas
 //   → tejidos-blandos y tejidos-hueso: los tiempos de recuperación de data/tejidos.js en dos A4
 //     verticales temáticas (lib/esquemas.js, HOJAS_TEJIDO). También con «todas todos».
 //   → condiciones: la guía de condiciones especiales (data/condiciones.js) en un A4 vertical.
 //   → farmacos: qué vigilar en el plan por familia (los avisos de la fase 6), dos A4 como máximo.
 //   → irritabilidad: la matriz de la fase 3 para marcar en papel, la regla y qué implica cada nivel.
+//   → fase1: las banderas rojas generales y el riesgo psicosocial de la fase 1 (data/fase1.js).
 //   → ejercicio-paciente: para dar al paciente, las frases «Para explicárselo al paciente» de cada bloque, sin QR.
 //   node docs/esquemas/generar.mjs cuadernos → cuaderno-completo y cuaderno-<región> (a doble cara, de
 //     los PDF ya generados; necesita pdfunite y pdfinfo, de poppler-utils, y pypdf para numerar las
@@ -35,7 +36,7 @@ import { tmpdir } from 'node:os';
 const { CIF_TREES } = await import('../../data.js');
 const { HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlFase1, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -118,6 +119,7 @@ const SUELTAS = {
   condiciones: [['condiciones', htmlCondiciones]],
   farmacos: [['farmacos', htmlFarmacos]],
   irritabilidad: [['irritabilidad', htmlIrritabilidad]],
+  fase1: [['fase1', htmlFase1]],
   'ejercicio-paciente': [['ejercicio-paciente', htmlEjercicioPaciente]],
 };
 for (const [grupo, hojas] of Object.entries(SUELTAS)) {

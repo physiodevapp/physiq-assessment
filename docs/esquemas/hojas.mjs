@@ -19,6 +19,7 @@ const { qrSVG } = await import('./qr.mjs');
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const { ITEMS_IRRITABILIDAD, ITEM_IMPACTO, TEXTOS_IRRITABILIDAD } = await import('../../data/irritabilidad.js');
 const { reglaIrritabilidad } = await import('../../lib/irritabilidad.js');
+const { BANDERAS_FASE1, TEXTOS_FASE1, NIVELES_PSICO, PREGUNTAS_PSICO, RESPUESTAS_PSICO } = await import('../../data/fase1.js');
 const { BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercicio.js');
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
@@ -139,7 +140,7 @@ export function htmlCribado(region) {
       <span class="ley"><span class="chip urg">URGENCIA</span> derivar hoy</span>
       <span class="ley"><span class="chip der">DERIVACIÓN</span> valoración médica, no urgente</span>
       <span class="ley"><span class="cond">gris</span> cuándo aparece la pregunta</span>
-      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Preguntas literales de la app; las banderas rojas y amarillas de cada sistema están en la app.</span>
+      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Las preguntas son las de la app, literales; las banderas rojas y amarillas de cada sistema, en la guía (QR).</span>
       <span class="gen">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</span></div>`;
   const W = 794, H = 1123;
   return `<style>${CSS}
@@ -179,7 +180,7 @@ export function htmlCribado(region) {
   </div>
   ${especiales.length ? `<div class="pagina especial" data-grupo="especiales">
     <div class="grupo">Condiciones especiales · ${NOMBRES[region]}</div>
-    <div class="grupo-sub">Estos sistemas solo aparecen en la fase 2 si en la fase 1 está marcada su tarjeta (o el mecanismo «Post-quirúrgico»). Si no, no se preguntan.</div>
+    <div class="grupo-sub">Solo se preguntan si el paciente tiene la condición (en la app, su tarjeta de la fase 1 marcada, o el mecanismo «Post-quirúrgico»). La escala de Beighton, la sospecha del subtipo vascular, la prueba de bipedestación y la regla de la tensión en el embarazo se calculan en la guía (QR).</div>
     <div class="cols">${especiales.map(seccion).join('')}</div>
     ${pie}
   </div>` : ''}
@@ -555,7 +556,7 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     <div class="sub">PhysiQ-Assessment · fase 4b. Los tests de cada hipótesis, sus LR y si puntúan. El criterio de cada test, por qué se hace, sus fuentes, «Ampliar con IA» y una calculadora que puntúa cada hipótesis con los tests que marques, en la guía de consulta (QR).</div>
     </div>${qrGuia(region, 'confirmacion')}</div>
     <div class="cols">${bloques}</div>
-    <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterios de cada test y fuentes, en la app.
+    <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterio completo de cada test, fuentes y calculadora de la puntuación, en la guía (QR).
       <div class="gen">PhysiQ-Assessment · fase 4b · ${NOMBRES[region]}. Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</div></div>
   </div>
   ${scriptAjuste(W, H, '.hyp')}`;
@@ -676,15 +677,18 @@ function tituloTarjeta(id) {
 // ── Condiciones especiales (la guía de la cabecera, data/condiciones.js) ─────
 export function htmlCondiciones() {
   const T = TEXTOS_CONDICIONES;
+  // En papel: dónde están sus preguntas; en la app: dónde se marca. Las que tienen calculadora
+  // en el cribado de la guía (guia-calc.js, CALC_SISTEMA) lo dicen
+  const CON_CALCULADORA = ['hipermovilidad', 'disautonomia', 'embarazo'];
   const donde = c => c.destino?.tarjeta
-    ? `Se marca en: fase 1 · tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
-    : `Se marca en: fase 2 · cribado de ${esc(nombreRegion(c.region).toLowerCase())}`;
+    ? `En papel: su bloque en la página 2 de la hoja de cribado${CON_CALCULADORA.includes(c.id) ? ' (calculadora en la guía, QR)' : ''} · En la app: fase 1, tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
+    : `En papel: su pregunta en la hoja de cribado de ${esc(nombreRegion(c.region).toLowerCase())} · En la app: fase 2, la misma pregunta`;
   const tarjeta = c => `<section class="cond">
     <h2>${esc(c.nombre)}</h2>
     <p class="que">${esc(c.que)}</p>
     <div class="piensa">${esc(c.piensa)}</div>
     <ul>${c.pistas.map(p => `<li>${esc(p.texto)}</li>`).join('')}</ul>
-    <p class="anade"><b>Al marcarla, añade:</b> ${esc(c.anade)}</p>
+    <p class="anade"><b>Si la tiene, añade:</b> ${esc(c.anade)}</p>
     <p class="donde">${donde(c)}</p>
   </section>`;
   const transversales = CONDICIONES.filter(c => !c.region);
@@ -695,7 +699,7 @@ export function htmlCondiciones() {
       <div class="rejilla rejilla-3">${deRegion.map(c => tarjeta(c).replace('<h2>', `<h2><span class="reg">${esc(nombreRegion(c.region))}</span>`)).join('')}</div>` : '');
   return paginaUna({
     titulo: esc(T.titulo),
-    sub: `${esc(T.intro)} ${esc(T.diagnostico)} Las preguntas que añaden a la fase 2 están en la página 2 de cada hoja de cribado.`,
+    sub: `Situaciones que cambian el cribado y el plan. Si una encaja, pregunta su bloque de la página 2 de la hoja de cribado (en la app, márcala y añade lo que necesita). Si el paciente ya tiene el diagnóstico, cuenta siempre con ella.`,
     qr: 'Qué es, fuentes e IA',
     cuerpo,
     pie: `<span>${esc(T.pie)} Las fuentes de cada condición, en la guía (QR).</span><span class="pie">Generado desde los datos de la app (data/condiciones.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
@@ -935,6 +939,40 @@ export const rematarPortada = (html, url) => html.replaceAll(QR, qrSVG(url, QR_P
 // Huella del cuaderno: la de las versiones de sus hojas, en orden
 export const huellaCuaderno = huellas => fnv(Object.entries(huellas).map(([k, v]) => `${k}:${v}`).join('|'));
 
+// ── Fase 1: banderas rojas generales y riesgo psicosocial (data/fase1.js) ─────
+// Lo mismo que la tarjeta de la app, para marcar en papel; el QR abre su calculadora.
+export function htmlFase1() {
+  const T = TEXTOS_FASE1;
+  const caja = '<span class="caja"></span>';
+  const banderas = BANDERAS_FASE1.map((b, i) => `<tr><td class="n">${i + 1}</td><td>${esc(b.texto)}</td><td class="c">${caja} Sí</td><td class="c">${caja} No</td></tr>`).join('');
+  const preguntas = PREGUNTAS_PSICO.map(p => `<tr><td>${esc(p.texto)}<div class="sug">Si «Sí» o «Dudoso»: ${esc(p.cuestionarios)}</div></td>${RESPUESTAS_PSICO.map(r => `<td class="c">${caja} ${esc(r)}</td>`).join('')}</tr>`).join('');
+  return paginaUna({
+    titulo: 'Fase 1: banderas rojas y riesgo psicosocial',
+    sub: 'Lo mismo que la fase 1 de la app, para marcar en papel. Las banderas de cada sistema van con el cribado de la región (en la guía, QR de su hoja de cribado).',
+    qr: 'Calculadora e IA',
+    cuerpo: `<h2>🚩 Banderas rojas</h2><p class="aviso-g">${esc(T.banderasAviso)}</p>
+      <table class="t">${banderas}</table>
+      <p class="si-pos"><b>Con alguna «Sí»:</b> ${esc(T.banderaAlerta.replace(/^Bandera Roja Detectada\.\s*/, ''))}</p>
+      <h2>🧠 Riesgo psicosocial</h2><p>${esc(T.psicoIntro)}:</p>
+      <div class="niveles">${NIVELES_PSICO.map(n => `<span>${caja} ${n.emoji} ${esc(n.valor)}</span>`).join('')}</div>
+      <p>${T.herramienta}</p>
+      <h3>Con riesgo alto</h3><p>${esc(T.psicoAlto)}</p>
+      <table class="t">${preguntas}</table>`,
+    pie: `<span>Un SÍ en una bandera roja no exige derivación inmediata salvo emergencia clara: interpretar en el contexto clínico.</span><span class="pie">Generado desde los datos de la app (data/fase1.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
+    css: `
+      .cuerpo h2 { font-size: 15px; margin: 6px 0 4px; color: #1e3a8a; } .cuerpo h3 { font-size: 12.5px; margin: 10px 0 2px; }
+      .cuerpo p { margin: 0 0 6px; font-size: 11.5px; }
+      .aviso-g { color: #4b5563; }
+      .t { width: 100%; border-collapse: collapse; margin: 2px 0 8px; font-size: 12px; }
+      .t td { border-bottom: 1px solid #e5e7eb; padding: 6px 4px; vertical-align: top; }
+      .t td.n { width: 18px; font-weight: bold; color: #7c4ddb; } .t td.c { width: 74px; white-space: nowrap; }
+      .caja { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #334155; border-radius: 2px; vertical-align: -2px; margin-right: 3px; }
+      .sug { font-size: 10px; color: #6b7280; margin-top: 2px; }
+      .si-pos { border-left: 3px solid #d0342c; padding: 4px 8px; background: #fde8e8; }
+      .niveles { display: flex; gap: 24px; font-size: 12.5px; margin: 4px 0 8px; }`,
+  });
+}
+
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
 export function fnv(texto) {
@@ -957,6 +995,7 @@ export function hojasImpresas() {
   hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones });
   hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
   hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
+  hojas.push({ clave: 'fase1', ruta: 'fase1', html: htmlFase1 });
   hojas.push({ clave: 'ejercicio-paciente', ruta: null, html: htmlEjercicioPaciente, paciente: true });
   return hojas;
 }
