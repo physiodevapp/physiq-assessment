@@ -204,6 +204,12 @@ test('calculadoras de la guía: usan las reglas de la app y salen en el bloque d
   assert.ok(CALC.calcHipermovilidadHTML().includes('Beighton') && CALC.calcDisautonomiaHTML().includes('FC') && CALC.calcEmbarazoHTML().includes('TAS'));
 });
 
+test('número de hipótesis: la hoja y la guía pintan la cifra, nunca el carácter rodeado (ilegible desde el 10)', () => {
+  assert.deepEqual(['①', '⑨', '⑩', '⑳', '㉑', '㉟', '㊱', '㊿', '', undefined].map(ESQ.numeroHipotesis), ['1', '9', '10', '20', '21', '35', '36', '50', '', '']);
+  for (const h of Object.values(HYPOTHESES)) if (h.num) assert.match(ESQ.numeroHipotesis(h.num), /^\d+$/, `${h.id}: ${h.num}`);
+  for (const r of Object.keys(CIF_TREES)) assert.ok(!/class="num">[\u2460-\u2473\u3251-\u325F\u32B1-\u32BF]/.test(HOJAS.htmlConfirmacion(r)), r);
+});
+
 test('las hojas remiten a la guía (QR), no a la app, para lo que la guía ya tiene', () => {
   for (const r of Object.keys(CIF_TREES)) {
     assert.ok(!/están en la app|en la app\./.test(HOJAS.htmlCribado(r)), `cribado-${r}`);

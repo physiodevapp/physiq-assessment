@@ -11,6 +11,7 @@ const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } = await import('../../data.j
 const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
 const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
+const { numeroHipotesis } = await import('../../lib/esquemas.js');
 const { HOJAS_TEJIDO, urlTejidos, urlRuta, datosHojaTejido } = await import('../../lib/esquemas.js');
 const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
 const { posicionDia, tieneBarra } = await import('../../lib/tejidos.js');
@@ -528,7 +529,7 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
       const papel = t.tipo === 'pronostico' ? 'pronóstico' : t.cluster ? 'en clúster' : testPuntua(h, t) ? '<b class="si">puntúa</b>' : 'hallazgo';
       return `<tr><td>${esc(t.name)}</td><td class="c">${pos}</td><td class="c">${neg}</td><td class="c">${papel}</td></tr>`;
     }).join('');
-    return `<section class="hyp"><h2><span class="num">${esc(h.num || '')}</span> ${esc(h.name)}</h2>
+    return `<section class="hyp"><h2><span class="num">${esc(numeroHipotesis(h.num))}</span> ${esc(h.name)}</h2>
       <table><thead><tr><th>Test</th><th>LR+</th><th>LR−</th><th>Papel</th></tr></thead><tbody>${clusters}${filas}</tbody></table></section>`;
   }).join('');
   return `<style>${CSS}
