@@ -136,7 +136,7 @@ async function walkRegion(page, region) {
     ['naturaleza', 'estabilidad'].forEach(g => document.getElementById(g)?.querySelector('.option-btn')?.click());
   });
   await page.fill('#signoComparable', `Signo comparable de ${region}`);
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
 
   const treeResult = await walkCifTreeToCompletion(page);
@@ -193,7 +193,7 @@ async function walkRegionBreve(page, region) {
   await page.click('#phase3 .nrs-btn >> nth=6');
   await page.click('#irritabDirecta .option-btn >> nth=1');
   const naturalezaOculta = await page.evaluate(() => getComputedStyle(document.getElementById('naturaleza').closest('.card')).display === 'none');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
 
   const treeResult = await walkCifTreeToCompletion(page);
@@ -251,7 +251,7 @@ async function walkRegionPosq(page, region) {
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
   await page.fill('#signoComparable', 'Flexión');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const treeResult = await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
@@ -293,7 +293,7 @@ async function checkCaderaProtesis(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('ca_step1', 2);
@@ -394,7 +394,7 @@ async function checkHombroTratada(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('h_step1', 2);
@@ -1630,7 +1630,7 @@ async function checkDerivacionVascular(page) {
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
   await page.fill('#signoComparable', 'Marcha');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('lu_step1', 1);          // NO
@@ -1681,7 +1681,7 @@ async function checkDerivacionCribado(page) {
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
   await page.fill('#signoComparable', 'Sedestación');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
@@ -1757,7 +1757,7 @@ async function checkModoGuia(page) {
   await page.waitForTimeout(150);
   r.signoVerbal = await page.evaluate(() => document.getElementById('signoComparable').offsetParent === null
     && /Flexión de hombro/.test(document.querySelector('[data-verbal="signoComparable"]')?.textContent || ''));
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
@@ -1872,7 +1872,7 @@ async function irA4bHombro(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('h_step1', 2);
@@ -2021,7 +2021,7 @@ async function irAFase4Lumbar(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(200);
 }
 async function checkArbolRazon(page) {
