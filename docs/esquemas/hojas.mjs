@@ -875,24 +875,31 @@ export function htmlEjercicioPaciente() {
 // ── Cuadernos (portada con índice y página en blanco; los monta generar.mjs) ──
 // `secciones`: [{ titulo, filas: [{ nombre, huella, pagina }] }]. Una página; el QR lleva a
 // «Hojas para imprimir», donde se comprueba la versión de cada hoja.
-export function htmlPortadaCuaderno({ titulo, secciones, fecha, huella }) {
+export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, huella }) {
   const filas = secciones.map(sec => `<tr class="sec"><td colspan="3">${esc(sec.titulo)}</td></tr>`
     + sec.filas.map(f => `<tr><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.pagina}</td></tr>`).join('')).join('');
   return `<style>${CSS}${CSS_UNA}
-    .pagina { padding: 48px 48px 0; }
-    .marca { font-family: monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6b7280; }
-    h1 { font-size: 30px; margin: 6px 0 2px; } .tit2 { font-size: 20px; color: #1e3a8a; margin-bottom: 10px; }
-    .cab { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 14px; }
-    .nota { font-size: 11px; color: #374151; line-height: 1.5; max-width: 470px; }
+    .pagina { padding: 28px 28px 0; }
+    .banda { background: #1e3a8a; color: #fff; border-radius: 12px; padding: 34px 32px 30px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; margin-bottom: 22px; }
+    .marca { font-family: monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #bfdbfe; }
+    h1 { font-size: 56px; line-height: 1.05; margin: 14px 0 8px; color: #fff; }
+    .tit2 { font-size: 15px; color: #dbeafe; line-height: 1.4; }
+    .banda .qr-guia { background: #fff; border-radius: 8px; padding: 8px 8px 6px; width: auto; color: #374151; }
+    .info { padding: 0 20px; margin-bottom: 14px; }
+    .nota { font-size: 11px; color: #374151; line-height: 1.5; }
+    .indice { font-family: monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6b7280; margin: 0 20px 2px; }
+    .cuerpo { padding: 0 20px; }
     table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
     td { padding: 3px 4px; border-bottom: 1px solid #e5e7eb; } .v { font-family: monospace; font-size: 10px; color: #6b7280; width: 90px; } .p { text-align: right; width: 50px; font-weight: bold; }
     tr.sec td { font-weight: bold; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; font-size: 10.5px; padding-top: 10px; border-bottom: 1.5px solid #bfdbfe; }
   </style>
   <div class="pagina">
-    <div class="cab"><div><div class="marca">PhysiQ-Assessment · hojas de consulta</div><h1>${esc(titulo)}</h1>
-      <div class="nota">Para imprimir <b>a doble cara</b>: cada sección empieza en página impar (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice y da su PDF actual.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
+    <div class="banda"><div><div class="marca">PhysiQ-Assessment · Cuaderno de consulta</div><h1>${esc(portada.titulo || titulo)}</h1>
+      ${portada.subtitulo ? `<div class="tit2">${esc(portada.subtitulo)}</div>` : ''}</div>
       <div class="qr-guia">${QR}<span>Hojas para imprimir</span></div></div>
-    <div class="cuerpo"><table>${filas}</table></div>
+    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada sección empieza en página impar (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice y da su PDF actual.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
+    <div class="indice">Índice</div>
+  <div class="cuerpo"><table>${filas}</table></div>
     <div class="pie-fijo">${AUTORIA_HTML}</div>
   </div>
   <script>
@@ -907,6 +914,22 @@ export function htmlPortadaCuaderno({ titulo, secciones, fecha, huella }) {
 export const HTML_PAGINA_BLANCA = `<style>@page { size: A4; margin: 0; } body { margin: 0; font-family: Helvetica, Arial, sans-serif; }
   .b { width: 794px; height: 1123px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px; box-sizing: border-box; color: #9ca3af; font-size: 9px; }</style>
   <div class="b">Página en blanco a propósito (impresión a doble cara)</div>`;
+// Una página por cada página del cuaderno, transparente, con el número abajo en la esquina exterior
+// (impar a la derecha, par a la izquierda) y el nombre de su sección; vacía en la portada y en las
+// blancas. paginar.py la superpone al contenido, reducido para dejar libre esa franja.
+export function htmlNumerosCuaderno(total, numeradas) {
+  const paginas = Array.from({ length: total }, (_, i) => {
+    const n = i + 1, sec = numeradas.get(n);
+    return `<div class="np">${sec ? `<div class="num ${n % 2 ? 'der' : 'izq'}"><span class="sec">${esc(sec)}</span><b>${n}</b></div>` : ''}</div>`;
+  }).join('');
+  return `<style>@page { size: A4; margin: 0; } html, body { margin: 0; background: transparent; font-family: Helvetica, Arial, sans-serif; }
+    .np { width: 794px; height: 1123px; position: relative; page-break-after: always; break-after: page; overflow: hidden; }
+    .np:last-child { page-break-after: auto; break-after: auto; }
+    .num { position: absolute; bottom: 20px; display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: #111827; }
+    .num.der { right: 40px; } .num.izq { left: 40px; flex-direction: row-reverse; }
+    .num .sec { font-size: 9px; color: #6b7280; letter-spacing: .5px; text-transform: uppercase; }
+    .num b { font-size: 12px; }</style>${paginas}`;
+}
 // La QR de la portada: «Hojas para imprimir», sin huella (cada hoja lleva la suya)
 export const rematarPortada = (html, url) => html.replaceAll(QR, qrSVG(url, QR_PX));
 // Huella del cuaderno: la de las versiones de sus hojas, en orden

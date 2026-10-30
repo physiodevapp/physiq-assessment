@@ -17,7 +17,8 @@
 //   → irritabilidad: la matriz de la fase 3 para marcar en papel, la regla y qué implica cada nivel.
 //   → ejercicio-paciente: para dar al paciente, las frases «Para explicárselo al paciente» de cada bloque, sin QR.
 //   node docs/esquemas/generar.mjs cuadernos → cuaderno-completo y cuaderno-<región> (a doble cara, de
-//     los PDF ya generados; necesita pdfunite y pdfinfo, de poppler-utils). También con «todas todos».
+//     los PDF ya generados; necesita pdfunite y pdfinfo, de poppler-utils, y pypdf para numerar las
+//     páginas, paginar.py). También con «todas todos».
 //   «sueltas» = todas las que no son de una región.
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
 // importa lrEfectiva y testPuntua de lib/tests-4b.js (las mismas que usa phase4b.js).
@@ -33,7 +34,7 @@ import { tmpdir } from 'node:os';
 const { CIF_TREES } = await import('../../data.js');
 const { HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -158,11 +159,13 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     const fecha = lib.secciones.flatMap(sec => sec.hojas).map(k => HUELLAS[k].fecha).sort().at(-1);
     // Orden de páginas: portada (1), blanca (2), y cada sección desde impar
     const archivos = ['PORTADA', blanca];
+    const numeradas = new Map();   // página (desde 1) → sección: las de contenido llevan número
     let pag = 2;
     const secciones = lib.secciones.map(sec => {
       if (pag % 2 === 1) { archivos.push(blanca); pag++; }
       const filas = sec.hojas.map(k => {
         const f = join(DIR, `${k}.pdf`), n = paginas(f), fila = { nombre: nombreHojaImpresa(k, nombreRegion), huella: HUELLAS[k].huella, pagina: pag + 1 };
+        for (let i = 1; i <= n; i++) numeradas.set(pag + i, sec.titulo);
         archivos.push(f); pag += n;
         return fila;
       });
@@ -171,9 +174,13 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     if (pag % 2 === 1) { archivos.push(blanca); pag++; }   // termina en par: el siguiente cuaderno, en otra hoja
     const huella = huellaCuaderno(hojas);
     const portada = join(tmp, `${lib.clave}-portada.pdf`);
-    await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, secciones, fecha: ISO_A_CORTA(fecha), huella }), `${URL_GUIA}#hojas`), portada);
+    await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), huella }), `${URL_GUIA}#hojas`), portada);
     if (paginas(portada) !== 1) throw new Error(`${lib.clave}: la portada no cabe en una página`);
-    execFileSync('pdfunite', [...archivos.map(a => a === 'PORTADA' ? portada : a), join(DIR, `${lib.clave}.pdf`)]);
+    const unido = join(tmp, `${lib.clave}-unido.pdf`), numeros = join(tmp, `${lib.clave}-numeros.pdf`);
+    execFileSync('pdfunite', [...archivos.map(a => a === 'PORTADA' ? portada : a), unido]);
+    // Números de página (ver paginar.py): abajo, en la esquina exterior (impar a la derecha)
+    await pdfDe(htmlNumerosCuaderno(pag, numeradas), numeros);
+    execFileSync('python3', [join(DIR, 'paginar.py'), unido, numeros, join(DIR, `${lib.clave}.pdf`), [...numeradas.keys()].join(',')]);
     CUADERNOS[lib.clave] = { huella, fecha, paginas: pag, hojas };
     console.log(`${lib.clave}: ${pag} páginas (${pag / 2} hojas de papel) · v. ${huella}`);
   }
