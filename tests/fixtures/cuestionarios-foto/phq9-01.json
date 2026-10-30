@@ -1,0 +1,7 @@
+{
+  "cuestionario": "phq9",
+  "version": "08c7add1",
+  "fotos": ["phq9-01.jpg"],
+  "condiciones": ["móvil usuario", "plana", "buena luz", "solo X"],
+  "correctas": { "1": 0, "2": 1, "3": 3, "4": 0, "5": 1, "6": 2, "7": 1, "8": 0, "9": 0 }
+}
