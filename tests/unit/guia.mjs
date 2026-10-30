@@ -18,6 +18,8 @@ const FARM_P = await import('../../data/farmacos-paciente.js');
 const FARM_L = await import('../../lib/farmacos.js');
 const IRR_DATOS = await import('../../data/irritabilidad.js');
 const IRR_LIB = await import('../../lib/irritabilidad.js');
+const EJ = await import('../../data/ejercicio.js');
+const REGION_LIB = await import('../../lib/region.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
 
@@ -167,4 +169,54 @@ test('hoja de irritabilidad: la matriz de data/irritabilidad.js, la misma regla 
   for (const k of ['hastaLimite', 'hastaDolor', 'alta', 'margen']) assert.ok(html.includes(T[k]), k);
   assert.ok(leer('guia.js').includes('reglaIrritabilidad()'), 'la guía usa la misma regla');
   assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'irritabilidad' && h.ruta === 'irritabilidad'));
+});
+
+test('hoja de ejercicio para el paciente: todas las frases «Para explicárselo al paciente», literales, con título llano y sin QR', () => {
+  const html = HOJAS.htmlEjercicioPaciente();
+  const escH = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  for (const b of EJ.BLOQUES_EJERCICIO.filter(x => x.apartados?.paciente?.length)) {
+    assert.ok(b.tituloPaciente && ['general', 'condicion'].includes(b.hojaPaciente), `${b.id}: título para el paciente y parte de la hoja`);
+    assert.ok(html.includes(escH(b.tituloPaciente)), b.id);
+    for (const f of b.apartados.paciente) assert.ok(html.includes(escH(f.t)), `${b.id}: ${f.t.slice(0, 40)}`);
+  }
+  const h = HOJAS.hojasImpresas().find(x => x.clave === 'ejercicio-paciente');
+  assert.ok(h && h.ruta === null);
+  const final = HOJAS.rematar(h.html(), { ruta: h.ruta, huella: 'abcd1234', fecha: '1/1/2000' });
+  assert.ok(!final.includes('<svg') && final.includes('v. abcd1234'), 'sin QR, con su versión');
+  assert.ok(leer('guia.js').includes("'ejercicio-paciente'"), 'listada en «Hojas para imprimir»');
+});
+
+test('guía, confirmación: cada hipótesis con su pauta y su pronóstico de data/, y la derivación siempre a la vista', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes('pautaHipHTML(h, region)') && src.includes('DOSIS_DERIVAR') && src.includes('TEXTO_PAUTA_COMPATIBLE'));
+  assert.ok(/if \(h\.dosis === DOSIS_DERIVAR\) return `<div class="guia-urg">/.test(src), 'la derivación no va plegada');
+});
+
+test('la fecha impresa en las hojas es la de su último cambio de contenido (huellas.json), no la de generación', () => {
+  const g = leer('docs', 'esquemas', 'generar.mjs');
+  assert.ok(/fecha: fechaCorta\(HUELLAS\[clave\]\.fecha\)/.test(g));
+});
+
+test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la versión actual de cada hoja que contienen', () => {
+  const { nombreRegion } = REGION_LIB;
+  const huellas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
+  const cuadernos = JSON.parse(leer('docs', 'esquemas', 'cuadernos.json'));
+  const def = ESQ.definicionCuadernos(Object.keys(CIF_TREES), nombreRegion);
+  assert.deepEqual(Object.keys(cuadernos).sort(), def.map(l => l.clave).sort(), 'un cuaderno por definición (completo y uno por región)');
+  for (const l of def) {
+    const d = cuadernos[l.clave];
+    const claves = l.secciones.flatMap(s => s.hojas);
+    assert.deepEqual(Object.keys(d.hojas), claves, `${l.clave}: mismas hojas y en el mismo orden`);
+    const desfasadas = claves.filter(k => d.hojas[k] !== huellas[k]?.huella);
+    assert.deepEqual(desfasadas, [], `${l.clave}: hojas cambiadas sin regenerar el cuaderno (${desfasadas.join(', ')}). Regenera con «node docs/esquemas/generar.mjs cuadernos»`);
+    assert.equal(d.paginas % 2, 0, `${l.clave}: número par de páginas (doble cara)`);
+    assert.ok(!claves.includes('ejercicio-paciente'), 'la hoja del paciente va aparte');
+  }
+  assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos.json'));
+});
+
+test('guía, fármacos: «¿Otro fármaco o duda?» usa el modo «Fármacos» de la app y no guarda el destino', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes("promptPregunta({ pregunta: q, tipo: 'farmacos' })") && src.includes('preguntaFarmacosHTML()'));
+  assert.ok(!src.includes('guardarDestinoIA'), 'la guía no guarda nada');
 });

@@ -2,14 +2,15 @@
 // impresos (docs/esquemas), con la misma numeración, para abrirla desde el QR
 // de cada hoja. Se pinta desde data/ con módulos puros (sin app.js ni state):
 // nunca pide ni guarda datos del paciente. #<región>/<hoja>[/<elemento>]
-import { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } from './data.js';
+import { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES, DOSIS_DERIVAR } from './data.js';
+import { TEXTO_PAUTA_COMPATIBLE } from './lib/posquirurgico.js';
 import { citasHTML, citasEnTexto, registroReferencias, enlaceCita } from './lib/citas.js';
-import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, ctxIrritabilidad, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
+import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, ctxIrritabilidad, ctxPauta, ctxPronostico, DESTINOS_IA, destinoIA, promptPregunta, urlIA, MAX_TEXTO_IA, NOTA_CUENTAS, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
 import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/irritabilidad.js';
 import { nivelMatriz, NOMBRE_NIVEL, reglaIrritabilidad } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
-import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido } from './lib/esquemas.js';
+import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido, definicionCuadernos } from './lib/esquemas.js';
 import { TIEMPOS_TEJIDO } from './data/tejidos.js';
 import { condicionesHTML } from './lib/condiciones.js';
 import { farmacosHTML, textoCima } from './lib/farmacos.js';
@@ -110,6 +111,26 @@ function htmlArbol(region) {
       <p>Es una regla de la app, sin fuente citada. La fase 4b no tiene tests que hacer en ese caso.</p></div>`;
 }
 
+// ── Pauta y pronóstico de una hipótesis (los de la fase 5, sin paciente) ─────
+// Contenido fijo de data/: la pauta (todas sus situaciones, si se reparte en ramas), su fuente
+// y el pronóstico. No es un plan de sesión: eso es la fase 6, que tiene en cuenta urgencias,
+// condiciones especiales y red de seguridad que la guía no conoce. La derivación, siempre a la vista.
+function pautaHipHTML(h, region) {
+  if (h.dosis === DOSIS_DERIVAR) return `<div class="guia-urg"><b>🚑 Derivación</b>${esc(DOSIS_DERIVAR)}</div>`;
+  const p = h.pronostico;
+  const linea = (et, t) => t ? `<p data-ia-parrafo>${et ? `<b>${et}</b> ` : ''}${citasEnTexto(t)}${iaParrafoHTML()}</p>` : '';
+  const pauta = h.dosisRamas?.length
+    ? h.dosisRamas.map(r => linea('', r.texto)).join('') + linea('', h.dosisComun)   // cada rama empieza por su situación
+    : h.dosis ? linea('', h.dosis) : '<p><em>Sin dosis de referencia: a criterio del clínico.</em></p>';
+  return `<details class="razon guia-pauta"><summary>💊 Pauta y pronóstico</summary><div class="razon-cuerpo">
+    <div class="razon-seccion" ${atributosIA(ctxPauta(region, h.name))}><div class="razon-etq">${h.dosisFuente ? 'Pauta de tratamiento' : 'Dosis día 1 (baja fricción)'}</div>${pauta}
+      ${h.dosisFuente ? `<div class="razon-pie">${citasHTML(h.dosisFuente)}</div>` : ''}
+      ${h.dosis ? `<p class="guia-nota">🏥 Tras una cirugía: ${esc(TEXTO_PAUTA_COMPATIBLE.charAt(0).toLowerCase() + TEXTO_PAUTA_COMPATIBLE.slice(1))}</p>` : ''}</div>
+    ${p ? `<div class="razon-seccion" ${atributosIA(ctxPronostico(region, h.name))}><div class="razon-etq">Pronóstico y derivación</div>${linea('', p.horizonte)}${linea('Seguimiento:', p.seguimiento)}${linea('A tener en cuenta:', p.notas)}${linea('Reconsiderar o derivar si:', p.derivacion)}
+      ${p.fuente ? `<div class="razon-pie">${citasHTML(p.fuente)}</div>` : ''}</div>` : ''}
+  </div></details>`;
+}
+
 // ── Confirmación (fase 4b) ──────────────────────────────────────────────────
 function htmlConfirmacion(region) {
   const hyps = Object.values(HYPOTHESES).filter(h => h.region === region);
@@ -139,7 +160,7 @@ function htmlConfirmacion(region) {
           ${porQue(ctxTest(region, t.name, h.name), cuerpo)}</div>`;
       }).join('');
       return `<section class="guia-bloque" id="hip-${h.id}"><h3><span class="guia-num">${esc(h.num || '')}</span>${esc(h.name)}</h3>
-        <div class="guia-puntua" data-puntua="${h.id}">${puntuaHTML(h)}</div>${clusters}${tests}</section>`;
+        <div class="guia-puntua" data-puntua="${h.id}">${puntuaHTML(h)}</div>${clusters}${tests}${pautaHipHTML(h, region)}</section>`;
     }).join('')}`;
 }
 
@@ -268,11 +289,16 @@ function claveHoja({ tejidos, suelta, region, hoja }) {
   if (tejidos) return `tejidos-${hoja}`;
   return hoja === 'arbol' ? `arbol-a4-${region}` : hoja === 'irritabilidad' ? '' : `${hoja}-${region}`;
 }
+let CUADERNOS = null;
 async function cargarHuellas() {
   try {
     const r = await fetch('./docs/esquemas/huellas.json', { cache: 'no-store' });
     if (r.ok) HUELLAS = await r.json();
   } catch { /* sin red o sin archivo: sin aviso */ }
+  try {
+    const r = await fetch('./docs/esquemas/cuadernos.json', { cache: 'no-store' });
+    if (r.ok) CUADERNOS = await r.json();
+  } catch { /* sin cuadernos: la lista de hojas sigue */ }
 }
 function avisoHojaHTML(clave) {
   if (!HUELLA_PAPEL || !HUELLAS || !clave || clave !== HOJA_PAPEL || !HUELLAS[clave]) return '';
@@ -287,6 +313,8 @@ function avisoHojaHTML(clave) {
 // lleva bajo el QR), la fecha de su último cambio de contenido y su PDF. Sale de
 // huellas.json, así que se mantiene sola. Las que cambiaron hace poco, marcadas.
 const DIAS_RECIENTE = 30;
+// Hojas sin QR (no tienen página en la guía): solo se listan aquí, con su versión y su PDF
+const PARA_PACIENTE = { 'ejercicio-paciente': 'El ejercicio: lo que dicen los estudios' };
 const NOMBRE_HOJA = { cribado: 'Cribado (fase 2)', 'arbol-a4': 'Árbol de decisión (fase 4)', confirmacion: 'Confirmación (fase 4b)' };
 const fechaLarga = iso => new Date(`${iso}T12:00:00`).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
 function htmlHojas() {
@@ -302,10 +330,20 @@ function htmlHojas() {
   };
   const grupo = (titulo, filas) => `<section class="guia-bloque"><h3>${esc(titulo)}</h3><ul class="guia-hojas-lista">${filas.join('')}</ul></section>`;
   const recientes = Object.values(HUELLAS).filter(h => (hoy - new Date(`${h.fecha}T12:00:00`).getTime()) / 864e5 <= DIAS_RECIENTE).length;
+  // Cuadernos de consulta a doble cara (completo y por región), arriba: es lo que se imprime de una vez
+  const cuadernos = CUADERNOS ? definicionCuadernos(REGIONES, nombreRegion).filter(l => CUADERNOS[l.clave]).map(l => {
+    const d = CUADERNOS[l.clave];
+    const reciente = (hoy - new Date(`${d.fecha}T12:00:00`).getTime()) / 864e5 <= DIAS_RECIENTE;
+    return `<li class="guia-hoja${reciente ? ' reciente' : ''}"><div class="guia-hoja-txt"><b>${esc(l.titulo)}</b>
+      <span>${d.paginas} páginas (${d.paginas / 2} hojas de papel)</span> · <span class="guia-hoja-v">v. ${esc(d.huella)}</span> · <span>cambió el ${esc(fechaLarga(d.fecha))}</span>${reciente ? ' <span class="guia-hoja-nueva">Reciente</span>' : ''}</div>
+      <a href="./docs/esquemas/${l.clave}.pdf" target="_blank" rel="noopener" aria-label="Descargar ${esc(l.titulo)} en PDF">PDF ↗</a></li>`;
+  }) : [];
   return `<p class="guia-nota">Cada hoja impresa lleva su versión bajo el QR («v. …»). Si no coincide con la de esta lista, la hoja ha cambiado: descarga el PDF y reimprímela. «Reciente» = cambió en los últimos ${DIAS_RECIENTE} días (${recientes} de ${Object.keys(HUELLAS).length}).</p>
+    ${cuadernos.length ? `<section class="guia-bloque"><h3>Cuadernos de consulta para imprimir a doble cara</h3><p class="guia-nota">Todas las hojas de consulta en un PDF, o las de una región con las generales. Cada sección empieza en página impar; la portada lleva el índice con la versión de cada hoja. La hoja del paciente va aparte.</p><ul class="guia-hojas-lista">${cuadernos.join('')}</ul></section>` : ''}
     ${REGIONES.map(r => grupo(nombreRegion(r), Object.entries(NOMBRE_HOJA).map(([t, n]) => fila(`${t}-${r}`, n)))).join('')}
     ${grupo('Tiempos de recuperación de tejidos', Object.entries(HOJAS_TEJIDO).map(([k, h]) => fila(`tejidos-${k}`, h.titulo)))}
-    ${grupo('Otras hojas', Object.entries(SUELTAS).map(([k, h]) => fila(k, h.titulo)))}`;
+    ${grupo('Otras hojas', Object.entries(SUELTAS).map(([k, h]) => fila(k, h.titulo)))}
+    ${grupo('Para dar al paciente', Object.entries(PARA_PACIENTE).map(([k, t]) => fila(k, t)))}`;
 }
 
 // ── Páginas sueltas (#<clave>): el QR de las hojas que no son de una región ──
@@ -313,8 +351,47 @@ function htmlHojas() {
 const SUELTAS = {
   condiciones: { titulo: 'Condiciones especiales', html: () => condicionesHTML({}, { guia: true }) },
   irritabilidad: { titulo: 'Irritabilidad (fase 3)', html: () => htmlIrritabilidad('', { conTitulo: false }) },
-  farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>` },
+  farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>${preguntaFarmacosHTML()}` },
 };
+
+// «¿Otro fármaco o duda?»: el modo «Fármacos» de «✨ Preguntar a la IA» de la app (promptPregunta,
+// mismo guion y destinos), al final de la página de fármacos: completa su hoja con lo que no trae.
+// Solo se envía lo que se escribe; el destino elegido, en memoria (la guía no guarda nada).
+let DESTINO_PREGUNTA = destinoIA();
+function preguntaFarmacosHTML() {
+  const d = DESTINOS_IA[DESTINO_PREGUNTA];
+  return `<section class="guia-bloque guia-pregunta" id="guiaPregunta"><h3>¿Otro fármaco o duda? Pregunta a la IA</h3>
+    <p class="guia-nota">No escribas datos que identifiquen al paciente. Se envía solo lo que escribas, con un guion para fisioterapeutas: dolor e inflamación, síntomas viscerales, ejercicio, sueño y cuándo consultar, sin ajustar nunca la medicación; pide también la ficha técnica de CIMA. PhysiQ no revisa la respuesta.</p>
+    <label class="guia-vh" for="guiaPreguntaTexto">Fármaco o duda</label>
+    <textarea id="guiaPreguntaTexto" class="field-input" rows="3" maxlength="${MAX_TEXTO_IA}" placeholder="Ej.: pregabalina y ejercicio en mayores"></textarea>
+    <div class="option-group guia-destinos" role="group" aria-label="Dónde preguntar">${Object.entries(DESTINOS_IA).map(([k, x]) =>
+      `<button type="button" class="option-btn${k === DESTINO_PREGUNTA ? ' selected' : ''}" data-destino-pregunta="${k}" aria-pressed="${k === DESTINO_PREGUNTA}">${esc(x.nombre)}</button>`).join('')}</div>
+    <p class="guia-nota guia-destino-ventaja">${esc(d.ventaja)}</p>
+    <a class="btn btn-primary guia-preguntar" id="guiaPreguntaIr" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Preguntar en ${esc(d.nombre)} ↗</a>
+    <p class="guia-nota">${esc(NOTA_CUENTAS)}</p></section>`;
+}
+const textoPregunta = () => document.getElementById('guiaPreguntaTexto')?.value.trim() || '';
+document.addEventListener('input', e => {
+  if (e.target?.id !== 'guiaPreguntaTexto') return;
+  document.getElementById('guiaPreguntaIr')?.setAttribute('aria-disabled', String(textoPregunta().length < 3));
+});
+document.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null;
+  const b = t?.closest('[data-destino-pregunta]');
+  if (b) {
+    DESTINO_PREGUNTA = b.dataset.destinoPregunta;
+    document.querySelectorAll('[data-destino-pregunta]').forEach(x => { const on = x === b; x.classList.toggle('selected', on); x.setAttribute('aria-pressed', on); });
+    const d = DESTINOS_IA[DESTINO_PREGUNTA];
+    document.getElementById('guiaPreguntaIr').textContent = `Preguntar en ${d.nombre} ↗`;
+    document.querySelector('.guia-destino-ventaja').textContent = d.ventaja;
+    return;
+  }
+  const a = t?.closest('#guiaPreguntaIr');
+  if (!a) return;
+  const q = textoPregunta();
+  if (q.length < 3) { e.preventDefault(); return; }
+  a.href = urlIA(DESTINO_PREGUNTA, promptPregunta({ pregunta: q, tipo: 'farmacos' }));   // en el propio clic, sin window.open
+});
 
 // «Ficha técnica (CIMA)»: como en la app, el enlace abre el buscador de CIMA y aquí se copia
 // el nombre para pegarlo; un aviso breve dice dónde (o qué buscar, si no se pudo copiar).
