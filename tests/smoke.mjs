@@ -6457,7 +6457,9 @@ async function checkGuia(browser, errors) {
     const filasCuadernos = await page.evaluate(() => [...document.querySelectorAll('.guia-hoja a[href*="cuaderno-"]')].map(a => a.getAttribute('href')));
     // El enlace lleva ?v=<huella del PDF>: una versión nueva es otra dirección y no sale de la caché
     r.cuadernos = filasCuadernos.length === Object.keys(cuadernos).length && (await page.request.head(new URL(filasCuadernos[0], page.url()).href)).ok()
-      && filasCuadernos.every(h => { const m = h.match(/(cuaderno-[^/]+)\.pdf\?v=([0-9a-f]{8})$/); return m && cuadernos[m[1]]?.archivo === m[2]; });
+      && filasCuadernos.every(h => { const m = h.match(/(cuaderno-[^/]+)\.pdf\?v=([0-9a-f]{8})$/); return m && cuadernos[m[1]]?.archivo === m[2]; })
+      // Cada cuaderno dice desde cuándo están colocadas así sus páginas (si se mueven, se reimprime entero)
+      && await page.evaluate(n => [...document.querySelectorAll('.guia-hoja')].filter(li => li.querySelector('a[href*="cuaderno-"]') && /páginas colocadas así desde el/.test(li.textContent)).length === n, filasCuadernos.length);
     const soloHojas = filasHojas.filter(f => !/cuaderno-|\/respuestas\//.test(f.pdf));
     // Hojas de respuestas del lector (en prueba): una por cuestionario con hoja, con su aviso y su PDF (?v= su huella)
     const respuestas = await (await page.request.get(BASE_URL.replace(/\/$/, '') + '/docs/esquemas/respuestas/huellas.json')).json();

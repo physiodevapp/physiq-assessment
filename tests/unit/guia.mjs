@@ -219,6 +219,18 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
     assert.equal((texto.match(/\/Subtype \/Link/g) || []).length, claves.length, `${l.clave}: un enlace por hoja en el índice de la portada`);
     assert.ok(/\/Outlines/.test(texto) && /\/PageMode \/UseOutlines/.test(texto), `${l.clave}: con marcadores (sección → hoja)`);
     assert.ok(!claves.includes('ejercicio-paciente'), 'la hoja del paciente va aparte');
+    // Colocación: en qué página empieza cada hoja (la guía avisa si se mueven). Cada hoja empieza
+    // en impar y ocupa sus páginas redondeadas a par; tiene que cuadrar con los PDF de las hojas.
+    assert.deepEqual(Object.keys(d.inicio || {}), claves, `${l.clave}: «inicio» de cada hoja, en orden. Regenera con «node docs/esquemas/generar.mjs cuadernos»`);
+    let esperada = 3;
+    for (const k of claves) {
+      assert.equal(d.inicio[k], esperada, `${l.clave}: ${k} empieza en la página ${esperada} (regenera los cuadernos)`);
+      const n = (readFileSync(new URL(`../../docs/esquemas/${k}.pdf`, import.meta.url)).toString('latin1').match(/\/Type\s*\/Page(?![s])/g) || []).length;
+      esperada += n + (n % 2);
+    }
+    assert.equal(d.paginas, esperada - 1, `${l.clave}: páginas totales`);
+    assert.match(d.paginasFecha || '', /^\d{4}-\d{2}-\d{2}$/, `${l.clave}: fecha de la colocación de las páginas`);
+    assert.ok(Array.isArray(d.paginasPor) && d.paginasPor.every(k => claves.includes(k)), `${l.clave}: «paginasPor», hojas del cuaderno`);
   }
   assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos.json'));
 });
