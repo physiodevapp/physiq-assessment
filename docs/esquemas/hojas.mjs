@@ -877,7 +877,7 @@ export function htmlEjercicioPaciente() {
 // «Hojas para imprimir», donde se comprueba la versión de cada hoja.
 export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, huella }) {
   const filas = secciones.map(sec => `<tr class="sec"><td colspan="3">${esc(sec.titulo)}</td></tr>`
-    + sec.filas.map(f => `<tr><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.pagina}</td></tr>`).join('')).join('');
+    + sec.filas.map(f => `<tr data-pag="${f.pagina}"><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.pagina}</td></tr>`).join('')).join('');
   return `<style>${CSS}${CSS_UNA}
     .pagina { padding: 28px 28px 0; }
     .banda { background: #1e3a8a; color: #fff; border-radius: 12px; padding: 34px 32px 30px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; margin-bottom: 22px; }

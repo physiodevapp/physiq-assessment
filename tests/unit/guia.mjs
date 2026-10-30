@@ -214,6 +214,10 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
     assert.equal(d.paginas % 2, 0, `${l.clave}: número par de páginas (doble cara)`);
     const pdf = readFileSync(new URL(`../../docs/esquemas/${l.clave}.pdf`, import.meta.url));
     assert.equal(d.archivo, createHash('sha256').update(pdf).digest('hex').slice(0, 8), `${l.clave}: «archivo» es la huella del PDF guardado (el enlace de la guía la usa para no abrir una copia vieja)`);
+    // Navegación (paginar.py): un enlace por fila del índice de la portada y marcadores del visor
+    const texto = pdf.toString('latin1');
+    assert.equal((texto.match(/\/Subtype \/Link/g) || []).length, claves.length, `${l.clave}: un enlace por hoja en el índice de la portada`);
+    assert.ok(/\/Outlines/.test(texto) && /\/PageMode \/UseOutlines/.test(texto), `${l.clave}: con marcadores (sección → hoja)`);
     assert.ok(!claves.includes('ejercicio-paciente'), 'la hoja del paciente va aparte');
   }
   assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos.json'));
