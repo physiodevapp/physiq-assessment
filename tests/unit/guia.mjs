@@ -34,6 +34,10 @@ test('la guía solo carga módulos puros: nunca app.js, state.js ni phase4*.js (
   for (const f of ['lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js'])
     for (const m of importsDe(leer(f))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `${f}: ${m}`);
   assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(leer('guia.js')), 'la guía no guarda nada');
+  // Lo único que guarda: tema y tamaño de letra, por lib/apariencia.js (preferencias de pantalla, compartidas con la app)
+  const ap = leer('lib', 'apariencia.js');
+  assert.deepEqual([...ap.matchAll(/localStorage\.setItem\((\w+)/g)].map(m => m[1]).sort(), ['LETRA_KEY', 'THEME_KEY']);
+  assert.ok(!/indexedDB|BroadcastChannel|import /.test(ap), 'apariencia.js no importa nada ni toca la sesión');
 });
 
 test('se despliega: guia.html, guia.js y todo lo que importan están en deploy-to-hub.yml', () => {
