@@ -33,7 +33,8 @@ test('la guía solo carga módulos puros: nunca app.js, state.js ni phase4*.js (
   for (const m of imp) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), m);
   for (const f of ['lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js'])
     for (const m of importsDe(leer(f))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `${f}: ${m}`);
-  assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(leer('guia.js')), 'la guía no guarda nada');
+  for (const f of ['guia.js', 'guia-calc.js']) assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(leer(f)), `${f}: la guía no guarda nada`);
+  for (const m of importsDe(leer('guia-calc.js'))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `guia-calc.js: ${m}`);
   // Lo único que guarda: tema y tamaño de letra, por lib/apariencia.js (preferencias de pantalla, compartidas con la app)
   const ap = leer('lib', 'apariencia.js');
   assert.deepEqual([...ap.matchAll(/localStorage\.setItem\((\w+)/g)].map(m => m[1]).sort(), ['LETRA_KEY', 'THEME_KEY']);
@@ -42,7 +43,7 @@ test('la guía solo carga módulos puros: nunca app.js, state.js ni phase4*.js (
 
 test('se despliega: guia.html, guia.js y todo lo que importan están en deploy-to-hub.yml', () => {
   const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
-  for (const f of ['guia.html', 'guia.js', 'lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js', 'lib/version.js', 'lib/region.js', 'lib/citas.js', 'ampliar-ia.js', 'ficha.js'])
+  for (const f of ['guia.html', 'guia.js', 'guia-calc.js', 'lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js', 'lib/version.js', 'lib/region.js', 'lib/citas.js', 'ampliar-ia.js', 'ficha.js'])
     assert.ok(deploy.includes(f), f);
   assert.ok(leer('guia.html').includes('src="./guia.js"'));
 });
@@ -175,6 +176,47 @@ test('hoja de irritabilidad: la matriz de data/irritabilidad.js, la misma regla 
   for (const k of ['hastaLimite', 'hastaDolor', 'alta', 'margen']) assert.ok(html.includes(T[k]), k);
   assert.ok(leer('guia.js').includes('reglaIrritabilidad()'), 'la guía usa la misma regla');
   assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'irritabilidad' && h.ruta === 'irritabilidad'));
+});
+
+const F1 = await import('../../data/fase1.js');
+const CALC = await import('../../guia-calc.js');
+test('fase 1: los textos de data/fase1.js son los de la app (index.html), y la hoja y la guía los llevan todos', () => {
+  const index = leer('index.html');
+  const T = F1.TEXTOS_FASE1;
+  for (const b of F1.BANDERAS_FASE1) assert.ok(index.includes(`>${b.texto}<`) && index.includes(`'${b.id}'`), b.id);
+  for (const k of ['banderasAviso', 'psicoIntro', 'psicoAlto']) assert.ok(index.includes(T[k]), k);
+  assert.ok(index.includes(T.banderaAlerta.replace(/^Bandera Roja Detectada\.\s*/, '')), 'banderaAlerta');
+  for (const p of F1.PREGUNTAS_PSICO) assert.ok(index.includes(p.texto) && index.includes(`id="${p.id}"`), p.id);
+  for (const n of F1.NIVELES_PSICO) assert.ok(index.includes(`selectPsico(this, '${n.valor}')`), n.valor);
+  const hoja = HOJAS.htmlFase1(), guia = CALC.htmlFase1();
+  for (const b of F1.BANDERAS_FASE1) { assert.ok(hoja.includes(b.texto), b.id); assert.ok(guia.includes(b.texto), b.id); }
+  for (const p of F1.PREGUNTAS_PSICO) assert.ok(hoja.includes(p.texto) && hoja.includes(p.cuestionarios), p.id);
+  assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'fase1' && h.ruta === 'fase1'));
+  assert.equal(ESQ.HOJAS_GENERALES[0], 'fase1');
+  assert.ok(/fase1: \{ titulo:/.test(leer('guia.js')), 'página #fase1 en la guía');
+});
+
+test('calculadoras de la guía: usan las reglas de la app y salen en el bloque de su condición', () => {
+  const src = leer('guia-calc.js');
+  for (const f of ['resultadoHAG(', 'reglaVascular(', 'resultadoPrueba(', 'reglaTA(']) assert.ok(src.includes(f), f);
+  assert.deepEqual(Object.keys(CALC.CALC_SISTEMA).sort(), ['transversal_disautonomia', 'transversal_embarazo', 'transversal_hipermovilidad']);
+  for (const id of Object.keys(CALC.CALC_SISTEMA)) assert.ok(SYSTEMIC_SCREENING.lumbar.sistemas.some(s => s.id === id), id);
+  assert.ok(CALC.calcHipermovilidadHTML().includes('Beighton') && CALC.calcDisautonomiaHTML().includes('FC') && CALC.calcEmbarazoHTML().includes('TAS'));
+});
+
+test('número de hipótesis: la hoja y la guía pintan la cifra, nunca el carácter rodeado (ilegible desde el 10)', () => {
+  assert.deepEqual(['①', '⑨', '⑩', '⑳', '㉑', '㉟', '㊱', '㊿', '', undefined].map(ESQ.numeroHipotesis), ['1', '9', '10', '20', '21', '35', '36', '50', '', '']);
+  for (const h of Object.values(HYPOTHESES)) if (h.num) assert.match(ESQ.numeroHipotesis(h.num), /^\d+$/, `${h.id}: ${h.num}`);
+  for (const r of Object.keys(CIF_TREES)) assert.ok(!/class="num">[\u2460-\u2473\u3251-\u325F\u32B1-\u32BF]/.test(HOJAS.htmlConfirmacion(r)), r);
+});
+
+test('las hojas remiten a la guía (QR), no a la app, para lo que la guía ya tiene', () => {
+  for (const r of Object.keys(CIF_TREES)) {
+    assert.ok(!/están en la app|en la app\./.test(HOJAS.htmlCribado(r)), `cribado-${r}`);
+    assert.ok(!/en la app\./.test(HOJAS.htmlConfirmacion(r)), `confirmacion-${r}`);
+  }
+  const cond = HOJAS.htmlCondiciones();
+  assert.ok(!cond.includes('la app añade lo que necesita.') && cond.includes('En papel:'));
 });
 
 test('hoja de ejercicio para el paciente: todas las frases «Para explicárselo al paciente», literales, con título llano y sin QR', () => {

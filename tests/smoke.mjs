@@ -6539,6 +6539,26 @@ async function checkGuia(browser, errors) {
     await page.click('[data-irr="calma"][data-valor="Tarda horas"]');
     r.irrSuelta = /Irritabilidad moderada/i.test(await page.textContent('#guiaIrrRes'))
       && /Irritabilidad/.test(await page.textContent('#guiaTitulo')) && !(await page.$('#guiaContenido h2'));
+    // Fase 1 (#fase1, el QR de su hoja): bandera roja y riesgo alto con sus cuestionarios
+    await page.goto(`${base}#fase1`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('[data-gc="bandera"]');
+    await page.click('[data-gc="bandera"][data-gc-k="br3"][data-gc-v="SI"]');
+    await page.click('[data-gc="psico"][data-gc-v="Alto"]');
+    await page.click('[data-gc="psicoQ"][data-gc-k="psico_emocional"][data-gc-v="Sí"]');
+    const f1 = await page.textContent('#guiaGcFase1');
+    r.fase1 = /Bandera Roja Detectada/.test(f1) && /PHQ-2/.test(f1) && /Örebro/.test(f1);
+    // Cribado: banderas de cada sistema y calculadoras de las condiciones especiales (reglas de la app)
+    await page.goto(`${base}#rodilla/cribado`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#calc-hipermovilidad');
+    r.banderasGuia = await page.locator('.guia-banderas').count() > 0;
+    await page.click('#calc-hipermovilidad summary');
+    await page.fill('#calc-hipermovilidad [data-gc-num="edad"]', '30');
+    for (const k of ['menique_d', 'menique_i', 'pulgar_d', 'pulgar_i', 'codo_d']) await page.click(`[data-gc="beighton"][data-gc-k="${k}"]`);
+    r.calcBeighton = /Beighton 5\/9 · corte 5/.test(await page.textContent('#guiaGcBeighton'));
+    await page.click('#calc-embarazo summary');
+    await page.fill('[data-gc-num="ta"][data-gc-k="semanas"]', '30');
+    await page.fill('[data-gc-num="ta"][data-gc-k="tas"]', '165');
+    r.calcTA = /160\/110 o más/.test(await page.textContent('#guiaGcTA'));
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
     r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
     // (después de comprobar que la guía no crea la sesión: la app sí la abre)
@@ -6557,7 +6577,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
