@@ -6399,6 +6399,16 @@ async function checkGuia(browser, errors) {
     await page.click('[data-irr="reposo"][data-valor="Presente"]');
     await page.click('[data-irr-borrar]');
     r.irrBorrar = await page.evaluate(() => !document.querySelector('[data-irr].selected') && /no registrada/.test(document.getElementById('guiaIrrRes').textContent));
+    // Tema y letra: los mismos botones y la misma preferencia que la app (Sistema → Claro → Oscuro)
+    r.apariencia = await page.evaluate(() => {
+      const html = document.documentElement, tema = document.getElementById('themeBtn'), letra = document.getElementById('letraBtn');
+      tema.click(); const claro = html.dataset.theme === 'light' && localStorage.getItem('physiq-assessment-theme') === 'light' && /Claro/.test(tema.title);
+      tema.click(); const oscuro = html.dataset.theme === 'dark' && localStorage.getItem('physiq-assessment-theme') === 'dark';
+      tema.click(); const sistema = localStorage.getItem('physiq-assessment-theme') === null && /Sistema/.test(tema.title);
+      letra.click(); const grande = html.dataset.letra === 'grande' && letra.getAttribute('aria-pressed') === 'true';
+      letra.click(); const normal = !html.dataset.letra && localStorage.getItem('physiq-assessment-letra') === null;
+      return claro && oscuro && sistema && grande && normal;
+    });
     // Región: menú propio (con los estilos de la guía), que se cierra con Escape y al elegir
     await page.click('#guiaRegion');
     r.menuRegion = await page.evaluate(() => !document.getElementById('guiaRegionMenu').hidden
@@ -6547,7 +6557,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
