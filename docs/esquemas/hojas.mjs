@@ -897,7 +897,7 @@ export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, hu
     <div class="banda"><div><div class="marca">PhysiQ-Assessment · Cuaderno de consulta</div><h1>${esc(portada.titulo || titulo)}</h1>
       ${portada.subtitulo ? `<div class="tit2">${esc(portada.subtitulo)}</div>` : ''}</div>
       <div class="qr-guia">${QR}<span>Hojas para imprimir</span></div></div>
-    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada sección empieza en página impar (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice y da su PDF actual.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
+    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en página impar, en la cara delantera de su propio papel, así se puede sustituir sola (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice: imprime sus páginas del cuaderno actual (este índice dice cuáles) y sustitúyela.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
     <div class="indice">Índice</div>
   <div class="cuerpo"><table>${filas}</table></div>
     <div class="pie-fijo">${AUTORIA_HTML}</div>
