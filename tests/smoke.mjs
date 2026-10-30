@@ -6399,7 +6399,14 @@ async function checkGuia(browser, errors) {
     await page.click('[data-irr="reposo"][data-valor="Presente"]');
     await page.click('[data-irr-borrar]');
     r.irrBorrar = await page.evaluate(() => !document.querySelector('[data-irr].selected') && /no registrada/.test(document.getElementById('guiaIrrRes').textContent));
-    await page.selectOption('#guiaRegion', 'codo');
+    // Región: menú propio (con los estilos de la guía), que se cierra con Escape y al elegir
+    await page.click('#guiaRegion');
+    r.menuRegion = await page.evaluate(() => !document.getElementById('guiaRegionMenu').hidden
+      && document.activeElement?.getAttribute('aria-current') === 'true' && document.getElementById('guiaRegion').getAttribute('aria-expanded') === 'true');
+    await page.keyboard.press('Escape');
+    r.menuRegion = r.menuRegion && await page.evaluate(() => document.getElementById('guiaRegionMenu').hidden && document.activeElement?.id === 'guiaRegion');
+    await page.click('#guiaRegion');
+    await page.click('#guiaRegionMenu a:has-text("Codo")');
     await page.waitForFunction(() => location.hash === '#codo/irritabilidad');
     await page.click('.guia-hojas a:has-text("Confirmación")');
     await page.waitForSelector('#hip-co1');
@@ -6540,7 +6547,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
