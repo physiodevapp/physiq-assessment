@@ -384,7 +384,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
   </style>
   <div class="pagina" id="pag0">
     <div class="cab-hoja"><div class="cab-txt">
-    <h1>${esc(tree.title || `Árbol de decisión CIF · ${NOMBRES[region]}`)}</h1>
+    <h1>${esc(tree.title || `Árbol de decisión · ${NOMBRES[region]}`)}</h1>
     <div class="sub">PhysiQ-Assessment · fase 4 · ${NOMBRES[region]}. Cada respuesta puede sumar una hipótesis; se acumulan y todas se confirman con tests en la fase 4b.${a4 ? ' El porqué de cada paso, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).' : ''}</div>
     </div>${a4 ? qrGuia(region, 'arbol') : ''}</div>
     <div class="aviso">REQUISITO PREVIO · Banderas rojas (fase 1) y cribado sistémico (fase 2). Si hay una urgencia, derivar: este árbol no se aplica.</div>
