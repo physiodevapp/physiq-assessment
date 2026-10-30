@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición todavía: faltan las fotos. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay una primera ronda con 2 hojas (PHQ-9 y ODI; ver «Mediciones»), que no basta para decidir nada. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
 
 ## Idea
 
@@ -105,6 +105,25 @@ node tools/leer-cuestionario.mjs --comprobar
 ANTHROPIC_API_KEY=… node tools/leer-cuestionario.mjs --fotos ~/fotos-lector --guardar
 node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 ```
+
+## Mediciones
+
+### Ronda 1 (2026-10-30): 2 hojas, sin decisión
+
+- **Casos:** `phq9-01` (todo con X, plana, buena luz en la zona de las filas) y `odi-01` (poca luz, algo borrosa; fila 2 en blanco, 4 con la B rayada y X en D, 5 con tic, 6 con dos marcas, 8 entre dos casillas). Una foto de cada uno, móvil del usuario, con una sombra grande sobre la parte vacía de la hoja.
+- **Ejecución:** `--modelo todos --veces 3 --guardar`; lecturas en `tests/fixtures/cuestionarios-foto/lecturas/`.
+
+| Modelo | PHQ-9 (9 ítems) | ODI (10 ítems) | Coste por hoja |
+|---|---|---|---|
+| Haiku | ✓ · 0 🔴 · 0 % a revisar | **✗** · 1 🔴 (10 %) · 10 % a revisar | 0,0009 $ |
+| Sonnet | ✓ · 0 🔴 · 0 % a revisar | ✓ · 0 🔴 · 0 % a revisar | 0,013 $ |
+| Opus | ✓ · 0 🔴 · 0 % a revisar | ✓ · 0 🔴 · 0 % a revisar | 0,026 $ |
+
+- **Único 🔴:** Haiku, pasada 2, ODI fila 8 (marca entre C y D): la dio por «D» clara; en las otras dos pasadas, «dudoso (D)».
+- **Filas difíciles del ODI**, todos los modelos: la fila en blanco siempre en blanco; el tic, bien; la B rayada, D (Haiku, como dudoso); las dos marcas, siempre dudosas (con A o con C como mejor lectura); entre casillas, dudoso salvo el 🔴 de Haiku.
+- **PHQ-9:** perfecto en las 9 pasadas, también el ítem 9 (alerta).
+- **«A revisar» no cuenta las filas ambiguas** que el lector da por dudosas (`clasificarItem()` las cuenta como ok). Por eso Sonnet y Opus salen con un 0 % en el ODI aunque el fisioterapeuta revisaría a mano las filas 6 y 8 (20 % de la hoja). Si el umbral del 15 % debe incluirlas está pendiente de decidir (usuario).
+- **Lectura, sin decidir:** con 9 y 10 ítems sin 🔴, por la regla del tres la tasa real solo queda por debajo de un 33 % y un 30 % al 95 %, lejos del 0,5 %. Haiku ya falla en una marca ambigua; Sonnet y Opus no se distinguen, y Sonnet cuesta la mitad.
 
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 
