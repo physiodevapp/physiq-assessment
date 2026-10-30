@@ -6469,6 +6469,20 @@ async function checkGuia(browser, errors) {
     r.hojas = soloHojas.length === Object.keys(huellas).length
       && soloHojas.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${huellas[k]?.huella}` && v === huellas[k]?.huella; })
       && pdfsOk.every(Boolean) && await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+    // Filtro por región: su cuaderno, sus tres hojas y las generales; segundo toque, todo otra vez
+    const contar = () => page.evaluate(() => ({
+      cuadernos: [...document.querySelectorAll('.guia-hoja a[href*="cuaderno-"]')].map(a => a.getAttribute('href').match(/cuaderno-([^.]+)/)[1]),
+      regionales: [...document.querySelectorAll('.guia-hoja a')].map(a => a.getAttribute('href').match(/(?:cribado|arbol-a4|confirmacion)-([a-z_]+)\.pdf/)?.[1]).filter(Boolean),
+      generales: document.querySelectorAll('.guia-hoja a[href*="tejidos-"], .guia-hoja a[href*="condiciones"], .guia-hoja a[href*="ejercicio-paciente"]').length,
+      total: document.querySelectorAll('.guia-hoja').length }));
+    const antes = await contar();
+    await page.click('[data-filtro-hojas="lumbar"]');
+    const conFiltro = await contar();
+    await page.click('[data-filtro-hojas="lumbar"]');
+    const despues = await contar();
+    r.filtroHojas = conFiltro.cuadernos.join() === 'lumbar' && conFiltro.regionales.length === 3 && conFiltro.regionales.every(x => x === 'lumbar')
+      && conFiltro.generales === antes.generales && despues.total === antes.total
+      && await page.evaluate(() => document.querySelector('[data-filtro-hojas="lumbar"]').getAttribute('aria-pressed') === 'false');
     // Condiciones especiales (#condiciones, el QR de su hoja): todas las filas, sin estado ni botones
     await page.goto(`${base}#condiciones`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.cond-fila');
@@ -6524,7 +6538,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
@@ -7053,7 +7067,7 @@ const SECCIONES = [
 
   { id: 'guia', titulo: 'Guía de consulta (guia.html, la del QR de los esquemas):', run: async ({ browser, errors }) => {
     const c = await checkGuia(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; la pauta y el pronóstico de cada hipótesis, con la derivación a la vista; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con los cuadernos a doble cara y la versión de cada hoja y su PDF; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA y «¿Otro fármaco o duda?» (modo «Fármacos» de la IA, sin guardar el destino); irritabilidad suelta (#irritabilidad); la app la enlaza desde el panel de sesión («Hojas para imprimir»); cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; la pauta y el pronóstico de cada hipótesis, con la derivación a la vista; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con los cuadernos a doble cara, la versión de cada hoja y su PDF, y el filtro por región; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA y «¿Otro fármaco o duda?» (modo «Fármacos» de la IA, sin guardar el destino); irritabilidad suelta (#irritabilidad); la app la enlaza desde el panel de sesión («Hojas para imprimir»); cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
