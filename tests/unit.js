@@ -31,6 +31,7 @@ for (const tema of [
   'tejidos.mjs',
   'anatomia.mjs',
   'cuestionarios.mjs',
+  'lector-cuestionarios.mjs',
   'irritabilidad.mjs',
   'plan-tratamiento.mjs',
   'plan-ia.mjs',

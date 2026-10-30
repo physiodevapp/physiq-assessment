@@ -6458,7 +6458,14 @@ async function checkGuia(browser, errors) {
     // El enlace lleva ?v=<huella del PDF>: una versión nueva es otra dirección y no sale de la caché
     r.cuadernos = filasCuadernos.length === Object.keys(cuadernos).length && (await page.request.head(new URL(filasCuadernos[0], page.url()).href)).ok()
       && filasCuadernos.every(h => { const m = h.match(/(cuaderno-[^/]+)\.pdf\?v=([0-9a-f]{8})$/); return m && cuadernos[m[1]]?.archivo === m[2]; });
-    const soloHojas = filasHojas.filter(f => !/cuaderno-/.test(f.pdf));
+    const soloHojas = filasHojas.filter(f => !/cuaderno-|\/respuestas\//.test(f.pdf));
+    // Hojas de respuestas del lector (en prueba): una por cuestionario con hoja, con su aviso y su PDF (?v= su huella)
+    const respuestas = await (await page.request.get(BASE_URL.replace(/\/$/, '') + '/docs/esquemas/respuestas/huellas.json')).json();
+    const filasResp = filasHojas.filter(f => /\/respuestas\//.test(f.pdf));
+    r.hojasRespuestas = filasResp.length === Object.keys(respuestas).length
+      && filasResp.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${respuestas[k]?.huella}` && v === respuestas[k]?.huella; })
+      && /no las uses con pacientes/.test(await page.textContent('.guia-respuestas .guia-aviso-prueba'))
+      && (await page.request.head(new URL(filasResp[0].pdf, page.url()).href)).ok();
     r.hojas = soloHojas.length === Object.keys(huellas).length
       && soloHojas.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${huellas[k]?.huella}` && v === huellas[k]?.huella; })
       && pdfsOk.every(Boolean) && await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
@@ -6517,7 +6524,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.cuadernos && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
