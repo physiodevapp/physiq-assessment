@@ -677,14 +677,14 @@ function tituloTarjeta(id) {
 export function htmlCondiciones() {
   const T = TEXTOS_CONDICIONES;
   const donde = c => c.destino?.tarjeta
-    ? `Fase 1 · tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
-    : `Fase 2 · cribado de ${esc(nombreRegion(c.region).toLowerCase())}`;
+    ? `Se marca en: fase 1 · tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
+    : `Se marca en: fase 2 · cribado de ${esc(nombreRegion(c.region).toLowerCase())}`;
   const tarjeta = c => `<section class="cond">
     <h2>${esc(c.nombre)}</h2>
     <p class="que">${esc(c.que)}</p>
     <div class="piensa">${esc(c.piensa)}</div>
     <ul>${c.pistas.map(p => `<li>${esc(p.texto)}</li>`).join('')}</ul>
-    <p class="anade"><b>Añade:</b> ${esc(c.anade)}</p>
+    <p class="anade"><b>Al marcarla, añade:</b> ${esc(c.anade)}</p>
     <p class="donde">${donde(c)}</p>
   </section>`;
   const transversales = CONDICIONES.filter(c => !c.region);
@@ -695,7 +695,7 @@ export function htmlCondiciones() {
       <div class="rejilla rejilla-3">${deRegion.map(c => tarjeta(c).replace('<h2>', `<h2><span class="reg">${esc(nombreRegion(c.region))}</span>`)).join('')}</div>` : '');
   return paginaUna({
     titulo: esc(T.titulo),
-    sub: `${esc(T.intro)} ${esc(T.diagnostico)}`,
+    sub: `${esc(T.intro)} ${esc(T.diagnostico)} Las preguntas que añaden a la fase 2 están en la página 2 de cada hoja de cribado.`,
     qr: 'Qué es, fuentes e IA',
     cuerpo,
     pie: `<span>${esc(T.pie)} Las fuentes de cada condición, en la guía (QR).</span><span class="pie">Generado desde los datos de la app (data/condiciones.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
