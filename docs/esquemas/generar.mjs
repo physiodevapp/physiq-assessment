@@ -7,7 +7,7 @@
 //   cribado      → fase 2, A4 vertical: lo que se pregunta siempre y, aparte, las condiciones especiales
 //   arbol        → fase 4, A3 apaisado: pasos del árbol CIF, respuestas e hipótesis que activan
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
-//   confirmacion → fase 4b, A4 (vertical o apaisado, la de letra más grande): tests de cada hipótesis con sus LR y si puntúan
+//   confirmacion → fase 4b, A4 vertical (siempre, para que el cuaderno no gire): tests de cada hipótesis con sus LR y si puntúan
 //
 //   node docs/esquemas/generar.mjs tejidos | condiciones | farmacos | irritabilidad | ejercicio-paciente | sueltas
 //   → tejidos-blandos y tejidos-hueso: los tiempos de recuperación de data/tejidos.js en dos A4
@@ -74,9 +74,9 @@ const browser = await chromium.launch();
 // Hoja A4 del árbol: prueba A4 apaisado y vertical con 2, 3 o 4 pasos por fila y se queda con la
 // que deja la letra más grande; cada página de más resta (una hoja de consulta, cuantas menos, mejor).
 const PENALIZA_PAGINA = 0.3;
-async function mejorHojaA4(region, generar = (vertical, cols) => htmlArbol(region, { a4: true, vertical, cols }), colsPosibles = [2, 3, 4]) {
+async function mejorHojaA4(region, generar = (vertical, cols) => htmlArbol(region, { a4: true, vertical, cols }), colsPosibles = [2, 3, 4], orientaciones = [false, true]) {
   const pruebas = [];
-  for (const vertical of [false, true]) for (const cols of colsPosibles) {
+  for (const vertical of orientaciones) for (const cols of colsPosibles) {
     const html = generar(vertical, cols);
     if (!html) continue;
     const page = await browser.newPage({ viewport: vertical ? { width: 794, height: 1123 } : { width: 1123, height: 794 } });
@@ -97,7 +97,7 @@ for (const region of regiones) {
     let html = fn(region), elegida = '';
     // Cada distribución se mide ya rematada (con el QR), que ocupa sitio en la cabecera
     if (tipo === 'arbol-a4') ({ html, apaisado, elegida } = await mejorHojaA4(region, (vertical, cols) => rematarHoja(`arbol-a4-${region}`, htmlArbol(region, { a4: true, vertical, cols }))));
-    if (tipo === 'confirmacion') ({ html, apaisado, elegida } = await mejorHojaA4(region, vertical => rematarHoja(`confirmacion-${region}`, htmlConfirmacion(region, { vertical })), [2]));
+    if (tipo === 'confirmacion') ({ html, apaisado, elegida } = await mejorHojaA4(region, vertical => rematarHoja(`confirmacion-${region}`, htmlConfirmacion(region, { vertical })), [2], [true]));
     const px = formato === 'A3' ? [1587, 1123] : [1123, 794];
     html = rematarHoja(`${tipo}-${region}`, html);
     const page = await browser.newPage({ viewport: apaisado ? { width: px[0], height: px[1] } : { width: px[1], height: px[0] } });
