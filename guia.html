@@ -57,7 +57,7 @@
   .guia-bloque.especial { border-color: color-mix(in srgb, #7c4ddb 55%, var(--border)); }
   /* Número en línea, no colgado: al saltar de línea el texto vuelve al borde, alineado con
      las respuestas y «Por qué y más» (decisión del usuario, 2026-10) */
-  .guia-bloque > h3 { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .guia-bloque > h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
   .guia-cond { font-size: 0.75rem; color: var(--text3); margin-bottom: 6px; }
   .guia-item { padding: 8px 0; border-top: 1px solid var(--border); scroll-margin-top: 72px; }
   .guia-item:first-of-type { border-top: none; }
@@ -70,7 +70,12 @@
   .guia-chip.der { background: var(--orange); color: #fff; }
   .guia-chip.cuando { background: var(--surface2); color: var(--text2); font-weight: 400; font-style: italic; }
   .guia-crit { font-size: 0.78rem; color: var(--text2); border-top: 1px dashed var(--border2); margin-top: 6px; padding-top: 6px; }
-  .guia-ops { list-style: none; margin: 6px 0 0; display: grid; gap: 6px; }
+  /* Respuestas del paso agrupadas bajo la pregunta con una raya a la izquierda (decisión del
+     usuario, 2026-10): se leen como ramas de la pregunta, no como más texto suyo */
+  .guia-item > h3 { margin-bottom: 10px; }
+  .guia-ops { list-style: none; margin: 0; display: grid; gap: 8px; border-left: 2px solid var(--border2); padding-left: 12px; }
+  /* En Confirmación, el nombre del test destaca sobre su LR, su peso y su criterio */
+  .guia-item[id^="test-"] > .guia-texto { font-weight: 600; }
   .guia-ops li { font-size: 0.85rem; color: var(--text2); line-height: 1.4; }
   .guia-ops b { color: var(--text); font-weight: 500; }
   .guia-hip { color: #8b5cf6; font-weight: 500; }
