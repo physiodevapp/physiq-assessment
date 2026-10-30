@@ -135,7 +135,7 @@ for (const [grupo, hojas] of Object.entries(SUELTAS)) {
   }
 }
 // ── Cuadernos de consulta a doble cara (lib/esquemas.js, definicionCuadernos) ──────────────
-// Portada con índice (1 página) + blanca, y cada sección desde página impar. Une los PDF ya
+// Portada con índice (1 página) + blanca, y cada hoja desde página impar. Une los PDF ya
 // generados con pdfunite (poppler-utils, como Playwright: herramienta del generador, no de la app)
 // y cuenta sus páginas con pdfinfo. cuadernos.json guarda las versiones de sus hojas y la fecha del
 // último cambio: tests/unit.js falla si una hoja cambió y el cuaderno no se regeneró.
@@ -168,13 +168,15 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     const falta = Object.entries(hojas).filter(([, v]) => !v).map(([k]) => k);
     if (falta.length) throw new Error(`${lib.clave}: faltan hojas sin generar (${falta.join(', ')})`);
     const fecha = lib.secciones.flatMap(sec => sec.hojas).map(k => HUELLAS[k].fecha).sort().at(-1);
-    // Orden de páginas: portada (1), blanca (2), y cada sección desde impar
+    // Orden de páginas: portada (1), blanca (2), y cada hoja desde impar (decisión del usuario,
+    // 2026-10): cada hoja ocupa sus propias hojas de papel, así una hoja que cambie se reimprime
+    // y se sustituye sola, sin la que tendría en la otra cara.
     const archivos = ['PORTADA', blanca];
     const numeradas = new Map();   // página (desde 1) → sección: las de contenido llevan número
     let pag = 2;
     const secciones = lib.secciones.map(sec => {
-      if (pag % 2 === 1) { archivos.push(blanca); pag++; }
       const filas = sec.hojas.map(k => {
+        if (pag % 2 === 1) { archivos.push(blanca); pag++; }
         const f = join(DIR, `${k}.pdf`), n = paginas(f), fila = { nombre: nombreHojaImpresa(k, nombreRegion), huella: HUELLAS[k].huella, pagina: pag + 1 };
         for (let i = 1; i <= n; i++) numeradas.set(pag + i, sec.titulo);
         archivos.push(f); pag += n;
