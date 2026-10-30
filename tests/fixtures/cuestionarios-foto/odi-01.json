@@ -1,0 +1,7 @@
+{
+  "cuestionario": "odi",
+  "version": "987d9022",
+  "fotos": ["odi-01.jpg"],
+  "condiciones": ["móvil usuario", "poca luz", "borrosa", "tachada", "tic", "dos marcas", "entre casillas"],
+  "correctas": { "1": "A", "2": "blanco", "3": "C", "4": "D", "5": "F", "6": "ambiguo", "7": "E", "8": "ambiguo", "9": "B", "10": "A" }
+}
