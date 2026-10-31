@@ -25,6 +25,10 @@ const { BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercic
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
+const { ORDEN_REGIONES } = await import('../../lib/esquemas.js');
+// Formulario del paciente: la cara común y la de cada región (los mismos esquemas que pinta formulario.js)
+const FORMULARIOS = { comun: (await import('../../formularios/comun.js')).default };
+for (const r of ORDEN_REGIONES) FORMULARIOS[r] = (await import(`../../formularios/${r}.js`)).default;
 
 // 100 px: con la huella en la dirección el QR tiene 49 módulos; aun a la escala mínima (0,75–0,8)
 // queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
@@ -877,6 +881,80 @@ export function htmlEjercicioPaciente() {
   </script>`;
 }
 
+// ── Formulario del paciente en papel (formularios/*.js) ─────────────────────
+// Para dar al paciente: la cara común o la de una región, con las preguntas tal cual las
+// tiene la app (en tú: en la app las hace el fisio). Una casilla por opción, una fila por línea
+// de las matrices, la escala 0–10 y líneas para el texto libre. Sin QR (la guía es para el
+// fisioterapeuta) y fuera de los cuadernos; lleva su versión («v.») como las demás. Tantas
+// páginas como haga falta, a tamaño de lectura fijo: el paciente no tiene que forzar la vista.
+export function htmlFormularioPaciente(id) {
+  const f = FORMULARIOS[id];
+  const textoDe = {};
+  for (const sec of f.secciones) for (const it of sec.items) textoDe[it.id] = it.texto;
+  const caja = '<span class="caja"></span>';
+  const opcion = o => `<span class="op">${caja}${esc(o)}</span>`;
+  const lineas = n => '<div class="linea"></div>'.repeat(Math.max(1, n || 2));
+  let condPrevia = '';
+  const item = it => {
+    const clave = it.mostrarSi ? JSON.stringify(it.mostrarSi) : '';
+    const repetida = clave && clave === condPrevia; condPrevia = clave;
+    const cond = it.mostrarSi && !repetida ? `<div class="si">Responde lo siguiente solo si en «${esc(textoDe[it.mostrarSi.id] || it.mostrarSi.id)}» has marcado ${it.mostrarSi.valores.map(v => `«${esc(v)}»`).join(' o ')}:</div>` : '';
+    const ayuda = it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : '';
+    let r = '';
+    if (it.tipo === 'unica' || it.tipo === 'multi') {
+      r = `<div class="ops">${it.opciones.map(opcion).join('')}</div>`;
+      if (it.detalle) r += `<div class="detalle">${esc(it.detalle.etiqueta)} ${lineas(1)}</div>`;
+    } else if (it.tipo === 'escala') {
+      const nums = []; for (let n = it.min; n <= it.max; n++) nums.push(`<span class="esc-n">${caja}${n}</span>`);
+      r = `<div class="escala">${nums.join('')}</div><div class="extremos"><span>${esc(it.min)} = ${esc(it.extremos?.[0])}</span><span>${esc(it.max)} = ${esc(it.extremos?.[1])}</span></div><div class="ops">${opcion('No sabría decir')}</div>`;
+    } else if (it.tipo === 'matriz') {
+      r = `<table class="mtz"><thead><tr><th></th>${it.opciones.map(o => `<th>${esc(o)}</th>`).join('')}</tr></thead><tbody>${it.filas.map(fl => `<tr><td>${esc(fl.texto)}</td>${it.opciones.map(() => `<td class="c">${caja}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+    } else if (it.tipo === 'texto') r = lineas(it.lineas);
+    return `<div class="it">${cond}<div class="q">${esc(it.texto)}</div>${ayuda}${r}</div>`;
+  };
+  // Unidad de reparto: cada pregunta; el título de la sección va pegado a su primera pregunta
+  const piezas = f.secciones.flatMap(sec => sec.items.map((it, i) => `<div class="pieza">${i === 0 ? `<h2>${esc(sec.titulo)}</h2>` : ''}${item(it)}</div>`));
+  const titulo = id === 'comun' ? 'Antes de empezar: cómo te encuentras' : `Antes de empezar: ${nombreRegion(id).toLowerCase()}`;
+  const sub = 'Marca con una cruz lo que mejor te describa. Si algo no lo sabes, marca «No sabría decir» o «No sé». No hace falta que respondas a todo: lo repasaremos juntos en la consulta.';
+  return `<style>${CSS}${CSS_UNA}
+    .pagina { padding: 34px 44px 0; } .pagina + .pagina { break-before: page; }
+    body { font-size: 13px; line-height: 1.4; }
+    h1 { font-size: 22px; margin: 0 0 4px; } .sub { font-size: 12px; color: #374151; margin-bottom: 4px; }
+    .fecha { font-size: 12px; margin: 6px 0 10px; }
+    .cont { font-size: 13px; font-weight: bold; color: #475569; margin: 0 0 8px; }
+    .cuerpo { overflow: hidden; }
+    h2 { font-size: 14px; color: #1e3a8a; margin: 10px 0 6px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 2px; }
+    .it { margin: 0 0 10px; } .q { font-weight: 600; } .ayuda { font-size: 11.5px; color: #4b5563; font-style: italic; }
+    .si { font-size: 11.5px; color: #1e40af; font-weight: 600; margin: 2px 0 4px; }
+    .caja { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #334155; border-radius: 2px; margin-right: 5px; vertical-align: -2px; flex: none; }
+    .ops { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 3px; } .op { display: inline-flex; align-items: baseline; }
+    .detalle { display: flex; gap: 6px; align-items: flex-end; margin-top: 3px; font-size: 12px; } .detalle .linea { flex: 1; }
+    .linea { border-bottom: 1px solid #94a3b8; height: 24px; }
+    .escala { display: flex; gap: 14px; margin-top: 4px; } .esc-n { display: inline-flex; align-items: baseline; }
+    .extremos { display: flex; justify-content: space-between; font-size: 11px; color: #4b5563; margin: 2px 0; }
+    .mtz { border-collapse: collapse; margin-top: 4px; width: 100%; } .mtz th { font-size: 11px; font-weight: 600; padding: 2px 6px; text-align: center; }
+    .mtz td { border-top: 1px solid #e5e7eb; padding: 3px 6px; } .mtz td.c { text-align: center; width: 64px; } .mtz td.c .caja { margin: 0; }
+    .pie-v .qr-huella { display: inline; margin-left: 4px; } .pie-v .autoria { display: inline; }
+  </style>
+  <div id="piezas" hidden>${piezas.join('')}</div>
+  <template id="tCab"><h1>${esc(titulo)}</h1><div class="sub">${esc(sub)}</div><div class="fecha">Fecha: ____________________</div></template>
+  <template id="tPie"><div class="pie-fijo"><span class="pie pie-v">Formulario del paciente · ${esc(id === 'comun' ? 'General' : nombreRegion(id))} · ${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div></template>
+  <script>
+  (() => {
+    const todas = [...document.getElementById('piezas').children];
+    const nueva = n => {
+      const p = document.createElement('div'); p.className = 'pagina';
+      p.innerHTML = (n === 1 ? document.getElementById('tCab').innerHTML : '<div class="cont">${esc(titulo)} (cont.)</div>') + '<div class="cuerpo"></div>' + document.getElementById('tPie').innerHTML;
+      document.body.appendChild(p); return p.querySelector('.cuerpo');
+    };
+    let n = 1, c = nueva(1);
+    for (const t of todas) { c.appendChild(t); if (c.scrollHeight > c.clientHeight + 1 && c.children.length > 1) { n++; c = nueva(n); c.appendChild(t); } }
+    document.body.dataset.escala = '1.00';
+  })();
+  </script>`;
+}
+export const FORMULARIOS_PACIENTE = ['comun', ...ORDEN_REGIONES];
+
 // ── Cuadernos (portada con índice y página en blanco; los monta generar.mjs) ──
 // `secciones`: [{ titulo, filas: [{ nombre, huella, pagina }] }]. Una página; el QR lleva a
 // «Hojas para imprimir», donde se comprueba la versión de cada hoja.
@@ -1000,6 +1078,7 @@ export function hojasImpresas() {
   hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
   hojas.push({ clave: 'fase1', ruta: 'fase1', html: htmlFase1 });
   hojas.push({ clave: 'ejercicio-paciente', ruta: null, html: htmlEjercicioPaciente, paciente: true });
+  for (const id of FORMULARIOS_PACIENTE) hojas.push({ clave: `formulario-${id}`, ruta: null, html: () => htmlFormularioPaciente(id), paciente: true });
   return hojas;
 }
 export const huellaHoja = html => fnv(html);
