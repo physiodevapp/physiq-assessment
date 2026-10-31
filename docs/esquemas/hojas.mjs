@@ -218,6 +218,7 @@ const CSS_A4 = `
     .preg { font-size: 13px; line-height: 1.25; }
     .dops { margin-top: 5px; gap: 3px; font-size: 11.5px; }
     .dop .hip, .dop .nada, .dop .der { padding: 1px 5px; font-size: 11px; }
+    .dop .nb { margin-top: -1.1px; }
     .resp { margin-top: 8px; }
     .rt { display: none; }
     .op { grid-template-columns: 1fr 14px 1fr; margin-bottom: 5px; }
@@ -225,7 +226,7 @@ const CSS_A4 = `
     .opt b { font-size: 11.5px; } .opt span { font-size: 10px; line-height: 1.2; }
     .fl { font-size: 12px; }
     .hip { gap: 4px; border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 11px; line-height: 1.2; margin: 1px 0; }
-    .nb { min-width: 18px; height: 18px; border-radius: 9px; font-size: 9.5px; padding: 0 3px; }
+    .nb { min-width: 18px; height: 18px; border-radius: 9px; font-size: 9.5px; padding: 0 3px; margin-top: -2.95px; }
     .der { border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 9.5px; margin: 1px 0; }
     .der span { font-size: 9.5px; line-height: 1.2; }
     .ruta { border-width: 1.5px; border-radius: 7px; padding: 3px 6px; font-size: 9.5px; }
@@ -364,12 +365,15 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .paso { border: 2.5px solid #3567d6; background: #eaf1ff; border-radius: 14px; padding: 10px 12px; }
     .paso.desv { width: 330px; }
     .cab { display: flex; gap: 9px; align-items: flex-start; }
-    .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
+    /* line-height 1: la cifra, centrada en el círculo por su propia caja, no por la línea del párrafo */
+    .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; padding: 0 5px; line-height: 1; }
     .preg { font-size: 15.5px; font-weight: bold; line-height: 1.3; }
     .fpref { font-size: 0.72em; font-weight: normal; color: #475569; white-space: nowrap; }
     .dops { margin-top: 8px; display: grid; gap: 4px; font-size: 11.5px; }
     .dop { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
     .dop .hip, .dop .nada, .dop .der { padding: 2px 6px; font-size: 11px; }
+    /* En los desvíos el nombre cabe en una línea: círculo centrado en la píldora */
+    .dop .hip { align-items: center; } .dop .nb { margin-top: -1.5px; }
     .dop .der span { display: none; }
     .resp { margin-top: 14px; }
     .rt { font-size: 11.5px; font-weight: bold; color: #6b7280; margin-bottom: 4px; }
@@ -378,8 +382,10 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .opt { background: #f8fafc; border: 1.5px solid #94a3b8; border-radius: 10px; padding: 5px 9px; }
     .opt b { display: block; font-size: 13px; } .opt span { display: block; font-size: 10.5px; color: #6b7280; line-height: 1.25; }
     .fl { text-align: center; color: #475569; font-weight: bold; font-size: 15px; }
-    .hip { display: flex; gap: 6px; align-items: baseline; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
-    .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 4px; }
+    /* El círculo, centrado en la primera línea del nombre (no por la línea base: con la hoja escalada, el
+       redondeo dejaba unos círculos medio píxel más arriba que otros). margin-top = (alto de línea − círculo) / 2, menos el desfase de la letra (medido) */
+    .hip { display: flex; gap: 6px; align-items: flex-start; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; line-height: 1.25; margin: 2px 0; }
+    .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 4px; line-height: 1; margin-top: -5px; }
     .der { background: #fde8e8; border: 2px solid #d0342c; color: #b42318; border-radius: 10px; padding: 5px 8px; font-size: 12px; margin: 2px 0; }
     .der span { display: block; font-size: 10px; color: #7a271a; font-weight: normal; }
     .nada { border: 1.5px dashed #94a3b8; border-radius: 10px; padding: 7px 8px; color: #6b7280; text-align: center; background: #fff; }
@@ -549,8 +555,9 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     h1, .grupo { font-size: 19px; font-weight: bold; margin: 0 0 6px; }
     .cols { column-count: 2; column-gap: 10px; }
     .hyp { break-inside: avoid; border: 1.5px solid #7c4ddb; border-radius: 8px; padding: 5px 7px; margin: 0 0 7px; }
-    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: baseline; }   /* el número, en la línea de la primera línea del nombre */
-    .hyp h2 .num { flex: none; }
+    /* El número, centrado en la primera línea del nombre: margin-top = (alto de línea − círculo) / 2 (medido) */
+    .hyp h2 { font-size: 12px; line-height: 1.25; margin: 0 0 3px; display: flex; gap: 5px; align-items: flex-start; }
+    .hyp h2 .num { flex: none; margin-top: -2.2px; }
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 8.5px; color: #6b7280; border-bottom: 1px solid #cbd5e1; }
     td { border-bottom: 1px solid #eef2f7; padding: 1px 2px; vertical-align: top; }
