@@ -21,6 +21,7 @@ const FARM_L = await import('../../lib/farmacos.js');
 const IRR_DATOS = await import('../../data/irritabilidad.js');
 const IRR_LIB = await import('../../lib/irritabilidad.js');
 const EJ = await import('../../data/ejercicio.js');
+const GC = await import('../../lib/guia-condiciones.js');
 const REGION_LIB = await import('../../lib/region.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
@@ -199,6 +200,35 @@ test('fase 1: los textos de data/fase1.js son los de la app (index.html), y la h
 test('confirmación de la guía: el cuestionario recomendado (prom) de cada hipótesis', () => {
   const src = leer('guia.js');
   assert.ok(src.includes('h.prom') && src.includes('Cuestionario recomendado'));
+});
+
+test('guía: condiciones especiales en la consulta (recuadro de la fase 5, preguntas de la fase 2 y líneas de la 4b)', () => {
+  const especiales = new Set(Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).filter(s => /^transversal_/.test(s.id) && Object.keys(s).some(k => /^solo[A-Z]/.test(k))).map(s => s.id));
+  // Toda condición con tarjeta (salvo el posquirúrgico, cuyo recuadro es su protocolo) tiene recuadro en la guía
+  for (const id of especiales) if (id !== 'transversal_posquirurgico') assert.ok(GC.RECOMENDACIONES[id], `${id}: sin recuadro de la fase 5 en la guía`);
+  for (const [id, r] of Object.entries(GC.RECOMENDACIONES)) {
+    for (const e of r.estados) {
+      const base = r.fn(e.base);
+      assert.ok(base.length, `${id} · ${e.titulo}: el caso base no da líneas`);
+      // Cada variante cambia alguna línea: si no, su «Si …» estaría escrito para nada
+      for (const [etq, cambio] of e.variantes) assert.notDeepStrictEqual(r.fn({ ...e.base, ...cambio }), base, `${id} · ${e.titulo}: «${etq}» no cambia nada`);
+      // Lo que pinta la guía son líneas de la app, sin texto propio
+      const lineas = GC.recomendacionesCondicion(id).find(x => x.titulo === e.titulo).lineas;
+      const todas = new Set([base, ...e.variantes.map(([, c]) => r.fn({ ...e.base, ...c }))].flat());
+      assert.deepStrictEqual(new Set(lineas.map(l => l.texto)), todas);
+    }
+  }
+  // Las líneas de la 4b bajo cada test con su campo
+  const tests = Object.values(HYPOTHESES).flatMap(h => h.tests);
+  for (const t of tests) assert.strictEqual(GC.lineasTest(t).length, [t.laxitud, t.cargaOsea, t.gaenslen].filter(Boolean).length);
+  assert.ok(tests.some(t => t.laxitud) && tests.some(t => t.cargaOsea) && tests.some(t => t.gaenslen));
+  const src = leer('guia.js');
+  assert.ok(src.includes('consultaCondicionHTML(s)') && src.includes('tecnicaCondicionesHTML()') && src.includes('lineasTestHTML(t)'));
+  // Hoja y página de condiciones: lo que solo está en la app, dicho aparte
+  for (const c of COND_DATOS.CONDICIONES) if (c.destino?.tarjeta) assert.ok(c.soloApp, `${c.id}: sin «Solo en la app»`);
+  assert.ok(HOJAS.htmlCondiciones().includes('; solo ahí, '), 'la hoja dice en su recuadro lo que solo está en la app');
+  assert.ok(COND_LIB.condicionesHTML({}, { guia: true }).includes('Solo en la app:'));
+  assert.ok(!COND_LIB.condicionesHTML({}).includes('Solo en la app:'), 'en la app no se dice «solo en la app»');
 });
 
 test('formulario del paciente en papel: una hoja por cara (común y cada región), sin QR, fuera de los cuadernos y en «Para dar al paciente»', () => {

@@ -685,8 +685,11 @@ export function htmlCondiciones() {
   // En papel: dónde están sus preguntas; en la app: dónde se marca. Las que tienen calculadora
   // en el cribado de la guía (guia-calc.js, CALC_SISTEMA) lo dicen
   const CON_CALCULADORA = ['hipermovilidad', 'disautonomia', 'embarazo'];
+  // Lo que la guía añade a la hoja de cribado de cada condición (lib/guia-condiciones.js)
+  const CON_BLOQUES = ['disautonomia', 'lupus', 'osteoporosis', 'embarazo'];
+  const enGuia = c => c.id === 'posquirurgico' ? '' : `; ${[CON_BLOQUES.includes(c.id) ? 'sus otras preguntas' : '', CON_CALCULADORA.includes(c.id) ? 'la calculadora' : '', 'las líneas de la exploración', 'las recomendaciones'].filter(Boolean).join(', ').replace(/, ([^,]+)$/, ' y $1')}, en la guía (QR)`;
   const donde = c => c.destino?.tarjeta
-    ? `En papel: su bloque en la página 2 de la hoja de cribado${CON_CALCULADORA.includes(c.id) ? ' (calculadora en la guía, QR)' : ''} · En la app: fase 1, tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
+    ? `En papel: su bloque en la página 2 de la hoja de cribado${enGuia(c)} · En la app: fase 1, tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}${c.soloApp ? `; solo ahí, ${esc(c.soloApp)}` : ''}`
     : `En papel: su pregunta en la hoja de cribado de ${esc(nombreRegion(c.region).toLowerCase())} · En la app: fase 2, la misma pregunta`;
   const tarjeta = c => `<section class="cond">
     <h2>${esc(c.nombre)}</h2>
