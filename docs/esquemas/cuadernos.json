@@ -1,7 +1,7 @@
 {
   "cuaderno-cadera": {
     "huella": "bb03b215",
-    "archivo": "2c0b1302",
+    "archivo": "ca54ea12",
     "fecha": "2026-10-30",
     "paginas": 20,
     "hojas": {
@@ -26,12 +26,11 @@
       "tejidos-blandos": 17,
       "tejidos-hueso": 19
     },
-    "paginasFecha": "2026-10-30",
-    "paginasPor": []
+    "ordenFecha": "2026-10-30"
   },
   "cuaderno-cervical": {
     "huella": "51047359",
-    "archivo": "e3ed75a6",
+    "archivo": "e62bd739",
     "fecha": "2026-10-30",
     "paginas": 20,
     "hojas": {
@@ -56,12 +55,11 @@
       "tejidos-blandos": 17,
       "tejidos-hueso": 19
     },
-    "paginasFecha": "2026-10-30",
-    "paginasPor": []
+    "ordenFecha": "2026-10-30"
   },
   "cuaderno-codo": {
     "huella": "a0f78250",
-    "archivo": "edf369dc",
+    "archivo": "14426c43",
     "fecha": "2026-10-30",
     "paginas": 20,
     "hojas": {
@@ -86,12 +84,11 @@
       "tejidos-blandos": 17,
       "tejidos-hueso": 19
     },
-    "paginasFecha": "2026-10-30",
-    "paginasPor": []
+    "ordenFecha": "2026-10-30"
   },
   "cuaderno-completo": {
     "huella": "bf885049",
-    "archivo": "8953797e",
+    "archivo": "dd0a8e84",
     "fecha": "2026-10-30",
     "paginas": 56,
     "hojas": {
@@ -152,12 +149,11 @@
       "arbol-a4-tobillo_pie": 53,
       "confirmacion-tobillo_pie": 55
     },
-    "paginasFecha": "2026-10-31",
-    "paginasPor": []
+    "ordenFecha": "2026-10-31"
   },
   "cuaderno-hombro": {
     "huella": "2c641670",
-    "archivo": "4c38131d",
+    "archivo": "3f8d776c",
     "fecha": "2026-10-30",
     "paginas": 20,
     "hojas": {
@@ -182,12 +178,11 @@
       "tejidos-blandos": 17,
       "tejidos-hueso": 19
     },
-    "paginasFecha": "2026-10-30",
-    "paginasPor": []
+    "ordenFecha": "2026-10-30"
   },
   "cuaderno-lumbar": {
     "huella": "4b6ca532",
-    "archivo": "d77686a1",
+    "archivo": "d5d875e0",
     "fecha": "2026-10-30",
     "paginas": 20,
     "hojas": {
@@ -212,12 +207,11 @@
       "tejidos-blandos": 17,
       "tejidos-hueso": 19
     },
-    "paginasFecha": "2026-10-30",
-    "paginasPor": []
+    "ordenFecha": "2026-10-30"
   },
   "cuaderno-rodilla": {
     "huella": "8f8e3c7d",
-    "archivo": "5b0f2548",
+    "archivo": "2c862d0d",
     "fecha": "2026-10-30",
     "paginas": 20,
     "hojas": {
@@ -242,12 +236,11 @@
       "tejidos-blandos": 17,
       "tejidos-hueso": 19
     },
-    "paginasFecha": "2026-10-30",
-    "paginasPor": []
+    "ordenFecha": "2026-10-30"
   },
   "cuaderno-tobillo_pie": {
     "huella": "ceaa20d2",
-    "archivo": "2337744c",
+    "archivo": "1bb6a5fd",
     "fecha": "2026-10-30",
     "paginas": 20,
     "hojas": {
@@ -272,7 +265,6 @@
       "tejidos-blandos": 17,
       "tejidos-hueso": 19
     },
-    "paginasFecha": "2026-10-30",
-    "paginasPor": []
+    "ordenFecha": "2026-10-30"
   }
 }
