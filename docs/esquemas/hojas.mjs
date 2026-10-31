@@ -10,6 +10,7 @@ import { readFileSync } from 'node:fs';
 const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES, ZONAS_SINTOMA } = await import('../../data.js');
 const SINT = await import('../../lib/sintomas.js');
 const PLAN = await import('../../data/plan-tratamiento.js');
+const { escalonB } = await import('../../lib/plan-tratamiento.js');
 const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
 const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
@@ -799,7 +800,7 @@ export function htmlFarmacos() {
   });
   return paginasVarias({
     titulo: 'Fármacos: qué vigilar en el plan',
-    tituloCont: 'Fármacos: qué vigilar en el plan (cont.)',
+    tituloCont: 'Fármacos: qué vigilar en el plan (continuación)',
     sub: `${esc(TEXTOS_FARMACOS_PACIENTE.lineaComun)} Aquí, lo que cambia el plan de tratamiento; cómo afecta cada familia al dolor, los síntomas viscerales, el ejercicio y el sueño, y su ficha técnica (CIMA), en la guía (QR).`,
     qr: 'Guía completa e IA',
     tarjetas: fichas,
@@ -964,7 +965,7 @@ export function htmlFormularioPaciente(id) {
     const todas = [...document.getElementById('piezas').children];
     const nueva = n => {
       const p = document.createElement('div'); p.className = 'pagina';
-      p.innerHTML = (n === 1 ? document.getElementById('tCab').innerHTML : '<div class="cont">${esc(titulo)} (cont.)</div>') + '<div class="cuerpo"></div>' + document.getElementById('tPie').innerHTML;
+      p.innerHTML = (n === 1 ? document.getElementById('tCab').innerHTML : '<div class="cont">${esc(titulo)} (continuación)</div>') + '<div class="cuerpo"></div>' + document.getElementById('tPie').innerHTML;
       document.body.appendChild(p); return p.querySelector('.cuerpo');
     };
     let n = 1, c = nueva(1);
@@ -1168,8 +1169,9 @@ export function htmlPlanHoja() {
     ['Embarazo', [PLAN.RED_EMBARAZO]], ['Posparto', [PLAN.RED_POSPARTO]], ['Anticoagulado o antiagregado', [PLAN.RED_ANTICOAGULADO]]];
   const tarjetas = [
     `<section class="tarjeta pl"><h2>Cómo se elige el escalón (B)</h2>
-      <p>Gravedad por la NRS: 0–3 mínima · 4–7 moderada · 8–10 máxima. Irritabilidad: la de la hoja de irritabilidad (sin registrar, alta).</p>
-      <table class="t"><tr><th>Irritabilidad</th><th>Escalón B</th></tr><tr><td>Alta</td><td>1</td></tr><tr><td>Moderada</td><td>1 con gravedad máxima; si no, 2</td></tr><tr><td>Baja</td><td>3</td></tr></table>
+      <p>Se cruzan la gravedad (por la NRS) y la irritabilidad (la de la hoja de irritabilidad; sin registrar, alta).</p>
+      <table class="t"><tr><th>Escalón B</th><th>Gravedad mínima (NRS 0–3)</th><th>Moderada (4–7)</th><th>Máxima (8–10) o sin NRS</th></tr>${[['alta', 'Irritabilidad alta'], ['moderada', 'Moderada'], ['baja', 'Baja']].map(([i, n]) =>
+        `<tr><td>${n}</td>${['minima', 'moderada', 'maxima'].map(g => `<td>${escalonB(g, i)}</td>`).join('')}</tr>`).join('')}</table>
       <p><b>A</b>: un escalón por debajo de B (no hay A por debajo del 1). <b>C</b>: un escalón por encima de B, solo con irritabilidad baja y síntomas que no empeoran. ${esc2(PLAN.TEXTO_NIVELES.sinC.irritabilidad)}</p>
       <p><b>Familia</b>: columna (${PLAN.REGIONES_COLUMNA_PLAN.map(r => esc2(nombreRegion(r).toLowerCase())).join(', ')}, y las hipótesis ${Object.keys(PLAN.FAMILIA_HIP).join(', ')}) o periférica (las demás regiones).</p>
       <p class="cit">La propuesta completa para un paciente, con sus hipótesis y condiciones: guía (QR).</p></section>`,
@@ -1191,7 +1193,7 @@ export function htmlPlanHoja() {
   ];
   return paginasVarias({
     titulo: 'Plan de tratamiento (fase 6)',
-    tituloCont: 'Plan de tratamiento (cont.)',
+    tituloCont: 'Plan de tratamiento (continuación)',
     sub: 'El contenido fijo del que la app elige el plan (data/plan-tratamiento.js), con su fuente. La propuesta para un paciente concreto (escalón, avisos de sus hipótesis y condiciones, red de seguridad), en la guía (QR). Es una propuesta: decide el fisioterapeuta.',
     qr: 'Calcular el plan',
     tarjetas,
