@@ -23,6 +23,8 @@ const IRR_LIB = await import('../../lib/irritabilidad.js');
 const EJ = await import('../../data/ejercicio.js');
 const GC = await import('../../lib/guia-condiciones.js');
 const FN = await import('../../lib/formulario-numeros.js');
+const DATOS_APP = await import('../../data.js');
+const POSQ_LIB = await import('../../lib/posquirurgico.js');
 const await_comun = (await import('../../formularios/comun.js')).default;
 const FORMS = Object.fromEntries(await Promise.all(ESQ.ORDEN_REGIONES.map(async r => [r, (await import(`../../formularios/${r}.js`)).default])));
 const REGION_LIB = await import('../../lib/region.js');
@@ -37,7 +39,9 @@ test('la guía solo carga módulos puros: nunca app.js, state.js ni phase4*.js (
   for (const m of imp) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), m);
   for (const f of ['lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js'])
     for (const m of importsDe(leer(f))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `${f}: ${m}`);
-  for (const f of ['guia.js', 'guia-calc.js']) assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(leer(f)), `${f}: la guía no guarda nada`);
+  for (const f of ['guia.js', 'guia-calc.js', 'guia-extra.js']) assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(leer(f)), `${f}: la guía no guarda nada`);
+  for (const f of ['guia-extra.js', 'lib/guia-condiciones.js', 'lib/formulario-numeros.js', 'lib/cuestionarios.js', 'lib/ejercicio.js', 'filas.js'])
+    for (const m of importsDe(leer(f))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `${f}: ${m}`);
   for (const m of importsDe(leer('guia-calc.js'))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `guia-calc.js: ${m}`);
   // Lo único que guarda: tema y tamaño de letra, por lib/apariencia.js (preferencias de pantalla, compartidas con la app)
   const ap = leer('lib', 'apariencia.js');
@@ -252,6 +256,26 @@ test('árbol: cada paso con pistas del formulario dice sus preguntas (G/R) y las
   assert.ok(leer('guia.js').includes('refsPasoFormulario(FORM_COMUN, FORMULARIOS[region], st.id)'));
 });
 
+test('guía: calculadora de cuestionarios, efectos del ejercicio, preguntar a la IA, síntomas, reloj del POTS y cirugía en la fase 1', () => {
+  const src = leer('guia.js'), extra = leer('guia-extra.js'), calc = leer('guia-calc.js');
+  for (const k of ['cuestionarios:', 'ejercicio:', 'preguntar:', 'sintomas:']) assert.ok(src.includes(`  ${k} {`), `SUELTAS sin ${k}`);
+  // Las mismas piezas de la app, sin reescribirlas
+  assert.ok(extra.includes('formularioCuestionarioHTML(def') && extra.includes('resultadoCuestionarioHTML(def') && extra.includes('ejercicioHTML()'));
+  assert.ok(/Object\.entries\(TIPOS_PREGUNTA\)/.test(extra), 'los tres modos de «Preguntar a la IA»');
+  assert.ok(calc.includes('estadoReloj(RELOJ, Date.now())') && calc.includes('tomaFueraDeTiempo('), 'reloj de la prueba de bipedestación');
+  // El cuestionario recomendado de la confirmación enlaza la calculadora
+  assert.ok(src.includes('href="#cuestionarios/${id}"'));
+  // Hoja de síntomas: en las hojas generales (cuadernos) y con todas las zonas de cada región
+  assert.ok(ESQ.HOJAS_GENERALES.includes('sintomas'));
+  const sint = HOJAS.htmlSintomas();
+  const { ZONAS_SINTOMA } = DATOS_APP;
+  for (const r of ESQ.ORDEN_REGIONES) for (const z of ZONAS_SINTOMA[r] || []) assert.ok(sint.includes(z.nombre.replace(/&/g, '&amp;')), `${r}: falta la zona ${z.nombre}`);
+  // Hoja de fase 1: la tarjeta «Cirugía» con sus protocolos y complicaciones
+  const f1 = HOJAS.htmlFase1();
+  for (const t of [...POSQ_LIB.PROTOCOLOS, ...POSQ_LIB.COMPLICACIONES.map(c => c.label)]) assert.ok(f1.includes(t), `fase 1 sin «${t}»`);
+  assert.ok(calc.includes('POSQ.TEXTO_PAUTA_COMPATIBLE'), 'la página de fase 1 de la guía explica lo que añade el posquirúrgico');
+});
+
 test('formulario del paciente en papel: una hoja por cara (común y cada región), sin QR, fuera de los cuadernos y en «Para dar al paciente»', () => {
   const ids = ['comun', ...ESQ.ORDEN_REGIONES];
   const hojas = HOJAS.hojasImpresas().filter(h => h.clave.startsWith('formulario-'));
@@ -371,8 +395,10 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
   assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos.json'));
 });
 
-test('guía, fármacos: «¿Otro fármaco o duda?» usa el modo «Fármacos» de la app y no guarda el destino', () => {
+test('guía: «Preguntar a la IA» con los modos de la app (fármacos al final de su página) y sin guardar el destino', () => {
   const src = leer('guia.js');
-  assert.ok(src.includes("promptPregunta({ pregunta: q, tipo: 'farmacos' })") && src.includes('preguntaFarmacosHTML()'));
-  assert.ok(!src.includes('guardarDestinoIA'), 'la guía no guarda nada');
+  assert.ok(src.includes("htmlPreguntar('farmacos'"));
+  const extra = leer('guia-extra.js');
+  assert.ok(extra.includes('promptPregunta({ pregunta: q, tipo: TIPO })'));
+  assert.ok(!src.includes('guardarDestinoIA') && !extra.includes('guardarDestinoIA'), 'la guía no guarda nada');
 });
