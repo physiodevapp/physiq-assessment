@@ -196,6 +196,19 @@ test('fase 1: los textos de data/fase1.js son los de la app (index.html), y la h
   assert.ok(/fase1: \{ titulo:/.test(leer('guia.js')), 'página #fase1 en la guía');
 });
 
+test('confirmación de la guía: el cuestionario recomendado (prom) de cada hipótesis', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes('h.prom') && src.includes('Cuestionario recomendado'));
+});
+
+test('cribado de la guía: zonas de dolor referido e impacto de cada sistema, los textos de la app', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes('zonasImpactoHTML(s)') && src.includes('s.zonasDolor') && src.includes('s.impactoDescanso') && src.includes('s.impactoEjercicio'));
+  const conZonas = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => s.zonasDolor?.length);
+  assert.ok(conZonas.length > 0, 'cervical tiene zonas de dolor referido');
+  assert.ok(/zonas de dolor referido/.test(HOJAS.htmlCribado('cervical')), 'la hoja remite a la guía');
+});
+
 test('calculadoras de la guía: usan las reglas de la app y salen en el bloque de su condición', () => {
   const src = leer('guia-calc.js');
   for (const f of ['resultadoHAG(', 'reglaVascular(', 'resultadoPrueba(', 'reglaTA(']) assert.ok(src.includes(f), f);
