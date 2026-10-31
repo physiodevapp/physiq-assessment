@@ -141,7 +141,7 @@ export function htmlCribado(region) {
       <span class="ley"><span class="chip urg">URGENCIA</span> derivar hoy</span>
       <span class="ley"><span class="chip der">DERIVACIÓN</span> valoración médica, no urgente</span>
       <span class="ley"><span class="cond">gris</span> cuándo aparece la pregunta</span>
-      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Las preguntas son las de la app, literales; las banderas rojas y amarillas de cada sistema, en la guía (QR).</span>
+      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Las preguntas son las de la app, literales; las banderas rojas y amarillas, las zonas de dolor referido y el impacto en el descanso y el ejercicio de cada sistema, en la guía (QR).</span>
       <span class="gen">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</span></div>`;
   const W = 794, H = 1123;
   return `<style>${CSS}
