@@ -201,6 +201,24 @@ test('confirmación de la guía: el cuestionario recomendado (prom) de cada hip�
   assert.ok(src.includes('h.prom') && src.includes('Cuestionario recomendado'));
 });
 
+test('formulario del paciente en papel: una hoja por cara (común y cada región), sin QR, fuera de los cuadernos y en «Para dar al paciente»', () => {
+  const ids = ['comun', ...ESQ.ORDEN_REGIONES];
+  const hojas = HOJAS.hojasImpresas().filter(h => h.clave.startsWith('formulario-'));
+  assert.deepStrictEqual(hojas.map(h => h.clave), ids.map(id => `formulario-${id}`));
+  for (const h of hojas) {
+    assert.strictEqual(h.ruta, null, `${h.clave}: sin QR`);
+    assert.ok(h.paciente, `${h.clave}: para el paciente`);
+    const html = h.html();
+    assert.ok(!html.includes('<!--QR-->'), `${h.clave}: no lleva QR`);
+    // Todas las preguntas del esquema, tal cual
+    const f = h.clave === 'formulario-comun' ? 'comun' : h.clave.slice(11);
+    const src = leer('formularios', `${f}.js`);
+    for (const m of src.matchAll(/\btexto: '([^']+)'/g)) assert.ok(html.includes(m[1].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')), `${h.clave}: falta «${m[1]}»`);
+  }
+  for (const c of ESQ.definicionCuadernos(ESQ.ORDEN_REGIONES, r => r)) for (const s of c.secciones) assert.ok(!s.hojas.some(k => k.startsWith('formulario-')), `${c.clave}: sin formularios`);
+  assert.ok(leer('guia.js').includes('`formulario-${r}`'), 'la guía los lista en «Para dar al paciente»');
+});
+
 test('cribado de la guía: zonas de dolor referido e impacto de cada sistema, los textos de la app', () => {
   const src = leer('guia.js');
   assert.ok(src.includes('zonasImpactoHTML(s)') && src.includes('s.zonasDolor') && src.includes('s.impactoDescanso') && src.includes('s.impactoEjercicio'));
