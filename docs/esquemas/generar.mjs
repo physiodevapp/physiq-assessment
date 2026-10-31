@@ -34,7 +34,7 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 
 const { CIF_TREES } = await import('../../data.js');
-const { HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
+const { ORDEN_REGIONES, HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
 const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlFase1, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
@@ -168,7 +168,7 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
   const tramos = (ini, total) => { const k = Object.keys(ini); return Object.fromEntries(k.map((c, i) => [c, (i + 1 < k.length ? ini[k[i + 1]] : total + 1) - ini[c]])); };
   const papelesCambiados = (ini0, total0, ini1, total1) => { const a = tramos(ini0, total0), b = tramos(ini1, total1); return Object.keys(b).filter(k => k in a && a[k] !== b[k]); };
   const ISO_A_CORTA = iso => { const [a, m, d] = iso.split('-').map(Number); return `${d}/${m}/${a}`; };
-  for (const lib of definicionCuadernos(Object.keys(CIF_TREES), nombreRegion)) {
+  for (const lib of definicionCuadernos(ORDEN_REGIONES, nombreRegion)) {
     const hojas = Object.fromEntries(lib.secciones.flatMap(sec => sec.hojas.map(k => [k, HUELLAS[k]?.huella])));
     const falta = Object.entries(hojas).filter(([, v]) => !v).map(([k]) => k);
     if (falta.length) throw new Error(`${lib.clave}: faltan hojas sin generar (${falta.join(', ')})`);

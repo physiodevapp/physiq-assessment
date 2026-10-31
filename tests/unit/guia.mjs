@@ -210,6 +210,14 @@ test('número de hipótesis: la hoja y la guía pintan la cifra, nunca el carác
   for (const r of Object.keys(CIF_TREES)) assert.ok(!/class="num">[\u2460-\u2473\u3251-\u325F\u32B1-\u32BF]/.test(HOJAS.htmlConfirmacion(r)), r);
 });
 
+test('orden anatómico de las regiones en papel y guía: las mismas que CIF_TREES, de arriba abajo', () => {
+  assert.deepEqual([...ESQ.ORDEN_REGIONES].sort(), Object.keys(CIF_TREES).sort());
+  assert.deepEqual(ESQ.ORDEN_REGIONES, ['cervical', 'hombro', 'codo', 'lumbar', 'cadera', 'rodilla', 'tobillo_pie']);
+  const comp = ESQ.definicionCuadernos(ESQ.ORDEN_REGIONES, REGION_LIB.nombreRegion).find(l => l.clave === 'cuaderno-completo');
+  assert.deepEqual(comp.secciones.slice(1).map(s => s.hojas[0]), ESQ.ORDEN_REGIONES.map(r => `cribado-${r}`));
+  assert.ok(leer('guia.js').includes('const REGIONES = ORDEN_REGIONES'));
+});
+
 test('las hojas remiten a la guía (QR), no a la app, para lo que la guía ya tiene', () => {
   for (const r of Object.keys(CIF_TREES)) {
     assert.ok(!/están en la app|en la app\./.test(HOJAS.htmlCribado(r)), `cribado-${r}`);
@@ -249,7 +257,7 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
   const { nombreRegion } = REGION_LIB;
   const huellas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
   const cuadernos = JSON.parse(leer('docs', 'esquemas', 'cuadernos.json'));
-  const def = ESQ.definicionCuadernos(Object.keys(CIF_TREES), nombreRegion);
+  const def = ESQ.definicionCuadernos(ESQ.ORDEN_REGIONES, nombreRegion);
   assert.deepEqual(Object.keys(cuadernos).sort(), def.map(l => l.clave).sort(), 'un cuaderno por definición (completo y uno por región)');
   for (const l of def) {
     const d = cuadernos[l.clave];
