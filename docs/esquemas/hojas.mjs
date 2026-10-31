@@ -9,6 +9,7 @@ import { readFileSync } from 'node:fs';
 
 const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES, ZONAS_SINTOMA } = await import('../../data.js');
 const SINT = await import('../../lib/sintomas.js');
+const PLAN = await import('../../data/plan-tratamiento.js');
 const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
 const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
@@ -704,7 +705,7 @@ export function htmlCondiciones() {
   const CON_BLOQUES = ['disautonomia', 'lupus', 'osteoporosis', 'embarazo'];
   const enGuia = c => c.id === 'posquirurgico' ? '; la tarjeta «Cirugía», en la hoja de fase 1' : `; ${[CON_BLOQUES.includes(c.id) ? 'sus otras preguntas' : '', CON_CALCULADORA.includes(c.id) ? 'la calculadora' : '', 'las líneas de la exploración', 'las recomendaciones'].filter(Boolean).join(', ').replace(/, ([^,]+)$/, ' y $1')}, en la guía (QR)`;
   const donde = c => c.destino?.tarjeta
-    ? `En papel: su bloque en la página 2 de la hoja de cribado${enGuia(c)} · En la app: fase 1, tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}${c.soloApp ? `; solo ahí, ${esc(c.soloApp)}` : ''}`
+    ? `En papel: su bloque en la página 2 de la hoja de cribado${enGuia(c)} · En la app: fase 1, tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}${c.enPlan ? ` · Plan (fase 6): ${esc(c.enPlan)}, en la guía (Plan de tratamiento) o en la app` : ''}`
     : `En papel: su pregunta en la hoja de cribado de ${esc(nombreRegion(c.region).toLowerCase())} · En la app: fase 2, la misma pregunta`;
   const tarjeta = c => `<section class="cond">
     <h2>${esc(c.nombre)}</h2>
@@ -1146,6 +1147,64 @@ export function htmlSintomas() {
     <div class="pie-fijo"><span class="pie pie-v">Síntomas (fase 3) · ${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div></div>`;
 }
 
+// ── Plan de tratamiento (fase 6): el contenido fijo del que la app elige ──────
+// data/plan-tratamiento.js tal cual: cómo se elige el escalón, los escalones de las dos familias,
+// la sesión de 50 min, los planes del mes, la progresión, seguir o cambiar y la red de seguridad de
+// cada región y condición. La selección la hace la guía (QR → #plan) con la función de la app.
+export function htmlPlanHoja() {
+  const t = PLAN.TEXTOS_SESION;
+  const esc2 = x => esc(x);
+  const lista = arr => `<ul>${arr.map(x => `<li>${esc2(x)}</li>`).join('')}</ul>`;
+  const escalones = (E, titulo) => `<section class="tarjeta pl"><h2>${esc2(titulo)}</h2>${Object.entries(E).map(([n, x]) =>
+    `<p><b>${n} · ${esc2(x.nombre)}</b> <span class="modo">(${esc2(x.modo)})</span> ${esc2(x.texto)} <span class="cit">(${esc2(x.citas.join('; '))})</span></p>`).join('')}</section>`;
+  const red = (k) => t[k] ? `<li>${esc2(t[k])}</li>` : '';
+  const redRegion = r => {
+    const rs = PLAN.RED_SEGURIDAD[r] || {};
+    const siempre = [].concat(rs.siempre || []).map(x => red(x.cierre)).join('');
+    const neuro = rs.neuro ? red(rs.neuro.cierre).replace('<li>', '<li><i>Con hipótesis neurológica:</i> ') : '';
+    return `<p class="reg"><b>${esc2(nombreRegion(r))}</b></p><ul>${siempre}${neuro}</ul>`;
+  };
+  const conds = [['Lupus', PLAN.RED_LUPUS], ['Disautonomía', [PLAN.RED_DISAUTONOMIA]], ['Trastorno mastocitario o anafilaxia', [PLAN.RED_MASTOCITOS]], ['Osteoporosis', [PLAN.RED_OSTEOPOROSIS]],
+    ['Embarazo', [PLAN.RED_EMBARAZO]], ['Posparto', [PLAN.RED_POSPARTO]], ['Anticoagulado o antiagregado', [PLAN.RED_ANTICOAGULADO]]];
+  const tarjetas = [
+    `<section class="tarjeta pl"><h2>Cómo se elige el escalón (B)</h2>
+      <p>Gravedad por la NRS: 0–3 mínima · 4–7 moderada · 8–10 máxima. Irritabilidad: la de la hoja de irritabilidad (sin registrar, alta).</p>
+      <table class="t"><tr><th>Irritabilidad</th><th>Escalón B</th></tr><tr><td>Alta</td><td>1</td></tr><tr><td>Moderada</td><td>1 con gravedad máxima; si no, 2</td></tr><tr><td>Baja</td><td>3</td></tr></table>
+      <p><b>A</b>: un escalón por debajo de B (no hay A por debajo del 1). <b>C</b>: un escalón por encima de B, solo con irritabilidad baja y síntomas que no empeoran. ${esc2(PLAN.TEXTO_NIVELES.sinC.irritabilidad)}</p>
+      <p><b>Familia</b>: columna (${PLAN.REGIONES_COLUMNA_PLAN.map(r => esc2(nombreRegion(r).toLowerCase())).join(', ')}, y las hipótesis ${Object.keys(PLAN.FAMILIA_HIP).join(', ')}) o periférica (las demás regiones).</p>
+      <p class="cit">La propuesta completa para un paciente, con sus hipótesis y condiciones: guía (QR).</p></section>`,
+    escalones(PLAN.ESCALONES, 'Escalones · columna (Maitland 2005)'),
+    escalones(PLAN.ESCALONES_PERIFERICOS, 'Escalones · periféricas (Hengeveld y Banks 2005)'),
+    `<section class="tarjeta pl"><h2>Sesión de ${PLAN.MINUTOS_SESION} min</h2>
+      <p>${PLAN.BLOQUES_SESION.map(b => `${esc2(b.titulo)} ${b.duracion}′`).join(' · ')} <span class="cit">(organización de la sesión, no evidencia)</span></p>
+      <p><b>Reevaluación:</b> ${esc2(t.reevaluacionBase)} En las siguientes: ${esc2(t.reevaluacionSiguiente.charAt(0).toLowerCase() + t.reevaluacionSiguiente.slice(1))}</p>
+      <p><b>Educación:</b> ${esc2(t.educacionBase)} ${esc2(t.educacionPrimera)}</p>
+      <p><b>Primera sesión:</b> ${esc2(t.primeraSesion)}</p>
+      <p><b>Cantidad (columna):</b> ${esc2(t.cantidad)}</p><p><b>Cantidad (periféricas):</b> ${esc2(t.cantidadPeriferica)}</p>
+      <p><b>Domiciliario:</b> ${esc2(t.domiciliario)} <b>Cierre:</b> ${esc2(t.cierre)}</p></section>`,
+    `<section class="tarjeta pl"><h2>Plan del mes</h2>${['A', 'B'].map(k => { const m = PLAN.PLANES_MES[k]; return `<p><b>${esc2(m.nombre)}</b>: ${m.sesiones} sesiones; reevaluación intermedia ${esc2(m.intermedia.toLowerCase())}, final ${esc2(m.final.toLowerCase())}; programa domiciliario: ${esc2(m.domiciliario.toLowerCase())}</p>${lista(m.notas)}`; }).join('')}</section>`,
+    `<section class="tarjeta pl"><h2>Progresión</h2><p>${esc2(PLAN.PROGRESION_GENERICA)}</p><p><b>Periféricas:</b> ${esc2(PLAN.PROGRESION_PERIFERICA)}</p></section>`,
+    `<section class="tarjeta pl"><h2>Seguir o cambiar · columna</h2>${lista(PLAN.REGLAS_MES)}</section>`,
+    `<section class="tarjeta pl"><h2>Seguir o cambiar · periféricas</h2>${lista(PLAN.REGLAS_MES_PERIFERICAS)}</section>`,
+    `<section class="tarjeta pl"><h2>Red de seguridad por región (cierre de la sesión)</h2>${ORDEN_REGIONES.map(redRegion).join('')}</section>`,
+    `<section class="tarjeta pl"><h2>Red de seguridad por condición especial</h2>${conds.map(([n, l]) => `<p class="reg"><b>${esc2(n)}</b></p><ul>${l.map(x => red(x.cierre)).join('')}</ul>`).join('')}</section>`,
+  ];
+  return paginasVarias({
+    titulo: 'Plan de tratamiento (fase 6)',
+    tituloCont: 'Plan de tratamiento (cont.)',
+    sub: 'El contenido fijo del que la app elige el plan (data/plan-tratamiento.js), con su fuente. La propuesta para un paciente concreto (escalón, avisos de sus hipótesis y condiciones, red de seguridad), en la guía (QR). Es una propuesta: decide el fisioterapeuta.',
+    qr: 'Calcular el plan',
+    tarjetas,
+    maxPaginas: 3,
+    pie: `<span class="pie">Generado desde los datos de la app (data/plan-tratamiento.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
+    css: `
+      .pl { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 6px 9px; }
+      .pl h2 { font-size: 12px; margin: 0 0 3px; color: #1e3a8a; } .pl p { margin: 0 0 4px; } .pl ul { margin: 0 0 4px; padding-left: 14px; } .pl li { margin: 0 0 2px; }
+      .modo, .cit { color: #6b7280; } .reg { margin: 4px 0 1px !important; }
+      .t { border-collapse: collapse; margin: 3px 0 5px; } .t th, .t td { border: 1px solid #cbd5e1; padding: 2px 6px; text-align: left; }`,
+  });
+}
+
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
 export function fnv(texto) {
@@ -1169,6 +1228,7 @@ export function hojasImpresas() {
   hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
   hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
   hojas.push({ clave: 'sintomas', ruta: 'sintomas', html: htmlSintomas });
+  hojas.push({ clave: 'plan', ruta: 'plan', html: htmlPlanHoja });
   hojas.push({ clave: 'fase1', ruta: 'fase1', html: htmlFase1 });
   hojas.push({ clave: 'ejercicio-paciente', ruta: null, html: htmlEjercicioPaciente, paciente: true });
   for (const id of FORMULARIOS_PACIENTE) hojas.push({ clave: `formulario-${id}`, ruta: null, html: () => htmlFormularioPaciente(id), paciente: true });

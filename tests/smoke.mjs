@@ -6586,6 +6586,16 @@ async function checkGuia(browser, errors) {
     await page.evaluate(() => document.getElementById('guiaPreguntaIr').addEventListener('click', e => e.preventDefault()));
     await page.click('#guiaPreguntaIr');
     r.preguntaEjercicio = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href')).includes('Duda de prescripción de ejercicio: «excéntricos');
+    // Plan de tratamiento: la función de la app con un formulario corto
+    await page.goto(`${base}#plan`, { waitUntil: 'networkidle' });
+    await page.click('[data-plan="region"][data-valor="lumbar"]');
+    await page.click('[data-plan="hip"]:not([disabled])');
+    await page.click('[data-plan="irr"][data-valor="moderada"]');
+    await page.click('[data-plan="nrs"][data-valor="6"]');
+    const txtPlan = await page.$$eval('.guia-plan-txt', e => e.map(x => x.textContent));
+    await page.click('[data-plan="bloqueo"]');
+    const bloqueado = await page.textContent('.guia-plan-txt');
+    r.planGuia = /PLAN DE SESIÓN/.test(txtPlan[0]) && /Nivel B · Suave/.test(txtPlan[0]) && /PLAN DEL MES/.test(txtPlan[1] || '') && /Sin plan de tratamiento/.test(bloqueado);
     // Síntomas: las zonas de lumbar enlazan sus pasos del árbol y el periné recuerda la cola de caballo
     await page.goto(`${base}#sintomas`, { waitUntil: 'networkidle' });
     r.sintomasGuia = await page.evaluate(() => !!document.querySelector('a[href="#lumbar/arbol/paso-lu_step1c"]') && !!document.querySelector('a[href="#lumbar/cribado/q-l6"]'));
@@ -6629,7 +6639,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.preguntaEjercicio && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
