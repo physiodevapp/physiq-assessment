@@ -25,6 +25,7 @@ const GC = await import('../../lib/guia-condiciones.js');
 const FN = await import('../../lib/formulario-numeros.js');
 const DATOS_APP = await import('../../data.js');
 const POSQ_LIB = await import('../../lib/posquirurgico.js');
+const PLAN_DATOS = await import('../../data/plan-tratamiento.js');
 const await_comun = (await import('../../formularios/comun.js')).default;
 const FORMS = Object.fromEntries(await Promise.all(ESQ.ORDEN_REGIONES.map(async r => [r, (await import(`../../formularios/${r}.js`)).default])));
 const REGION_LIB = await import('../../lib/region.js');
@@ -232,10 +233,10 @@ test('guía: condiciones especiales en la consulta (recuadro de la fase 5, pregu
   const src = leer('guia.js');
   assert.ok(src.includes('consultaCondicionHTML(s)') && src.includes('tecnicaCondicionesHTML()') && src.includes('lineasTestHTML(t)'));
   // Hoja y página de condiciones: lo que solo está en la app, dicho aparte
-  for (const c of COND_DATOS.CONDICIONES) if (c.destino?.tarjeta) assert.ok(c.soloApp, `${c.id}: sin «Solo en la app»`);
-  assert.ok(HOJAS.htmlCondiciones().includes('; solo ahí, '), 'la hoja dice en su recuadro lo que solo está en la app');
-  assert.ok(COND_LIB.condicionesHTML({}, { guia: true }).includes('Solo en la app:'));
-  assert.ok(!COND_LIB.condicionesHTML({}).includes('Solo en la app:'), 'en la app no se dice «solo en la app»');
+  for (const c of COND_DATOS.CONDICIONES) if (c.destino?.tarjeta) assert.ok(c.enPlan, `${c.id}: sin lo que añade al plan`);
+  assert.ok(HOJAS.htmlCondiciones().includes(' · Plan (fase 6): '), 'la hoja dice en su recuadro lo que añade al plan');
+  assert.ok(COND_LIB.condicionesHTML({}, { guia: true }).includes('En el plan (fase 6):'));
+  assert.ok(!COND_LIB.condicionesHTML({}).includes('En el plan (fase 6):'), 'en la app no se repite');
 });
 
 test('árbol: cada paso con pistas del formulario dice sus preguntas (G/R) y las hojas del paciente llevan esos números', () => {
@@ -274,6 +275,19 @@ test('guía: calculadora de cuestionarios, efectos del ejercicio, preguntar a la
   const f1 = HOJAS.htmlFase1();
   for (const t of [...POSQ_LIB.PROTOCOLOS, ...POSQ_LIB.COMPLICACIONES.map(c => c.label)]) assert.ok(f1.includes(t), `fase 1 sin «${t}»`);
   assert.ok(calc.includes('POSQ.TEXTO_PAUTA_COMPATIBLE'), 'la página de fase 1 de la guía explica lo que añade el posquirúrgico');
+});
+
+test('plan de tratamiento: la hoja con el contenido fijo y la página de la guía con la función de la app', () => {
+  const src = leer('guia-plan.js');
+  assert.ok(src.includes('construirPlan(e)') && src.includes('textoPlanSesion(plan, e, nivel)') && src.includes('textoPlanMes(plan, e, P.frecuencia)'), 'la guía usa las funciones de la app, no las reescribe');
+  assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(src), 'la guía no guarda nada');
+  for (const m of importsDe(src)) assert.ok(!/\/(app|state|phase4b?|plan)\.js$/.test(m), `guia-plan.js: ${m}`);
+  assert.ok(leer('guia.js').includes('  plan: { titulo:'));
+  assert.ok(ESQ.HOJAS_GENERALES.includes('plan'));
+  const hoja = HOJAS.htmlPlanHoja();
+  for (const [n, e] of Object.entries(PLAN_DATOS.ESCALONES)) assert.ok(hoja.includes(e.texto), `escalón ${n} de columna`);
+  for (const r of PLAN_DATOS.REGLAS_MES) assert.ok(hoja.includes(r.replace(/«/g, '«')), 'reglas del mes');
+  for (const r of ESQ.ORDEN_REGIONES) for (const x of [].concat(PLAN_DATOS.RED_SEGURIDAD[r]?.siempre || [])) assert.ok(hoja.includes(PLAN_DATOS.TEXTOS_SESION[x.cierre].replace(/&/g, '&amp;')), `${r}: red de seguridad`);
 });
 
 test('formulario del paciente en papel: una hoja por cara (común y cada región), sin QR, fuera de los cuadernos y en «Para dar al paciente»', () => {
