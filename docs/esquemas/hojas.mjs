@@ -370,7 +370,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .opt { background: #f8fafc; border: 1.5px solid #94a3b8; border-radius: 10px; padding: 5px 9px; }
     .opt b { display: block; font-size: 13px; } .opt span { display: block; font-size: 10.5px; color: #6b7280; line-height: 1.25; }
     .fl { text-align: center; color: #475569; font-weight: bold; font-size: 15px; }
-    .hip { display: flex; gap: 6px; align-items: center; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
+    .hip { display: flex; gap: 6px; align-items: baseline; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
     .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 4px; }
     .der { background: #fde8e8; border: 2px solid #d0342c; color: #b42318; border-radius: 10px; padding: 5px 8px; font-size: 12px; margin: 2px 0; }
     .der span { display: block; font-size: 10px; color: #7a271a; font-weight: normal; }
@@ -540,7 +540,7 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     h1, .grupo { font-size: 19px; font-weight: bold; margin: 0 0 6px; }
     .cols { column-count: 2; column-gap: 10px; }
     .hyp { break-inside: avoid; border: 1.5px solid #7c4ddb; border-radius: 8px; padding: 5px 7px; margin: 0 0 7px; }
-    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: flex-start; }
+    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: baseline; }   /* el número, en la línea de la primera línea del nombre */
     .hyp h2 .num { flex: none; }
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 8.5px; color: #6b7280; border-bottom: 1px solid #cbd5e1; }
