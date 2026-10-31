@@ -6569,6 +6569,26 @@ async function checkGuia(browser, errors) {
     });
     await page.goto(`${base}#hombro/confirmacion`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-cc-tec', { state: 'attached' });
+    // Calculadora de cuestionarios: el PHQ-9 con las reglas de la app, y la lista con su estado
+    await page.goto(`${base}#cuestionarios/phq9`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#cuestCuerpo .cuest-item');
+    for (let n = 1; n <= 9; n++) await page.click(`#cuestCuerpo .cuest-item[data-item="${n}"] .cuest-op[data-valor="2"]`);
+    const resPHQ = await page.textContent('#cuestResultado');
+    await page.click('[data-cuest-volver]');
+    await page.waitForSelector('[data-cuest="phq9"]');
+    r.cuestGuia = /18\/27/.test(resPHQ) && /Ítem 9/.test(resPHQ) && /18\/27/.test(await page.textContent('[data-cuest="phq9"]'));
+    // Efectos del ejercicio y «Preguntar a la IA» en modo ejercicio
+    await page.goto(`${base}#ejercicio`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#ejercicioCuerpo details', { state: 'attached' });
+    await page.goto(`${base}#preguntar`, { waitUntil: 'networkidle' });
+    await page.click('[data-tipo-pregunta="ejercicio"]');
+    await page.fill('#guiaPreguntaTexto', 'excéntricos en la tendinopatía rotuliana');
+    await page.evaluate(() => document.getElementById('guiaPreguntaIr').addEventListener('click', e => e.preventDefault()));
+    await page.click('#guiaPreguntaIr');
+    r.preguntaEjercicio = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href')).includes('Duda de prescripción de ejercicio: «excéntricos');
+    // Síntomas: las zonas de lumbar enlazan sus pasos del árbol y el periné recuerda la cola de caballo
+    await page.goto(`${base}#sintomas`, { waitUntil: 'networkidle' });
+    r.sintomasGuia = await page.evaluate(() => !!document.querySelector('a[href="#lumbar/arbol/paso-lu_step1c"]') && !!document.querySelector('a[href="#lumbar/cribado/q-l6"]'));
     await page.goto(`${base}#lumbar/arbol`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-fpref', { state: 'attached' });
     r.formArbol = await page.evaluate(() => /📝 Formulario: R1, R2, R4, R6/.test(document.querySelector('#paso-lu_step1')?.textContent || ''));
@@ -6578,6 +6598,21 @@ async function checkGuia(browser, errors) {
       && [...document.querySelectorAll('.guia-cc-test')].some(x => /lado sano/.test(x.textContent)));
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
     r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
+    // Reloj de la prueba de bipedestación (reloj falso): fila del minuto 1 y «toma a las …» fuera de su minuto
+    {
+      const pr = await context.newPage();
+      await pr.clock.install();
+      await pr.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
+      await pr.waitForSelector('#calc-disautonomia', { state: 'attached' });
+      await pr.click('#calc-disautonomia summary');
+      await pr.click('[data-gc-reloj="pie"]');
+      await pr.clock.runFor(61000);
+      const fila = await pr.evaluate(() => document.querySelector('tr.ds-fila-toca')?.dataset.gcFila);
+      await pr.clock.runFor(160000);
+      await pr.fill('[data-gc-num="prueba"][data-gc-k="m1.fc"]', '95');
+      r.relojGuia = fila === 'm1' && /toma a las 3:4/.test(await pr.textContent('[data-gc-toma="m1"]'));
+      await pr.close();
+    }
     // (después de comprobar que la guía no crea la sesión: la app sí la abre)
     // La app enlaza «Hojas para imprimir» desde el panel de sesión
     {
@@ -6594,7 +6629,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.preguntaEjercicio && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 

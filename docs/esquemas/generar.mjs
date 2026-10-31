@@ -37,7 +37,7 @@ import { tmpdir } from 'node:os';
 const { CIF_TREES } = await import('../../data.js');
 const { ORDEN_REGIONES, HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlSintomas, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -120,6 +120,7 @@ const SUELTAS = {
   condiciones: [['condiciones', htmlCondiciones]],
   farmacos: [['farmacos', htmlFarmacos]],
   irritabilidad: [['irritabilidad', htmlIrritabilidad]],
+  sintomas: [['sintomas', htmlSintomas]],
   fase1: [['fase1', htmlFase1]],
   'ejercicio-paciente': [['ejercicio-paciente', htmlEjercicioPaciente]],
   formularios: FORMULARIOS_PACIENTE.map(id => [`formulario-${id}`, () => htmlFormularioPaciente(id)]),
