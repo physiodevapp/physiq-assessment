@@ -62,7 +62,7 @@ const CSS = `
   .aviso { border: 1.5px solid #d0342c; background: #fde8e8; color: #b42318; border-radius: 8px; padding: 6px 10px; font-weight: bold; margin-bottom: 8px; }
   .aviso div { font-weight: normal; }
   .pie { color: #6b7280; font-size: 9px; margin-top: 8px; }
-  .chip { display: inline-block; border-radius: 10px; padding: 0 6px; font-size: 9px; font-weight: bold; }
+  .chip { display: inline-block; border-radius: 10px; padding: 2.5px 6px; line-height: 1; text-box: trim-both cap alphabetic; vertical-align: 0.5px; font-size: 9px; font-weight: bold; }
   .urg { background: #d0342c; color: #fff; } .alerta { background: #fff1dc; color: #9a5b00; }
   .cab-hoja { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 6px; }
   .cab-txt { flex: 1; min-width: 0; }
@@ -70,7 +70,7 @@ const CSS = `
   .qr-guia svg { display: block; }
   .autoria { display: block; color: #6b7280; }
   .qr-huella { display: block; margin-top: 2px; font-family: monospace; font-size: 7.5px; color: #6b7280; }
-  .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 18px; padding: 0 4px; }
+  .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; padding: 0 4px; }
 `;
 
 // Ajuste de páginas de lista (cribado, confirmación): cada .pagina con su .pie-fijo; si una
@@ -173,7 +173,7 @@ export function htmlCribado(region) {
     li.qurg { color: #b42318; font-weight: bold; }
     li.qder { color: #9a4a00; }
     .chip.der { background: #f59e0b; color: #fff; }
-    .cond { display: inline-block; font-size: 8.5px; font-weight: normal; font-style: italic; color: #4b5563; background: #f1f5f9; border-radius: 6px; padding: 0 5px; }
+    .cond { display: inline-block; font-size: 8.5px; font-weight: normal; font-style: italic; color: #4b5563; background: #f1f5f9; border-radius: 6px; padding: 2px 5px; line-height: 1; text-box: trim-both cap alphabetic; }
     .crit { margin-top: 4px; border-top: 1px dashed #94a3b8; padding-top: 4px; font-size: 9.5px; }
     .pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 3px 14px; border-top: 1px solid #cbd5e1; padding-top: 5px; font-size: 9.5px; }
     .pie-fijo .ley { display: inline-flex; align-items: center; gap: 4px; }
@@ -370,8 +370,8 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .paso { border: 2.5px solid #3567d6; background: #eaf1ff; border-radius: 14px; padding: 10px 12px; }
     .paso.desv { width: 330px; }
     .cab { display: flex; gap: 9px; align-items: flex-start; }
-    /* line-height 1: la cifra, centrada en el círculo por su propia caja, no por la línea del párrafo */
-    .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; padding: 0 5px; line-height: 1; }
+    /* Cifras y chips centrados por la altura de las mayúsculas (text-box: trim-both cap alphabetic + align-content), no por la línea del párrafo, que guarda sitio para los descendentes y las dejaba altas */
+    .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: block; text-align: center; align-content: center; text-box: trim-both cap alphabetic; padding: 0 5px; line-height: 1; }
     .preg { font-size: 15.5px; font-weight: bold; line-height: 1.3; }
     .fpref { font-size: 0.72em; font-weight: normal; color: #475569; white-space: nowrap; }
     .dops { margin-top: 8px; display: grid; gap: 4px; font-size: 11.5px; }
@@ -390,7 +390,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     /* El círculo, centrado en la primera línea del nombre (no por la línea base: con la hoja escalada, el
        redondeo dejaba unos círculos medio píxel más arriba que otros). margin-top = (alto de línea − círculo) / 2, menos el desfase de la letra (medido) */
     .hip { display: flex; gap: 6px; align-items: flex-start; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; line-height: 1.25; margin: 2px 0; }
-    .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 4px; line-height: 1; margin-top: -5px; }
+    .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: block; text-align: center; align-content: center; text-box: trim-both cap alphabetic; font-size: 12px; padding: 0 4px; line-height: 1; margin-top: -5px; }
     .der { background: #fde8e8; border: 2px solid #d0342c; color: #b42318; border-radius: 10px; padding: 5px 8px; font-size: 12px; margin: 2px 0; }
     .der span { display: block; font-size: 10px; color: #7a271a; font-weight: normal; }
     .nada { border: 1.5px dashed #94a3b8; border-radius: 10px; padding: 7px 8px; color: #6b7280; text-align: center; background: #fff; }
@@ -738,7 +738,7 @@ export function htmlCondiciones() {
       .anade { margin: 0 0 3px; color: #4b5563; font-size: 9.5px; }
       .donde { margin: 0; font-size: 9.5px; color: #1f2937; background: #eef2ff; border-radius: 4px; padding: 2px 6px; display: inline-block; }
       .rejilla-3 { grid-template-columns: 1fr 1fr 1fr; }
-      .reg { display: inline-block; font-size: 8.5px; font-weight: bold; text-transform: uppercase; letter-spacing: .5px; color: #fff; background: #2563eb; border-radius: 6px; padding: 0 5px; margin-right: 5px; vertical-align: 1px; }
+      .reg { display: inline-block; font-size: 8.5px; font-weight: bold; text-transform: uppercase; letter-spacing: .5px; color: #fff; background: #2563eb; border-radius: 6px; padding: 2.5px 5px; line-height: 1; text-box: trim-both cap alphabetic; margin-right: 5px; vertical-align: 1px; }
       .grupo-reg { font-size: 10.5px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: #2563eb; margin: 10px 0 5px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 1px; }`,
   });
 }
@@ -839,7 +839,7 @@ export function htmlIrritabilidad() {
       .matriz tbody th { width: 30%; font-size: 12.5px; }
       .ayuda { font-weight: normal; font-size: 9.5px; color: #6b7280; margin-top: 3px; }
       .caja { display: inline-block; width: 13px; height: 13px; border: 1.6px solid #475569; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
-      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 15px; margin-right: 3px; }
+      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; vertical-align: -3px; margin-right: 3px; }
       h2 { font-size: 14px; margin: 0 0 5px; color: #1e3a8a; }
       .regla { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; } .regla p { margin: 0 0 5px; }
       .calc { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 11px; }
