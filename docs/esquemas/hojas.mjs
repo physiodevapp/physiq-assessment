@@ -29,6 +29,7 @@ const { ORDEN_REGIONES } = await import('../../lib/esquemas.js');
 // Formulario del paciente: la cara común y la de cada región (los mismos esquemas que pinta formulario.js)
 const FORMULARIOS = { comun: (await import('../../formularios/comun.js')).default };
 for (const r of ORDEN_REGIONES) FORMULARIOS[r] = (await import(`../../formularios/${r}.js`)).default;
+const { numerosFormulario, refsPasoFormulario, textoRefs } = await import('../../lib/formulario-numeros.js');
 
 // 100 px: con la huella en la dirección el QR tiene 49 módulos; aun a la escala mínima (0,75–0,8)
 // queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
@@ -286,7 +287,9 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
   const cajaPaso = (id, desvio) => {
     const i = ids.indexOf(id), st = steps[i];
     const lineas = desvio ? `<div class="dops">${st.options.map(o => `<div class="dop"><b>${esc(corto(o))}</b> → ${resultado(o)}</div>`).join('')}</div>${vueltaDesvio(id)}` : '';
-    return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}"><div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}</span></div>${lineas}</div>`;
+    // Preguntas del formulario del paciente que tocan este paso (lo que la app pone en «📝 Refiere el paciente»)
+    const fp = textoRefs(refsPasoFormulario(FORMULARIOS.comun, FORMULARIOS[region], id));
+    return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}"><div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}${fp ? ` <span class="fpref">📝 ${fp}</span>` : ''}</span></div>${lineas}</div>`;
   };
   const respuestas = (id, sigPrincipal) => {
     const i = ids.indexOf(id);
@@ -363,6 +366,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .cab { display: flex; gap: 9px; align-items: flex-start; }
     .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
     .preg { font-size: 15.5px; font-weight: bold; line-height: 1.3; }
+    .fpref { font-size: 0.72em; font-weight: normal; color: #475569; white-space: nowrap; }
     .dops { margin-top: 8px; display: grid; gap: 4px; font-size: 11.5px; }
     .dop { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
     .dop .hip, .dop .nada, .dop .der { padding: 2px 6px; font-size: 11px; }
@@ -400,7 +404,8 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
         <div><i style="background:#eaf1ff;border-color:#3567d6"></i>Pregunta del árbol</div>
         <div><i style="background:#f1e9ff;border-color:#7c4ddb"></i>Hipótesis que activa la respuesta</div>
         <div><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación médica (el recorrido sigue)</div>
-        <div><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</div></div>
+        <div><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</div>
+        <div>📝 Formulario del paciente (G general, R región)</div></div>
       <div style="border:1.5px dashed #94a3b8; background:#f8fafc;"><b>Al terminar sin ninguna hipótesis activa</b><br>La app propone trabajar con «${dolorInespecifico(region)}», revisar los factores psicosociales (fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial es alto, sugiere considerar también sensibilización central.</div>
       <div style="border:1.5px solid #64748b; background:#f1f5f9;"><b>Fase 4b · confirmar</b><br>Cada hipótesis activa se confirma o descarta con sus tests: ver el esquema de confirmación de ${NOMBRES[region].toLowerCase()}.<div class="pie">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</div></div>
     </div>
@@ -892,6 +897,7 @@ export function htmlEjercicioPaciente() {
 // páginas como haga falta, a tamaño de lectura fijo: el paciente no tiene que forzar la vista.
 export function htmlFormularioPaciente(id) {
   const f = FORMULARIOS[id];
+  const num = numerosFormulario(f, id === 'comun' ? 'G' : 'R');
   const textoDe = {};
   for (const sec of f.secciones) for (const it of sec.items) textoDe[it.id] = it.texto;
   const caja = '<span class="caja"></span>';
@@ -913,7 +919,7 @@ export function htmlFormularioPaciente(id) {
     } else if (it.tipo === 'matriz') {
       r = `<table class="mtz"><thead><tr><th></th>${it.opciones.map(o => `<th>${esc(o)}</th>`).join('')}</tr></thead><tbody>${it.filas.map(fl => `<tr><td>${esc(fl.texto)}</td>${it.opciones.map(() => `<td class="c">${caja}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
     } else if (it.tipo === 'texto') r = lineas(it.lineas);
-    return `<div class="it">${cond}<div class="q">${esc(it.texto)}</div>${ayuda}${r}</div>`;
+    return `<div class="it">${cond}<div class="q"><span class="nq">${num[it.id]}</span>${esc(it.texto)}</div>${ayuda}${r}</div>`;
   };
   // Unidad de reparto: cada pregunta; el título de la sección va pegado a su primera pregunta
   const piezas = f.secciones.flatMap(sec => sec.items.map((it, i) => `<div class="pieza">${i === 0 ? `<h2>${esc(sec.titulo)}</h2>` : ''}${item(it)}</div>`));
@@ -927,7 +933,7 @@ export function htmlFormularioPaciente(id) {
     .cont { font-size: 13px; font-weight: bold; color: #475569; margin: 0 0 8px; }
     .cuerpo { overflow: hidden; }
     h2 { font-size: 14px; color: #1e3a8a; margin: 10px 0 6px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 2px; }
-    .it { margin: 0 0 10px; } .q { font-weight: 600; } .ayuda { font-size: 11.5px; color: #4b5563; font-style: italic; }
+    .it { margin: 0 0 10px; } .q { font-weight: 600; } .nq { color: #1e3a8a; margin-right: 6px; font-variant-numeric: tabular-nums; } .ayuda { font-size: 11.5px; color: #4b5563; font-style: italic; }
     .si { font-size: 11.5px; color: #1e40af; font-weight: 600; margin: 2px 0 4px; }
     .caja { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #334155; border-radius: 2px; margin-right: 5px; vertical-align: -2px; flex: none; }
     .ops { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 3px; } .op { display: inline-flex; align-items: baseline; }

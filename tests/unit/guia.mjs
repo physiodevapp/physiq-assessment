@@ -22,6 +22,9 @@ const IRR_DATOS = await import('../../data/irritabilidad.js');
 const IRR_LIB = await import('../../lib/irritabilidad.js');
 const EJ = await import('../../data/ejercicio.js');
 const GC = await import('../../lib/guia-condiciones.js');
+const FN = await import('../../lib/formulario-numeros.js');
+const await_comun = (await import('../../formularios/comun.js')).default;
+const FORMS = Object.fromEntries(await Promise.all(ESQ.ORDEN_REGIONES.map(async r => [r, (await import(`../../formularios/${r}.js`)).default])));
 const REGION_LIB = await import('../../lib/region.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
@@ -229,6 +232,24 @@ test('guía: condiciones especiales en la consulta (recuadro de la fase 5, pregu
   assert.ok(HOJAS.htmlCondiciones().includes('; solo ahí, '), 'la hoja dice en su recuadro lo que solo está en la app');
   assert.ok(COND_LIB.condicionesHTML({}, { guia: true }).includes('Solo en la app:'));
   assert.ok(!COND_LIB.condicionesHTML({}).includes('Solo en la app:'), 'en la app no se dice «solo en la app»');
+});
+
+test('árbol: cada paso con pistas del formulario dice sus preguntas (G/R) y las hojas del paciente llevan esos números', () => {
+  const comun = (await_comun);
+  for (const r of ESQ.ORDEN_REGIONES) {
+    const form = FORMS[r];
+    const nG = FN.numerosFormulario(comun, 'G'), nR = FN.numerosFormulario(form, 'R');
+    for (const [paso, lista] of Object.entries(form.pistas || {})) {
+      assert.ok(CIF_TREES[r].steps.some(st => st.id === paso), `${r}: ${paso} no es un paso`);
+      const refs = FN.refsPasoFormulario(comun, form, paso);
+      // Cada pista se convierte en una referencia (las filas de una matriz, en su pregunta)
+      for (const p of lista) { const [t, x] = p.split(':'); assert.ok(refs.includes((t === 'c' ? nG : nR)[x.split('.')[0]]), `${r} · ${paso}: ${p} sin número`); }
+      assert.ok(HOJAS.htmlArbol(r, { a4: true }).includes(`📝 ${FN.textoRefs(refs)}`), `${r} · ${paso}: la hoja del árbol no lo dice`);
+    }
+    const hoja = HOJAS.htmlFormularioPaciente(r);
+    for (const n of Object.values(nR)) assert.ok(hoja.includes(`<span class="nq">${n}</span>`), `${r}: la hoja del paciente no numera ${n}`);
+  }
+  assert.ok(leer('guia.js').includes('refsPasoFormulario(FORM_COMUN, FORMULARIOS[region], st.id)'));
 });
 
 test('formulario del paciente en papel: una hoja por cara (común y cada región), sin QR, fuera de los cuadernos y en «Para dar al paciente»', () => {

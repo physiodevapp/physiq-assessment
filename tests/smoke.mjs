@@ -6569,6 +6569,11 @@ async function checkGuia(browser, errors) {
     });
     await page.goto(`${base}#hombro/confirmacion`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-cc-tec', { state: 'attached' });
+    await page.goto(`${base}#lumbar/arbol`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-fpref', { state: 'attached' });
+    r.formArbol = await page.evaluate(() => /📝 Formulario: R1, R2, R4, R6/.test(document.querySelector('#paso-lu_step1')?.textContent || ''));
+    await page.goto(`${base}#hombro/confirmacion`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-cc-tec', { state: 'attached' });
     r.tecnica4b = await page.evaluate(() => document.querySelectorAll('.guia-cc-tec li').length === 5
       && [...document.querySelectorAll('.guia-cc-test')].some(x => /lado sano/.test(x.textContent)));
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
@@ -6589,7 +6594,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 

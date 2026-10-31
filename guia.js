@@ -10,6 +10,15 @@ import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/
 import { nivelMatriz, NOMBRE_NIVEL, reglaIrritabilidad } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
+import { refsPasoFormulario, textoRefs } from './lib/formulario-numeros.js';
+import FORM_COMUN from './formularios/comun.js';
+import FORM_CERVICAL from './formularios/cervical.js';
+import FORM_HOMBRO from './formularios/hombro.js';
+import FORM_CODO from './formularios/codo.js';
+import FORM_LUMBAR from './formularios/lumbar.js';
+import FORM_CADERA from './formularios/cadera.js';
+import FORM_RODILLA from './formularios/rodilla.js';
+import FORM_TOBILLO from './formularios/tobillo_pie.js';
 import { recomendacionesCondicion, bloquesFase2, lineasTecnica4b, lineasTest } from './lib/guia-condiciones.js';
 import { numeroHipotesis, ORDEN_REGIONES, CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido, definicionCuadernos } from './lib/esquemas.js';
 import { TIEMPOS_TEJIDO } from './data/tejidos.js';
@@ -148,11 +157,13 @@ function zonasImpactoHTML(s) {
 }
 
 // ── Árbol CIF (fase 4) ──────────────────────────────────────────────────────
+// Formulario del paciente en papel: cada paso dice qué preguntas suyas mirar (G = general, R = región)
+const FORMULARIOS = { cervical: FORM_CERVICAL, hombro: FORM_HOMBRO, codo: FORM_CODO, lumbar: FORM_LUMBAR, cadera: FORM_CADERA, rodilla: FORM_RODILLA, tobillo_pie: FORM_TOBILLO };
 function htmlArbol(region) {
   const tree = CIF_TREES[region], steps = tree.steps;
   const lab = id => { const i = steps.findIndex(s => s.id === id); return etiquetaPaso(steps[i], i); };
   return `<h2>${esc(tree.title || `Árbol de decisión · ${nombreRegion(region)}`)}</h2>
-    <p class="guia-nota">Cada respuesta puede sumar una hipótesis; se acumulan y se confirman con tests en la fase 4b.</p>
+    <p class="guia-nota">Cada respuesta puede sumar una hipótesis; se acumulan y se confirman con tests en la fase 4b. «📝 Formulario» = preguntas del formulario del paciente que tocan el paso (G = hoja general, R = hoja de la región).</p>
     ${steps.map((st, i) => {
       const r = st.razonamiento;
       const cuerpo = r ? seccion('Por qué', `<p>${citasEnTexto(r.porque)}${iaParrafoHTML()}</p>`)
@@ -166,6 +177,7 @@ function htmlArbol(region) {
         return `<li><b>${esc(corto.trim())}</b>${resto.length ? ` — ${esc(resto.join('—').trim())}` : ''}${res ? ` → ${res}` : ''}</li>`;
       }).join('');
       return `<section class="guia-bloque guia-item" id="paso-${st.id}"><h3><span class="guia-num">${esc(lab(st.id))}</span>${esc(st.question)}</h3>
+        ${(fp => fp ? `<div class="guia-fpref">📝 Formulario: ${esc(fp)}</div>` : '')(textoRefs(refsPasoFormulario(FORM_COMUN, FORMULARIOS[region], st.id)))}
         <ul class="guia-ops">${ops}</ul>${porQue(ctxArbol(region, st.iaPregunta || st.question), cuerpo)}</section>`;
     }).join('')}
     <div class="guia-sinhip" id="sin-hipotesis"><b>Si el árbol termina sin ninguna hipótesis</b>
