@@ -164,9 +164,6 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
   const paginas = f => +execFileSync('pdfinfo', [f]).toString().match(/^Pages:\s+(\d+)/m)[1];
   const blanca = join(tmp, 'blanca.pdf');
   await pdfDe(HTML_PAGINA_BLANCA, blanca);
-  // Hojas que ocupan otro número de páginas que antes (entre su inicio y el de la siguiente)
-  const tramos = (ini, total) => { const k = Object.keys(ini); return Object.fromEntries(k.map((c, i) => [c, (i + 1 < k.length ? ini[k[i + 1]] : total + 1) - ini[c]])); };
-  const papelesCambiados = (ini0, total0, ini1, total1) => { const a = tramos(ini0, total0), b = tramos(ini1, total1); return Object.keys(b).filter(k => k in a && a[k] !== b[k]); };
   const ISO_A_CORTA = iso => { const [a, m, d] = iso.split('-').map(Number); return `${d}/${m}/${a}`; };
   for (const lib of definicionCuadernos(ORDEN_REGIONES, nombreRegion)) {
     const hojas = Object.fromEntries(lib.secciones.flatMap(sec => sec.hojas.map(k => [k, HUELLAS[k]?.huella])));
@@ -177,13 +174,16 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     // 2026-10): cada hoja ocupa sus propias hojas de papel, así una hoja que cambie se reimprime
     // y se sustituye sola, sin la que tendría en la otra cara.
     const archivos = ['PORTADA', blanca];
-    const numeradas = new Map();   // página (desde 1) → sección: las de contenido llevan número
+    // Página (desde 1) → su pie: la hoja a la que pertenece y su página dentro de ella («Cribado ·
+    // Lumbar 1/2»). Numeración relativa a cada hoja (decisión del usuario, 2026-10): si una hoja
+    // crece, las demás no cambian de número y no hay que reimprimirlas.
+    const numeradas = new Map();
     let pag = 2;
     const secciones = lib.secciones.map(sec => {
       const filas = sec.hojas.map(k => {
         if (pag % 2 === 1) { archivos.push(blanca); pag++; }
-        const f = join(DIR, `${k}.pdf`), n = paginas(f), fila = { nombre: nombreHojaImpresa(k, nombreRegion), huella: HUELLAS[k].huella, pagina: pag + 1 };
-        for (let i = 1; i <= n; i++) numeradas.set(pag + i, sec.titulo);
+        const f = join(DIR, `${k}.pdf`), n = paginas(f), fila = { nombre: nombreHojaImpresa(k, nombreRegion), huella: HUELLAS[k].huella, pagina: pag + 1, paginas: n };
+        for (let i = 1; i <= n; i++) numeradas.set(pag + i, { hoja: nombreHojaImpresa(k, nombreRegion).replace(/ \(fase [^)]+\)/, ''), n: i, de: n });
         archivos.push(f); pag += n;
         return fila;
       });
@@ -191,17 +191,17 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     });
     if (pag % 2 === 1) { archivos.push(blanca); pag++; }   // termina en par: el siguiente cuaderno, en otra hoja
     const huella = huellaCuaderno(hojas);
-    // Colocación de las páginas: en qué página empieza cada hoja. Si cambia (una hoja ocupa más o
-    // menos papel, o se añade una), las de detrás se mueven y ya no basta con sustituir la hoja
-    // que cambió: paginasFecha guarda cuándo pasó (la guía y la portada lo dicen) y paginasPor,
-    // qué hojas cambiaron de papel. Regenerar sin ese cambio conserva los dos.
+    // Orden de las hojas. Con la numeración por hoja, que una hoja ocupe más o menos papel no afecta
+    // a las demás: basta con sustituirla (y la portada, que lleva el índice). Solo si cambian la lista
+    // o el orden de las hojas hay que reimprimir el cuaderno entero: ordenFecha guarda cuándo pasó
+    // (la guía y la portada lo dicen). inicio = página del PDF en que empieza cada hoja (los enlaces
+    // del índice y los marcadores).
     const inicio = Object.fromEntries(secciones.flatMap((sec, i) => sec.filas.map((f, j) => [lib.secciones[i].hojas[j], f.pagina])));
     const previo = CUADERNOS[lib.clave];
-    const mismaColocacion = previo?.inicio && JSON.stringify(previo.inicio) === JSON.stringify(inicio);
-    const paginasFecha = mismaColocacion ? previo.paginasFecha : new Date().toISOString().slice(0, 10);
-    const paginasPor = mismaColocacion ? (previo.paginasPor || []) : previo?.inicio ? papelesCambiados(previo.inicio, previo.paginas, inicio, pag) : [];
+    const mismoOrden = previo?.inicio && JSON.stringify(Object.keys(previo.inicio)) === JSON.stringify(Object.keys(inicio));
+    const ordenFecha = mismoOrden ? (previo.ordenFecha || previo.paginasFecha) : new Date().toISOString().slice(0, 10);
     const portada = join(tmp, `${lib.clave}-portada.pdf`);
-    const filas = await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), paginasFecha: ISO_A_CORTA(paginasFecha), huella }), `${URL_GUIA}#hojas`), portada, filasIndice);
+    const filas = await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), ordenFecha: ISO_A_CORTA(ordenFecha), huella }), `${URL_GUIA}#hojas`), portada, filasIndice);
     if (filas.length !== secciones.flatMap(s => s.filas).length || filas.some(f => f.px[3] > 1123 || f.px[2] > 794)) throw new Error(`${lib.clave}: no se han podido medir las filas del índice`);
     if (paginas(portada) !== 1) throw new Error(`${lib.clave}: la portada no cabe en una página`);
     const unido = join(tmp, `${lib.clave}-unido.pdf`), numeros = join(tmp, `${lib.clave}-numeros.pdf`);
@@ -219,7 +219,7 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     // archivo: huella del PDF tal cual, para el enlace (?v=): cambia también cuando cambia la
     // maqueta (portada, numeración) sin cambiar ninguna hoja, así nadie abre una copia vieja en caché
     const archivo = createHash('sha256').update(readFileSync(join(DIR, `${lib.clave}.pdf`))).digest('hex').slice(0, 8);
-    CUADERNOS[lib.clave] = { huella, archivo, fecha, paginas: pag, hojas, inicio, paginasFecha, paginasPor };
+    CUADERNOS[lib.clave] = { huella, archivo, fecha, paginas: pag, hojas, inicio, ordenFecha };
     console.log(`${lib.clave}: ${pag} páginas (${pag / 2} hojas de papel) · v. ${huella}`);
   }
   rmSync(tmp, { recursive: true, force: true });

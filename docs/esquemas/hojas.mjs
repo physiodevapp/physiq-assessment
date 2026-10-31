@@ -370,7 +370,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .opt { background: #f8fafc; border: 1.5px solid #94a3b8; border-radius: 10px; padding: 5px 9px; }
     .opt b { display: block; font-size: 13px; } .opt span { display: block; font-size: 10.5px; color: #6b7280; line-height: 1.25; }
     .fl { text-align: center; color: #475569; font-weight: bold; font-size: 15px; }
-    .hip { display: flex; gap: 6px; align-items: center; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
+    .hip { display: flex; gap: 6px; align-items: baseline; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
     .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 4px; }
     .der { background: #fde8e8; border: 2px solid #d0342c; color: #b42318; border-radius: 10px; padding: 5px 8px; font-size: 12px; margin: 2px 0; }
     .der span { display: block; font-size: 10px; color: #7a271a; font-weight: normal; }
@@ -540,7 +540,7 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     h1, .grupo { font-size: 19px; font-weight: bold; margin: 0 0 6px; }
     .cols { column-count: 2; column-gap: 10px; }
     .hyp { break-inside: avoid; border: 1.5px solid #7c4ddb; border-radius: 8px; padding: 5px 7px; margin: 0 0 7px; }
-    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: flex-start; }
+    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: baseline; }   /* el número, en la línea de la primera línea del nombre */
     .hyp h2 .num { flex: none; }
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 8.5px; color: #6b7280; border-bottom: 1px solid #cbd5e1; }
@@ -880,9 +880,9 @@ export function htmlEjercicioPaciente() {
 // ── Cuadernos (portada con índice y página en blanco; los monta generar.mjs) ──
 // `secciones`: [{ titulo, filas: [{ nombre, huella, pagina }] }]. Una página; el QR lleva a
 // «Hojas para imprimir», donde se comprueba la versión de cada hoja.
-export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, paginasFecha, huella }) {
+export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, ordenFecha, huella }) {
   const filas = secciones.map(sec => `<tr class="sec"><td colspan="3">${esc(sec.titulo)}</td></tr>`
-    + sec.filas.map(f => `<tr data-pag="${f.pagina}"><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.pagina}</td></tr>`).join('')).join('');
+    + sec.filas.map(f => `<tr data-pag="${f.pagina}"><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.paginas} pág.</td></tr>`).join('')).join('');
   return `<style>${CSS}${CSS_UNA}
     .pagina { padding: 28px 28px 0; }
     .banda { background: #1e3a8a; color: #fff; border-radius: 12px; padding: 34px 32px 30px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; margin-bottom: 22px; }
@@ -895,14 +895,14 @@ export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, pa
     .indice { font-family: monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6b7280; margin: 0 20px 2px; }
     .cuerpo { padding: 0 20px; }
     table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
-    td { padding: 3px 4px; border-bottom: 1px solid #e5e7eb; } .v { font-family: monospace; font-size: 10px; color: #6b7280; width: 90px; } .p { text-align: right; width: 50px; font-weight: bold; }
+    td { padding: 3px 4px; border-bottom: 1px solid #e5e7eb; } .v { font-family: monospace; font-size: 10px; color: #6b7280; width: 90px; } .p { text-align: right; width: 56px; color: #6b7280; }
     tr.sec td { font-weight: bold; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; font-size: 10.5px; padding-top: 10px; border-bottom: 1.5px solid #bfdbfe; }
   </style>
   <div class="pagina">
     <div class="banda"><div><div class="marca">PhysiQ-Assessment · Cuaderno de consulta</div><h1>${esc(portada.titulo || titulo)}</h1>
       ${portada.subtitulo ? `<div class="tit2">${esc(portada.subtitulo)}</div>` : ''}</div>
       <div class="qr-guia">${QR}<span>Hojas para imprimir</span></div></div>
-    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en página impar, en la cara delantera de su propio papel, así se puede sustituir sola (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice: imprime sus páginas del cuaderno actual (este índice dice cuáles) y sustitúyela. Si allí la fecha de «páginas colocadas» es posterior a la de aquí, las páginas se han movido: reimprime el cuaderno entero.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · páginas colocadas así desde: <b>${esc(paginasFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
+    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en la cara delantera de su propio papel (hay páginas en blanco a propósito) y numera sus páginas por sí misma, abajo en la esquina exterior («Cribado · Lumbar 1/2»). Cada hoja lleva su versión («v.») y su QR a la guía de consulta. Si una hoja cambia, «Hojas para imprimir» lo dice: imprímela (su PDF suelto, o sus páginas de este cuaderno) y sustitúyela junto con esta portada; las demás no cambian aunque ocupe más o menos papel. Solo si allí la fecha de «orden de hojas» es posterior a la de aquí (se añadió, quitó o movió una hoja) hay que reimprimir el cuaderno entero.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · orden de hojas desde: <b>${esc(ordenFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
     <div class="indice">Índice</div>
   <div class="cuerpo"><table>${filas}</table></div>
     <div class="pie-fijo">${AUTORIA_HTML}</div>
@@ -919,13 +919,15 @@ export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, pa
 export const HTML_PAGINA_BLANCA = `<style>@page { size: A4; margin: 0; } body { margin: 0; font-family: Helvetica, Arial, sans-serif; }
   .b { width: 794px; height: 1123px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px; box-sizing: border-box; color: #9ca3af; font-size: 9px; }</style>
   <div class="b">Página en blanco a propósito (impresión a doble cara)</div>`;
-// Una página por cada página del cuaderno, transparente, con el número abajo en la esquina exterior
-// (impar a la derecha, par a la izquierda) y el nombre de su sección; vacía en la portada y en las
-// blancas. paginar.py la superpone al contenido, reducido para dejar libre esa franja.
+// Una página por cada página del cuaderno, transparente, con su pie abajo en la esquina exterior
+// (impar a la derecha, par a la izquierda): la hoja a la que pertenece y su página dentro de ella
+// («Cribado · Lumbar 1/2»); vacía en la portada y en las blancas. paginar.py la superpone al
+// contenido, reducido para dejar libre esa franja. Sin número absoluto: así una hoja que crece no
+// cambia el número de las demás (decisión del usuario, 2026-10).
 export function htmlNumerosCuaderno(total, numeradas) {
   const paginas = Array.from({ length: total }, (_, i) => {
-    const n = i + 1, sec = numeradas.get(n);
-    return `<div class="np">${sec ? `<div class="num ${n % 2 ? 'der' : 'izq'}"><span class="sec">${esc(sec)}</span><b>${n}</b></div>` : ''}</div>`;
+    const n = i + 1, p = numeradas.get(n);
+    return `<div class="np">${p ? `<div class="num ${n % 2 ? 'der' : 'izq'}"><span class="sec">${esc(p.hoja)}</span><b>${p.n}/${p.de}</b></div>` : ''}</div>`;
   }).join('');
   return `<style>@page { size: A4; margin: 0; } html, body { margin: 0; background: transparent; font-family: Helvetica, Arial, sans-serif; }
     .np { width: 794px; height: 1123px; position: relative; page-break-after: always; break-after: page; overflow: hidden; }
