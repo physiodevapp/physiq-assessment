@@ -6603,6 +6603,7 @@ async function checkGuia(browser, errors) {
     await page.goto(`${base}#lumbar/arbol`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-fpref', { state: 'attached' });
     r.formArbol = await page.evaluate(() => /📝 Formulario: R1, R2, R4, R6/.test(document.querySelector('#paso-lu_step1')?.textContent || ''));
+    r.formArbol = r.formArbol && /«Todas» sobre una flecha significa que cualquier respuesta/.test(await page.textContent('#guiaContenido'));
     // Tocar una referencia abre la pregunta en la ficha; el encabezado enlaza los PDF del formulario
     await page.click('#paso-lu_step1 [data-fpref="R1"]');
     await page.waitForSelector('#fpFicha:not([hidden])');
