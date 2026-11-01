@@ -188,8 +188,54 @@ test('hoja de respuestas: al día con data/cuestionarios.js, con todas las filas
   assert.notEqual(LC.huellaHojaRespuestas({ ...d, escala: { min: 0, max: 4 } }), LC.huellaHojaRespuestas(d));
 });
 
-test('lector: la app no lo carga todavía (fase de medición)', () => {
-  for (const f of ['app.js', 'index.html', 'informe-ia.js', 'lib/cuestionarios.js']) assert.ok(!leer(f).includes('lector-cuestionarios'), f);
+test('lector (paso 2): solo lo carga lector.js, con import() y fuera del hub, y solo en los cuestionarios medidos', () => {
+  for (const f of ['app.js', 'index.html', 'informe-ia.js', 'lib/cuestionarios.js']) assert.ok(!leer(f).includes('lib/lector-cuestionarios.js'), f);
+  assert.ok(leer('lector.js').includes("'./lib/lector-cuestionarios.js'"));
+  assert.ok(/import\(\s*'\.\/lector\.js'\s*\)/.test(leer('app.js')), 'app.js carga lector.js con import()');
+  assert.ok(!/^import .*'\.\/lector\.js'/m.test(leer('app.js')), 'nunca con import estático');
+  assert.deepEqual(LC.LECTOR_CUESTIONARIOS, ['phq9', 'odi'], 'uno nuevo, solo medido y aprobado (docs/lector-cuestionarios.md)');
+  assert.ok(LC.LECTOR_CUESTIONARIOS.every(id => LC.tieneLector(def(id))));
+  assert.equal(LC.tieneLector(def('gad7')), false);
+});
+
+test('lector (paso 2): confirmación — desacuerdos y alerta nunca llegan marcados', () => {
+  const d = def('phq9');
+  const n = items => LC.normalizarLectura(d, { items });
+  const igual = Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8, 9].map(k => [k, { estado: 'marcado', valor: 1 }]));
+  const a = n({ ...igual, 2: { estado: 'marcado', valor: 2 }, 3: { estado: 'en_blanco', valor: null }, 4: { estado: 'dudoso', valor: 0 } });
+  const b = n({ ...igual, 2: { estado: 'marcado', valor: 3 }, 3: { estado: 'en_blanco', valor: null }, 4: { estado: 'dudoso', valor: 0 } });
+  const filas = LC.filasConfirmacion(d, a, b);
+  const f = k => filas.find(x => x.n === k);
+  assert.equal(f(1).tipo, 'coinciden');
+  assert.equal(f(1).propuesta, 1);
+  assert.equal(f(2).tipo, 'desacuerdo');
+  assert.ok(!('propuesta' in f(2)), 'desacuerdo: nada marcado');
+  assert.deepEqual(f(2).lecturas.map(l => LC.rotuloLectura(f(2), l)), ['2', '3']);
+  assert.equal(f(3).tipo, 'en_blanco');
+  assert.ok(!('propuesta' in f(3)));
+  assert.equal(f(4).tipo, 'dudoso');
+  assert.ok(!('propuesta' in f(4)));
+  assert.equal(f(9).tipo, 'coinciden');
+  assert.equal(f(9).alerta, true);
+  assert.ok(!('propuesta' in f(9)), 'ítem 9: nunca marcado aunque coincidan');
+  // Con filas pendientes no se confirma nada
+  const el = LC.elegidasIniciales(filas);
+  assert.deepEqual(LC.pendientesConfirmacion(filas, el), [2, 3, 4, 9]);
+  assert.equal(LC.respuestasConfirmadas(filas, el), null);
+  const r = LC.respuestasConfirmadas(filas, { ...el, 2: 3, 3: LC.EN_BLANCO, 4: 0, 9: 0 });
+  assert.equal(r[2], 3);
+  assert.ok(!(3 in r), 'en blanco: sin responder');
+  // Lo confirmado puntúa igual que tocando la calculadora
+  assert.deepEqual(puntuar(d, r), puntuar(d, { 1: 1, 2: 3, 4: 0, 5: 1, 6: 1, 7: 1, 8: 1, 9: 0 }));
+});
+
+test('lector (paso 2): la petición al worker es el prompt y el esquema medidos', () => {
+  const d = def('odi');
+  const p = LC.peticionLectura(d, ['AAA', 'BBB']);
+  assert.equal(p.cuestionario, 'odi');
+  assert.equal(p.prompt, LC.promptLectura(d, { paginas: 2 }));
+  assert.deepEqual(p.schema, LC.esquemaLectura(d));
+  assert.deepEqual(p.fotos, ['AAA', 'BBB']);
 });
 
 test('hoja de respuestas: las casillas se rotulan como el papel oficial (número, palabra o letra) y puntúan igual', () => {

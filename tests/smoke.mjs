@@ -5782,6 +5782,103 @@ async function checkPlanIA(browser, errors) {
   return r;
 }
 
+// «📷 Leer la hoja de respuestas» (lector.js; docs/lector-cuestionarios.md, paso 2). El
+// worker (/validate y POST /leer-hoja) y Turnstile, simulados: sin coste. Solo en PHQ-9 y
+// ODI; aviso y foto antes de leer; la petición lleva el prompt medido y una foto JPEG; en la
+// confirmación, lo coincidente llega marcado y el desacuerdo, el blanco y el ítem 9 no;
+// nada cuenta hasta confirmar; lo confirmado puntúa como tocarlo; la foto no queda en
+// ningún sitio; a 320 px nada desborda; en el hub, el módulo ni se descarga.
+async function checkLector(browser, errors) {
+  const r = {};
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+  const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Expose-Headers': 'X-PhysiQ-Mode' };
+  const captura = [];
+  // Lector 1 y 2 coinciden salvo en la fila 2; la 3 en blanco en los dos; la 9 (alerta) coincide
+  const lectura = v2 => ({ salida: { items: Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => [String(n),
+    n === 2 ? { estado: 'marcado', valor: v2 } : n === 3 ? { estado: 'en_blanco', valor: null } : { estado: 'marcado', valor: n === 9 ? 0 : 1 }])) }, stop: 'end_turn' });
+  await context.route('**/turnstile/v0/api.js*', route => route.fulfill({ contentType: 'application/javascript', body: TURNSTILE_SIMULADO }));
+  await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => {
+    const req = route.request();
+    if (req.method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
+    if (req.url().endsWith('/validate')) return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': 'real' }, contentType: 'application/json',
+      body: JSON.stringify({ ok: true, mode: 'real', routes: { report: 'real', email: 'demo' }, demoOnly: false }) });
+    captura.push({ url: req.url(), body: req.postData() || '', turnstile: req.headers()['cf-turnstile-response'] });
+    return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': 'real' }, contentType: 'application/json', body: JSON.stringify({ a: lectura(2), b: lectura(3) }) });
+  });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (lector): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (lector): ${msg.text()}`); });
+  await abrirApp(page);
+  await page.evaluate(() => { document.getElementById('patientName').value = 'Paciente Lector'; state.patient = 'Paciente Lector'; abrirCuestionarios('gad7'); });
+  await page.waitForTimeout(500);
+  r.soloMedidos = !(await page.$('#cuestCuerpo .lector-abrir'));
+  await page.click('[data-cuest-volver]');
+  await page.click('[data-cuest="phq9"]');
+  await page.waitForSelector('#cuestCuerpo .lector-abrir', { timeout: 10000 });
+  await page.click('#cuestCuerpo .lector-abrir');
+  await page.waitForSelector('[data-lector="leer"]');
+  r.bloqueado = await page.$eval('[data-lector="leer"]', b => b.disabled);
+  await page.check('[data-lector-consent]');
+  await page.setInputFiles('[data-lector-foto]', new URL('../docs/esquemas/respuestas/phq9.png', import.meta.url).pathname);
+  await page.waitForSelector('.lector-foto');
+  await page.waitForFunction(() => !document.querySelector('[data-lector="leer"]').disabled, null, { timeout: 10000 });
+  await page.click('[data-lector="leer"]');
+  await page.waitForSelector('.lector-fila', { timeout: 10000 });
+  const pet = captura.at(-1), cuerpo = JSON.parse(pet.body);
+  r.peticion = pet.url.endsWith('/leer-hoja') && !!pet.turnstile && cuerpo.cuestionario === 'phq9' && cuerpo.fotos.length === 1
+    && cuerpo.fotos[0].startsWith('/9j/') && /PHQ-9/.test(cuerpo.prompt) && cuerpo.schema?.properties?.items?.required?.length === 9;
+  const fila = n => page.evaluate(n => {
+    const f = document.querySelector(`[data-lector-fila="${n}"]`);
+    return { sel: [...f.querySelectorAll('.cuest-op.selected')].map(b => b.textContent), txt: f.querySelector('.lector-fila-estado').textContent };
+  }, n);
+  const [f1, f2, f3, f9] = [await fila(1), await fila(2), await fila(3), await fila(9)];
+  r.coinciden = f1.sel.join() === '1' && /Leído/.test(f1.txt);
+  r.desacuerdo = !f2.sel.length && /Lector 1: 2 · Lector 2: 3/.test(f2.txt);
+  r.enBlanco = !f3.sel.length;
+  r.alerta = !f9.sel.length && /alerta/.test(f9.txt);
+  r.nadaAntes = await page.evaluate(() => !state.cuestionarios.phq9 && document.querySelector('[data-lector="confirmar"]').disabled
+    && !document.querySelector('#cuestCuerpo .cuest-items').offsetParent
+    && /Faltan 3 filas/.test(document.querySelector('.lector-faltan').textContent));
+  // A 320 px la confirmación cabe
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.waitForTimeout(300);
+  r.cabe320 = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth
+    && [...document.querySelectorAll('#cuestPanel .lector *')].every(el => el.getBoundingClientRect().right <= innerWidth + 1));
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.click('[data-lector-fila="2"] .cuest-op[data-valor="3"]');
+  await page.click('[data-lector-fila="3"] .lector-blanco');
+  await page.click('[data-lector-fila="9"] .cuest-op[data-valor="0"]');
+  await page.click('[data-lector="confirmar"]');
+  await page.waitForFunction(() => !!state.cuestionarios.phq9);
+  await page.waitForSelector('#cuestCuerpo .lector-abrir', { timeout: 5000 }).catch(() => {});
+  r.confirmado = await page.evaluate(() => JSON.stringify(state.cuestionarios.phq9.r) === JSON.stringify({ 1: 1, 2: 3, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 0 })
+    && /Falta 1 ítem: 3/.test(document.getElementById('cuestResultado').textContent) && !!document.querySelector('#cuestCuerpo .lector-abrir'));
+  r.sinFoto = await page.evaluate(async () => {
+    saveSession();
+    await new Promise(res => setTimeout(res, 300));
+    const textos = [JSON.stringify(state), JSON.stringify((await import('./app.js')).buildPhysiQPayload()), document.body.innerHTML];
+    const idb = await new Promise(res => { const q = indexedDB.open('physiq'); q.onsuccess = () => { const db = q.result; const out = [];
+      const tx = db.transaction(db.objectStoreNames, 'readonly');
+      for (const n of db.objectStoreNames) { const g = tx.objectStore(n).getAll(); g.onsuccess = () => out.push(JSON.stringify(g.result)); }
+      tx.oncomplete = () => res(out.join('')); }; q.onerror = () => res(''); });
+    return [...textos, idb].every(t => !t.includes('/9j/')) && idb.includes('Paciente Lector');
+  });
+  await context.close();
+
+  // En el hub: ni el botón ni el módulo
+  const hub = await browser.newPage();
+  const pedidos = [];
+  hub.on('request', q => { if (/lector\.js|lector-cuestionarios/.test(q.url())) pedidos.push(q.url()); });
+  const frame = await cargarEnHub(hub);
+  await frame.evaluate(() => abrirCuestionarios('phq9'));
+  await frame.waitForTimeout(400);
+  r.hub = !pedidos.length && !(await frame.$('#cuestLector'));
+  await hub.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // Pantalla estrecha: ningún grupo de botones deja uno descolgado con hueco a su lado en la
 // última fila (o llena la fila o el último ocupa todo el ancho). Recorre las 7 regiones
 // hasta la fase 5 en un móvil de 320 px, abre todo lo plegable y mira cada fase (1–6).
@@ -7107,6 +7204,12 @@ const SECCIONES = [
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
     const c = await checkCuestionarios(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las opciones de texto (una respuesta o varias) van en dos columnas, con la última a todo el ancho si son impares, y una por fila si alguna es larga; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
+  } },
+
+  { id: 'lector', titulo: '«📷 Leer la hoja de respuestas» (lector con foto):', run: async ({ browser, errors }) => {
+    const c = await checkLector(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} Lector con foto: solo en PHQ-9 y ODI; «Leer» bloqueado sin aviso y foto; la petición a /leer-hoja lleva el prompt y el esquema medidos y una foto JPEG; en la confirmación lo coincidente llega marcado y el desacuerdo (con las dos lecturas), el blanco y el ítem 9 no; nada cuenta hasta confirmar; lo confirmado queda como tocado a mano; la foto no queda en el estado, el payload, IndexedDB ni la página; a 320 px cabe; en el hub ni se descarga${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 

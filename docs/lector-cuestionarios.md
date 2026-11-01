@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay cuatro rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno y cada modelo por separado (ninguno supera los dos); la 4, con la lectura doble Sonnet + Opus, que supera los dos sin ningún 🔴. Nada está decidido: la estadística no alcanza el umbral. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-11): **paso 2 en su rama**: `lector.js` (botón, aviso, foto, confirmación) hecho y probado con el worker simulado; falta la ruta `POST /leer-hoja` en physiq-report, y no debe llegar a `main` antes que ella. Paso 1, medición: La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay cuatro rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno y cada modelo por separado (ninguno supera los dos); la 4, con la lectura doble Sonnet + Opus, que supera los dos sin ningún 🔴. Nada está decidido: la estadística no alcanza el umbral. El usuario aprobó el paso 2 con la lectura doble (2026-11); las decisiones que quedan antes de usarlo con pacientes están en «Pendiente del usuario».
 
 ## Idea
 
@@ -185,8 +185,39 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 - **«Revisión total» del ODI, 21,4 %:** la mitad son las filas ambiguas puestas a propósito en las hojas (decisión 6); la otra, filas en desacuerdo, sobre todo en las fotos giradas 90° y 45°.
 - **Lectura, sin decidir:** la lectura doble es la única combinación que supera los dos cuestionarios en las 3 pasadas. La estadística sigue lejos del umbral: sin 🔴 en 63–70 ítems, la tasa real solo queda por debajo de un 4,3–4,8 % al 95 %, no del 0,5 %; para eso harían falta unos 600 ítems sin 🔴 por cuestionario.
 
-## Pendiente antes de usarla con pacientes (decisiones del paso 2)
+## Paso 2: diseño (usuario, 2026-11)
 
-- **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del HOS y del FAAM; números impresos en el PHQ, el GAD-7, el TSK-11, el DASH y el LEFS). Si una difiere, se cambia su `hoja` y se regenera.
-- **Validez del formato:** pasar el cuestionario con una hoja de respuestas aparte no es el formato validado. Es una decisión clínica pendiente.
-- **Diseño del paso 2:** la ruta nueva del worker (physiq-report), el botón, la pantalla de confirmación, el aviso de privacidad, las pruebas y el smoke. Se explica al usuario antes de escribirlo.
+Hecho: `lector.js` (la interfaz), las piezas puras de la confirmación en `lib/lector-cuestionarios.js`, tests unitarios y la sección `lector` del smoke (worker y Turnstile simulados). Pendiente: la ruta del worker (abajo). Mientras se lee o se confirma, el resto del cuestionario se oculta, para que no haya dos vías de respuesta a la vez.
+
+Aprobado tras la ronda 4: lectura doble Sonnet + Opus, solo PHQ-9 y ODI.
+
+### Flujo
+
+1. En la calculadora, dentro del PHQ-9 o el ODI, «📷 Leer la hoja de respuestas (en prueba)». Solo fuera del hub y con licencia «real» (`body.ia-licencia`, `lib/licencia-ia.js`); oculto al imprimir.
+2. Aviso de privacidad con casilla, cada vez: la foto va a Anthropic a través del servidor de PhysiQ para leerla y no se guarda; solo la hoja de respuestas, sin el cuestionario ni el nombre del paciente.
+3. Foto de la cámara o de la galería (`<input type="file" accept="image/*" capture="environment">`), una por página. Se reduce en el navegador a `LADO_FOTO` y se recodifica en JPEG (sin EXIF), como en la medición. Solo vive en memoria.
+4. Turnstile (`lib/turnstile.js`) y llamada al worker. Progreso; se puede cancelar.
+5. Pantalla de confirmación (abajo). «Confirmar respuestas» escribe en `state.cuestionarios[id].r` lo mismo que tocar cada valor; la puntuación la sigue haciendo `puntuar()`.
+
+### Pantalla de confirmación (decisión 3 (a), usuario 2026-11)
+
+| Fila | Cómo llega |
+|---|---|
+| Los dos lectores coinciden con una marca clara | Marcada, con «✓ leído» |
+| No coinciden | Las dos lecturas a la vista («Lector 1: C · Lector 2: D») y **ninguna casilla marcada** (caso `odi-05`, ronda 4) |
+| Dudosa, ilegible o en blanco | Sin marcar; «en blanco» se confirma o se elige |
+| Ítem con alerta (el 9 del PHQ-9) | **Nunca marcada**, aunque coincidan |
+
+«Confirmar respuestas» no se activa con filas sin resolver, y pide comparar con el papel. Las coincidentes se revisan con la hoja delante y se confirman todas con ese botón (opción (a); la (b), tocar cada fila, se descartó porque el lector dejaría de ahorrar tiempo). Cancelar no toca lo que hubiera.
+
+### Worker (physiq-report)
+
+Ruta nueva `POST /leer-hoja`, como `/verify`: licencia, Turnstile y `RL_REPORT`. Recibe `{ cuestionario, prompt, schema, fotos }` (JPEG en base64, como mucho 4 y de tamaño limitado; el esquema sin cadenas libres: todo `enum`), llama a Sonnet y a Opus a la vez con el mismo prompt, esquema (`output_config.format`) e imágenes que la medición, y devuelve `{ a, b }` (salida, `stop_reason`, `usage` de cada uno). No guarda ni registra la foto. La combinación la hace la app con `combinarLecturas()`, el código medido. Unos 0,05 $ por hoja.
+
+### Pendiente del usuario antes de usarlo con pacientes
+
+1. **Validez del formato** (clínica): pasar el cuestionario con una hoja de respuestas aparte no es el formato validado.
+2. **Evidencia:** el 0,5 % no está demostrado (ronda 4: < 4,3–4,8 % al 95 %). Hasta decidirlo, el botón dice «(en prueba)».
+3. **Hoja oficial del PHQ-9 en español:** comprobar que imprime los números 0–3 (decisión 4). El ODI usa letras de posición.
+4. **Cuenta del worker:** de qué organización es su clave (si es la vinculada a los créditos del plan Max, los informes con IA y el lector comparten saldo) y revisar las condiciones comerciales de la API y la protección de datos de salud.
+5. **El resto de hojas** (HOS y FAAM; números del GAD-7, TSK-11, DASH y LEFS) se comprueba cuando se mida cada cuestionario.
