@@ -1,0 +1,7 @@
+{
+  "cuestionario": "odi",
+  "version": "987d9022",
+  "fotos": ["odi-03.jpg"],
+  "condiciones": ["móvil usuario", "muy inclinada", "fondo estampado", "solo tic"],
+  "correctas": { "1": "A", "2": "C", "3": "B", "4": "C", "5": "D", "6": "E", "7": "C", "8": "F", "9": "B", "10": "C" }
+}

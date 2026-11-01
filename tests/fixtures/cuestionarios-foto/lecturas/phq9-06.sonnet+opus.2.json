@@ -1,0 +1,99 @@
+{
+  "a": {
+    "salida": {
+      "items": {
+        "1": {
+          "estado": "marcado",
+          "valor": 0
+        },
+        "2": {
+          "estado": "marcado",
+          "valor": 2
+        },
+        "3": {
+          "estado": "marcado",
+          "valor": 1
+        },
+        "4": {
+          "estado": "marcado",
+          "valor": 2
+        },
+        "5": {
+          "estado": "marcado",
+          "valor": 1
+        },
+        "6": {
+          "estado": "marcado",
+          "valor": 0
+        },
+        "7": {
+          "estado": "marcado",
+          "valor": 2
+        },
+        "8": {
+          "estado": "marcado",
+          "valor": 1
+        },
+        "9": {
+          "estado": "marcado",
+          "valor": 1
+        }
+      }
+    },
+    "stop": "end_turn",
+    "ms": 7083,
+    "usage": {
+      "input": 5367,
+      "output": 883
+    }
+  },
+  "b": {
+    "salida": {
+      "items": {
+        "1": {
+          "estado": "marcado",
+          "valor": 0
+        },
+        "2": {
+          "estado": "marcado",
+          "valor": 2
+        },
+        "3": {
+          "estado": "marcado",
+          "valor": 1
+        },
+        "4": {
+          "estado": "marcado",
+          "valor": 2
+        },
+        "5": {
+          "estado": "marcado",
+          "valor": 1
+        },
+        "6": {
+          "estado": "marcado",
+          "valor": 0
+        },
+        "7": {
+          "estado": "marcado",
+          "valor": 2
+        },
+        "8": {
+          "estado": "marcado",
+          "valor": 1
+        },
+        "9": {
+          "estado": "marcado",
+          "valor": 1
+        }
+      }
+    },
+    "stop": "end_turn",
+    "ms": 2402,
+    "usage": {
+      "input": 5367,
+      "output": 171
+    }
+  },
+  "ms": 7083
+}

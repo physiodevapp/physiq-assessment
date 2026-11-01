@@ -4,7 +4,8 @@
 import { assert, leer, test, existsSync, readdirSync, join, RAIZ } from './comun.mjs';
 const { CUESTIONARIOS } = await import('../../data.js');
 const LC = await import('../../lib/lector-cuestionarios.js');
-const { puntuar, NA } = await import('../../lib/cuestionarios.js');
+const CQ = await import('../../lib/cuestionarios.js');
+const { puntuar, NA } = CQ;
 const HR = await import('../../docs/esquemas/respuestas.mjs');
 
 console.log('\nlector de cuestionarios con foto');
@@ -115,6 +116,33 @@ test('lector: umbral (peligrosos < 0,5 %, ninguno en ítems de alerta, a revisar
   assert.equal(LC.resumirLecturas([cmp(840, 0, 160)]).supera, false);
   assert.equal(LC.resumirLecturas([cmp(300, 0)]).cotaPeligrosos95, 0.01, 'regla del tres');
   assert.equal(LC.resumirLecturas([]).supera, false);
+  // Las filas ambiguas de la hoja dadas por dudosas (ya dentro de «ok») no cuentan para el umbral, pero se informan aparte
+  const conAmbiguas = LC.resumirLecturas([{ ...cmp(900, 0, 100), ambiguas: 100 }]);
+  assert.equal(conAmbiguas.supera, true);
+  assert.equal(conAmbiguas.tasaRevisar, 0.1);
+  assert.equal(conAmbiguas.tasaRevisarTotal, 0.2);
+  const d = def('phq9');
+  const r = LC.compararLectura(d, LC.normalizarLectura(d, { items: { 4: { estado: 'dudoso', valor: 1 } } }), { 4: 'ambiguo' });
+  assert.equal(r.ambiguas, 1);
+  assert.equal(r.cuenta.dudoso, 0, 'una ambigua dada por dudosa no es un dudoso del lector');
+});
+
+test('lector: lectura doble (lo que no coincide pasa a dudoso, nunca a claro)', () => {
+  const d = def('phq9');
+  const n = items => LC.normalizarLectura(d, { items });
+  const a = n({ 1: { estado: 'marcado', valor: 2 }, 2: { estado: 'marcado', valor: 1 }, 3: { estado: 'en_blanco', valor: null }, 4: { estado: 'dudoso', valor: 0 }, 5: { estado: 'ilegible', valor: null } });
+  const b = n({ 1: { estado: 'marcado', valor: 2 }, 2: { estado: 'marcado', valor: 3 }, 3: { estado: 'marcado', valor: 0 }, 4: { estado: 'marcado', valor: 1 }, 5: { estado: 'ilegible', valor: null } });
+  const c = LC.combinarLecturas(d, a, b);
+  assert.deepEqual(c[1], a[1], 'las dos de acuerdo: se queda esa lectura');
+  assert.equal(c[2].estado, 'dudoso', 'dos valores distintos');
+  assert.equal(c[2].valor, 1);
+  assert.equal(c[3].estado, 'dudoso', 'una en blanco y otra marcada');
+  assert.equal(c[3].valor, 0);
+  assert.equal(c[4].estado, 'dudoso');
+  assert.equal(c[4].valor, 1, 'mejor lectura: la marcada');
+  assert.equal(c[5].estado, 'ilegible');
+  assert.equal(LC.clasificarItem('ambiguo', c[2]).clase, 'ok', 'una ambigua en desacuerdo queda dudosa, no clara');
+  assert.ok(Object.values(c).every(l => l.estado !== 'marcado' || !l.discrepa));
 });
 
 test('lector: validación de las respuestas correctas anotadas a mano', () => {
@@ -161,8 +189,73 @@ test('hoja de respuestas: al día con data/cuestionarios.js, con todas las filas
   assert.notEqual(LC.huellaHojaRespuestas({ ...d, escala: { min: 0, max: 4 } }), LC.huellaHojaRespuestas(d));
 });
 
-test('lector: la app no lo carga todavía (fase de medición)', () => {
-  for (const f of ['app.js', 'index.html', 'informe-ia.js', 'lib/cuestionarios.js']) assert.ok(!leer(f).includes('lector-cuestionarios'), f);
+test('lector (paso 2): solo lo carga lector.js, con import() y fuera del hub, y solo en los cuestionarios medidos', () => {
+  for (const f of ['app.js', 'index.html', 'informe-ia.js', 'lib/cuestionarios.js']) assert.ok(!leer(f).includes('lib/lector-cuestionarios.js'), f);
+  assert.ok(leer('lector.js').includes("'./lib/lector-cuestionarios.js'"));
+  assert.ok(/import\(\s*'\.\/lector\.js'\s*\)/.test(leer('app.js')), 'app.js carga lector.js con import()');
+  assert.ok(!/^import .*'\.\/lector\.js'/m.test(leer('app.js')), 'nunca con import estático');
+  assert.deepEqual(LC.LECTOR_CUESTIONARIOS, ['phq9', 'odi'], 'uno nuevo, solo medido y aprobado (docs/lector-cuestionarios.md)');
+  assert.ok(LC.LECTOR_CUESTIONARIOS.every(id => LC.tieneLector(def(id))));
+  assert.equal(LC.tieneLector(def('gad7')), false);
+});
+
+test('lector (paso 2): confirmación — desacuerdos y alerta nunca llegan marcados', () => {
+  const d = def('phq9');
+  const n = items => LC.normalizarLectura(d, { items });
+  const igual = Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8, 9].map(k => [k, { estado: 'marcado', valor: 1 }]));
+  const a = n({ ...igual, 2: { estado: 'marcado', valor: 2 }, 3: { estado: 'en_blanco', valor: null }, 4: { estado: 'dudoso', valor: 0 } });
+  const b = n({ ...igual, 2: { estado: 'marcado', valor: 3 }, 3: { estado: 'en_blanco', valor: null }, 4: { estado: 'dudoso', valor: 0 } });
+  const filas = LC.filasConfirmacion(d, a, b);
+  const f = k => filas.find(x => x.n === k);
+  assert.equal(f(1).tipo, 'coinciden');
+  assert.equal(f(1).propuesta, 1);
+  assert.equal(f(2).tipo, 'desacuerdo');
+  assert.ok(!('propuesta' in f(2)), 'desacuerdo: nada marcado');
+  assert.deepEqual(f(2).lecturas.map(l => LC.rotuloLectura(f(2), l)), ['2', '3']);
+  assert.equal(f(3).tipo, 'en_blanco');
+  assert.ok(!('propuesta' in f(3)));
+  assert.equal(f(4).tipo, 'dudoso');
+  assert.ok(!('propuesta' in f(4)));
+  assert.equal(f(9).tipo, 'coinciden');
+  assert.equal(f(9).alerta, true);
+  assert.ok(!('propuesta' in f(9)), 'ítem 9: nunca marcado aunque coincidan');
+  // Con filas pendientes no se confirma nada
+  const el = LC.elegidasIniciales(filas);
+  assert.deepEqual(LC.pendientesConfirmacion(filas, el), [2, 3, 4, 9]);
+  assert.equal(LC.respuestasConfirmadas(filas, el), null);
+  const r = LC.respuestasConfirmadas(filas, { ...el, 2: 3, 3: LC.EN_BLANCO, 4: 0, 9: 0 });
+  assert.equal(r[2], 3);
+  assert.ok(!(3 in r), 'en blanco: sin responder');
+  // Lo confirmado puntúa igual que tocando la calculadora
+  assert.deepEqual(puntuar(d, r), puntuar(d, { 1: 1, 2: 3, 4: 0, 5: 1, 6: 1, 7: 1, 8: 1, 9: 0 }));
+});
+
+test('hojas de respuestas: QR a su ficha de la guía con su versión, y enlace desde la calculadora', () => {
+  const { tieneHoja, enlaceHojaHTML } = CQ;
+  for (const d of CUESTIONARIOS) {
+    assert.equal(tieneHoja(d), LC.tieneHojaRespuestas(d), `${d.id}: mismo criterio que el lector`);
+    assert.equal(enlaceHojaHTML(d).includes(`./guia.html#cuestionarios/${d.id}`), LC.tieneHojaRespuestas(d), d.id);
+  }
+  const d = def('phq9');
+  assert.equal(HR.urlQRRespuestas(d), `https://physiodevapp.github.io/physiq/assessment/guia.html?h=${LC.huellaHojaRespuestas(d)}#cuestionarios/phq9`);
+  assert.ok(HR.htmlRespuestas(d).includes('<svg'), 'la hoja lleva el QR');
+  // El enlace oficial solo con una dirección comprobada: hoy ninguno (sin `oficial`, la guía dice que se use el papel)
+  for (const c of CUESTIONARIOS.filter(c => c.oficial)) {
+    const local = c.oficial.url.match(/^\.\/(docs\/cuestionarios-oficiales\/[a-z0-9_-]+\.pdf)$/);
+    assert.ok(/^https:\/\//.test(c.oficial.url) || (local && existsSync(join(RAIZ, local[1]))), `${c.id}: enlace oficial comprobado o PDF alojado`);
+  }
+  assert.ok(def('phq9').oficial, 'PHQ-9: PDF oficial alojado (libre uso, Pfizer)');
+  assert.ok(leer('.github/workflows/deploy-to-hub.yml').includes('docs/cuestionarios-oficiales/*.pdf'), 'se despliegan los oficiales alojados');
+  assert.ok(leer('lib/cuestionarios.js').includes('enlaceHojaHTML(def)'));
+});
+
+test('lector (paso 2): la petición al worker es el prompt y el esquema medidos', () => {
+  const d = def('odi');
+  const p = LC.peticionLectura(d, ['AAA', 'BBB']);
+  assert.equal(p.cuestionario, 'odi');
+  assert.equal(p.prompt, LC.promptLectura(d, { paginas: 2 }));
+  assert.deepEqual(p.schema, LC.esquemaLectura(d));
+  assert.deepEqual(p.fotos, ['AAA', 'BBB']);
 });
 
 test('hoja de respuestas: las casillas se rotulan como el papel oficial (número, palabra o letra) y puntúan igual', () => {

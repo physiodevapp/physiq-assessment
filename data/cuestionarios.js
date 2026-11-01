@@ -26,9 +26,14 @@
 //     subescalas?: [{ id, nombre, items: [n], calculo?: 'suma' | 'media' }],
 //     interpretacion?: [{ si?: { de: 'total' | <subescala>, min?, max? }, etiqueta, nivel: 'ok'|'medio'|'alto' }],
 //     interpretacionTexto?, sinInterpretacion?, alertas?: [{ item, min?, texto }],
-//     fuente, nota?,
+//     fuente, nota?, oficial?: { url, texto? },
 //     hoja?: { casillas: 'letras' | 'palabras', palabras?: { [valor]: texto }, orden?: 'descendente',
 //              nota?, na?: texto | false } }
+// `oficial`: el enlace al cuestionario oficial en español, que lee el paciente mientras marca
+// la hoja de respuestas de PhysiQ (decisión del usuario, 2026-11; la guía y la calculadora lo
+// enlazan). Solo con una dirección comprobada y que la licencia permita enlazar; sin ella, se
+// usa la versión oficial en papel. Un cuestionario cuya licencia permite distribuirlo puede ir
+// alojado aquí, en docs/cuestionarios-oficiales/<id>.pdf (se despliega con la app).
 // `hoja`: cómo rotula las casillas de los ítems `escala` la hoja de respuestas del
 // lector con foto (docs/lector-cuestionarios.md), para que coincidan con el papel
 // oficial: por defecto, el número que el paciente rodea; 'palabras', la respuesta
@@ -80,6 +85,10 @@ export const CUESTIONARIOS = [
   {
     id: 'phq9',
     validacionEs: 'Diez-Quevedo 2001 (Psychosom Med 63(4):679–686) · Muñoz-Navarro 2017 (BMC Psychiatry 17:291)',
+    // PDF oficial en español de España (Pfizer, 2010), aportado por el usuario: su pie dice «No se
+    // necesita autorización para su reproducción, traducción, muestra o distribución». Imprime los
+    // números 0–3 que rodea el paciente, como nuestra hoja de respuestas (decisión 4, comprobado).
+    oficial: { url: './docs/cuestionarios-oficiales/phq9.pdf', texto: 'Cuestionario oficial en español (PDF)' },
     nombre: 'PHQ-9',
     titulo: 'Síntomas depresivos',
     grupo: 'animo',

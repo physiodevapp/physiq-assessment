@@ -5861,6 +5861,21 @@ function getCuestionariosPayload() {
 }
 
 function _defCuest(id) { return CUESTIONARIOS.find(d => d.id === id); }
+
+// «📷 Leer la hoja de respuestas» (lector.js; docs/lector-cuestionarios.md,
+// paso 2): solo fuera del hub, y el módulo decide si este cuestionario tiene
+// lector y si hay licencia. import() dinámico: si no carga, la calculadora
+// sigue igual. Dentro del hub ni se descarga.
+let _lectorMod = null;
+function _montarLectorCuest(cuerpo, def) {
+  if (_enHub()) return;
+  cuerpo.querySelector('.cuest-cab')?.insertAdjacentHTML('afterend', '<div class="lector" id="cuestLector" hidden></div>');
+  import('./lector.js').then(m => {
+    _lectorMod = m;
+    const cont = document.getElementById('cuestLector');
+    if (cont && _cuestActivo === def.id) m.montarLector(cont, def, { saveSession, showToast, repintar: () => _pintarCuestionarios() });
+  }).catch(() => {});
+}
 function _respuestasCuest(id) { return state.cuestionarios?.[id]?.r || {}; }
 
 function _pintarCuestionarios({ foco } = {}) {
@@ -5868,8 +5883,10 @@ function _pintarCuestionarios({ foco } = {}) {
   const titulo = document.getElementById('cuestTitulo');
   const def = _cuestActivo && _defCuest(_cuestActivo);
   titulo.textContent = 'Cuestionarios';
+  _lectorMod?.desmontar();
   if (def) {
     cuerpo.innerHTML = formularioCuestionarioHTML(def, _respuestasCuest(def.id));
+    _montarLectorCuest(cuerpo, def);
   } else {
     _cuestActivo = null;
     cuerpo.innerHTML = listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, state.cuestionarios || {}, { region: state.region });
@@ -5978,6 +5995,7 @@ function cerrarCuestionarios({ desdeHistorial = false, sinHistorial = false, sin
   if (!overlay?.classList.contains('open')) return;
   overlay.classList.remove('open');
   cerrarFicha({ sinFoco: true });
+  _lectorMod?.desmontar();   // cerrar la calculadora cancela la lectura y suelta la foto
   const panel = document.getElementById('cuestPanel');
   panel.style.transform = ''; panel.style.transition = '';
   unlockBodyScroll();

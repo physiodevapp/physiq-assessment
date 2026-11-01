@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición todavía: faltan las fotos. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-11): **paso 2 en su rama**: `lector.js` (botón, aviso, foto, confirmación) hecho y probado con el worker simulado; la ruta `POST /leer-hoja` está hecha en una rama de physiq-report, sin desplegar; esta rama no debe llegar a `main` antes que ella. Paso 1, medición: La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay cuatro rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno y cada modelo por separado (ninguno supera los dos); la 4, con la lectura doble Sonnet + Opus, que supera los dos sin ningún 🔴. Nada está decidido: la estadística no alcanza el umbral. El usuario aprobó el paso 2 con la lectura doble (2026-11); las decisiones que quedan antes de usarlo con pacientes están en «Pendiente del usuario».
 
 ## Idea
 
@@ -32,6 +32,8 @@ Un botón «📷 Leer la hoja» dentro de la calculadora de cuestionarios (`docs
    - menos del 0,5 % de ítems peligrosos;
    - ninguno peligroso en un ítem con alerta de seguridad (el 9 del PHQ-9);
    - como mucho el 15 % de los ítems a revisar.
+
+6. **Las filas ambiguas de la hoja no cuentan para el «a revisar» del umbral, pero se informan aparte** (usuario, 2026-11). Las hojas de prueba las llevan a propósito (una o dos de cada 9–10 filas), así que contarlas mediría el diseño de la prueba, no al lector; el riesgo clínico ya lo cubre el 🔴 (una ambigua dada por clara basta para no superar). `compararLectura()` devuelve `ambiguas` (las dadas por dudosas o ilegibles) y `resumirLecturas()` añade `tasaRevisarTotal`; la herramienta imprime «revisión total», que es lo que el fisioterapeuta revisaría con esas hojas. Si en el paso 2 las marcas ambiguas resultan frecuentes en hojas reales, el problema sería la hoja o sus instrucciones.
 
 ## La hoja de respuestas
 
@@ -106,8 +108,125 @@ ANTHROPIC_API_KEY=… node tools/leer-cuestionario.mjs --fotos ~/fotos-lector --
 node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 ```
 
-## Pendiente antes de usarla con pacientes (decisiones del paso 2)
+## Mediciones
 
-- **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del HOS y del FAAM; números impresos en el PHQ, el GAD-7, el TSK-11, el DASH y el LEFS). Si una difiere, se cambia su `hoja` y se regenera.
-- **Validez del formato:** pasar el cuestionario con una hoja de respuestas aparte no es el formato validado. Es una decisión clínica pendiente.
-- **Diseño del paso 2:** la ruta nueva del worker (physiq-report), el botón, la pantalla de confirmación, el aviso de privacidad, las pruebas y el smoke. Se explica al usuario antes de escribirlo.
+### Ronda 1 (2026-10-30): 2 hojas, sin decisión
+
+- **Casos:** `phq9-01` (todo con X, plana, buena luz en la zona de las filas) y `odi-01` (poca luz, algo borrosa; fila 2 en blanco, 4 con la B rayada y X en D, 5 con tic, 6 con dos marcas, 8 entre dos casillas). Una foto de cada uno, móvil del usuario, con una sombra grande sobre la parte vacía de la hoja.
+- **Ejecución:** `--modelo todos --veces 3 --guardar`; lecturas en `tests/fixtures/cuestionarios-foto/lecturas/`.
+
+| Modelo | PHQ-9 (9 ítems) | ODI (10 ítems) | Coste por hoja |
+|---|---|---|---|
+| Haiku | ✓ · 0 🔴 · 0 % a revisar | **✗** · 1 🔴 (10 %) · 10 % a revisar | 0,0009 $ |
+| Sonnet | ✓ · 0 🔴 · 0 % a revisar | ✓ · 0 🔴 · 0 % a revisar | 0,013 $ |
+| Opus | ✓ · 0 🔴 · 0 % a revisar | ✓ · 0 🔴 · 0 % a revisar | 0,026 $ |
+
+- **Único 🔴:** Haiku, pasada 2, ODI fila 8 (marca entre C y D): la dio por «D» clara; en las otras dos pasadas, «dudoso (D)».
+- **Filas difíciles del ODI**, todos los modelos: la fila en blanco siempre en blanco; el tic, bien; la B rayada, D (Haiku, como dudoso); las dos marcas, siempre dudosas (con A o con C como mejor lectura); entre casillas, dudoso salvo el 🔴 de Haiku.
+- **PHQ-9:** perfecto en las 9 pasadas, también el ítem 9 (alerta).
+- **«A revisar» no cuenta las filas ambiguas** que el lector da por dudosas (`clasificarItem()` las cuenta como ok). Por eso Sonnet y Opus salen con un 0 % en el ODI aunque el fisioterapeuta revisaría a mano las filas 6 y 8 (20 % de la hoja). Decidido después: decisión 6.
+- **Lectura, sin decidir:** con 9 y 10 ítems sin 🔴, por la regla del tres la tasa real solo queda por debajo de un 33 % y un 30 % al 95 %, lejos del 0,5 %. Haiku ya falla en una marca ambigua; Sonnet y Opus no se distinguen, y Sonnet cuesta la mitad.
+
+### Ronda 2 (2026-11-01): PHQ-9 con 6 hojas, Sonnet y Opus
+
+- **Casos:** `phq9-01` a `phq9-06` (6 hojas distintas) y `phq9-01b` (otra foto de la hoja 01): 7 fotos, móvil del usuario. Condiciones: en la mano, girada 90° y curvada (02); algo inclinada, dos marcas en una fila (03); inclinada sobre fondo estampado, una marca entre casillas (04); sombra, una casilla rayada y otra marcada, tic (05); muy inclinada y curvada, solo círculos (06). El ítem 9 marcado distinto de 0 en 5 hojas.
+- **Ejecución:** `--cuestionario phq9 --modelo sonnet,opus --veces 3 --guardar` (Haiku fuera, decisión del usuario tras la ronda 1).
+
+| Modelo | 🔴 (peor pasada) | A revisar del lector | Revisión total (con ambiguas) | Veredicto | Coste por hoja |
+|---|---|---|---|---|---|
+| Sonnet | 0 de 63 en las 3 pasadas (< 4,8 % al 95 %) | 4,8 % | 7,9 % | ✓ (3 de 3 pasadas) | 0,016 $ |
+| Opus | 3 de 63 (4,8 %) | 1,6 % | 4,8 % | **✗** (2 de 3 pasadas) | 0,029 $ |
+
+- **Los 🔴 de Opus**, todos en una pasada de `phq9-02` (girada 90°, en la mano): leyó las filas 2–5 **desplazadas una fila** (la 2 en blanco, la 3 con el valor de la 2, la 4 con el de la 3, la 5, que está en blanco, con el de la 4) y se recolocó en la 6. Esa pasada tardó 2,5 s y costó 0,025 $, frente a 19 s y 0,059 $ de las otras dos sobre la misma foto, que la leyeron perfecta. Es el error más peligroso que hemos visto: valores verosímiles en la fila equivocada, sin ninguna duda.
+- **Sonnet**, ningún 🔴: en `phq9-02` dio por dudosas la fila 8 (círculo) en las 3 pasadas y la 4 en una, siempre con la lectura correcta como mejor opción; en `phq9-05`, la fila 4 (1 rayada, X en 3) como dudosa con 3 en las 3 pasadas. Las dos filas ambiguas (dos marcas, entre casillas), siempre como dudosas.
+- **Ítem 9 (alerta):** ningún 🔴 en ningún modelo.
+- **Lectura, sin decidir:** con 63 ítems por pasada sin 🔴, Sonnet queda por debajo de un 4,8 % al 95 %, aún lejos del 0,5 %. Opus no es mejor techo que Sonnet: su fallo de alineación de filas aparece en la foto girada, que es una condición realista (foto hecha con el móvil en horizontal).
+
+### Ronda 3 (2026-11-01): ODI con 6 hojas, Sonnet y Opus
+
+- **Casos:** `odi-01` a `odi-06` (6 hojas distintas) y `odi-01b` (la hoja 01 otra vez, girada 180° y con buena luz): 7 fotos. Condiciones: plana con X, círculo y tic, dos marcas entre casillas y una fila en blanco (02); muy inclinada sobre fondo estampado, solo tics (03); exterior, sombra y doblada, dos filas en blanco (04); girada 90° con una franja de sol, una casilla rayada (05); girada 45°, solo círculos, uno entre casillas (06). Respuestas correctas confirmadas por el usuario.
+- **Ejecución:** `--cuestionario odi --modelo sonnet,opus --veces 3 --guardar`.
+
+| Modelo | 🔴 (peor pasada) | A revisar del lector | Revisión total (con ambiguas) | Veredicto | Coste por hoja |
+|---|---|---|---|---|---|
+| Sonnet | 2 de 70 (2,9 %) | 5,7 % | 12,9 % | **✗** (0 de 3 pasadas) | 0,018 $ |
+| Opus | 0 de 70 en las 3 pasadas (< 4,3 % al 95 %) | 8,6 % | 18,6 % | ✓ (3 de 3 pasadas) | 0,036 $ |
+
+- **Los 🔴 de Sonnet**, los dos del mismo tipo: una marca ambigua dada por clara.
+  - `odi-01b` fila 8 (X sobre el borde entre C y D, foto girada 180°): «D» clara **en las 3 pasadas**. Sobre la foto original de la misma hoja (`odi-01`), las 3 pasadas la dieron por dudosa. Es un error estable, no un azar: depende de la foto.
+  - `odi-06` fila 4 (círculo entre C y D, foto a 45°): «C» clara en 1 de 3 pasadas.
+- **Ningún desplazamiento de filas** en el ODI, ni con la hoja girada 90°, 180° o 45°.
+- **Filas difíciles:** las rayadas (la B en `odi-01b`, la C en `odi-05`) siempre con la casilla buena, a menudo como dudosa; los tics y los círculos, bien; las filas en blanco, siempre en blanco; Opus da más dudosas en los círculos grandes de `odi-06` (filas 9 y 10, con la lectura correcta).
+
+### Conclusión de las rondas 2 y 3 (sin decidir)
+
+- **Ningún modelo supera los dos cuestionarios.** Sonnet supera el PHQ-9 y no el ODI; Opus, al revés. Sus fallos son distintos: Opus desplaza filas en una foto girada (una pasada de `phq9-02`); Sonnet da por clara una marca entre casillas.
+- **Simulación sin coste sobre las lecturas guardadas** (no forma parte de la herramienta): si se leen dos veces y toda fila en la que las dos lecturas no coinciden pasa a dudosa:
+
+  | Combinación | PHQ-9: 🔴 · a revisar · total | ODI: 🔴 · a revisar · total |
+  |---|---|---|
+  | Sonnet + Opus | 0/63 · 9,5 % · 12,7 % | 0/70 · 10,0 % · 20,0 % |
+  | Sonnet + Sonnet | 0/63 · 4,8 % · 7,9 % | 1/70 · 7,1 % · 15,7 % |
+
+  Sonnet + Opus quita los 🔴 de los dos en las 3 pasadas, a cambio de más filas a revisar y de pagar las dos lecturas (unos 0,05 $ por hoja). Dos lecturas de Sonnet no bastan: su error del ODI es estable. Es solo una simulación con estas 14 fotos; habría que medirla como tal.
+- **La estadística sigue sin alcanzar el umbral:** sin 🔴 en 63–70 ítems, la tasa real solo queda por debajo de un 4,3–4,8 % al 95 %, no del 0,5 %.
+
+### Ronda 4 (2026-11-01): lectura doble Sonnet + Opus, PHQ-9 y ODI con 6 hojas
+
+- **Qué es:** `--modelo sonnet+opus` lee cada foto con los dos modelos a la vez y deja dudosa toda fila en la que no coinciden (`combinarLecturas()`, `lib/lector-cuestionarios.js`; test unitario). Se guarda como `<caso>.sonnet+opus.<n>.json` con las dos lecturas. Las mismas 14 fotos de las rondas 2 y 3, 3 pasadas. Se interrumpió una vez por falta de saldo en la API y se completó tras vincular los créditos del plan Max del usuario.
+
+| Cuestionario | 🔴 (peor pasada) | A revisar del lector | Revisión total (con ambiguas) | Veredicto | Coste por hoja |
+|---|---|---|---|---|---|
+| PHQ-9 (7 fotos, 63 ítems) | 0 en las 3 pasadas (< 4,8 % al 95 %) | 4,8 % | 7,9 % | ✓ (3 de 3 pasadas) | 0,05 $ de media (las dos lecturas) |
+| ODI (7 fotos, 70 ítems) | 0 en las 3 pasadas (< 4,3 % al 95 %) | 11,4 % | 21,4 % | ✓ (3 de 3 pasadas) | |
+
+- **Los fallos de cada modelo suelto quedan cubiertos:** `odi-01b` fila 8 (el «D» estable de Sonnet) sale dudosa porque Opus discrepa; en `phq9-02` (girada, donde Opus desplazó filas) las filas en desacuerdo pasan a dudosas.
+- **Un fallo nuevo que la lectura doble atrapa, pero que importa para el paso 2:** en `odi-05` (girada 90°), pasada 2, Sonnet leyó las filas 7–9 una casilla a la izquierda (C, D, B en vez de D, E, C) sin dudar; Opus las leyó bien. Las tres filas salen dudosas, pero con la lectura de Sonnet como «mejor lectura» propuesta, que es la equivocada. **De las 3 + 6 + 9 + 2 filas dudosas de toda la ronda, son las únicas con la propuesta mal.** Si en la pantalla de confirmación una fila en desacuerdo llega con una casilla ya marcada y el fisioterapeuta solo pulsa «Confirmar», el error pasa. Para el paso 2: en una fila en desacuerdo, enseñar las dos lecturas y no marcar ninguna (pendiente de decidir, usuario).
+- **«Revisión total» del ODI, 21,4 %:** la mitad son las filas ambiguas puestas a propósito en las hojas (decisión 6); la otra, filas en desacuerdo, sobre todo en las fotos giradas 90° y 45°.
+- **Lectura, sin decidir:** la lectura doble es la única combinación que supera los dos cuestionarios en las 3 pasadas. La estadística sigue lejos del umbral: sin 🔴 en 63–70 ítems, la tasa real solo queda por debajo de un 4,3–4,8 % al 95 %, no del 0,5 %; para eso harían falta unos 600 ítems sin 🔴 por cuestionario.
+
+## Paso 2: diseño (usuario, 2026-11)
+
+Hecho: `lector.js` (la interfaz), las piezas puras de la confirmación en `lib/lector-cuestionarios.js`, tests unitarios y la sección `lector` del smoke (worker y Turnstile simulados). Pendiente: la ruta del worker (abajo). Mientras se lee o se confirma, el resto del cuestionario se oculta, para que no haya dos vías de respuesta a la vez.
+
+Aprobado tras la ronda 4: lectura doble Sonnet + Opus, solo PHQ-9 y ODI.
+
+### Flujo
+
+1. En la calculadora, dentro del PHQ-9 o el ODI, «📷 Leer la hoja de respuestas (en prueba)». Solo fuera del hub y con licencia «real» (`body.ia-licencia`, `lib/licencia-ia.js`); oculto al imprimir.
+2. Aviso de privacidad con casilla, cada vez: la foto va a Anthropic a través del servidor de PhysiQ para leerla y no se guarda; solo la hoja de respuestas, sin el cuestionario ni el nombre del paciente.
+3. Foto de la cámara o de la galería (`<input type="file" accept="image/*" capture="environment">`), una por página. Se reduce en el navegador a `LADO_FOTO` y se recodifica en JPEG (sin EXIF), como en la medición. Solo vive en memoria.
+4. Turnstile (`lib/turnstile.js`) y llamada al worker. Progreso; se puede cancelar.
+5. Pantalla de confirmación (abajo). «Confirmar respuestas» escribe en `state.cuestionarios[id].r` lo mismo que tocar cada valor; la puntuación la sigue haciendo `puntuar()`.
+
+### Pantalla de confirmación (decisión 3 (a), usuario 2026-11)
+
+| Fila | Cómo llega |
+|---|---|
+| Los dos lectores coinciden con una marca clara | Marcada, con «✓ leído» |
+| No coinciden | Las dos lecturas a la vista («Lector 1: C · Lector 2: D») y **ninguna casilla marcada** (caso `odi-05`, ronda 4) |
+| Dudosa, ilegible o en blanco | Sin marcar; «en blanco» se confirma o se elige |
+| Ítem con alerta (el 9 del PHQ-9) | **Nunca marcada**, aunque coincidan |
+
+«Confirmar respuestas» no se activa con filas sin resolver, y pide comparar con el papel. Las coincidentes se revisan con la hoja delante y se confirman todas con ese botón (opción (a); la (b), tocar cada fila, se descartó porque el lector dejaría de ahorrar tiempo). Cancelar no toca lo que hubiera.
+
+### Worker (physiq-report)
+
+Hecho en la rama `claude/clever-ptolemy-x351nt` de physiq-report (`workers/leer-hoja.js`, tests en `tests/worker.mjs`), sin fusionar. Orden al fusionar: primero physiq-report (su `main` despliega el worker), después physiq-assessment.
+
+Ruta nueva `POST /leer-hoja`, como `/verify`: licencia, Turnstile y `RL_REPORT`. Recibe `{ cuestionario, prompt, schema, fotos }` (JPEG en base64, como mucho 4 y de tamaño limitado; el esquema sin cadenas libres: todo `enum`), llama a Sonnet y a Opus a la vez con el mismo prompt, esquema (`output_config.format`) e imágenes que la medición, y devuelve `{ a, b }` (salida, `stop_reason`, `usage` de cada uno). No guarda ni registra la foto. La combinación la hace la app con `combinarLecturas()`, el código medido. Unos 0,05 $ por hoja.
+
+### Hojas de respuestas en la guía y en la app (usuario, 2026-11)
+
+- **QR en cada hoja de respuestas** (arriba a la derecha, lejos de las filas): abre su cuestionario en la calculadora de la guía, `guia.html?h=<versión>#cuestionarios/<id>` (`urlQRRespuestas()`, `docs/esquemas/respuestas.mjs`). La versión de la hoja no cambia (`huellaHojaRespuestas()` solo resume filas y casillas), así que las fotos medidas siguen siendo de la misma versión; aun así, la hoja impresa ya no es idéntica a la fotografiada en las rondas 1–4 (lleva el QR). Los 27 QR comprobados con un lector (2026-11).
+- **Guía** (`guia-extra.js`, `hojaRespuestasGuiaHTML()`): bajo la cabecera del cuestionario, el enlace al oficial (o «sin enlace todavía: usa la versión oficial en papel»), la versión de la hoja con su PDF y, con el QR, el aviso si el papel es de una versión anterior. «Hojas para imprimir» ya no dice «no las uses con pacientes»: solo el lector con foto está en prueba.
+- **App**: cada cuestionario con hoja enlaza su ficha de la guía («📄 Hoja de respuestas y cuestionario oficial ↗», `enlaceHojaHTML()`, `lib/cuestionarios.js`).
+- **Enlace oficial**: campo `oficial: { url, texto? }` en `data/cuestionarios.js`, solo con una dirección comprobada y que la licencia permita enlazar. **PHQ-9**: el PDF oficial en español de España (Pfizer, 2010), aportado por el usuario, va alojado en `docs/cuestionarios-oficiales/phq9.pdf` (su pie: «No se necesita autorización para su reproducción, traducción, muestra o distribución»; se despliega con la app). El **ODI**, sin enlace: depende de la licencia de Mapi.
+
+### Pendiente del usuario antes de usarlo con pacientes
+
+1. **Validez del formato — decidido (usuario, 2026-11):** se usan las hojas de respuestas de PhysiQ en vez de las oficiales, con un enlace al cuestionario oficial para leer las preguntas. Pendiente: qué enlace lleva cada hoja y dónde (en la hoja impresa, como QR, o en la app). El PHQ-9 es de libre uso (Pfizer); el ODI necesita licencia de Mapi (`docs/cuestionarios.md`, §2), así que su enlace depende de esa licencia.
+2. **Evidencia:** el 0,5 % no está demostrado (ronda 4: < 4,3–4,8 % al 95 %). Hasta decidirlo, el botón dice «(en prueba)».
+3. **Hoja oficial del PHQ-9 en español — comprobado (2026-11):** imprime los números 0–3 que rodea el paciente y las 9 preguntas en el orden de nuestra hoja. El ODI usa letras de posición.
+4. **Cuenta del worker — resuelto (usuario, 2026-11):** la clave del worker es de la organización vinculada a los créditos del plan Max (100 $ al mes). El lector, los informes con IA y el plan con IA gastan del mismo saldo; sin recarga automática, al agotarse se paran los tres hasta el mes siguiente. Unos 0,05 $ por hoja leída.
+5. **El resto de hojas** (HOS y FAAM; números del GAD-7, TSK-11, DASH y LEFS) se comprueba cuando se mida cada cuestionario.
