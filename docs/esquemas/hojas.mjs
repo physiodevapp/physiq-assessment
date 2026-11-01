@@ -324,10 +324,9 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     if (k === M.length - 1) return;
     const i = ids.indexOf(id);
     const directas = steps[i].options.filter((o, j) => destinos(i)[j] === M[k + 1]).map(corto);
-    // Pendiente para la próxima reimpresión de los árboles (decisión del usuario, 2026-11): cambiar
-    // «todas» por «siempre» (en flechas y conectores) y añadir a las dos leyendas «→ «siempre»:
-    // cualquier respuesta sigue por la flecha; con nombres, solo esas». Simulado en hombro A3 y A4:
-    // cabe sin cambiar páginas («cualquier respuesta» no cabía en las flechas cortas). La guía ya lo explica.
+    // Pendiente para la próxima reimpresión de los árboles (decisión del usuario, 2026-11): la palabra
+    // «todas» se queda; solo añadir a las dos leyendas (A3 y A4) «→ «todas»: cualquier respuesta sigue
+    // por la flecha; con nombres, solo esas». La guía ya lo explica en la nota del árbol.
     if (directas.length) flechas.push({ tipo: 'sig', de: id, a: M[k + 1], txt: directas.length === steps[i].options.length ? 'todas' : directas.join(' / ') });
   });
   grupos.forEach(g => {
