@@ -26,8 +26,8 @@ Respuestas correctas de hojas de respuestas reales, rellenadas a mano y fotograf
 - `condiciones`: etiquetas libres, para ver el resultado por condición. Sugeridas: el móvil, `plana` o `inclinada`, `buena luz` o `sombra`, `doblada`.
 - `correctas`: una entrada por cada fila que se lee, con su número (la `n` impresa en el recuadro oscuro) como clave, y como valor **lo que está impreso en la casilla marcada** (mayúsculas y tildes dan igual):
   - casillas con número: el número (`2`);
-  - casillas con letra (KOOS, ODI, NDI): la letra (`"B"`);
-  - casillas con palabra (WOMAC, HOS, FAAM, función del ASES): la palabra (`"Leve"`, `"Muchísimo"`);
+  - casillas con letra (KOOS, NDI): la letra (`"B"`);
+  - casillas con palabra (WOMAC, HOS, FAAM, S-LANSS): la palabra (`"Dificultad leve"`, `"Muchísimo"`, `"b) Sí"`);
   - opciones: la posición impresa junto a la casilla, empezando en 1 (`3`);
   - sí/no: `"si"` o `"no"`;
   - marcas múltiples: la lista de posiciones (`[1, 4]`);
@@ -36,6 +36,8 @@ Respuestas correctas de hojas de respuestas reales, rellenadas a mano y fotograf
   - marca que ni tú sabrías leer: `"ambiguo"`. Lo correcto para ella es que el lector diga «dudoso».
 
 Las filas que no se leen (escalas visuales en mm o cm) no llevan entrada.
+
+Una foto de una hoja de respuestas con otra «v.» se mide con la versión del código que la generó: el ODI llevaba letras A–F hasta 2026-11 (commit `5350da7`) y hoy lleva números 0–5.
 
 Comprueba los casos sin gastar con `node tools/leer-cuestionario.mjs --comprobar`.
 

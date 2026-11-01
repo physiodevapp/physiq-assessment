@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición todavía: faltan las fotos. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-11): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición registrada todavía. Desde 2026-11 (decisión 1, revisada) el paciente rellena el cuestionario original, así que falta también medir el lector con fotos de originales. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
 
 ## Idea
 
@@ -16,7 +16,9 @@ Un botón «📷 Leer la hoja» dentro de la calculadora de cuestionarios (`docs
 
 ## Decisiones
 
-1. **Se fotografía una hoja de respuestas de PhysiQ, no el cuestionario oficial** (usuario, 2026-10). El paciente lee el texto validado en la hoja del titular y marca sus respuestas en una hoja generada desde `data/cuestionarios.js`.
+1. **Revisada (usuario, 2026-11): el paciente rellena el cuestionario original en papel**, que es el formato validado y evita contestar en la fila equivocada de un segundo papel; hoy el fisioterapeuta pasa las respuestas a mano en la calculadora. El lector se medirá primero con fotos de los originales; la hoja de respuestas de PhysiQ queda como línea base de la medición (si falla con ella, fallará con los originales) y como alternativa para los cuestionarios largos (KOOS, DASH, WOMAC) si con los originales no llega al umbral. Leer originales necesita cambios en la herramienta: no tienen marcas de esquina, cada maqueta es distinta, ocupan varias páginas y traen casillas de nombre o historia que hay que dejar en blanco o tapar antes de la foto.
+
+   Decisión original (usuario, 2026-10): **se fotografía una hoja de respuestas de PhysiQ, no el cuestionario oficial**. El paciente lee el texto validado en la hoja del titular y marca sus respuestas en una hoja generada desde `data/cuestionarios.js`.
    - **A favor:** no reproduce texto con derechos (solo el número del ítem, nuestra etiqueta corta y las casillas); es la misma hoja para todos los cuestionarios; y está pensada para leerse bien.
    - **En contra:** cambia la forma de pasar el cuestionario (dos papeles), y esa forma no está validada. Ver «Pendiente antes de usarla con pacientes».
 2. **Las escalas visuales en mm o cm no se leen** (usuario, 2026-10). Medir milímetros en una foto inclinada no es fiable, y 5 mm de error cambian la puntuación. Por eso el iHOT-12 se queda sin hoja, y la EVA del ASES la apunta el fisioterapeuta en la app; la hoja lo dice en esa fila.
@@ -110,5 +112,6 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 
 - **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del FAAM; números impresos en el LEFS). Si una difiere, se cambia su `hoja` y se regenera.
-- **Validez del formato:** pasar el cuestionario con una hoja de respuestas aparte no es el formato validado. Es una decisión clínica pendiente.
+- **Validez del formato:** resuelto con la decisión 1 revisada (2026-11): el paciente rellena el original.
+- **Leer originales:** adaptar `promptLectura()` y la herramienta a fotos del cuestionario original (sin marcas de esquina, varias páginas, maqueta de cada hoja) y medirlo antes que la hoja de respuestas.
 - **Diseño del paso 2:** la ruta nueva del worker (physiq-report), el botón, la pantalla de confirmación, el aviso de privacidad, las pruebas y el smoke. Se explica al usuario antes de escribirlo.
