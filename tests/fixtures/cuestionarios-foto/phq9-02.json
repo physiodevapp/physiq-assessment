@@ -1,0 +1,7 @@
+{
+  "cuestionario": "phq9",
+  "version": "08c7add1",
+  "fotos": ["phq9-02.jpg"],
+  "condiciones": ["móvil usuario", "en la mano", "girada 90°", "curvada", "mezcla X, círculo y tic", "fila en blanco"],
+  "correctas": { "1": 1, "2": 2, "3": 1, "4": 2, "5": "blanco", "6": 0, "7": 2, "8": 1, "9": 3 }
+}
