@@ -87,7 +87,10 @@ test('U1: la trombosis y la embolia también en el embarazo, con los síntomas d
   const q = SIS_EMBARAZO.preguntas.find(x => x.id === 'em_u_tev');
   assert.deepEqual(q.em, { embarazo: {}, posparto: {} });
   assert.ok(q.razonamiento.fuentes.includes('RCOG 2015'));
-  assert.ok(q.razonamiento.peso.includes('el dímero D no sirve para descartarla'));
+  // U2, actualizado en la revisión de fuentes 2026-11: la guía británica lo desaconseja; la europea lo acepta en la embolia con probabilidad no alta, y la conducta sigue siendo derivar
+  assert.ok(q.razonamiento.peso.includes('desaconseja el dímero D'));
+  assert.ok(q.razonamiento.peso.includes('Es una decisión del médico: ante la sospecha, derivar.'));
+  assert.ok(q.razonamiento.fuentes.includes('Bellesini 2021') && q.razonamiento.fuentes.includes('Stals 2023'));
   assert.ok(q.razonamiento.detalle.includes('medias de compresión'));
 });
 
