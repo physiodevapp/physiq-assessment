@@ -344,6 +344,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'slanss',
+    hoja: { sino: { no: 'a) No', si: 'b) Sí' } },
     validacionEs: 'López-de-Uralde-Villanueva 2018 (Neurología 33(8):505–514)',
     nombre: 'S-LANSS',
     titulo: 'Dolor neuropático (autocumplimentado)',

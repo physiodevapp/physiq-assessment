@@ -172,6 +172,8 @@ test('hoja de respuestas: las casillas se rotulan como el papel oficial (número
   assert.deepEqual(rotulos('womac')[4], ['Muchísimo', 4]);
   assert.deepEqual(rotulos('womac', 6)[4], ['Muchísima', 4], 'WOMAC: rigidez y función en femenino, como la hoja española');
   assert.deepEqual(rotulos('odi').map(([r]) => r).join(''), '012345', 'ODI: la hoja española imprime 0–5');
+  assert.deepEqual(rotulos('slanss'), [['a) No', 'no'], ['b) Sí', 'si']], 'S-LANSS: «a) No» primero, como su hoja');
+  assert.match(LC.promptLectura(def('slanss')), /«a\) No» \(devuélvela como «no»\) y «b\) Sí» \(como «si»\)/);
   assert.deepEqual(rotulos('ases', 2), [['0', 0], ['1', 1], ['2', 2], ['3', 3]], 'ASES: la hoja de Vrotsou 2016 imprime 0–3');
   assert.equal(LC.casillaNA(def('odi'), def('odi').items[0]), null, 'ODI: sin casilla N/A');
   const ndi7 = def('ndi').items.find(it => it.na);
