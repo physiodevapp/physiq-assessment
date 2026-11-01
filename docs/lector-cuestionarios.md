@@ -54,7 +54,7 @@ La genera `docs/esquemas/respuestas.mjs` y la imprime `node docs/esquemas/genera
 
 **Versión:** `huellaHojaRespuestas()` resume las filas y las casillas (no la fuente ni la interpretación), y la hoja la imprime como «v. …». `docs/esquemas/respuestas/huellas.json` la guarda con la fecha de su último cambio (`{ huella, fecha }`, como `docs/esquemas/huellas.json`), y `node tests/unit.js` falla si cambian los ítems de un cuestionario sin regenerar su hoja.
 
-**Dónde se descargan:** desde 2026-11, con el lector aparcado, la guía ya no las lista en «Hojas para imprimir» (antes iban al final, bajo «En prueba: no las uses con pacientes»). Los PDF siguen en `docs/esquemas/respuestas/` y el despliegue los copia, pero no hay ningún enlace a ellos en la app ni en la guía.
+**Dónde se descargan:** desde 2026-11, con el lector aparcado, la guía ya no las lista en «Hojas para imprimir» (antes iban al final, bajo «En prueba: no las uses con pacientes»). Los PDF siguen en `docs/esquemas/respuestas/`, pero el despliegue ya no los copia al hub y no hay ningún enlace a ellos en la app ni en la guía.
 
 ## El lector (`lib/lector-cuestionarios.js`)
 
