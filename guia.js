@@ -469,7 +469,7 @@ function htmlHojas() {
 const SUELTAS = {
   condiciones: { titulo: 'Condiciones especiales', html: () => condicionesHTML({}, { guia: true }) },
   irritabilidad: { titulo: 'Irritabilidad (fase 3)', html: () => htmlIrritabilidad('', { conTitulo: false }) },
-  farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>${htmlPreguntar('farmacos', { titulo: '¿Otro fármaco o duda? Pregunta a la IA' })}` },
+  farmacos: { titulo: 'Fármacos: qué vigilar', html: () => `<div id="farmCuerpo">${farmacosHTML()}</div>${htmlPreguntar('farmacos', { titulo: '¿Otro fármaco o duda? Pregunta a la IA', soloTipo: true })}` },
   sintomas: { titulo: 'Síntomas (fase 3)', html: htmlSintomasGuia },
   plan: { titulo: 'Plan de tratamiento (fase 6)', html: htmlPlan },
   ejercicio: { titulo: 'Efectos del ejercicio', html: htmlEjercicio },
@@ -525,6 +525,9 @@ function pintar({ sinScroll = false } = {}) {
   const { tejidos, hojas, suelta, region, hoja, elemento } = leerRuta();
   document.body.classList.toggle('guia-modo-tejidos', !!tejidos || !!hojas || !!suelta);
   document.body.classList.toggle('guia-modo-hojas', !!hojas || !!suelta);
+  // ✨ de la cabecera en azul mientras se está en «Preguntar a la IA», como una pestaña activa
+  const ia = document.getElementById('guiaIABtn');
+  if (suelta === 'preguntar') ia?.setAttribute('aria-current', 'page'); else ia?.removeAttribute('aria-current');
   if (suelta) {
     const { titulo, html, despues } = SUELTAS[suelta];
     document.getElementById('guiaTitulo').textContent = titulo;

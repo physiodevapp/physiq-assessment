@@ -6532,7 +6532,8 @@ async function checkGuia(browser, errors) {
     const hrefIA = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href'));
     r.preguntaFarmacos = vacioDesactivado && hrefIA.startsWith('https://www.google.com/search?udm=50&q=')
       && hrefIA.includes('Fármacos o duda: «pregabalina y ejercicio en mayores»') && hrefIA.includes('CIMA')
-      && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === null);
+      && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === null)
+      && (await page.$$('[data-tipo-pregunta]')).length === 0;   // solo el modo fármacos: los tres, en el ✨
     // Irritabilidad suelta (#irritabilidad, el QR de su hoja): la misma calculadora, sin región
     await page.goto(`${base}#irritabilidad`, { waitUntil: 'networkidle' });
     await page.waitForSelector('[data-irr]');
@@ -6580,7 +6581,11 @@ async function checkGuia(browser, errors) {
     // Efectos del ejercicio y «Preguntar a la IA» en modo ejercicio
     await page.goto(`${base}#ejercicio`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#ejercicioCuerpo details', { state: 'attached' });
-    await page.goto(`${base}#preguntar`, { waitUntil: 'networkidle' });
+    // desde cualquier página, el ✨ de la cabecera lleva a «Preguntar a la IA»
+    await page.click('#guiaIABtn');
+    await page.waitForSelector('#guiaPreguntaTexto');
+    r.iconoIA = (await page.evaluate(() => location.hash)) === '#preguntar'
+      && (await page.getAttribute('#guiaIABtn', 'aria-current')) === 'page';
     await page.click('[data-tipo-pregunta="ejercicio"]');
     await page.fill('#guiaPreguntaTexto', 'excéntricos en la tendinopatía rotuliana');
     await page.evaluate(() => document.getElementById('guiaPreguntaIr').addEventListener('click', e => e.preventDefault()));
@@ -6588,6 +6593,7 @@ async function checkGuia(browser, errors) {
     r.preguntaEjercicio = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href')).includes('Duda de prescripción de ejercicio: «excéntricos');
     // Plan de tratamiento: la función de la app con un formulario corto
     await page.goto(`${base}#plan`, { waitUntil: 'networkidle' });
+    r.iconoIA = r.iconoIA && (await page.getAttribute('#guiaIABtn', 'aria-current')) === null;
     await page.click('[data-plan="region"][data-valor="lumbar"]');
     await page.click('[data-plan="hip"]:not([disabled])');
     await page.click('[data-plan="irr"][data-valor="moderada"]');
@@ -6639,7 +6645,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
