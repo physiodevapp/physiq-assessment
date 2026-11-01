@@ -6580,7 +6580,10 @@ async function checkGuia(browser, errors) {
     // Efectos del ejercicio y «Preguntar a la IA» en modo ejercicio
     await page.goto(`${base}#ejercicio`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#ejercicioCuerpo details', { state: 'attached' });
-    await page.goto(`${base}#preguntar`, { waitUntil: 'networkidle' });
+    // desde cualquier página, el ✨ de la cabecera lleva a «Preguntar a la IA»
+    await page.click('#guiaIABtn');
+    await page.waitForSelector('#guiaPreguntaTexto');
+    r.iconoIA = (await page.evaluate(() => location.hash)) === '#preguntar';
     await page.click('[data-tipo-pregunta="ejercicio"]');
     await page.fill('#guiaPreguntaTexto', 'excéntricos en la tendinopatía rotuliana');
     await page.evaluate(() => document.getElementById('guiaPreguntaIr').addEventListener('click', e => e.preventDefault()));
@@ -6639,7 +6642,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
