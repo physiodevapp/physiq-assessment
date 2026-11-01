@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-11): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición registrada todavía. Desde 2026-11 (decisión 1, revisada) el paciente rellena el cuestionario original, así que falta también medir el lector con fotos de originales. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-11): **aparcado** (decisión del usuario): las respuestas se introducen a mano en la calculadora. Se conserva todo lo hecho del **paso 1, medición**, para retomarlo si teclear los cuestionarios largos se hace pesado. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición registrada todavía. Desde 2026-11 (decisión 1, revisada) el paciente rellena el cuestionario original, así que falta también medir el lector con fotos de originales. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
 
 ## Idea
 
