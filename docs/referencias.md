@@ -15,7 +15,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 - **1071** referencias de literatura, con **4822** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **447** de 1071 referencias del registro revisadas. Ver «Estado de revisión».
+- **468** de 1071 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -61,42 +61,21 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
 | [NICE NG193](#nice-ng193) | pauta · plan de tratamiento | 2 | **sin revisar** |
-| [Schöberl 2017](#schöberl-2017) | pauta · tiempos de tejido | 2 | **sin revisar** |
 | [Munteanu 2021](#munteanu-2021) | pauta · texto | 2 | **sin revisar** |
 | [Paterson 2021](#paterson-2021) | pauta · texto | 2 | **sin revisar** |
-| [Kamonseki 2022](#kamonseki-2022) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | **sin revisar** |
-| [Tang 2024](#tang-2024) | pauta · texto | 2 | **sin revisar** |
 | [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | irritabilidad (fase 3 y fase 6) · plan de tratamiento | 68 | **sin revisar** |
 | [Maitland 2005](#maitland-2005) | irritabilidad (fase 3 y fase 6) · razonamiento fase 2 · plan de tratamiento · texto | 55 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | irritabilidad (fase 3 y fase 6) · plan de tratamiento | 2 | **sin revisar** |
-| [Petersen 2021](#petersen-2021) | irritabilidad (fase 3 y fase 6) · plan de tratamiento | 10 | **sin revisar** |
-| [NICE CG109](#nice-cg109) | razonamiento fase 2 · plan de tratamiento · texto | 26 | **sin revisar** |
-| [NICE CG151](#nice-cg151) | razonamiento fase 2 | 1 | **sin revisar** |
-| [NICE CG192](#nice-cg192) | razonamiento fase 2 · texto | 23 | **sin revisar** |
-| [NICE NG133](#nice-ng133) | razonamiento fase 2 | 1 | **sin revisar** |
-| [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | **sin revisar** |
-| [NICE NG192](#nice-ng192) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [NICE NG194](#nice-ng194) | razonamiento fase 2 · condiciones especiales (cabecera) | 8 | **sin revisar** |
-| [NICE NG201](#nice-ng201) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 39 | **sin revisar** |
-| [NICE NG232](#nice-ng232) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 18 | **sin revisar** |
 | [NICE NG255](#nice-ng255) | razonamiento fase 2 | 2 | **sin revisar** |
-| [NICE NG258](#nice-ng258) | razonamiento fase 2 · plan de tratamiento · texto | 25 | **sin revisar** |
-| [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Kibbe 2004](#kibbe-2004) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Schulman 2005](#schulman-2005) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Ruperto 2011](#ruperto-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shelkey 2014](#shelkey-2014) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Giangregorio 2015](#giangregorio-2015) | razonamiento fase 2 · texto | 8 | **sin revisar** |
-| [Kaatz 2015](#kaatz-2015) | razonamiento fase 2 | 1 | **sin revisar** |
 | [RCOG 2015](#rcog-2015) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 16 | **sin revisar** |
 | [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
 | [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
-| [Llitjos 2016](#llitjos-2016) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Bahit 2017](#bahit-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · guía de efectos del ejercicio (cabecera) · texto | 16 | **sin revisar** |
 | [Clinton 2017](#clinton-2017) | razonamiento fase 2 · texto | 8 | **sin revisar** |
-| [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Malfait 2017](#malfait-2017) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 62 | **sin revisar** |
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -1131,6 +1110,27 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Hu 2024](#hu-2024) | texto | 1 | 2026-10 · Sin cambios: discrepa de Sokal 2022 y de Hesmerg 2024 en la especificidad; incluye el estudio del creador del test y atribuye a Hegedus unas cifras del Lever que no son suyas. Solo se cita en el criterio. |
 | [Norris 2025](#norris-2025) | texto | 1 | 2026-10 · Sin cambios: es el estudio más reciente del lever sign (registrado en ClinicalTrials.gov, NCT05416632) y es posterior a las revisiones Hesmerg 2024 y Hu 2024; ninguna revisión lo incluye todavía (PubMed, 2026-10). |
 | [Rana 2026](#rana-2026) | texto | 1 | 2026-10 · Sin cambios: es la revisión más reciente de la exploración clínica compuesta del menisco; por decisión del usuario no sustituye a Solomon 2001 (sin LR, agrupación univariante, cirujanos ortopédicos, pacientes que iban a artroscopia). |
+| [Schöberl 2017](#schöberl-2017) | pauta · tiempos de tejido | 2 | 2026-11 · Sin cambios: PubMed (2026-11; osteitis pubis, pubic-related groin pain, pubalgia, groin pain con shock wave o exercise therapy, ensayos aleatorizados y revisiones sistemáticas desde 2017) y Consensus (2026-11) no encuentran ningún ensayo aleatorizado posterior en dolor inguinal relacionado con el pubis; la revisión sistemática de Rhim 2024 (Br J Sports Med) apoya las ondas de choque como complemento del ejercicio en la osteítis de pubis, y Serafim 2022 (J Orthop Surg Res) y Massè 2026 (J Clin Med, narrativa) no aportan ensayos nuevos ni pautas distintas; PubMed no enlaza fe de erratas, comentarios ni retractación. |
+| [Kamonseki 2022](#kamonseki-2022) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | 2026-11 · Sin cambios: PubMed (2026-11; scapular dyskinesis, scapular-focused o scapular stabilization con ejercicio, revisiones sistemáticas, metaanálisis y ensayos aleatorizados desde 2022-08) y Consensus (2026-11) no encuentran ningún ensayo ni revisión que compare el entrenamiento del movimiento escapular con un programa estándar; los metaanálisis de Brasileiro 2025 (Phys Sportsmed) y Melo 2024 (JSES Rev Rep Tech) comparan ejercicio escapular con otros tratamientos y tienen certeza baja; el análisis secundario de Kamonseki 2025 (Shoulder Elbow) confirma que la rotación superior de la escápula no medió la mejoría; PubMed no enlaza fe de erratas, comentarios ni retractación. |
+| [Tang 2024](#tang-2024) | pauta · texto | 2 | 2026-11 · Sin cambios: PubMed (2026-11; estabilización o discinesia escapular, revisiones, metaanálisis y ensayos desde 2024, ampliado a revisiones y consensos de discinesia) y Consensus (2026-11) encuentran revisiones posteriores o simultáneas (Melo 2024, JSES Rev Rep Tech; Zhong 2024, Front Neurol; Brasileiro 2025, Phys Sportsmed; Türkmen 2025, J Hand Ther; Alshehri 2026, Orthop Rev) con beneficio pequeño o incierto en función y dolor, heterogeneidad alta y certeza baja, y en Melo 2024 un efecto de la dosis (6 semanas o más, 30 repeticiones o menos) que desaparece al quitar un estudio de alto riesgo de sesgo: concuerda con lo que dice la pauta de h8 (dos ensayos pequeños, dosis ideal desconocida) y ninguna estudia el ejercicio según el tipo de discinesia; sin erratas ni comentarios en PubMed. |
+| [Petersen 2021](#petersen-2021) | irritabilidad (fase 3 y fase 6) · plan de tratamiento | 10 | 2026-11 · Sin cambios: PubMed (2026-11; SINSS e irritabilidad en dolor musculoesquelético desde 2021, ampliado con fiabilidad y validez desde 2009) y Consensus (2026-11) no encuentran ninguna revisión ni consenso que redefina SINSS ni valide sus cortes de gravedad por NRS o la combinación gravedad por irritabilidad; lo posterior es de los mismos autores aplicado a cardiorrespiratorio (Petersen 2025, Cardiopulm Phys Ther J) o estudios de irritabilidad en hombro (Kareha 2021, Phys Ther, fiabilidad de STAR-Shoulder; Podschun 2024, Phys Ther; Wilson 2023, J Man Manip Ther; Anderson 2025, Clin Rehabil; Jackson 2026, J Man Manip Ther, piloto de n = 20; Ziegler 2026, J Man Manip Ther, cuestionario preliminar) que lo complementan sin contradecirlo; sin erratas ni comentarios en PubMed. |
+| [NICE CG109](#nice-cg109) | razonamiento fase 2 · plan de tratamiento · texto | 26 | 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (última actualización 21-11-2023, que modificó la 1.2.1.1 y añadió la 1.2.1.2; consulta de 2026-11), con la 1.1.4.2, la 1.3.2.1–1.3.2.2 y la 1.5.4.2–1.5.4.3 sin cambios y sin actualización en desarrollo. PubMed (síncope con guía, revisión sistemática o consenso en el título, desde 2023) y Consensus (rasgos de alto riesgo del síncope, 2026-11) no encuentran ninguna guía británica o europea posterior; lo más relevante, las revisiones de SAEM GRACE (Acad Emerg Med, 2025 y 2026) y el consenso de EUSEM (Eur J Emerg Med, 2024), trata la decisión de ingreso en urgencias, y Kavi 2023 (Trauma Surg Acute Care Open) confirma que NICE, ACC y ESC comparten los mismos rasgos de alto riesgo. |
+| [NICE CG151](#nice-cg151) | razonamiento fase 2 | 1 | 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (vigilancia de enero de 2020 sin evidencia nueva y cambios menores en septiembre de 2024 solo en la 1.2.1.1–1.2.1.2, de profilaxis; consulta de 2026-11), con la 1.3.1.1–1.3.1.2, la 1.4.1.1 y la 1.4.4.1 sin cambios y sin actualización en desarrollo. PubMed (neutropenia febril con guía, consenso o revisión sistemática en el título, desde 2024) y Consensus (2026-11) encuentran la actualización 2024 de la guía AGIHO (Sandherr, Lancet Reg Health Eur, 2025), el consenso MASCC con inmunoterapia (Support Care Cancer, 2026) y el de la ABHH (2024): tratan del manejo hospitalario y la antibioterapia, y mantienen que la sospecha es una urgencia que se deriva de inmediato. |
+| [NICE CG192](#nice-cg192) | razonamiento fase 2 · texto | 23 | 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (última actualización de 2020; vigilancia excepcional del 30-05-2025 sobre el punto de corte del GAD-2 sin cambios; consulta de 2026-11), con la 1.5.4–1.5.8, la 1.5.11–1.5.12 y la 1.6.3–1.6.5 sin cambios. PubMed (Whooley, PHQ-2 o GAD-2 en el periodo perinatal, desde 2020; psicosis posparto y suicidio perinatal con guía o revisión) y Consensus (2026-11) encuentran el estudio MAP (Ayers, Br J Psychiatry, 2024), que respalda las preguntas de Whooley con un solo «sí» y ve peor el GAD-2, que la app no puntúa, y la revisión de Rondung (Acta Obstet Gynecol Scand, 2023); ninguno sustituye la guía. |
+| [NICE NG133](#nice-ng133) | razonamiento fase 2 | 1 | 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (última actualización 17-04-2023, solo sobre la prueba de PlGF; consulta de 2026-11), con la 1.1.1 y la 1.5.15 sin cambios y sin actualización en desarrollo. PubMed (preeclampsia o trastornos hipertensivos del embarazo con guía o clasificación en el título, desde 2023) encuentra revisiones comparativas de guías (Am J Obstet Gynecol, 2026; Birth, 2026) que no la contradicen, y Consensus (síntomas de preeclampsia, 2026-11) un estudio de casos y controles de síntomas prodrómicos de eclampsia (Hastie, PLoS Med, 2026) en mujeres ya diagnosticadas, con sesgo de recuerdo, que no cambia la consigna de ver a un profesional de inmediato. |
+| [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk sin cambios desde su publicación (19-03-2020) ni actualización en desarrollo (consulta de 2026-11), con la 1.1.1–1.1.9 iguales. PubMed (aneurisma de aorta abdominal con guía, desde 2020) encuentra la guía de la European Society for Vascular Surgery (Wanhainen, Eur J Vasc Endovasc Surg, 2024), de manejo especializado, y Consensus (presentación y error diagnóstico de la rotura, 2026-11) estudios como Bergmark 2024 (Scand J Trauma Resusc Emerg Med) que refuerzan sospecharla ante dolor abdominal o de espalda con mareo o síncope; ninguno cambia la consigna de llamar al 112. |
+| [NICE NG192](#nice-ng192) | razonamiento fase 2 · texto | 9 | 2026-11 · Sin cambios: NICE la revisó por última vez el 10-06-2025 (web de NICE, búsqueda de 2026-11) sin tocar las recomendaciones 1.7.4, 1.7.7 y 1.7.8, que siguen igual ([2004, amended 2021]). PubMed (2026-11: vuelta al ejercicio tras la cesárea y TEV posparto, guías y revisiones sistemáticas desde 2021) y Consensus no encuentran nada que las sustituya: la revisión de revisiones de Diaz 2025 (EClinicalMedicine) dice que no hay revisiones sistemáticas sobre cuándo volver a la actividad física ni sobre el cuidado de la herida, y la guía ERAS de Sultan 2026 (Am J Obstet Gynecol) solo trata de la movilización precoz en el hospital. |
+| [NICE NG194](#nice-ng194) | razonamiento fase 2 · condiciones especiales (cabecera) | 8 | 2026-11 · Sin cambios: NICE la actualizó el 09-06-2026 solo para añadir una referencia a la vitamina K del recién nacido (web de NICE, búsqueda de 2026-11); las recomendaciones 1.2.4, 1.2.13, 1.2.15 y 1.2.20 siguen igual ([2021]). PubMed (2026-11: signos de alarma posparto, hemorragia, infección y TEV, guías y revisiones sistemáticas desde 2021) y WebSearch (Consensus sin cupo) no encuentran ninguna guía posterior: Coomarasamy 2026 (Lancet), Yunas 2025 (Cochrane) y FIGO 2025 tratan del diagnóstico de la hemorragia en el paritorio, y Ke 2025 (Am J Obstet Gynecol) es epidemiología de las complicaciones del primer año. |
+| [NICE NG201](#nice-ng201) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 39 | 2026-11 · Sin cambios: la vigilancia de NICE del 27-12-2024 solo añadió un enlace, y los cambios menores hasta 12-2025 no tocan las recomendaciones que usa la app (1.2.25–1.2.27, 1.2.34, 1.3.25, 1.4.15, 1.4.17), que siguen igual (web de NICE, búsqueda de 2026-11). PubMed y Consensus (2026-11: dolor de cintura pélvica con ejercicio o cinturón, umbrales de tensión y movimientos fetales, revisiones sistemáticas y guías desde 2021-08) no encuentran nada que la sustituya: Lu 2026 (J Pain) y Mladenovic 2026 (Braz J Phys Ther) refuerzan el ejercicio y Lauridsen 2025 (Midwifery) da al cinturón un efecto modesto, lo que encaja con 1.4.15, y la revisión de guías de Febles 2026 (Am J Obstet Gynecol) no cambia los umbrales de 140/90 y 160/110. |
+| [NICE NG232](#nice-ng232) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 18 | 2026-11 · Sin cambios: la versión de 2023 sigue vigente en la web de NICE (búsqueda de 2026-11), sin vigilancia posterior y con cambios menores hasta 03-2025; las recomendaciones 1.2.4 (anticoagulante o antiagregante salvo la aspirina sola), 1.5.13, 1.9.13 y 1.10.9 siguen igual. PubMed (2026-11: golpe en la cabeza con anticoagulante o antiagregante y hemorragia tardía, revisiones sistemáticas y guías desde 2023-05) y WebSearch (Consensus sin cupo) no encuentran ninguna guía posterior: los metaanálisis de Karamian 2024 (J Neurol) y Pessôa 2024 (World Neurosurg) respaldan derivar y avisar del sangrado tardío, y los de Matsoukas 2025 (Neurosurg Rev) y Dubucs 2025 (Ann Emerg Med) son observacionales, no separan la aspirina sola y no cambian la recomendación. |
+| [NICE NG258](#nice-ng258) | razonamiento fase 2 · plan de tratamiento · texto | 25 | 2026-11 · Sin cambios: publicada el 27-05-2026 (sustituye a CG134); su página en nice.org.uk (consulta de 2026-11) dice «Last reviewed: 4 June 2026» y que la vigilancia de junio de 2026 decidió no actualizar las recomendaciones sobre la triptasa en menores de 16 años, la adrenalina intranasal ni las de investigación; 1.1.12, 1.1.14 y 1.1.15–1.1.16 siguen igual. PubMed (2026-11; guías, consensos y revisiones sistemáticas de anafilaxia desde 2025, ampliado a postura y desenlace) y WebSearch (Consensus sin cupo) no encuentran nada que contradiga la derivación a alergia, la postura tras el autoinyector ni los dos autoinyectores: el consenso GA2LEN (Dribin 2025, J Allergy Clin Immunol) es una definición, y las revisiones de anafilaxia mortal (Chowdhury 2026, Int Arch Allergy Immunol; McKenzie 2026, BMJ Open) no cambian la pauta. |
+| [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | 2026-11 · Sin cambios: el capítulo de StatPearls sigue con fecha de última actualización 06-05-2024 (registro de PubMed, PMID 28613698, 2026-11). PubMed (2026-11, revisiones, guías y revisiones sistemáticas sobre síndrome antifosfolípido desde 2024, ampliado a guías y a ictus o isquemia digital) y Consensus confirman lo que la app cita: la TVP/TEP es la trombosis más frecuente y el ictus/AIT la arterial más frecuente (Gaspar 2024, Rheumatology); el metaanálisis de Watson 2026 (Stroke: anticuerpos antifosfolípido en uno de cada cinco ictus isquémicos) y la guía británica de Arachchillage 2024 (Br J Haematol) lo refuerzan sin contradecirlo. |
+| [Schulman 2005](#schulman-2005) | razonamiento fase 2 | 1 | 2026-11 · Sin cambios: la definición de sangrado mayor de la ISTH (2005) sigue siendo la vigente y la que usan los ensayos y estudios recientes (An 2026, Res Pract Thromb Haemost; búsqueda de 2026-11 en PubMed, Consensus y la web de la ISTH desde 2005); no hay revisión del SSC, solo propuestas de estratificar su pronóstico (Franco 2020, J Thromb Haemost) y la definición complementaria de Kaatz 2015, ya citada, y el sangrado articular con síntomas sigue contando como mayor. Su único comentario en PubMed (Pena 2012, sobre el TEP subsegmentario) no toca la definición; sin erratas ni retractación. |
+| [Ruperto 2011](#ruperto-2011) | razonamiento fase 2 | 1 | 2026-11 · Sin cambios: la definición del brote de la LFA (Ruperto 2011) sigue siendo la única definición de consenso internacional (PubMed, Consensus y búsqueda web, 2026-11, consensos, Delphi y revisiones desde 2011); los trabajos posteriores la usan como patrón (Saraiva 2024, Rheumatology) o proponen puntuaciones pronósticas (Nikolopoulos 2026, Ann Rheum Dis, donde también los brotes leves o moderados aumentan el daño) o comparan la visión del paciente y del médico (Rogers 2024, J Rheumatol), sin sustituirla; sin erratas ni comentarios en PubMed. |
+| [Giangregorio 2015](#giangregorio-2015) | razonamiento fase 2 · texto | 8 | 2026-11 · Sin cambios: PubMed (2026-11; consensos, guías y Delphi de ejercicio en osteoporosis desde 2015) y Consensus (movimiento seguro en osteoporosis y fractura vertebral) no encuentran nada que lo sustituya ni lo contradiga. El Delphi de Ponzano 2023 (Osteoporos Int, del mismo grupo, sobre fracturas vertebrales) repite la bisagra de cadera según su resumen y no trata los umbrales de pérdida de talla. Brooke-Wavell 2022 (Br J Sports Med), ya citado, coincide en moverse con seguridad. Kemmler 2026 (BMC Endocr Disord, guía DVO) y Fernandez-Gonzalez 2026 (Osteoporos Int, metaanálisis) tratan de eficacia del ejercicio. Sin erratas ni comentarios en PubMed. |
+| [Kaatz 2015](#kaatz-2015) | razonamiento fase 2 | 1 | 2026-11 · Sin cambios: PubMed (2026-11; definiciones de sangrado de la ISTH desde 2015, ampliada a títulos con definición o clasificación de sangrado), Consensus y WebSearch no encuentran ninguna comunicación del SSC de la ISTH que la sustituya. Las posteriores definen otras cosas (hemostasia eficaz, sangrado mortal, sangrado en el embarazo). Siegal 2026 (Circulation, COMBINE-AF) sigue aplicando esta definición, y Laporte 2017 (J Thromb Haemost) solo discute su uso como variable sustituta. Sin erratas ni comentarios en PubMed. |
+| [Llitjos 2016](#llitjos-2016) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | 2026-11 · Sin cambios: PubMed (2026-11; hematoma del iliopsoas o retroperitoneal con anticoagulación, revisiones sistemáticas, cohortes y series desde 2016) y Consensus (2026-11) no encuentran nada que la contradiga: Decker 2022 (Acad Radiol), con hemorragias espontáneas del iliopsoas fuera de UCI, halla un 77 % de anticoagulados y una mortalidad del 22,9 %, y las revisiones de casos con neuropatía femoral de Guild 2023 (Injury) y Texakalidis 2026 (World Neurosurg) la atribuyen sobre todo a la anticoagulación; son series o revisiones de casos con el mismo mensaje, y sigue siendo la cohorte de UCI que da las cifras de shock y compresión que usa la app; sin erratas ni comentarios en PubMed. |
+| [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | 2026-11 · Sin cambios: PubMed (2026-11; Tarlov o quiste perineural con Ehlers-Danlos, tejido conectivo, hipermovilidad o ectasia dural, desde 2017) solo encuentra casos clínicos y la revisión de alcance de Marathe, Lohkamp y Fehlings (J Neurosurg Spine, 2022), que recoge el síndrome del quiste de Tarlov en el Ehlers-Danlos sin dar su frecuencia; WebSearch (2026-11, sustituyendo a Consensus por límite de uso) no encuentra ningún estudio que la mida, así que sigue siendo cierto que solo hay casos clínicos. PubMed no enlaza fe de erratas ni comentarios. |
 
 ## 1. Tarjetas de consulta
 
@@ -7550,7 +7550,7 @@ Autores: Giangregorio, McGill, Wark et al.
 Título: *Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures*  
 Publicación: Osteoporos Int 26(3):891–910  
 DOI: 10.1007/s00198-014-2881-4  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; consensos, guías y Delphi de ejercicio en osteoporosis desde 2015) y Consensus (movimiento seguro en osteoporosis y fractura vertebral) no encuentran nada que lo sustituya ni lo contradiga. El Delphi de Ponzano 2023 (Osteoporos Int, del mismo grupo, sobre fracturas vertebrales) repite la bisagra de cadera según su resumen y no trata los umbrales de pérdida de talla. Brooke-Wavell 2022 (Br J Sports Med), ya citado, coincide en moverse con seguridad. Kemmler 2026 (BMC Endocr Disord, guía DVO) y Fernandez-Gonzalez 2026 (Osteoporos Int, metaanálisis) tratan de eficacia del ejercicio. Sin erratas ni comentarios en PubMed.  
 Nota: PDF del usuario, leído entero (2026-10). Moverse con seguridad (girar dando pasos, no levantar desde el suelo) y umbrales de pérdida de talla (recuadro 2). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
 
 Citada como:
@@ -9420,7 +9420,7 @@ Autores: Henderson, Austin, Benzel, Bolognese, Ellenbogen, Francomano, Ireton, K
 Título: *Neurological and spinal manifestations of the Ehlers–Danlos syndromes*  
 Publicación: Am J Med Genet C Semin Med Genet 175(1):195–211  
 DOI: 10.1002/ajmg.c.31549  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; Tarlov o quiste perineural con Ehlers-Danlos, tejido conectivo, hipermovilidad o ectasia dural, desde 2017) solo encuentra casos clínicos y la revisión de alcance de Marathe, Lohkamp y Fehlings (J Neurosurg Spine, 2022), que recoge el síndrome del quiste de Tarlov en el Ehlers-Danlos sin dar su frecuencia; WebSearch (2026-11, sustituyendo a Consensus por límite de uso) no encuentra ningún estudio que la mida, así que sigue siendo cierto que solo hay casos clínicos. PubMed no enlaza fe de erratas ni comentarios.  
 Nota: PDF del usuario, leído entero (2026-10). Revisión narrativa; su sección del quiste de Tarlov (pp. 206–207) se apoya en una revisión no publicada, así que se cita sin porcentajes.
 
 Citada como:
@@ -10787,7 +10787,7 @@ Autores: Kaatz, Ahmad, Spyropoulos y Schulman
 Título: *Definition of clinically relevant non-major bleeding in studies of anticoagulants in atrial fibrillation and venous thromboembolic disease in non-surgical patients*  
 Publicación: J Thromb Haemost 2015;13:2119–2126  
 DOI: 10.1111/jth.13140  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; definiciones de sangrado de la ISTH desde 2015, ampliada a títulos con definición o clasificación de sangrado), Consensus y WebSearch no encuentran ninguna comunicación del SSC de la ISTH que la sustituya. Las posteriores definen otras cosas (hemostasia eficaz, sangrado mortal, sangrado en el embarazo). Siegal 2026 (Circulation, COMBINE-AF) sigue aplicando esta definición, y Laporte 2017 (J Thromb Haemost) solo discute su uso como variable sustituta. Sin erratas ni comentarios en PubMed.  
 Nota: Definición de la ISTH de sangrado clínicamente relevante no mayor; PDF del usuario leído entero (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
 
 Citada como:
@@ -10861,7 +10861,7 @@ Autores: Kamonseki, Haik, Ribeiro, Almeida y Camargo
 Título: *Scapular movement training is not superior to standardized exercises in the treatment of individuals with chronic shoulder pain and scapular dyskinesis: randomized controlled trial*  
 Publicación: Disabil Rehabil 45(18):2925–2935  
 DOI: 10.1080/09638288.2022.2114552  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; scapular dyskinesis, scapular-focused o scapular stabilization con ejercicio, revisiones sistemáticas, metaanálisis y ensayos aleatorizados desde 2022-08) y Consensus (2026-11) no encuentran ningún ensayo ni revisión que compare el entrenamiento del movimiento escapular con un programa estándar; los metaanálisis de Brasileiro 2025 (Phys Sportsmed) y Melo 2024 (JSES Rev Rep Tech) comparan ejercicio escapular con otros tratamientos y tienen certeza baja; el análisis secundario de Kamonseki 2025 (Shoulder Elbow) confirma que la rotación superior de la escápula no medió la mejoría; PubMed no enlaza fe de erratas, comentarios ni retractación.  
 Nota: PDF del usuario, leído entero (2026-10). Pauta de h8 (discinesia escapular).
 
 Citada como:
@@ -13304,7 +13304,7 @@ Autores: Llitjos, Daviaud, Grimaldi et al.
 Título: *Ilio-psoas hematoma in the intensive care unit: a multicentric study*  
 Publicación: Ann Intensive Care 6(1):8  
 DOI: 10.1186/s13613-016-0106-z  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; hematoma del iliopsoas o retroperitoneal con anticoagulación, revisiones sistemáticas, cohortes y series desde 2016) y Consensus (2026-11) no encuentran nada que la contradiga: Decker 2022 (Acad Radiol), con hemorragias espontáneas del iliopsoas fuera de UCI, halla un 77 % de anticoagulados y una mortalidad del 22,9 %, y las revisiones de casos con neuropatía femoral de Guild 2023 (Injury) y Texakalidis 2026 (World Neurosurg) la atribuyen sobre todo a la anticoagulación; son series o revisiones de casos con el mismo mensaje, y sigue siendo la cohorte de UCI que da las cifras de shock y compresión que usa la app; sin erratas ni comentarios en PubMed.  
 Nota: Cohorte retrospectiva de UCI (77 hematomas del iliopsoas, casos graves): anticoagulación en 56; shock en 34, síntomas compresivos en 20. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
 
 Citada como:
@@ -16897,7 +16897,7 @@ Origen (Hopkinson 1990): revisión retrospectiva de 1344 esguinces en cadetes de
 
 Publicación: Guía NICE «Transient loss of consciousness ('blackouts') in over 16s» (2010, actualizada en 2023)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (última actualización 21-11-2023, que modificó la 1.2.1.1 y añadió la 1.2.1.2; consulta de 2026-11), con la 1.1.4.2, la 1.3.2.1–1.3.2.2 y la 1.5.4.2–1.5.4.3 sin cambios y sin actualización en desarrollo. PubMed (síncope con guía, revisión sistemática o consenso en el título, desde 2023) y Consensus (rasgos de alto riesgo del síncope, 2026-11) no encuentran ninguna guía británica o europea posterior; lo más relevante, las revisiones de SAEM GRACE (Acad Emerg Med, 2025 y 2026) y el consenso de EUSEM (Eur J Emerg Med, 2024), trata la decisión de ingreso en urgencias, y Kavi 2023 (Trauma Surg Acute Care Open) confirma que NICE, ACC y ESC comparten los mismos rasgos de alto riesgo.  
 Nota: Leído entero el capítulo «Recommendations» en nice.org.uk (2026-10). Banderas rojas del síncope (1.1.4.2), síncope de esfuerzo (1.3.2.1–1.3.2.2), hipotensión postural (1.2.1, 1.5.4.2), qué decir mientras espera (1.5.4.3). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
 
 Citada como:
@@ -16962,7 +16962,7 @@ Citada como:
 
 Publicación: Guía NICE «Neutropenic sepsis: prevention and management in people with cancer» (19 de septiembre de 2012; revisión de vigilancia de enero de 2020 sin cambios; actualizada en septiembre de 2024)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (vigilancia de enero de 2020 sin evidencia nueva y cambios menores en septiembre de 2024 solo en la 1.2.1.1–1.2.1.2, de profilaxis; consulta de 2026-11), con la 1.3.1.1–1.3.1.2, la 1.4.1.1 y la 1.4.4.1 sin cambios y sin actualización en desarrollo. PubMed (neutropenia febril con guía, consenso o revisión sistemática en el título, desde 2024) y Consensus (2026-11) encuentran la actualización 2024 de la guía AGIHO (Sandherr, Lancet Reg Health Eur, 2025), el consenso MASCC con inmunoterapia (Support Care Cancer, 2026) y el de la ABHH (2024): tratan del manejo hospitalario y la antibioterapia, y mantienen que la sospecha es una urgencia que se deriva de inmediato.  
 Nota: Leídas en nice.org.uk (2026-10, con curl) la introducción, las recomendaciones completas, «Terms used in this guideline» y «Update information». Razonamiento de la pregunta urgente hem_5 (sepsis neutropénica, sistema hematológico compartido; Fase M).
 
 Citada como:
@@ -16979,7 +16979,7 @@ Autores: National Institute for Health and Care Excellence
 Título: *Antenatal and postnatal mental health: clinical management and service guidance*  
 Publicación: NICE guideline CG192, 2014 (actualizada 2020)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (última actualización de 2020; vigilancia excepcional del 30-05-2025 sobre el punto de corte del GAD-2 sin cambios; consulta de 2026-11), con la 1.5.4–1.5.8, la 1.5.11–1.5.12 y la 1.6.3–1.6.5 sin cambios. PubMed (Whooley, PHQ-2 o GAD-2 en el periodo perinatal, desde 2020; psicosis posparto y suicidio perinatal con guía o revisión) y Consensus (2026-11) encuentran el estudio MAP (Ayers, Br J Psychiatry, 2024), que respalda las preguntas de Whooley con un solo «sí» y ve peor el GAD-2, que la app no puntúa, y la revisión de Rondung (Acta Obstet Gynecol Scand, 2023); ninguno sustituye la guía.  
 Nota: Secciones 1.1–1.7 leídas enteras en la web de NICE (2026-10). Preguntas de depresión y GAD-2 (1.5.4–1.5.8), psicosis posparto (1.5.11–1.5.12), autolesión (1.6.5). Condición especial «Embarazo o posparto» (Fase P, docs/embarazo-posparto.md).
 
 Citada como:
@@ -17101,7 +17101,7 @@ Autores: National Institute for Health and Care Excellence
 Título: *Hypertension in pregnancy: diagnosis and management*  
 Publicación: NICE guideline NG133, 2019 (actualizada 2023)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk (última actualización 17-04-2023, solo sobre la prueba de PlGF; consulta de 2026-11), con la 1.1.1 y la 1.5.15 sin cambios y sin actualización en desarrollo. PubMed (preeclampsia o trastornos hipertensivos del embarazo con guía o clasificación en el título, desde 2023) encuentra revisiones comparativas de guías (Am J Obstet Gynecol, 2026; Birth, 2026) que no la contradicen, y Consensus (síntomas de preeclampsia, 2026-11) un estudio de casos y controles de síntomas prodrómicos de eclampsia (Hastie, PLoS Med, 2026) en mujeres ya diagnosticadas, con sesgo de recuerdo, que no cambia la consigna de ver a un profesional de inmediato.  
 Nota: Capítulo de recomendaciones leído entero en la web de NICE (2026-10). Síntomas de preeclampsia → ver a un profesional de inmediato (1.1.1), definiciones de hipertensión, posparto (1.5.15). Condición especial «Embarazo o posparto» (Fase P, docs/embarazo-posparto.md).
 
 Citada como:
@@ -17116,7 +17116,7 @@ Citada como:
 
 Publicación: Guía NICE «Abdominal aortic aneurysm: diagnosis and management» (19 de marzo de 2020)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la guía sigue vigente en nice.org.uk sin cambios desde su publicación (19-03-2020) ni actualización en desarrollo (consulta de 2026-11), con la 1.1.1–1.1.9 iguales. PubMed (aneurisma de aorta abdominal con guía, desde 2020) encuentra la guía de la European Society for Vascular Surgery (Wanhainen, Eur J Vasc Endovasc Surg, 2024), de manejo especializado, y Consensus (presentación y error diagnóstico de la rotura, 2026-11) estudios como Bergmark 2024 (Scand J Trauma Resusc Emerg Med) que refuerzan sospecharla ante dolor abdominal o de espalda con mareo o síncope; ninguno cambia la consigna de llamar al 112.  
 Nota: Leídas en nice.org.uk (2026-10, con curl) las recomendaciones 1.1.1–1.1.9 (riesgo, aneurisma asintomático y sintomático o roto). Fase M, cadera: bandera del aneurisma aórtico.
 
 Citada como:
@@ -17202,7 +17202,7 @@ Autores: National Institute for Health and Care Excellence
 Título: *Caesarean birth*  
 Publicación: NICE guideline NG192, 2021  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: NICE la revisó por última vez el 10-06-2025 (web de NICE, búsqueda de 2026-11) sin tocar las recomendaciones 1.7.4, 1.7.7 y 1.7.8, que siguen igual ([2004, amended 2021]). PubMed (2026-11: vuelta al ejercicio tras la cesárea y TEV posparto, guías y revisiones sistemáticas desde 2021) y Consensus no encuentran nada que las sustituya: la revisión de revisiones de Diaz 2025 (EClinicalMedicine) dice que no hay revisiones sistemáticas sobre cuándo volver a la actividad física ni sobre el cuidado de la herida, y la guía ERAS de Sultan 2026 (Am J Obstet Gynecol) solo trata de la movilización precoz en el hospital.  
 Nota: Capítulo de recomendaciones y apéndice A leídos enteros en la web de NICE (2026-10). Herida (1.7.4), síntomas de trombosis (1.7.7), vuelta a la actividad (1.7.8). Condición especial «Embarazo o posparto» (Fase P, docs/embarazo-posparto.md).
 
 Citada como:
@@ -17246,7 +17246,7 @@ Autores: National Institute for Health and Care Excellence
 Título: *Postnatal care*  
 Publicación: NICE guideline NG194, 2021 (actualizada 2026)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: NICE la actualizó el 09-06-2026 solo para añadir una referencia a la vitamina K del recién nacido (web de NICE, búsqueda de 2026-11); las recomendaciones 1.2.4, 1.2.13, 1.2.15 y 1.2.20 siguen igual ([2021]). PubMed (2026-11: signos de alarma posparto, hemorragia, infección y TEV, guías y revisiones sistemáticas desde 2021) y WebSearch (Consensus sin cupo) no encuentran ninguna guía posterior: Coomarasamy 2026 (Lancet), Yunas 2025 (Cochrane) y FIGO 2025 tratan del diagnóstico de la hemorragia en el paritorio, y Ke 2025 (Am J Obstet Gynecol) es epidemiología de las complicaciones del primer año.  
 Nota: Capítulo de recomendaciones leído entero en la web de NICE (2026-10). Síntomas que piden consulta sin demora (1.2.4), sangrado (1.2.13), periné (1.2.20). Condición especial «Embarazo o posparto» (Fase P, docs/embarazo-posparto.md).
 
 Citada como:
@@ -17306,7 +17306,7 @@ Autores: National Institute for Health and Care Excellence
 Título: *Antenatal care*  
 Publicación: NICE guideline NG201, 2021  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la vigilancia de NICE del 27-12-2024 solo añadió un enlace, y los cambios menores hasta 12-2025 no tocan las recomendaciones que usa la app (1.2.25–1.2.27, 1.2.34, 1.3.25, 1.4.15, 1.4.17), que siguen igual (web de NICE, búsqueda de 2026-11). PubMed y Consensus (2026-11: dolor de cintura pélvica con ejercicio o cinturón, umbrales de tensión y movimientos fetales, revisiones sistemáticas y guías desde 2021-08) no encuentran nada que la sustituya: Lu 2026 (J Pain) y Mladenovic 2026 (Braz J Phys Ther) refuerzan el ejercicio y Lauridsen 2025 (Midwifery) da al cinturón un efecto modesto, lo que encaja con 1.4.15, y la revisión de guías de Febles 2026 (Am J Obstet Gynecol) no cambia los umbrales de 140/90 y 160/110.  
 Nota: Capítulo de recomendaciones leído entero en la web de NICE (2026-10). Tensión arterial (1.2.26–1.2.27), movimientos fetales (1.2.34), sangrado (1.4.17), dolor de cintura pélvica (1.4.15), dormir boca arriba (1.3.25). Condición especial «Embarazo o posparto» (Fase P, docs/embarazo-posparto.md).
 
 Citada como:
@@ -17450,7 +17450,7 @@ Autores: National Institute for Health and Care Excellence
 Título: *Head injury: assessment and early management*  
 Publicación: NICE guideline NG232, 2023 (cambios menores hasta 2025)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la versión de 2023 sigue vigente en la web de NICE (búsqueda de 2026-11), sin vigilancia posterior y con cambios menores hasta 03-2025; las recomendaciones 1.2.4 (anticoagulante o antiagregante salvo la aspirina sola), 1.5.13, 1.9.13 y 1.10.9 siguen igual. PubMed (2026-11: golpe en la cabeza con anticoagulante o antiagregante y hemorragia tardía, revisiones sistemáticas y guías desde 2023-05) y WebSearch (Consensus sin cupo) no encuentran ninguna guía posterior: los metaanálisis de Karamian 2024 (J Neurol) y Pessôa 2024 (World Neurosurg) respaldan derivar y avisar del sangrado tardío, y los de Matsoukas 2025 (Neurosurg Rev) y Dubucs 2025 (Ann Emerg Med) son observacionales, no separan la aspirina sola y no cambian la recomendación.  
 Nota: Capítulos de recomendaciones y de justificación leídos enteros en la web de NICE (2026-10). Golpe en la cabeza con anticoagulante o antiagregante (salvo aspirina sola): derivar a urgencias (1.2.3, 1.2.4); TAC «consider» en las 8 horas (1.5.13); consejo al alta (1.10.9); signos de deterioro (1.9.13). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
 
 Citada como:
@@ -17545,7 +17545,7 @@ Autores: National Institute for Health and Care Excellence
 Título: *Anaphylaxis: assessment and referral after emergency treatment*  
 Publicación: NICE guideline NG258, 2026 (sustituye a CG134)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: publicada el 27-05-2026 (sustituye a CG134); su página en nice.org.uk (consulta de 2026-11) dice «Last reviewed: 4 June 2026» y que la vigilancia de junio de 2026 decidió no actualizar las recomendaciones sobre la triptasa en menores de 16 años, la adrenalina intranasal ni las de investigación; 1.1.12, 1.1.14 y 1.1.15–1.1.16 siguen igual. PubMed (2026-11; guías, consensos y revisiones sistemáticas de anafilaxia desde 2025, ampliado a postura y desenlace) y WebSearch (Consensus sin cupo) no encuentran nada que contradiga la derivación a alergia, la postura tras el autoinyector ni los dos autoinyectores: el consenso GA2LEN (Dribin 2025, J Allergy Clin Immunol) es una definición, y las revisiones de anafilaxia mortal (Chowdhury 2026, Int Arch Allergy Immunol; McKenzie 2026, BMJ Open) no cambian la pauta.  
 Nota: PDF oficial (19 pp.), leído entero (2026-10). Derivación a un servicio especializado de alergia (1.1.12), postura tras el autoinyector (1.1.14), dos autoinyectores y llevarlos siempre (1.1.15–1.1.16). Condición especial «Trastorno mastocitario o anafilaxia» (Fase P, docs/mastocitaria.md).
 
 Citada como:
@@ -18765,7 +18765,7 @@ Autores: Petersen, Thurmond y Jensen
 Título: *Severity, Irritability, Nature, Stage, and Stability (SINSS): A clinical perspective*  
 Publicación: J Man Manip Ther 29(5):297–309  
 DOI: 10.1080/10669817.2021.1919284  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; SINSS e irritabilidad en dolor musculoesquelético desde 2021, ampliado con fiabilidad y validez desde 2009) y Consensus (2026-11) no encuentran ninguna revisión ni consenso que redefina SINSS ni valide sus cortes de gravedad por NRS o la combinación gravedad por irritabilidad; lo posterior es de los mismos autores aplicado a cardiorrespiratorio (Petersen 2025, Cardiopulm Phys Ther J) o estudios de irritabilidad en hombro (Kareha 2021, Phys Ther, fiabilidad de STAR-Shoulder; Podschun 2024, Phys Ther; Wilson 2023, J Man Manip Ther; Anderson 2025, Clin Rehabil; Jackson 2026, J Man Manip Ther, piloto de n = 20; Ziegler 2026, J Man Manip Ther, cuestionario preliminar) que lo complementan sin contradecirlo; sin erratas ni comentarios en PubMed.  
 Nota: Perspectiva clínica (opinión experta con viñetas), leída entera en PubMed Central (2026-10). Fase 6 (plan de tratamiento): cortes de gravedad por NRS (tabla 2), combinación gravedad × irritabilidad para el vigor y la extensión, reintroducir lo que agrava al bajar la irritabilidad. Notas en docs/plan-tratamiento.md.
 
 Citada como:
@@ -20137,7 +20137,7 @@ Autores: Rout, Goyal y Singhal
 Título: *Antiphospholipid Syndrome*  
 Publicación: StatPearls [Internet], NBK430980 (act. 2024-05-06)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: el capítulo de StatPearls sigue con fecha de última actualización 06-05-2024 (registro de PubMed, PMID 28613698, 2026-11). PubMed (2026-11, revisiones, guías y revisiones sistemáticas sobre síndrome antifosfolípido desde 2024, ampliado a guías y a ictus o isquemia digital) y Consensus confirman lo que la app cita: la TVP/TEP es la trombosis más frecuente y el ictus/AIT la arterial más frecuente (Gaspar 2024, Rheumatology); el metaanálisis de Watson 2026 (Stroke: anticuerpos antifosfolípido en uno de cada cinco ictus isquémicos) y la guía británica de Arachchillage 2024 (Br J Haematol) lo refuerzan sin contradecirlo.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Mismo primer autor y año que «Rout 2024» (Neutropenia): la clave lleva el tema entre paréntesis, como «Deeb y Maher 2026 (Raynaud)». Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
 
 Citada como:
@@ -20302,7 +20302,7 @@ Autores: Ruperto, Hanrahan, Alarcón et al.
 Título: *International consensus for a definition of disease flare in lupus*  
 Publicación: Lupus 20(5):453–462  
 DOI: 10.1177/0961203310388445  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la definición del brote de la LFA (Ruperto 2011) sigue siendo la única definición de consenso internacional (PubMed, Consensus y búsqueda web, 2026-11, consensos, Delphi y revisiones desde 2011); los trabajos posteriores la usan como patrón (Saraiva 2024, Rheumatology) o proponen puntuaciones pronósticas (Nikolopoulos 2026, Ann Rheum Dis, donde también los brotes leves o moderados aumentan el daño) o comparan la visión del paciente y del médico (Rogers 2024, J Rheumatol), sin sustituirla; sin erratas ni comentarios en PubMed.  
 Nota: PDF aportado por el usuario, leído entero (2026-10). Definición del brote; el brote grave amenaza un órgano o la vida (Q5); los moderados, a tiempo (Q9). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
 
 Citada como:
@@ -20796,7 +20796,7 @@ Autores: Schöberl, Prantl, Loose, Zellner, Angele, Zeman, Spreitzer, Nerlich y 
 Título: *Non-surgical treatment of pubic overload and groin pain in amateur football players: a prospective double-blinded randomised controlled study*  
 Publicación: Knee Surg Sports Traumatol Arthrosc 25(6):1958–1966  
 DOI: 10.1007/s00167-017-4423-z  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; osteitis pubis, pubic-related groin pain, pubalgia, groin pain con shock wave o exercise therapy, ensayos aleatorizados y revisiones sistemáticas desde 2017) y Consensus (2026-11) no encuentran ningún ensayo aleatorizado posterior en dolor inguinal relacionado con el pubis; la revisión sistemática de Rhim 2024 (Br J Sports Med) apoya las ondas de choque como complemento del ejercicio en la osteítis de pubis, y Serafim 2022 (J Orthop Surg Res) y Massè 2026 (J Clin Med, narrativa) no aportan ensayos nuevos ni pautas distintas; PubMed no enlaza fe de erratas, comentarios ni retractación.  
 Nota: PDF del usuario, leído entero (2026-10). Pauta de ca19 (dolor inguinal relacionado con el pubis).
 
 Citada como:
@@ -20849,7 +20849,7 @@ Autores: Schulman y Kearon
 Título: *Definition of major bleeding in clinical investigations of antihemostatic medicinal products in non-surgical patients*  
 Publicación: J Thromb Haemost 2005;3:692–694  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: la definición de sangrado mayor de la ISTH (2005) sigue siendo la vigente y la que usan los ensayos y estudios recientes (An 2026, Res Pract Thromb Haemost; búsqueda de 2026-11 en PubMed, Consensus y la web de la ISTH desde 2005); no hay revisión del SSC, solo propuestas de estratificar su pronóstico (Franco 2020, J Thromb Haemost) y la definición complementaria de Kaatz 2015, ya citada, y el sangrado articular con síntomas sigue contando como mayor. Su único comentario en PubMed (Pena 2012, sobre el TEP subsegmentario) no toca la definición; sin erratas ni retractación.  
 Nota: Definición de sangrado mayor de la ISTH; PDF del usuario leído entero (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
 
 Citada como:
@@ -22433,7 +22433,7 @@ Autores: Tang, Chen, Huang, Liang, Wang, He, Liu, Li y Ma
 Título: *Efficacy of targeted scapular stabilization exercise versus conventional exercise for patients with shoulder pain: a randomized clinical trial*  
 Publicación: Am J Phys Med Rehabil 103(9):771–776  
 DOI: 10.1097/PHM.0000000000002431  
-Última revisión: **sin revisar**  
+Última revisión: 2026-11 · Sin cambios: PubMed (2026-11; estabilización o discinesia escapular, revisiones, metaanálisis y ensayos desde 2024, ampliado a revisiones y consensos de discinesia) y Consensus (2026-11) encuentran revisiones posteriores o simultáneas (Melo 2024, JSES Rev Rep Tech; Zhong 2024, Front Neurol; Brasileiro 2025, Phys Sportsmed; Türkmen 2025, J Hand Ther; Alshehri 2026, Orthop Rev) con beneficio pequeño o incierto en función y dolor, heterogeneidad alta y certeza baja, y en Melo 2024 un efecto de la dosis (6 semanas o más, 30 repeticiones o menos) que desaparece al quitar un estudio de alto riesgo de sesgo: concuerda con lo que dice la pauta de h8 (dos ensayos pequeños, dosis ideal desconocida) y ninguna estudia el ejercicio según el tipo de discinesia; sin erratas ni comentarios en PubMed.  
 Nota: PDF del usuario, leído entero sin los suplementos (2026-10; las series y repeticiones están en el suplemento 1). Pauta de h8 (discinesia escapular).
 
 Citada como:
