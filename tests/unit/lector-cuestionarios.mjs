@@ -240,7 +240,12 @@ test('hojas de respuestas: QR a su ficha de la guía con su versión, y enlace d
   assert.equal(HR.urlQRRespuestas(d), `https://physiodevapp.github.io/physiq/assessment/guia.html?h=${LC.huellaHojaRespuestas(d)}#cuestionarios/phq9`);
   assert.ok(HR.htmlRespuestas(d).includes('<svg'), 'la hoja lleva el QR');
   // El enlace oficial solo con una dirección comprobada: hoy ninguno (sin `oficial`, la guía dice que se use el papel)
-  for (const c of CUESTIONARIOS.filter(c => c.oficial)) assert.ok(/^https:\/\//.test(c.oficial.url), c.id);
+  for (const c of CUESTIONARIOS.filter(c => c.oficial)) {
+    const local = c.oficial.url.match(/^\.\/(docs\/cuestionarios-oficiales\/[a-z0-9_-]+\.pdf)$/);
+    assert.ok(/^https:\/\//.test(c.oficial.url) || (local && existsSync(join(RAIZ, local[1]))), `${c.id}: enlace oficial comprobado o PDF alojado`);
+  }
+  assert.ok(def('phq9').oficial, 'PHQ-9: PDF oficial alojado (libre uso, Pfizer)');
+  assert.ok(leer('.github/workflows/deploy-to-hub.yml').includes('docs/cuestionarios-oficiales/*.pdf'), 'se despliegan los oficiales alojados');
   assert.ok(leer('lib/cuestionarios.js').includes('enlaceHojaHTML(def)'));
 });
 

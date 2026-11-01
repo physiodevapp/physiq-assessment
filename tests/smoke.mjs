@@ -6596,9 +6596,13 @@ async function checkGuia(browser, errors) {
     r.cuestHoja = await page.evaluate(v => /al día/.test(document.querySelector('#guiaHojaResp .guia-papel')?.textContent || '')
       && document.querySelector('#guiaHojaResp a[href*="respuestas/phq9.pdf"]').getAttribute('href').endsWith(`?v=${v}`)
       && /Cuestionario oficial/.test(document.getElementById('guiaHojaResp').textContent) && !document.querySelector('#cuestCuerpo .cuest-hoja'), respuestas.phq9.huella);
+    // El PHQ-9 es de libre uso: su PDF oficial va alojado con la app y se enlaza
+    const oficialPhq9 = await page.evaluate(() => document.querySelector('#guiaHojaResp a[href*="cuestionarios-oficiales/phq9.pdf"]')?.getAttribute('href'));
+    r.cuestHoja = r.cuestHoja && !!oficialPhq9 && (await page.request.head(new URL(oficialPhq9, page.url()).href)).ok();
     await page.goto(`${base.replace(/\.html$/, "")}?h=00000000#cuestionarios/odi`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#guiaHojaResp .guia-papel');
-    r.cuestPapelViejo = /versión anterior/.test(await page.textContent('#guiaHojaResp .guia-papel'));
+    r.cuestPapelViejo = /versión anterior/.test(await page.textContent('#guiaHojaResp .guia-papel'))
+      && /sin enlace todavía/.test(await page.textContent('#guiaHojaResp'));   // el ODI no tiene enlace oficial (licencia)
     await page.goto(`${base}#hojas`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-hoja');
     // Filtro por región: su cuaderno, sus tres hojas y las generales; segundo toque, todo otra vez
