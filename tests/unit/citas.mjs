@@ -73,6 +73,13 @@ function fuentesPintadas() {
   return out.filter(f => f && f.length);
 }
 
+test('claveRegistro: una forma citadaComo lleva a su clave (dos trabajos del mismo autor y año)', () => {
+  assert.equal(claveRegistro('Hansrani 2023, ensayo', REFERENCIAS), 'Hansrani 2023 (ensayo)');
+  assert.equal(claveRegistro('Hansrani 2023, casos y controles', REFERENCIAS), 'Hansrani 2023 (casos y controles)');
+  assert.equal(claveRegistro('Hansrani 2023 (ensayo) — Hansrani, Riding', REFERENCIAS), 'Hansrani 2023 (ensayo)');
+  assert.equal(claveRegistro('Hansrani 2023', REFERENCIAS), null);
+});
+
 test('cada cita de una referencia del registro se ve como su clave (autor y año)', () => {
   const malas = [];
   let n = 0;
@@ -82,8 +89,10 @@ test('cada cita de una referencia del registro se ve como su clave (autor y año
       const k = claveRegistro(c, REFERENCIAS);
       if (!k) continue;
       const e = etiquetaCita(c);
-      // 'Laslett 2005 (centralización)': la clave lleva un paréntesis para distinguirla
-      if (e !== k && !k.startsWith(`${e} (`)) malas.push(`«${c.slice(0, 60)}» → «${e}» (clave «${k}»)`);
+      // 'Laslett 2005 (centralización)': la clave lleva un paréntesis para distinguirla;
+      // una forma `citadaComo` («consenso de Zúrich del IHiPRN», «Hansrani 2023, ensayo») vale como etiqueta
+      const alias = REFERENCIAS[k].citadaComo || [];
+      if (e !== k && !k.startsWith(`${e} (`) && !alias.some(a => c.startsWith(a))) malas.push(`«${c.slice(0, 60)}» → «${e}» (clave «${k}»)`);
     }
   }
   assert.ok(n > 500, `solo ${n} citas: ¿cambió de dónde salen?`);

@@ -149,7 +149,7 @@ test('ca_u6 (congestión pélvica): entre ca_u4 y ca_u5, derivación preferente 
   assert.ok(u6.text.startsWith('(Mujeres)'));
   const r = u6.razonamiento;
   assert.ok(r.porque && r.peso && r.detalle && r.fisiologia && r.fisiologia.pasos.length === 4 && !r.fisiologia.metafora);
-  assert.deepEqual(r.fuentes, ['Champaneria 2016', 'Bałabuszek 2022', 'Kuo 2025', 'Hanna 2024', 'Shelkey 2014', 'Dos Santos 2016', 'Peker 2020', 'Bruessel 2026']);
+  assert.deepEqual(r.fuentes, ['Champaneria 2016', 'Hansrani 2023 (casos y controles)', 'Hansrani 2023 (ensayo)', 'Bałabuszek 2022', 'Kuo 2025', 'Hanna 2024', 'Shelkey 2014', 'Dos Santos 2016', 'İlal Mert y Altun 2026', 'Peker 2020', 'Bruessel 2026']);
   // Nunca nombra un tratamiento en lo que se comparte
   assert.ok(!/emboli/i.test(u6.derivacion));
   assert.ok(u4.razonamiento.detalle.includes('congestión pélvica'));
