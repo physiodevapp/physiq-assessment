@@ -6,7 +6,8 @@
 //  · #ejercicio: la guía «Efectos del ejercicio» de la app (lib/ejercicio.js).
 //  · #preguntar: «✨ Preguntar a la IA» de la app, con sus tres modos (libre, fármacos, ejercicio).
 import { CUESTIONARIOS, GRUPOS_CUESTIONARIO } from './data/cuestionarios.js';
-import { listaCuestionariosHTML, formularioCuestionarioHTML, resultadoCuestionarioHTML, itemCuestionarioHTML, NA } from './lib/cuestionarios.js';
+import { listaCuestionariosHTML, formularioCuestionarioHTML, resultadoCuestionarioHTML, itemCuestionarioHTML, NA, tieneHoja } from './lib/cuestionarios.js';
+import { LECTOR_CUESTIONARIOS } from './lib/lector-cuestionarios.js';
 import { ejercicioHTML, nivelFichaHTML } from './lib/ejercicio.js';
 import { DESTINOS_IA, destinoIA, promptPregunta, urlIA, MAX_TEXTO_IA, NOTA_CUENTAS, TIPOS_PREGUNTA, TIPO_PREGUNTA_DEFECTO } from './ampliar-ia.js';
 import { alternarFicha } from './ficha.js';
@@ -25,14 +26,42 @@ let ACTIVO = null;
 const respuestas = id => CUEST[id] || {};
 const estado = () => Object.fromEntries(Object.entries(CUEST).map(([id, r]) => [id, { r }]));
 
+// Hoja de respuestas de PhysiQ (decisión del usuario, 2026-11: se usan en vez de las
+// oficiales; el paciente lee el cuestionario oficial y marca en la nuestra). Su QR abre esta
+// página con la versión del papel (?h=): aquí, su versión, su PDF, el enlace al cuestionario
+// oficial (`oficial` en data/cuestionarios.js, solo con una dirección comprobada) y, si el papel
+// es de una versión anterior, el aviso. El bloque se pinta vacío y lo llena despuesCuestionarios()
+// con docs/esquemas/respuestas/huellas.json.
+let RESP = null;
+const hojaVacia = def => (tieneHoja(def) ? `<div class="guia-hoja-resp" id="guiaHojaResp" data-cuest-hoja="${esc(def.id)}"></div>` : '');
+export function hojaRespuestasGuiaHTML(def, huellas, papel = '') {
+  const h = huellas?.[def.id];
+  const pdf = h ? `./docs/esquemas/respuestas/${encodeURIComponent(def.id)}.pdf?v=${encodeURIComponent(h.huella)}` : '';
+  const oficial = def.oficial?.url
+    ? `<a href="${esc(def.oficial.url)}" target="_blank" rel="noopener noreferrer">${esc(def.oficial.texto || 'Cuestionario oficial')} ↗</a>`
+    : '<span>Cuestionario oficial: sin enlace todavía, usa la versión oficial en español en papel.</span>';
+  const aviso = papel && h ? (papel === h.huella
+    ? `<div class="guia-papel ok">✓ Tu hoja de respuestas impresa está al día (v. ${esc(papel)}).</div>`
+    : `<div class="guia-papel"><b>Tu hoja de respuestas impresa es de una versión anterior</b> (v. ${esc(papel)}; la actual es v. ${esc(h.huella)}): las filas o las casillas pueden haber cambiado. <a href="${pdf}" target="_blank" rel="noopener">Descargar la hoja actual (PDF) →</a></div>`) : '';
+  return `${aviso}<p class="guia-hoja-resp-txt">${oficial}${h ? ` · Hoja de respuestas v. ${esc(h.huella)}: <a href="${pdf}" target="_blank" rel="noopener" aria-label="Descargar la hoja de respuestas del ${esc(def.nombre)} en PDF">PDF ↗</a>` : ''}${LECTOR_CUESTIONARIOS.includes(def.id) ? ' · En la app, «📷 Leer la hoja de respuestas» (en prueba).' : ''}</p>`;
+}
+async function pintarHojaResp() {
+  const caja = document.getElementById('guiaHojaResp');
+  const def = caja && defCuest(caja.dataset.cuestHoja);
+  if (!def) return;
+  if (!RESP) { try { const r = await fetch('./docs/esquemas/respuestas/huellas.json', { cache: 'no-store' }); if (r.ok) RESP = await r.json(); } catch { /* sin red: sin versión ni PDF */ } }
+  const ahora = document.getElementById('guiaHojaResp');
+  if (ahora?.dataset.cuestHoja === def.id) ahora.innerHTML = hojaRespuestasGuiaHTML(def, RESP, new URLSearchParams(location.search).get('h') || '');
+}
+
 export function htmlCuestionarios(id) {
   ACTIVO = defCuest(id) ? id : null;
   const def = ACTIVO && defCuest(ACTIVO);
   return `<p class="guia-nota">La calculadora de la app: el paciente rellena el cuestionario en papel y aquí tocas el valor de cada ítem. Mismas reglas de puntuación e interpretación publicada que la app. No se guarda nada: se borra al recargar.</p>
-    <div id="cuestCuerpo" class="guia-cuest">${def ? formularioCuestionarioHTML(def, respuestas(ACTIVO)) : listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, estado())}</div>`;
+    <div id="cuestCuerpo" class="guia-cuest">${def ? formularioCuestionarioHTML(def, respuestas(ACTIVO), { hoja: hojaVacia(def) }) : listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, estado())}</div>`;
 }
 // Después de pintar: las filas de opciones en móvil, como en la app
-export function despuesCuestionarios() { const c = document.getElementById('cuestCuerpo'); if (c) observarFilas(c); }
+export function despuesCuestionarios() { const c = document.getElementById('cuestCuerpo'); if (c) observarFilas(c); pintarHojaResp(); }
 
 function repintarItem(def, it) {
   const r = respuestas(def.id);
@@ -69,7 +98,7 @@ document.addEventListener('click', e => {
   if (t.closest('[data-cuest-volver]')) { location.hash = 'cuestionarios'; return; }
   const def = ACTIVO && defCuest(ACTIVO);
   if (!def) return;
-  if (t.closest('[data-cuest-borrar]')) { delete CUEST[def.id]; document.getElementById('cuestCuerpo').innerHTML = formularioCuestionarioHTML(def, {}); despuesCuestionarios(); return; }
+  if (t.closest('[data-cuest-borrar]')) { delete CUEST[def.id]; document.getElementById('cuestCuerpo').innerHTML = formularioCuestionarioHTML(def, {}, { hoja: hojaVacia(def) }); despuesCuestionarios(); return; }
   const op = t.closest('.cuest-op'), item = op?.closest('.cuest-item');
   if (op && item) tocar(def, item.dataset.item, op.dataset.valor);
 });

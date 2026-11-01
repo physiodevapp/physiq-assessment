@@ -216,6 +216,13 @@ Hecho en la rama `claude/clever-ptolemy-x351nt` de physiq-report (`workers/leer-
 
 Ruta nueva `POST /leer-hoja`, como `/verify`: licencia, Turnstile y `RL_REPORT`. Recibe `{ cuestionario, prompt, schema, fotos }` (JPEG en base64, como mucho 4 y de tamaño limitado; el esquema sin cadenas libres: todo `enum`), llama a Sonnet y a Opus a la vez con el mismo prompt, esquema (`output_config.format`) e imágenes que la medición, y devuelve `{ a, b }` (salida, `stop_reason`, `usage` de cada uno). No guarda ni registra la foto. La combinación la hace la app con `combinarLecturas()`, el código medido. Unos 0,05 $ por hoja.
 
+### Hojas de respuestas en la guía y en la app (usuario, 2026-11)
+
+- **QR en cada hoja de respuestas** (arriba a la derecha, lejos de las filas): abre su cuestionario en la calculadora de la guía, `guia.html?h=<versión>#cuestionarios/<id>` (`urlQRRespuestas()`, `docs/esquemas/respuestas.mjs`). La versión de la hoja no cambia (`huellaHojaRespuestas()` solo resume filas y casillas), así que las fotos medidas siguen siendo de la misma versión; aun así, la hoja impresa ya no es idéntica a la fotografiada en las rondas 1–4 (lleva el QR). Los 27 QR comprobados con un lector (2026-11).
+- **Guía** (`guia-extra.js`, `hojaRespuestasGuiaHTML()`): bajo la cabecera del cuestionario, el enlace al oficial (o «sin enlace todavía: usa la versión oficial en papel»), la versión de la hoja con su PDF y, con el QR, el aviso si el papel es de una versión anterior. «Hojas para imprimir» ya no dice «no las uses con pacientes»: solo el lector con foto está en prueba.
+- **App**: cada cuestionario con hoja enlaza su ficha de la guía («📄 Hoja de respuestas y cuestionario oficial ↗», `enlaceHojaHTML()`, `lib/cuestionarios.js`).
+- **Enlace oficial**: campo `oficial: { url, texto? }` en `data/cuestionarios.js`, solo con una dirección comprobada y que la licencia permita enlazar. Hoy ninguno: falta la URL de cada uno (el PHQ-9 es de libre uso; el ODI depende de la licencia de Mapi).
+
 ### Pendiente del usuario antes de usarlo con pacientes
 
 1. **Validez del formato — decidido (usuario, 2026-11):** se usan las hojas de respuestas de PhysiQ en vez de las oficiales, con un enlace al cuestionario oficial para leer las preguntas. Pendiente: qué enlace lleva cada hoja y dónde (en la hoja impresa, como QR, o en la app). El PHQ-9 es de libre uso (Pfizer); el ODI necesita licencia de Mapi (`docs/cuestionarios.md`, §2), así que su enlace depende de esa licencia.

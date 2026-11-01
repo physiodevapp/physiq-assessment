@@ -459,8 +459,8 @@ function htmlHojas() {
     ${grupo('Tiempos de recuperación de tejidos', Object.entries(HOJAS_TEJIDO).map(([k, h]) => fila(`tejidos-${k}`, h.titulo)))}
     ${grupo('Otras hojas', Object.entries(SUELTAS).map(([k, h]) => fila(k, h.titulo)))}
     ${grupo('Para dar al paciente', Object.entries(PARA_PACIENTE).map(([k, t]) => fila(k, t)))}
-    ${RESPUESTAS ? `<section class="guia-bloque guia-respuestas"><h3>Hojas de respuestas del lector con foto (en prueba)</h3>
-      <p class="guia-aviso-prueba"><b>En prueba: no las uses con pacientes.</b> Sirven para medir si el lector de cuestionarios con foto lee bien las marcas, rellenándolas con respuestas inventadas. El paciente no responde aquí al cuestionario: lee el texto oficial y marca en esta hoja.</p>
+    ${RESPUESTAS ? `<section class="guia-bloque guia-respuestas"><h3>Hojas de respuestas de los cuestionarios</h3>
+      <p class="guia-aviso-prueba"><b>El paciente lee el cuestionario oficial y marca aquí sus respuestas</b>; después se pasan a la calculadora. Su QR abre el cuestionario en la guía, con el enlace al oficial y la hoja actual. El lector con foto de la app (solo PHQ-9 y ODI) está en prueba: compara siempre cada fila con el papel antes de confirmar.</p>
       <ul class="guia-hojas-lista">${CUESTIONARIOS.filter(d => RESPUESTAS[d.id]).map(d => fila(d.id, `${d.nombre} · ${d.titulo}`, RESPUESTAS, 'respuestas/')).join('')}</ul></section>` : ''}`;
 }
 

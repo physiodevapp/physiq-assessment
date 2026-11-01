@@ -6583,11 +6583,24 @@ async function checkGuia(browser, errors) {
     const filasResp = filasHojas.filter(f => /\/respuestas\//.test(f.pdf));
     r.hojasRespuestas = filasResp.length === Object.keys(respuestas).length
       && filasResp.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${respuestas[k]?.huella}` && v === respuestas[k]?.huella; })
-      && /no las uses con pacientes/.test(await page.textContent('.guia-respuestas .guia-aviso-prueba'))
+      && /lee el cuestionario oficial y marca aquí/.test(await page.textContent('.guia-respuestas .guia-aviso-prueba'))
       && (await page.request.head(new URL(filasResp[0].pdf, page.url()).href)).ok();
     r.hojas = soloHojas.length === Object.keys(huellas).length
       && soloHojas.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${huellas[k]?.huella}` && v === huellas[k]?.huella; })
       && pdfsOk.every(Boolean) && await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+    // El QR de cada hoja de respuestas abre su cuestionario en la calculadora de la guía (#cuestionarios/<id>
+    // con ?h=): enlace oficial o «sin enlace», versión y PDF; con la versión del papel al día dice «al día»,
+    // con otra, avisa. La calculadora de la guía no enlaza a sí misma.
+    await page.goto(`${base.replace(/\.html$/, "")}?h=${respuestas.phq9.huella}#cuestionarios/phq9`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#guiaHojaResp a[href*="respuestas/phq9.pdf"]');
+    r.cuestHoja = await page.evaluate(v => /al día/.test(document.querySelector('#guiaHojaResp .guia-papel')?.textContent || '')
+      && document.querySelector('#guiaHojaResp a[href*="respuestas/phq9.pdf"]').getAttribute('href').endsWith(`?v=${v}`)
+      && /Cuestionario oficial/.test(document.getElementById('guiaHojaResp').textContent) && !document.querySelector('#cuestCuerpo .cuest-hoja'), respuestas.phq9.huella);
+    await page.goto(`${base.replace(/\.html$/, "")}?h=00000000#cuestionarios/odi`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#guiaHojaResp .guia-papel');
+    r.cuestPapelViejo = /versión anterior/.test(await page.textContent('#guiaHojaResp .guia-papel'));
+    await page.goto(`${base}#hojas`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-hoja');
     // Filtro por región: su cuaderno, sus tres hojas y las generales; segundo toque, todo otra vez
     const contar = () => page.evaluate(() => ({
       cuadernos: [...document.querySelectorAll('.guia-hoja a[href*="cuaderno-"]')].map(a => a.getAttribute('href').match(/cuaderno-([^.]+)/)[1]),
@@ -6745,7 +6758,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuestHoja && r.cuestPapelViejo && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
