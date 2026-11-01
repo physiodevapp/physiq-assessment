@@ -51,7 +51,10 @@ export const GRUPOS_CUESTIONARIO = [
   { id: 'miembro_inferior', nombre: 'Miembro inferior', regiones: ['cadera', 'rodilla', 'tobillo_pie'] },
 ];
 
-const FRECUENCIA_2_SEMANAS = '0 = ningún día · 1 = varios días · 2 = más de la mitad de los días · 3 = casi todos los días';
+const FRECUENCIA_2_SEMANAS = '0 = nunca · 1 = varios días · 2 = más de la mitad de los días · 3 = casi cada día';
+
+// WOMAC: la hoja española rotula en femenino las casillas de rigidez (B) y capacidad funcional (C)
+const PALABRAS_WOMAC_FEM = { 0: 'Ninguna', 1: 'Poca', 2: 'Bastante', 3: 'Mucha', 4: 'Muchísima' };
 
 // FAAM: ítems de vida diaria que la validación española (Cervera-Garvi 2017) retiró
 const RETIRADOS_FAAM_SP = [2, 7, 13, 14, 18, 20];
@@ -67,8 +70,8 @@ export const CUESTIONARIOS = [
     leyenda: FRECUENCIA_2_SEMANAS,
     escala: { min: 0, max: 3 },
     items: [
-      { n: 1, t: 'Poco interés o placer en hacer cosas' },
-      { n: 2, t: 'Decaído, deprimido o sin esperanza' },
+      { n: 1, t: 'Poco interés o alegría por hacer cosas' },
+      { n: 2, t: 'Decaído, deprimido o desesperanzado' },
     ],
     interpretacion: [
       { si: { min: 3 }, etiqueta: 'Cribado positivo: completar el PHQ-9', nivel: 'medio' },
@@ -87,8 +90,8 @@ export const CUESTIONARIOS = [
     leyenda: FRECUENCIA_2_SEMANAS,
     escala: { min: 0, max: 3 },
     items: [
-      { n: 1, t: 'Poco interés o placer en hacer cosas' },
-      { n: 2, t: 'Decaído, deprimido o sin esperanza' },
+      { n: 1, t: 'Poco interés o alegría por hacer cosas' },
+      { n: 2, t: 'Decaído, deprimido o desesperanzado' },
       { n: 3, t: 'Problemas de sueño (dormir poco o demasiado)' },
       { n: 4, t: 'Cansancio o poca energía' },
       { n: 5, t: 'Poco apetito o comer en exceso' },
@@ -117,16 +120,16 @@ export const CUESTIONARIOS = [
     nombre: 'GAD-7',
     titulo: 'Síntomas de ansiedad',
     grupo: 'animo',
-    instrucciones: 'Últimas 2 semanas.',
+    instrucciones: 'Últimos 14 días (así lo dice la hoja española).',
     leyenda: FRECUENCIA_2_SEMANAS,
     escala: { min: 0, max: 3 },
     items: [
-      { n: 1, t: 'Nervioso, ansioso o con los nervios de punta' },
+      { n: 1, t: 'Nervioso, angustiado o muy tenso' },
       { n: 2, t: 'No poder dejar de preocuparse o controlarlo' },
       { n: 3, t: 'Preocuparse demasiado por distintas cosas' },
       { n: 4, t: 'Dificultad para relajarse' },
       { n: 5, t: 'Tan inquieto que cuesta quedarse quieto' },
-      { n: 6, t: 'Molestarse o irritarse con facilidad' },
+      { n: 6, t: 'Enfadarse o irritarse con facilidad' },
       { n: 7, t: 'Miedo de que pueda pasar algo terrible' },
     ],
     interpretacion: [
@@ -377,12 +380,12 @@ export const CUESTIONARIOS = [
       ...['Al andar en llano', 'Al subir o bajar escaleras', 'Por la noche en la cama', 'Sentado o tumbado', 'De pie']
         .map((t, i) => ({ n: i + 1, etiquetaN: `A${i + 1}`, seccion: 'A · Dolor', t })),
       ...['Al despertarse', 'Tras estar sentado, tumbado o en reposo']
-        .map((t, i) => ({ n: i + 6, etiquetaN: `B${i + 1}`, seccion: 'B · Rigidez', t })),
+        .map((t, i) => ({ n: i + 6, etiquetaN: `B${i + 1}`, seccion: 'B · Rigidez', t, palabras: PALABRAS_WOMAC_FEM })),
       ...['Bajar escaleras', 'Subir escaleras', 'Levantarse tras estar sentado', 'Estar de pie', 'Agacharse a coger algo del suelo',
         'Andar en llano', 'Entrar y salir del coche', 'Ir de compras', 'Ponerse medias o calcetines', 'Levantarse de la cama',
         'Quitarse medias o calcetines', 'Estar tumbado en la cama', 'Entrar y salir de la ducha o bañera', 'Estar sentado',
         'Sentarse y levantarse del retrete', 'Tareas domésticas pesadas', 'Tareas domésticas ligeras']
-        .map((t, i) => ({ n: i + 8, etiquetaN: `C${i + 1}`, seccion: 'C · Capacidad funcional (dificultad)', t })),
+        .map((t, i) => ({ n: i + 8, etiquetaN: `C${i + 1}`, seccion: 'C · Capacidad funcional (dificultad)', t, palabras: PALABRAS_WOMAC_FEM })),
     ],
     subescalas: [
       { id: 'dolor', nombre: 'Dolor', items: [1, 2, 3, 4, 5] },
@@ -423,7 +426,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'hos',
-    hoja: { casillas: 'palabras', orden: 'descendente', palabras: { 4: 'Ninguna dificultad', 3: 'Leve', 2: 'Moderada', 1: 'Extrema', 0: 'Incapaz' }, na: 'No responde' },
+    hoja: { casillas: 'palabras', orden: 'descendente', palabras: { 4: 'Ninguna dificultad', 3: 'Dificultad leve', 2: 'Dificultad moderada', 1: 'Dificultad extrema', 0: 'Incapaz de hacerlo' }, na: 'No responde' },
     nombre: 'HOS',
     titulo: 'Hip Outcome Score',
     grupo: 'cadera_rodilla',
@@ -544,7 +547,7 @@ export const CUESTIONARIOS = [
   // ─── Regionales: columna ──────────────────────────────────────────────────
   {
     id: 'odi',
-    hoja: { casillas: 'letras', nota: 'A = la primera frase del apartado en el cuestionario, B = la segunda… F = la última. Si ninguna te describe, deja la fila en blanco.', na: false },
+    hoja: { nota: 'Marca el mismo número que la frase que te describe en el cuestionario: 0 = la primera frase del apartado … 5 = la última. Si ninguna te describe, deja la fila en blanco.', na: false },
     nombre: 'Oswestry (ODI)',
     siglas: ['ODI', 'Oswestry'],
     titulo: 'Discapacidad por dolor lumbar (versión 1.0)',
@@ -589,7 +592,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'ndi',
-    hoja: { casillas: 'letras', nota: 'Marca la misma letra (A a F) que la frase que te describe en el cuestionario.', na: 'No conduzco' },
+    hoja: { casillas: 'letras', nota: 'A = la primera frase de la sección en el cuestionario, B = la segunda… F = la última (si tu hoja ya las marca con letras, la misma letra). Si no conduces por motivos ajenos al cuello, marca «No conduzco».', na: 'No conduzco' },
     nombre: 'NDI',
     titulo: 'Índice de discapacidad cervical',
     grupo: 'columna',
@@ -650,7 +653,6 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'ases',
-    hoja: { casillas: 'palabras', palabras: { 0: 'Imposible', 1: 'Mucha dificultad', 2: 'Cierta dificultad', 3: 'Sin dificultad' } },
     nombre: 'ASES',
     titulo: 'Hombro (parte del paciente)',
     grupo: 'hombro_codo',
