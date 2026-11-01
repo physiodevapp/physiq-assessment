@@ -176,7 +176,7 @@ El usuario aportó hojas españolas y se descargaron los anexos de las validacio
 | PRTEE | Hernández-Sánchez 2013 (aportada) | Coincide (15 ítems, 0–10 impreso). La hoja pide tachar lo que nunca se hace; la app pide todos |
 | S-LANSS | Aportada (de La Touche, coautor de la validación) | Coincide (7 ítems). El papel pone «a) NO» antes que «b) SÍ»: la hoja de respuestas también (`hoja.sino`) |
 
-Artículo en acceso abierto sin la hoja: GAD-7 (García-Campayo 2010), PHQ-9 (Muñoz-Navarro 2017), FAAM (Cervera-Garvi 2017). Sin hoja comprobada todavía: CADC, Kujala, VISA-P, FAAM, CAIT, IdFAI, LEFS (VISA-A: se usó el anexo de Hernández-Sánchez 2018).
+Artículo en acceso abierto sin la hoja: GAD-7 (García-Campayo 2010), PHQ-9 (Muñoz-Navarro 2017), FAAM (Cervera-Garvi 2017). Cotejados antes con el anexo de su artículo (consta en su `nota` o `fuente` de `data/cuestionarios.js`): CADC (Martín-Aragón 1999, anexo 1), Kujala (Gil-Gámez 2016, apéndice 2), VISA-P (Hernández-Sánchez 2011, apéndice), VISA-A (Hernández-Sánchez 2018) y LEFS (Cruz-Díaz 2014, apéndice 1). Sin hoja española comprobada: FAAM (orden de columnas tomado de la leyenda), CAIT (hoja aportada sin validación identificada) e IdFAI (etiquetas traducidas por nosotros).
 
 ## 6. Pendiente de revisión clínica
 
