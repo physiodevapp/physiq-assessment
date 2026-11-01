@@ -642,10 +642,10 @@ export const SIS_HIPERMOVILIDAD = {
     { id: 'hm_v_aire', hm: 'urgencia', urgencia: 'Posible neumotórax: urgencias hoy.', alerta: true,
       text: '¿Le ha faltado el aire de forma brusca, o le duele el pecho al respirar?',
       razonamiento: {
-        porque: 'El neumotórax espontáneo aparece en el 12 % de las personas con SED vascular, a menudo como primera manifestación; la causa probable es la rotura de pequeñas ampollas del pulmón (Byers 2017, p. 44).',
-        peso: 'Recurre con frecuencia y puede necesitar desde una aspiración con aguja hasta un drenaje torácico (Byers 2017, p. 42): ante la sospecha, urgencias hoy.',
-        fuentes: ['Byers 2017'],
-        citas: [`${HM_CITA.byers}, pp. 42 y 44.`]
+        porque: 'El neumotórax espontáneo aparece en el 12–18 % de las personas con SED vascular, a menudo como primera manifestación; la causa probable es la rotura de pequeñas ampollas del pulmón (Byers 2017, p. 44; Shalhub 2019, p. 798).',
+        peso: 'Recurre con frecuencia (en casi la mitad, Shalhub 2019, p. 798) y puede necesitar desde una aspiración con aguja hasta un drenaje torácico (Byers 2017, p. 42): ante la sospecha, urgencias hoy.',
+        fuentes: ['Byers 2017', 'Shalhub 2019'],
+        citas: [`${HM_CITA.byers}, pp. 42 y 44.`, 'Shalhub 2019, Am J Med Genet A 179(5):797–802, p. 798.']
       } },
     { id: 'hm_s_familia', hm: 'sospecha', hmPeso: 'mayor',
       text: '¿Algún familiar de primer grado con SED vascular, o con una rotura o disección arterial antes de los 40 años?',
@@ -666,10 +666,10 @@ export const SIS_HIPERMOVILIDAD = {
     { id: 'hm_s_neumo', hm: 'sospecha', hmPeso: 'menor',
       text: '¿Ha tenido algún neumotórax espontáneo?',
       razonamiento: {
-        porque: 'El neumotórax espontáneo es un criterio menor del SED vascular (Malfait 2017, p. 16); aparece en el 12 % de los afectados, a menudo como primera manifestación (Byers 2017, p. 44).',
-        peso: 'Malfait lo cuenta para estudiar el subtipo vascular solo junto con otros rasgos compatibles (p. 16): por sí solo es un hallazgo, sin derivación.',
-        fuentes: ['Malfait 2017', 'Byers 2017'],
-        citas: [`${HM_CITA.malfait}, p. 16.`, `${HM_CITA.byers}, p. 44.`]
+        porque: 'El neumotórax espontáneo es un criterio menor del SED vascular (Malfait 2017, p. 16); aparece en el 12–18 % de los afectados, a menudo como primera manifestación (Byers 2017, p. 44; Shalhub 2019, p. 798). En una serie de 96 pacientes, el neumotórax o hemotórax apareció hacia los 30 años, en el 82 % antes del diagnóstico y, de media, unos 5 años antes de la primera complicación arterial o intestinal; casi la mitad repitió (Shalhub 2019, pp. 798–800).',
+        peso: 'Malfait lo cuenta para estudiar el subtipo vascular solo junto con otros rasgos compatibles (p. 16): por sí solo es un hallazgo, sin derivación. La serie de Shalhub no midió cuánto predice el diagnóstico (Shalhub 2019, p. 801).',
+        fuentes: ['Malfait 2017', 'Byers 2017', 'Shalhub 2019'],
+        citas: [`${HM_CITA.malfait}, p. 16.`, `${HM_CITA.byers}, p. 44.`, 'Shalhub 2019, Am J Med Genet A 179(5):797–802, pp. 798–801.']
       } },
     { id: 'hm_s_piel', hm: 'sospecha', hmPeso: 'menor',
       text: '¿Le salen hematomas sin golpes, en sitios poco habituales (mejillas, espalda), o tiene la piel fina y translúcida, con las venas muy visibles?',
