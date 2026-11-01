@@ -115,6 +115,15 @@ test('lector: umbral (peligrosos < 0,5 %, ninguno en ítems de alerta, a revisar
   assert.equal(LC.resumirLecturas([cmp(840, 0, 160)]).supera, false);
   assert.equal(LC.resumirLecturas([cmp(300, 0)]).cotaPeligrosos95, 0.01, 'regla del tres');
   assert.equal(LC.resumirLecturas([]).supera, false);
+  // Las filas ambiguas de la hoja dadas por dudosas (ya dentro de «ok») no cuentan para el umbral, pero se informan aparte
+  const conAmbiguas = LC.resumirLecturas([{ ...cmp(900, 0, 100), ambiguas: 100 }]);
+  assert.equal(conAmbiguas.supera, true);
+  assert.equal(conAmbiguas.tasaRevisar, 0.1);
+  assert.equal(conAmbiguas.tasaRevisarTotal, 0.2);
+  const d = def('phq9');
+  const r = LC.compararLectura(d, LC.normalizarLectura(d, { items: { 4: { estado: 'dudoso', valor: 1 } } }), { 4: 'ambiguo' });
+  assert.equal(r.ambiguas, 1);
+  assert.equal(r.cuenta.dudoso, 0, 'una ambigua dada por dudosa no es un dudoso del lector');
 });
 
 test('lector: validación de las respuestas correctas anotadas a mano', () => {

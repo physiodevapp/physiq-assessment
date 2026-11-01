@@ -40,7 +40,7 @@
     }
   },
   "stop": "end_turn",
-  "ms": 3841,
+  "ms": 2972,
   "usage": {
     "input": 5367,
     "output": 171

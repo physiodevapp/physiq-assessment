@@ -172,7 +172,7 @@ for (const c of casos) {
       for (const cond of c.condiciones?.length ? c.condiciones : ['(sin anotar)']) ((porCondicion[m] ??= {})[cond] ??= []).push(cmp);
       const q = cmp.cuenta;
       const avisos = [r.stop && r.stop !== 'end_turn' ? `⚠ ${r.stop}` : '', !r.salida ? '⚠ SALIDA ILEGIBLE' : '', cmp.incoherentes ? `${cmp.incoherentes} incoherentes` : ''].filter(Boolean).join(' · ');
-      console.log(`  [${m} #${k + 1}] ok ${q.ok} · 🔴 ${q.peligroso} · dudosos ${q.dudoso} · ilegibles ${q.pendiente} · omitidos ${q.omitido}${cmp.coste ? ` · ${cmp.coste.toFixed(4)} $` : ''}${cmp.ms ? ` · ${(cmp.ms / 1000).toFixed(1)} s` : ''}${avisos ? ` · ${avisos}` : ''}`);
+      console.log(`  [${m} #${k + 1}] ok ${q.ok} · 🔴 ${q.peligroso} · dudosos ${q.dudoso} · ilegibles ${q.pendiente} · omitidos ${q.omitido}${cmp.ambiguas ? ` · ambiguas bien tratadas ${cmp.ambiguas}` : ''}${cmp.coste ? ` · ${cmp.coste.toFixed(4)} $` : ''}${cmp.ms ? ` · ${(cmp.ms / 1000).toFixed(1)} s` : ''}${avisos ? ` · ${avisos}` : ''}`);
       for (const p of cmp.porItem.filter(p => p.clase === 'peligroso')) {
         peligrosos.push({ m, caso: c.caso, ...p });
         console.log(`    🔴 ítem ${p.n}: correcta ${JSON.stringify(p.correcta)}, leído ${JSON.stringify(p.lectura?.valor)} (${p.motivo})`);
@@ -184,7 +184,7 @@ if (navegador) await navegador.close();
 
 // ── Resumen por cuestionario y modelo (peor pasada) ─────────────────────────
 const pct = x => `${(100 * x).toFixed(1).replace('.', ',')} %`;
-const linea = s => `${s.hojas} hojas · ${s.items} ítems · 🔴 ${s.peligroso} (${pct(s.tasaPeligrosos)}${s.cotaPeligrosos95 != null ? `; < ${pct(s.cotaPeligrosos95)} al 95 %` : ''})${s.peligrososAlerta ? ` · 🔴 en ítem de alerta: ${s.peligrososAlerta}` : ''} · a revisar ${pct(s.tasaRevisar)} (dudosos ${s.dudoso}, ilegibles ${s.pendiente}, omitidos ${s.omitido})`;
+const linea = s => `${s.hojas} hojas · ${s.items} ítems · 🔴 ${s.peligroso} (${pct(s.tasaPeligrosos)}${s.cotaPeligrosos95 != null ? `; < ${pct(s.cotaPeligrosos95)} al 95 %` : ''})${s.peligrososAlerta ? ` · 🔴 en ítem de alerta: ${s.peligrososAlerta}` : ''} · a revisar ${pct(s.tasaRevisar)} (dudosos ${s.dudoso}, ilegibles ${s.pendiente}, omitidos ${s.omitido})${s.ambiguas ? ` · más ${s.ambiguas} ambiguas de la hoja, dadas por dudosas: revisión total ${pct(s.tasaRevisarTotal)}` : ''}`;
 console.log('\n━━ Resumen por cuestionario (veredicto con la peor pasada)');
 console.log(`Umbral: 🔴 < ${pct(LC.UMBRAL.peligrosos)}, ninguno en ítems de alerta, a revisar ≤ ${pct(LC.UMBRAL.revisar)}.`);
 for (const m of modelos) {
@@ -200,4 +200,4 @@ for (const m of modelos) {
 }
 console.log('\n━━ Por condición de la foto (todas las pasadas)');
 for (const m of modelos) for (const [cond, cmps] of Object.entries(porCondicion[m] || {})) console.log(`  [${m}] ${cond}: ${linea(LC.resumirLecturas(cmps))}`);
-console.log('\n«a revisar» = dudosos + ilegibles + omitidos: el fisioterapeuta los completa a mano. 🔴 = leído mal y dado por bueno (el error peligroso).');
+console.log('\n«a revisar» = dudosos + ilegibles + omitidos, lo que añade el lector (es lo que cuenta para el umbral). Las filas ambiguas de la hoja dadas por dudosas no cuentan, pero el fisioterapeuta las revisa igual: «revisión total» las suma.\nEl fisioterapeuta completa a mano todo lo que hay que revisar. 🔴 = leído mal y dado por bueno (el error peligroso).');

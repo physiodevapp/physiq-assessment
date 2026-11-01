@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay una primera ronda con 2 hojas (PHQ-9 y ODI; ver «Mediciones»), que no basta para decidir nada. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay dos rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2, con las 6 del PHQ-9. Falta la ronda del ODI con 6 hojas, y nada está decidido. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
 
 ## Idea
 
@@ -32,6 +32,8 @@ Un botón «📷 Leer la hoja» dentro de la calculadora de cuestionarios (`docs
    - menos del 0,5 % de ítems peligrosos;
    - ninguno peligroso en un ítem con alerta de seguridad (el 9 del PHQ-9);
    - como mucho el 15 % de los ítems a revisar.
+
+6. **Las filas ambiguas de la hoja no cuentan para el «a revisar» del umbral, pero se informan aparte** (usuario, 2026-11). Las hojas de prueba las llevan a propósito (una o dos de cada 9–10 filas), así que contarlas mediría el diseño de la prueba, no al lector; el riesgo clínico ya lo cubre el 🔴 (una ambigua dada por clara basta para no superar). `compararLectura()` devuelve `ambiguas` (las dadas por dudosas o ilegibles) y `resumirLecturas()` añade `tasaRevisarTotal`; la herramienta imprime «revisión total», que es lo que el fisioterapeuta revisaría con esas hojas. Si en el paso 2 las marcas ambiguas resultan frecuentes en hojas reales, el problema sería la hoja o sus instrucciones.
 
 ## La hoja de respuestas
 
@@ -122,8 +124,23 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 - **Único 🔴:** Haiku, pasada 2, ODI fila 8 (marca entre C y D): la dio por «D» clara; en las otras dos pasadas, «dudoso (D)».
 - **Filas difíciles del ODI**, todos los modelos: la fila en blanco siempre en blanco; el tic, bien; la B rayada, D (Haiku, como dudoso); las dos marcas, siempre dudosas (con A o con C como mejor lectura); entre casillas, dudoso salvo el 🔴 de Haiku.
 - **PHQ-9:** perfecto en las 9 pasadas, también el ítem 9 (alerta).
-- **«A revisar» no cuenta las filas ambiguas** que el lector da por dudosas (`clasificarItem()` las cuenta como ok). Por eso Sonnet y Opus salen con un 0 % en el ODI aunque el fisioterapeuta revisaría a mano las filas 6 y 8 (20 % de la hoja). Si el umbral del 15 % debe incluirlas está pendiente de decidir (usuario).
+- **«A revisar» no cuenta las filas ambiguas** que el lector da por dudosas (`clasificarItem()` las cuenta como ok). Por eso Sonnet y Opus salen con un 0 % en el ODI aunque el fisioterapeuta revisaría a mano las filas 6 y 8 (20 % de la hoja). Decidido después: decisión 6.
 - **Lectura, sin decidir:** con 9 y 10 ítems sin 🔴, por la regla del tres la tasa real solo queda por debajo de un 33 % y un 30 % al 95 %, lejos del 0,5 %. Haiku ya falla en una marca ambigua; Sonnet y Opus no se distinguen, y Sonnet cuesta la mitad.
+
+### Ronda 2 (2026-11-01): PHQ-9 con 6 hojas, Sonnet y Opus
+
+- **Casos:** `phq9-01` a `phq9-06` (6 hojas distintas) y `phq9-01b` (otra foto de la hoja 01): 7 fotos, móvil del usuario. Condiciones: en la mano, girada 90° y curvada (02); algo inclinada, dos marcas en una fila (03); inclinada sobre fondo estampado, una marca entre casillas (04); sombra, una casilla rayada y otra marcada, tic (05); muy inclinada y curvada, solo círculos (06). El ítem 9 marcado distinto de 0 en 5 hojas.
+- **Ejecución:** `--cuestionario phq9 --modelo sonnet,opus --veces 3 --guardar` (Haiku fuera, decisión del usuario tras la ronda 1).
+
+| Modelo | 🔴 (peor pasada) | A revisar del lector | Revisión total (con ambiguas) | Veredicto | Coste por hoja |
+|---|---|---|---|---|---|
+| Sonnet | 0 de 63 en las 3 pasadas (< 4,8 % al 95 %) | 4,8 % | 7,9 % | ✓ (3 de 3 pasadas) | 0,016 $ |
+| Opus | 3 de 63 (4,8 %) | 1,6 % | 4,8 % | **✗** (2 de 3 pasadas) | 0,029 $ |
+
+- **Los 🔴 de Opus**, todos en una pasada de `phq9-02` (girada 90°, en la mano): leyó las filas 2–5 **desplazadas una fila** (la 2 en blanco, la 3 con el valor de la 2, la 4 con el de la 3, la 5, que está en blanco, con el de la 4) y se recolocó en la 6. Esa pasada tardó 2,5 s y costó 0,025 $, frente a 19 s y 0,059 $ de las otras dos sobre la misma foto, que la leyeron perfecta. Es el error más peligroso que hemos visto: valores verosímiles en la fila equivocada, sin ninguna duda.
+- **Sonnet**, ningún 🔴: en `phq9-02` dio por dudosas la fila 8 (círculo) en las 3 pasadas y la 4 en una, siempre con la lectura correcta como mejor opción; en `phq9-05`, la fila 4 (1 rayada, X en 3) como dudosa con 3 en las 3 pasadas. Las dos filas ambiguas (dos marcas, entre casillas), siempre como dudosas.
+- **Ítem 9 (alerta):** ningún 🔴 en ningún modelo.
+- **Lectura, sin decidir:** con 63 ítems por pasada sin 🔴, Sonnet queda por debajo de un 4,8 % al 95 %, aún lejos del 0,5 %. Opus no es mejor techo que Sonnet: su fallo de alineación de filas aparece en la foto girada, que es una condición realista (foto hecha con el móvil en horizontal).
 
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 
