@@ -6583,7 +6583,8 @@ async function checkGuia(browser, errors) {
     // desde cualquier página, el ✨ de la cabecera lleva a «Preguntar a la IA»
     await page.click('#guiaIABtn');
     await page.waitForSelector('#guiaPreguntaTexto');
-    r.iconoIA = (await page.evaluate(() => location.hash)) === '#preguntar';
+    r.iconoIA = (await page.evaluate(() => location.hash)) === '#preguntar'
+      && (await page.getAttribute('#guiaIABtn', 'aria-current')) === 'page';
     await page.click('[data-tipo-pregunta="ejercicio"]');
     await page.fill('#guiaPreguntaTexto', 'excéntricos en la tendinopatía rotuliana');
     await page.evaluate(() => document.getElementById('guiaPreguntaIr').addEventListener('click', e => e.preventDefault()));
@@ -6591,6 +6592,7 @@ async function checkGuia(browser, errors) {
     r.preguntaEjercicio = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href')).includes('Duda de prescripción de ejercicio: «excéntricos');
     // Plan de tratamiento: la función de la app con un formulario corto
     await page.goto(`${base}#plan`, { waitUntil: 'networkidle' });
+    r.iconoIA = r.iconoIA && (await page.getAttribute('#guiaIABtn', 'aria-current')) === null;
     await page.click('[data-plan="region"][data-valor="lumbar"]');
     await page.click('[data-plan="hip"]:not([disabled])');
     await page.click('[data-plan="irr"][data-valor="moderada"]');

@@ -53,6 +53,7 @@
   .guia-apariencia { display: flex; gap: 2px; margin-right: -6px; }
   .guia-apariencia .session-btn { min-width: 40px; min-height: 40px; text-transform: none; letter-spacing: 0; }
   .guia-apariencia a.session-btn { display: inline-flex; align-items: center; justify-content: center; color: inherit; text-decoration: none; }
+  .guia-apariencia a.session-btn[aria-current="page"] { color: var(--accent); }
   @media print { .guia-apariencia { display: none; } }
   .guia-intro { font-size: 0.82rem; color: var(--text2); margin-bottom: 12px; line-height: 1.5; }
   .guia-nav { position: sticky; top: 0; z-index: 20; background: var(--bg); margin: 0 -1rem 14px; padding: 8px 1rem; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 1px solid var(--border); }
