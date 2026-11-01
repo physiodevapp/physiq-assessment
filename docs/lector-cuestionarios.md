@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-11): **paso 2 en su rama**: `lector.js` (botón, aviso, foto, confirmación) hecho y probado con el worker simulado; falta la ruta `POST /leer-hoja` en physiq-report, y no debe llegar a `main` antes que ella. Paso 1, medición: La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay cuatro rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno y cada modelo por separado (ninguno supera los dos); la 4, con la lectura doble Sonnet + Opus, que supera los dos sin ningún 🔴. Nada está decidido: la estadística no alcanza el umbral. El usuario aprobó el paso 2 con la lectura doble (2026-11); las decisiones que quedan antes de usarlo con pacientes están en «Pendiente del usuario».
+Estado (2026-11): **paso 2 en su rama**: `lector.js` (botón, aviso, foto, confirmación) hecho y probado con el worker simulado; la ruta `POST /leer-hoja` está hecha en una rama de physiq-report, sin desplegar; esta rama no debe llegar a `main` antes que ella. Paso 1, medición: La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay cuatro rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno y cada modelo por separado (ninguno supera los dos); la 4, con la lectura doble Sonnet + Opus, que supera los dos sin ningún 🔴. Nada está decidido: la estadística no alcanza el umbral. El usuario aprobó el paso 2 con la lectura doble (2026-11); las decisiones que quedan antes de usarlo con pacientes están en «Pendiente del usuario».
 
 ## Idea
 
@@ -212,11 +212,13 @@ Aprobado tras la ronda 4: lectura doble Sonnet + Opus, solo PHQ-9 y ODI.
 
 ### Worker (physiq-report)
 
+Hecho en la rama `claude/clever-ptolemy-x351nt` de physiq-report (`workers/leer-hoja.js`, tests en `tests/worker.mjs`), sin fusionar. Orden al fusionar: primero physiq-report (su `main` despliega el worker), después physiq-assessment.
+
 Ruta nueva `POST /leer-hoja`, como `/verify`: licencia, Turnstile y `RL_REPORT`. Recibe `{ cuestionario, prompt, schema, fotos }` (JPEG en base64, como mucho 4 y de tamaño limitado; el esquema sin cadenas libres: todo `enum`), llama a Sonnet y a Opus a la vez con el mismo prompt, esquema (`output_config.format`) e imágenes que la medición, y devuelve `{ a, b }` (salida, `stop_reason`, `usage` de cada uno). No guarda ni registra la foto. La combinación la hace la app con `combinarLecturas()`, el código medido. Unos 0,05 $ por hoja.
 
 ### Pendiente del usuario antes de usarlo con pacientes
 
-1. **Validez del formato** (clínica): pasar el cuestionario con una hoja de respuestas aparte no es el formato validado.
+1. **Validez del formato — decidido (usuario, 2026-11):** se usan las hojas de respuestas de PhysiQ en vez de las oficiales, con un enlace al cuestionario oficial para leer las preguntas. Pendiente: qué enlace lleva cada hoja y dónde (en la hoja impresa, como QR, o en la app). El PHQ-9 es de libre uso (Pfizer); el ODI necesita licencia de Mapi (`docs/cuestionarios.md`, §2), así que su enlace depende de esa licencia.
 2. **Evidencia:** el 0,5 % no está demostrado (ronda 4: < 4,3–4,8 % al 95 %). Hasta decidirlo, el botón dice «(en prueba)».
 3. **Hoja oficial del PHQ-9 en español:** comprobar que imprime los números 0–3 (decisión 4). El ODI usa letras de posición.
 4. **Cuenta del worker:** de qué organización es su clave (si es la vinculada a los créditos del plan Max, los informes con IA y el lector comparten saldo) y revisar las condiciones comerciales de la API y la protección de datos de salud.
