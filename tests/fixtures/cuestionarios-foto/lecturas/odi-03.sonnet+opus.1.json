@@ -45,10 +45,10 @@
       }
     },
     "stop": "end_turn",
-    "ms": 4785,
+    "ms": 6010,
     "usage": {
       "input": 5699,
-      "output": 549
+      "output": 614
     }
   },
   "b": {
@@ -97,11 +97,11 @@
       }
     },
     "stop": "end_turn",
-    "ms": 16207,
+    "ms": 14913,
     "usage": {
       "input": 5699,
-      "output": 1340
+      "output": 1164
     }
   },
-  "ms": 16207
+  "ms": 14913
 }

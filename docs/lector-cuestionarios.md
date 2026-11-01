@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay tres rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno. Ningún modelo supera los dos cuestionarios, y nada está decidido. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay cuatro rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno y cada modelo por separado (ninguno supera los dos); la 4, con la lectura doble Sonnet + Opus, que supera los dos sin ningún 🔴. Nada está decidido: la estadística no alcanza el umbral. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
 
 ## Idea
 
@@ -171,11 +171,19 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
   Sonnet + Opus quita los 🔴 de los dos en las 3 pasadas, a cambio de más filas a revisar y de pagar las dos lecturas (unos 0,05 $ por hoja). Dos lecturas de Sonnet no bastan: su error del ODI es estable. Es solo una simulación con estas 14 fotos; habría que medirla como tal.
 - **La estadística sigue sin alcanzar el umbral:** sin 🔴 en 63–70 ítems, la tasa real solo queda por debajo de un 4,3–4,8 % al 95 %, no del 0,5 %.
 
-### Ronda 4 (2026-11-01, interrumpida): lectura doble Sonnet + Opus
+### Ronda 4 (2026-11-01): lectura doble Sonnet + Opus, PHQ-9 y ODI con 6 hojas
 
-- **Qué es:** `--modelo sonnet+opus` lee cada foto con los dos modelos a la vez y deja dudosa toda fila en la que no coinciden (`combinarLecturas()`, `lib/lector-cuestionarios.js`; test unitario). Se guarda como `<caso>.sonnet+opus.<n>.json` con las dos lecturas.
-- **Interrumpida** por falta de saldo en la cuenta de la API a mitad de la medición. Hechos: `phq9-01`, `01b`, `02`, `03` y `odi-01`, `01b`, `02` (3 pasadas cada uno) y `odi-03` (1 pasada). Faltan `phq9-04` a `06`, `odi-03` (pasadas 2 y 3) y `odi-04` a `06`. Sin veredicto hasta completarla.
-- **Lo que ya se ve, sin decidir:** ningún 🔴 en lo medido (66 ítems por pasada en 7–8 fotos). Las dos fotos donde fallaron los modelos sueltos quedan cubiertas: `odi-01b` fila 8 (el «D» estable de Sonnet) sale dudosa porque Opus discrepa, y en `phq9-02` (la foto girada) las filas en desacuerdo pasan a dudosas. Coste: unos 0,04–0,07 $ por hoja.
+- **Qué es:** `--modelo sonnet+opus` lee cada foto con los dos modelos a la vez y deja dudosa toda fila en la que no coinciden (`combinarLecturas()`, `lib/lector-cuestionarios.js`; test unitario). Se guarda como `<caso>.sonnet+opus.<n>.json` con las dos lecturas. Las mismas 14 fotos de las rondas 2 y 3, 3 pasadas. Se interrumpió una vez por falta de saldo en la API y se completó tras vincular los créditos del plan Max del usuario.
+
+| Cuestionario | 🔴 (peor pasada) | A revisar del lector | Revisión total (con ambiguas) | Veredicto | Coste por hoja |
+|---|---|---|---|---|---|
+| PHQ-9 (7 fotos, 63 ítems) | 0 en las 3 pasadas (< 4,8 % al 95 %) | 4,8 % | 7,9 % | ✓ (3 de 3 pasadas) | 0,05 $ de media (las dos lecturas) |
+| ODI (7 fotos, 70 ítems) | 0 en las 3 pasadas (< 4,3 % al 95 %) | 11,4 % | 21,4 % | ✓ (3 de 3 pasadas) | |
+
+- **Los fallos de cada modelo suelto quedan cubiertos:** `odi-01b` fila 8 (el «D» estable de Sonnet) sale dudosa porque Opus discrepa; en `phq9-02` (girada, donde Opus desplazó filas) las filas en desacuerdo pasan a dudosas.
+- **Un fallo nuevo que la lectura doble atrapa, pero que importa para el paso 2:** en `odi-05` (girada 90°), pasada 2, Sonnet leyó las filas 7–9 una casilla a la izquierda (C, D, B en vez de D, E, C) sin dudar; Opus las leyó bien. Las tres filas salen dudosas, pero con la lectura de Sonnet como «mejor lectura» propuesta, que es la equivocada. **De las 3 + 6 + 9 + 2 filas dudosas de toda la ronda, son las únicas con la propuesta mal.** Si en la pantalla de confirmación una fila en desacuerdo llega con una casilla ya marcada y el fisioterapeuta solo pulsa «Confirmar», el error pasa. Para el paso 2: en una fila en desacuerdo, enseñar las dos lecturas y no marcar ninguna (pendiente de decidir, usuario).
+- **«Revisión total» del ODI, 21,4 %:** la mitad son las filas ambiguas puestas a propósito en las hojas (decisión 6); la otra, filas en desacuerdo, sobre todo en las fotos giradas 90° y 45°.
+- **Lectura, sin decidir:** la lectura doble es la única combinación que supera los dos cuestionarios en las 3 pasadas. La estadística sigue lejos del umbral: sin 🔴 en 63–70 ítems, la tasa real solo queda por debajo de un 4,3–4,8 % al 95 %, no del 0,5 %; para eso harían falta unos 600 ítems sin 🔴 por cuestionario.
 
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 

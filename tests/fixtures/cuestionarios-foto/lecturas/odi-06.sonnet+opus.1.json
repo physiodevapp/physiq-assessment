@@ -1,0 +1,107 @@
+{
+  "a": {
+    "salida": {
+      "items": {
+        "1": {
+          "estado": "marcado",
+          "valor": "B"
+        },
+        "2": {
+          "estado": "marcado",
+          "valor": "C"
+        },
+        "3": {
+          "estado": "marcado",
+          "valor": "E"
+        },
+        "4": {
+          "estado": "dudoso",
+          "valor": "C"
+        },
+        "5": {
+          "estado": "marcado",
+          "valor": "C"
+        },
+        "6": {
+          "estado": "marcado",
+          "valor": "B"
+        },
+        "7": {
+          "estado": "marcado",
+          "valor": "C"
+        },
+        "8": {
+          "estado": "marcado",
+          "valor": "D"
+        },
+        "9": {
+          "estado": "marcado",
+          "valor": "C"
+        },
+        "10": {
+          "estado": "dudoso",
+          "valor": "E"
+        }
+      }
+    },
+    "stop": "end_turn",
+    "ms": 17131,
+    "usage": {
+      "input": 5699,
+      "output": 1941
+    }
+  },
+  "b": {
+    "salida": {
+      "items": {
+        "1": {
+          "estado": "marcado",
+          "valor": "B"
+        },
+        "2": {
+          "estado": "marcado",
+          "valor": "C"
+        },
+        "3": {
+          "estado": "marcado",
+          "valor": "E"
+        },
+        "4": {
+          "estado": "dudoso",
+          "valor": "C"
+        },
+        "5": {
+          "estado": "marcado",
+          "valor": "C"
+        },
+        "6": {
+          "estado": "marcado",
+          "valor": "B"
+        },
+        "7": {
+          "estado": "marcado",
+          "valor": "C"
+        },
+        "8": {
+          "estado": "dudoso",
+          "valor": "D"
+        },
+        "9": {
+          "estado": "dudoso",
+          "valor": "C"
+        },
+        "10": {
+          "estado": "marcado",
+          "valor": "E"
+        }
+      }
+    },
+    "stop": "end_turn",
+    "ms": 21017,
+    "usage": {
+      "input": 5699,
+      "output": 1794
+    }
+  },
+  "ms": 21017
+}
