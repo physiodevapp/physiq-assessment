@@ -172,10 +172,11 @@ El usuario aportó hojas españolas y se descargaron los anexos de las validacio
 | DN4 | Pérez 2007, Additional file 1 | Coincide (10 ítems, Sí/No) |
 | iHOT-12 | González-de-la-Flor 2022, Supplementary S1 | Coincide (12 líneas de 100 mm; P9 «Esto no me parece relevante») |
 | TSK-11 | TSK-11SV de Gómez-Pérez, López-Martínez y Ruiz-Párraga 2011 (aportada) | Coincide (11 ítems en el mismo orden, 1–4 impreso, ninguno invertido) |
+| FABQ | Fundación Kovacs (aportada; «libre para su uso clínico») | Coincide (16 frases en el mismo orden, 0–6 impreso; la hoja no trae cómo se puntúa) |
 | PRTEE | Hernández-Sánchez 2013 (aportada) | Coincide (15 ítems, 0–10 impreso). La hoja pide tachar lo que nunca se hace; la app pide todos |
 | S-LANSS | Aportada (de La Touche, coautor de la validación) | Coincide (7 ítems). El papel pone «a) NO» antes que «b) SÍ»: la hoja de respuestas también (`hoja.sino`) |
 
-Artículo en acceso abierto sin la hoja: GAD-7 (García-Campayo 2010), PHQ-9 (Muñoz-Navarro 2017), FAAM (Cervera-Garvi 2017). Sin hoja comprobada todavía: FABQ, CADC, Kujala, VISA-P, FAAM, CAIT, IdFAI, LEFS (VISA-A: se usó el anexo de Hernández-Sánchez 2018).
+Artículo en acceso abierto sin la hoja: GAD-7 (García-Campayo 2010), PHQ-9 (Muñoz-Navarro 2017), FAAM (Cervera-Garvi 2017). Sin hoja comprobada todavía: CADC, Kujala, VISA-P, FAAM, CAIT, IdFAI, LEFS (VISA-A: se usó el anexo de Hernández-Sánchez 2018).
 
 ## 6. Pendiente de revisión clínica
 
