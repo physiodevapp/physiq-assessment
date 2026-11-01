@@ -77,7 +77,7 @@ Cuatro lectores de esta sesión leyeron las fuentes y devolvieron notas con cita
 ### Salvedades de lectura
 
 - **Las posiciones de tratamiento en la camilla** (prono, supino) no las trata ninguna fuente. El supino aparece solo para el ejercicio (OMS, Mottola 2018, ACOG 804) y para el sueño (NG201).
-- **El thrust en el embarazo**: un solo ensayo piloto de 15 mujeres (Peterson 2012, citado en la Cochrane de 2015) y la opinión graduada C de Clinton 2017. Ver T7.
+- **El thrust en el embarazo** (*actualizado en la revisión de fuentes 2026-11*: además, Gausel 2017, ensayo de 56 mujeres con dolor de cintura pélvica, 24 con thrust en un paquete con otras técnicas, sin diferencias y con un registro pobre de efectos adversos): un solo ensayo piloto de 15 mujeres (Peterson 2012, citado en la Cochrane de 2015) y la opinión graduada C de Clinton 2017. Ver T7.
 - **Los síntomas de la trombosis en la embarazada**: en la tanda 1 no estaban en ninguna fuente leída como criterio de derivación (NG158 la excluye); resuelto con el RCOG en la tanda 2 (U1). ACOG 804 solo pone el dolor o la hinchazón de pantorrilla entre los signos para parar el ejercicio. En el posparto sí están (NG194, NG192).
 - **La Cochrane de Woodley 2020**: en PMC solo el resumen; leída entera del PDF que pasó el usuario en el cierre (W1–W2).
 - **Tanda 1 (sección E)**: en Simonds 2022 las tablas 11, 12 y 14 salieron desordenadas en la extracción; ninguna cita de este documento sale de ellas. Las LR que calcula Clinton 2017 (con SPSS, a partir de otros estudios) no se proponen para la puntuación.
