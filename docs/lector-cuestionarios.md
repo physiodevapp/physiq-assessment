@@ -30,7 +30,7 @@ Un botón «📷 Leer la hoja» dentro de la calculadora de cuestionarios (`docs
    - La casilla N/A lleva el rótulo del papel: «No responde» en el HOS, «No conduzco» en el ítem de conducir del NDI; el ODI no la lleva (su hoja imprime 0–5 y quien no se identifica con ninguna frase deja la fila en blanco, y el fisioterapeuta pone N/A).
    - Se define en `hoja` (`data/cuestionarios.js`); no cambia cómo puntúa la calculadora. El lector devuelve el rótulo de la casilla y `casillasItem()` lo traduce al valor.
    - **Comprobado con la hoja española (2026-11):** PHQ-9 y GAD-7 (Pfizer, «Spanish for Spain»), DASH (Rosales 2002), PCS, KOOS, WOMAC, Roland-Morris, ODI, NDI (anexo de Kovacs 2008), HOS (anexo de Seijas 2014, columnas en el orden de la app), SPADI, ASES, Örebro, DN4 e iHOT-12 (anexos), TSK-11SV (1–4 impreso), FABQ (Fundación Kovacs, 0–6 impreso), PRTEE (Hernández-Sánchez 2013) y S-LANSS (sus casillas «a) No» y «b) Sí», en ese orden). Ver `docs/cuestionarios.md`, «Hojas oficiales comprobadas».
-   - **Por comprobar con la hoja española:** el orden de las columnas del FAAM y que el LEFS imprima los números en el papel.
+   - **Por comprobar con la hoja española:** el orden de las columnas del FAAM. El LEFS imprime 0–4 (apéndice 1 de Cruz-Díaz 2014, revisado en 2026-11).
 5. **Umbral aceptado** (usuario, 2026-10). Lo comprueba `UMBRAL`, en `lib/lector-cuestionarios.js`; un cuestionario tiene lector solo si cumple las tres condiciones en la peor pasada:
    - menos del 0,5 % de ítems peligrosos;
    - ninguno peligroso en un ítem con alerta de seguridad (el 9 del PHQ-9);
@@ -111,7 +111,7 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 
-- **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del FAAM; números impresos en el LEFS). Si una difiere, se cambia su `hoja` y se regenera.
+- **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del FAAM). Si una difiere, se cambia su `hoja` y se regenera.
 - **Validez del formato:** resuelto con la decisión 1 revisada (2026-11): el paciente rellena el original.
 - **Leer originales:** adaptar `promptLectura()` y la herramienta a fotos del cuestionario original (sin marcas de esquina, varias páginas, maqueta de cada hoja) y medirlo antes que la hoja de respuestas.
 - **Diseño del paso 2:** la ruta nueva del worker (physiq-report), el botón, la pantalla de confirmación, el aviso de privacidad, las pruebas y el smoke. Se explica al usuario antes de escribirlo.

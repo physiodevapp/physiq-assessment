@@ -174,6 +174,7 @@ El usuario aportó hojas españolas y se descargaron los anexos de las validacio
 | TSK-11 | TSK-11SV de Gómez-Pérez, López-Martínez y Ruiz-Párraga 2011 (aportada) | Coincide (11 ítems en el mismo orden, 1–4 impreso, ninguno invertido) |
 | FABQ | Fundación Kovacs (aportada; «libre para su uso clínico») | Coincide (16 frases en el mismo orden, 0–6 impreso; la hoja no trae cómo se puntúa) |
 | CAIT | CAIT-Sv, Rodríguez-Fernández 2015, apéndice 2 (artículo aportado) | Coincide en puntos y orden. Etiquetas de la app pasadas a su redacción. La hoja «Cuestionario CAIT» sin autoría que circula tiene los mismos puntos pero otra redacción en las preguntas 5 y 6: usar la CAIT-Sv |
+| LEFS | Cruz-Díaz 2014, apéndice 1 (artículo aportado) | Coincide; imprime 0–4 en cada actividad y «Puntuación __/80» |
 | CADC | Martín-Aragón 1999, anexo 1 (artículo aportado) | Coincide: 19 ítems en tres bloques (8, 6 y 5) en el orden de la app, escala 0–10 impresa. El artículo no da regla de puntuación ni corte (la media 0–10 es elección de la app, ya anotada) |
 | PRTEE | Hernández-Sánchez 2013 (aportada) | Coincide (15 ítems, 0–10 impreso). La hoja pide tachar lo que nunca se hace; la app pide todos |
 | S-LANSS | Aportada (de La Touche, coautor de la validación) | Coincide (7 ítems). El papel pone «a) NO» antes que «b) SÍ»: la hoja de respuestas también (`hoja.sino`) |
