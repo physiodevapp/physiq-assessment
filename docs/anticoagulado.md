@@ -75,6 +75,8 @@ Leídas con su texto completo (cuerpo y tablas; no las figuras-imagen ni los sup
 | `Dalrymple 2022` | Revisión retrospectiva de 31 hemartros de rodilla con anticoagulantes orales | Observacional | Frecuencia, manejo, aspirar si hay duda |
 | `Brooker 2020`, `Nemunaitis 2022`, `Ogrodnik 2021` | Síndrome compartimental con anticoagulantes: dos casos con apixabán y una RS de 19 casos del miembro superior | Casos | Dolor desproporcionado, dolor al estiramiento pasivo, fasciotomía |
 | `Bahit 2017` | Análisis post hoc de ARISTOTLE (n = 18 140), Heart | Moderado | Dónde sangran los sangrados no mayores; no son «menores» sin más |
+| `Bassand 2021` | Registro GARFIELD-AF, 52 032 pacientes, un tercio sin anticoagulante (Blood Adv) | Bajo-moderado | Más muerte tras un sangrado no mayor (HR 2,59), sobre todo por otras enfermedades; añadida en la revisión de fuentes 2026-11 |
+| `Meyre 2022` | Dos cohortes suizas, 3277 anticoagulados, sangrados adjudicados (Eur Heart J) | Moderado | El sangrado no mayor no se asoció a ictus, infarto o muerte (HR 0,94); añadida en la revisión de fuentes 2026-11 |
 | `Tran 2025` | Guía australiana y neozelandesa de anticoagulantes directos, Intern Med J | Consenso con GRADE | Definición de sangrado y manejo |
 | `Mameli 2025`, `Ghosh 2026` **(registro)** | Ya leídas: hematoma muscular espontáneo y hematoma epidural con anticoagulantes directos | — | Lo que dice `data/farmacos.js` |
 

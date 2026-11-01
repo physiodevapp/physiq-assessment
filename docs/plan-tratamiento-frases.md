@@ -373,7 +373,7 @@ Regiones periféricas:
   ↳ **redacción propia**
 - [ ] «Da el pecho: mejor dar el pecho o sacarse leche antes del ejercicio, por comodidad (Davenport 2025).»  
   ↳ **redacción propia**
-- [ ] «Embarazo o posparto: la terapia manual, como complemento y nunca sola; como mucho, para probar el alivio en pocas sesiones (Hall 2016; Simonds 2022; Vleeming 2008, nivel D). Del thrust en el embarazo solo hay un ensayo piloto de 15 mujeres sin efectos adversos (Liddle y Pennick 2015): no basta para decir que sea seguro.»  
+- [ ] «Embarazo o posparto: la terapia manual, como complemento y nunca sola; como mucho, para probar el alivio en pocas sesiones (Hall 2016; Simonds 2022; Vleeming 2008, nivel D). Del thrust en el embarazo solo hay dos ensayos pequeños, sin efectos adversos graves registrados pero con un registro pobre (Liddle y Pennick 2015; Gausel 2017): no basta para decir que sea seguro.»  
   ↳ **redacción propia**
 - [ ] «Sacroilíaca en el embarazo o el posparto: primero información (no es peligroso y probablemente mejorará) y ejercicio individualizado, o estabilización individualizada tras el parto (Vleeming 2008, nivel C); el cinturón, para probar el alivio por periodos cortos (Vleeming 2008, nivel D; NICE NG201, 1.4.15).»  
   ↳ **redacción propia**

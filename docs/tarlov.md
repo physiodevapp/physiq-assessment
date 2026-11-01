@@ -89,7 +89,7 @@ Salvedades de lectura:
   - **No distinguen**: el Valsalva (37 % frente a 29 %), el dolor nocturno (72 % frente a 76 %), la urgencia urinaria y la incontinencia urinaria. Los autores lo explican: el Valsalva sube la presión dentro del canal y también dentro del disco, así que agrava los dos.
   - En Hulens 2025 (sin control), el 93 % empeoraba sentada y el 62 % con Valsalva.
 - **Vejiga, intestino y función sexual**:
-  - urgencia (54 %) y frecuencia (48 %) urinarias, y urgencia con incontinencia en el 31 %, frente al 1–7 % de la población general (Baker 2018);
+  - urgencia (54 %) y frecuencia (48 %) urinarias, y urgencia con incontinencia en el 31 %, frente al 1–7 % de la población general (Baker 2018); *revisión de fuentes 2026-11*: Hentzen 2023 (65 mujeres de una unidad de neuro-urología, leído entero) encontró la incontinencia de urgencia menos frecuente con lesión de las raíces sacras medida con neurofisiología, y cita un 40 % de incontinencia de urgencia en mujeres de unos 50 años (Aoki 2017, no leído), así que la comparación con la población general es dudosa;
   - en la cohorte de Murphy (213 pacientes): vejiga 43 %, intestino 29 %, función sexual 43 %, tono del esfínter anal reducido 29 %;
   - las raíces S2–S4 llevan la inervación de la vejiga, el recto y los órganos sexuales, y una lesión de un solo lado puede dar síntomas en los dos (Paredes Mogica 2023, p. 377).
 - **Signos** (cohorte de Murphy, en Murphy 2023, tabla 2):
