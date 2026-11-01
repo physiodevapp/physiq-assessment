@@ -7,10 +7,14 @@
 import '../../tests/dom-shim.mjs';
 import { readFileSync } from 'node:fs';
 
-const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } = await import('../../data.js');
+const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES, ZONAS_SINTOMA } = await import('../../data.js');
+const SINT = await import('../../lib/sintomas.js');
+const PLAN = await import('../../data/plan-tratamiento.js');
+const { escalonB } = await import('../../lib/plan-tratamiento.js');
 const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
 const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
+const { numeroHipotesis } = await import('../../lib/esquemas.js');
 const { HOJAS_TEJIDO, urlTejidos, urlRuta, datosHojaTejido } = await import('../../lib/esquemas.js');
 const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
 const { posicionDia, tieneBarra } = await import('../../lib/tejidos.js');
@@ -19,10 +23,18 @@ const { qrSVG } = await import('./qr.mjs');
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const { ITEMS_IRRITABILIDAD, ITEM_IMPACTO, TEXTOS_IRRITABILIDAD } = await import('../../data/irritabilidad.js');
 const { reglaIrritabilidad } = await import('../../lib/irritabilidad.js');
+const { BANDERAS_FASE1, TEXTOS_FASE1, NIVELES_PSICO, PREGUNTAS_PSICO, RESPUESTAS_PSICO } = await import('../../data/fase1.js');
 const { BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercicio.js');
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
+const POSQ = await import('../../lib/posquirurgico.js');
+const { HIP_POSQUIRURGICA } = await import('../../data/comun.js');
+const { ORDEN_REGIONES } = await import('../../lib/esquemas.js');
+// Formulario del paciente: la cara común y la de cada región (los mismos esquemas que pinta formulario.js)
+const FORMULARIOS = { comun: (await import('../../formularios/comun.js')).default };
+for (const r of ORDEN_REGIONES) FORMULARIOS[r] = (await import(`../../formularios/${r}.js`)).default;
+const { numerosFormulario, refsPasoFormulario, textoRefs } = await import('../../lib/formulario-numeros.js');
 
 // 100 px: con la huella en la dirección el QR tiene 49 módulos; aun a la escala mínima (0,75–0,8)
 // queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
@@ -50,7 +62,7 @@ const CSS = `
   .aviso { border: 1.5px solid #d0342c; background: #fde8e8; color: #b42318; border-radius: 8px; padding: 6px 10px; font-weight: bold; margin-bottom: 8px; }
   .aviso div { font-weight: normal; }
   .pie { color: #6b7280; font-size: 9px; margin-top: 8px; }
-  .chip { display: inline-block; border-radius: 10px; padding: 0 6px; font-size: 9px; font-weight: bold; }
+  .chip { display: inline-block; border-radius: 10px; padding: 2.5px 6px; line-height: 1; text-box: trim-both cap alphabetic; vertical-align: 0.5px; font-size: 9px; font-weight: bold; }
   .urg { background: #d0342c; color: #fff; } .alerta { background: #fff1dc; color: #9a5b00; }
   .cab-hoja { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 6px; }
   .cab-txt { flex: 1; min-width: 0; }
@@ -58,7 +70,7 @@ const CSS = `
   .qr-guia svg { display: block; }
   .autoria { display: block; color: #6b7280; }
   .qr-huella { display: block; margin-top: 2px; font-family: monospace; font-size: 7.5px; color: #6b7280; }
-  .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 18px; padding: 0 4px; }
+  .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; padding: 0 4px; }
 `;
 
 // Ajuste de páginas de lista (cribado, confirmación): cada .pagina con su .pie-fijo; si una
@@ -139,7 +151,7 @@ export function htmlCribado(region) {
       <span class="ley"><span class="chip urg">URGENCIA</span> derivar hoy</span>
       <span class="ley"><span class="chip der">DERIVACIÓN</span> valoración médica, no urgente</span>
       <span class="ley"><span class="cond">gris</span> cuándo aparece la pregunta</span>
-      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Preguntas literales de la app; las banderas rojas y amarillas de cada sistema están en la app.</span>
+      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Las preguntas son las de la app, literales; las banderas rojas y amarillas, las zonas de dolor referido y el impacto en el descanso y el ejercicio de cada sistema, en la guía (QR).</span>
       <span class="gen">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</span></div>`;
   const W = 794, H = 1123;
   return `<style>${CSS}
@@ -161,7 +173,7 @@ export function htmlCribado(region) {
     li.qurg { color: #b42318; font-weight: bold; }
     li.qder { color: #9a4a00; }
     .chip.der { background: #f59e0b; color: #fff; }
-    .cond { display: inline-block; font-size: 8.5px; font-weight: normal; font-style: italic; color: #4b5563; background: #f1f5f9; border-radius: 6px; padding: 0 5px; }
+    .cond { display: inline-block; font-size: 8.5px; font-weight: normal; font-style: italic; color: #4b5563; background: #f1f5f9; border-radius: 6px; padding: 2px 5px; line-height: 1; text-box: trim-both cap alphabetic; }
     .crit { margin-top: 4px; border-top: 1px dashed #94a3b8; padding-top: 4px; font-size: 9.5px; }
     .pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 3px 14px; border-top: 1px solid #cbd5e1; padding-top: 5px; font-size: 9.5px; }
     .pie-fijo .ley { display: inline-flex; align-items: center; gap: 4px; }
@@ -179,7 +191,7 @@ export function htmlCribado(region) {
   </div>
   ${especiales.length ? `<div class="pagina especial" data-grupo="especiales">
     <div class="grupo">Condiciones especiales · ${NOMBRES[region]}</div>
-    <div class="grupo-sub">Estos sistemas solo aparecen en la fase 2 si en la fase 1 está marcada su tarjeta (o el mecanismo «Post-quirúrgico»). Si no, no se preguntan.</div>
+    <div class="grupo-sub">Solo se preguntan si el paciente tiene la condición (en la app, su tarjeta de la fase 1 marcada, o el mecanismo «Post-quirúrgico»). La escala de Beighton, la sospecha del subtipo vascular, la prueba de bipedestación y la regla de la tensión en el embarazo se calculan en la guía (QR).</div>
     <div class="cols">${especiales.map(seccion).join('')}</div>
     ${pie}
   </div>` : ''}
@@ -211,6 +223,7 @@ const CSS_A4 = `
     .preg { font-size: 13px; line-height: 1.25; }
     .dops { margin-top: 5px; gap: 3px; font-size: 11.5px; }
     .dop .hip, .dop .nada, .dop .der { padding: 1px 5px; font-size: 11px; }
+    .dop .nb { margin-top: -1.1px; }
     .resp { margin-top: 8px; }
     .rt { display: none; }
     .op { grid-template-columns: 1fr 14px 1fr; margin-bottom: 5px; }
@@ -218,7 +231,7 @@ const CSS_A4 = `
     .opt b { font-size: 11.5px; } .opt span { font-size: 10px; line-height: 1.2; }
     .fl { font-size: 12px; }
     .hip { gap: 4px; border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 11px; line-height: 1.2; margin: 1px 0; }
-    .nb { min-width: 18px; height: 18px; border-radius: 9px; font-size: 9.5px; padding: 0 3px; }
+    .nb { min-width: 18px; height: 18px; border-radius: 9px; font-size: 9.5px; padding: 0 3px; margin-top: -2.95px; }
     .der { border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 9.5px; margin: 1px 0; }
     .der span { font-size: 9.5px; line-height: 1.2; }
     .ruta { border-width: 1.5px; border-radius: 7px; padding: 3px 6px; font-size: 9.5px; }
@@ -280,7 +293,9 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
   const cajaPaso = (id, desvio) => {
     const i = ids.indexOf(id), st = steps[i];
     const lineas = desvio ? `<div class="dops">${st.options.map(o => `<div class="dop"><b>${esc(corto(o))}</b> → ${resultado(o)}</div>`).join('')}</div>${vueltaDesvio(id)}` : '';
-    return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}"><div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}</span></div>${lineas}</div>`;
+    // Preguntas del formulario del paciente que tocan este paso (lo que la app pone en «📝 Refiere el paciente»)
+    const fp = textoRefs(refsPasoFormulario(FORMULARIOS.comun, FORMULARIOS[region], id));
+    return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}"><div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}${fp ? ` <span class="fpref">📝 ${fp}</span>` : ''}</span></div>${lineas}</div>`;
   };
   const respuestas = (id, sigPrincipal) => {
     const i = ids.indexOf(id);
@@ -355,11 +370,15 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .paso { border: 2.5px solid #3567d6; background: #eaf1ff; border-radius: 14px; padding: 10px 12px; }
     .paso.desv { width: 330px; }
     .cab { display: flex; gap: 9px; align-items: flex-start; }
-    .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
+    /* Cifras y chips centrados por la altura de las mayúsculas (text-box: trim-both cap alphabetic + align-content), no por la línea del párrafo, que guarda sitio para los descendentes y las dejaba altas */
+    .badge { flex: none; min-width: 32px; height: 32px; border-radius: 16px; background: #3567d6; color: #fff; font-weight: bold; font-size: 14px; display: block; text-align: center; align-content: center; text-box: trim-both cap alphabetic; padding: 0 5px; line-height: 1; }
     .preg { font-size: 15.5px; font-weight: bold; line-height: 1.3; }
+    .fpref { font-size: 0.72em; font-weight: normal; color: #475569; white-space: nowrap; }
     .dops { margin-top: 8px; display: grid; gap: 4px; font-size: 11.5px; }
     .dop { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
     .dop .hip, .dop .nada, .dop .der { padding: 2px 6px; font-size: 11px; }
+    /* En los desvíos el nombre cabe en una línea: círculo centrado en la píldora */
+    .dop .hip { align-items: center; } .dop .nb { margin-top: -1.5px; }
     .dop .der span { display: none; }
     .resp { margin-top: 14px; }
     .rt { font-size: 11.5px; font-weight: bold; color: #6b7280; margin-bottom: 4px; }
@@ -368,8 +387,10 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     .opt { background: #f8fafc; border: 1.5px solid #94a3b8; border-radius: 10px; padding: 5px 9px; }
     .opt b { display: block; font-size: 13px; } .opt span { display: block; font-size: 10.5px; color: #6b7280; line-height: 1.25; }
     .fl { text-align: center; color: #475569; font-weight: bold; font-size: 15px; }
-    .hip { display: flex; gap: 6px; align-items: center; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; margin: 2px 0; }
-    .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 4px; }
+    /* El círculo, centrado en la primera línea del nombre (no por la línea base: con la hoja escalada, el
+       redondeo dejaba unos círculos medio píxel más arriba que otros). margin-top = (alto de línea − círculo) / 2, menos el desfase de la letra (medido) */
+    .hip { display: flex; gap: 6px; align-items: flex-start; text-align: left; background: #f1e9ff; border: 2px solid #7c4ddb; border-radius: 10px; padding: 5px 8px; font-weight: bold; font-size: 12px; line-height: 1.25; margin: 2px 0; }
+    .nb { flex: none; min-width: 24px; height: 24px; border-radius: 12px; background: #7c4ddb; color: #fff; display: block; text-align: center; align-content: center; text-box: trim-both cap alphabetic; font-size: 12px; padding: 0 4px; line-height: 1; margin-top: -5px; }
     .der { background: #fde8e8; border: 2px solid #d0342c; color: #b42318; border-radius: 10px; padding: 5px 8px; font-size: 12px; margin: 2px 0; }
     .der span { display: block; font-size: 10px; color: #7a271a; font-weight: normal; }
     .nada { border: 1.5px dashed #94a3b8; border-radius: 10px; padding: 7px 8px; color: #6b7280; text-align: center; background: #fff; }
@@ -384,7 +405,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
   </style>
   <div class="pagina" id="pag0">
     <div class="cab-hoja"><div class="cab-txt">
-    <h1>${esc(tree.title || `Árbol de decisión CIF · ${NOMBRES[region]}`)}</h1>
+    <h1>${esc(tree.title || `Árbol de decisión · ${NOMBRES[region]}`)}</h1>
     <div class="sub">PhysiQ-Assessment · fase 4 · ${NOMBRES[region]}. Cada respuesta puede sumar una hipótesis; se acumulan y todas se confirman con tests en la fase 4b.${a4 ? ' El porqué de cada paso, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).' : ''}</div>
     </div>${a4 ? qrGuia(region, 'arbol') : ''}</div>
     <div class="aviso">REQUISITO PREVIO · Banderas rojas (fase 1) y cribado sistémico (fase 2). Si hay una urgencia, derivar: este árbol no se aplica.</div>
@@ -394,7 +415,8 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
         <div><i style="background:#eaf1ff;border-color:#3567d6"></i>Pregunta del árbol</div>
         <div><i style="background:#f1e9ff;border-color:#7c4ddb"></i>Hipótesis que activa la respuesta</div>
         <div><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación médica (el recorrido sigue)</div>
-        <div><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</div></div>
+        <div><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</div>
+        <div>📝 Formulario del paciente (G general, R región)</div></div>
       <div style="border:1.5px dashed #94a3b8; background:#f8fafc;"><b>Al terminar sin ninguna hipótesis activa</b><br>La app propone trabajar con «${dolorInespecifico(region)}», revisar los factores psicosociales (fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial es alto, sugiere considerar también sensibilización central.</div>
       <div style="border:1.5px solid #64748b; background:#f1f5f9;"><b>Fase 4b · confirmar</b><br>Cada hipótesis activa se confirma o descarta con sus tests: ver el esquema de confirmación de ${NOMBRES[region].toLowerCase()}.<div class="pie">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</div></div>
     </div>
@@ -527,7 +549,7 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
       const papel = t.tipo === 'pronostico' ? 'pronóstico' : t.cluster ? 'en clúster' : testPuntua(h, t) ? '<b class="si">puntúa</b>' : 'hallazgo';
       return `<tr><td>${esc(t.name)}</td><td class="c">${pos}</td><td class="c">${neg}</td><td class="c">${papel}</td></tr>`;
     }).join('');
-    return `<section class="hyp"><h2><span class="num">${esc(h.num || '')}</span> ${esc(h.name)}</h2>
+    return `<section class="hyp"><h2><span class="num">${esc(numeroHipotesis(h.num))}</span> ${esc(h.name)}</h2>
       <table><thead><tr><th>Test</th><th>LR+</th><th>LR−</th><th>Papel</th></tr></thead><tbody>${clusters}${filas}</tbody></table></section>`;
   }).join('');
   return `<style>${CSS}
@@ -538,8 +560,9 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     h1, .grupo { font-size: 19px; font-weight: bold; margin: 0 0 6px; }
     .cols { column-count: 2; column-gap: 10px; }
     .hyp { break-inside: avoid; border: 1.5px solid #7c4ddb; border-radius: 8px; padding: 5px 7px; margin: 0 0 7px; }
-    .hyp h2 { font-size: 12px; margin: 0 0 3px; display: flex; gap: 5px; align-items: flex-start; }
-    .hyp h2 .num { flex: none; }
+    /* El número, centrado en la primera línea del nombre: margin-top = (alto de línea − círculo) / 2 (medido) */
+    .hyp h2 { font-size: 12px; line-height: 1.25; margin: 0 0 3px; display: flex; gap: 5px; align-items: flex-start; }
+    .hyp h2 .num { flex: none; margin-top: -2.2px; }
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 8.5px; color: #6b7280; border-bottom: 1px solid #cbd5e1; }
     td { border-bottom: 1px solid #eef2f7; padding: 1px 2px; vertical-align: top; }
@@ -555,7 +578,7 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     <div class="sub">PhysiQ-Assessment · fase 4b. Los tests de cada hipótesis, sus LR y si puntúan. El criterio de cada test, por qué se hace, sus fuentes, «Ampliar con IA» y una calculadora que puntúa cada hipótesis con los tests que marques, en la guía de consulta (QR).</div>
     </div>${qrGuia(region, 'confirmacion')}</div>
     <div class="cols">${bloques}</div>
-    <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterios de cada test y fuentes, en la app.
+    <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterio completo de cada test, fuentes y calculadora de la puntuación, en la guía (QR).
       <div class="gen">PhysiQ-Assessment · fase 4b · ${NOMBRES[region]}. Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</div></div>
   </div>
   ${scriptAjuste(W, H, '.hyp')}`;
@@ -676,15 +699,21 @@ function tituloTarjeta(id) {
 // ── Condiciones especiales (la guía de la cabecera, data/condiciones.js) ─────
 export function htmlCondiciones() {
   const T = TEXTOS_CONDICIONES;
+  // En papel: dónde están sus preguntas; en la app: dónde se marca. Las que tienen calculadora
+  // en el cribado de la guía (guia-calc.js, CALC_SISTEMA) lo dicen
+  const CON_CALCULADORA = ['hipermovilidad', 'disautonomia', 'embarazo'];
+  // Lo que la guía añade a la hoja de cribado de cada condición (lib/guia-condiciones.js)
+  const CON_BLOQUES = ['disautonomia', 'lupus', 'osteoporosis', 'embarazo'];
+  const enGuia = c => c.id === 'posquirurgico' ? '; la tarjeta «Cirugía», en la hoja de fase 1' : `; ${[CON_BLOQUES.includes(c.id) ? 'sus otras preguntas' : '', CON_CALCULADORA.includes(c.id) ? 'la calculadora' : '', 'las líneas de la exploración', 'las recomendaciones'].filter(Boolean).join(', ').replace(/, ([^,]+)$/, ' y $1')}, en la guía (QR)`;
   const donde = c => c.destino?.tarjeta
-    ? `Fase 1 · tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
-    : `Fase 2 · cribado de ${esc(nombreRegion(c.region).toLowerCase())}`;
+    ? `En papel: su bloque en la página 2 de la hoja de cribado${enGuia(c)} · En la app: fase 1, tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}${c.enPlan ? ` · Plan (fase 6): ${esc(c.enPlan)}, en la guía (Plan de tratamiento) o en la app` : ''}`
+    : `En papel: su pregunta en la hoja de cribado de ${esc(nombreRegion(c.region).toLowerCase())} · En la app: fase 2, la misma pregunta`;
   const tarjeta = c => `<section class="cond">
     <h2>${esc(c.nombre)}</h2>
     <p class="que">${esc(c.que)}</p>
     <div class="piensa">${esc(c.piensa)}</div>
     <ul>${c.pistas.map(p => `<li>${esc(p.texto)}</li>`).join('')}</ul>
-    <p class="anade"><b>Añade:</b> ${esc(c.anade)}</p>
+    <p class="anade"><b>Si la tiene, añade:</b> ${esc(c.anade)}</p>
     <p class="donde">${donde(c)}</p>
   </section>`;
   const transversales = CONDICIONES.filter(c => !c.region);
@@ -695,7 +724,7 @@ export function htmlCondiciones() {
       <div class="rejilla rejilla-3">${deRegion.map(c => tarjeta(c).replace('<h2>', `<h2><span class="reg">${esc(nombreRegion(c.region))}</span>`)).join('')}</div>` : '');
   return paginaUna({
     titulo: esc(T.titulo),
-    sub: `${esc(T.intro)} ${esc(T.diagnostico)}`,
+    sub: `Situaciones que cambian el cribado y el plan. Si una encaja, pregunta su bloque de la página 2 de la hoja de cribado (en la app, márcala y añade lo que necesita). Si el paciente ya tiene el diagnóstico, cuenta siempre con ella.`,
     qr: 'Qué es, fuentes e IA',
     cuerpo,
     pie: `<span>${esc(T.pie)} Las fuentes de cada condición, en la guía (QR).</span><span class="pie">Generado desde los datos de la app (data/condiciones.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
@@ -709,7 +738,7 @@ export function htmlCondiciones() {
       .anade { margin: 0 0 3px; color: #4b5563; font-size: 9.5px; }
       .donde { margin: 0; font-size: 9.5px; color: #1f2937; background: #eef2ff; border-radius: 4px; padding: 2px 6px; display: inline-block; }
       .rejilla-3 { grid-template-columns: 1fr 1fr 1fr; }
-      .reg { display: inline-block; font-size: 8.5px; font-weight: bold; text-transform: uppercase; letter-spacing: .5px; color: #fff; background: #2563eb; border-radius: 6px; padding: 0 5px; margin-right: 5px; vertical-align: 1px; }
+      .reg { display: inline-block; font-size: 8.5px; font-weight: bold; text-transform: uppercase; letter-spacing: .5px; color: #fff; background: #2563eb; border-radius: 6px; padding: 2.5px 5px; line-height: 1; text-box: trim-both cap alphabetic; margin-right: 5px; vertical-align: 1px; }
       .grupo-reg { font-size: 10.5px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: #2563eb; margin: 10px 0 5px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 1px; }`,
   });
 }
@@ -771,7 +800,7 @@ export function htmlFarmacos() {
   });
   return paginasVarias({
     titulo: 'Fármacos: qué vigilar en el plan',
-    tituloCont: 'Fármacos: qué vigilar en el plan (cont.)',
+    tituloCont: 'Fármacos: qué vigilar en el plan (continuación)',
     sub: `${esc(TEXTOS_FARMACOS_PACIENTE.lineaComun)} Aquí, lo que cambia el plan de tratamiento; cómo afecta cada familia al dolor, los síntomas viscerales, el ejercicio y el sueño, y su ficha técnica (CIMA), en la guía (QR).`,
     qr: 'Guía completa e IA',
     tarjetas: fichas,
@@ -810,7 +839,7 @@ export function htmlIrritabilidad() {
       .matriz tbody th { width: 30%; font-size: 12.5px; }
       .ayuda { font-weight: normal; font-size: 9.5px; color: #6b7280; margin-top: 3px; }
       .caja { display: inline-block; width: 13px; height: 13px; border: 1.6px solid #475569; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
-      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 15px; margin-right: 3px; }
+      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; vertical-align: -3px; margin-right: 3px; }
       h2 { font-size: 14px; margin: 0 0 5px; color: #1e3a8a; }
       .regla { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; } .regla p { margin: 0 0 5px; }
       .calc { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 11px; }
@@ -872,12 +901,87 @@ export function htmlEjercicioPaciente() {
   </script>`;
 }
 
+// ── Formulario del paciente en papel (formularios/*.js) ─────────────────────
+// Para dar al paciente: la cara común o la de una región, con las preguntas tal cual las
+// tiene la app (en tú: en la app las hace el fisio). Una casilla por opción, una fila por línea
+// de las matrices, la escala 0–10 y líneas para el texto libre. Sin QR (la guía es para el
+// fisioterapeuta) y fuera de los cuadernos; lleva su versión («v.») como las demás. Tantas
+// páginas como haga falta, a tamaño de lectura fijo: el paciente no tiene que forzar la vista.
+export function htmlFormularioPaciente(id) {
+  const f = FORMULARIOS[id];
+  const num = numerosFormulario(f, id === 'comun' ? 'G' : 'R');
+  const textoDe = {};
+  for (const sec of f.secciones) for (const it of sec.items) textoDe[it.id] = it.texto;
+  const caja = '<span class="caja"></span>';
+  const opcion = o => `<span class="op">${caja}${esc(o)}</span>`;
+  const lineas = n => '<div class="linea"></div>'.repeat(Math.max(1, n || 2));
+  let condPrevia = '';
+  const item = it => {
+    const clave = it.mostrarSi ? JSON.stringify(it.mostrarSi) : '';
+    const repetida = clave && clave === condPrevia; condPrevia = clave;
+    const cond = it.mostrarSi && !repetida ? `<div class="si">Responde lo siguiente solo si en «${esc(textoDe[it.mostrarSi.id] || it.mostrarSi.id)}» has marcado ${it.mostrarSi.valores.map(v => `«${esc(v)}»`).join(' o ')}:</div>` : '';
+    const ayuda = it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : '';
+    let r = '';
+    if (it.tipo === 'unica' || it.tipo === 'multi') {
+      r = `<div class="ops">${it.opciones.map(opcion).join('')}</div>`;
+      if (it.detalle) r += `<div class="detalle">${esc(it.detalle.etiqueta)} ${lineas(1)}</div>`;
+    } else if (it.tipo === 'escala') {
+      const nums = []; for (let n = it.min; n <= it.max; n++) nums.push(`<span class="esc-n">${caja}${n}</span>`);
+      r = `<div class="escala">${nums.join('')}</div><div class="extremos"><span>${esc(it.min)} = ${esc(it.extremos?.[0])}</span><span>${esc(it.max)} = ${esc(it.extremos?.[1])}</span></div><div class="ops">${opcion('No sabría decir')}</div>`;
+    } else if (it.tipo === 'matriz') {
+      r = `<table class="mtz"><thead><tr><th></th>${it.opciones.map(o => `<th>${esc(o)}</th>`).join('')}</tr></thead><tbody>${it.filas.map(fl => `<tr><td>${esc(fl.texto)}</td>${it.opciones.map(() => `<td class="c">${caja}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+    } else if (it.tipo === 'texto') r = lineas(it.lineas);
+    return `<div class="it">${cond}<div class="q"><span class="nq">${num[it.id]}</span>${esc(it.texto)}</div>${ayuda}${r}</div>`;
+  };
+  // Unidad de reparto: cada pregunta; el título de la sección va pegado a su primera pregunta
+  const piezas = f.secciones.flatMap(sec => sec.items.map((it, i) => `<div class="pieza">${i === 0 ? `<h2>${esc(sec.titulo)}</h2>` : ''}${item(it)}</div>`));
+  const titulo = id === 'comun' ? 'Antes de empezar: cómo te encuentras' : `Antes de empezar: ${nombreRegion(id).toLowerCase()}`;
+  const sub = 'Marca con una cruz lo que mejor te describa. Si algo no lo sabes, marca «No sabría decir» o «No sé». No hace falta que respondas a todo: lo repasaremos juntos en la consulta.';
+  return `<style>${CSS}${CSS_UNA}
+    .pagina { padding: 34px 44px 0; } .pagina + .pagina { break-before: page; }
+    body { font-size: 13px; line-height: 1.4; }
+    h1 { font-size: 22px; margin: 0 0 4px; } .sub { font-size: 12px; color: #374151; margin-bottom: 4px; }
+    .fecha { font-size: 12px; margin: 6px 0 10px; }
+    .cont { font-size: 13px; font-weight: bold; color: #475569; margin: 0 0 8px; }
+    .cuerpo { overflow: hidden; }
+    h2 { font-size: 14px; color: #1e3a8a; margin: 10px 0 6px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 2px; }
+    .it { margin: 0 0 10px; } .q { font-weight: 600; } .nq { color: #1e3a8a; margin-right: 6px; font-variant-numeric: tabular-nums; } .ayuda { font-size: 11.5px; color: #4b5563; font-style: italic; }
+    .si { font-size: 11.5px; color: #1e40af; font-weight: 600; margin: 2px 0 4px; }
+    .caja { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #334155; border-radius: 2px; margin-right: 5px; vertical-align: -2px; flex: none; }
+    .ops { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 3px; } .op { display: inline-flex; align-items: baseline; }
+    .detalle { display: flex; gap: 6px; align-items: flex-end; margin-top: 3px; font-size: 12px; } .detalle .linea { flex: 1; }
+    .linea { border-bottom: 1px solid #94a3b8; height: 24px; }
+    .escala { display: flex; gap: 14px; margin-top: 4px; } .esc-n { display: inline-flex; align-items: baseline; }
+    .extremos { display: flex; justify-content: space-between; font-size: 11px; color: #4b5563; margin: 2px 0; }
+    .mtz { border-collapse: collapse; margin-top: 4px; width: 100%; } .mtz th { font-size: 11px; font-weight: 600; padding: 2px 6px; text-align: center; }
+    .mtz td { border-top: 1px solid #e5e7eb; padding: 3px 6px; } .mtz td.c { text-align: center; width: 64px; } .mtz td.c .caja { margin: 0; }
+    .pie-v .qr-huella { display: inline; margin-left: 4px; } .pie-v .autoria { display: inline; }
+  </style>
+  <div id="piezas" hidden>${piezas.join('')}</div>
+  <template id="tCab"><h1>${esc(titulo)}</h1><div class="sub">${esc(sub)}</div><div class="fecha">Fecha: ____________________</div></template>
+  <template id="tPie"><div class="pie-fijo"><span class="pie pie-v">Formulario del paciente · ${esc(id === 'comun' ? 'General' : nombreRegion(id))} · ${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div></template>
+  <script>
+  (() => {
+    const todas = [...document.getElementById('piezas').children];
+    const nueva = n => {
+      const p = document.createElement('div'); p.className = 'pagina';
+      p.innerHTML = (n === 1 ? document.getElementById('tCab').innerHTML : '<div class="cont">${esc(titulo)} (continuación)</div>') + '<div class="cuerpo"></div>' + document.getElementById('tPie').innerHTML;
+      document.body.appendChild(p); return p.querySelector('.cuerpo');
+    };
+    let n = 1, c = nueva(1);
+    for (const t of todas) { c.appendChild(t); if (c.scrollHeight > c.clientHeight + 1 && c.children.length > 1) { n++; c = nueva(n); c.appendChild(t); } }
+    document.body.dataset.escala = '1.00';
+  })();
+  </script>`;
+}
+export const FORMULARIOS_PACIENTE = ['comun', ...ORDEN_REGIONES];
+
 // ── Cuadernos (portada con índice y página en blanco; los monta generar.mjs) ──
 // `secciones`: [{ titulo, filas: [{ nombre, huella, pagina }] }]. Una página; el QR lleva a
 // «Hojas para imprimir», donde se comprueba la versión de cada hoja.
-export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, paginasFecha, huella }) {
+export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, ordenFecha, huella }) {
   const filas = secciones.map(sec => `<tr class="sec"><td colspan="3">${esc(sec.titulo)}</td></tr>`
-    + sec.filas.map(f => `<tr data-pag="${f.pagina}"><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.pagina}</td></tr>`).join('')).join('');
+    + sec.filas.map(f => `<tr data-pag="${f.pagina}"><td>${esc(f.nombre)}</td><td class="v">v. ${esc(f.huella)}</td><td class="p">${f.paginas} pág.</td></tr>`).join('')).join('');
   return `<style>${CSS}${CSS_UNA}
     .pagina { padding: 28px 28px 0; }
     .banda { background: #1e3a8a; color: #fff; border-radius: 12px; padding: 34px 32px 30px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; margin-bottom: 22px; }
@@ -890,14 +994,14 @@ export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, pa
     .indice { font-family: monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6b7280; margin: 0 20px 2px; }
     .cuerpo { padding: 0 20px; }
     table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
-    td { padding: 3px 4px; border-bottom: 1px solid #e5e7eb; } .v { font-family: monospace; font-size: 10px; color: #6b7280; width: 90px; } .p { text-align: right; width: 50px; font-weight: bold; }
+    td { padding: 3px 4px; border-bottom: 1px solid #e5e7eb; } .v { font-family: monospace; font-size: 10px; color: #6b7280; width: 90px; } .p { text-align: right; width: 56px; color: #6b7280; }
     tr.sec td { font-weight: bold; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; font-size: 10.5px; padding-top: 10px; border-bottom: 1.5px solid #bfdbfe; }
   </style>
   <div class="pagina">
     <div class="banda"><div><div class="marca">PhysiQ-Assessment · Cuaderno de consulta</div><h1>${esc(portada.titulo || titulo)}</h1>
       ${portada.subtitulo ? `<div class="tit2">${esc(portada.subtitulo)}</div>` : ''}</div>
       <div class="qr-guia">${QR}<span>Hojas para imprimir</span></div></div>
-    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en página impar, en la cara delantera de su propio papel, así se puede sustituir sola (hay páginas en blanco a propósito). Cada hoja lleva su versión («v.») y su QR a la guía de consulta; si una hoja cambia, «Hojas para imprimir» lo dice: imprime sus páginas del cuaderno actual (este índice dice cuáles) y sustitúyela. Si allí la fecha de «páginas colocadas» es posterior a la de aquí, las páginas se han movido: reimprime el cuaderno entero.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · páginas colocadas así desde: <b>${esc(paginasFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
+    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en la cara delantera de su propio papel (hay páginas en blanco a propósito) y numera sus páginas por sí misma, abajo en la esquina exterior («Cribado · Lumbar 1/2»). Cada hoja lleva su versión («v.») y su QR a la guía de consulta. Si una hoja cambia, «Hojas para imprimir» lo dice: imprímela (su PDF suelto, o sus páginas de este cuaderno) y sustitúyela junto con esta portada; las demás no cambian aunque ocupe más o menos papel. Solo si allí la fecha de «orden de hojas» es posterior a la de aquí (se añadió, quitó o movió una hoja) hay que reimprimir el cuaderno entero.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · orden de hojas desde: <b>${esc(ordenFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
     <div class="indice">Índice</div>
   <div class="cuerpo"><table>${filas}</table></div>
     <div class="pie-fijo">${AUTORIA_HTML}</div>
@@ -914,13 +1018,15 @@ export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, pa
 export const HTML_PAGINA_BLANCA = `<style>@page { size: A4; margin: 0; } body { margin: 0; font-family: Helvetica, Arial, sans-serif; }
   .b { width: 794px; height: 1123px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px; box-sizing: border-box; color: #9ca3af; font-size: 9px; }</style>
   <div class="b">Página en blanco a propósito (impresión a doble cara)</div>`;
-// Una página por cada página del cuaderno, transparente, con el número abajo en la esquina exterior
-// (impar a la derecha, par a la izquierda) y el nombre de su sección; vacía en la portada y en las
-// blancas. paginar.py la superpone al contenido, reducido para dejar libre esa franja.
+// Una página por cada página del cuaderno, transparente, con su pie abajo en la esquina exterior
+// (impar a la derecha, par a la izquierda): la hoja a la que pertenece y su página dentro de ella
+// («Cribado · Lumbar 1/2»); vacía en la portada y en las blancas. paginar.py la superpone al
+// contenido, reducido para dejar libre esa franja. Sin número absoluto: así una hoja que crece no
+// cambia el número de las demás (decisión del usuario, 2026-10).
 export function htmlNumerosCuaderno(total, numeradas) {
   const paginas = Array.from({ length: total }, (_, i) => {
-    const n = i + 1, sec = numeradas.get(n);
-    return `<div class="np">${sec ? `<div class="num ${n % 2 ? 'der' : 'izq'}"><span class="sec">${esc(sec)}</span><b>${n}</b></div>` : ''}</div>`;
+    const n = i + 1, p = numeradas.get(n);
+    return `<div class="np">${p ? `<div class="num ${n % 2 ? 'der' : 'izq'}"><span class="sec">${esc(p.hoja)}</span><b>${p.n}/${p.de}</b></div>` : ''}</div>`;
   }).join('');
   return `<style>@page { size: A4; margin: 0; } html, body { margin: 0; background: transparent; font-family: Helvetica, Arial, sans-serif; }
     .np { width: 794px; height: 1123px; position: relative; page-break-after: always; break-after: page; overflow: hidden; }
@@ -934,6 +1040,172 @@ export function htmlNumerosCuaderno(total, numeradas) {
 export const rematarPortada = (html, url) => html.replaceAll(QR, qrSVG(url, QR_PX));
 // Huella del cuaderno: la de las versiones de sus hojas, en orden
 export const huellaCuaderno = huellas => fnv(Object.entries(huellas).map(([k, v]) => `${k}:${v}`).join('|'));
+
+// ── Fase 1: banderas rojas generales y riesgo psicosocial (data/fase1.js) ─────
+// Lo mismo que la tarjeta de la app, para marcar en papel; el QR abre su calculadora.
+export function htmlFase1() {
+  const T = TEXTOS_FASE1;
+  const caja = '<span class="caja"></span>';
+  const banderas = BANDERAS_FASE1.map((b, i) => `<tr><td class="n">${i + 1}</td><td>${esc(b.texto)}</td><td class="c">${caja} Sí</td><td class="c">${caja} No</td></tr>`).join('');
+  const preguntas = PREGUNTAS_PSICO.map(p => `<tr><td>${esc(p.texto)}<div class="sug">Si «Sí» o «Dudoso»: ${esc(p.cuestionarios)}</div></td>${RESPUESTAS_PSICO.map(r => `<td class="c">${caja} ${esc(r)}</td>`).join('')}</tr>`).join('');
+  return paginaUna({
+    titulo: 'Fase 1',
+    sub: 'Lo mismo que la fase 1 de la app, para marcar en papel: mecanismo, cronología, la tarjeta «Cirugía», banderas rojas y riesgo psicosocial. Las banderas de cada sistema van con el cribado de la región (en la guía, QR de su hoja de cribado); el motivo y lo que cuenta el paciente, en el formulario del paciente.',
+    qr: 'Calculadora e IA',
+    cuerpo: `<div class="mc"><div><b>Mecanismo de inicio:</b> ${['Traumático', 'Insidioso', POSQ.MECANISMO_POSQUIRURGICO].map(m => `<span>${caja} ${esc(m)}</span>`).join('')}</div>
+      <div><b>Cronología:</b> ${['Agudo (<6 semanas)', 'Subagudo', 'Crónico (>3 meses)'].map(m => `<span>${caja} ${esc(m)}</span>`).join('')}</div></div>
+      <div class="cir"><h2>🏥 Cirugía (con mecanismo «${esc(POSQ.MECANISMO_POSQUIRURGICO)}»)</h2>
+        <div class="cir-f"><span>Intervención: <i class="lin"></i></span><span>Fecha (o semanas aprox.): <i class="lin c"></i></span></div>
+        <div class="cir-ops"><b>Protocolo del cirujano:</b>${POSQ.PROTOCOLOS.map(p => `<span class="op">${caja} ${esc(p)}</span>`).join('')}</div>
+        <div class="cir-f"><span>Restricciones: <i class="lin"></i></span></div>
+        <div class="cir-ops"><b>Complicaciones:</b>${POSQ.COMPLICACIONES.map(c => `<span class="op">${caja} ${esc(c.label)}</span>`).join('')}<span class="op">${caja} Otra: <i class="lin c"></i></span></div>
+        <p class="cir-n">Añade: las preguntas de complicaciones del cribado (fase 2) y la hipótesis «${esc(POSQ.NOMBRE_HIP_POSQ)}», siempre la primera y sin tests: ${esc(POSQ.TEXTO_PAUTA_POSQ)}; sin protocolo, «${esc(POSQ.TEXTO_SIN_PROTOCOLO)}». Cada pauta de las demás hipótesis: ${esc(POSQ.TEXTO_PAUTA_COMPATIBLE)}</p></div>
+      <h2>🚩 Banderas rojas</h2><p class="aviso-g">${esc(T.banderasAviso)}</p>
+      <table class="t">${banderas}</table>
+      <p class="si-pos"><b>Con alguna «Sí»:</b> ${esc(T.banderaAlerta.replace(/^Bandera Roja Detectada\.\s*/, ''))}</p>
+      <h2>🧠 Riesgo psicosocial</h2><p>${esc(T.psicoIntro)}:</p>
+      <div class="niveles">${NIVELES_PSICO.map(n => `<span>${caja} ${n.emoji} ${esc(n.valor)}</span>`).join('')}</div>
+      <p>${T.herramienta}</p>
+      <h3>Con riesgo alto</h3><p>${esc(T.psicoAlto)}</p>
+      <table class="t">${preguntas}</table>`,
+    pie: `<span>Un SÍ en una bandera roja no exige derivación inmediata salvo emergencia clara: interpretar en el contexto clínico.</span><span class="pie">Generado desde los datos de la app (data/fase1.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
+    css: `
+      .cuerpo h2 { font-size: 15px; margin: 6px 0 4px; color: #1e3a8a; } .cuerpo h3 { font-size: 12.5px; margin: 10px 0 2px; }
+      .cuerpo p { margin: 0 0 6px; font-size: 11.5px; }
+      .aviso-g { color: #4b5563; }
+      .t { width: 100%; border-collapse: collapse; margin: 2px 0 8px; font-size: 12px; }
+      .t td { border-bottom: 1px solid #e5e7eb; padding: 6px 4px; vertical-align: top; }
+      .t td.n { width: 18px; font-weight: bold; color: #7c4ddb; } .t td.c { width: 74px; white-space: nowrap; }
+      .caja { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #334155; border-radius: 2px; vertical-align: -2px; margin-right: 3px; }
+      .sug { font-size: 10px; color: #6b7280; margin-top: 2px; }
+      .si-pos { border-left: 3px solid #d0342c; padding: 4px 8px; background: #fde8e8; }
+      .niveles { display: flex; gap: 24px; font-size: 12.5px; margin: 4px 0 8px; }
+      .mc { font-size: 12px; margin: 0 0 8px; display: grid; gap: 4px; } .mc span { margin-left: 12px; }
+      .cir { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 6px 10px; margin: 0 0 8px; }
+      .cir h2 { margin-top: 0 !important; } .cir-f { display: flex; gap: 18px; font-size: 12px; margin: 5px 0; flex-wrap: wrap; } .cir-f > span { flex: 1 1 auto; display: flex; align-items: flex-end; gap: 4px; }
+      .lin { flex: 1; min-width: 120px; border-bottom: 1px solid #94a3b8; height: 14px; display: inline-block; } .lin.c { flex: 0 0 110px; min-width: 110px; }
+      .cir-ops { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-size: 12px; margin: 5px 0; } .cir-ops .op { white-space: nowrap; display: inline-flex; align-items: baseline; gap: 3px; }
+      .cir-n { font-size: 10.5px !important; color: #4b5563; margin: 4px 0 0 !important; }`,
+  });
+}
+
+// ── Síntomas (fase 3): P1–P4 para marcar en papel y las zonas de cada región ──
+// Lo que la tarjeta «Síntomas» de la app registra (lib/sintomas.js) y, en la segunda página, las
+// zonas de cada región con los pasos del árbol donde la app las recuerda (`pasos`), los recordatorios
+// de zona y la red neurológica. QR → guia.html#sintomas.
+export function htmlSintomas() {
+  const caja = '<span class="caja"></span>';
+  const ops = (lista) => lista.map(o => `<span class="op">${caja} ${esc(o)}</span>`).join('');
+  const lin = (et, c = '') => `<div class="f"><span>${et}</span><i class="lin${c}"></i></div>`;
+  const tarjeta = n => {
+    const p1 = n === 1;
+    return `<section class="s"><h2>P${n}${p1 ? ' · síntoma principal' : ''}</h2>
+      ${lin('Zona:')}${p1 ? '' : `<div class="f">${ops(['Otra región (no valorada hoy)'])}</div>`}
+      <div class="f"><b>Lado</b>${ops(['Derecho', 'Izquierdo', 'Bilateral', 'Central'])}</div>
+      <div class="f">${ops(SINT.PROFUNDIDADES)}<span class="sep"></span>${ops(SINT.PATRONES)}</div>
+      <div class="f"><b>NRS</b> <i class="lin c"></i>/10 ${p1 ? '<span class="nota">(su irritabilidad: hoja de irritabilidad)</span>' : `<b class="ml">Irritabilidad</b>${ops(SINT.NIVELES_IRRITABILIDAD)}`}</div>
+      ${p1 ? `<div class="f"><b>Cómo es</b>${ops(SINT.CHIPS_DESCRIPCION)}</div>` : `<div class="f"><b>Con P1</b>${ops(Object.values(SINT.RELACIONES).map(r => r.boton))}</div>`}
+      ${lin(p1 ? 'Descripción:' : 'Nota:')}</section>`;
+  };
+  const regiones = ORDEN_REGIONES.filter(r => ZONAS_SINTOMA[r]?.length).map(r => {
+    const steps = CIF_TREES[r].steps;
+    const paso = id => { const i = steps.findIndex(st => st.id === id); return i < 0 ? null : etiquetaPaso(steps[i], i); };
+    const filas = ZONAS_SINTOMA[r].map(z => `<tr><td>${esc(z.nombre)}${z.central ? ' <span class="nota">(central)</span>' : ''}</td><td>${(z.pasos || []).map(paso).filter(Boolean).join(', ') || '—'}</td></tr>`
+      + (z.recordatorio ? `<tr class="rec"><td colspan="2">⚠️ ${esc(z.recordatorio.texto)}</td></tr>` : '')).join('');
+    return `<section class="r"><h3>${esc(nombreRegion(r))}</h3><table><thead><tr><th>Zona</th><th>Pasos</th></tr></thead><tbody>${filas}</tbody></table></section>`;
+  }).join('');
+  return `<style>${CSS}${CSS_UNA}
+    .pagina + .pagina { break-before: page; }
+    .cuerpo h2 { font-size: 13.5px; margin: 0 0 6px; color: #1e3a8a; }
+    .ss { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .s { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 10px; font-size: 11.5px; }
+    .f { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 6px 0; }
+    .op { white-space: nowrap; display: inline-flex; align-items: baseline; gap: 3px; } .sep { width: 6px; } .ml { margin-left: 8px; }
+    .caja { display: inline-block; width: 11px; height: 11px; border: 1.5px solid #334155; border-radius: 2px; vertical-align: -1px; }
+    .lin { flex: 1; min-width: 80px; border-bottom: 1px solid #94a3b8; height: 13px; display: inline-block; } .lin.c { flex: 0 0 40px; min-width: 40px; }
+    .nota { color: #6b7280; font-size: 10px; }
+    .reglas { margin-top: 10px; font-size: 11px; color: #374151; } .reglas li { margin-bottom: 3px; }
+    .rs { column-count: 2; column-gap: 16px; }
+    .r { break-inside: avoid; margin-bottom: 10px; } .r h3 { font-size: 12.5px; margin: 0 0 3px; color: #1e3a8a; }
+    .r table { width: 100%; border-collapse: collapse; font-size: 10.5px; } .r th { text-align: left; color: #6b7280; font-weight: 600; font-size: 9.5px; }
+    .r td { border-top: 1px solid #e5e7eb; padding: 2px 3px; vertical-align: top; } .r td:last-child { white-space: nowrap; width: 70px; }
+    .r tr.rec td { font-size: 9.5px; color: #b42318; white-space: normal; }
+    .cont { font-size: 15px; font-weight: bold; margin: 0 0 8px; }
+    .pie-v .qr-huella { display: inline; margin-left: 4px; }</style>
+  <div class="pagina">
+    <div class="cab-hoja"><div class="cab-txt"><h1>Síntomas (fase 3)</h1><div class="sub">Lo que registra la tarjeta «Síntomas» de la app: el principal (P1) y hasta tres más. Las zonas de cada región y los pasos del árbol donde importan, en la página 2.</div></div>
+      <div class="qr-guia">${QR}<span>Zonas y pasos</span>${HUELLA}</div></div>
+    <div class="cuerpo"><div class="ss">${[1, 2, 3, 4].map(tarjeta).join('')}</div>
+      <ul class="reglas">
+        <li>Un síntoma en otra región («no valorada hoy») solo lleva lado, NRS y una nota: no entra en el árbol.</li>
+        <li>La zona de un síntoma recuerda, en los pasos del árbol de la página 2, lo que refiere el paciente: nunca contesta el paso.</li>
+        <li>En la app, el plan de la fase 6 se dosifica por el síntoma más irritable (P1 si empatan) y avisa de un síntoma «Independiente» de P1.</li>
+      </ul></div>
+    <div class="pie-fijo"><span class="pie">Generado desde los datos de la app (data/&lt;región&gt;.js, lib/sintomas.js) el ${FECHA}. ${AUTORIA_HTML}</span></div>
+  </div>
+  <div class="pagina"><div class="cont">Zonas de cada región y pasos del árbol donde la app las recuerda</div>
+    <div class="cuerpo"><div class="rs">${regiones}</div></div>
+    <div class="pie-fijo"><span class="pie pie-v">Síntomas (fase 3) · ${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div></div>`;
+}
+
+// ── Plan de tratamiento (fase 6): el contenido fijo del que la app elige ──────
+// data/plan-tratamiento.js tal cual: cómo se elige el escalón, los escalones de las dos familias,
+// la sesión de 50 min, los planes del mes, la progresión, seguir o cambiar y la red de seguridad de
+// cada región y condición. La selección la hace la guía (QR → #plan) con la función de la app.
+export function htmlPlanHoja() {
+  const t = PLAN.TEXTOS_SESION;
+  const esc2 = x => esc(x);
+  const lista = arr => `<ul>${arr.map(x => `<li>${esc2(x)}</li>`).join('')}</ul>`;
+  const escalones = (E, titulo) => `<section class="tarjeta pl"><h2>${esc2(titulo)}</h2>${Object.entries(E).map(([n, x]) =>
+    `<p><b>${n} · ${esc2(x.nombre)}</b> <span class="modo">(${esc2(x.modo)})</span> ${esc2(x.texto)} <span class="cit">(${esc2(x.citas.join('; '))})</span></p>`).join('')}</section>`;
+  const red = (k) => t[k] ? `<li>${esc2(t[k])}</li>` : '';
+  const redRegion = r => {
+    const rs = PLAN.RED_SEGURIDAD[r] || {};
+    const siempre = [].concat(rs.siempre || []).map(x => red(x.cierre)).join('');
+    const neuro = rs.neuro ? red(rs.neuro.cierre).replace('<li>', '<li><i>Con hipótesis neurológica:</i> ') : '';
+    return `<p class="reg"><b>${esc2(nombreRegion(r))}</b></p><ul>${siempre}${neuro}</ul>`;
+  };
+  const conds = [['Lupus', PLAN.RED_LUPUS], ['Disautonomía', [PLAN.RED_DISAUTONOMIA]], ['Trastorno mastocitario o anafilaxia', [PLAN.RED_MASTOCITOS]], ['Osteoporosis', [PLAN.RED_OSTEOPOROSIS]],
+    ['Embarazo', [PLAN.RED_EMBARAZO]], ['Posparto', [PLAN.RED_POSPARTO]], ['Anticoagulado o antiagregado', [PLAN.RED_ANTICOAGULADO]]];
+  const tarjetas = [
+    `<section class="tarjeta pl"><h2>Cómo se elige el escalón (B)</h2>
+      <p>Se cruzan la gravedad (por la NRS) y la irritabilidad (la de la hoja de irritabilidad; sin registrar, alta).</p>
+      <table class="t"><tr><th>Escalón B</th><th>Gravedad mínima (NRS 0–3)</th><th>Moderada (4–7)</th><th>Máxima (8–10) o sin NRS</th></tr>${[['alta', 'Irritabilidad alta'], ['moderada', 'Moderada'], ['baja', 'Baja']].map(([i, n]) =>
+        `<tr><td>${n}</td>${['minima', 'moderada', 'maxima'].map(g => `<td>${escalonB(g, i)}</td>`).join('')}</tr>`).join('')}</table>
+      <p><b>A</b>: un escalón por debajo de B (no hay A por debajo del 1). <b>C</b>: un escalón por encima de B, solo con irritabilidad baja y síntomas que no empeoran. ${esc2(PLAN.TEXTO_NIVELES.sinC.irritabilidad)}</p>
+      <p><b>Familia</b>: columna (${PLAN.REGIONES_COLUMNA_PLAN.map(r => esc2(nombreRegion(r).toLowerCase())).join(', ')}, y las hipótesis ${Object.keys(PLAN.FAMILIA_HIP).join(', ')}) o periférica (las demás regiones).</p>
+      <p class="cit">La propuesta completa para un paciente, con sus hipótesis y condiciones: guía (QR).</p></section>`,
+    escalones(PLAN.ESCALONES, 'Escalones · columna (Maitland 2005)'),
+    escalones(PLAN.ESCALONES_PERIFERICOS, 'Escalones · periféricas (Hengeveld y Banks 2005)'),
+    `<section class="tarjeta pl"><h2>Sesión de ${PLAN.MINUTOS_SESION} min</h2>
+      <p>${PLAN.BLOQUES_SESION.map(b => `${esc2(b.titulo)} ${b.duracion}′`).join(' · ')} <span class="cit">(organización de la sesión, no evidencia)</span></p>
+      <p><b>Reevaluación:</b> ${esc2(t.reevaluacionBase)} En las siguientes: ${esc2(t.reevaluacionSiguiente.charAt(0).toLowerCase() + t.reevaluacionSiguiente.slice(1))}</p>
+      <p><b>Educación:</b> ${esc2(t.educacionBase)} ${esc2(t.educacionPrimera)}</p>
+      <p><b>Primera sesión:</b> ${esc2(t.primeraSesion)}</p>
+      <p><b>Cantidad (columna):</b> ${esc2(t.cantidad)}</p><p><b>Cantidad (periféricas):</b> ${esc2(t.cantidadPeriferica)}</p>
+      <p><b>Domiciliario:</b> ${esc2(t.domiciliario)} <b>Cierre:</b> ${esc2(t.cierre)}</p></section>`,
+    `<section class="tarjeta pl"><h2>Plan del mes</h2>${['A', 'B'].map(k => { const m = PLAN.PLANES_MES[k]; return `<p><b>${esc2(m.nombre)}</b>: ${m.sesiones} sesiones; reevaluación intermedia ${esc2(m.intermedia.toLowerCase())}, final ${esc2(m.final.toLowerCase())}; programa domiciliario: ${esc2(m.domiciliario.toLowerCase())}</p>${lista(m.notas)}`; }).join('')}</section>`,
+    `<section class="tarjeta pl"><h2>Progresión</h2><p>${esc2(PLAN.PROGRESION_GENERICA)}</p><p><b>Periféricas:</b> ${esc2(PLAN.PROGRESION_PERIFERICA)}</p></section>`,
+    `<section class="tarjeta pl"><h2>Seguir o cambiar · columna</h2>${lista(PLAN.REGLAS_MES)}</section>`,
+    `<section class="tarjeta pl"><h2>Seguir o cambiar · periféricas</h2>${lista(PLAN.REGLAS_MES_PERIFERICAS)}</section>`,
+    `<section class="tarjeta pl"><h2>Red de seguridad por región (cierre de la sesión)</h2>${ORDEN_REGIONES.map(redRegion).join('')}</section>`,
+    `<section class="tarjeta pl"><h2>Red de seguridad por condición especial</h2>${conds.map(([n, l]) => `<p class="reg"><b>${esc2(n)}</b></p><ul>${l.map(x => red(x.cierre)).join('')}</ul>`).join('')}</section>`,
+  ];
+  return paginasVarias({
+    titulo: 'Plan de tratamiento (fase 6)',
+    tituloCont: 'Plan de tratamiento (continuación)',
+    sub: 'El contenido fijo del que la app elige el plan (data/plan-tratamiento.js), con su fuente. La propuesta para un paciente concreto (escalón, avisos de sus hipótesis y condiciones, red de seguridad), en la guía (QR). Es una propuesta: decide el fisioterapeuta.',
+    qr: 'Calcular el plan',
+    tarjetas,
+    maxPaginas: 3,
+    pie: `<span class="pie">Generado desde los datos de la app (data/plan-tratamiento.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
+    css: `
+      .pl { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 6px 9px; }
+      .pl h2 { font-size: 12px; margin: 0 0 3px; color: #1e3a8a; } .pl p { margin: 0 0 4px; } .pl ul { margin: 0 0 4px; padding-left: 14px; } .pl li { margin: 0 0 2px; }
+      .modo, .cit { color: #6b7280; } .reg { margin: 4px 0 1px !important; }
+      .t { border-collapse: collapse; margin: 3px 0 5px; } .t th, .t td { border: 1px solid #cbd5e1; padding: 2px 6px; text-align: left; }`,
+  });
+}
 
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
@@ -957,7 +1229,11 @@ export function hojasImpresas() {
   hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones });
   hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
   hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
+  hojas.push({ clave: 'sintomas', ruta: 'sintomas', html: htmlSintomas });
+  hojas.push({ clave: 'plan', ruta: 'plan', html: htmlPlanHoja });
+  hojas.push({ clave: 'fase1', ruta: 'fase1', html: htmlFase1 });
   hojas.push({ clave: 'ejercicio-paciente', ruta: null, html: htmlEjercicioPaciente, paciente: true });
+  for (const id of FORMULARIOS_PACIENTE) hojas.push({ clave: `formulario-${id}`, ruta: null, html: () => htmlFormularioPaciente(id), paciente: true });
   return hojas;
 }
 export const huellaHoja = html => fnv(html);

@@ -61,7 +61,7 @@ Cada fila:
 1. **Nombre** y, a la derecha, su **estado** (una etiqueta pequeña; ver «Estado de cada fila»).
 2. **Una línea en lenguaje llano** que diga qué es.
 3. **«Piensa en ella si:»** con 2 o 3 pistas cortas, tomadas de las preguntas que la app ya tiene.
-4. **«Añade:»** una línea con lo que cambia en la app al marcarla (resumen de la nota que ya lleva su tarjeta).
+4. **«Al marcarla, añade:»** (antes «Añade:»; 2026-10) una línea con lo que cambia en la app al marcarla (resumen de la nota que ya lleva su tarjeta).
 5. **Un botón** que cierra el diálogo, lleva a la fase y resalta el destino (`flash-destacar`, como `irACronologia()`):
    - condiciones transversales → la tarjeta en la fase 1;
    - el posquirúrgico → la tarjeta «Mecanismo de inicio», donde se elige «Post-quirúrgico»;

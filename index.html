@@ -70,7 +70,7 @@
     <button id="sessionBtn" class="session-btn" onclick="toggleSessionPanel()" aria-label="Sesión" title="Sesión"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></button>
     <button id="themeBtn" class="session-btn theme-btn" onclick="cycleThemePref()" type="button"></button>
     <!-- Tamaño de letra Normal / Grande (preferencia del dispositivo, como el tema; también en el hub) -->
-    <button id="letraBtn" class="session-btn letra-btn" onclick="alternarLetra()" type="button" aria-pressed="false"><span class="letra-a-peq" aria-hidden="true">A</span><span class="letra-a-gr" aria-hidden="true">A</span></button>
+    <button id="letraBtn" class="session-btn letra-btn" onclick="alternarLetra()" type="button" aria-pressed="false"><span class="letra-aa" aria-hidden="true"><span class="letra-a-peq">A</span><span class="letra-a-gr">A</span></span></button>
     <button class="btn-translate" onclick="handleTranslateClick()" aria-label="View in English">
       🌐
       <span class="translate-tooltip">Long-press or right-click → Translate to English</span>
@@ -103,7 +103,7 @@
     <span class="phase-step-num">3</span> SINSS
   </div>
   <div class="phase-step" id="nav4" onclick="navStepClick(4)">
-    <span class="phase-step-num">4</span> Algoritmo CIF
+    <span class="phase-step-num">4</span> Árbol de decisión
   </div>
   <div class="phase-step" id="nav4b" onclick="navStepClick('4b')">
     <span class="phase-step-num">4b</span> Confirmación
@@ -1070,7 +1070,7 @@
 
   <div class="nav-buttons">
     <button class="btn btn-secondary" onclick="goToPhase(2)">← Anterior</button>
-    <button class="btn btn-primary" onclick="goToPhase(4)">Continuar → Algoritmo CIF</button>
+    <button class="btn btn-primary" onclick="goToPhase(4)">Continuar → Árbol de decisión</button>
   </div>
 </div>
 

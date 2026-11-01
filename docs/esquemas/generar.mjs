@@ -7,15 +7,17 @@
 //   cribado      → fase 2, A4 vertical: lo que se pregunta siempre y, aparte, las condiciones especiales
 //   arbol        → fase 4, A3 apaisado: pasos del árbol CIF, respuestas e hipótesis que activan
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
-//   confirmacion → fase 4b, A4 (vertical o apaisado, la de letra más grande): tests de cada hipótesis con sus LR y si puntúan
+//   confirmacion → fase 4b, A4 vertical (siempre, para que el cuaderno no gire): tests de cada hipótesis con sus LR y si puntúan
 //
-//   node docs/esquemas/generar.mjs tejidos | condiciones | farmacos | irritabilidad | ejercicio-paciente | sueltas
+//   node docs/esquemas/generar.mjs tejidos | condiciones | farmacos | irritabilidad | fase1 | ejercicio-paciente | formularios | sueltas
 //   → tejidos-blandos y tejidos-hueso: los tiempos de recuperación de data/tejidos.js en dos A4
 //     verticales temáticas (lib/esquemas.js, HOJAS_TEJIDO). También con «todas todos».
 //   → condiciones: la guía de condiciones especiales (data/condiciones.js) en un A4 vertical.
 //   → farmacos: qué vigilar en el plan por familia (los avisos de la fase 6), dos A4 como máximo.
 //   → irritabilidad: la matriz de la fase 3 para marcar en papel, la regla y qué implica cada nivel.
+//   → fase1: las banderas rojas generales y el riesgo psicosocial de la fase 1 (data/fase1.js).
 //   → ejercicio-paciente: para dar al paciente, las frases «Para explicárselo al paciente» de cada bloque, sin QR.
+//   → formularios: para dar al paciente, el formulario del paciente (cara común y una por región), sin QR.
 //   node docs/esquemas/generar.mjs cuadernos → cuaderno-completo y cuaderno-<región> (a doble cara, de
 //     los PDF ya generados; necesita pdfunite y pdfinfo, de poppler-utils, y pypdf para numerar las
 //     páginas, paginar.py). También con «todas todos».
@@ -33,9 +35,9 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 
 const { CIF_TREES } = await import('../../data.js');
-const { HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
+const { ORDEN_REGIONES, HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlSintomas, htmlPlanHoja, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -74,9 +76,9 @@ const browser = await chromium.launch();
 // Hoja A4 del árbol: prueba A4 apaisado y vertical con 2, 3 o 4 pasos por fila y se queda con la
 // que deja la letra más grande; cada página de más resta (una hoja de consulta, cuantas menos, mejor).
 const PENALIZA_PAGINA = 0.3;
-async function mejorHojaA4(region, generar = (vertical, cols) => htmlArbol(region, { a4: true, vertical, cols }), colsPosibles = [2, 3, 4]) {
+async function mejorHojaA4(region, generar = (vertical, cols) => htmlArbol(region, { a4: true, vertical, cols }), colsPosibles = [2, 3, 4], orientaciones = [false, true]) {
   const pruebas = [];
-  for (const vertical of [false, true]) for (const cols of colsPosibles) {
+  for (const vertical of orientaciones) for (const cols of colsPosibles) {
     const html = generar(vertical, cols);
     if (!html) continue;
     const page = await browser.newPage({ viewport: vertical ? { width: 794, height: 1123 } : { width: 1123, height: 794 } });
@@ -97,7 +99,7 @@ for (const region of regiones) {
     let html = fn(region), elegida = '';
     // Cada distribución se mide ya rematada (con el QR), que ocupa sitio en la cabecera
     if (tipo === 'arbol-a4') ({ html, apaisado, elegida } = await mejorHojaA4(region, (vertical, cols) => rematarHoja(`arbol-a4-${region}`, htmlArbol(region, { a4: true, vertical, cols }))));
-    if (tipo === 'confirmacion') ({ html, apaisado, elegida } = await mejorHojaA4(region, vertical => rematarHoja(`confirmacion-${region}`, htmlConfirmacion(region, { vertical })), [2]));
+    if (tipo === 'confirmacion') ({ html, apaisado, elegida } = await mejorHojaA4(region, vertical => rematarHoja(`confirmacion-${region}`, htmlConfirmacion(region, { vertical })), [2], [true]));
     const px = formato === 'A3' ? [1587, 1123] : [1123, 794];
     html = rematarHoja(`${tipo}-${region}`, html);
     const page = await browser.newPage({ viewport: apaisado ? { width: px[0], height: px[1] } : { width: px[1], height: px[0] } });
@@ -118,7 +120,11 @@ const SUELTAS = {
   condiciones: [['condiciones', htmlCondiciones]],
   farmacos: [['farmacos', htmlFarmacos]],
   irritabilidad: [['irritabilidad', htmlIrritabilidad]],
+  sintomas: [['sintomas', htmlSintomas]],
+  plan: [['plan', htmlPlanHoja]],
+  fase1: [['fase1', htmlFase1]],
   'ejercicio-paciente': [['ejercicio-paciente', htmlEjercicioPaciente]],
+  formularios: FORMULARIOS_PACIENTE.map(id => [`formulario-${id}`, () => htmlFormularioPaciente(id)]),
 };
 for (const [grupo, hojas] of Object.entries(SUELTAS)) {
   if (regArg !== grupo && regArg !== 'sueltas' && !(regArg === 'todas' && tipoArg === 'todos')) continue;
@@ -162,11 +168,8 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
   const paginas = f => +execFileSync('pdfinfo', [f]).toString().match(/^Pages:\s+(\d+)/m)[1];
   const blanca = join(tmp, 'blanca.pdf');
   await pdfDe(HTML_PAGINA_BLANCA, blanca);
-  // Hojas que ocupan otro número de páginas que antes (entre su inicio y el de la siguiente)
-  const tramos = (ini, total) => { const k = Object.keys(ini); return Object.fromEntries(k.map((c, i) => [c, (i + 1 < k.length ? ini[k[i + 1]] : total + 1) - ini[c]])); };
-  const papelesCambiados = (ini0, total0, ini1, total1) => { const a = tramos(ini0, total0), b = tramos(ini1, total1); return Object.keys(b).filter(k => k in a && a[k] !== b[k]); };
   const ISO_A_CORTA = iso => { const [a, m, d] = iso.split('-').map(Number); return `${d}/${m}/${a}`; };
-  for (const lib of definicionCuadernos(Object.keys(CIF_TREES), nombreRegion)) {
+  for (const lib of definicionCuadernos(ORDEN_REGIONES, nombreRegion)) {
     const hojas = Object.fromEntries(lib.secciones.flatMap(sec => sec.hojas.map(k => [k, HUELLAS[k]?.huella])));
     const falta = Object.entries(hojas).filter(([, v]) => !v).map(([k]) => k);
     if (falta.length) throw new Error(`${lib.clave}: faltan hojas sin generar (${falta.join(', ')})`);
@@ -175,13 +178,16 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     // 2026-10): cada hoja ocupa sus propias hojas de papel, así una hoja que cambie se reimprime
     // y se sustituye sola, sin la que tendría en la otra cara.
     const archivos = ['PORTADA', blanca];
-    const numeradas = new Map();   // página (desde 1) → sección: las de contenido llevan número
+    // Página (desde 1) → su pie: la hoja a la que pertenece y su página dentro de ella («Cribado ·
+    // Lumbar 1/2»). Numeración relativa a cada hoja (decisión del usuario, 2026-10): si una hoja
+    // crece, las demás no cambian de número y no hay que reimprimirlas.
+    const numeradas = new Map();
     let pag = 2;
     const secciones = lib.secciones.map(sec => {
       const filas = sec.hojas.map(k => {
         if (pag % 2 === 1) { archivos.push(blanca); pag++; }
-        const f = join(DIR, `${k}.pdf`), n = paginas(f), fila = { nombre: nombreHojaImpresa(k, nombreRegion), huella: HUELLAS[k].huella, pagina: pag + 1 };
-        for (let i = 1; i <= n; i++) numeradas.set(pag + i, sec.titulo);
+        const f = join(DIR, `${k}.pdf`), n = paginas(f), fila = { nombre: nombreHojaImpresa(k, nombreRegion), huella: HUELLAS[k].huella, pagina: pag + 1, paginas: n };
+        for (let i = 1; i <= n; i++) numeradas.set(pag + i, { hoja: nombreHojaImpresa(k, nombreRegion).replace(/ \(fase [^)]+\)/, ''), n: i, de: n });
         archivos.push(f); pag += n;
         return fila;
       });
@@ -189,17 +195,17 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     });
     if (pag % 2 === 1) { archivos.push(blanca); pag++; }   // termina en par: el siguiente cuaderno, en otra hoja
     const huella = huellaCuaderno(hojas);
-    // Colocación de las páginas: en qué página empieza cada hoja. Si cambia (una hoja ocupa más o
-    // menos papel, o se añade una), las de detrás se mueven y ya no basta con sustituir la hoja
-    // que cambió: paginasFecha guarda cuándo pasó (la guía y la portada lo dicen) y paginasPor,
-    // qué hojas cambiaron de papel. Regenerar sin ese cambio conserva los dos.
+    // Orden de las hojas. Con la numeración por hoja, que una hoja ocupe más o menos papel no afecta
+    // a las demás: basta con sustituirla (y la portada, que lleva el índice). Solo si cambian la lista
+    // o el orden de las hojas hay que reimprimir el cuaderno entero: ordenFecha guarda cuándo pasó
+    // (la guía y la portada lo dicen). inicio = página del PDF en que empieza cada hoja (los enlaces
+    // del índice y los marcadores).
     const inicio = Object.fromEntries(secciones.flatMap((sec, i) => sec.filas.map((f, j) => [lib.secciones[i].hojas[j], f.pagina])));
     const previo = CUADERNOS[lib.clave];
-    const mismaColocacion = previo?.inicio && JSON.stringify(previo.inicio) === JSON.stringify(inicio);
-    const paginasFecha = mismaColocacion ? previo.paginasFecha : new Date().toISOString().slice(0, 10);
-    const paginasPor = mismaColocacion ? (previo.paginasPor || []) : previo?.inicio ? papelesCambiados(previo.inicio, previo.paginas, inicio, pag) : [];
+    const mismoOrden = previo?.inicio && JSON.stringify(Object.keys(previo.inicio)) === JSON.stringify(Object.keys(inicio));
+    const ordenFecha = mismoOrden ? (previo.ordenFecha || previo.paginasFecha) : new Date().toISOString().slice(0, 10);
     const portada = join(tmp, `${lib.clave}-portada.pdf`);
-    const filas = await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), paginasFecha: ISO_A_CORTA(paginasFecha), huella }), `${URL_GUIA}#hojas`), portada, filasIndice);
+    const filas = await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), ordenFecha: ISO_A_CORTA(ordenFecha), huella }), `${URL_GUIA}#hojas`), portada, filasIndice);
     if (filas.length !== secciones.flatMap(s => s.filas).length || filas.some(f => f.px[3] > 1123 || f.px[2] > 794)) throw new Error(`${lib.clave}: no se han podido medir las filas del índice`);
     if (paginas(portada) !== 1) throw new Error(`${lib.clave}: la portada no cabe en una página`);
     const unido = join(tmp, `${lib.clave}-unido.pdf`), numeros = join(tmp, `${lib.clave}-numeros.pdf`);
@@ -217,7 +223,7 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     // archivo: huella del PDF tal cual, para el enlace (?v=): cambia también cuando cambia la
     // maqueta (portada, numeración) sin cambiar ninguna hoja, así nadie abre una copia vieja en caché
     const archivo = createHash('sha256').update(readFileSync(join(DIR, `${lib.clave}.pdf`))).digest('hex').slice(0, 8);
-    CUADERNOS[lib.clave] = { huella, archivo, fecha, paginas: pag, hojas, inicio, paginasFecha, paginasPor };
+    CUADERNOS[lib.clave] = { huella, archivo, fecha, paginas: pag, hojas, inicio, ordenFecha };
     console.log(`${lib.clave}: ${pag} páginas (${pag / 2} hojas de papel) · v. ${huella}`);
   }
   rmSync(tmp, { recursive: true, force: true });

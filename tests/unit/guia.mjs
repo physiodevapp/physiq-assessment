@@ -21,6 +21,13 @@ const FARM_L = await import('../../lib/farmacos.js');
 const IRR_DATOS = await import('../../data/irritabilidad.js');
 const IRR_LIB = await import('../../lib/irritabilidad.js');
 const EJ = await import('../../data/ejercicio.js');
+const GC = await import('../../lib/guia-condiciones.js');
+const FN = await import('../../lib/formulario-numeros.js');
+const DATOS_APP = await import('../../data.js');
+const POSQ_LIB = await import('../../lib/posquirurgico.js');
+const PLAN_DATOS = await import('../../data/plan-tratamiento.js');
+const await_comun = (await import('../../formularios/comun.js')).default;
+const FORMS = Object.fromEntries(await Promise.all(ESQ.ORDEN_REGIONES.map(async r => [r, (await import(`../../formularios/${r}.js`)).default])));
 const REGION_LIB = await import('../../lib/region.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
@@ -33,12 +40,19 @@ test('la guía solo carga módulos puros: nunca app.js, state.js ni phase4*.js (
   for (const m of imp) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), m);
   for (const f of ['lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js'])
     for (const m of importsDe(leer(f))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `${f}: ${m}`);
-  assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(leer('guia.js')), 'la guía no guarda nada');
+  for (const f of ['guia.js', 'guia-calc.js', 'guia-extra.js']) assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(leer(f)), `${f}: la guía no guarda nada`);
+  for (const f of ['guia-extra.js', 'lib/guia-condiciones.js', 'lib/formulario-numeros.js', 'lib/cuestionarios.js', 'lib/ejercicio.js', 'filas.js'])
+    for (const m of importsDe(leer(f))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `${f}: ${m}`);
+  for (const m of importsDe(leer('guia-calc.js'))) assert.ok(!/\/(app|state|phase4b?)\.js$/.test(m), `guia-calc.js: ${m}`);
+  // Lo único que guarda: tema y tamaño de letra, por lib/apariencia.js (preferencias de pantalla, compartidas con la app)
+  const ap = leer('lib', 'apariencia.js');
+  assert.deepEqual([...ap.matchAll(/localStorage\.setItem\((\w+)/g)].map(m => m[1]).sort(), ['LETRA_KEY', 'THEME_KEY']);
+  assert.ok(!/indexedDB|BroadcastChannel|import /.test(ap), 'apariencia.js no importa nada ni toca la sesión');
 });
 
 test('se despliega: guia.html, guia.js y todo lo que importan están en deploy-to-hub.yml', () => {
   const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
-  for (const f of ['guia.html', 'guia.js', 'lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js', 'lib/version.js', 'lib/region.js', 'lib/citas.js', 'ampliar-ia.js', 'ficha.js'])
+  for (const f of ['guia.html', 'guia.js', 'guia-calc.js', 'lib/esquemas.js', 'lib/tests-4b.js', 'lib/arbol.js', 'lib/version.js', 'lib/region.js', 'lib/citas.js', 'ampliar-ia.js', 'ficha.js'])
     assert.ok(deploy.includes(f), f);
   assert.ok(leer('guia.html').includes('src="./guia.js"'));
 });
@@ -173,6 +187,166 @@ test('hoja de irritabilidad: la matriz de data/irritabilidad.js, la misma regla 
   assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'irritabilidad' && h.ruta === 'irritabilidad'));
 });
 
+const F1 = await import('../../data/fase1.js');
+const CALC = await import('../../guia-calc.js');
+test('fase 1: los textos de data/fase1.js son los de la app (index.html), y la hoja y la guía los llevan todos', () => {
+  const index = leer('index.html');
+  const T = F1.TEXTOS_FASE1;
+  for (const b of F1.BANDERAS_FASE1) assert.ok(index.includes(`>${b.texto}<`) && index.includes(`'${b.id}'`), b.id);
+  for (const k of ['banderasAviso', 'psicoIntro', 'psicoAlto']) assert.ok(index.includes(T[k]), k);
+  assert.ok(index.includes(T.banderaAlerta.replace(/^Bandera Roja Detectada\.\s*/, '')), 'banderaAlerta');
+  for (const p of F1.PREGUNTAS_PSICO) assert.ok(index.includes(p.texto) && index.includes(`id="${p.id}"`), p.id);
+  for (const n of F1.NIVELES_PSICO) assert.ok(index.includes(`selectPsico(this, '${n.valor}')`), n.valor);
+  const hoja = HOJAS.htmlFase1(), guia = CALC.htmlFase1();
+  for (const b of F1.BANDERAS_FASE1) { assert.ok(hoja.includes(b.texto), b.id); assert.ok(guia.includes(b.texto), b.id); }
+  for (const p of F1.PREGUNTAS_PSICO) assert.ok(hoja.includes(p.texto) && hoja.includes(p.cuestionarios), p.id);
+  assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'fase1' && h.ruta === 'fase1'));
+  assert.equal(ESQ.HOJAS_GENERALES[0], 'fase1');
+  assert.ok(/fase1: \{ titulo:/.test(leer('guia.js')), 'página #fase1 en la guía');
+});
+
+test('confirmación de la guía: el cuestionario recomendado (prom) de cada hipótesis', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes('h.prom') && src.includes('Cuestionario recomendado'));
+});
+
+test('guía: condiciones especiales en la consulta (recuadro de la fase 5, preguntas de la fase 2 y líneas de la 4b)', () => {
+  const especiales = new Set(Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).filter(s => /^transversal_/.test(s.id) && Object.keys(s).some(k => /^solo[A-Z]/.test(k))).map(s => s.id));
+  // Toda condición con tarjeta (salvo el posquirúrgico, cuyo recuadro es su protocolo) tiene recuadro en la guía
+  for (const id of especiales) if (id !== 'transversal_posquirurgico') assert.ok(GC.RECOMENDACIONES[id], `${id}: sin recuadro de la fase 5 en la guía`);
+  for (const [id, r] of Object.entries(GC.RECOMENDACIONES)) {
+    for (const e of r.estados) {
+      const base = r.fn(e.base);
+      assert.ok(base.length, `${id} · ${e.titulo}: el caso base no da líneas`);
+      // Cada variante cambia alguna línea: si no, su «Si …» estaría escrito para nada
+      for (const [etq, cambio] of e.variantes) assert.notDeepStrictEqual(r.fn({ ...e.base, ...cambio }), base, `${id} · ${e.titulo}: «${etq}» no cambia nada`);
+      // Lo que pinta la guía son líneas de la app, sin texto propio
+      const lineas = GC.recomendacionesCondicion(id).find(x => x.titulo === e.titulo).lineas;
+      const todas = new Set([base, ...e.variantes.map(([, c]) => r.fn({ ...e.base, ...c }))].flat());
+      assert.deepStrictEqual(new Set(lineas.map(l => l.texto)), todas);
+    }
+  }
+  // Las líneas de la 4b bajo cada test con su campo
+  const tests = Object.values(HYPOTHESES).flatMap(h => h.tests);
+  for (const t of tests) assert.strictEqual(GC.lineasTest(t).length, [t.laxitud, t.cargaOsea, t.gaenslen].filter(Boolean).length);
+  assert.ok(tests.some(t => t.laxitud) && tests.some(t => t.cargaOsea) && tests.some(t => t.gaenslen));
+  const src = leer('guia.js');
+  assert.ok(src.includes('consultaCondicionHTML(s)') && src.includes('tecnicaCondicionesHTML()') && src.includes('lineasTestHTML(t)'));
+  // Hoja y página de condiciones: lo que solo está en la app, dicho aparte
+  for (const c of COND_DATOS.CONDICIONES) if (c.destino?.tarjeta) assert.ok(c.enPlan, `${c.id}: sin lo que añade al plan`);
+  assert.ok(HOJAS.htmlCondiciones().includes(' · Plan (fase 6): '), 'la hoja dice en su recuadro lo que añade al plan');
+  assert.ok(COND_LIB.condicionesHTML({}, { guia: true }).includes('En el plan (fase 6):'));
+  assert.ok(!COND_LIB.condicionesHTML({}).includes('En el plan (fase 6):'), 'en la app no se repite');
+});
+
+test('árbol: cada paso con pistas del formulario dice sus preguntas (G/R) y las hojas del paciente llevan esos números', () => {
+  const comun = (await_comun);
+  for (const r of ESQ.ORDEN_REGIONES) {
+    const form = FORMS[r];
+    const nG = FN.numerosFormulario(comun, 'G'), nR = FN.numerosFormulario(form, 'R');
+    for (const [paso, lista] of Object.entries(form.pistas || {})) {
+      assert.ok(CIF_TREES[r].steps.some(st => st.id === paso), `${r}: ${paso} no es un paso`);
+      const refs = FN.refsPasoFormulario(comun, form, paso);
+      // Cada pista se convierte en una referencia (las filas de una matriz, en su pregunta)
+      for (const p of lista) { const [t, x] = p.split(':'); assert.ok(refs.includes((t === 'c' ? nG : nR)[x.split('.')[0]]), `${r} · ${paso}: ${p} sin número`); }
+      assert.ok(HOJAS.htmlArbol(r, { a4: true }).includes(`📝 ${FN.textoRefs(refs)}`), `${r} · ${paso}: la hoja del árbol no lo dice`);
+    }
+    const hoja = HOJAS.htmlFormularioPaciente(r);
+    for (const n of Object.values(nR)) assert.ok(hoja.includes(`<span class="nq">${n}</span>`), `${r}: la hoja del paciente no numera ${n}`);
+  }
+  assert.ok(leer('guia.js').includes('refsPasoFormulario(FORM_COMUN, FORMULARIOS[region], st.id)'));
+});
+
+test('guía: calculadora de cuestionarios, efectos del ejercicio, preguntar a la IA, síntomas, reloj del POTS y cirugía en la fase 1', () => {
+  const src = leer('guia.js'), extra = leer('guia-extra.js'), calc = leer('guia-calc.js');
+  for (const k of ['cuestionarios:', 'ejercicio:', 'preguntar:', 'sintomas:']) assert.ok(src.includes(`  ${k} {`), `SUELTAS sin ${k}`);
+  // Las mismas piezas de la app, sin reescribirlas
+  assert.ok(extra.includes('formularioCuestionarioHTML(def') && extra.includes('resultadoCuestionarioHTML(def') && extra.includes('ejercicioHTML()'));
+  assert.ok(/Object\.entries\(TIPOS_PREGUNTA\)/.test(extra), 'los tres modos de «Preguntar a la IA»');
+  assert.ok(calc.includes('estadoReloj(RELOJ, Date.now())') && calc.includes('tomaFueraDeTiempo('), 'reloj de la prueba de bipedestación');
+  // El cuestionario recomendado de la confirmación enlaza la calculadora
+  assert.ok(src.includes('href="#cuestionarios/${id}"'));
+  // Hoja de síntomas: en las hojas generales (cuadernos) y con todas las zonas de cada región
+  assert.ok(ESQ.HOJAS_GENERALES.includes('sintomas'));
+  const sint = HOJAS.htmlSintomas();
+  const { ZONAS_SINTOMA } = DATOS_APP;
+  for (const r of ESQ.ORDEN_REGIONES) for (const z of ZONAS_SINTOMA[r] || []) assert.ok(sint.includes(z.nombre.replace(/&/g, '&amp;')), `${r}: falta la zona ${z.nombre}`);
+  // Hoja de fase 1: la tarjeta «Cirugía» con sus protocolos y complicaciones
+  const f1 = HOJAS.htmlFase1();
+  for (const t of [...POSQ_LIB.PROTOCOLOS, ...POSQ_LIB.COMPLICACIONES.map(c => c.label)]) assert.ok(f1.includes(t), `fase 1 sin «${t}»`);
+  assert.ok(calc.includes('POSQ.TEXTO_PAUTA_COMPATIBLE'), 'la página de fase 1 de la guía explica lo que añade el posquirúrgico');
+});
+
+test('plan de tratamiento: la hoja con el contenido fijo y la página de la guía con la función de la app', () => {
+  const src = leer('guia-plan.js');
+  assert.ok(src.includes('construirPlan(e)') && src.includes('textoPlanSesion(plan, e, nivel)') && src.includes('textoPlanMes(plan, e, P.frecuencia)'), 'la guía usa las funciones de la app, no las reescribe');
+  assert.ok(!/localStorage\.setItem|indexedDB|BroadcastChannel/.test(src), 'la guía no guarda nada');
+  for (const m of importsDe(src)) assert.ok(!/\/(app|state|phase4b?|plan)\.js$/.test(m), `guia-plan.js: ${m}`);
+  assert.ok(leer('guia.js').includes('  plan: { titulo:'));
+  assert.ok(ESQ.HOJAS_GENERALES.includes('plan'));
+  const hoja = HOJAS.htmlPlanHoja();
+  for (const [n, e] of Object.entries(PLAN_DATOS.ESCALONES)) assert.ok(hoja.includes(e.texto), `escalón ${n} de columna`);
+  for (const r of PLAN_DATOS.REGLAS_MES) assert.ok(hoja.includes(r.replace(/«/g, '«')), 'reglas del mes');
+  for (const r of ESQ.ORDEN_REGIONES) for (const x of [].concat(PLAN_DATOS.RED_SEGURIDAD[r]?.siempre || [])) assert.ok(hoja.includes(PLAN_DATOS.TEXTOS_SESION[x.cierre].replace(/&/g, '&amp;')), `${r}: red de seguridad`);
+});
+
+test('formulario del paciente en papel: una hoja por cara (común y cada región), sin QR, fuera de los cuadernos y en «Para dar al paciente»', () => {
+  const ids = ['comun', ...ESQ.ORDEN_REGIONES];
+  const hojas = HOJAS.hojasImpresas().filter(h => h.clave.startsWith('formulario-'));
+  assert.deepStrictEqual(hojas.map(h => h.clave), ids.map(id => `formulario-${id}`));
+  for (const h of hojas) {
+    assert.strictEqual(h.ruta, null, `${h.clave}: sin QR`);
+    assert.ok(h.paciente, `${h.clave}: para el paciente`);
+    const html = h.html();
+    assert.ok(!html.includes('<!--QR-->'), `${h.clave}: no lleva QR`);
+    // Todas las preguntas del esquema, tal cual
+    const f = h.clave === 'formulario-comun' ? 'comun' : h.clave.slice(11);
+    const src = leer('formularios', `${f}.js`);
+    for (const m of src.matchAll(/\btexto: '([^']+)'/g)) assert.ok(html.includes(m[1].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')), `${h.clave}: falta «${m[1]}»`);
+  }
+  for (const c of ESQ.definicionCuadernos(ESQ.ORDEN_REGIONES, r => r)) for (const s of c.secciones) assert.ok(!s.hojas.some(k => k.startsWith('formulario-')), `${c.clave}: sin formularios`);
+  assert.ok(leer('guia.js').includes('`formulario-${r}`'), 'la guía los lista en «Para dar al paciente»');
+});
+
+test('cribado de la guía: zonas de dolor referido e impacto de cada sistema, los textos de la app', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes('zonasImpactoHTML(s)') && src.includes('s.zonasDolor') && src.includes('s.impactoDescanso') && src.includes('s.impactoEjercicio'));
+  const conZonas = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => s.zonasDolor?.length);
+  assert.ok(conZonas.length > 0, 'cervical tiene zonas de dolor referido');
+  assert.ok(/zonas de dolor referido/.test(HOJAS.htmlCribado('cervical')), 'la hoja remite a la guía');
+});
+
+test('calculadoras de la guía: usan las reglas de la app y salen en el bloque de su condición', () => {
+  const src = leer('guia-calc.js');
+  for (const f of ['resultadoHAG(', 'reglaVascular(', 'resultadoPrueba(', 'reglaTA(']) assert.ok(src.includes(f), f);
+  assert.deepEqual(Object.keys(CALC.CALC_SISTEMA).sort(), ['transversal_disautonomia', 'transversal_embarazo', 'transversal_hipermovilidad']);
+  for (const id of Object.keys(CALC.CALC_SISTEMA)) assert.ok(SYSTEMIC_SCREENING.lumbar.sistemas.some(s => s.id === id), id);
+  assert.ok(CALC.calcHipermovilidadHTML().includes('Beighton') && CALC.calcDisautonomiaHTML().includes('FC') && CALC.calcEmbarazoHTML().includes('TAS'));
+});
+
+test('número de hipótesis: la hoja y la guía pintan la cifra, nunca el carácter rodeado (ilegible desde el 10)', () => {
+  assert.deepEqual(['①', '⑨', '⑩', '⑳', '㉑', '㉟', '㊱', '㊿', '', undefined].map(ESQ.numeroHipotesis), ['1', '9', '10', '20', '21', '35', '36', '50', '', '']);
+  for (const h of Object.values(HYPOTHESES)) if (h.num) assert.match(ESQ.numeroHipotesis(h.num), /^\d+$/, `${h.id}: ${h.num}`);
+  for (const r of Object.keys(CIF_TREES)) assert.ok(!/class="num">[\u2460-\u2473\u3251-\u325F\u32B1-\u32BF]/.test(HOJAS.htmlConfirmacion(r)), r);
+});
+
+test('orden anatómico de las regiones en papel y guía: las mismas que CIF_TREES, de arriba abajo', () => {
+  assert.deepEqual([...ESQ.ORDEN_REGIONES].sort(), Object.keys(CIF_TREES).sort());
+  assert.deepEqual(ESQ.ORDEN_REGIONES, ['cervical', 'hombro', 'codo', 'lumbar', 'cadera', 'rodilla', 'tobillo_pie']);
+  const comp = ESQ.definicionCuadernos(ESQ.ORDEN_REGIONES, REGION_LIB.nombreRegion).find(l => l.clave === 'cuaderno-completo');
+  assert.deepEqual(comp.secciones.slice(1).map(s => s.hojas[0]), ESQ.ORDEN_REGIONES.map(r => `cribado-${r}`));
+  assert.ok(leer('guia.js').includes('const REGIONES = ORDEN_REGIONES'));
+});
+
+test('las hojas remiten a la guía (QR), no a la app, para lo que la guía ya tiene', () => {
+  for (const r of Object.keys(CIF_TREES)) {
+    assert.ok(!/están en la app|en la app\./.test(HOJAS.htmlCribado(r)), `cribado-${r}`);
+    assert.ok(!/en la app\./.test(HOJAS.htmlConfirmacion(r)), `confirmacion-${r}`);
+  }
+  const cond = HOJAS.htmlCondiciones();
+  assert.ok(!cond.includes('la app añade lo que necesita.') && cond.includes('En papel:'));
+});
+
 test('hoja de ejercicio para el paciente: todas las frases «Para explicárselo al paciente», literales, con título llano y sin QR', () => {
   const html = HOJAS.htmlEjercicioPaciente();
   const escH = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -203,7 +377,7 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
   const { nombreRegion } = REGION_LIB;
   const huellas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
   const cuadernos = JSON.parse(leer('docs', 'esquemas', 'cuadernos.json'));
-  const def = ESQ.definicionCuadernos(Object.keys(CIF_TREES), nombreRegion);
+  const def = ESQ.definicionCuadernos(ESQ.ORDEN_REGIONES, nombreRegion);
   assert.deepEqual(Object.keys(cuadernos).sort(), def.map(l => l.clave).sort(), 'un cuaderno por definición (completo y uno por región)');
   for (const l of def) {
     const d = cuadernos[l.clave];
@@ -219,7 +393,7 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
     assert.equal((texto.match(/\/Subtype \/Link/g) || []).length, claves.length, `${l.clave}: un enlace por hoja en el índice de la portada`);
     assert.ok(/\/Outlines/.test(texto) && /\/PageMode \/UseOutlines/.test(texto), `${l.clave}: con marcadores (sección → hoja)`);
     assert.ok(!claves.includes('ejercicio-paciente'), 'la hoja del paciente va aparte');
-    // Colocación: en qué página empieza cada hoja (la guía avisa si se mueven). Cada hoja empieza
+    // Colocación: en qué página empieza cada hoja (para los enlaces del índice y los marcadores). Cada hoja empieza
     // en impar y ocupa sus páginas redondeadas a par; tiene que cuadrar con los PDF de las hojas.
     assert.deepEqual(Object.keys(d.inicio || {}), claves, `${l.clave}: «inicio» de cada hoja, en orden. Regenera con «node docs/esquemas/generar.mjs cuadernos»`);
     let esperada = 3;
@@ -229,14 +403,16 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
       esperada += n + (n % 2);
     }
     assert.equal(d.paginas, esperada - 1, `${l.clave}: páginas totales`);
-    assert.match(d.paginasFecha || '', /^\d{4}-\d{2}-\d{2}$/, `${l.clave}: fecha de la colocación de las páginas`);
-    assert.ok(Array.isArray(d.paginasPor) && d.paginasPor.every(k => claves.includes(k)), `${l.clave}: «paginasPor», hojas del cuaderno`);
+    assert.match(d.ordenFecha || '', /^\d{4}-\d{2}-\d{2}$/, `${l.clave}: fecha del orden de hojas`);
+    assert.ok(!('paginasPor' in d) && !('paginasFecha' in d), `${l.clave}: sin los campos de la numeración absoluta`);
   }
   assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos.json'));
 });
 
-test('guía, fármacos: «¿Otro fármaco o duda?» usa el modo «Fármacos» de la app y no guarda el destino', () => {
+test('guía: «Preguntar a la IA» con los modos de la app (fármacos al final de su página) y sin guardar el destino', () => {
   const src = leer('guia.js');
-  assert.ok(src.includes("promptPregunta({ pregunta: q, tipo: 'farmacos' })") && src.includes('preguntaFarmacosHTML()'));
-  assert.ok(!src.includes('guardarDestinoIA'), 'la guía no guarda nada');
+  assert.ok(src.includes("htmlPreguntar('farmacos'"));
+  const extra = leer('guia-extra.js');
+  assert.ok(extra.includes('promptPregunta({ pregunta: q, tipo: TIPO })'));
+  assert.ok(!src.includes('guardarDestinoIA') && !extra.includes('guardarDestinoIA'), 'la guía no guarda nada');
 });

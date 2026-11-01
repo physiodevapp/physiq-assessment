@@ -136,7 +136,7 @@ async function walkRegion(page, region) {
     ['naturaleza', 'estabilidad'].forEach(g => document.getElementById(g)?.querySelector('.option-btn')?.click());
   });
   await page.fill('#signoComparable', `Signo comparable de ${region}`);
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
 
   const treeResult = await walkCifTreeToCompletion(page);
@@ -193,7 +193,7 @@ async function walkRegionBreve(page, region) {
   await page.click('#phase3 .nrs-btn >> nth=6');
   await page.click('#irritabDirecta .option-btn >> nth=1');
   const naturalezaOculta = await page.evaluate(() => getComputedStyle(document.getElementById('naturaleza').closest('.card')).display === 'none');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
 
   const treeResult = await walkCifTreeToCompletion(page);
@@ -251,7 +251,7 @@ async function walkRegionPosq(page, region) {
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
   await page.fill('#signoComparable', 'Flexión');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const treeResult = await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
@@ -293,7 +293,7 @@ async function checkCaderaProtesis(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('ca_step1', 2);
@@ -394,7 +394,7 @@ async function checkHombroTratada(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('h_step1', 2);
@@ -1630,7 +1630,7 @@ async function checkDerivacionVascular(page) {
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
   await page.fill('#signoComparable', 'Marcha');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('lu_step1', 1);          // NO
@@ -1681,7 +1681,7 @@ async function checkDerivacionCribado(page) {
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
   await page.fill('#signoComparable', 'Sedestación');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
@@ -1757,7 +1757,7 @@ async function checkModoGuia(page) {
   await page.waitForTimeout(150);
   r.signoVerbal = await page.evaluate(() => document.getElementById('signoComparable').offsetParent === null
     && /Flexión de hombro/.test(document.querySelector('[data-verbal="signoComparable"]')?.textContent || ''));
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
@@ -1872,7 +1872,7 @@ async function irA4bHombro(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(150);
   const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
   await elegir('h_step1', 2);
@@ -2021,7 +2021,7 @@ async function irAFase4Lumbar(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
   await page.click('#phase3 .nrs-btn >> nth=4');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.click('#phase3 .btn-primary:has-text("Árbol de decisión")');
   await page.waitForTimeout(200);
 }
 async function checkArbolRazon(page) {
@@ -6499,6 +6499,16 @@ async function checkGuia(browser, errors) {
     await page.click('[data-irr="reposo"][data-valor="Presente"]');
     await page.click('[data-irr-borrar]');
     r.irrBorrar = await page.evaluate(() => !document.querySelector('[data-irr].selected') && /no registrada/.test(document.getElementById('guiaIrrRes').textContent));
+    // Tema y letra: los mismos botones y la misma preferencia que la app (Sistema → Claro → Oscuro)
+    r.apariencia = await page.evaluate(() => {
+      const html = document.documentElement, tema = document.getElementById('themeBtn'), letra = document.getElementById('letraBtn');
+      tema.click(); const claro = html.dataset.theme === 'light' && localStorage.getItem('physiq-assessment-theme') === 'light' && /Claro/.test(tema.title);
+      tema.click(); const oscuro = html.dataset.theme === 'dark' && localStorage.getItem('physiq-assessment-theme') === 'dark';
+      tema.click(); const sistema = localStorage.getItem('physiq-assessment-theme') === null && /Sistema/.test(tema.title);
+      letra.click(); const grande = html.dataset.letra === 'grande' && letra.getAttribute('aria-pressed') === 'true';
+      letra.click(); const normal = !html.dataset.letra && localStorage.getItem('physiq-assessment-letra') === null;
+      return claro && oscuro && sistema && grande && normal;
+    });
     // Región: menú propio (con los estilos de la guía), que se cierra con Escape y al elegir
     await page.click('#guiaRegion');
     r.menuRegion = await page.evaluate(() => !document.getElementById('guiaRegionMenu').hidden
@@ -6565,8 +6575,8 @@ async function checkGuia(browser, errors) {
     // El enlace lleva ?v=<huella del PDF>: una versión nueva es otra dirección y no sale de la caché
     r.cuadernos = filasCuadernos.length === Object.keys(cuadernos).length && (await page.request.head(new URL(filasCuadernos[0], page.url()).href)).ok()
       && filasCuadernos.every(h => { const m = h.match(/(cuaderno-[^/]+)\.pdf\?v=([0-9a-f]{8})$/); return m && cuadernos[m[1]]?.archivo === m[2]; })
-      // Cada cuaderno dice desde cuándo están colocadas así sus páginas (si se mueven, se reimprime entero)
-      && await page.evaluate(n => [...document.querySelectorAll('.guia-hoja')].filter(li => li.querySelector('a[href*="cuaderno-"]') && /páginas colocadas así desde el/.test(li.textContent)).length === n, filasCuadernos.length);
+      // Cada cuaderno dice desde cuándo tiene su lista y orden de hojas (si cambian, se reimprime entero)
+      && await page.evaluate(n => [...document.querySelectorAll('.guia-hoja')].filter(li => li.querySelector('a[href*="cuaderno-"]') && /orden de hojas desde el/.test(li.textContent)).length === n, filasCuadernos.length);
     const soloHojas = filasHojas.filter(f => !/cuaderno-|\/respuestas\//.test(f.pdf));
     // Hojas de respuestas del lector (en prueba): una por cuestionario con hoja, con su aviso y su PDF (?v= su huella)
     const respuestas = await (await page.request.get(BASE_URL.replace(/\/$/, '') + '/docs/esquemas/respuestas/huellas.json')).json();
@@ -6622,15 +6632,103 @@ async function checkGuia(browser, errors) {
     const hrefIA = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href'));
     r.preguntaFarmacos = vacioDesactivado && hrefIA.startsWith('https://www.google.com/search?udm=50&q=')
       && hrefIA.includes('Fármacos o duda: «pregabalina y ejercicio en mayores»') && hrefIA.includes('CIMA')
-      && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === null);
+      && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === null)
+      && (await page.$$('[data-tipo-pregunta]')).length === 0;   // solo el modo fármacos: los tres, en el ✨
     // Irritabilidad suelta (#irritabilidad, el QR de su hoja): la misma calculadora, sin región
     await page.goto(`${base}#irritabilidad`, { waitUntil: 'networkidle' });
     await page.waitForSelector('[data-irr]');
     await page.click('[data-irr="calma"][data-valor="Tarda horas"]');
     r.irrSuelta = /Irritabilidad moderada/i.test(await page.textContent('#guiaIrrRes'))
       && /Irritabilidad/.test(await page.textContent('#guiaTitulo')) && !(await page.$('#guiaContenido h2'));
+    // Fase 1 (#fase1, el QR de su hoja): bandera roja y riesgo alto con sus cuestionarios
+    await page.goto(`${base}#fase1`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('[data-gc="bandera"]');
+    await page.click('[data-gc="bandera"][data-gc-k="br3"][data-gc-v="SI"]');
+    await page.click('[data-gc="psico"][data-gc-v="Alto"]');
+    await page.click('[data-gc="psicoQ"][data-gc-k="psico_emocional"][data-gc-v="Sí"]');
+    const f1 = await page.textContent('#guiaGcFase1');
+    r.fase1 = /Bandera Roja Detectada/.test(f1) && /PHQ-2/.test(f1) && /Örebro/.test(f1);
+    // Cribado: banderas de cada sistema y calculadoras de las condiciones especiales (reglas de la app)
+    await page.goto(`${base}#rodilla/cribado`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#calc-hipermovilidad');
+    r.banderasGuia = await page.locator('.guia-banderas').count() > 0;
+    await page.click('#calc-hipermovilidad summary');
+    await page.fill('#calc-hipermovilidad [data-gc-num="edad"]', '30');
+    for (const k of ['menique_d', 'menique_i', 'pulgar_d', 'pulgar_i', 'codo_d']) await page.click(`[data-gc="beighton"][data-gc-k="${k}"]`);
+    r.calcBeighton = /Beighton 5\/9 · corte 5/.test(await page.textContent('#guiaGcBeighton'));
+    await page.click('#calc-embarazo summary');
+    await page.fill('[data-gc-num="ta"][data-gc-k="semanas"]', '30');
+    await page.fill('[data-gc-num="ta"][data-gc-k="tas"]', '165');
+    r.calcTA = /160\/110 o más/.test(await page.textContent('#guiaGcTA'));
+    // Condiciones especiales en la consulta: el recuadro de la anafilaxia abierto, preguntas de la fase 2
+    // y las líneas de la 4b (encima de los tests y bajo uno con laxitud)
+    r.condConsulta = await page.evaluate(() => {
+      const recs = [...document.querySelectorAll('.guia-cc-rec')];
+      const ma = recs.find(d => d.closest('section')?.textContent.includes('Trastorno mastocitario'));
+      const pregs = [...document.querySelectorAll('.guia-banderas > summary')].filter(x => /Preguntas que añade/.test(x.textContent)).length;
+      return recs.length >= 7 && !!ma?.open && /112/.test(ma.textContent) && pregs >= 4;
+    });
+    await page.goto(`${base}#hombro/confirmacion`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-cc-tec', { state: 'attached' });
+    // Calculadora de cuestionarios: el PHQ-9 con las reglas de la app, y la lista con su estado
+    await page.goto(`${base}#cuestionarios/phq9`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#cuestCuerpo .cuest-item');
+    for (let n = 1; n <= 9; n++) await page.click(`#cuestCuerpo .cuest-item[data-item="${n}"] .cuest-op[data-valor="2"]`);
+    const resPHQ = await page.textContent('#cuestResultado');
+    await page.click('[data-cuest-volver]');
+    await page.waitForSelector('[data-cuest="phq9"]');
+    r.cuestGuia = /18\/27/.test(resPHQ) && /Ítem 9/.test(resPHQ) && /18\/27/.test(await page.textContent('[data-cuest="phq9"]'));
+    // Efectos del ejercicio y «Preguntar a la IA» en modo ejercicio
+    await page.goto(`${base}#ejercicio`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#ejercicioCuerpo details', { state: 'attached' });
+    // desde cualquier página, el ✨ de la cabecera lleva a «Preguntar a la IA»
+    await page.click('#guiaIABtn');
+    await page.waitForSelector('#guiaPreguntaTexto');
+    r.iconoIA = (await page.evaluate(() => location.hash)) === '#preguntar'
+      && (await page.getAttribute('#guiaIABtn', 'aria-current')) === 'page';
+    await page.click('[data-tipo-pregunta="ejercicio"]');
+    await page.fill('#guiaPreguntaTexto', 'excéntricos en la tendinopatía rotuliana');
+    await page.evaluate(() => document.getElementById('guiaPreguntaIr').addEventListener('click', e => e.preventDefault()));
+    await page.click('#guiaPreguntaIr');
+    r.preguntaEjercicio = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href')).includes('Duda de prescripción de ejercicio: «excéntricos');
+    // Plan de tratamiento: la función de la app con un formulario corto
+    await page.goto(`${base}#plan`, { waitUntil: 'networkidle' });
+    r.iconoIA = r.iconoIA && (await page.getAttribute('#guiaIABtn', 'aria-current')) === null;
+    await page.click('[data-plan="region"][data-valor="lumbar"]');
+    await page.click('[data-plan="hip"]:not([disabled])');
+    await page.click('[data-plan="irr"][data-valor="moderada"]');
+    await page.click('[data-plan="nrs"][data-valor="6"]');
+    const txtPlan = await page.$$eval('.guia-plan-txt', e => e.map(x => x.textContent));
+    await page.click('[data-plan="bloqueo"]');
+    const bloqueado = await page.textContent('.guia-plan-txt');
+    r.planGuia = /PLAN DE SESIÓN/.test(txtPlan[0]) && /Nivel B · Suave/.test(txtPlan[0]) && /PLAN DEL MES/.test(txtPlan[1] || '') && /Sin plan de tratamiento/.test(bloqueado);
+    // Síntomas: las zonas de lumbar enlazan sus pasos del árbol y el periné recuerda la cola de caballo
+    await page.goto(`${base}#sintomas`, { waitUntil: 'networkidle' });
+    r.sintomasGuia = await page.evaluate(() => !!document.querySelector('a[href="#lumbar/arbol/paso-lu_step1c"]') && !!document.querySelector('a[href="#lumbar/cribado/q-l6"]'));
+    await page.goto(`${base}#lumbar/arbol`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-fpref', { state: 'attached' });
+    r.formArbol = await page.evaluate(() => /📝 Formulario: R1, R2, R4, R6/.test(document.querySelector('#paso-lu_step1')?.textContent || ''));
+    await page.goto(`${base}#hombro/confirmacion`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.guia-cc-tec', { state: 'attached' });
+    r.tecnica4b = await page.evaluate(() => document.querySelectorAll('.guia-cc-tec li').length === 5
+      && [...document.querySelectorAll('.guia-cc-test')].some(x => /lado sano/.test(x.textContent)));
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
     r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
+    // Reloj de la prueba de bipedestación (reloj falso): fila del minuto 1 y «toma a las …» fuera de su minuto
+    {
+      const pr = await context.newPage();
+      await pr.clock.install();
+      await pr.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
+      await pr.waitForSelector('#calc-disautonomia', { state: 'attached' });
+      await pr.click('#calc-disautonomia summary');
+      await pr.click('[data-gc-reloj="pie"]');
+      await pr.clock.runFor(61000);
+      const fila = await pr.evaluate(() => document.querySelector('tr.ds-fila-toca')?.dataset.gcFila);
+      await pr.clock.runFor(160000);
+      await pr.fill('[data-gc-num="prueba"][data-gc-k="m1.fc"]', '95');
+      r.relojGuia = fila === 'm1' && /toma a las 3:4/.test(await pr.textContent('[data-gc-toma="m1"]'));
+      await pr.close();
+    }
     // (después de comprobar que la guía no crea la sesión: la app sí la abre)
     // La app enlaza «Hojas para imprimir» desde el panel de sesión
     {
@@ -6647,7 +6745,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
