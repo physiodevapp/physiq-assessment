@@ -13,6 +13,16 @@ import '../../tests/dom-shim.mjs';
 
 const { CUESTIONARIOS } = await import('../../data/cuestionarios.js');
 const LC = await import('../../lib/lector-cuestionarios.js');
+const { qrSVG } = await import('./qr.mjs');
+const { urlRuta } = await import('../../lib/esquemas.js');
+
+// QR a la ficha del cuestionario en la guía (guia.html#cuestionarios/<id>; decisión del
+// usuario, 2026-11): el cuestionario oficial y la hoja actual. Lleva la «v.» de la hoja
+// (?h=), y la guía avisa si el papel es de una versión anterior. No cambia la huella (que
+// solo resume filas y casillas): las fotos ya medidas siguen siendo de la misma versión.
+// Arriba a la derecha, lejos de las filas que se leen.
+const QR_PX = 92;
+export const urlQRRespuestas = def => urlRuta(`cuestionarios/${def.id}`, LC.huellaHojaRespuestas(def));
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const tipoDe = it => it.tipo || 'escala';
@@ -24,6 +34,9 @@ const CSS = `
   * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body { margin: 0; font-family: Helvetica, Arial, sans-serif; color: #111827; font-size: 11px; line-height: 1.3; }
   h1 { font-size: 19px; margin: 0; } .sub { color: #4b5563; margin: 2px 0 6px; }
+  .cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .qr { flex: none; width: ${QR_PX}px; text-align: center; font-size: 8px; color: #4b5563; line-height: 1.15; }
+  .qr svg { display: block; }
   .instr { border: 1.5px solid #111827; border-radius: 6px; padding: 6px 9px; margin-bottom: 6px; }
   .instr b { font-size: 12px; }
   .privado { color: #b42318; font-weight: bold; }
@@ -81,8 +94,9 @@ export function htmlRespuestas(def) {
     return `${cab}<div class="fila" data-n="${it.n}"><span class="num">${it.n}</span><span class="etq">${esc(LC.etiquetaFila(it))}</span><span class="casillas">${casillasFila(def, it)}</span></div>`;
   }).join('');
   return `<style>${CSS}</style>
-  <h1>Hoja de respuestas · ${esc(def.nombre)}</h1>
-  <div class="sub">${esc(def.titulo)} · PhysiQ · v. ${huella}</div>
+  <div class="cab"><div><h1>Hoja de respuestas · ${esc(def.nombre)}</h1>
+  <div class="sub">${esc(def.titulo)} · PhysiQ · v. ${huella}</div></div>
+  <div class="qr">${qrSVG(urlQRRespuestas(def), QR_PX)}<span>Cuestionario oficial y hoja actual</span></div></div>
   <div class="instr"><b>Lee cada pregunta en el cuestionario y marca aquí con una X la casilla de tu respuesta, en la fila con el mismo número.</b>
     Una sola casilla por fila, salvo donde dice que puedes marcar varias. Si te equivocas, tacha la casilla y marca la buena.
     <div class="privado">No escribas tu nombre ni ningún otro dato en esta hoja.</div></div>

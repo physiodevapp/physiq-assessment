@@ -3416,6 +3416,9 @@ async function checkCuestionarios(browser, errors) {
       && document.querySelectorAll('#cuestCuerpo .cuest-tarjeta').length === n;
   }, CUESTIONARIOS.length);
   await page.click('[data-cuest="phq9"]');
+  // Enlace a su ficha de la guía (hoja de respuestas y cuestionario oficial), en pestaña nueva
+  r.enlaceHoja = await page.evaluate(() => { const a = document.querySelector('#cuestCuerpo .cuest-hoja');
+    return a?.getAttribute('href') === './guia.html#cuestionarios/phq9' && a.target === '_blank'; });
   for (const [n, v] of [[1, 2], [2, 2], [3, 1], [4, 2], [5, 1], [6, 1], [7, 1], [8, 1]]) await toca(n, v);
   r.incompleto = /8\/9/.test(await res()) && /Falta 1 ítem: 9/.test(await res());
   await toca(9, 1);

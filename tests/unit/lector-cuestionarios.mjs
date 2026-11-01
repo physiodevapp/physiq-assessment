@@ -4,7 +4,8 @@
 import { assert, leer, test, existsSync, readdirSync, join, RAIZ } from './comun.mjs';
 const { CUESTIONARIOS } = await import('../../data.js');
 const LC = await import('../../lib/lector-cuestionarios.js');
-const { puntuar, NA } = await import('../../lib/cuestionarios.js');
+const CQ = await import('../../lib/cuestionarios.js');
+const { puntuar, NA } = CQ;
 const HR = await import('../../docs/esquemas/respuestas.mjs');
 
 console.log('\nlector de cuestionarios con foto');
@@ -227,6 +228,20 @@ test('lector (paso 2): confirmación — desacuerdos y alerta nunca llegan marca
   assert.ok(!(3 in r), 'en blanco: sin responder');
   // Lo confirmado puntúa igual que tocando la calculadora
   assert.deepEqual(puntuar(d, r), puntuar(d, { 1: 1, 2: 3, 4: 0, 5: 1, 6: 1, 7: 1, 8: 1, 9: 0 }));
+});
+
+test('hojas de respuestas: QR a su ficha de la guía con su versión, y enlace desde la calculadora', () => {
+  const { tieneHoja, enlaceHojaHTML } = CQ;
+  for (const d of CUESTIONARIOS) {
+    assert.equal(tieneHoja(d), LC.tieneHojaRespuestas(d), `${d.id}: mismo criterio que el lector`);
+    assert.equal(enlaceHojaHTML(d).includes(`./guia.html#cuestionarios/${d.id}`), LC.tieneHojaRespuestas(d), d.id);
+  }
+  const d = def('phq9');
+  assert.equal(HR.urlQRRespuestas(d), `https://physiodevapp.github.io/physiq/assessment/guia.html?h=${LC.huellaHojaRespuestas(d)}#cuestionarios/phq9`);
+  assert.ok(HR.htmlRespuestas(d).includes('<svg'), 'la hoja lleva el QR');
+  // El enlace oficial solo con una dirección comprobada: hoy ninguno (sin `oficial`, la guía dice que se use el papel)
+  for (const c of CUESTIONARIOS.filter(c => c.oficial)) assert.ok(/^https:\/\//.test(c.oficial.url), c.id);
+  assert.ok(leer('lib/cuestionarios.js').includes('enlaceHojaHTML(def)'));
 });
 
 test('lector (paso 2): la petición al worker es el prompt y el esquema medidos', () => {
