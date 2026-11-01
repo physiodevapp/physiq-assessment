@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay dos rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2, con las 6 del PHQ-9. Falta la ronda del ODI con 6 hojas, y nada está decidido. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos. Hay tres rondas (ver «Mediciones»): la 1, con una hoja de PHQ-9 y otra de ODI; la 2 y la 3, con 6 hojas de cada uno. Ningún modelo supera los dos cuestionarios, y nada está decidido. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
 
 ## Idea
 
@@ -141,6 +141,35 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 - **Sonnet**, ningún 🔴: en `phq9-02` dio por dudosas la fila 8 (círculo) en las 3 pasadas y la 4 en una, siempre con la lectura correcta como mejor opción; en `phq9-05`, la fila 4 (1 rayada, X en 3) como dudosa con 3 en las 3 pasadas. Las dos filas ambiguas (dos marcas, entre casillas), siempre como dudosas.
 - **Ítem 9 (alerta):** ningún 🔴 en ningún modelo.
 - **Lectura, sin decidir:** con 63 ítems por pasada sin 🔴, Sonnet queda por debajo de un 4,8 % al 95 %, aún lejos del 0,5 %. Opus no es mejor techo que Sonnet: su fallo de alineación de filas aparece en la foto girada, que es una condición realista (foto hecha con el móvil en horizontal).
+
+### Ronda 3 (2026-11-01): ODI con 6 hojas, Sonnet y Opus
+
+- **Casos:** `odi-01` a `odi-06` (6 hojas distintas) y `odi-01b` (la hoja 01 otra vez, girada 180° y con buena luz): 7 fotos. Condiciones: plana con X, círculo y tic, dos marcas entre casillas y una fila en blanco (02); muy inclinada sobre fondo estampado, solo tics (03); exterior, sombra y doblada, dos filas en blanco (04); girada 90° con una franja de sol, una casilla rayada (05); girada 45°, solo círculos, uno entre casillas (06). Respuestas correctas confirmadas por el usuario.
+- **Ejecución:** `--cuestionario odi --modelo sonnet,opus --veces 3 --guardar`.
+
+| Modelo | 🔴 (peor pasada) | A revisar del lector | Revisión total (con ambiguas) | Veredicto | Coste por hoja |
+|---|---|---|---|---|---|
+| Sonnet | 2 de 70 (2,9 %) | 5,7 % | 12,9 % | **✗** (0 de 3 pasadas) | 0,018 $ |
+| Opus | 0 de 70 en las 3 pasadas (< 4,3 % al 95 %) | 8,6 % | 18,6 % | ✓ (3 de 3 pasadas) | 0,036 $ |
+
+- **Los 🔴 de Sonnet**, los dos del mismo tipo: una marca ambigua dada por clara.
+  - `odi-01b` fila 8 (X sobre el borde entre C y D, foto girada 180°): «D» clara **en las 3 pasadas**. Sobre la foto original de la misma hoja (`odi-01`), las 3 pasadas la dieron por dudosa. Es un error estable, no un azar: depende de la foto.
+  - `odi-06` fila 4 (círculo entre C y D, foto a 45°): «C» clara en 1 de 3 pasadas.
+- **Ningún desplazamiento de filas** en el ODI, ni con la hoja girada 90°, 180° o 45°.
+- **Filas difíciles:** las rayadas (la B en `odi-01b`, la C en `odi-05`) siempre con la casilla buena, a menudo como dudosa; los tics y los círculos, bien; las filas en blanco, siempre en blanco; Opus da más dudosas en los círculos grandes de `odi-06` (filas 9 y 10, con la lectura correcta).
+
+### Conclusión de las rondas 2 y 3 (sin decidir)
+
+- **Ningún modelo supera los dos cuestionarios.** Sonnet supera el PHQ-9 y no el ODI; Opus, al revés. Sus fallos son distintos: Opus desplaza filas en una foto girada (una pasada de `phq9-02`); Sonnet da por clara una marca entre casillas.
+- **Simulación sin coste sobre las lecturas guardadas** (no forma parte de la herramienta): si se leen dos veces y toda fila en la que las dos lecturas no coinciden pasa a dudosa:
+
+  | Combinación | PHQ-9: 🔴 · a revisar · total | ODI: 🔴 · a revisar · total |
+  |---|---|---|
+  | Sonnet + Opus | 0/63 · 9,5 % · 12,7 % | 0/70 · 10,0 % · 20,0 % |
+  | Sonnet + Sonnet | 0/63 · 4,8 % · 7,9 % | 1/70 · 7,1 % · 15,7 % |
+
+  Sonnet + Opus quita los 🔴 de los dos en las 3 pasadas, a cambio de más filas a revisar y de pagar las dos lecturas (unos 0,05 $ por hoja). Dos lecturas de Sonnet no bastan: su error del ODI es estable. Es solo una simulación con estas 14 fotos; habría que medirla como tal.
+- **La estadística sigue sin alcanzar el umbral:** sin 🔴 en 63–70 ítems, la tasa real solo queda por debajo de un 4,3–4,8 % al 95 %, no del 0,5 %.
 
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 

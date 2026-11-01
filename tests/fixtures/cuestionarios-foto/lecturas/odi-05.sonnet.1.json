@@ -1,0 +1,52 @@
+{
+  "salida": {
+    "items": {
+      "1": {
+        "estado": "marcado",
+        "valor": "B"
+      },
+      "2": {
+        "estado": "marcado",
+        "valor": "C"
+      },
+      "3": {
+        "estado": "marcado",
+        "valor": "E"
+      },
+      "4": {
+        "estado": "dudoso",
+        "valor": "A"
+      },
+      "5": {
+        "estado": "marcado",
+        "valor": "D"
+      },
+      "6": {
+        "estado": "marcado",
+        "valor": "B"
+      },
+      "7": {
+        "estado": "marcado",
+        "valor": "D"
+      },
+      "8": {
+        "estado": "marcado",
+        "valor": "E"
+      },
+      "9": {
+        "estado": "marcado",
+        "valor": "C"
+      },
+      "10": {
+        "estado": "marcado",
+        "valor": "B"
+      }
+    }
+  },
+  "stop": "end_turn",
+  "ms": 7264,
+  "usage": {
+    "input": 5699,
+    "output": 804
+  }
+}
