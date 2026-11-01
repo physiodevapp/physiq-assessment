@@ -1,6 +1,6 @@
 # Lector de cuestionarios con foto
 
-Estado (2026-10): **paso 1, medición**. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición todavía: faltan las fotos. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
+Estado (2026-11): **aparcado** (decisión del usuario): las respuestas se introducen a mano en la calculadora. Se conserva todo lo hecho del **paso 1, medición**, para retomarlo si teclear los cuestionarios largos se hace pesado. La herramienta, la hoja de respuestas y el módulo puro están hechos, pero no hay ninguna medición registrada todavía. Desde 2026-11 (decisión 1, revisada) el paciente rellena el cuestionario original, así que falta también medir el lector con fotos de originales. **La app no carga nada de esto** (test unitario). El paso 2 (integración) solo se hará si la medición supera el umbral y el usuario lo aprueba.
 
 ## Idea
 
@@ -16,18 +16,21 @@ Un botón «📷 Leer la hoja» dentro de la calculadora de cuestionarios (`docs
 
 ## Decisiones
 
-1. **Se fotografía una hoja de respuestas de PhysiQ, no el cuestionario oficial** (usuario, 2026-10). El paciente lee el texto validado en la hoja del titular y marca sus respuestas en una hoja generada desde `data/cuestionarios.js`.
+1. **Revisada (usuario, 2026-11): el paciente rellena el cuestionario original en papel**, que es el formato validado y evita contestar en la fila equivocada de un segundo papel; hoy el fisioterapeuta pasa las respuestas a mano en la calculadora. El lector se medirá primero con fotos de los originales; la hoja de respuestas de PhysiQ queda como línea base de la medición (si falla con ella, fallará con los originales) y como alternativa para los cuestionarios largos (KOOS, DASH, WOMAC) si con los originales no llega al umbral. Leer originales necesita cambios en la herramienta: no tienen marcas de esquina, cada maqueta es distinta, ocupan varias páginas y traen casillas de nombre o historia que hay que dejar en blanco o tapar antes de la foto.
+
+   Decisión original (usuario, 2026-10): **se fotografía una hoja de respuestas de PhysiQ, no el cuestionario oficial**. El paciente lee el texto validado en la hoja del titular y marca sus respuestas en una hoja generada desde `data/cuestionarios.js`.
    - **A favor:** no reproduce texto con derechos (solo el número del ítem, nuestra etiqueta corta y las casillas); es la misma hoja para todos los cuestionarios; y está pensada para leerse bien.
    - **En contra:** cambia la forma de pasar el cuestionario (dos papeles), y esa forma no está validada. Ver «Pendiente antes de usarla con pacientes».
 2. **Las escalas visuales en mm o cm no se leen** (usuario, 2026-10). Medir milímetros en una foto inclinada no es fiable, y 5 mm de error cambian la puntuación. Por eso el iHOT-12 se queda sin hoja, y la EVA del ASES la apunta el fisioterapeuta en la app; la hoja lo dice en esa fila.
 3. **Las fotos no entran en el repo** (usuario, 2026-10). Junto a la hoja pueden salir el texto de cuestionarios con licencia, letra, caras o metadatos. Se pasan a la herramienta con `--fotos`; en el repo solo quedan las respuestas correctas y las lecturas. Un test falla si aparece una imagen en `tests/fixtures/cuestionarios-foto/`.
 4. **Las casillas se rotulan como el papel oficial** (usuario, 2026-10: «según el orden del papel oficial o lo que recomiendes»). Lo que se recomendó y se hizo: la casilla lleva lo mismo que el paciente ve en el cuestionario, para que no tenga que traducir nada.
-   - **Número**, donde el papel imprime el número que el paciente rodea o marca (PHQ-2, PHQ-9, GAD-7, TSK-11, FABQ, PCS, CADC, Örebro, SPADI, PRTEE, DASH, LEFS, VISA-P, VISA-A). La hoja repite la leyenda de los números.
-   - **Palabra**, donde el papel tiene columnas con palabras y sin números (WOMAC, HOS, FAAM y la función del ASES), en el orden del papel: en el HOS y el FAAM la primera columna es «Ninguna dificultad» / «Sin dificultad», que vale 4 (`hoja.orden: 'descendente'`). Como cada casilla dice la respuesta, aunque el orden de una hoja concreta fuera otro, el paciente no se equivoca de casilla.
-   - **Letra de la posición** (A = la primera), donde cada ítem tiene sus propias frases o respuestas (ODI, NDI —su papel ya usa A–F— y KOOS, cuyas respuestas cambian de un ítem a otro). La hoja explica cómo se cuenta.
-   - La casilla N/A lleva el rótulo del papel: «No responde» en el HOS, «No conduzco» en el ítem de conducir del NDI; el ODI no la lleva (quien no se identifica con ninguna frase deja la fila en blanco, y el fisioterapeuta pone N/A).
+   - **Número**, donde el papel imprime el número que el paciente rodea o marca (PHQ-2, PHQ-9, GAD-7, TSK-11, FABQ, PCS, CADC, Örebro, SPADI, PRTEE, DASH, LEFS, VISA-P, VISA-A, ODI y la función del ASES, comprobados con su hoja española en 2026-11). La hoja repite la leyenda de los números.
+   - **Palabra**, donde el papel tiene columnas con palabras y sin números (WOMAC, HOS y FAAM), en el orden del papel: en el HOS y el FAAM la primera columna es «Ninguna dificultad» / «Sin dificultad», que vale 4 (`hoja.orden: 'descendente'`). Un ítem puede llevar sus propias `palabras` (el WOMAC rotula en femenino rigidez y función: «Ninguna, Poca…»). Como cada casilla dice la respuesta, aunque el orden de una hoja concreta fuera otro, el paciente no se equivoca de casilla.
+   - **Letra de la posición** (A = la primera), donde cada ítem tiene sus propias frases o respuestas (NDI y KOOS, cuyas respuestas cambian de un ítem a otro). La hoja explica cómo se cuenta.
+   - La casilla N/A lleva el rótulo del papel: «No responde» en el HOS, «No conduzco» en el ítem de conducir del NDI; el ODI no la lleva (su hoja imprime 0–5 y quien no se identifica con ninguna frase deja la fila en blanco, y el fisioterapeuta pone N/A).
    - Se define en `hoja` (`data/cuestionarios.js`); no cambia cómo puntúa la calculadora. El lector devuelve el rótulo de la casilla y `casillasItem()` lo traduce al valor.
-   - **Por comprobar con la hoja española de cada uno:** el orden de las columnas del HOS y del FAAM está tomado de su leyenda en la app (la primera, la de 4 puntos), no de la hoja; y que el PHQ, el GAD-7, el TSK-11, el DASH y el LEFS impriman los números en el papel.
+   - **Comprobado con la hoja española (2026-11):** PHQ-9 y GAD-7 (Pfizer, «Spanish for Spain»), DASH (Rosales 2002), PCS, KOOS, WOMAC, Roland-Morris, ODI, NDI (anexo de Kovacs 2008), HOS (anexo de Seijas 2014, columnas en el orden de la app), SPADI, ASES, Örebro, DN4 e iHOT-12 (anexos), TSK-11SV (1–4 impreso), FABQ (Fundación Kovacs, 0–6 impreso), PRTEE (Hernández-Sánchez 2013) y S-LANSS (sus casillas «a) No» y «b) Sí», en ese orden). Ver `docs/cuestionarios.md`, «Hojas oficiales comprobadas».
+   - **Por comprobar con la hoja española:** el orden de las columnas del FAAM y que el LEFS imprima los números en el papel.
 5. **Umbral aceptado** (usuario, 2026-10). Lo comprueba `UMBRAL`, en `lib/lector-cuestionarios.js`; un cuestionario tiene lector solo si cumple las tres condiciones en la peor pasada:
    - menos del 0,5 % de ítems peligrosos;
    - ninguno peligroso en un ítem con alerta de seguridad (el 9 del PHQ-9);
@@ -51,7 +54,7 @@ La genera `docs/esquemas/respuestas.mjs` y la imprime `node docs/esquemas/genera
 
 **Versión:** `huellaHojaRespuestas()` resume las filas y las casillas (no la fuente ni la interpretación), y la hoja la imprime como «v. …». `docs/esquemas/respuestas/huellas.json` la guarda con la fecha de su último cambio (`{ huella, fecha }`, como `docs/esquemas/huellas.json`), y `node tests/unit.js` falla si cambian los ítems de un cuestionario sin regenerar su hoja.
 
-**Dónde se descargan** (usuario, 2026-10): la página «Hojas para imprimir» de la guía (`guia.html#hojas`, que la app enlaza desde el panel de sesión) las lista al final, en «Hojas de respuestas del lector con foto (en prueba)», cada una con su «v.», su fecha y su PDF, bajo el aviso «En prueba: no las uses con pacientes». El despliegue copia `docs/esquemas/respuestas/` (PDF y `huellas.json`). La app no tiene ningún otro acceso, y el lector sigue sin estar en la app ni en la guía.
+**Dónde se descargan:** desde 2026-11, con el lector aparcado, la guía ya no las lista en «Hojas para imprimir» (antes iban al final, bajo «En prueba: no las uses con pacientes»). Los PDF siguen en `docs/esquemas/respuestas/` y el despliegue los copia, pero no hay ningún enlace a ellos en la app ni en la guía.
 
 ## El lector (`lib/lector-cuestionarios.js`)
 
@@ -108,6 +111,7 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
 
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 
-- **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del HOS y del FAAM; números impresos en el PHQ, el GAD-7, el TSK-11, el DASH y el LEFS). Si una difiere, se cambia su `hoja` y se regenera.
-- **Validez del formato:** pasar el cuestionario con una hoja de respuestas aparte no es el formato validado. Es una decisión clínica pendiente.
+- **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del FAAM; números impresos en el LEFS). Si una difiere, se cambia su `hoja` y se regenera.
+- **Validez del formato:** resuelto con la decisión 1 revisada (2026-11): el paciente rellena el original.
+- **Leer originales:** adaptar `promptLectura()` y la herramienta a fotos del cuestionario original (sin marcas de esquina, varias páginas, maqueta de cada hoja) y medirlo antes que la hoja de respuestas.
 - **Diseño del paso 2:** la ruta nueva del worker (physiq-report), el botón, la pantalla de confirmación, el aviso de privacidad, las pruebas y el smoke. Se explica al usuario antes de escribirlo.

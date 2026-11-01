@@ -42,7 +42,7 @@ Leyenda de licencia:
 | Cuestionario | Licencia | Titular | Versión española validada | Interpretación |
 |---|---|---|---|---|
 | PHQ-2 / PHQ-9 | 🟢 | Pfizer: «No permission required to reproduce, translate, display or distribute» | Diez-Quevedo 2001, *Psychosom Med*, PMID 11485122; Muñoz-Navarro 2017, *BMC Psychiatry*, PMID 28793892; Gómez-Gómez 2022, *Psychol Med*, PMID 36258639 | PHQ-2 ≥3; PHQ-9 5 / 10 / 15 / 20 (leve, moderada, moderadamente grave, grave) |
-| GAD-7 | 🟢 | Pfizer, misma nota que el PHQ | García-Campayo 2010 (no reverificado en PubMed) | 0-4 / 5-9 / 10-14 / 15-21 |
+| GAD-7 | 🟢 | Pfizer, misma nota que el PHQ | García-Campayo 2010, *Health Qual Life Outcomes*, PMID 20089179 | 0-4 / 5-9 / 10-14 / 15-21 |
 | STarT Back | 🟡 | Keele University: libre para uso no comercial; un producto requiere contacto con la Impact Accelerator Unit | Gusi 2011, *Aten Primaria*, PMID 21296465 (solo traducción y entrevistas cognitivas) | Total ≤3 bajo; total ≥4 con subescala psicosocial (ítems 5-9) ≥4 alto; resto medio (Hill 2008) |
 | OMPSQ / OMPSQ-10 | 🟡 | Linton (Örebro University): copias gratis para uso clínico o de investigación; nada sobre software | OMPSQ-21: Cuesta-Vargas 2014, *HQLO*, PMID 25358630. **OMPSQ-10: no hay** | OMPSQ-10 ≥50* (no está en la calculadora: sin versión española); OMPSQ-21 <105 bajo, 105–130 moderado, >130 alto (las bandas que recoge Cuesta-Vargas 2014) |
 | FABQ | 🟡 | Waddell 1993; sin licencia formal | Kovacs 2006, *Spine*, PMID 16395186 | Trabajo >34 (Fritz y George 2002); el >14 de actividad física no se usa (mediana de Burton 1999, no predijo la discapacidad: George 2008) |
@@ -148,6 +148,37 @@ Carpeta personal, nombres del usuario (prefijos `COL_`, `MINF_`, `MSUP_`, `TRANS
 ### La app los recomienda y no están en la carpeta
 
 QuickDASH/DASH, PRTEE, ASES, Oxford Elbow Score, IKDC, Kujala, KOOS-PF, KOOS-12, HOOS-12, HOS, CAIT, IdFAI, FABQ, PCS, PSFS.
+
+## 5b. Hojas oficiales comprobadas (2026-11)
+
+El usuario aportó hojas españolas y se descargaron los anexos de las validaciones en acceso abierto (PMC / Europe PMC). Cada una se cotejó con `data/cuestionarios.js`: orden de ítems, opciones, lo que imprime el papel (número, palabra o letra) y puntuación.
+
+| Cuestionario | Hoja | Resultado |
+|---|---|---|
+| PHQ-9 / PHQ-2 | Pfizer, «PHQ9 Spanish for Spain» (aportada) | Coincide. Imprime 0–3; la pregunta de dificultad no lleva números. Leyenda («Nunca … Casi cada día») y etiquetas de los ítems 1–2 cambiadas a la redacción de la hoja |
+| GAD-7 | Pfizer, «GAD7 Spanish for Spain» (aportada) | Coincide. «Últimos 14 días», imprime 0–3, sin pregunta de dificultad. Leyenda y etiquetas de los ítems 1 y 6 cambiadas a la redacción de la hoja |
+| Roland-Morris | Fundación Kovacs (aportada) | Coincide (24 frases, casillas; uso clínico libre) |
+| DASH | Rosales 2002 (aportada) | Coincide (30 ítems, 1–5 impreso; trae los módulos opcionales, que la app no puntúa) |
+| KOOS | Aportada, letras A–E | Coincide, incluido el orden dudoso de Q4 |
+| WOMAC | Aportada (escaneada) | Coincide. Las casillas de rigidez y función van en femenino: la hoja de respuestas ahora también |
+| PCS | Aportada | Coincide (13 ítems, 0–4 impreso). Sin confirmar que la redacción sea la de García Campayo 2008 |
+| ODI | Aportada (v. 1.0) | Coincide. Imprime 0–5 en cada frase: la hoja de respuestas pasa de letras a números |
+| NDI | Aportada «INDI 1989» | **No usar**: el ítem 7 tiene 5 opciones (le falta «Apenas puedo hacer algún trabajo») y no trae «no conduzco». Usar el anexo de Kovacs 2008 |
+| NDI | Kovacs 2008, Additional file 1 (© Fundación Kovacs, uso clínico libre) | Coincide: 10 secciones de 6 frases, en el orden de la app; sin letras (casillas), «conducir» se deja en blanco si no conduce |
+| HOS | Seijas 2014, Additional file 1 | Coincide: «Ninguna dificultad» primero (vale 4), «No responde», ítems 3 y 11 sin puntuar. Rótulos de la hoja de respuestas cambiados a los del papel («Dificultad leve»…) |
+| SPADI | Membrilla-Mesa 2015, Additional file 1 | Coincide (13 ítems, 0–10) |
+| ASES | Vrotsou 2016, Additional file 1 | Coincide. La función imprime 0–3 por brazo: la hoja de respuestas pasa de palabras a números |
+| Örebro | Cuesta-Vargas 2014, Additional file 1 | Coincide (ítems 5–25, los mismos invertidos) |
+| DN4 | Pérez 2007, Additional file 1 | Coincide (10 ítems, Sí/No) |
+| iHOT-12 | González-de-la-Flor 2022, Supplementary S1 | Coincide (12 líneas de 100 mm; P9 «Esto no me parece relevante») |
+| TSK-11 | TSK-11SV de Gómez-Pérez, López-Martínez y Ruiz-Párraga 2011 (aportada) | Coincide (11 ítems en el mismo orden, 1–4 impreso, ninguno invertido) |
+| FABQ | Fundación Kovacs (aportada; «libre para su uso clínico») | Coincide (16 frases en el mismo orden, 0–6 impreso; la hoja no trae cómo se puntúa) |
+| CAIT | CAIT-Sv, Rodríguez-Fernández 2015, apéndice 2 (artículo aportado) | Coincide en puntos y orden. Etiquetas de la app pasadas a su redacción. La hoja «Cuestionario CAIT» sin autoría que circula tiene los mismos puntos pero otra redacción en las preguntas 5 y 6: usar la CAIT-Sv |
+| CADC | Martín-Aragón 1999, anexo 1 (artículo aportado) | Coincide: 19 ítems en tres bloques (8, 6 y 5) en el orden de la app, escala 0–10 impresa. El artículo no da regla de puntuación ni corte (la media 0–10 es elección de la app, ya anotada) |
+| PRTEE | Hernández-Sánchez 2013 (aportada) | Coincide (15 ítems, 0–10 impreso). La hoja pide tachar lo que nunca se hace; la app pide todos |
+| S-LANSS | Aportada (de La Touche, coautor de la validación) | Coincide (7 ítems). El papel pone «a) NO» antes que «b) SÍ»: la hoja de respuestas también (`hoja.sino`) |
+
+Artículo en acceso abierto sin la hoja: GAD-7 (García-Campayo 2010), PHQ-9 (Muñoz-Navarro 2017), FAAM (Cervera-Garvi 2017). Cotejados antes con el anexo de su artículo (consta en su `nota` o `fuente` de `data/cuestionarios.js`): Kujala (Gil-Gámez 2016, apéndice 2), VISA-P (Hernández-Sánchez 2011, apéndice), VISA-A (Hernández-Sánchez 2018) y LEFS (Cruz-Díaz 2014, apéndice 1). Sin hoja española comprobada: FAAM (orden de columnas tomado de la leyenda) e IdFAI (etiquetas traducidas por nosotros).
 
 ## 6. Pendiente de revisión clínica
 
