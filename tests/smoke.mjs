@@ -6532,7 +6532,8 @@ async function checkGuia(browser, errors) {
     const hrefIA = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href'));
     r.preguntaFarmacos = vacioDesactivado && hrefIA.startsWith('https://www.google.com/search?udm=50&q=')
       && hrefIA.includes('Fármacos o duda: «pregabalina y ejercicio en mayores»') && hrefIA.includes('CIMA')
-      && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === null);
+      && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === null)
+      && (await page.$$('[data-tipo-pregunta]')).length === 0;   // solo el modo fármacos: los tres, en el ✨
     // Irritabilidad suelta (#irritabilidad, el QR de su hoja): la misma calculadora, sin región
     await page.goto(`${base}#irritabilidad`, { waitUntil: 'networkidle' });
     await page.waitForSelector('[data-irr]');
