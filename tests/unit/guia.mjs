@@ -254,7 +254,14 @@ test('árbol: cada paso con pistas del formulario dice sus preguntas (G/R) y las
     const hoja = HOJAS.htmlFormularioPaciente(r);
     for (const n of Object.values(nR)) assert.ok(hoja.includes(`<span class="nq">${n}</span>`), `${r}: la hoja del paciente no numera ${n}`);
   }
-  assert.ok(leer('guia.js').includes('refsPasoFormulario(FORM_COMUN, FORMULARIOS[region], st.id)'));
+  assert.ok(leer('guia.js').includes('refsPasoFormulario(FORM_COMUN, FORMULARIOS[region], stepId)'));
+  // Cada referencia de cada paso resuelve a su pregunta (la ficha que abre al tocarla)
+  for (const r of ESQ.ORDEN_REGIONES) for (const paso of Object.keys(FORMS[r].pistas || {}))
+    for (const ref of FN.refsPasoFormulario(comun, FORMS[r], paso)) {
+      const p = FN.preguntaPorRef(comun, FORMS[r], ref);
+      assert.ok(p?.item?.texto, `${r} · ${paso}: ${ref} sin pregunta`);
+      assert.equal(p.hoja, ref[0] === 'G' ? 'general' : 'region');
+    }
 });
 
 test('guía: calculadora de cuestionarios, efectos del ejercicio, preguntar a la IA, síntomas, reloj del POTS y cirugía en la fase 1', () => {
