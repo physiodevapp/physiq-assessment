@@ -171,6 +171,12 @@ node tools/leer-cuestionario.mjs --respuestas      # vuelve a puntuar sin gastar
   Sonnet + Opus quita los 🔴 de los dos en las 3 pasadas, a cambio de más filas a revisar y de pagar las dos lecturas (unos 0,05 $ por hoja). Dos lecturas de Sonnet no bastan: su error del ODI es estable. Es solo una simulación con estas 14 fotos; habría que medirla como tal.
 - **La estadística sigue sin alcanzar el umbral:** sin 🔴 en 63–70 ítems, la tasa real solo queda por debajo de un 4,3–4,8 % al 95 %, no del 0,5 %.
 
+### Ronda 4 (2026-11-01, interrumpida): lectura doble Sonnet + Opus
+
+- **Qué es:** `--modelo sonnet+opus` lee cada foto con los dos modelos a la vez y deja dudosa toda fila en la que no coinciden (`combinarLecturas()`, `lib/lector-cuestionarios.js`; test unitario). Se guarda como `<caso>.sonnet+opus.<n>.json` con las dos lecturas.
+- **Interrumpida** por falta de saldo en la cuenta de la API a mitad de la medición. Hechos: `phq9-01`, `01b`, `02`, `03` y `odi-01`, `01b`, `02` (3 pasadas cada uno) y `odi-03` (1 pasada). Faltan `phq9-04` a `06`, `odi-03` (pasadas 2 y 3) y `odi-04` a `06`. Sin veredicto hasta completarla.
+- **Lo que ya se ve, sin decidir:** ningún 🔴 en lo medido (66 ítems por pasada en 7–8 fotos). Las dos fotos donde fallaron los modelos sueltos quedan cubiertas: `odi-01b` fila 8 (el «D» estable de Sonnet) sale dudosa porque Opus discrepa, y en `phq9-02` (la foto girada) las filas en desacuerdo pasan a dudosas. Coste: unos 0,04–0,07 $ por hoja.
+
 ## Pendiente antes de usarla con pacientes (decisiones del paso 2)
 
 - **Comprobar con cada hoja española** lo que la decisión 4 deja «por comprobar» (orden del HOS y del FAAM; números impresos en el PHQ, el GAD-7, el TSK-11, el DASH y el LEFS). Si una difiere, se cambia su `hoja` y se regenera.

@@ -21,6 +21,9 @@
 // --veces N (por defecto 3) pasa cada foto N veces; el veredicto usa la peor pasada.
 // --guardar escribe cada lectura en tests/fixtures/cuestionarios-foto/lecturas/<caso>.<modelo>.<n>.json;
 // --respuestas vuelve a puntuarlas sin gastar.
+// --modelo sonnet+opus: lectura doble (combinarLecturas()): en cada pasada lee la foto
+// con los dos modelos a la vez y deja dudosa toda fila en la que no coinciden. Se guarda
+// como <caso>.sonnet+opus.<n>.json, con las dos lecturas ({ a, b }); el coste suma las dos.
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
@@ -44,7 +47,8 @@ const porProxy = args.includes('--clave-por-proxy');
 const clave = process.env.ANTHROPIC_API_KEY;
 const modeloArg = opcion('--modelo', 'todos');
 const modelos = modeloArg === 'todos' ? Object.keys(MODELOS) : modeloArg.split(',');
-if (modelos.some(m => !MODELOS[m])) { console.error(`Modelo desconocido: ${modeloArg} (haiku, sonnet, opus o todos)`); process.exit(1); }
+const partes = m => m.split('+');
+if (modelos.some(m => partes(m).length > 2 || partes(m).some(p => !MODELOS[p]))) { console.error(`Modelo desconocido: ${modeloArg} (haiku, sonnet, opus, todos, o dos unidos por «+» para la lectura doble)`); process.exit(1); }
 const veces = Math.max(1, Number(opcion('--veces', 3)) || 1);
 const lado = Number(opcion('--lado', LC.LADO_FOTO)) || LC.LADO_FOTO;
 const esfuerzo = opcion('--esfuerzo', null);
@@ -129,9 +133,10 @@ async function leer(modelo, def, fotos) {
   return { salida, stop: out.stop_reason, ms: Date.now() - t0, usage: { input: out.usage?.input_tokens ?? 0, output: out.usage?.output_tokens ?? 0 } };
 }
 
+const esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const archivoLect = (c, m, n) => join(DIR_LECT, `${c.caso}.${m}.${n}.json`);
 const guardadas = (c, m) => (existsSync(DIR_LECT) ? readdirSync(DIR_LECT) : [])
-  .filter(f => new RegExp(`^${c.caso.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\.${m}\\.\\d+\\.json$`).test(f))
+  .filter(f => new RegExp(`^${esc(c.caso)}\\.${esc(m)}\\.\\d+\\.json$`).test(f))
   .sort((a, b) => Number(a.split('.').at(-2)) - Number(b.split('.').at(-2))).map(f => join(DIR_LECT, f));
 
 // ── Medición ─────────────────────────────────────────────────────────────────
@@ -157,21 +162,28 @@ for (const c of casos) {
     } else {
       for (let n = 1; n <= veces; n++) {
         let r;
-        try { r = await leer(m, c.def, fotos); } catch (e) { console.log(`  [${m} #${n}] ERROR ${e.message}`); continue; }
+        try {
+          if (partes(m).length === 2) { const [a, b] = await Promise.all(partes(m).map(p => leer(p, c.def, fotos))); r = { a, b, ms: Math.max(a.ms, b.ms) }; }
+          else r = await leer(m, c.def, fotos);
+        } catch (e) { console.log(`  [${m} #${n}] ERROR ${e.message}`); continue; }
         if (guardar) { mkdirSync(DIR_LECT, { recursive: true }); writeFileSync(archivoLect(c, m, n), JSON.stringify(r, null, 2) + '\n'); }
         lecturas.push(r);
       }
     }
     lecturas.forEach((r, k) => {
-      const lectura = LC.normalizarLectura(c.def, r.salida);
+      const doble = partes(m).length === 2;
+      const lectura = doble ? LC.combinarLecturas(c.def, LC.normalizarLectura(c.def, r.a?.salida), LC.normalizarLectura(c.def, r.b?.salida)) : LC.normalizarLectura(c.def, r.salida);
+      const costeDe = (x, mod) => x?.usage ? (x.usage.input * PRECIO[mod][0] + x.usage.output * PRECIO[mod][1]) / 1e6 : 0;
       const cmp = LC.compararLectura(c.def, lectura, c.correctas);
-      cmp.coste = r.usage ? (r.usage.input * PRECIO[m][0] + r.usage.output * PRECIO[m][1]) / 1e6 : 0;
+      cmp.coste = doble ? costeDe(r.a, partes(m)[0]) + costeDe(r.b, partes(m)[1]) : costeDe(r, m);
+      cmp.discrepan = Object.values(lectura).filter(l => l.discrepa).length;
       cmp.ms = r.ms || 0;
       cmp.incoherentes = Object.values(lectura).filter(l => l.incoherente).length;
       ((res[m][c.cuestionario] ??= [])[k] ??= []).push(cmp);
       for (const cond of c.condiciones?.length ? c.condiciones : ['(sin anotar)']) ((porCondicion[m] ??= {})[cond] ??= []).push(cmp);
       const q = cmp.cuenta;
-      const avisos = [r.stop && r.stop !== 'end_turn' ? `⚠ ${r.stop}` : '', !r.salida ? '⚠ SALIDA ILEGIBLE' : '', cmp.incoherentes ? `${cmp.incoherentes} incoherentes` : ''].filter(Boolean).join(' · ');
+      const lect = doble ? [r.a, r.b] : [r];
+      const avisos = [...lect.map(x => x?.stop && x.stop !== 'end_turn' ? `⚠ ${x.stop}` : ''), lect.some(x => !x?.salida) ? '⚠ SALIDA ILEGIBLE' : '', cmp.discrepan ? `${cmp.discrepan} en desacuerdo` : '', cmp.incoherentes ? `${cmp.incoherentes} incoherentes` : ''].filter(Boolean).join(' · ');
       console.log(`  [${m} #${k + 1}] ok ${q.ok} · 🔴 ${q.peligroso} · dudosos ${q.dudoso} · ilegibles ${q.pendiente} · omitidos ${q.omitido}${cmp.ambiguas ? ` · ambiguas bien tratadas ${cmp.ambiguas}` : ''}${cmp.coste ? ` · ${cmp.coste.toFixed(4)} $` : ''}${cmp.ms ? ` · ${(cmp.ms / 1000).toFixed(1)} s` : ''}${avisos ? ` · ${avisos}` : ''}`);
       for (const p of cmp.porItem.filter(p => p.clase === 'peligroso')) {
         peligrosos.push({ m, caso: c.caso, ...p });

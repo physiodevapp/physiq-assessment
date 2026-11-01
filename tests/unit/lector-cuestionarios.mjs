@@ -126,6 +126,24 @@ test('lector: umbral (peligrosos < 0,5 %, ninguno en ítems de alerta, a revisar
   assert.equal(r.cuenta.dudoso, 0, 'una ambigua dada por dudosa no es un dudoso del lector');
 });
 
+test('lector: lectura doble (lo que no coincide pasa a dudoso, nunca a claro)', () => {
+  const d = def('phq9');
+  const n = items => LC.normalizarLectura(d, { items });
+  const a = n({ 1: { estado: 'marcado', valor: 2 }, 2: { estado: 'marcado', valor: 1 }, 3: { estado: 'en_blanco', valor: null }, 4: { estado: 'dudoso', valor: 0 }, 5: { estado: 'ilegible', valor: null } });
+  const b = n({ 1: { estado: 'marcado', valor: 2 }, 2: { estado: 'marcado', valor: 3 }, 3: { estado: 'marcado', valor: 0 }, 4: { estado: 'marcado', valor: 1 }, 5: { estado: 'ilegible', valor: null } });
+  const c = LC.combinarLecturas(d, a, b);
+  assert.deepEqual(c[1], a[1], 'las dos de acuerdo: se queda esa lectura');
+  assert.equal(c[2].estado, 'dudoso', 'dos valores distintos');
+  assert.equal(c[2].valor, 1);
+  assert.equal(c[3].estado, 'dudoso', 'una en blanco y otra marcada');
+  assert.equal(c[3].valor, 0);
+  assert.equal(c[4].estado, 'dudoso');
+  assert.equal(c[4].valor, 1, 'mejor lectura: la marcada');
+  assert.equal(c[5].estado, 'ilegible');
+  assert.equal(LC.clasificarItem('ambiguo', c[2]).clase, 'ok', 'una ambigua en desacuerdo queda dudosa, no clara');
+  assert.ok(Object.values(c).every(l => l.estado !== 'marcado' || !l.discrepa));
+});
+
 test('lector: validación de las respuestas correctas anotadas a mano', () => {
   const d = def('phq9');
   const bien = { 1: 0, 2: 1, 3: 'blanco', 4: 'ambiguo', 5: 3, 6: 0, 7: 0, 8: 0, 9: 0 };
