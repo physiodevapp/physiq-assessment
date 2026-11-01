@@ -174,10 +174,11 @@ El usuario aportó hojas españolas y se descargaron los anexos de las validacio
 | TSK-11 | TSK-11SV de Gómez-Pérez, López-Martínez y Ruiz-Párraga 2011 (aportada) | Coincide (11 ítems en el mismo orden, 1–4 impreso, ninguno invertido) |
 | FABQ | Fundación Kovacs (aportada; «libre para su uso clínico») | Coincide (16 frases en el mismo orden, 0–6 impreso; la hoja no trae cómo se puntúa) |
 | CAIT | CAIT-Sv, Rodríguez-Fernández 2015, apéndice 2 (artículo aportado) | Coincide en puntos y orden. Etiquetas de la app pasadas a su redacción. La hoja «Cuestionario CAIT» sin autoría que circula tiene los mismos puntos pero otra redacción en las preguntas 5 y 6: usar la CAIT-Sv |
+| CADC | Martín-Aragón 1999, anexo 1 (artículo aportado) | Coincide: 19 ítems en tres bloques (8, 6 y 5) en el orden de la app, escala 0–10 impresa. El artículo no da regla de puntuación ni corte (la media 0–10 es elección de la app, ya anotada) |
 | PRTEE | Hernández-Sánchez 2013 (aportada) | Coincide (15 ítems, 0–10 impreso). La hoja pide tachar lo que nunca se hace; la app pide todos |
 | S-LANSS | Aportada (de La Touche, coautor de la validación) | Coincide (7 ítems). El papel pone «a) NO» antes que «b) SÍ»: la hoja de respuestas también (`hoja.sino`) |
 
-Artículo en acceso abierto sin la hoja: GAD-7 (García-Campayo 2010), PHQ-9 (Muñoz-Navarro 2017), FAAM (Cervera-Garvi 2017). Cotejados antes con el anexo de su artículo (consta en su `nota` o `fuente` de `data/cuestionarios.js`): CADC (Martín-Aragón 1999, anexo 1), Kujala (Gil-Gámez 2016, apéndice 2), VISA-P (Hernández-Sánchez 2011, apéndice), VISA-A (Hernández-Sánchez 2018) y LEFS (Cruz-Díaz 2014, apéndice 1). Sin hoja española comprobada: FAAM (orden de columnas tomado de la leyenda) e IdFAI (etiquetas traducidas por nosotros).
+Artículo en acceso abierto sin la hoja: GAD-7 (García-Campayo 2010), PHQ-9 (Muñoz-Navarro 2017), FAAM (Cervera-Garvi 2017). Cotejados antes con el anexo de su artículo (consta en su `nota` o `fuente` de `data/cuestionarios.js`): Kujala (Gil-Gámez 2016, apéndice 2), VISA-P (Hernández-Sánchez 2011, apéndice), VISA-A (Hernández-Sánchez 2018) y LEFS (Cruz-Díaz 2014, apéndice 1). Sin hoja española comprobada: FAAM (orden de columnas tomado de la leyenda) e IdFAI (etiquetas traducidas por nosotros).
 
 ## 6. Pendiente de revisión clínica
 
