@@ -6477,14 +6477,9 @@ async function checkGuia(browser, errors) {
       && filasCuadernos.every(h => { const m = h.match(/(cuaderno-[^/]+)\.pdf\?v=([0-9a-f]{8})$/); return m && cuadernos[m[1]]?.archivo === m[2]; })
       // Cada cuaderno dice desde cuándo tiene su lista y orden de hojas (si cambian, se reimprime entero)
       && await page.evaluate(n => [...document.querySelectorAll('.guia-hoja')].filter(li => li.querySelector('a[href*="cuaderno-"]') && /orden de hojas desde el/.test(li.textContent)).length === n, filasCuadernos.length);
-    const soloHojas = filasHojas.filter(f => !/cuaderno-|\/respuestas\//.test(f.pdf));
-    // Hojas de respuestas del lector (en prueba): una por cuestionario con hoja, con su aviso y su PDF (?v= su huella)
-    const respuestas = await (await page.request.get(BASE_URL.replace(/\/$/, '') + '/docs/esquemas/respuestas/huellas.json')).json();
-    const filasResp = filasHojas.filter(f => /\/respuestas\//.test(f.pdf));
-    r.hojasRespuestas = filasResp.length === Object.keys(respuestas).length
-      && filasResp.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${respuestas[k]?.huella}` && v === respuestas[k]?.huella; })
-      && /no las uses con pacientes/.test(await page.textContent('.guia-respuestas .guia-aviso-prueba'))
-      && (await page.request.head(new URL(filasResp[0].pdf, page.url()).href)).ok();
+    const soloHojas = filasHojas.filter(f => !/cuaderno-/.test(f.pdf));
+    // Las hojas de respuestas del lector con foto (aparcado, 2026-11) ya no se listan
+    r.hojasRespuestas = !filasHojas.some(f => /\/respuestas\//.test(f.pdf)) && !(await page.$('.guia-respuestas'));
     r.hojas = soloHojas.length === Object.keys(huellas).length
       && soloHojas.every(f => { const [, k, v] = f.pdf.match(/([^/]+)\.pdf\?v=([0-9a-f]+)$/) || []; return f.v === `v. ${huellas[k]?.huella}` && v === huellas[k]?.huella; })
       && pdfsOk.every(Boolean) && await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
