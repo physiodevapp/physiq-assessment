@@ -6570,9 +6570,10 @@ async function checkGuia(browser, errors) {
     await page.waitForSelector('#cuestCuerpo .cuest-item');
     for (let n = 1; n <= 9; n++) await page.click(`#cuestCuerpo .cuest-item[data-item="${n}"] .cuest-op[data-valor="2"]`);
     const resPHQ = await page.textContent('#cuestResultado');
+    const bandaRes = await page.evaluate(() => { const st = getComputedStyle(document.getElementById('cuestResultado')); return st.borderTopLeftRadius === '0px' && st.borderLeftWidth === '0px'; });
     await page.click('[data-cuest-volver]');
     await page.waitForSelector('[data-cuest="phq9"]');
-    r.cuestGuia = /18\/27/.test(resPHQ) && /Ítem 9/.test(resPHQ) && /18\/27/.test(await page.textContent('[data-cuest="phq9"]'));
+    r.cuestGuia = bandaRes && /18\/27/.test(resPHQ) && /Ítem 9/.test(resPHQ) && /18\/27/.test(await page.textContent('[data-cuest="phq9"]'));
     // Efectos del ejercicio y «Preguntar a la IA» en modo ejercicio
     await page.goto(`${base}#ejercicio`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#ejercicioCuerpo details', { state: 'attached' });
