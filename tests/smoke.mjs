@@ -2175,7 +2175,21 @@ async function checkRazonPlegable(browser) {
 
     await d.locator(':scope > summary').click();
     await d.evaluate(el => window.scrollBy(0, el.getBoundingClientRect().top + 60));
-    await page.waitForTimeout(400);
+    // Espera a que la línea y las barras se asienten (banda de contexto, IntersectionObserver),
+    // no un tiempo fijo: con las secciones en paralelo, 400 ms no bastaban (CI, 2026-11).
+    // Asentado = la misma medida en 4 lecturas seguidas (300 ms). Si no se asienta en 4 s,
+    // devuelve la última medida y la comprobación decide igual.
+    let e, previa, iguales = 0;
+    for (const fin = Date.now() + 4000; ;) {
+      await page.waitForTimeout(100);
+      e = await medir(d);
+      const clave = JSON.stringify(e);
+      iguales = clave === previa ? iguales + 1 : 0;
+      previa = clave;
+      if (iguales >= 3 || Date.now() > fin) return e;
+    }
+  };
+  const medir = d => {
     return d.evaluate(el => {
       const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--razon-top')) || 0;
       const barras = [...document.querySelectorAll('.app-header, .mobile-phase-bar, .context-banner.visible, .guia-nav')]
