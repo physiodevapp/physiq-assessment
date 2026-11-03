@@ -1,5 +1,6 @@
 // Puntuación de la fase 4b (calcLRScore). Se ejecuta desde tests/unit.js.
 import { assert, test, HYPOTHESES, calcLRScore, parseLR, etiquetaHipHTML } from './comun.mjs';
+const { progresoTests, textoProgreso } = await import('../../lib/tests-4b.js');
 
 // ── calcLRScore ───────────────────────────────────────────────────────────────
 console.log('\ncalcLRScore');
@@ -22,6 +23,16 @@ test('etiquetaHipHTML: emoji aparte y salto tras «·»', () => {
   const sin = etiquetaHipHTML('Sin evaluar');
   assert.ok(!sin.includes('hyp-etq-icono') && sin.includes('>Sin evaluar<'), sin);
   assert.ok(etiquetaHipHTML('<b>').includes('&lt;b&gt;'));
+});
+
+test('progreso de la cabecera plegada: solo pos/neg cuentan como hechos', () => {
+  const hyp = { tests: [{}, {}, {}, {}, {}] };
+  const p = progresoTests(hyp, { 0: 'pos', 1: 'nd', 2: 'neg' });
+  assert.deepEqual(p, { hechos: 2, total: 5 });
+  assert.equal(textoProgreso(p), '2 de 5 tests hechos');
+  assert.equal(textoProgreso(progresoTests({ tests: [{}] }, {})), '0 de 1 test hecho');
+  assert.equal(textoProgreso(progresoTests({ tests: [] }, {})), '');
+  assert.equal(textoProgreso(progresoTests(HYPOTHESES.h3, undefined)), `0 de ${HYPOTHESES.h3.tests.length} tests hechos`);
 });
 
 test('one positive LR 3.7 → Peso moderado, hyp-orange', () => {

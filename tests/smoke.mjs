@@ -2249,6 +2249,111 @@ async function checkRazonPlegable(browser) {
   return r;
 }
 
+// Tarjetas de hipótesis de la 4b con menos scroll (usuario, 2026-11): progreso
+// «N de M tests hechos» en la cabecera plegada, la etiqueta de puntuación en la
+// banda fija (se actualiza al marcar) y «Replegar ▴» al final de cada tarjeta.
+// A 320 px con letra normal y grande; la línea de condiciones especiales y
+// «Ya diagnosticada y tratada» siguen a la vista; en breve, mismo orden y plegado.
+async function checkHipPlegables(browser) {
+  const r = {};
+  for (const letra of ['normal', 'grande']) {
+    const b = letra === 'grande' ? conLetraGrande(browser) : browser;
+    const ctx = await b.newContext({ viewport: { width: 320, height: 560 }, isMobile: true, hasTouch: true });
+    const page = await ctx.newPage();
+    await abrirApp(page);
+    await irAFase2(page, 'hombro');
+    await page.evaluate(() => { goToPhase(3); goToPhase(4); });
+    await page.evaluate(() => {
+      state.anticoagulado = { estado: 'toma', toma: ['vk'] };
+      state.activeHypotheses = ['h3', 'h2', 'h11'];
+      goToPhase('4b');
+    });
+    await page.waitForSelector('#hypcard_h3');
+    // Plegadas todas para empezar
+    await page.evaluate(() => document.querySelectorAll('.hypothesis-card.open').forEach(c => c.classList.remove('open')));
+    const prog = id => page.evaluate(i => document.getElementById(`prog_${i}`)?.textContent || '', id);
+    r[`${letra}_progresoInicial`] = (await prog('h3')) === '0 de 11 tests hechos' && (await prog('h2')) === '0 de 6 tests hechos'
+      && (await prog('h11')) === '0 de 1 test hecho';
+    r[`${letra}_progresoVisiblePlegada`] = await page.evaluate(() => { const x = document.getElementById('prog_h2').getBoundingClientRect(); return x.height > 0 && x.right <= innerWidth; });
+    r[`${letra}_lineaCondicion`] = await page.isVisible('#phase4b .ac-nota-4b');
+
+    await page.click('#hypcard_h3 .hypothesis-header');
+    await page.waitForTimeout(250);
+    const card = page.locator('#hypcard_h3');
+    await card.locator('.test-result-btn.pos').nth(0).click();
+    r[`${letra}_progresoSube`] = (await prog('h3')) === '1 de 11 tests hechos';
+    // Bajar dentro de la tarjeta: aparece la banda con nombre y puntuación
+    await page.evaluate(() => { const t = document.querySelectorAll('#hypcard_h3 .test-item')[4]; window.scrollTo(0, t.getBoundingClientRect().top + scrollY - 200); });
+    await page.waitForFunction(() => document.getElementById('hypContextBanner').classList.contains('visible'));
+    const banda = () => page.evaluate(() => {
+      const bn = document.getElementById('hypContextBanner'), x = bn.getBoundingClientRect();
+      const barra = document.getElementById('mobilePhaseBar').getBoundingClientRect();
+      const sc = document.getElementById('hypBannerScore');
+      const partes = [...sc.querySelectorAll('.hyp-etq-parte')];
+      return {
+        score: sc.textContent.trim(), cabecera: document.getElementById('score_h3').textContent.trim(),
+        nombre: document.getElementById('hypBannerName').textContent.trim(),
+        cabe: x.right <= innerWidth + 1 && x.left >= -1 && document.documentElement.scrollWidth <= innerWidth,
+        bajoBarra: x.top >= barra.bottom - 1,
+        sinCortes: partes.every(p => p.getBoundingClientRect().right <= x.right + 1 && p.scrollWidth <= p.getBoundingClientRect().width + 1)
+          && sc.scrollWidth <= sc.clientWidth + 1,
+        alto: Math.round(x.height),
+      };
+    });
+    const a = await banda();
+    r[`${letra}_bandaPuntuacion`] = a.score.length > 0 && a.score === a.cabecera && a.nombre.includes('Manguito');
+    r[`${letra}_bandaCabe`] = a.cabe && a.bajoBarra && a.sinCortes;
+    // Marcar otro test (desde abajo): la banda cambia sin subir
+    const antes = a.score;
+    await card.locator('.test-result-btn.neg').nth(4).click();
+    await page.waitForTimeout(100);
+    const c = await banda();
+    r[`${letra}_bandaSeActualiza`] = c.score === c.cabecera && (c.score !== antes || (await prog('h3')) === '2 de 11 tests hechos');
+    r[`${letra}_progreso2`] = (await prog('h3')) === '2 de 11 tests hechos';
+    // «Replegar ▴» al final: pliega y vuelve a la cabecera
+    const rep = card.locator('.hyp-replegar');
+    await rep.scrollIntoViewIfNeeded();
+    r[`${letra}_replegarTexto`] = (await rep.textContent()).includes('Replegar');
+    await rep.click();
+    await page.waitForTimeout(250);
+    r[`${letra}_replegarCierra`] = await page.evaluate(() => {
+      const c = document.getElementById('hypcard_h3'), h = c.querySelector('.hypothesis-header').getBoundingClientRect();
+      const barra = document.getElementById('mobilePhaseBar').getBoundingClientRect();
+      return !c.classList.contains('open') && !document.getElementById('hypContextBanner').classList.contains('visible')
+        && h.top >= barra.bottom - 2 && h.top < innerHeight;
+    });
+    // «Ya diagnosticada y tratada» sigue a la vista al abrir; marcada, sin progreso
+    await page.click('#hypcard_h11 .hypothesis-header');
+    await page.waitForTimeout(250);
+    r[`${letra}_tratadaVisible`] = await page.isVisible('#hypcard_h11 .dx-tratada');
+    await page.check('#hypcard_h11 .dx-tratada input');
+    await page.waitForTimeout(200);
+    r[`${letra}_tratadaSinProgreso`] = (await prog('h11')) === '' && await page.isVisible('#hypcard_h11 .dx-tratada');
+    await ctx.close();
+  }
+  // Modo breve: mismo orden y mismo plegado que buildTestList; el progreso cuenta todos
+  {
+    const ctx = await browser.newContext({ viewport: { width: 320, height: 560 }, isMobile: true, hasTouch: true });
+    const page = await ctx.newPage();
+    await abrirApp(page);
+    await irAFase2(page, 'hombro');
+    await page.evaluate(() => { goToPhase(3); goToPhase(4); });
+    await page.evaluate(() => { state.modo = 'breve'; state.activeHypotheses = ['h3']; goToPhase('4b'); });
+    await page.waitForSelector('#hypcard_h3');
+    const e = await page.evaluate(() => {
+      const c = document.getElementById('hypcard_h3');
+      const det = c.querySelector('details.breve-hallazgos');
+      const ultimo = c.querySelector('.hypothesis-body').lastElementChild;
+      return { items: c.querySelectorAll('.test-item').length, det: !!det, prog: document.getElementById('prog_h3')?.textContent,
+        replegarAlFinal: ultimo?.classList.contains('hyp-replegar') };
+    });
+    r.breve = e.items === 11 && e.det && e.prog === '0 de 11 tests hechos' && e.replegarAlFinal;
+    await ctx.close();
+  }
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // Banda de irritabilidad (usuario, 2026-11): una línea con el nivel y lo que falta
 // mientras se marca la matriz y el recuadro completo no se ve. App a 320×560 (en
 // pantallas altas el recuadro, debajo de la matriz, ya se ve y la banda no sale) y
@@ -7362,6 +7467,12 @@ const SECCIONES = [
     const c = await checkCuestionarios(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las opciones de texto (una respuesta o varias) van en dos columnas, con la última a todo el ancho si son impares, y una por fila si alguna es larga; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
+  } },
+
+  { id: 'hipotesis-plegables', titulo: 'Tarjetas de hipótesis de la 4b: progreso, puntuación en la banda y «Replegar ▴» (320 px):', run: async ({ browser }) => {
+    const r = await checkHipPlegables(browser);
+    console.log(`  ${r.ok ? '✓' : '✗'} la cabecera plegada dice «N de M tests hechos» y sube al marcar; al bajar dentro de una tarjeta, la banda fija lleva la misma etiqueta de puntuación que la cabecera y cambia al marcar otro test, bajo la barra de fase y sin cortes ni desborde a 320 px con letra normal y grande; «Replegar ▴» al final la pliega y vuelve a su cabecera; la línea de condiciones especiales y «Ya diagnosticada y tratada» siguen a la vista (tratada, sin progreso); en breve, mismo orden y plegado${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'tests-4b', titulo: '«¿Por qué?» de los tests (fase 4b, hombro):', run: async ({ page }) => {
