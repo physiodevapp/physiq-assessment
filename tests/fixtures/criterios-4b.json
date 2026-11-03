@@ -1187,11 +1187,24 @@
  },
  "ca14|Neurodinámico del femorocutáneo": {
   "frases": [
-   "Reproduce los síntomas anterolaterales del muslo."
+   "De lado, con el lado sintomático arriba y la rodilla de abajo flexionada:",
+   "el examinador fija la pelvis, flexiona la rodilla de arriba y aduce la cadera para tensar el nervio.",
+   "Positivo si reproduce los síntomas neurológicos, no una simple tirantez de la cadera;",
+   "no hay datos de su exactitud (Cheatham 2013).",
+   "Reproduce los síntomas anterolaterales del muslo.",
+   "Otra maniobra de la misma revisión:",
+   "la compresión de la pelvis.",
+   "De lado, con el lado sintomático arriba, el examinador empuja la pelvis hacia la camilla durante 45 segundos;",
+   "es positiva si los síntomas se alivian.",
+   "Un solo estudio de 20 pacientes, con la neurofisiología de referencia, le dio S 95 % y E 93,3 %, según recoge Cheatham 2013.",
+   "Tampoco hay estudios sobre el signo de Tinel en la meralgia (Cheatham 2013)."
   ]
  },
  "ca14|Obturador: neurodinámico, sensibilidad del muslo medial y fuerza de aductores": {
   "frases": [
+   "Buscar alteración de la sensibilidad en la cara interna del muslo (hormigueo, pérdida o dolor) y debilidad de la aducción, a veces con atrofia (Tipton 2008).",
+   "El neurodinámico es positivo si reproduce o cambia los síntomas;",
+   "ninguna posición tiene datos clínicos, y en cadáver la que más desplaza el nervio es la abducción al final del recorrido con la cadera neutra o en extensión (Bassett 2025).",
    "A ser posible tras el deporte."
   ]
  },
@@ -1238,26 +1251,42 @@
  },
  "ca16|Palpación dolorosa de aductores + squeeze doloroso": {
   "frases": [
+   "Palpación:",
+   "el aductor largo hasta su inserción en el pubis.",
+   "Resistencia:",
+   "en supino, el paciente aprieta las piernas juntas contra las manos del examinador (rectas, en los maléolos) o, en el squeeze, con las caderas a 45° y las rodillas a 90°.",
+   "Cuenta solo si el paciente reconoce su dolor y lo nota en los aductores (Weir 2015;",
+   "Stadelmann 2024;",
+   "Mosler 2015).",
    "Necesario para el diagnóstico (ambos)."
   ]
  },
  "ca16|Estiramiento pasivo de aductores": {
   "frases": [
+   "Abducción pasiva de la cadera en supino (Heijboer 2023).",
    "Más probable si reproduce el dolor."
   ]
  },
  "ca17|Palpación dolorosa supra o infrainguinal": {
   "frases": [
+   "Se palpa el psoas por dentro del sartorio, lo más arriba posible, cerca del ligamento inguinal;",
+   "para confirmarlo, el paciente eleva la pierna 10 cm y se palpa firme (Stadelmann 2024).",
+   "Cuenta si el paciente reconoce su dolor (Weir 2015).",
    "Necesario para el diagnóstico."
   ]
  },
  "ca17|Flexión resistida con cadera y rodilla a 90°": {
   "frases": [
+   "Flexión isométrica de la cadera contra resistencia, con cadera y rodilla a 90° (Heijboer 2023).",
    "Más probable si reproduce el dolor."
   ]
  },
  "ca17|Flexión resistida o extensión pasiva en Thomas modificado": {
   "frases": [
+   "Thomas modificado:",
+   "en supino con las piernas colgando del borde de la camilla, el paciente lleva una rodilla al pecho;",
+   "la otra pierna cuelga y se estira el psoas presionando sobre su rodilla (Stadelmann 2024);",
+   "en esa posición también se prueba la flexión contra resistencia (Heijboer 2023).",
    "Más probable si reproduce el dolor.",
    "La extensión pasiva en Thomas modificado es a la vez el test de Thomas para patología intraarticular:",
    "interpretarlo junto con la palpación del psoas y la historia."
@@ -1272,21 +1301,30 @@
  },
  "ca18|Sit-up recto u oblicuo resistido": {
   "frases": [
+   "Contra resistencia:",
+   "sit-up recto, con la cadera a 0° o a 45°, u oblicuo, con el hombro hacia la rodilla contraria (Heijboer 2023).",
    "Más probable si reproduce el dolor."
   ]
  },
  "ca18|Valsalva, tos o estornudo": {
   "frases": [
+   "Con los dedos sobre el conducto inguinal, por fuera del recto abdominal y por encima del tubérculo púbico, el paciente hace una maniobra de Valsalva o tose (Stadelmann 2024).",
    "Más probable si reproduce el dolor."
   ]
  },
  "ca18|Flexión resistida en Thomas modificado": {
   "frases": [
+   "Thomas modificado:",
+   "en supino con las piernas colgando del borde de la camilla, el paciente lleva una rodilla al pecho;",
+   "la otra pierna cuelga y se estira el psoas presionando sobre su rodilla (Stadelmann 2024);",
+   "en esa posición también se prueba la flexión contra resistencia (Heijboer 2023).",
    "Más probable si reproduce el dolor."
   ]
  },
  "ca19|Palpación dolorosa de la sínfisis y el hueso adyacente": {
   "frases": [
+   "Localizar la sínfisis con el índice y presionar firme de delante a atrás con la punta del dedo (Stadelmann 2024).",
+   "Cuenta si el paciente reconoce su dolor (Weir 2015).",
    "Necesario para el diagnóstico."
   ]
  },
@@ -3744,7 +3782,18 @@
  "tp1|Reglas de Ottawa (si no carga)": {
   "frases": [
    "Si no carga:",
-   "Ottawa antes de nada."
+   "Ottawa antes de nada.",
+   "Radiografía de tobillo si hay dolor en la zona maleolar y dolor óseo en el borde posterior o la punta de un maléolo (sus 6 cm distales), o si no puede dar cuatro pasos ni justo tras la lesión ni en la consulta;",
+   "de pie si hay dolor en el mediopié y dolor óseo en la base del 5.º metatarsiano o en el navicular, o si no puede dar cuatro pasos (Bessen 2009;",
+   "Bachmann 2003).",
+   "Cómo palpar:",
+   "los 6 cm distales enteros del peroné, no solo el maléolo, porque algunas fracturas espiroideas salen más arriba (Wang 2013).",
+   "Cuánto descarta:",
+   "en la revisión sistemática de Bachmann 2003 (39 estudios, referencia:",
+   "radiografía), sensibilidad agrupada del 97,6 % y especificidad mediana del 31,5 %;",
+   "LR− 0,08 para la regla del tobillo y 0,08 para la del pie.",
+   "Con un 15 % de fracturas, una regla negativa deja la probabilidad por debajo del 1,4 %.",
+   "Las revisiones posteriores solo con adultos dan sensibilidades algo más bajas (en torno al 91–92 %)."
   ]
  },
  "tp1|LPAA: palpar y estirar": {
@@ -3763,6 +3812,9 @@
  },
  "tp1|Cajón anterior (a los 4–6 días)": {
   "frases": [
+   "Rodilla flexionada y tobillo en 10–15° de flexión plantar;",
+   "con la tibia sujeta, se empuja el talón hacia delante y se compara con el lado sano:",
+   "positivo si hay más laxitud (Polzer 2012).",
    "Cajón anterior con mejor S y E a los 4–6 días;",
    "sin signo del surco, el LPAA no está roto del todo.",
    "van Dijk 1996 (160 pacientes con una inversión, un tobillo cada uno;",
@@ -3775,7 +3827,14 @@
    "14):",
    "el explorador sujeta el talón y tira de él hacia delante mientras estabiliza la tibia con la otra mano, y busca una depresión justo por delante del maléolo lateral.",
    "En la inestabilidad crónica, el surco en el cajón es lo que define la inestabilidad tibioastragalina (p.",
-   "261)."
+   "261).",
+   "En la revisión sistemática de Netterström-Wedin 2022 (6 estudios, 885 observaciones;",
+   "referencias:",
+   "artrografía, ecografía, RM o artroscopia) el cajón dio S 54 %, E 87 %, LR+ 3,97, LR− 0,54, con estudios muy dispares (S 12–80 %):",
+   "se hizo en flexiones plantares de 0 a 60°, y unos lo leyeron por la laxitud y otros por el surco.",
+   "Recomienda un umbral alto, leer como negativa una laxitud dudosa, y no leerlo por el dolor.",
+   "La exploración es más exacta diferida (2–7 días) que en las primeras 48 h.",
+   "Polzer 2012 describe el surco en la mitad de las roturas del LPAA."
   ],
   "retiradas": [
    "No puntúa:"
@@ -3924,6 +3983,7 @@
  },
  "tp4|1.º y 2.º MT en direcciones opuestas": {
   "frases": [
+   "Con el mediopié sujeto, llevar un MT a flexión plantar y el otro a flexión dorsal:",
    "1.º y 2.º MT en direcciones opuestas → dolor.",
    "Otras pruebas del capítulo (p.",
    "273):",
@@ -4176,12 +4236,18 @@
   "frases": [
    "ETM:",
    "el retropié no va a varo;",
-   "en fases avanzadas no inicia."
+   "en fases avanzadas no inicia.",
+   "Sin apoyar las manos;",
+   "no poder invertir el talón es el umbral de la disfunción del tibial posterior (Henry 2019)."
   ]
  },
  "tp14|«Demasiados dedos»": {
   "frases": [
-   "«Demasiados dedos»."
+   "«Demasiados dedos»:",
+   "con el paciente de pie y visto por detrás, se ven más de dos dedos por fuera del talón, señal de abducción del antepié;",
+   "no es específico de pie plano (Henry 2019).",
+   "La altura desde la que se mira cambia el resultado:",
+   "compárese con el otro pie desde la misma altura (Oyamada 2026)."
   ]
  },
  "tp14|Gesto testigo (①) y medida objetiva (②)": {
@@ -4268,6 +4334,8 @@
  "tp18|Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación": {
   "frases": [
    "a menudo también con el estrés en inversión de la subastragalina o el KTW con pronación excesiva.",
+   "Estrés en inversión:",
+   "con el dolor que lo permita, forzar el retropié en inversión frente al lado sano (Pereira 2021).",
    "El capítulo da el diagnóstico por confirmado si el dolor conocido desaparece tras inyectar anestesia local en el seno del tarso;",
    "la RM puede mostrar sinovitis y lesión de los ligamentos (p.",
    "257)."
@@ -4302,6 +4370,9 @@
  },
  "tp20|KTW (rodilla a la pared)": {
   "frases": [
+   "En carga, con el pie perpendicular a la pared, el paciente lleva la rodilla a tocarla sin despegar el talón, y se aleja el pie de centímetro en centímetro hasta el máximo;",
+   "se mide en cm del dedo gordo a la pared (Cady 2024), o el ángulo de la tibia con un inclinómetro.",
+   "Para dar por real un cambio, más de 1,2–1,4 cm o de 4–5° (Domínguez-Muñoz 2025).",
    "El KTW reproduce el dolor y muestra limitación."
   ]
  },
@@ -4351,12 +4422,16 @@
  },
  "tp21|Cajón anterior: signo del surco": {
   "frases": [
+   "Cajón anterior (rodilla flexionada, tobillo en 10–15° de flexión plantar, talón hacia delante con la tibia sujeta, frente al lado sano;",
+   "Polzer 2012).",
    "Laxitud tibioastragalina (signo del surco en el cajón anterior → rotura completa del LPAA probable)"
   ]
  },
  "tp21|Laxitud subastragalina": {
   "frases": [
-   "subastragalina (inversión excesiva del retropié frente al lado sano)."
+   "subastragalina (inversión excesiva del retropié frente al lado sano).",
+   "Si el dolor lo permite, se fuerza el retropié en inversión y suele haber más inversión que en el lado sano;",
+   "ninguna maniobra manual diagnostica de forma fiable la inestabilidad subastragalina ni la separa de la del tobillo (Pereira 2021)."
   ]
  },
  "tp21|Gesto testigo (①) y medida objetiva (②)": {
@@ -4492,8 +4567,10 @@
  },
  "tp30|Punto N": {
   "frases": [
+   "Palpar el dorso del navicular en su tercio central, unos 2 cm por delante de la punta del maléolo medial, entre el tibial anterior y el extensor largo del dedo gordo (Younis 2025).",
    "Punto N doloroso frente al lado sano:",
-   "navicular hasta que se demuestre lo contrario."
+   "navicular hasta que se demuestre lo contrario.",
+   "Duele en torno al 80 % de los casos (Kaiser 2023)."
   ]
  },
  "tp30|Dolor puntual sobre cuboides o cuñas": {
