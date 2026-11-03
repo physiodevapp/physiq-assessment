@@ -979,6 +979,8 @@
   .cluster-rule { font-size: 0.75rem; color: var(--text2); line-height: 1.5; }
   .cluster-box .test-source { margin: 4px 0 0; }
   .test-source .razon-ampliar { font-family: 'Outfit', sans-serif; white-space: nowrap; }
+  /* Con el «¿Por qué?» del test abierto, «Ampliar →» solo en su pie (phase4b.js) */
+  .test-item:has(> details.razon[open]) .ampliar-fuente { display: none; }
   /* «Anatomía» del test (docs/anatomia-kenhub.md): enlaces a Kenhub bajo la fuente */
   .test-anat { font-size: 0.72rem; color: var(--text3); line-height: 1.6; margin: -4px 0 10px; }
   .test-anat-etq {

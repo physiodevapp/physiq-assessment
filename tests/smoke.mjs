@@ -1892,7 +1892,7 @@ async function checkTestsAmpliar(page) {
   await irA4bHombro(page);
   r.peso = await page.textContent(`${hawkins} .test-peso`);
   r.criterioCorto = (await page.textContent(`${hawkins} .test-criterion`)).length < 120;
-  await page.click(`${hawkins} .razon-ampliar`);
+  await page.click(`${hawkins} .razon-ampliar:visible`);
   await page.waitForTimeout(400);
   const a = await razonEstado(page);
   r.kicker = await page.textContent('#razonPanel .razon-kicker');
@@ -1907,7 +1907,7 @@ async function checkTestsAmpliar(page) {
 
   await page.setViewportSize({ width: 390, height: 844 });
   await irA4bHombro(page);
-  await page.click(`${hawkins} .razon-ampliar`);
+  await page.click(`${hawkins} .razon-ampliar:visible`);
   await page.waitForTimeout(400);
   const c = await razonEstado(page);
   await page.goBack();
@@ -1958,7 +1958,7 @@ async function checkAnatomia(page, browser) {
   await popup.close();
   await page.context().unroute('https://www.kenhub.com/**');
   r.sigueEn4b = await page.evaluate(() => state.currentPhase === '4b');
-  await page.click(`${hawkins} .razon-ampliar`);
+  await page.click(`${hawkins} .razon-ampliar:visible`);
   await page.waitForSelector('#razonContenido .razon-anatomia');
   r.panel = await page.$$eval('#razonContenido .razon-anatomia a', as => as.map(a => a.textContent));
   r.panelOk = r.panel.length === 3 && r.panel[0] === 'Supraespinoso ↗' && r.panel[1] === 'Bursa subacromial EN ↗'
