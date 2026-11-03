@@ -2272,6 +2272,7 @@
  },
  "ro1|Restricción de ROM": {
   "frases": [
+   "Flexión activa asistida de rodilla, medida con goniómetro (Holla 2011).",
    "Alta especificidad cuando está presente.",
    "Estudio transversal (cohorte CHECK, 497 personas con síntomas de rodilla de una cohorte de artrosis sintomática inicial), que no permite conclusiones causales.",
    "Flexión activa asistida con goniómetro:",
@@ -2282,7 +2283,11 @@
    "Como prueba diagnóstica en la artrosis inicial, la flexión aislada aporta poco:",
    "en la misma cohorte, con los osteofitos o el pinzamiento en la radiografía como referencia (presentes en el 37 %), una flexión por debajo de 120° dio S 5 %, E 96 %, LR+ 1,25 (IC 0,51–3,04) y LR− 0,99, y el mejor punto de corte, 132°, LR+ 1,32 y LR− 0,76.",
    "Solo frente al daño más avanzado (osteofitos y pinzamiento a la vez, en el 7 %) la flexión por debajo de 120° dio LR+ 3,60 (IC 1,26–10,24) (Holla 2012).",
-   "Es otra población y otra referencia que las de las cifras del test (Zhang 2010, diagnóstico de artrosis)."
+   "Es otra población y otra referencia que las de las cifras del test (Zhang 2010, diagnóstico de artrosis).",
+   "La guía EULAR no describe cómo explorar la movilidad:",
+   "la cuenta entre los signos que apoyan la artrosis («movimiento doloroso o limitado»), junto con la deformidad en flexión fija.",
+   "Concordancia en sus estudios (ICC o kappa):",
+   "0,73–0,79 en el mismo explorador y 0,48–1,00 entre exploradores (Zhang 2010)."
   ],
   "retiradas": [
    "normal no descarta."
@@ -2731,9 +2736,15 @@
  },
  "ro6|Test de Compresión de Noble": {
   "frases": [
+   "Con la rodilla a 90°, presionar sobre el epicóndilo lateral o 1–2 cm por encima y extender poco a poco:",
+   "hacia los 30° aparece un dolor intenso sobre el epicóndilo, el mismo que al correr (Noble 1979).",
    "Compresión de la BIT sobre el cóndilo femoral lateral a 30° de flexión.",
    "Positivo si reproduce el dolor característico.",
-   "Su sensibilidad y especificidad son desconocidas."
+   "Su sensibilidad y especificidad son desconocidas.",
+   "Noble 1979 (221 casos en corredores de fondo, sin grupo control) dice que la prueba fue positiva en todos.",
+   "El dolor a la palpación del epicóndilo lateral puede no bastar para separar el síndrome de otras causas extraarticulares de dolor lateral, como la tendinopatía del poplíteo o del bíceps;",
+   "la compresión confirma el diagnóstico.",
+   "A 30° de flexión, la parte posterior de la cintilla queda sobre el epicóndilo (observado en la exploración y confirmado en la cirugía)."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -3167,8 +3178,20 @@
  },
  "ro19|Prueba neurodinámica con sesgo peroneo": {
   "frases": [
+   "En supino sin almohada:",
+   "flexión plantar e inversión de tobillo, pie y dedos, y después elevar la pierna con la rodilla recta;",
+   "si los síntomas son proximales, soltar la flexión plantar, y si son distales, la flexión de cadera, para ver si cambian (Bueno-Gracia 2019).",
    "Slump o elevación de la pierna recta con sesgo hacia el nervio peroneo:",
-   "probablemente positiva, reproduce quemazón, dolor lancinante o disestesia distal."
+   "probablemente positiva, reproduce quemazón, dolor lancinante o disestesia distal.",
+   "Respuesta normal en 44 personas sin síntomas (88 piernas):",
+   "los primeros síntomas aparecen con 38,7° ± 14,6° de flexión de cadera y el límite de tolerancia con 65,9° ± 16,0°, sin diferencias por sexo ni por pierna dominante.",
+   "Lo más habitual es una sensación de estiramiento (90,9 % al empezar) en el borde externo del pie (75 %), seguido de la cara lateral de la pierna.",
+   "Solo en personas sanas:",
+   "no da exactitud diagnóstica, y no se midieron la rotación ni la aducción de cadera ni los grados de flexión plantar e inversión (Bueno-Gracia 2019).",
+   "En cadáver (10 nervios peroneos superficiales de 6 cadáveres, a su salida de la fascia crural), la secuencia flexión plantar, inversión, elevación de la pierna recta y 30° de aducción de cadera estiró el nervio un 7–8 %.",
+   "La flexión plantar aportó el 59 % de la elongación y la inversión el 33 %;",
+   "la flexión de cadera, poco, y la aducción, nada significativo, y la elongación final fue la misma con la cadera a 0, 30, 60 o 90°.",
+   "Los autores concluyen que el tobillo es lo que más carga este nervio y que la elevación de la pierna sirve para diferenciar (Lavoie 2023)."
   ]
  },
  "ro19|Gesto testigo (①) y medida objetiva (②)": {
@@ -3186,8 +3209,13 @@
  },
  "ro20|Signo de Foucher": {
   "frases": [
+   "En prono, palpar la tensión del quiste con la rodilla en extensión y después a 45° de flexión (Canoso 1987).",
    "Si es palpable:",
-   "firme en extensión completa y blando con la rodilla flexionada."
+   "firme en extensión completa y blando con la rodilla flexionada.",
+   "Estudio del mecanismo en 5 pacientes con quiste de Baker sintomático (ecografía, artrografía y TC), no de exactitud diagnóstica.",
+   "En los 3 con quiste palpable el signo fue positivo, y la tensión aumentaba aún más al intentar flexionar contra resistencia;",
+   "ese efecto se perdía hacia los 30–45°.",
+   "El quiste está en el tercio medio de la fosa poplítea, en el surco entre el gemelo y el semimembranoso."
   ]
  },
  "ro20|Gesto testigo (①) y medida objetiva (②)": {
