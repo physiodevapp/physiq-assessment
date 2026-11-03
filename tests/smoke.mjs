@@ -2178,7 +2178,7 @@ async function checkRazonPlegable(browser) {
     await page.waitForTimeout(400);
     return d.evaluate(el => {
       const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--razon-top')) || 0;
-      const barras = [...document.querySelectorAll('.app-header, .mobile-phase-bar, .context-banner.visible, .guia-nav')]
+      const barras = [...document.querySelectorAll('.app-header, .mobile-phase-bar, .context-banner.visible, .guia-nav, .guia-plegable[open] > summary')]
         .map(b => b.getBoundingClientRect()).filter(x => x.height > 0).sort((a, b) => a.top - b.top)
         .reduce((alto, x) => (x.top <= alto + 1 && x.bottom > alto ? x.bottom : alto), 0);
       return { linea: Math.round(el.querySelector(':scope > summary').getBoundingClientRect().top), top, barras: Math.round(barras), abierto: el.open };
@@ -2197,7 +2197,8 @@ async function checkRazonPlegable(browser) {
     const context = await browser.newContext(movil);
     const page = await context.newPage();
     await page.goto(BASE_URL.replace(/\/$/, '') + '/guia.html#lumbar/cribado');
-    await page.waitForSelector('#guiaContenido details.razon');
+    await page.waitForSelector('#guiaContenido details.razon', { state: 'attached' });
+    await page.locator('#guiaContenido details.guia-plegable > summary').first().click();   // sistemas plegables
     const d = page.locator('#guiaContenido details.razon:visible').nth(1);
     r.guiaFija = fija(await abrirYBajar(page, d));
 
@@ -2348,6 +2349,119 @@ async function checkHipPlegables(browser) {
         replegarAlFinal: ultimo?.classList.contains('hyp-replegar') };
     });
     r.breve = e.items === 11 && e.det && e.prog === '0 de 11 tests hechos' && e.replegarAlFinal;
+    await ctx.close();
+  }
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
+// Guía: sistemas del cribado e hipótesis de la confirmación plegables (usuario,
+// 2026-11). Su línea dice qué hay dentro (preguntas, urgencias, derivaciones;
+// puntuación, progreso, «🚑 Derivación») y, abierta, se queda fija bajo las
+// pestañas; «Replegar ▴», «Desplegar todo», enlace directo e impresión. 320 px,
+// letra normal y grande.
+async function checkGuiaPlegables(browser) {
+  const r = {};
+  const base = BASE_URL.replace(/\/$/, '') + '/guia.html';
+  for (const letra of ['normal', 'grande']) {
+    const b = letra === 'grande' ? conLetraGrande(browser) : browser;
+    const ctx = await b.newContext({ viewport: { width: 320, height: 640 }, isMobile: true, hasTouch: true });
+    const page = await ctx.newPage();
+    const k = x => `${letra}_${x}`;
+    await page.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('details.guia-plegable');
+    r[k('cribadoPlegado')] = await page.evaluate(() => {
+      const bloques = [...document.querySelectorAll('details.guia-plegable')];
+      const urgCuadro = document.querySelector('#guiaContenido > .guia-urg');
+      return bloques.length > 10 && bloques.every(d => !d.open)
+        && !!urgCuadro && !urgCuadro.closest('details') && urgCuadro.getBoundingClientRect().height > 0
+        && bloques.every(d => {
+          const m = d.querySelector(':scope > summary .guia-bloque-meta').textContent;
+          const n = d.querySelectorAll('.guia-item').length, u = d.querySelectorAll('.guia-chip.urg').length;
+          return m.includes(`${n} pregunta`) && (u ? m.includes(`${u} urgencia`) : !m.includes('urgencia'));
+        });
+    });
+    // Abrir un sistema con urgencias y bajar dentro: su línea fija bajo las pestañas
+    const sis = page.locator('details.guia-plegable:has(.guia-chip.urg)').first();
+    await sis.locator(':scope > summary').click();
+    await sis.evaluate(d => window.scrollTo(0, d.getBoundingClientRect().top + scrollY + 300));
+    await page.waitForTimeout(150);
+    const fija = loc => loc.evaluate(d => {
+      const nav = document.querySelector('.guia-nav').getBoundingClientRect().bottom;
+      const sm = d.querySelector(':scope > summary').getBoundingClientRect();
+      return d.open && Math.abs(sm.top - nav) <= 2 && sm.right <= innerWidth + 1;
+    });
+    r[k('sistemaFijo')] = await fija(sis);
+    const rep = sis.locator(':scope > .guia-bloque-cuerpo > .guia-replegar');
+    await rep.scrollIntoViewIfNeeded();
+    await rep.click();
+    await page.waitForTimeout(200);
+    const vuelve = loc => loc.evaluate(d => {
+      const nav = document.querySelector('.guia-nav').getBoundingClientRect().bottom, y = d.getBoundingClientRect().top;
+      return !d.open && y >= nav - 2 && y < innerHeight;
+    });
+    r[k('replegarVuelve')] = await vuelve(sis);
+    // Enlace directo: abre su sistema y la pregunta no queda bajo la línea fija
+    await page.goto(`${base}#lumbar/cribado/q-l6`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#q-l6.destacado');
+    r[k('enlaceDirecto')] = await page.evaluate(() => {
+      const q = document.getElementById('q-l6'), d = q.closest('details.guia-plegable');
+      return d.open && q.getBoundingClientRect().top >= d.querySelector(':scope > summary').getBoundingClientRect().bottom - 1;
+    });
+    // «Desplegar todo» / «Plegar todo»
+    await page.click('[data-plegar-todo]');
+    r[k('desplegarTodo')] = await page.evaluate(() => [...document.querySelectorAll('details.guia-plegable')].every(d => d.open)
+      && document.querySelector('[data-plegar-todo]').textContent === 'Plegar todo' && document.documentElement.scrollWidth <= innerWidth);
+    await page.click('[data-plegar-todo]');
+    r[k('plegarTodo')] = await page.evaluate(() => [...document.querySelectorAll('details.guia-plegable')].every(d => !d.open)
+      && document.querySelector('[data-plegar-todo]').textContent === 'Desplegar todo');
+    // Al imprimir, todo abierto; después, como estaba
+    await page.evaluate(() => { document.querySelector('details.guia-plegable').open = true; });
+    await page.waitForTimeout(50);
+    r[k('imprimir')] = await page.evaluate(async () => {
+      dispatchEvent(new Event('beforeprint'));
+      const todo = [...document.querySelectorAll('details.guia-plegable')].every(d => d.open);
+      dispatchEvent(new Event('afterprint'));
+      await new Promise(res => setTimeout(res, 50));
+      const ds = [...document.querySelectorAll('details.guia-plegable')];
+      return todo && ds[0].open && ds.slice(1).every(d => !d.open);
+    });
+    // Confirmación: puntuación y progreso en la línea, que cambian al marcar
+    await page.goto(`${base}#lumbar/confirmacion`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#hip-lu3', { state: 'attached' });
+    const lineaHip = id => page.evaluate(i => document.querySelector(`#hip-${i} > summary`).textContent.replace(/\s+/g, ' '), id);
+    r[k('confPlegada')] = await page.evaluate(async () => {
+      const { HYPOTHESES } = await import('./data.js');
+      return [...document.querySelectorAll('details.guia-plegable[id^="hip-"]')].every(d => !d.open
+        && d.querySelector(':scope > summary').textContent.includes(`0 de ${HYPOTHESES[d.id.slice(4)].tests.length} test`)
+        && d.querySelector(':scope > summary').textContent.includes('Sin evaluar'));
+    });
+    const hip = page.locator('#hip-lu3');
+    await hip.locator(':scope > summary').click();
+    await page.click('#test-lu3-1 [data-res="pos"]');
+    r[k('confMarca')] = await page.evaluate(async () => {
+      const { HYPOTHESES } = await import('./data.js');
+      const { calcLRScore, etiquetaHipHTML } = await import('./lib/tests-4b.js');
+      return document.querySelector('[data-puntua="lu3"]').closest('summary') !== null
+        && document.querySelector('[data-puntua="lu3"]').innerHTML === etiquetaHipHTML(calcLRScore(HYPOTHESES.lu3, { 1: 'pos' }).label)
+        && document.querySelector('[data-progreso="lu3"]').textContent === `1 de ${HYPOTHESES.lu3.tests.length} tests hechos`;
+    });
+    await page.evaluate(() => { const t = document.getElementById('test-lu3-2'); window.scrollTo(0, t.getBoundingClientRect().top + scrollY - 150); });
+    await page.waitForTimeout(150);
+    r[k('confFija')] = await fija(hip);
+    r[k('confSinCortes')] = await page.evaluate(() => {
+      const sm = document.querySelector('#hip-lu3 > summary');
+      return [...sm.querySelectorAll('.hyp-etq-parte, .guia-progreso, h3')].every(e => e.getBoundingClientRect().right <= sm.getBoundingClientRect().right + 1)
+        && document.documentElement.scrollWidth <= innerWidth;
+    });
+    // Repintar (enlace del resumen) no cierra lo abierto
+    await page.click('.guia-resumen-fila');
+    await page.waitForTimeout(200);
+    r[k('repintarMantiene')] = await page.evaluate(() => document.getElementById('hip-lu3').open);
+    // «🚑 Derivación» en la línea de una hipótesis de derivar, plegada
+    await page.goto(`${base}#codo/confirmacion`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#hip-co7', { state: 'attached' });
+    r[k('derivacion')] = /🚑 Derivación/.test(await lineaHip('co7')) && !(await page.evaluate(() => document.getElementById('hip-co7').open));
     await ctx.close();
   }
   r.ok = Object.values(r).every(Boolean);
@@ -6557,7 +6671,7 @@ async function checkGuia(browser, errors) {
   const r = {};
   try {
     await page.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
-    await page.waitForSelector('.guia-item', { timeout: 10000 });
+    await page.waitForSelector('.guia-item', { timeout: 10000, state: 'attached' });
     // La numeración y el orden son los de la hoja: lib/esquemas.js, igual que docs/esquemas/generar.mjs
     r.cribado = await page.evaluate(async () => {
       const { SYSTEMIC_SCREENING } = await import('./data.js');
@@ -6571,7 +6685,7 @@ async function checkGuia(browser, errors) {
         enlaces: document.querySelectorAll('.razon-enlace[target="_blank"]').length };
     });
     // Una cita abre su ficha
-    await page.locator('details.razon').first().evaluate(d => { d.open = true; });
+    await page.locator('details.razon').first().evaluate(d => { d.closest('details.guia-plegable').open = true; d.open = true; });
     await page.locator('details.razon .cita').first().click();
     r.ficha = await page.locator('#citaFicha').isVisible().catch(() => false);
     // Enlace directo a un elemento: resaltado y con su «Por qué» abierto
@@ -6587,14 +6701,17 @@ async function checkGuia(browser, errors) {
         && /«dolor lumbar inespecífico»/.test(document.getElementById('sin-hipotesis')?.textContent || '');
     });
     await page.click('.guia-hojas a:has-text("Confirmación")');
-    await page.waitForSelector('[id^="test-"]');
+    await page.waitForSelector('[id^="test-"]', { state: 'attached' });
     r.confirmacion = await page.evaluate(async () => {
       const { HYPOTHESES } = await import('./data.js');
       const n = Object.values(HYPOTHESES).filter(h => h.region === 'lumbar').reduce((a, h) => a + h.tests.length, 0);
       return document.querySelectorAll('[id^="test-"]').length === n && document.querySelectorAll('.guia-peso').length === n;
     });
     // Calculadora: misma etiqueta que calcLRScore de la app; segundo toque desmarca; «Borrar» limpia
-    const marcar = async (hip, k, res) => page.click(`#test-${hip}-${k} .guia-calc [data-res="${res}"]`);
+    const marcar = async (hip, k, res) => {
+      await page.evaluate(h => { document.getElementById(`hip-${h}`).open = true; }, hip);   // hipótesis plegables
+      await page.click(`#test-${hip}-${k} .guia-calc [data-res="${res}"]`);
+    };
     await marcar('lu3', 1, 'pos'); await marcar('lu3', 0, 'neg'); await marcar('lu4', 6, 'pos');
     r.calc = await page.evaluate(async () => {
       const { HYPOTHESES } = await import('./data.js');
@@ -6662,12 +6779,13 @@ async function checkGuia(browser, errors) {
     r.region = await page.evaluate(() => !!document.getElementById('hip-co1'));
     // Pauta y pronóstico por hipótesis (los de la fase 5); «🚑 Derivación» (co7) fuera de todo <details>
     r.pauta = await page.evaluate(() => [...document.querySelectorAll('[id^="hip-"]')].every(s => s.querySelector('.guia-pauta, .guia-urg'))
-      && !!document.querySelector('#hip-co7 .guia-urg') && !document.querySelector('#hip-co7 .guia-urg').closest('details'));
+      && !!document.querySelector('#hip-co7 .guia-urg') && document.querySelector('#hip-co7 .guia-urg').closest('details')?.id === 'hip-co7'
+      && /🚑 Derivación/.test(document.querySelector('#hip-co7 > summary').textContent));   // plegada, su línea lo dice
     // Cabe a 320 px sin desbordar
     await page.setViewportSize({ width: 320, height: 700 });
     for (const h of ['cribado', 'irritabilidad', 'arbol', 'confirmacion']) {
       await page.goto(`${base}#lumbar/${h}`, { waitUntil: 'networkidle' });
-      await page.evaluate(() => document.querySelectorAll('details.razon').forEach(d => { d.open = true; }));
+      await page.evaluate(() => document.querySelectorAll('details.razon, details.guia-plegable').forEach(d => { d.open = true; }));
       r[`ancho_${h}`] = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
     }
     // Tiempos de tejido (#tejidos/<hoja>, el QR de sus dos hojas): solo los grupos de esa hoja,
@@ -6784,7 +6902,9 @@ async function checkGuia(browser, errors) {
     r.fase1 = /Bandera Roja Detectada/.test(f1) && /PHQ-2/.test(f1) && /Örebro/.test(f1);
     // Cribado: banderas de cada sistema y calculadoras de las condiciones especiales (reglas de la app)
     await page.goto(`${base}#rodilla/cribado`, { waitUntil: 'networkidle' });
-    await page.waitForSelector('#calc-hipermovilidad');
+    await page.waitForSelector('#calc-hipermovilidad', { state: 'attached' });
+    // Sistemas plegables (usuario, 2026-11): se abren los de las calculadoras
+    await page.evaluate(() => ['#calc-hipermovilidad', '#calc-embarazo'].forEach(s => { document.querySelector(s).closest('details.guia-plegable').open = true; }));
     r.banderasGuia = await page.locator('.guia-banderas').count() > 0;
     await page.click('#calc-hipermovilidad summary');
     await page.fill('#calc-hipermovilidad [data-gc-num="edad"]', '30');
@@ -6798,7 +6918,7 @@ async function checkGuia(browser, errors) {
     // y las líneas de la 4b (encima de los tests y bajo uno con laxitud)
     r.condConsulta = await page.evaluate(() => {
       const recs = [...document.querySelectorAll('.guia-cc-rec')];
-      const ma = recs.find(d => d.closest('section')?.textContent.includes('Trastorno mastocitario'));
+      const ma = recs.find(d => d.closest('.guia-bloque')?.textContent.includes('Trastorno mastocitario'));
       const pregs = [...document.querySelectorAll('.guia-banderas > summary')].filter(x => /Preguntas que añade/.test(x.textContent)).length;
       return recs.length >= 7 && !!ma?.open && /112/.test(ma.textContent) && pregs >= 4;
     });
@@ -6869,6 +6989,7 @@ async function checkGuia(browser, errors) {
       await pr.clock.install();
       await pr.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
       await pr.waitForSelector('#calc-disautonomia', { state: 'attached' });
+      await pr.evaluate(() => { document.querySelector('#calc-disautonomia').closest('details.guia-plegable').open = true; });
       await pr.click('#calc-disautonomia summary');
       await pr.click('[data-gc-reloj="pie"]');
       await pr.clock.runFor(61000);
@@ -7437,6 +7558,12 @@ const SECCIONES = [
     const c = await checkGuia(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; la pauta y el pronóstico de cada hipótesis, con la derivación a la vista; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con los cuadernos a doble cara, la versión de cada hoja y su PDF, y el filtro por región; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA y «¿Otro fármaco o duda?» (modo «Fármacos» de la IA, sin guardar el destino); irritabilidad suelta (#irritabilidad); la app la enlaza desde el panel de sesión («Hojas para imprimir»); cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
+  } },
+
+  { id: 'guia-plegables', titulo: 'Guía: sistemas del cribado e hipótesis de la confirmación plegables (320 px):', run: async ({ browser }) => {
+    const r = await checkGuiaPlegables(browser);
+    console.log(`  ${r.ok ? '✓' : '✗'} plegados al entrar, el cuadro de urgencias de la región fuera; cada línea dice sus preguntas y urgencias; abierta, se queda fija bajo las pestañas y «Replegar ▴» vuelve a ella; el enlace directo abre su sistema sin taparla; «Desplegar todo» / «Plegar todo»; al imprimir, todo abierto y luego como estaba; en la confirmación, puntuación y «N de M tests hechos» en la línea, que cambian al marcar, sin cortes; repintar no cierra lo abierto; «🚑 Derivación» en la línea plegada; letra normal y grande${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'citas', titulo: 'Citas tocables (fuentes de las fases 2–6 y de la calculadora):', run: async ({ browser, errors }) => {

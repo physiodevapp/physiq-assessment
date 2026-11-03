@@ -8,13 +8,15 @@
 // ni lee datos: solo mira el DOM.
 
 // Barras fijas o pegadas arriba que taparían la línea: cabecera, barra de fase
-// (móvil), bandas de contexto visibles y las pestañas de la guía
-const BARRAS = '.app-header, .mobile-phase-bar, .context-banner.visible, .guia-nav';
+// (móvil), bandas de contexto visibles, las pestañas de la guía y, en la guía, la línea
+// fija del sistema o la hipótesis abierta (bloques plegables, guia.js)
+const BARRAS_FIJAS = '.app-header, .mobile-phase-bar, .context-banner.visible, .guia-nav';
+const BARRAS = `${BARRAS_FIJAS}, .guia-plegable[open] > summary`;
 
-export function altoBarras() {
+export function altoBarras(sel = BARRAS) {
   // Apiladas desde arriba, en orden de posición (no de DOM): cada una cuenta si
   // empieza donde acaba la anterior
-  const rects = [...document.querySelectorAll(BARRAS)]
+  const rects = [...document.querySelectorAll(sel)]
     .filter(el => ['fixed', 'sticky'].includes(getComputedStyle(el).position))
     .map(el => el.getBoundingClientRect()).filter(r => r.height > 0)
     .sort((a, b) => a.top - b.top);
@@ -62,7 +64,10 @@ function alAbrir(d) {
 }
 
 function alCerrar(d) {
-  const top = altoBarras();
+  // Dentro de un bloque plegable de la guía, su línea se quedará fija encima de la
+  // pregunta aunque ahora (con el texto recién plegado) esté fuera de la pantalla
+  const lineaBloque = d.closest('.guia-plegable[open]')?.querySelector(':scope > summary');
+  const top = lineaBloque ? altoBarras(BARRAS_FIJAS) + lineaBloque.offsetHeight : altoBarras();
   // El bloque de la pregunta (cribado, paso del árbol, test); si no, el contenedor directo
   const ancla = d.closest('.sq2, .tree-question, .test-item') || d.parentElement || d;
   let y = ancla.getBoundingClientRect().top;
