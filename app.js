@@ -61,6 +61,7 @@ import { CONDICIONES } from './data/condiciones.js';
 import { tiemposTejidoHTML, infoBarraHTML, fuentesTejidoHTML, filasPaciente, FILTRO_PACIENTE } from './lib/tejidos.js';
 import { listaCuestionariosHTML, formularioCuestionarioHTML, resultadoCuestionarioHTML, itemCuestionarioHTML, resumenCuestionarios, cuestionariosEnTexto, enlacesCalcularHTML } from './lib/cuestionarios.js';
 import { initAmpliarIA, iaParrafoHTML, ctxCribado, ctxPauta, ctxPronostico, ctxCondicion, ctxIrritabilidad, atributosIA, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, TIPOS_PREGUNTA, TIPO_PREGUNTA_DEFECTO, urlIA } from './ampliar-ia.js';
+import { initRazonPlegable } from './razon-plegable.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
 // Reference-counted: several overlays (confirm-banner, session panel,
@@ -6464,6 +6465,7 @@ function _initHubIntegration() {
 _initHubIntegration();
 _iniciarGrabadora();
 initAmpliarIA();
+initRazonPlegable();
 
 // ─── PUBLIC API ──────────────────────────────────────────────
 // Named exports for phase4.js / phase4b.js (which import these directly) and

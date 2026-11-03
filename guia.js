@@ -6,6 +6,7 @@ import { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES, DOSIS_DERIVAR } from './data
 import { TEXTO_PAUTA_COMPATIBLE } from './lib/posquirurgico.js';
 import { citasHTML, citasEnTexto, registroReferencias, enlaceCita } from './lib/citas.js';
 import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, ctxIrritabilidad, ctxPauta, ctxPronostico, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
+import { initRazonPlegable } from './razon-plegable.js';
 import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/irritabilidad.js';
 import { nivelMatriz, NOMBRE_NIVEL, reglaIrritabilidad } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
@@ -669,6 +670,7 @@ async function iniciar() {
   document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. ${pieRegionesHTML()} · <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#fase1">Fase 1</a> · <a href="#condiciones">Condiciones especiales</a> · <a href="#farmacos">Fármacos</a> · <a href="#irritabilidad">Irritabilidad</a> · <a href="#sintomas">Síntomas</a> · <a href="#plan">Plan de tratamiento</a> · <a href="#cuestionarios">Cuestionarios</a> · <a href="#ejercicio">Efectos del ejercicio</a> · <a href="#preguntar">Preguntar a la IA</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
   iniciarPieRegiones();
   initAmpliarIA();
+  initRazonPlegable();
   initCalculadoras(pintar);
   initPlan(pintar);
 }

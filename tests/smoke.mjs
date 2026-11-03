@@ -2163,6 +2163,92 @@ async function checkRazonamientoMovil(page) {
 // lateral; 390 px: sheet que atrás cierra en la fase 2); una bandera sin
 // «¿Por qué?» no lo lleva (hoy todas lo tienen). Posquirúrgico: en lumbar no se ven las banderas de
 // miembros (compartimental, nervio, SDRC, yeso), en rodilla sí, con su ⓘ.
+// «¿Por qué?» / «Por qué y más» desplegado (razon-plegable.js, usuario 2026-11): la línea
+// se queda fija bajo las barras de arriba (también bajo la banda de contexto de la app)
+// hasta que acaba el texto, al final hay «Replegar ▴», y al replegar desde abajo la
+// pregunta vuelve a la pantalla. Guía (lumbar), fase 2 (hombro, acordeón) y 4b (h3) a 390 px.
+async function checkRazonPlegable(browser) {
+  const r = {};
+  const movil = { viewport: { width: 390, height: 700 }, isMobile: true, hasTouch: true };
+  // Abre el <details>, baja dentro de él y devuelve dónde queda su línea y la altura de las barras
+  const abrirYBajar = async (page, d) => {
+
+    await d.locator(':scope > summary').click();
+    await d.evaluate(el => window.scrollBy(0, el.getBoundingClientRect().top + 60));
+    await page.waitForTimeout(400);
+    return d.evaluate(el => {
+      const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--razon-top')) || 0;
+      const barras = [...document.querySelectorAll('.app-header, .mobile-phase-bar, .context-banner.visible, .guia-nav')]
+        .map(b => b.getBoundingClientRect()).filter(x => x.height > 0).sort((a, b) => a.top - b.top)
+        .reduce((alto, x) => (x.top <= alto + 1 && x.bottom > alto ? x.bottom : alto), 0);
+      return { linea: Math.round(el.querySelector(':scope > summary').getBoundingClientRect().top), top, barras: Math.round(barras), abierto: el.open };
+    });
+  };
+  const fija = e => e.abierto && Math.abs(e.linea - e.barras) <= 2 && Math.abs(e.top - e.barras) <= 2;
+  const bloqueVisible = (d, sel) => d.evaluate((el, s) => {
+    const b = (s && el.closest(s)) || el.parentElement;
+    const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--razon-top')) || 0;
+    const y = b.getBoundingClientRect().top;
+    return !el.open && y >= top - 2 && y < window.innerHeight;
+  }, sel);
+
+  // Guía
+  {
+    const context = await browser.newContext(movil);
+    const page = await context.newPage();
+    await page.goto(BASE_URL.replace(/\/$/, '') + '/guia.html#lumbar/cribado');
+    await page.waitForSelector('#guiaContenido details.razon');
+    const d = page.locator('#guiaContenido details.razon:visible').nth(1);
+    r.guiaFija = fija(await abrirYBajar(page, d));
+
+    await d.locator(':scope > summary').click();
+    await page.waitForTimeout(200);
+    r.guiaVuelve = await bloqueVisible(d);
+
+    await d.locator(':scope > summary').click();
+    const rep = d.locator(':scope > .razon-replegar');
+    r.guiaReplegar = (await rep.textContent()).includes('Replegar');
+    await rep.scrollIntoViewIfNeeded();
+
+    await rep.click();
+    await page.waitForTimeout(200);
+    r.guiaReplegarCierra = await bloqueVisible(d);
+    await context.close();
+  }
+  // App: fase 2 (acordeón de móvil, con la banda del sistema) y 4b (con la de la hipótesis)
+  {
+    const context = await browser.newContext(movil);
+    const page = await context.newPage();
+    await abrirApp(page);
+    await irAFase2(page, 'hombro');
+
+    await page.locator('#phase2 .sistema-accordion-row').first().click();
+    await page.waitForTimeout(300);
+    const d = page.locator('#phase2 details.razon:visible').first();
+    const e2 = await abrirYBajar(page, d);
+    r.f2Fija = fija(e2);
+    r.f2BajoBanda = e2.barras > 90;   // cabecera + barra de fase + banda del sistema
+
+    await d.locator(':scope > summary').click();
+    await page.waitForTimeout(200);
+    r.f2Vuelve = await bloqueVisible(d, '.sq2');
+    await page.evaluate(() => { goToPhase(3); goToPhase(4); });
+    await page.evaluate(() => { state.activeHypotheses = ['h3']; goToPhase('4b'); });   // tras la fase 4, que empieza el árbol de cero
+    await page.waitForTimeout(500);
+
+    // La tarjeta puede venir ya abierta: se abre solo si no lo está
+    await page.evaluate(() => { const c = document.querySelector('#phase4b .hypothesis-card'); if (c && !c.classList.contains('open')) c.querySelector('.hypothesis-header')?.click(); });
+    await page.waitForTimeout(300);
+    const t = page.locator('#phase4b details.razon:visible').first();
+    const e4 = await abrirYBajar(page, t);
+    r.f4bFija = fija(e4);
+    r.f4bBajoBanda = e4.barras > 90;
+    await context.close();
+  }
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 async function checkBanderas(browser) {
   const r = {};
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
@@ -7165,6 +7251,12 @@ const SECCIONES = [
   { id: 'banderas', titulo: '«¿Por qué?» de las banderas (lumbar, posquirúrgico en lumbar y rodilla):', run: async ({ browser }) => {
     const r = await checkBanderas(browser);
     console.log(`  ${r.ok ? '✓' : '✗'} el ⓘ de una bandera despliega por qué y cuánto pesa (otro toque lo pliega) y su «Ampliar →» abre su pregunta en el panel (escritorio y sheet a 390 px que atrás cierra en la fase 2); sin «¿Por qué?», sin ⓘ; «· fase 1»; las banderas posquirúrgicas de miembros no salen en lumbar y en rodilla sí, con ⓘ${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'razon-plegable', titulo: '«¿Por qué?» desplegado: línea fija, «Replegar ▴» y vuelta a la pregunta (razon-plegable.js):', run: async ({ browser }) => {
+    const r = await checkRazonPlegable(browser);
+    console.log(`  ${r.ok ? '✓' : '✗'} a 390 px la línea del «¿Por qué?» abierto se queda bajo las barras de arriba (pestañas de la guía; cabecera, barra de fase y banda de contexto en las fases 2 y 4b), al replegarla desde abajo vuelve la pregunta, y «Replegar ▴» al final la cierra${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
