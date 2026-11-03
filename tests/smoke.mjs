@@ -6587,6 +6587,13 @@ async function checkGuia(browser, errors) {
     await page.evaluate(() => document.getElementById('guiaPreguntaIr').addEventListener('click', e => e.preventDefault()));
     await page.click('#guiaPreguntaIr');
     r.preguntaEjercicio = decodeURIComponent(await page.getAttribute('#guiaPreguntaIr', 'href')).includes('Duda de prescripción de ejercicio: «excéntricos');
+    // «Regiones ▾» del pie: abre el menú de las 7 regiones y lleva a su cribado
+    await page.goto(`${base}#farmacos`, { waitUntil: 'networkidle' });
+    await page.click('#guiaPieRegiones');
+    const menuPie = await page.evaluate(() => { const m = document.getElementById('guiaPieMenu'); return !m.hidden && m.querySelectorAll('a').length === 7; });
+    await page.click('#guiaPieMenu a[href="#lumbar/cribado"]');
+    await page.waitForFunction(() => location.hash === '#lumbar/cribado');
+    r.pieRegiones = menuPie && await page.evaluate(() => document.getElementById('guiaPieMenu').hidden);
     // Plan de tratamiento: la función de la app con un formulario corto
     await page.goto(`${base}#plan`, { waitUntil: 'networkidle' });
     r.iconoIA = r.iconoIA && (await page.getAttribute('#guiaIABtn', 'aria-current')) === null;
@@ -6648,7 +6655,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
