@@ -760,19 +760,41 @@
  },
  "ca3|Test de Arlington": {
   "frases": [
+   "En supino, se lleva la cadera desde neutra o algo extendida a flexión, abducción y rotación externa y, poco a poco, a aducción y rotación interna;",
+   "durante todo el recorrido, con una mano en la parte posterior y proximal de la pierna y la otra en el tobillo, se «rebota» la cadera con pequeñas rotaciones internas y externas.",
+   "Positivo si reproduce los síntomas (Adib 2023).",
    "Maniobra específica de provocación labral.",
    "Estudio:",
    "S 94 %, E 33 % (IC 95 % de la E:",
    "16–56 %), VPP 95 %, VPN 26 %;",
-   "con un 93 % de roturas solo hubo unos 17 controles, así que cuenta como hallazgo."
+   "con un 93 % de roturas solo hubo 18 controles, así que cuenta como hallazgo.",
+   "Recorre el labrum entero, no solo la zona anterosuperior que carga el FADIR.",
+   "Tabla 2 del estudio (283 pacientes con sospecha clínica de rotura y artro-RM;",
+   "265 con rotura):",
+   "LR+ 1,40 (IC 1,01–1,95), LR− 0,26 (0,13–0,46).",
+   "La LR− cumpliría el umbral para puntuar, pero sale de solo 18 pacientes sin rotura, en una revisión retrospectiva de historias y con un único explorador, uno de los creadores del test;",
+   "por eso cuenta como hallazgo.",
+   "En los 117 operados todos tenían rotura, así que no se pudo calcular la especificidad con la cirugía como referencia.",
+   "Los resultados valen para pacientes con alta sospecha clínica, no para atención primaria (Adib 2023)."
   ]
  },
  "ca3|Test de Torsión/Twist": {
   "frases": [
+   "De pie con las rodillas algo flexionadas, el paciente mueve las dos rodillas a un lado y a otro, «en limpiaparabrisas», rotando las caderas sin despegar los pies;",
+   "luego lo repite apoyado solo en la pierna afectada, sujeto por el examinador, y después en la otra.",
+   "Positivo si reproduce los síntomas en la cadera afectada (Adib 2023).",
    "Estudio:",
    "S 68 %, E 72 % (IC 95 % de la E:",
    "49–88 %), VPP 97 %;",
-   "con un 93 % de roturas solo hubo unos 17 controles, así que cuenta como hallazgo."
+   "con un 93 % de roturas solo hubo 18 controles, así que cuenta como hallazgo.",
+   "Es una prueba en carga, como el Thessaly en el menisco.",
+   "Tabla 2 del estudio:",
+   "LR+ 2,44 (IC 1,16–5,17), LR− 0,44 (0,32–0,62);",
+   "fue más específico que el Arlington (p = 0,008).",
+   "Las dos LR cumplirían el umbral para puntuar, pero con los mismos límites que el Arlington (18 pacientes sin rotura, revisión retrospectiva, un único explorador creador del test), así que cuenta como hallazgo.",
+   "Combinarlo con el Arlington no mejoró la exactitud:",
+   "con cualquiera de los dos positivo, S 95 %, E 33 %;",
+   "con los dos positivos, S 66 %, E 72 % (Adib 2023)."
   ]
  },
  "ca3|Combinación FADDIR + FABER + Elevación pierna recta resistida": {

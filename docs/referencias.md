@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **1111** referencias de literatura, con **4933** usos.
+- **1111** referencias de literatura, con **4937** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **520** de 1111 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -820,7 +820,6 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Squeeze agrupado de 4 estudios con modelo univariante de efectos aleatorios (Meta-DiSc); las 2×2 suman su n; no incluye el estudio de los creadores del test. Sin cifra agrupada para la palpación del LTPAI. Se indica el modelo en tp2. |
 | [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral. |
 | [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
-| [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015). |
 | [Mohr 2024](#mohr-2024) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: leído en PMC (2026-10). Síntesis narrativa sin agrupar; las cifras citadas en tp34 (Mahadevan y Dando) coinciden con sus tablas. |
 | [Bergman 2025](#bergman-2025) | test 4b sin puntuar · razonamiento fase 2 · tiempos de tejido | 6 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -1118,6 +1117,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Henry 2019](#henry-2019) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Signo de «demasiados dedos» y elevación del talón a una pierna en la disfunción del tibial posterior. |
 | [Pereira 2021](#pereira-2021) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Exploración de la subastragalina: ninguna maniobra manual la diagnostica de forma fiable. |
 | [Netterström-Wedin 2022](#netterström-wedin-2022) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Publicada en línea en 2021; la clave lleva el año del número para no chocar con Netterström-Wedin 2021 (ingle). Cajón anterior agrupado: S 54 %, E 87 %, LR+ 3,97, LR− 0,54. |
+| [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 8 | 2026-11 · PDF del usuario leído entero (2026-11). Técnica del Arlington y del twist («Clinical Test Descriptions», p. 2, figs. 1 y 2) añadida al criterio; tabla 2: Arlington LR+ 1,40, LR− 0,26; twist LR+ 2,44, LR− 0,44. Siguen como hallazgo (18 controles, retrospectivo, explorador creador de los tests). Los controles eran 18, no 17 (corregido). El FADIR, S 43 %, E 56 % (ver Reiman 2015). |
 | [Heijboer 2023](#heijboer-2023) | test 4b sin puntuar · texto | 10 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Apéndice A con la lista de pruebas de la exploración de la ingle (solo los nombres) y fiabilidad entre examinadores por entidad. |
 | [Kaiser 2023](#kaiser-2023) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Dolor en el punto N en torno al 80 % de las fracturas de estrés del navicular. |
 | [Cady 2024](#cady-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Procedimiento del test de la rodilla a la pared midiendo la distancia en cm. |
@@ -1519,24 +1519,34 @@ Citada como:
 
 ### Adib 2023
 
+Autores: Adib, Hartline, Donovan, Kalachi, Dehghan y Ochiai  
+Título: *Two Novel Clinical Tests for the Diagnosis of Hip Labral Tears*  
 Publicación: Am J Sports Med 51(4):1007–14  
 DOI: 10.1177/03635465221149748  
-Última revisión: 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015).
+Última revisión: 2026-11 · PDF del usuario leído entero (2026-11). Técnica del Arlington y del twist («Clinical Test Descriptions», p. 2, figs. 1 y 2) añadida al criterio; tabla 2: Arlington LR+ 1,40, LR− 0,26; twist LR+ 2,44, LR− 0,44. Siguen como hallazgo (18 controles, retrospectivo, explorador creador de los tests). Los controles eran 18, no 17 (corregido). El FADIR, S 43 %, E 56 % (ver Reiman 2015).
 
 Citada como:
 
-1. Adib 2023 (Am J Sports Med; retrospectivo, evaluado por el autor de los tests; referencia: artro-RM)
-2. El valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023).
+1. En supino, se lleva la cadera desde neutra o algo extendida a flexión, abducción y rotación externa y, poco a poco, a aducción y rotación interna; durante todo el recorrido, con una mano en la parte posterior y proximal de la pierna y la otra en el tobillo, se «rebota» la cadera con pequeñas rotaciones internas y externas. Positivo si reproduce los síntomas (Adib 2023). Maniobra específica de provocación labral. Estudio: S 94 %, E 33 % (IC 95 % de la E: 16–56 %), VPP 95 %, VPN 26 %; con un 93 % de roturas solo hubo 18 controles, así que cuenta como hallazgo.
+2. Recorre el labrum entero, no solo la zona anterosuperior que carga el FADIR. Tabla 2 del estudio (283 pacientes con sospecha clínica de rotura y artro-RM; 265 con rotura): LR+ 1,40 (IC 1,01–1,95), LR− 0,26 (0,13–0,46). La LR− cumpliría el umbral para puntuar, pero sale de solo 18 pacientes sin rotura, en una revisión retrospectiva de historias y con un único explorador, uno de los creadores del test; por eso cuenta como hallazgo. En los 117 operados todos tenían rotura, así que no se pudo calcular la especificidad con la cirugía como referencia. Los resultados valen para pacientes con alta sospecha clínica, no para atención primaria (Adib 2023).
+3. Adib 2023 (Am J Sports Med; retrospectivo, evaluado por el autor de los tests; referencia: artro-RM)
+4. De pie con las rodillas algo flexionadas, el paciente mueve las dos rodillas a un lado y a otro, «en limpiaparabrisas», rotando las caderas sin despegar los pies; luego lo repite apoyado solo en la pierna afectada, sujeto por el examinador, y después en la otra. Positivo si reproduce los síntomas en la cadera afectada (Adib 2023). Estudio: S 68 %, E 72 % (IC 95 % de la E: 49–88 %), VPP 97 %; con un 93 % de roturas solo hubo 18 controles, así que cuenta como hallazgo.
+5. Es una prueba en carga, como el Thessaly en el menisco. Tabla 2 del estudio: LR+ 2,44 (IC 1,16–5,17), LR− 0,44 (0,32–0,62); fue más específico que el Arlington (p = 0,008). Las dos LR cumplirían el umbral para puntuar, pero con los mismos límites que el Arlington (18 pacientes sin rotura, revisión retrospectiva, un único explorador creador del test), así que cuenta como hallazgo. Combinarlo con el Arlington no mejoró la exactitud: con cualquiera de los dos positivo, S 95 %, E 33 %; con los dos positivos, S 66 %, E 72 % (Adib 2023).
+6. El valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023).
 
 Prueba de pinzamiento de Ganz 2003: supino, la cadera se lleva pasivamente a unos 90° de flexión con aducción y rotación interna; en su serie casi siempre era positiva.
-3. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)
+7. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Arlington» | 4b · cita bajo el test | 1 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Torsión/Twist» | 4b · cita bajo el test | 1 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» | 4b · cita bajo el test | 3 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Arlington» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Arlington» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Arlington» | 4b · cita bajo el test | 3 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Torsión/Twist» (en `criterio`) | 4b · mención en el texto | 4 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Torsión/Twist» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Torsión/Twist» | 4b · cita bajo el test | 3 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» | 4b · cita bajo el test | 7 |
 
 ### Adigun 2023
 
