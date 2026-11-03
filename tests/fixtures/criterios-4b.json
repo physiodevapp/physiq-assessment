@@ -273,6 +273,8 @@
  },
  "h3|Signo de Hornblower": {
   "frases": [
+   "El examinador sostiene el brazo a 90° de abducción en el plano de la escápula, con el codo a 90°, y el paciente intenta rotar hacia fuera contra su mano.",
+   "Positivo si no puede rotar hacia fuera (Jain 2013).",
    "Un signo positivo puede indicar degeneración del redondo menor (por ejemplo, infiltración grasa).",
    "El capítulo no da S ni E;",
    "no puntúa."
@@ -338,7 +340,31 @@
  "h4|Posterior: Jerk, Kim y signo de pinzamiento posterior agrupados": {
   "frases": [
    "No usar un test aislado;",
-   "agrupar Jerk, Kim y signo de pinzamiento posterior junto con la historia."
+   "agrupar Jerk, Kim y signo de pinzamiento posterior junto con la historia.",
+   "Jerk:",
+   "escápula fijada, brazo a 90° de abducción y rotación interna;",
+   "carga axial firme desde el codo y aducción horizontal sin soltarla;",
+   "positivo, resalte o chasquido de la cabeza humeral hacia atrás.",
+   "Kim:",
+   "sentado, brazo a 90° de abducción;",
+   "carga axial fuerte, elevar el brazo 45° en diagonal y empujar el brazo hacia atrás;",
+   "positivo si duele.",
+   "Pinzamiento posterior:",
+   "90–110° de abducción, algo de extensión y rotación externa máxima;",
+   "positivo si da dolor posterior profundo.",
+   "Técnicas:",
+   "Jerk y Kim según Castagna 2017 y DeFoor 2025 (tabla 1);",
+   "el pinzamiento posterior, descrito por Meister, según Corpus 2016.",
+   "Las fuentes no coinciden del todo:",
+   "para Jia 2025 el Jerk se hace con el hombro en flexión de 90° y el Kim es positivo con subluxación o aprensión, no con dolor;",
+   "DeFoor lleva el Kim con el codo a 90° y carga posteroinferior.",
+   "Cifras (del estudio original de Kim, a través de Dhir 2018 y DeFoor 2025):",
+   "Jerk S 73 %, E 98 %;",
+   "Kim S 80 %, E 94 %;",
+   "los dos juntos, S 97 % para la lesión del labrum posteroinferior.",
+   "Eran pacientes ya seleccionados para cirugía, lo que puede inflar la sensibilidad, y la revisión sistemática de Dhir 2018 concluye que la evidencia para usarlos aislados es débil.",
+   "Para el pinzamiento posterior no se ha encontrado ninguna cifra en acceso abierto.",
+   "Un Jerk o un Kim dolorosos sugieren lesión del labrum y, según Castagna 2017, se asocian a peor respuesta a la rehabilitación."
   ]
  },
  "h4|Gesto testigo (①) y medida objetiva (②)": {
