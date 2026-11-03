@@ -2249,6 +2249,54 @@ async function checkRazonPlegable(browser) {
   return r;
 }
 
+// Banda de irritabilidad (usuario, 2026-11): una línea con el nivel y lo que falta
+// mientras se marca la matriz y el recuadro completo no se ve. App a 320×560 (en
+// pantallas altas el recuadro, debajo de la matriz, ya se ve y la banda no sale) y
+// guía, con su recuadro encima de la matriz.
+async function checkBandaIrritabilidad(browser) {
+  const r = {};
+  const ctx = await browser.newContext({ viewport: { width: 320, height: 560 }, isMobile: true, hasTouch: true });
+  const page = await ctx.newPage();
+  await abrirApp(page);
+  await irAFase2(page, 'lumbar');
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForSelector('#irritabTarjetas [data-key="movimiento"]');
+  await page.evaluate(() => { const el = document.getElementById('irritabTarjetas'); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 100); });
+  const banda = () => page.evaluate(() => { const b = document.getElementById('irrContextBanner'); const x = b.getBoundingClientRect(); return { vis: b.classList.contains('visible'), txt: b.textContent.replace(/\s+/g, ' ').trim(), cabe: x.right <= innerWidth + 1, nombre: b.querySelector('.sis-banner-name').scrollWidth <= b.querySelector('.sis-banner-name').clientWidth + 1 }; });
+  await page.waitForFunction(() => document.getElementById('irrContextBanner').classList.contains('visible'));
+  const a = await banda();
+  r.sinRegistrar = a.vis && a.txt.includes('sin registrar') && a.txt.includes('0 de 4');
+  await page.locator('#irritabTarjetas [data-key="movimiento"]').nth(2).click();
+  await page.waitForFunction(() => document.getElementById('irrContextBanner').textContent.includes('moderada'));
+  const b = await banda();
+  r.cambia = b.txt.includes('falta tiempo en calmarse');
+  r.cabe320 = b.cabe && b.nombre;
+  await page.click('#irrContextBanner');
+  await page.waitForFunction(() => !document.getElementById('irrContextBanner').classList.contains('visible'));
+  r.llevaAlResumen = await page.evaluate(() => { const x = document.getElementById('irritabilidadResumen').getBoundingClientRect(); return x.top < innerHeight && x.bottom > 0; });
+  await page.evaluate(() => goToPhase(4));
+  r.fueraDeFase3 = !(await banda()).vis;
+  await ctx.close();
+
+  const c2 = await browser.newContext({ viewport: { width: 390, height: 700 }, isMobile: true, hasTouch: true });
+  const g = await c2.newPage();
+  await g.goto(BASE_URL.replace(/\/$/, '') + '/guia.html#lumbar/irritabilidad');
+  await g.waitForSelector('.guia-irr-fila');
+  const gb = () => g.evaluate(() => { const b = document.getElementById('guiaIrrBanda'); return { vis: !b.hidden, txt: b.textContent.replace(/\s+/g, ' ').trim() }; });
+  r.guiaArriba = !(await gb()).vis;   // con el recuadro a la vista, sin banda
+  await g.evaluate(() => { const f = document.querySelectorAll('.guia-irr-fila')[1]; window.scrollTo(0, f.getBoundingClientRect().top + scrollY - 120); });
+  await g.waitForFunction(() => !document.getElementById('guiaIrrBanda').hidden);
+  await g.locator('.guia-irr-fila').nth(3).locator('[data-irr]').nth(1).click();
+  await g.waitForFunction(() => document.getElementById('guiaIrrBanda').textContent.includes('moderada'));
+  r.guiaCambia = (await gb()).txt.includes('1 de 4');
+  await g.click('#guiaIrrBanda');
+  await g.waitForFunction(() => document.getElementById('guiaIrrBanda').hidden);
+  r.guiaVuelve = true;
+  await c2.close();
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 async function checkBanderas(browser) {
   const r = {};
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
@@ -7257,6 +7305,12 @@ const SECCIONES = [
   { id: 'razon-plegable', titulo: '«¿Por qué?» desplegado: línea fija, «Replegar ▴» y vuelta a la pregunta (razon-plegable.js):', run: async ({ browser }) => {
     const r = await checkRazonPlegable(browser);
     console.log(`  ${r.ok ? '✓' : '✗'} a 390 px la línea del «¿Por qué?» abierto se queda bajo las barras de arriba (pestañas de la guía; cabecera, barra de fase y banda de contexto en las fases 2 y 4b), al replegarla desde abajo vuelve la pregunta, y «Replegar ▴» al final la cierra${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'banda-irritabilidad', titulo: 'Banda de irritabilidad (fase 3 y guía):', run: async ({ browser }) => {
+    const r = await checkBandaIrritabilidad(browser);
+    console.log(`  ${r.ok ? '✓' : '✗'} mientras se marca la matriz y el recuadro no se ve, una línea con el nivel y lo que falta que cambia con cada toque, cabe a 320 px, tocarla lleva al recuadro y no sale fuera de la fase 3; en la guía, igual bajo las pestañas${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

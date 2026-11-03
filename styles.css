@@ -836,6 +836,9 @@
     color: var(--text2);
   }
   .fp-banner-cont { flex-shrink: 0; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--text3); white-space: nowrap; }
+  /* Irritabilidad (fase 3): el nivel nunca se corta; lo que falta pasa a dos líneas si no cabe */
+  .irr-context-banner .sis-banner-name { flex: 0 0 auto; color: var(--text); }
+  .irr-context-banner .fp-banner-cont { flex: 1 1 auto; min-width: 0; white-space: normal; line-height: 1.3; }
   /* Back button styles unified in .context-banner-back below */
 
   /* ── SEMÁFORO DOTS — Tests Exploratorios title ──────────── */

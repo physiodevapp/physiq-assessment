@@ -27,6 +27,18 @@ test('irritabilidad: cuatro ítems, el último el tiempo en calmarse con tres op
   assert.ok(!DI.ITEMS_IRRITABILIDAD.some(i => i.clave === 'dolor' || i.clave === 'discapacidad'), 'nivel de dolor y discapacidad no son irritabilidad (decisión 100)');
 });
 
+test('irritabilidad: la banda fija dice el nivel y lo que falta, en una línea', () => {
+  assert.deepEqual(I.bandaIrritabilidad(M()), { emoji: '⚪', nivel: 'Irritabilidad sin registrar', detalle: '0 de 4 filas' });
+  assert.deepEqual(I.bandaIrritabilidad(M('Ausente', 'Antes del final del rango')), { emoji: '🟠', nivel: 'Irritabilidad moderada', detalle: 'falta tiempo en calmarse' });
+  assert.deepEqual(I.bandaIrritabilidad(M('', '', '', MIN)), { emoji: '🟢', nivel: 'Irritabilidad baja', detalle: '1 de 4 filas' });
+  assert.deepEqual(I.bandaIrritabilidad(M('Presente', 'Antes del final del rango', 'Baja', NOCHE)), { emoji: '🔴', nivel: 'Irritabilidad alta', detalle: 'matriz completa' });
+  // El nivel es siempre el de nivelMatriz (la misma regla que el recuadro)
+  for (const r of ['', 'Ausente', 'Presente']) for (const c of ['', MIN, HORAS, NOCHE]) {
+    const n = I.nivelMatriz(M(r, '', '', c)).nivel;
+    assert.equal(I.bandaIrritabilidad(M(r, '', '', c)).nivel, n ? `Irritabilidad ${n}` : 'Irritabilidad sin registrar');
+  }
+});
+
 test('irritabilidad: el tiempo en calmarse marca el suelo y reposo + movimiento + tolerancia solo lo suben (cortes 0–1, 2–4, 5–6)', () => {
   const n = (...a) => I.nivelMatriz(M(...a)).nivel;
   assert.equal(n('Ausente', 'Al final del rango con SP', 'Alta', MIN), 'baja');

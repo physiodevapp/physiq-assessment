@@ -122,6 +122,13 @@
   .guia-irr-baja { border-color: color-mix(in srgb, var(--green) 50%, var(--border)); background: color-mix(in srgb, var(--green) 7%, var(--surface)); }
   .guia-irr-moderada { border-color: color-mix(in srgb, var(--orange) 50%, var(--border)); background: color-mix(in srgb, var(--orange) 7%, var(--surface)); }
   .guia-irr-alta { border-color: color-mix(in srgb, var(--red) 50%, var(--border)); background: color-mix(in srgb, var(--red) 7%, var(--surface)); }
+  .guia-irr-banda { position: fixed; left: 0; right: 0; z-index: 19; display: flex; align-items: center; gap: 6px; width: 100%; min-height: 44px; padding: 8px 1rem; border: 0; border-bottom: 1px solid var(--border); background: var(--bg); box-shadow: 0 8px 12px -4px var(--bg); color: var(--text2); font: inherit; font-size: 0.82rem; text-align: left; cursor: pointer; }
+  .guia-irr-banda[hidden] { display: none; }
+  .guia-irr-banda strong { color: var(--text); font-weight: 600; }
+  .guia-irr-banda-det { flex: 1; min-width: 0; color: var(--text3); line-height: 1.3; }
+  .guia-irr-banda strong { white-space: nowrap; }
+  .guia-irr-banda-dir { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text3); white-space: nowrap; }
+  @media print { .guia-irr-banda { display: none !important; } }
   .guia-irr-margen { font-size: 0.78rem; color: var(--text3); }
   .guia-irr-ops { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 6px; }
   .guia-irr-ops .option-btn { width: 100%; min-height: 44px; font-size: 0.82rem; padding: 6px 8px; text-align: left; }
