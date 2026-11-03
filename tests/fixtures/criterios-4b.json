@@ -152,7 +152,7 @@
    "dolor o debilidad.",
    "Cuenta como hallazgo en esta hipótesis:",
    "S 75 %, E 68 %, LR+ 2,4 (1,5–3,8), LR− 0,37 (0,23–0,60), un solo estudio y para patología del manguito en general, no para rotura;",
-   "para rotura están los signos de retraso y los clusters de Park y Litaker."
+   "para rotura están los signos de déficit y los clusters de Park y Litaker."
   ]
  },
  "h3|External Rotation Lag Sign": {
@@ -168,13 +168,13 @@
    "Técnica original:",
    "paciente sentado de espaldas;",
    "codo a 90°, hombro a 20° de elevación en el plano de la escápula y en rotación externa máxima menos 5° (para evitar el rebote elástico);",
-   "se suelta la muñeca sujetando el codo y se mide el retraso a los 5° más cercanos.",
+   "se suelta la muñeca sujetando el codo y se mide el déficit (lo que cae) a los 5° más cercanos.",
    "En la serie original, 5–10° en 16 de 17 roturas aisladas del supraespinoso y 10–15° en las 11 roturas del supraespinoso y el infraespinoso.",
    "La serie no incluyó pacientes con la movilidad pasiva limitada.",
    "Si la movilidad pasiva está reducida (p.",
-   "ej., por contractura capsular), el retraso puede quedar oculto (falso negativo);",
+   "ej., por contractura capsular), el déficit puede quedar oculto (falso negativo);",
    "si la rotación externa pasiva está aumentada, como en la rotura del subescapular, puede salir positivo sin rotura de los rotadores externos (Hertel 1996).",
-   "En 10 voluntarios sanos, el supraespinoso aportó el 20 % de la actividad eléctrica de los rotadores externos durante el test (el infraespinoso, el 74 %), y bloquearlo con toxina botulínica aumentó el retraso de 1° a 4° de media con el hombro a 20° de elevación, pero no con el brazo pegado al cuerpo:",
+   "En 10 voluntarios sanos, el supraespinoso aportó el 20 % de la actividad eléctrica de los rotadores externos durante el test (el infraespinoso, el 74 %), y bloquearlo con toxina botulínica aumentó el déficit de 1° a 4° de media con el hombro a 20° de elevación, pero no con el brazo pegado al cuerpo:",
    "para que el test recoja el supraespinoso hay que hacerlo a 20°, como lo describió Hertel (Blonna 2010)."
   ],
   "retiradas": [
@@ -195,9 +195,9 @@
    "paciente sentado de espaldas;",
    "codo a 90°, hombro a 20° de elevación y 20° de extensión;",
    "se separa el dorso de la mano de la zona lumbar hasta casi la rotación interna completa y se suelta la muñeca sujetando el codo.",
-   "En la serie original, retraso de 5° en 4 de 5 roturas parciales del subescapular y de 5–10° en las 8 completas;",
+   "En la serie original, déficit de 5° en 4 de 5 roturas parciales del subescapular y de 5–10° en las 8 completas;",
    "detectó roturas parciales que el lift-off no veía.",
-   "Las mismas limitaciones del signo de retraso en rotación externa:",
+   "Las mismas limitaciones del signo de déficit en rotación externa:",
    "una movilidad pasiva reducida puede ocultarlo (Hertel 1996)."
   ],
   "retiradas": [
@@ -227,8 +227,8 @@
    "al bajar el brazo desde la elevación completa, cae de golpe o duele mucho.",
    "Debilidad en RE (infraespinoso):",
    "codo a 90° junto al cuerpo, rotación neutra;",
-   "positivo si cede por debilidad o dolor, o si hay signo de retraso en RE.",
-   "Si puntúa, el drop arm, el signo de retraso en RE y el cluster B no suman aparte.",
+   "positivo si cede por debilidad o dolor, o si hay signo de déficit en RE.",
+   "Si puntúa, el drop arm, el signo de déficit en RE y el cluster B no suman aparte.",
    "Rotura completa con los tres positivos:",
    "50 de 153 roturas completas frente a 4 de 195 controles (348 operados con los tres test hechos) → LR+ 15,57 (con dos de tres, LR+ 3,57).",
    "La combinación sale de una regresión logística en la misma muestra, sin grupo de validación (en Litaker, la LR bajó de 9,84 a 5,0 al validarla), y Hermans 2013 clasifica el estudio como de nivel IV.",
@@ -1275,8 +1275,7 @@
    "Movilización segmentaria posteroanterior.",
    "Positivo si hipomóvil y reproduce síntomas.",
    "La fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical es pobre o regular (revisión de 7 artículos).",
-   "Cuenta como hallazgo:",
-   "las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p.",
+   "Las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p.",
    "A19), no para el déficit de movilidad, que no tiene patrón de referencia;",
    "y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %)."
   ],
@@ -1286,11 +1285,10 @@
  },
  "ce1|ROM Cervical Activo con CROM": {
   "frases": [
-   "Limitación de la movilidad cervical que reproduce el dolor al final del recorrido activo y pasivo:",
-   "hallazgo esperado en el dolor de cuello con déficit de movilidad.",
+   "Limitación de la movilidad cervical que reproduce el dolor al final del recorrido activo y pasivo.",
+   "Hallazgo esperado en el dolor de cuello con déficit de movilidad.",
    "Una revisión de 46 estudios de fiabilidad y 21 de validez encontró fiabilidad y validez «buenas» para el CROM, el inclinómetro simple y el goniómetro Spin-T, pero 32 de los 46 estudios eran en personas sin dolor.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1304,8 +1302,7 @@
    "Se anota hasta qué escalón la hace con el gesto correcto, sin activar en exceso el esternocleidomastoideo ni los escalenos y sin sustituirla por una retracción.",
    "Tiene fiabilidad inter- e intraterapeuta y validez de contenido establecidas.",
    "Un CCFT positivo es hallazgo esperado en el dolor de cuello con alteración de la coordinación del movimiento.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1317,8 +1314,7 @@
    "se mide el error con un láser en una diana, al menos 3 veces por movimiento, y se promedia.",
    "Un error mayor de 4–5° indica déficit del sentido de posición cervical.",
    "Una revisión de alta calidad encontró que quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1326,7 +1322,6 @@
  },
  "ce3|Test de Spurling (Compresión Foraminal)": {
   "frases": [
-   "Alta especificidad para CONFIRMAR diagnóstico.",
    "Extensión + inclinación lateral ipsilateral + compresión axial.",
    "Positivo:",
    "reproduce dolor radicular en el brazo."
@@ -1362,14 +1357,11 @@
  "ce3|Shoulder Abduction Relief Test": {
   "frases": [
    "El paciente coloca la mano ipsilateral sobre la cabeza — si alivia el dolor radicular, positivo.",
-   "Cuenta como hallazgo (decisión del usuario, 2026-10).",
    "El agrupado de 2 estudios da S 49 %, E 76 %, LR+ 2,08 (IC 95 % 1,32–3,27) y LR− 0,66, certeza muy baja, pero solo pasa de 2 por el estudio antiguo:",
    "este no publica tabla 2×2, analiza lados y no pacientes (la prueba se hizo en 22 de 31 pacientes enviados a mielografía;",
    "14 lados de cada lado) y tiene riesgo de sesgo alto.",
    "El estudio de riesgo bajo (134 pacientes consecutivos, clínica más RM) da por sí solo S 50 %, E 75 %, LR+ 1,88 (1,22–2,91) y LR− 0,64.",
-   "Una variante pasiva (el examinador mantiene la mano sobre la cabeza 5 s) dio LR+ 2,05 y LR− 0,36 en un solo estudio de 85 pacientes.",
-   "Un negativo no descarta.",
-   "S y E solo aquí, para que no se recalcule la LR."
+   "Una variante pasiva (el examinador mantiene la mano sobre la cabeza 5 s) dio LR+ 2,05 y LR− 0,36 en un solo estudio de 85 pacientes."
   ],
   "retiradas": [
    "Cuenta como hallazgo (decisión del usuario, 2026-10).",
@@ -1381,8 +1373,7 @@
   "frases": [
    "Parte de la exploración neurológica (sensibilidad, fuerza y reflejos), indicada cuando se sospecha radiculopatía con conducción comprometida.",
    "Puede haber déficit sensitivo, de fuerza o de reflejos ligado a la raíz afectada.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1467,11 +1458,10 @@
   "frases": [
    "Movilidad pasiva intervertebral de C0 a C3;",
    "el segmento sintomático más frecuente es C1–C2.",
-   "Una revisión de calidad aceptable (Rubio-Ochoa, citada por la guía) da para la cefalea cervicogénica κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9 y LR− 0,43–0,49.",
    "Hallazgo esperado:",
    "la cefalea se reproduce al provocar los segmentos cervicales altos implicados.",
-   "No puntúa (decisión del usuario):",
-   "el FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical."
+   "Una revisión de calidad aceptable (Rubio-Ochoa, citada por la guía) da para la cefalea cervicogénica κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9 y LR− 0,43–0,49.",
+   "El FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical."
   ],
   "retiradas": [
    "No puntúa (decisión del usuario):"
@@ -1482,8 +1472,7 @@
    "Patrón de disfunción articular dolorosa palpable en C0–C4 + menos extensión cervical + más actividad del ECM en el CCFT (EMG).",
    "En la validación cruzada identificó 17 de 18 cervicogénicas (S 94,4 %) y ninguna falsa entre 112 sin cervicogénica (E 100 %).",
    "El artículo lo resume como «S 100 %, E 94 %», con las etiquetas cambiadas respecto a su propia tabla.",
-   "Cuenta como hallazgo:",
-   "con E 100 % la LR+ sería infinita;",
+   "Con E 100 % la LR+ sería infinita;",
    "es una función discriminante (pesos continuos, no «tres positivos»), en una sola muestra, que incluye controles sin cefalea, con el tipo de cefalea clasificado por cuestionario (no por bloqueo) y con el CCFT medido por EMG;",
    "los autores piden validarlo.",
    "Frente a bloqueos anestésicos controlados de C2–C3 y C3–C4 (30 pacientes con cefalea y dolor de cuello), el modelo con menos extensión, disfunción articular dolorosa en C2–C4, peor CCFT y FRT sin limitación fue el que mejor predijo la respuesta al bloqueo, pero sin S ni E."
@@ -1527,8 +1516,7 @@
  "ce5|ROM Cervical Activo (reducción significativa)": {
   "frases": [
    "En el latigazo cervical, los síntomas y signos suelen ser más frecuentes y en general más graves en todos los parámetros físicos que en el dolor de cuello idiopático.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1542,9 +1530,7 @@
    "más del 30 %), catastrofismo (Pain Catastrophizing Scale:",
    "20 o más), estrés postraumático alto (IES-R:",
    "33 o más) e hiperalgesia al frío.",
-   "La guía cita una regla de predicción del pronóstico derivada y validada, sin detallarla.",
-   "Pronóstico, no diagnóstico:",
-   "no puntúa."
+   "La guía cita una regla de predicción del pronóstico derivada y validada, sin detallarla."
   ],
   "retiradas": [
    "no puntúa.",
@@ -1553,11 +1539,9 @@
  },
  "ce5|Síntomas de hiperalerta / PTSD": {
   "frases": [
-   "Los síntomas significativos de estrés postraumático, sobre todo los de hiperalerta, predicen peor recuperación funcional a medio y largo plazo en el latigazo cervical.",
    "Para el pronóstico, la guía propone la IES-R (33 o más) y aclara que se usa para predecir la cronicidad, no para diagnosticar un trastorno de estrés postraumático.",
    "En la IES-R, muchos pacientes responden las preguntas de sueño pensando en el dolor.",
-   "Pronóstico, no diagnóstico:",
-   "no puntúa."
+   "Los síntomas significativos de estrés postraumático, sobre todo los de hiperalerta, predicen peor recuperación funcional a medio y largo plazo en el latigazo cervical."
   ],
   "retiradas": [
    "Pronóstico, no diagnóstico:",
@@ -1570,13 +1554,12 @@
    "el paciente puntúa el dolor de 0 a 10.",
    ">5/10 → hiperalgesia al frío (S 42 %, E 95 %, LR+ 8,44, IC 95 % 6,3–11,3;",
    "LR− 0,61).",
+   "La LR es para detectar hiperalgesia al frío, no para diagnosticar el latigazo.",
+   "Fractura e inestabilidad ya descartadas;",
+   "dosificar la exploración.",
    "Un dolor ≤1/10 la hace improbable (>1:",
    "LR− 0,18).",
-   "La LR es para detectar hiperalgesia al frío, no para diagnosticar el latigazo:",
-   "no entra en la puntuación.",
-   "La hiperalgesia al frío temprana predice peor evolución.",
-   "Fractura e inestabilidad ya descartadas;",
-   "dosificar la exploración."
+   "La hiperalgesia al frío temprana predice peor evolución."
   ],
   "retiradas": [
    "no entra en la puntuación."
@@ -1601,10 +1584,9 @@
   "frases": [
    "Fuerza de los flexores del cuello con dinamómetro de mano;",
    "sin él, una indicación general con contracciones antigravitatorias repetidas, por ejemplo levantar la cabeza de la camilla en supino.",
-   "Déficits de fuerza y resistencia de la musculatura del cuello:",
-   "hallazgo esperado en la alteración de la coordinación del movimiento y en la cefalea cervicogénica.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Déficits de fuerza y resistencia de la musculatura del cuello.",
+   "Hallazgo esperado en la alteración de la coordinación del movimiento y en la cefalea cervicogénica.",
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1613,10 +1595,9 @@
  "ce6|Fuerza de Extensión Cervical (dinamometría)": {
   "frases": [
    "Fuerza de los extensores del cuello con dinamómetro de mano, o extensión antigravitatoria manteniendo la posición craneocervical neutra, o un Biering-Sorensen modificado.",
-   "Déficits de fuerza de la musculatura cervicoescapulotorácica:",
-   "posibles en el dolor de cuello subagudo o crónico con déficit de movilidad.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Déficits de fuerza de la musculatura cervicoescapulotorácica.",
+   "Son posibles en el dolor de cuello subagudo o crónico con déficit de movilidad.",
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1626,10 +1607,9 @@
   "frases": [
    "Explorar los tres planos (flexión-extensión, rotación axial, inclinación lateral) en las tres regiones (craneocervical, cervical, cervicotorácica):",
    "recorrido, patrón de restricción, dolor durante el movimiento y calidad.",
-   "Limitación con dolor al final del recorrido:",
-   "hallazgo esperado en el déficit de movilidad.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Limitación con dolor al final del recorrido.",
+   "Hallazgo esperado en el déficit de movilidad.",
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1639,8 +1619,7 @@
   "frases": [
    "Un error mayor de 4–5° al volver a la posición de partida con los ojos cerrados indica déficit del sentido de posición cervical.",
    "Quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1656,8 +1635,7 @@
    "La guía advierte que las pruebas clínicas de mielopatía tienen sensibilidad baja:",
    "no sirven para descartarla;",
    "la resonancia ayuda al diagnóstico.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1668,8 +1646,7 @@
    "Contracciones rítmicas involuntarias al mantener la dorsiflexión pasiva del pie.",
    "El clonus, el Babinski y el reflejo supinador invertido tienen especificidad alta;",
    "ningún signo aislado basta, cuenta el conjunto.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1681,8 +1658,7 @@
    "observar la marcha en tándem:",
    "muchos pacientes no mantienen la base estrecha antes de que aparezca la debilidad.",
    "Los primeros síntomas pueden ser sutiles (torpeza de manos o leve alteración del equilibrio) y, en mayores de 45 años, deben hacer pensar en una resonancia cervical aunque la fuerza sea normal.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1693,8 +1669,7 @@
    "Reflejos bicipital, tricipital, braquiorradial, rotuliano y aquíleo.",
    "La hiperreflexia generalizada y el signo de Trömner son los más sensibles.",
    "Ningún signo aislado basta.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1706,8 +1681,7 @@
    "algunas desviaciones, como la cabeza adelantada, solo se ven sentado.",
    "Las desviaciones de la postura ideal son muy frecuentes en personas sin dolor, así que su relevancia se comprueba cambiando la postura y viendo si cambian los síntomas o la movilidad.",
    "Con la espalda hundida al sentarse, la cabeza adelantada aumenta la actividad de los extensores del cuello.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1718,8 +1692,7 @@
    "Se anota la posición de las regiones lumbar y torácica y cómo se endereza el paciente desde la sedestación relajada.",
    "La posición escapular se analiza sabiendo que varía mucho en personas sin dolor;",
    "si se sospecha que influye, colocar pasivamente la escápula en una orientación más neutra y ver el cambio inmediato en el dolor o en la movilidad del cuello.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1730,8 +1703,7 @@
    "Palpación dolorosa de la 1.ª costilla y movimientos accesorios (caudal, anteroposterior, posteroanterior) dolorosos y restringidos.",
    "En un Delphi de 12 expertos en terapia manual hubo consenso en que estos hallazgos ayudan a identificar su disfunción;",
    "es opinión de expertos y los autores piden estudiar su fiabilidad y validez.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1742,8 +1714,7 @@
    "Rotación cervical activa hacia el lado afectado dolorosa y restringida.",
    "En un Delphi de 12 expertos en terapia manual hubo consenso en este hallazgo, pero también en la rotación contralateral dolorosa y restringida, y no en que todos los movimientos cervicales lo estén;",
    "es opinión de expertos, sin fiabilidad ni validez estudiadas.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1754,8 +1725,7 @@
    "En supino, flexión craneocervical combinada con flexión cervical para levantar la cabeza de la camilla, mantenida como prueba cronometrada;",
    "sirve para medir la resistencia y seguir su mejora con el entrenamiento.",
    "La guía recomienda incluir los tests de resistencia de los flexores del cuello para identificar la alteración de la coordinación del movimiento (B).",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1766,8 +1736,7 @@
    "Pedir al paciente que muestre la actividad o la postura que le provoca el dolor y observar el control del movimiento y la carga sobre el cuello;",
    "probar a modificar la postura y ver el efecto inmediato en el dolor.",
    "La cabeza adelantada con espalda hundida aumenta la actividad de los extensores, y la cabeza flexionada con dispositivos de mano aumenta su demanda mecánica, lo que puede llevar a fatiga, isquemia y dolor.",
-   "Sin S ni E;",
-   "no puntúa."
+   "Sin S ni E."
   ],
   "retiradas": [
    "no puntúa."
@@ -1843,8 +1812,7 @@
    "FRT <30° o 10° de asimetría → craneocervical (C1–2).",
    "② Si es craneocervical:",
    "grados del FRT en supino.",
-   "Su evidencia diagnóstica es para cefalea cervicogénica:",
-   "aquí cuenta como hallazgo."
+   "Su evidencia diagnóstica es para cefalea cervicogénica."
   ],
   "retiradas": [
    "aquí cuenta como hallazgo."
@@ -3108,8 +3076,7 @@
  "co1|Test de Cozen (extensión resistida de muñeca)": {
   "frases": [
    "Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca.",
-   "Solo hay sensibilidad (sin especificidad publicada):",
-   "un Cozen negativo hace menos probable la epicondilalgia, pero sin LR no puntúa."
+   "Solo hay sensibilidad (sin especificidad publicada)."
   ],
   "retiradas": [
    "un Cozen negativo hace menos probable la epicondilalgia, pero sin LR no puntúa."
@@ -3119,13 +3086,16 @@
   "frases": [
    "Prensión máxima con el codo a 90° de flexión y en extensión completa:",
    "en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia).",
-   "Cuenta como hallazgo:",
-   "los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral.",
+   "Los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral.",
    "Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4):",
    "caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21);",
    "≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24);",
    "≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24).",
-   "El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión."
+   "El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.",
+   "En Dorf 2007, el brazo afectado apretó de media un 29 % menos en extensión que en flexión, y el sano igual en las dos posiciones;",
+   "el afectado tuvo el 50 % de la fuerza del sano en extensión y el 69 % en flexión.",
+   "Se midió sentado, con un dinamómetro hidráulico, con el codo a 90° y en extensión completa por delante del cuerpo.",
+   "Era un centro de referencia (pacientes que ya habían fracasado con otros tratamientos), y los autores no estudiaron otras causas de dolor lateral, como el túnel radial, la artrosis radiocapitelar o las fracturas de la cabeza del radio."
   ],
   "retiradas": [
    "Cuenta como hallazgo:"
@@ -3133,18 +3103,23 @@
  },
  "co1|Test de Thomsen (= test de Cozen)": {
   "frases": [
-   "Otro nombre del test de Cozen:",
-   "la guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».",
+   "Otro nombre del test de Cozen.",
    "No es una prueba distinta:",
-   "marcar solo una de las dos para no contar dos veces el mismo hallazgo."
+   "marcar solo una de las dos para no contar dos veces el mismo hallazgo.",
+   "La guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)»."
   ]
  },
  "co1|Fuerza de prensión sin dolor (dinamómetro)": {
   "frases": [
    "En decúbito supino con el antebrazo pronado, el paciente aprieta el dinamómetro despacio y para al primer dolor;",
    "se compara con el lado sano.",
-   "El capítulo la prefiere a la prensión máxima (que en la epicondilalgia puede estar alterada o no) por su buena precisión diagnóstica, su sensibilidad al cambio y su relación con los cuestionarios del paciente, pero no da cifras:",
-   "cuenta como hallazgo."
+   "El capítulo la prefiere a la prensión máxima (que en la epicondilalgia puede estar alterada o no) por su buena precisión diagnóstica, su sensibilidad al cambio y su relación con los cuestionarios del paciente, pero no da cifras.",
+   "Técnica (Lim 2013):",
+   "en supino relajado, con el codo extendido y el antebrazo en pronación (también se describe sentado, con el codo a 90° apoyado).",
+   "El paciente aprieta al máximo con el lado sano a ritmo lento y después con el afectado al mismo ritmo, parando al primer dolor;",
+   "el explorador vigila que no apriete de golpe, porque pasaría del umbral y el test no valdría.",
+   "Se mantienen la misma posición del codo y el mismo tamaño de empuñadura entre mediciones, porque cambian el resultado, y se hacen tres repeticiones con 1 minuto de descanso, usando la media.",
+   "Es muy fiable (CCI > 0,97) y se relaciona con la discapacidad y con la mejoría que percibe el paciente."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -3164,7 +3139,6 @@
   "frases": [
    "Ecografía convencional (no sonoelastografía):",
    "foco hipo o anecoico, tendón no visible, calcificación o irregularidad cortical.",
-   "Cuenta como hallazgo:",
    "S 95,2 %, E 92 %, pero el patrón de referencia fue el propio diagnóstico clínico de un fisiatra y se comparó con 25 codos sin síntomas (15 contralaterales de los propios pacientes y 10 de voluntarios), un diseño que infla la precisión y no mide si la ecografía añade algo al diagnóstico clínico.",
    "Los casos eran 21 codos de 18 pacientes, y el radiólogo no conocía los datos clínicos."
   ],
@@ -3187,10 +3161,7 @@
  "co3|Test de ROM activo en 4 direcciones": {
   "frases": [
    "Extensión completa, flexión, pronación y supinación comparadas con el lado sano.",
-   "Sin cifras para la rigidez:",
-   "la «S 99 %» que tenía es del test de extensión del codo para descartar fractura tras traumatismo (Appelboam 2008:",
-   "no extender del todo el codo → radiografía;",
-   "S 96,8 %), otra condición."
+   "Sin cifras para la rigidez."
   ],
   "retiradas": [
    "la «S 99 %» que tenía es del test de extensión del codo para descartar fractura tras traumatismo (Appelboam 2008:",
@@ -3200,34 +3171,53 @@
  },
  "co3|Limitación activa Y pasiva comparada con lado sano": {
   "frases": [
-   "Sin datos de precisión.",
    "La sensación final orienta:",
    "un tope firme e indoloro sugiere un bloqueo óseo;",
    "uno blando, una contractura capsular y muscular;",
-   "crepitación o dolor, fractura, sinovitis, cuerpos libres o degeneración."
+   "crepitación o dolor, fractura, sinovitis, cuerpos libres o degeneración.",
+   "Sin datos de precisión."
   ]
  },
  "co4|Ecografía dinámica con estrés en valgo": {
   "frases": [
    "Diferencia de apertura de la articulación cubitotroclear entre reposo y valgo manual (codo a unos 30°) mayor de 1,0 mm frente al codo sano.",
-   "En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura)."
+   "En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura).",
+   "Técnica de Roedl 2016:",
+   "de pie, con el codo a unos 30° de flexión sostenido por un ayudante, se mide la anchura de la cubitotroclear a la altura del haz anterior del ligamento en reposo y con el máximo valgo manual, tres veces cada una, y se resta;",
+   "lo mismo en el codo sano, y la diferencia entre los dos codos es la apertura relativa.",
+   "El explorador no sabía qué codo era el lesionado, y sus tres medidas difirieron 0,1 mm de mediana.",
+   "El umbral de 1,0 mm se fijó antes de analizar los datos, a partir del IC 95 % (1,1–2,8 mm) de la apertura de 2,0 mm que dio cortar el ligamento en un estudio en cadáver del mismo grupo, y la curva ROC lo confirmó como el más preciso.",
+   "Apertura relativa media:",
+   "0,5 mm sin rotura, 2,1 mm con rotura parcial y 3,8 mm con rotura completa.",
+   "Con más de 1,5 mm, S 81 % y E 91 %;",
+   "con más de 2,6 mm, E 100 % y S 53 %:",
+   "umbrales sacados de la curva ROC que los autores piden confirmar en otra serie.",
+   "En la radiografía con estrés en valgo, una apertura medial de más de 3 mm es compatible con inestabilidad en valgo;",
+   "para las partes blandas se prefiere la RM (Lluch 2020, p.",
+   "87)."
   ]
  },
  "co4|RM con artrograma": {
   "frases": [
    "Lectura de la artro-RM con una rotura parcial o completa del ligamento.",
    "En la cohorte de Roedl 2016, S 81 %, E 91 % (LR calculadas ≈9,0 y ≈0,21);",
-   "la RM detectó mejor las roturas del tercio medio y distal y la ecografía convencional, las proximales."
+   "la RM detectó mejor las roturas del tercio medio y distal y la ecografía convencional, las proximales.",
+   "En Roedl 2016 la artro-RM, leída de nuevo por dos radiólogos que no conocían la ecografía (κ 0,90 en las roturas parciales y 0,94 en las completas), vio 27 de 28 roturas del tercio medio y distal y 16 de 25 proximales;",
+   "la ecografía convencional, 19 de 28 y 24 de 25.",
+   "En las roturas completas, S 84 % y E 99 %;",
+   "en las parciales, S 74 % y E 92 % (tabla 2).",
+   "Los cirujanos conocían el informe de la artro-RM.",
+   "Sumar la apertura de la ecografía de estrés (más de 1,0 mm) a ver la rotura en la artro-RM o en la ecografía convencional dio S 96 % y E 99 %, un modelo que los autores piden confirmar en otra serie."
   ]
  },
  "co4|Test de valgo móvil (moving valgus stress test)": {
   "frases": [
-   "Reproducción del dolor medial con estrés en valgo dinámico.",
-   "En el único estudio (O'Driscoll 2005;",
-   "Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %).",
    "Test de valgo móvil (O'Driscoll 2005):",
    "hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida;",
    "positivo si reproduce el dolor medial, máximo entre 120° y 70°.",
+   "Reproducción del dolor medial con estrés en valgo dinámico.",
+   "En el único estudio (O'Driscoll 2005;",
+   "Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %).",
    "En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva):",
    "S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía).",
    "O'Driscoll no publica LR.",
@@ -3235,9 +3225,19 @@
    "86) da las cifras invertidas (S 75 %, E 100 %).",
    "Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1);",
    "es el texto de la revisión el que las invierte, y de ahí las copia Lluch.",
-   "Cuenta como hallazgo:",
-   "la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1.",
-   "La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión."
+   "La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1.",
+   "La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.",
+   "Técnica original (O'Driscoll 2005):",
+   "paciente erguido, hombro en 90° de abducción;",
+   "desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°.",
+   "Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°;",
+   "suele aparecer de golpe y provoca una retirada involuntaria del brazo.",
+   "Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo.",
+   "Cuidado si hay síntomas en el hombro, que el test puede agravar.",
+   "En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°).",
+   "Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales.",
+   "Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano.",
+   "El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento."
   ],
   "retiradas": [
    "Cuenta como hallazgo:"
@@ -3248,12 +3248,11 @@
    "Sentado, codo a 70° de flexión y antebrazo en supinación máxima;",
    "estrés en valgo comparado con el otro codo;",
    "positivo si reproduce el dolor medial.",
-   "Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°.",
    "El dolor es más sensible y la laxitud, más específica (Lluch).",
+   "Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°.",
    "En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único:",
    "S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión);",
-   "LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4):",
-   "no cambia la probabilidad, cuenta como hallazgo."
+   "LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4)."
   ],
   "retiradas": [
    "no cambia la probabilidad, cuenta como hallazgo."
@@ -3264,8 +3263,7 @@
    "La misma maniobra, valorando la apertura medial o la falta de tope firme frente al otro codo.",
    "En O'Driscoll 2005:",
    "S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión;",
-   "la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4):",
-   "cuenta como hallazgo."
+   "la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4)."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -3303,8 +3301,7 @@
    "En Zwerus 2018 (tabla 4;",
    "Regan y Lapner):",
    "S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles;",
-   "sin especificidad:",
-   "cuenta como hallazgo.",
+   "sin especificidad.",
    "Lluch da el 88–100 % para este test y el de recolocación juntos."
   ],
   "retiradas": [
@@ -3320,8 +3317,7 @@
    "En Zwerus 2018 (tabla 4;",
    "Arvind y Hargreaves):",
    "S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3);",
-   "sin especificidad:",
-   "cuenta como hallazgo."
+   "sin especificidad."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -3337,7 +3333,10 @@
  },
  "co6|Dolor posterolateral en línea articular radiocapitelar a la palpación": {
   "frases": [
-   "Presente en el 83.3% de los casos confirmados artroscópicamente."
+   "Presente en el 83.3% de los casos confirmados artroscópicamente.",
+   "En Park 2019, el punto de máximo dolor estaba en la línea radiocapitelar en 20 de 24 plicas operadas, y los síntomas mecánicos (chasquido, enganche) solo en 9 de 24;",
+   "20 de las 24 se habían diagnosticado antes como epicondilalgia lateral.",
+   "La RM mostró una plica de más de 3 mm en 17 de 24, pero la plica posterolateral se ve también en casi todos los codos sin síntomas (98 % en el estudio que citan), así que verla en la imagen no basta."
   ]
  },
  "co6|Test de plica radiocapitelar posterolateral": {
@@ -3345,12 +3344,13 @@
    "Pulgar en la cara posterolateral de la radiocapitelar y antebrazo en pronación;",
    "empezar con el codo extendido y flexionar manteniendo la presión.",
    "Positivo si el dolor a baja flexión desaparece claramente por encima de 90°.",
-   "Cuenta como hallazgo.",
    "En el único estudio, de los creadores del test, dio S 83,3 % (20 de 24;",
    "IC 95 % 62,6–95,3) y E 87,5 % (49 de 56;",
    "IC 75,9–94,8), de las que saldrían LR+ ≈6,7 y LR− ≈0,19 (no publicadas), pero es retrospectivo de casos y controles:",
    "24 plicas confirmadas en la artroscopia (sin epicondilalgia) frente a 56 epicondilalgias laterales operadas (sin plica), un diseño que infla la precisión, y no hay validación posterior.",
-   "La RM identificó la plica en el 70,8 % de los casos."
+   "La RM identificó la plica en el 70,8 % de los casos.",
+   "Los autores (Park 2019) lo comparan con la prueba de la plica mediopatelar de la rodilla, que se hace de forma parecida.",
+   "En la artroscopia vieron la plica envolver la cabeza del radio y entrar y salir de la articulación con el movimiento del codo."
   ],
   "retiradas": [
    "Cuenta como hallazgo."
@@ -3362,7 +3362,11 @@
    "compresión de la cara posterior de la cabeza del radio mientras se extiende el codo;",
    "positivo si reproduce el dolor posterolateral.",
    "Solo fue preciso para la condropatía de la cabeza del radio;",
-   "el capítulo no da cifras y no se ha estudiado en una población más amplia con dolor de codo."
+   "el capítulo no da cifras y no se ha estudiado en una población más amplia con dolor de codo.",
+   "Arrigoni 2017 es un estudio piloto de los creadores del test:",
+   "10 pacientes con epicondilalgia lateral rebelde a 6 meses de tratamiento conservador, sin traumatismo ni inestabilidad franca, todos con artroscopia y un solo explorador.",
+   "El PEPPER fue el más preciso para la condropatía de la cabeza del radio.",
+   "Los autores relacionan estos hallazgos intraarticulares con una inestabilidad lateral menor del codo."
   ]
  },
  "co6|SALT (supinación y dolor anterolateral)": {
@@ -3370,15 +3374,19 @@
    "Supination and Antero-Lateral pain Test:",
    "compresión de la cara anterior de la cabeza del radio, deslizando el dedo sobre ella, mientras se supina el codo;",
    "positivo si reproduce el dolor anterolateral.",
-   "Sensibilidad alta pero especificidad baja para la laxitud del ligamento colateral lateral y los hallazgos intraarticulares;",
-   "sin cifras en el capítulo."
+   "Sensibilidad alta pero especificidad baja para la laxitud del ligamento colateral lateral y los hallazgos intraarticulares.",
+   "Sin cifras en el capítulo.",
+   "En Arrigoni 2017 (estudio piloto de los creadores del test, 10 pacientes con epicondilalgia lateral rebelde, todos con artroscopia), el SALT fue positivo en casi todos los que tenían laxitud ligamentosa lateral o hallazgos intraarticulares, pero también en muchos sin ellos, y fue el más preciso para la sinovitis anterior."
   ]
  },
  "co6|Test de flexión-pronación": {
   "frases": [
    "Pronación del antebrazo mientras se flexiona y extiende el codo;",
    "positivo si aparece un chasquido doloroso.",
-   "Sin datos de precisión."
+   "Sin datos de precisión.",
+   "En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía entre 90° y 110° de flexión con el antebrazo en pronación y se reprodujo en 7 de 14 pacientes;",
+   "en Park 2019, los síntomas mecánicos solo estaban en 9 de 24 plicas operadas.",
+   "Pedersen 2017 usó el test, junto con la palpación dolorosa de la plica y la ecografía, para indicar la artroscopia, y advierte de que el test y la ecografía solos no bastan para decidir la cirugía."
   ]
  },
  "co6|Deslizamientos accesorios de la cabeza del radio": {
@@ -3393,13 +3401,13 @@
    "Con el codo en 90° de flexión y el antebrazo supinado, se intenta \"enganchar\" el tendón del bíceps con el dedo índice desde el lado lateral.",
    "Positivo (rotura completa) si no hay una estructura en cordón que enganchar;",
    "si engancha pero duele, orienta a rotura parcial.",
-   "Cifras de Zwerus 2022 (tabla 2):",
-   "86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto;",
-   "S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas).",
    "En las roturas de menos de un mes, S 86 %;",
    "en las crónicas, 57 %:",
    "la cicatriz de una rotura crónica puede tomarse por un tendón íntegro.",
    "Enganchar siempre desde el lado lateral, porque por el medial una aponeurosis bicipital íntegra puede tomarse por el tendón.",
+   "Cifras de Zwerus 2022 (tabla 2):",
+   "86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto;",
+   "S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas).",
    "Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe):",
    "son los mismos pacientes y no se cuentan dos veces.",
    "Contraste:",
@@ -3407,7 +3415,23 @@
    "O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas;",
    "el brazo sano, control aparte), S y E del 100 %;",
    "Baylor 2023 (prospectivo, 28 operados;",
-   "solo el resumen), S 96 %, E 67 %."
+   "solo el resumen), S 96 %, E 67 %.",
+   "Técnica original (O'Driscoll 2007):",
+   "el paciente, sentado o de pie, flexiona activamente el codo a 90° y supina el antebrazo hasta el final;",
+   "el explorador mete el índice desde el lado lateral de la fosa antecubital por debajo del borde lateral del tendón, alrededor de 1 cm o más, y tira de él hacia delante.",
+   "Supinar al máximo contrae el bíceps con el braquial algo relajado y aleja de la fosa la unión musculotendinosa.",
+   "El paciente no debe flexionar contra resistencia:",
+   "endurece el braquial y cierra el espacio bajo el tendón (si hace falta resistencia, que sea a la supinación).",
+   "Si engancha, se tira con fuerza del tendón:",
+   "el dolor con el tendón íntegro sugiere una rotura parcial (9 de 12 en la serie).",
+   "Se compara con el codo sano.",
+   "El error más probable, según O'Driscoll, es palpar un tendón en la fosa en lugar de enganchar el dedo detrás de él, sobre todo en hombres muy musculados, en los que el tendón del braquial es grueso.",
+   "La grasa abundante o la cicatriz en la fosa podrían dificultar el enganche.",
+   "En Zwerus 2022, el tejido cicatricial de la rotura crónica puede tomarse por un tendón íntegro.",
+   "La aponeurosis bicipital se explora aparte por el lado medial:",
+   "su borde es fino, cortante y laminar, y el del tendón, grueso y en cordón.",
+   "Seguía íntegra en 5 de las 33 roturas completas de O'Driscoll;",
+   "si está íntegra, el tendón se retrae menos."
   ]
  },
  "co7|Pérdida del contorno normal del brazo y tendón distal no palpable": {
@@ -3426,9 +3450,13 @@
    "los mismos 86 pacientes):",
    "S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas);",
    "menos sensible en las roturas de menos de un mes (S 67 %).",
-   "Si también se hace el Hook test, solo cuenta el Hook test.",
    "Contraste:",
-   "en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05."
+   "en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05.",
+   "Técnica en Zwerus 2022 (tabla 1):",
+   "sentado, con el codo a 90°, el explorador fija la muñeca y palpa el vientre del bíceps mientras prona y supina pasivamente el antebrazo;",
+   "si el test duele, sugiere una rotura parcial (para la rotura parcial, el PFP doloroso dio S 72,4 % y E 47,4 %).",
+   "Fue menos preciso en las roturas de menos de un mes (S 66,7 %, E 50 %, con solo 2 codos sin rotura completa en ese grupo) que en las crónicas (S 81,0 %, E 78,6 %);",
+   "los autores advierten que en la fase aguda el dolor y la hinchazón pueden confundir la exploración."
   ],
   "retiradas": [
    "Si también se hace el Hook test, solo cuenta el Hook test."
@@ -3436,11 +3464,11 @@
  },
  "co8|Test de Tinel en túnel cubital": {
   "frases": [
-   "Lluch lo incluye entre las pruebas de provocación «muy útiles» para la neuropatía cubital, pero sin cifras propias (las LR+ 27–41 que da para ese grupo no se han podido comprobar;",
-   "ver el test de flexión del codo).",
    "Percusión sobre el nervio cubital en el surco epitrócleo-olecraniano.",
    "Positivo:",
-   "parestesias en 4º y 5º dedo."
+   "parestesias en 4º y 5º dedo.",
+   "Lluch lo incluye entre las pruebas de provocación «muy útiles» para la neuropatía cubital, pero sin cifras propias (las LR+ 27–41 que da para ese grupo no se han podido comprobar;",
+   "ver el test de flexión del codo)."
   ]
  },
  "co8|Evaluación de subluxación del nervio cubital": {
@@ -3464,8 +3492,7 @@
    "en Ochi 2011, a los 10 segundos, S 36 %.",
    "Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch).",
    "Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012.",
-   "Cuenta como hallazgo:",
-   "con controles sin síntomas la especificidad se sobrestima."
+   "Con controles sin síntomas la especificidad se sobrestima."
   ],
   "retiradas": [
    "Cuenta como hallazgo:"
@@ -3480,8 +3507,7 @@
    "a los 10 segundos, S 80 % y ningún control positivo.",
    "Ochi 2012, a los 5 segundos:",
    "S 58 %, E 100 %.",
-   "Cuenta como hallazgo:",
-   "estudios de casos y controles del autor del test."
+   "Estudios de casos y controles del autor del test."
   ],
   "retiradas": [
    "Cuenta como hallazgo:"
@@ -3494,8 +3520,7 @@
    "Ochi 2012 (nervios, no pacientes):",
    "S 87 % (48 de 55), E 98 % (121 de 123), LR+ 42,5 publicada en el texto, aunque con los datos de su tabla sale ≈54;",
    "más sensible que el test de flexión y el SIRT de 5 segundos.",
-   "Cuenta como hallazgo:",
-   "casos y controles, con voluntarios sin síntomas como controles, de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo."
+   "Casos y controles, con voluntarios sin síntomas como controles, de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo."
   ],
   "retiradas": [
    "Cuenta como hallazgo:"
@@ -3509,9 +3534,9 @@
  },
  "co9|Dolor con extensión resistida del 3er dedo": {
   "frases": [
-   "Sin datos de precisión para la neuropatía radial.",
    "Ojo:",
-   "el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos."
+   "el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.",
+   "Sin datos de precisión para la neuropatía radial."
   ]
  },
  "co9|Dolor con supinación resistida con el codo extendido": {
@@ -3552,7 +3577,10 @@
    "defecto palpable e hinchazón, tras una lesión aguda o un golpe directo;",
    "preguntar por anabolizantes.",
    "No hay pruebas diagnósticas específicas descritas:",
-   "el diagnóstico concluyente puede requerir ecografía o RM."
+   "el diagnóstico concluyente puede requerir ecografía o RM.",
+   "En la radiografía, un pequeño fragmento óseo arrancado de la punta del olécranon (signo de la escama) es patognomónico de la rotura del tríceps.",
+   "La ecografía y la RM distinguen la rotura parcial de la completa.",
+   "En una serie, cerca de la mitad de las roturas agudas se diagnosticaron mal al principio (Keener y Sethi 2015)."
   ]
  },
  "co10|Test de compresión del tríceps (triceps squeeze test)": {
@@ -3560,7 +3588,10 @@
    "Sentado, con el antebrazo colgando sobre el respaldo de una silla y el codo a 90°;",
    "el examinador aprieta con firmeza el vientre del tríceps;",
    "si el codo no se extiende, sugiere una rotura completa.",
-   "Descrito en libros de texto, sin estudios de precisión."
+   "Descrito en libros de texto, sin estudios de precisión.",
+   "Keener y Sethi 2015 lo describen en prono, con el brazo apoyado en la camilla y el antebrazo colgando por el borde, y lo proponen para descartar la rotura completa;",
+   "el test original es de Viegas (Orthop Rev, 1990), que no está en PubMed.",
+   "La expansión lateral del tríceps, que se continúa con el ancóneo y la fascia del antebrazo, puede mantener la extensión activa del codo contra la gravedad aunque el tendón central esté roto del todo, así que la exploración sola puede engañar."
   ]
  },
  "co11|Dolor en la extensión terminal del codo": {
@@ -3669,13 +3700,19 @@
   "frases": [
    "Empeora con la actividad y cede con el reposo (Panner).",
    "La osteocondritis disecante se presenta como un dolor lateral insidioso con antecedente de traumatismos repetidos.",
-   "Sin datos de precisión."
+   "Sin datos de precisión.",
+   "Claessen 2015 (revisión de 23 casos clínicos, 30 pacientes):",
+   "dolor en el 66 %, hinchazón en el 55 % y pérdida de extensión en el 62 % (unos 21° de media);",
+   "el 43 % recordaba una contusión previa.",
+   "Es una enfermedad que se cura sola, y la mayoría lo hace sin secuelas con tratamiento conservador.",
+   "La osteocondritis disecante es otra entidad, del adolescente, con cuerpos libres y distinto pronóstico, y a menudo se confunde con Panner."
   ]
  },
  "co16|Imagen: radiografía o RM": {
   "frases": [
    "La radiografía puede mostrar desmineralización, esclerosis o fragmentación;",
-   "la RM es más sensible para el diagnóstico precoz."
+   "la RM es más sensible para el diagnóstico precoz.",
+   "No se ha encontrado relación entre los hallazgos de la radiografía y los síntomas, y la mejoría radiológica tarda de 1 a 3 años (Claessen 2015)."
   ]
  },
  "tp1|Reglas de Ottawa (si no carga)": {
@@ -3702,12 +3739,17 @@
   "frases": [
    "Cajón anterior con mejor S y E a los 4–6 días;",
    "sin signo del surco, el LPAA no está roto del todo.",
-   "No puntúa:",
    "van Dijk 1996 (160 pacientes con una inversión, un tobillo cada uno;",
    "referencia:",
    "hallazgo quirúrgico, o seguimiento a 6 meses en los 25 no operados) da para la exploración diferida completa (días 4–7:",
    "hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla II (S 74 %, 90 de 122;",
-   "E 66–74 % según cómo se cuenten los dudosos), y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos."
+   "E 66–74 % según cómo se cuenten los dudosos), y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos.",
+   "Técnica (Lluch 2020, p.",
+   "255, fig.",
+   "14):",
+   "el explorador sujeta el talón y tira de él hacia delante mientras estabiliza la tibia con la otra mano, y busca una depresión justo por delante del maléolo lateral.",
+   "En la inestabilidad crónica, el surco en el cajón es lo que define la inestabilidad tibioastragalina (p.",
+   "261)."
   ],
   "retiradas": [
    "No puntúa:"
@@ -3725,8 +3767,7 @@
    "Palpación del LTPAI (la más sensible).",
    "Si las dos reproducen el dolor conocido, sospechar lesión.",
    "Sin cifras en el capítulo.",
-   "No puntúa:",
-   "la palpación del LTPAI sola da resultados contradictorios (Frey 2017, solo un resumen de congreso:",
+   "La palpación del LTPAI sola da resultados contradictorios (Frey 2017, solo un resumen de congreso:",
    "S 95 %, E 86 %;",
    "Großterlinden 2016:",
    "S 42 %, E 52 %;",
@@ -3790,7 +3831,26 @@
    "Límites:",
    "diseño de casos y controles (los casos entraron por diagnóstico clínico y los controles los descartó clínicamente el mismo autor antes de la ecografía o la RM), así que la precisión probablemente está sobrestimada;",
    "la especificidad sale de solo 28 controles.",
-   "Aun así, el IC de la LR+ no baja de 3,5."
+   "Aun así, el IC de la LR+ no baja de 3,5.",
+   "Técnica original (Thompson y Doherty 1962):",
+   "prono, con los pies fuera de la camilla, o de rodillas sobre una silla;",
+   "se comprime la pantorrilla en el tercio medio, por debajo de su parte más ancha.",
+   "Normal:",
+   "el pie hace una flexión plantar pasiva.",
+   "Positivo:",
+   "el pie no se mueve.",
+   "Los autores lo usaban junto a los demás hallazgos de la rotura:",
+   "el hueco sobre el tendón, la pérdida de fuerza de flexión plantar y la pérdida del despegue en la marcha.",
+   "En Maffulli 1998 se comprime con la palma de la mano, y cuenta como positivo que el tobillo no se mueva o apenas haga flexión plantar, siempre comparando con el lado sano.",
+   "Se describió antes en el Reino Unido, de ahí su otro nombre, test de Simmonds (Maffulli 1998).",
+   "Falsos negativos:",
+   "en una rotura de 4 meses, el sóleo cicatrizado y adherido a un plantar delgado hipertrofiado transmitía la compresión al calcáneo, y el pie respondió débilmente (Thompson y Doherty 1962).",
+   "Pasadas 4 semanas, el hematoma organizado puede devolver cierta continuidad al tendón y el test puede indicar que no hay rotura;",
+   "la serie de Maffulli 1998 solo incluía pacientes vistos en las 4 primeras semanas.",
+   "Al principio el paciente puede seguir haciendo flexión plantar, e incluso ponerse de puntillas, con el tibial posterior y los peroneos (Maffulli 1998).",
+   "Según Lluch 2020 (p.",
+   "245), con los flexores largos de los dedos y el plantar delgado;",
+   "por eso muchos caminan sorprendentemente bien, aunque cojeen."
   ]
  },
  "tp3|Hueco palpable": {
@@ -3838,7 +3898,11 @@
  },
  "tp4|1.º y 2.º MT en direcciones opuestas": {
   "frases": [
-   "1.º y 2.º MT en direcciones opuestas → dolor."
+   "1.º y 2.º MT en direcciones opuestas → dolor.",
+   "Otras pruebas del capítulo (p.",
+   "273):",
+   "la prueba de pronación-abducción (retropié fijo, antepié en pronación y abducción) y la compresión tarsometatarsiana.",
+   "La radiografía en carga, con los dos pies en la misma placa, es la primera prueba, pero su sensibilidad y especificidad son bajas, y hace falta TC o RM para confirmar o descartar la lesión."
   ]
  },
  "tp4|Gesto testigo (①) y medida objetiva (②)": {
@@ -3927,8 +3991,12 @@
  },
  "tp7|Test de pinzamiento posterior": {
   "frases": [
-   "Dolor conocido con la flexión plantar pasiva o el test de pinzamiento posterior (flexión plantar comprimiendo el calcáneo contra la tibia):",
-   "confirma."
+   "Dolor conocido con la flexión plantar pasiva o el test de pinzamiento posterior (flexión plantar comprimiendo el calcáneo contra la tibia).",
+   "La flexión dorsal en carga también puede reproducir el dolor, por estiramiento de las estructuras irritadas (p.",
+   "238), y el KTW puede doler y estar limitado (p.",
+   "239).",
+   "Si el dolor conocido baja al repetir el test tras inyectar anestesia local en el receso posterolateral (evitando el paquete neurovascular), apoya el diagnóstico (p.",
+   "241)."
   ],
   "retiradas": [
    "confirma."
@@ -3955,14 +4023,16 @@
    "EVA en cada escalón.",
    "Aquiles:",
    "el dolor a la palpación de la porción media es uno de los criterios diagnósticos de la guía APTA (Chimenti 2024), que no da cifras de su exactitud.",
-   "No puntúa:",
-   "la única cifra de estos gestos es de Hutchison 2013 (21 participantes, 10 con tendinopatía en la ecografía;",
+   "La única cifra de estos gestos es de Hutchison 2013 (21 participantes, 10 con tendinopatía en la ecografía;",
    "agrupa las exploraciones de 3 clínicos, no pacientes;",
    "en Reiman 2014):",
    "ETM monopodal S 22 %, E 93 %;",
    "salto S 43 %, E 87 %.",
    "Las LR (3,14 y 3,31) no las publica el artículo:",
-   "las calcula Reiman de S y E redondeadas, sin intervalo de confianza."
+   "las calcula Reiman de S y E redondeadas, sin intervalo de confianza.",
+   "Lluch 2020 (p.",
+   "243) advierte que el dolor a la palpación es común a todas las presentaciones del Aquiles y no ayuda a distinguirlas;",
+   "la guía APTA (Chimenti 2024), posterior, lo incluye entre los criterios diagnósticos de la porción media."
   ],
   "retiradas": [
    "No puntúa:"
@@ -4097,7 +4167,11 @@
  "tp15|Flexoextensión del primer dedo en flexión plantar completa": {
   "frases": [
    "Flexión dorsal y plantar activas del primer dedo con el tobillo en flexión plantar completa:",
-   "reproduce."
+   "reproduce.",
+   "También pueden reproducir el dolor la flexión plantar resistida del dedo, con debilidad, y el test de pinzamiento posterior, por compresión del tendón o la vaina;",
+   "el KTW puede doler y estar limitado por el anclaje y la compresión del tendón.",
+   "Si no hay flexión activa de la falange distal del primer dedo, pensar en una rotura (p.",
+   "251)."
   ]
  },
  "tp15|Crepitación e hinchazón en la vaina": {
@@ -4113,7 +4187,10 @@
  },
  "tp16|Tinel a lo largo del túnel": {
   "frases": [
-   "Tinel a lo largo del túnel."
+   "Tinel a lo largo del túnel.",
+   "Es un diagnóstico clínico:",
+   "los estudios de conducción nerviosa no siempre salen alterados (p.",
+   "252)."
   ]
  },
  "tp16|Hinchazón en el túnel o la subastragalina posterior": {
@@ -4164,7 +4241,10 @@
  },
  "tp18|Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación": {
   "frases": [
-   "a menudo también con el estrés en inversión de la subastragalina o el KTW con pronación excesiva."
+   "a menudo también con el estrés en inversión de la subastragalina o el KTW con pronación excesiva.",
+   "El capítulo da el diagnóstico por confirmado si el dolor conocido desaparece tras inyectar anestesia local en el seno del tarso;",
+   "la RM puede mostrar sinovitis y lesión de los ligamentos (p.",
+   "257)."
   ]
  },
  "tp18|Gesto testigo (①) y medida objetiva (②)": {
@@ -4223,7 +4303,19 @@
    "todos ya iban a artroscopia (sin inestabilidad mecánica);",
    "el mismo cirujano exploraba y hacía o supervisaba la artroscopia, sin cegamiento;",
    "y valida el pinzamiento sinovial anterolateral, no el óseo.",
-   "La LR+ calculada (7,9) seguiría por encima de 2 aunque estuviera muy sobrestimada."
+   "La LR+ calculada (7,9) seguiría por encima de 2 aunque estuviera muy sobrestimada.",
+   "Técnica original (Molloy 2003):",
+   "el explorador, al pie de la camilla, sujeta el calcáneo con una mano, con los dedos alrededor de la tuberosidad y el pulgar sobre la gotera lateral, y con la otra controla el antepié.",
+   "Se compara con el lado sano.",
+   "Los autores advierten que la maniobra no reproduce lo que pasa al moverse:",
+   "el paciente suele notar una molestia anterolateral, y solo de vez en cuando un dolor agudo (p.",
+   "ej., al subir o bajar escaleras).",
+   "Casi todos tenían dolor al palpar la gotera, pero eso no predecía la sinovitis:",
+   "también duele con una lesión del cartílago.",
+   "Falsos negativos:",
+   "un colgajo de cartílago con sinovitis y una lesión de pinzamiento posterior, que esta maniobra no pellizca.",
+   "Un positivo no descarta otra lesión a la vez:",
+   "la más frecuente, el daño del cartílago, en el 70 %."
   ]
  },
  "tp21|Hinchazón articular": {
@@ -4296,7 +4388,10 @@
  },
  "tp25|Palpación de la cúpula astragalina en flexión plantar": {
   "frases": [
-   "Dolor a la palpación de la cara anterior de la cúpula astragalina con el pie en flexión plantar completa."
+   "Dolor a la palpación de la cara anterior de la cúpula astragalina con el pie en flexión plantar completa.",
+   "Hasta un tercio de los casos tienen una radiografía normal al principio;",
+   "si la sospecha es alta, RM (p.",
+   "285)."
   ]
  },
  "tp25|Hinchazón, derrame, crepitación": {
@@ -4335,7 +4430,9 @@
  },
  "tp28|Tinel sobre el nervio calcáneo medial": {
   "frases": [
-   "Tinel justo proximal al origen de la fascia en la tuberosidad medial, o a lo largo del nervio calcáneo medial."
+   "Tinel justo proximal al origen de la fascia en la tuberosidad medial, o a lo largo del nervio calcáneo medial.",
+   "El atrapamiento nervioso puede coexistir con la fasciopatía plantar (en el 20–52 % de los pacientes, según los estudios que cita el capítulo), y su dolor puede ser indistinguible (p.",
+   "267)."
   ]
  },
  "tp28|Gesto testigo (①) y medida objetiva (②)": {
@@ -4449,8 +4546,7 @@
   "frases": [
    "Dolor a la palpación directa del espacio (sobre todo 3.º–4.º);",
    "posible chasquido al palpar mientras se comprimen los metatarsianos.",
-   "No puntúa:",
-   "la compresión pulgar-índice del espacio (Mahadevan 2015) tiene S 96 %, pero su especificidad sale de un solo pie sin Morton;",
+   "La compresión pulgar-índice del espacio (Mahadevan 2015) tiene S 96 %, pero su especificidad sale de un solo pie sin Morton;",
    "el chasquido de Mulder da LR+ 2,19 (IC 0,45–10,60;",
    "Dando, en Pitcher 2024)."
   ],
