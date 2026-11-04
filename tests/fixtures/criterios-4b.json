@@ -2358,6 +2358,7 @@
  },
  "ro1|Restricción de ROM": {
   "frases": [
+   "Flexión activa asistida de rodilla, medida con goniómetro (Holla 2011).",
    "Alta especificidad cuando está presente.",
    "Estudio transversal (cohorte CHECK, 497 personas con síntomas de rodilla de una cohorte de artrosis sintomática inicial), que no permite conclusiones causales.",
    "Flexión activa asistida con goniómetro:",
@@ -2368,7 +2369,11 @@
    "Como prueba diagnóstica en la artrosis inicial, la flexión aislada aporta poco:",
    "en la misma cohorte, con los osteofitos o el pinzamiento en la radiografía como referencia (presentes en el 37 %), una flexión por debajo de 120° dio S 5 %, E 96 %, LR+ 1,25 (IC 0,51–3,04) y LR− 0,99, y el mejor punto de corte, 132°, LR+ 1,32 y LR− 0,76.",
    "Solo frente al daño más avanzado (osteofitos y pinzamiento a la vez, en el 7 %) la flexión por debajo de 120° dio LR+ 3,60 (IC 1,26–10,24) (Holla 2012).",
-   "Es otra población y otra referencia que las de las cifras del test (Zhang 2010, diagnóstico de artrosis)."
+   "Es otra población y otra referencia que las de las cifras del test (Zhang 2010, diagnóstico de artrosis).",
+   "La guía EULAR no describe cómo explorar la movilidad:",
+   "la cuenta entre los signos que apoyan la artrosis («movimiento doloroso o limitado»), junto con la deformidad en flexión fija.",
+   "Concordancia en sus estudios (ICC o kappa):",
+   "0,73–0,79 en el mismo explorador y 0,48–1,00 entre exploradores (Zhang 2010)."
   ],
   "retiradas": [
    "normal no descarta."
@@ -2403,6 +2408,7 @@
  },
  "ro2|Test de McMurray": {
   "frases": [
+   "En supino, desde la flexión máxima y con el pie en rotación externa completa (menisco interno) o interna (menisco externo), extender la rodilla (Rytter 2008).",
    "Rotación tibial + extensión de rodilla desde posición de flexión completa.",
    "Positivo:",
    "chasquido o dolor en línea articular.",
@@ -2421,7 +2427,16 @@
    "En niños y en adultos con meniscos laxos hay chasquidos sin lesión, pero sin dolor ni sensación conocida.",
    "En pacientes muy musculados puede costar rotar la pierna (McMurray 1942, p.",
    "413).",
-   "En Décary 2018 (PM&R) se llevó hasta la extensión completa y contaba como positivo el chasquido o la reproducción de los síntomas con la rotación."
+   "En Décary 2018 (PM&R) se llevó hasta la extensión completa y contaba como positivo el chasquido o la reproducción de los síntomas con la rotación.",
+   "La técnica cambia entre estudios:",
+   "con o sin valgo o varo, y leída por el dolor solo o por el dolor con o sin chasquido en la interlínea;",
+   "Rytter 2008 lo hizo sin valgo ni varo, hasta la extensión, y contaba el dolor localizado en la interlínea o el chasquido palpable.",
+   "Khan 2025 también acepta el dolor o el chasquido, y Mannan 2025 exige los dos, chasquido con dolor en la interlínea interna.",
+   "En Khan 2025 (152 rodillas;",
+   "referencia:",
+   "artroscopia):",
+   "menisco interno S 60,9 %, E 61,5 %;",
+   "menisco externo S 55,6 %, E 96,3 %."
   ],
   "retiradas": [
    "no descarta la rotura."
@@ -2516,6 +2531,8 @@
  },
  "ro3|Dolor anterior durante sentadilla": {
   "frases": [
+   "Sentadilla hasta 90° de flexión de rodilla:",
+   "positivo si duele o si el dolor impide hacerla (Chamorro-Moriana 2024).",
    "Dolor retrorrotuliano o perirotuliano durante la sentadilla.",
    "Alta sensibilidad.",
    "S IC 95 %:",
@@ -2524,7 +2541,11 @@
    "LR+ IC 1,3–2,3;",
    "LR− IC 0,1–0,4.",
    "Cifras de un solo estudio, no agrupadas:",
-   "la revisión solo pudo hacer metaanálisis de otro test."
+   "la revisión solo pudo hacer metaanálisis de otro test.",
+   "Chamorro-Moriana 2024 no dice si la sentadilla es bilateral o monopodal.",
+   "Concordancia de su definición:",
+   "κ 0,862 y 0,732 entre exploradores, 0,904 y 0,903 en el mismo explorador.",
+   "Algunos pacientes contaron que una sentadilla no les dolía, pero que seguramente les dolería si seguían haciendo más."
   ],
   "retiradas": [
    "sin dolor en sentadilla, el dolor femoropatelar es poco probable.",
@@ -2578,9 +2599,14 @@
  "ro3|Palpación alrededor de la FR, sobre todo de las facetas": {
   "frases": [
    "Palpación alrededor de la FR, sobre todo de las facetas.",
+   "Palpar los bordes posteromedial y posterolateral de la rótula (Piva 2006):",
+   "positivo si duele o molesta alguna de las facetas, medial o lateral (Chamorro-Moriana 2024).",
    "La sentadilla es el test clínico propuesto;",
    "progresar la carga según irritabilidad:",
-   "monopodal, step-down o más repeticiones."
+   "monopodal, step-down o más repeticiones.",
+   "Concordancia de la palpación de las facetas en Chamorro-Moriana 2024:",
+   "κ 0,619 y 0,697 entre exploradores.",
+   "Ninguna de las dos fuentes describe cómo desplazar la rótula para llegar a la faceta."
   ]
  },
  "ro3|Gesto testigo (①) y medida objetiva (②)": {
@@ -2618,6 +2644,11 @@
   "frases": [
    "Rodilla a 90° de flexión.",
    "Traslación anterior de tibia.",
+   "En supino, sentado sobre el pie del paciente, sujetar la tibia proximal por detrás con los pulgares en la meseta tibial y los índices en los tendones de los isquiotibiales, y tirar hacia delante:",
+   "positivo si se desplaza más que en la rodilla sana (Tanaka 2022).",
+   "Antes, buscar el punto cero:",
+   "en neutro, la meseta medial queda 0,5–1 cm por delante del cóndilo;",
+   "si la tibia parte hundida hacia atrás (LCP), llevarla al neutro imita un cajón anterior (Rossi 2011).",
    "S IC 95 %:",
    "77–88 %;",
    "E IC 64–95 %;",
@@ -2627,12 +2658,25 @@
    "Con las fuerzas pequeñas de la exploración, las restricciones secundarias (cintilla iliotibial, cápsulas, ligamentos colaterales) pueden bloquear el cajón con el LCA roto;",
    "según los autores, con el tiempo se distienden y el cajón se hace positivo (Butler 1980).",
    "En la serie de Torg, de las 93 roturas del LCA con desgarro del menisco interno y sin laxitud en valgo, el cajón fue negativo en 42 y dudoso en 14 antes de la meniscectomía, y positivo en todas después (Torg 1976).",
-   "En Décary 2018 (PLoS One) el cajón dio el doble de falsos negativos que el Lachman, quizá por los desgarros meniscales asociados."
+   "En Décary 2018 (PLoS One) el cajón dio el doble de falsos negativos que el Lachman, quizá por los desgarros meniscales asociados.",
+   "Rossi 2011 propone hacerlo en tres rotaciones de la tibia (neutra y 30° de rotación interna y externa):",
+   "la rotación interna tensa el LCP y la esquina posterolateral, y el cajón puede salir negativo.",
+   "Con la rodilla muy hinchada, se puede hacer a 60–80° para no provocar tanto dolor por el hemartros.",
+   "Los meniscos pueden dar un falso tope firme al encajarse bajo los cóndilos (efecto «tope de puerta»), más a menudo el externo.",
+   "Ninguna de las dos fuentes da el ángulo de la cadera.",
+   "En lesiones agudas (hasta 6 semanas;",
+   "6 estudios) Tanaka 2022 agrupa S 0,78 (IC 95 %:",
+   "0,73–0,83) y E 0,91 (0,86–0,95)."
   ]
  },
  "ro4|Test de Pivot Shift": {
   "frases": [
    "Roto-subluxación de la tibia con extensión + valgo + rotación interna.",
+   "Desde la extensión, con la tibia en rotación interna y ligero valgo, flexionar despacio:",
+   "positivo si en los primeros 30° se ve o se palpa la reducción brusca del platillo externo, frente al lado sano (Décary 2018;",
+   "Rossi 2011).",
+   "Duele:",
+   "a menudo solo vale el primer intento (Rossi 2011).",
    "El más específico y el que más sube la probabilidad si es positivo (LR+ IC 95 %:",
    "5,43–19,30), pero el menos sensible:",
    "negativo, apenas la baja (LR− IC 0,40–0,56).",
@@ -2643,11 +2687,22 @@
    "Si se corta también la cintilla iliotibial (en el montaje, un ligamento artificial que la sustituía), la tibia queda en rotación interna y el resalte desaparece (Matsumoto 1990).",
    "Técnica en Décary 2018 (PLoS One):",
    "rodilla extendida en rotación interna, ligero valgo y flexión lenta;",
-   "positivo si en los primeros 30° se ve o se palpa la subluxación del platillo externo, comparando con el lado sano."
+   "positivo si en los primeros 30° se ve o se palpa la subluxación del platillo externo, comparando con el lado sano.",
+   "Las fuentes no coinciden en el sentido del movimiento:",
+   "Rossi 2011 sitúa la subluxación en los primeros grados de flexión y la reducción hacia los 30° (en la variante en decúbito lateral, subluxa en los primeros 20° y se reduce con un resalte hacia los 40°), y cita variantes que subluxan al extender desde la flexión;",
+   "Tanaka 2022 lo describe al revés, desde 90° en rotación interna hasta la extensión, con la reducción cerca de la extensión completa.",
+   "Con una rotura aislada del LCA el resalte es leve;",
+   "uno grande, visible y a veces audible, exige además lesión de la esquina posterolateral (Rossi 2011).",
+   "Grados del IKDC:",
+   "normal, casi normal (deslizamiento), anormal (resalte) y muy anormal (grosero) (Sundemo 2018).",
+   "En lesiones agudas (5 estudios) Tanaka 2022 agrupa S 0,55 (IC 95 %:",
+   "0,49–0,60) y E 0,96 (0,91–0,98)."
   ]
  },
  "ro4|Lever Sign Test": {
   "frases": [
+   "En supino, rodilla extendida y talón en la camilla:",
+   "puño cerrado bajo el tercio proximal de la pantorrilla, a la altura de la tuberosidad tibial, y con la otra mano empujar hacia abajo el tercio distal del cuádriceps (Jarbo 2017).",
    "Puño debajo de la rodilla — si el LCA está roto, el talón no se eleva.",
    "S IC 95 %:",
    "68–92 %;",
@@ -2669,7 +2724,14 @@
    "dos fisioterapeutas, uno de ellos sin ningún dato clínico ni de la RM):",
    "con el explorador cegado, LR+ 1,27–1,87 y LR− 0,60–0,93;",
    "con el otro explorador, en el mejor caso, LR+ 3,02 (camilla dura) y LR− 0,45 (camilla acolchada).",
-   "La concordancia entre exploradores fue de baja a moderada (κ 0,26–0,53), y al mover el puño cambió el resultado en el 47–81 % de las pruebas."
+   "La concordancia entre exploradores fue de baja a moderada (κ 0,26–0,53), y al mover el puño cambió el resultado en el 47–81 % de las pruebas.",
+   "Jarbo 2017 (102 rodillas con lesión aguda;",
+   "referencia:",
+   "RM) tomó la técnica del vídeo de su creador:",
+   "S 63 %, E 90 %, sin diferencias según la formación del explorador y sin comparar con la pierna sana.",
+   "Tanaka 2022 (lesiones agudas, 4 estudios) agrupa S 0,82 (IC 95 %:",
+   "0,76–0,87) y E 0,88 (0,82–0,93);",
+   "su texto dice que el positivo es que el talón se eleve, al revés que sus propios resultados y que Jarbo 2017."
   ]
  },
  "ro4|Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo": {
@@ -2717,9 +2779,12 @@
   "frases": [
    "Sentadilla monopodal sobre plano declinado:",
    "dolor en el polo inferior de la rótula.",
+   "Tabla a 25°, bajando hasta 60° de flexión de rodilla (Zwerver 2010).",
    "La sentadilla declinada es uno de los criterios diagnósticos de la guía holandesa.",
    "En 43 deportistas de competición (86 tendones, con y sin dolor), positiva tuvo LR+ 4,2 (IC 95 %:",
-   "2,3–7,1), pero para alteraciones del tendón en la ecografía, no para el diagnóstico de tendinopatía."
+   "2,3–7,1), pero para alteraciones del tendón en la ecografía, no para el diagnóstico de tendinopatía.",
+   "En el ensayo de Zwerver 2010 el dolor se medía tras diez repeticiones.",
+   "La guía holandesa no describe la técnica."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -2757,9 +2822,15 @@
  },
  "ro6|Test de Compresión de Noble": {
   "frases": [
+   "Con la rodilla a 90°, presionar sobre el epicóndilo lateral o 1–2 cm por encima y extender poco a poco:",
+   "hacia los 30° aparece un dolor intenso sobre el epicóndilo, el mismo que al correr (Noble 1979).",
    "Compresión de la BIT sobre el cóndilo femoral lateral a 30° de flexión.",
    "Positivo si reproduce el dolor característico.",
-   "Su sensibilidad y especificidad son desconocidas."
+   "Su sensibilidad y especificidad son desconocidas.",
+   "Noble 1979 (221 casos en corredores de fondo, sin grupo control) dice que la prueba fue positiva en todos.",
+   "El dolor a la palpación del epicóndilo lateral puede no bastar para separar el síndrome de otras causas extraarticulares de dolor lateral, como la tendinopatía del poplíteo o del bíceps;",
+   "la compresión confirma el diagnóstico.",
+   "A 30° de flexión, la parte posterior de la cintilla queda sobre el epicóndilo (observado en la exploración y confirmado en la cirugía)."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -2772,13 +2843,32 @@
  },
  "ro6|Step-down lateral": {
   "frases": [
-   "Dificultad o Trendelenburg."
+   "De pie sobre la pierna explorada al borde de un escalón de 20 cm, con las manos en la cintura y la rodilla recta, bajar hasta rozar el suelo con la otra pierna y volver, 5 veces, con el explorador de frente (Piva 2006).",
+   "Dificultad o Trendelenburg.",
+   "Puntuación de Piva 2006, un punto por cada hallazgo:",
+   "usa los brazos;",
+   "inclina el tronco;",
+   "la pelvis rota o se eleva de un lado;",
+   "la tuberosidad tibial pasa la vertical del segundo dedo (1 punto) o del borde medial del pie (2 puntos);",
+   "se desequilibra o tiene que apoyar.",
+   "Con 0–1, buena calidad;",
+   "con 2–3, media;",
+   "con 4 o más, mala."
   ]
  },
  "ro6|Test de Thomas": {
   "frases": [
+   "En supino, el paciente sujeta una rodilla flexionada al máximo contra el pecho, con la pelvis neutra:",
+   "positivo si la otra cadera se flexiona y el muslo se separa de la camilla.",
+   "En la versión modificada, al borde de la camilla con la otra pierna colgando (Vigotsky 2016);",
+   "comprobar la pelvis neutra palpando bajo la columna lumbar (Eimiller 2024).",
    "Junto con el Noble y el Ober, provoca el dolor o valora la flexibilidad de la cintilla y del tensor de la fascia lata.",
-   "Su sensibilidad y especificidad son desconocidas."
+   "Su sensibilidad y especificidad son desconocidas.",
+   "Sin controlar la inclinación de la pelvis, el test modificado no mide bien la extensión de cadera:",
+   "S 31,82 % y E 57,14 % para el déficit de extensión, y la inclinación pélvica explicaba el error (r = 0,98) (Vigotsky 2016).",
+   "Con la pelvis controlada, se considera normal llegar a 0° de extensión de cadera;",
+   "concordancia con goniómetro ICC 0,911 en el mismo explorador y 0,851 entre exploradores, error típico 2,85° (Eimiller 2024).",
+   "Ninguna de las dos fuentes atribuye un hallazgo concreto a la cintilla o al tensor de la fascia lata."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -2834,9 +2924,19 @@
  },
  "ro9|Cajón posterior a 90° de flexión": {
   "frases": [
+   "Rodilla a 90°, como en el cajón anterior;",
+   "antes, palpar el punto cero:",
+   "en neutro, la meseta medial queda 0,5–1 cm por delante del cóndilo medial (Rossi 2011);",
+   "con el LCP roto, la tibia se ve hundida hacia atrás (Lee y Nam 2011).",
    "Carga tibial posterior comparando con la rodilla sana.",
    "Grados:",
-   "I <5 mm · II 5–10 mm · III >10 mm."
+   "I <5 mm · II 5–10 mm · III >10 mm.",
+   "Es el test más exacto para el LCP, pero poco fiable en la lesión aguda con mucha hinchazón, y más sensible en la crónica;",
+   "con 10 mm o más de traslación hay que explorar la esquina posterolateral (Lee y Nam 2011).",
+   "Los grados cambian entre fuentes:",
+   "Savarese 2011 da I 1–5 mm, II 5–10 mm y III más de 10 mm;",
+   "Lee y Nam 2011 agrupa I–II en 5–10 mm y III en 10 mm o más.",
+   "Ninguna fuente leída da S ni E, ni el ángulo de la cadera ni cómo fijar el pie."
   ]
  },
  "ro9|Signo del sag posterior": {
@@ -2868,10 +2968,19 @@
  },
  "ro10|Varo forzado a unos 30° de flexión": {
   "frases": [
+   "Varo a 30° y a 0°, frente al lado sano, con un dedo en la interlínea externa para notar la apertura;",
+   "se gradúa por la apertura, no por el dolor (Rossi 2011).",
    "Laxitud y pérdida del tope firme;",
    "repetir a 0° para valorar el LCA.",
    "NO usar como prueba de descarte.",
-   "S 25 %, sin E publicada."
+   "S 25 %, sin E publicada.",
+   "Más apertura solo a 30° indica lesión aislada del LLE;",
+   "también a 0°, de la esquina posterolateral y de uno o más cruzados.",
+   "Grados de apertura:",
+   "I 0–5 mm, II 5–10 mm y III más de 10 mm (Figueroa 2021);",
+   "Rossi 2011 añade, con la escala de la AMA, tope firme en I y II y blando en III.",
+   "A 30° se aflojan los tendones y la cápsula posterior y el colateral queda aislado (Rossi 2011).",
+   "Ninguna fuente leída describe dónde van las manos."
   ],
   "retiradas": [
    "un test negativo no descarta la lesión de LLE/EPL."
@@ -2879,7 +2988,13 @@
  },
  "ro10|Marcha con empuje en varo": {
   "frases": [
-   "Observación de la marcha."
+   "Observación de la marcha.",
+   "Sobre todo en la lesión crónica, la rodilla cede en varo al cargar (Figueroa 2021) y, con inestabilidad posterolateral, además se hiperextiende (Savarese 2011).",
+   "Mirar también la alineación en carga (Figueroa 2021).",
+   "Aumenta al caminar porque todo el peso pasa por una pierna;",
+   "el compartimento interno se cierra y el externo se abre (Savarese 2011).",
+   "En la rodilla crónica, el varo con empuje dinámico contraindica reconstruir solo la esquina posterolateral (Figueroa 2021).",
+   "Sin cifras de exactitud."
   ]
  },
  "ro10|Test del dial (esquina posterolateral)": {
@@ -2967,7 +3082,16 @@
  },
  "ro12|Test de aprensión": {
   "frases": [
-   "Aprensión al trasladar la rótula lateralmente."
+   "En supino, con el cuádriceps relajado, trasladar la rótula hacia fuera cerca de la extensión completa:",
+   "positivo si el paciente teme que se luxe (Colatruglio 2020;",
+   "Ignozzi 2025).",
+   "Aprensión al trasladar la rótula lateralmente.",
+   "Variante en movimiento:",
+   "flexionar de 0 a 90° empujando la rótula hacia fuera;",
+   "la aprensión cede al repetirlo empujándola hacia dentro (Colatruglio 2020).",
+   "En Colatruglio 2020 se empujaba la rótula desde la extensión completa y se repetía cada 10° de flexión, con goniómetro:",
+   "si la aprensión seguía pasados los 60°, señalaba rótula alta (Caton-Deschamps ≥ 1,30) con S 90 % y E 83 %.",
+   "Ignozzi 2025 (vídeo de técnica, nivel de evidencia bajo) usa la variante en movimiento para separar la inestabilidad rotuliana de la rodilla que falla por dolor."
   ]
  },
  "ro12|Gesto testigo (①) y medida objetiva (②)": {
@@ -3088,7 +3212,16 @@
  },
  "ro18|Presión directa sobre la cabeza del peroné y movilidad accesoria": {
   "frases": [
-   "Dolor lateral que aumenta con la presión directa sobre la cabeza del peroné o con la movilidad accesoria."
+   "Dolor lateral que aumenta con la presión directa sobre la cabeza del peroné o con la movilidad accesoria.",
+   "Movilidad accesoria:",
+   "con la rodilla a 90°, desplazar la cabeza del peroné hacia delante y hacia atrás, frente al lado sano;",
+   "positivo si da aprensión, laxitud o reproduce la molestia (Sarac 2025).",
+   "Otras provocaciones:",
+   "estrés en rotación externa del tobillo o rotación interna de la pierna.",
+   "La mayoría de las inestabilidades son anterolaterales, porque el complejo ligamentoso posterior es más débil;",
+   "la radiografía suele ser normal salvo luxación franca (Sarac 2025).",
+   "Cuando es inestable, la movilidad no suele ser sutil, sino mucho mayor que la del otro lado;",
+   "en un caso, mover la articulación empeoraba la sensibilidad del dorso del pie, y la RM puede salir normal porque la articulación se recoloca (Gudeman 2020)."
   ]
  },
  "ro18|Movimiento de rodilla con isquiotibiales en tensión y movimiento de tobillo": {
@@ -3110,7 +3243,8 @@
  },
  "ro19|Marcha en steppage": {
   "frases": [
-   "Observación de la marcha."
+   "Observación de la marcha.",
+   "Sin flexión dorsal, levanta el pie más alto en el balanceo para no rozar el suelo (Saaiq 2024)."
   ]
  },
  "ro19|Sensibilidad en la cara lateral inferior de la pierna y el dorso del pie": {
@@ -3130,8 +3264,20 @@
  },
  "ro19|Prueba neurodinámica con sesgo peroneo": {
   "frases": [
+   "En supino sin almohada:",
+   "flexión plantar e inversión de tobillo, pie y dedos, y después elevar la pierna con la rodilla recta;",
+   "si los síntomas son proximales, soltar la flexión plantar, y si son distales, la flexión de cadera, para ver si cambian (Bueno-Gracia 2019).",
    "Slump o elevación de la pierna recta con sesgo hacia el nervio peroneo:",
-   "probablemente positiva, reproduce quemazón, dolor lancinante o disestesia distal."
+   "probablemente positiva, reproduce quemazón, dolor lancinante o disestesia distal.",
+   "Respuesta normal en 44 personas sin síntomas (88 piernas):",
+   "los primeros síntomas aparecen con 38,7° ± 14,6° de flexión de cadera y el límite de tolerancia con 65,9° ± 16,0°, sin diferencias por sexo ni por pierna dominante.",
+   "Lo más habitual es una sensación de estiramiento (90,9 % al empezar) en el borde externo del pie (75 %), seguido de la cara lateral de la pierna.",
+   "Solo en personas sanas:",
+   "no da exactitud diagnóstica, y no se midieron la rotación ni la aducción de cadera ni los grados de flexión plantar e inversión (Bueno-Gracia 2019).",
+   "En cadáver (10 nervios peroneos superficiales de 6 cadáveres, a su salida de la fascia crural), la secuencia flexión plantar, inversión, elevación de la pierna recta y 30° de aducción de cadera estiró el nervio un 7–8 %.",
+   "La flexión plantar aportó el 59 % de la elongación y la inversión el 33 %;",
+   "la flexión de cadera, poco, y la aducción, nada significativo, y la elongación final fue la misma con la cadera a 0, 30, 60 o 90°.",
+   "Los autores concluyen que el tobillo es lo que más carga este nervio y que la elevación de la pierna sirve para diferenciar (Lavoie 2023)."
   ]
  },
  "ro19|Gesto testigo (①) y medida objetiva (②)": {
@@ -3149,8 +3295,13 @@
  },
  "ro20|Signo de Foucher": {
   "frases": [
+   "En prono, palpar la tensión del quiste con la rodilla en extensión y después a 45° de flexión (Canoso 1987).",
    "Si es palpable:",
-   "firme en extensión completa y blando con la rodilla flexionada."
+   "firme en extensión completa y blando con la rodilla flexionada.",
+   "Estudio del mecanismo en 5 pacientes con quiste de Baker sintomático (ecografía, artrografía y TC), no de exactitud diagnóstica.",
+   "En los 3 con quiste palpable el signo fue positivo, y la tensión aumentaba aún más al intentar flexionar contra resistencia;",
+   "ese efecto se perdía hacia los 30–45°.",
+   "El quiste está en el tercio medio de la fosa poplítea, en el surco entre el gemelo y el semimembranoso."
   ]
  },
  "ro20|Gesto testigo (①) y medida objetiva (②)": {
