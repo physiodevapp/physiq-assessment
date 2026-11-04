@@ -3312,8 +3312,16 @@
  },
  "co1|Test de Cozen (extensión resistida de muñeca)": {
   "frases": [
+   "Sentado, con el antebrazo en pronación y el codo a 90° de flexión o extendido:",
+   "el paciente extiende la muñeca contra la resistencia del examinador, que palpa el epicóndilo lateral (Soares 2023;",
+   "Factor 2023;",
+   "Biedroń 2026).",
    "Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca.",
-   "Solo hay sensibilidad (sin especificidad publicada)."
+   "Solo hay sensibilidad (sin especificidad publicada).",
+   "Las fuentes no coinciden en la posición del codo.",
+   "Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el paciente sentado, el hombro algo en aducción, el codo a 90° de flexión, el antebrazo en pronación y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos.",
+   "Factor 2023 lo hace con el codo en extensión completa, el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial.",
+   "Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada."
   ],
   "retiradas": [
    "un Cozen negativo hace menos probable la epicondilalgia, pero sin LR no puntúa."
@@ -3364,12 +3372,18 @@
  },
  "co2|Dolor a la palpación del epicóndilo medial": {
   "frases": [
-   "Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador."
+   "Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador.",
+   "El punto típico está unos 5–10 mm distal y anterior al epicóndilo medial, sobre el origen flexor-pronador (Adani 2025;",
+   "Tahir 2026)."
   ]
  },
  "co2|Dolor con flexión resistida de antebrazo y pronación": {
   "frases": [
-   "Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo."
+   "Con el codo extendido y el antebrazo en supinación, el paciente flexiona la muñeca y prona el antebrazo contra resistencia (Tahir 2026).",
+   "Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.",
+   "Puede haber también menos fuerza que en el otro lado al flexionar la muñeca, pronar el antebrazo o apretar, y el estiramiento pasivo (supinación con el codo, la muñeca y los dedos en extensión) puede reproducir el dolor.",
+   "Según Adani, estas pruebas ayudan pero no están validadas (Adani 2025).",
+   "Sin datos de precisión."
   ]
  },
  "co2|Ecografía (si se dispone de informe)": {
@@ -3508,8 +3522,11 @@
  },
  "co4|Dolor a la palpación justo distal al epicóndilo medial": {
   "frases": [
-   "Palpación del ligamento colateral medial justo distal al epicóndilo medial.",
-   "Sin datos de precisión."
+   "Palpación del ligamento colateral medial justo distal al epicóndilo medial:",
+   "presión moderada entre la cara anteroinferior del epicóndilo y el tubérculo sublime del cúbito (Otoshi 2022), a unos 2 cm del epicóndilo (Eskew 2026).",
+   "Positivo si duele.",
+   "Sin datos de precisión.",
+   "Eskew 2026 da una sensibilidad del 81–94 % del dolor en ese punto para la lesión del ligamento, y dice que ayuda a separarla de la del origen flexor-pronador, pero no da la especificidad ni dice de qué estudio sale la cifra."
   ]
  },
  "co5|Test de cajón posterolateral / Test de pivote lateral": {
@@ -3527,8 +3544,11 @@
  "co5|Dolor lateral a la palpación (complejo colateral lateral)": {
   "frases": [
    "Dolor a la palpación de la cara lateral del codo.",
+   "Palpar el epicóndilo lateral y la unión de la cabeza y el cuello del radio:",
+   "en la inestabilidad posterolateral el dolor suele estar ahí, y no solo en el origen común de los extensores (Quzli 2025).",
    "El capítulo de Lluch no describe la palpación del complejo colateral lateral (su tabla 1 da el estrés en varo, el push-up y la recolocación en la mesa) y avisa de que su lesión puede confundirse con la epicondilalgia lateral, en la que la palpación lateral también duele y no es específica.",
-   "Sin datos de precisión."
+   "Sin datos de precisión.",
+   "El ligamento colateral cubital lateral va del epicóndilo lateral a la cresta del supinador del cúbito (Quzli 2025)."
   ]
  },
  "co5|Test de flexión en suelo (push-up) con el antebrazo en supinación": {
@@ -3570,6 +3590,8 @@
  },
  "co6|Dolor posterolateral en línea articular radiocapitelar a la palpación": {
   "frases": [
+   "Con el codo en extensión, buscar el punto de máximo dolor en la cara posterolateral, sobre la interlínea radiocapitelar;",
+   "el de la epicondilalgia lateral suele estar medial y distal al epicóndilo (Park 2019).",
    "Presente en el 83.3% de los casos confirmados artroscópicamente.",
    "En Park 2019, el punto de máximo dolor estaba en la línea radiocapitelar en 20 de 24 plicas operadas, y los síntomas mecánicos (chasquido, enganche) solo en 9 de 24;",
    "20 de las 24 se habían diagnosticado antes como epicondilalgia lateral.",
@@ -3710,7 +3732,15 @@
  },
  "co8|Evaluación de subluxación del nervio cubital": {
   "frases": [
-   "Con flexo-extensión de codo — el nervio cubital puede subluxarse sobre el epicóndilo medial."
+   "Mientras el codo se flexiona y se extiende, palpar el nervio cubital a distintos grados de flexión, tomando como referencia la cara posteromedial del epicóndilo medial y el túnel cubital;",
+   "positivo si el nervio se sube al epicóndilo o lo cruza (Looney 2023).",
+   "En lanzadores profesionales sin síntomas, con la ecografía como referencia, la exploración tuvo S 77 % y E 91,2 % (LR+ 8,76, LR− 0,25), y la inestabilidad del nervio no se relacionó con los síntomas ni con los tests de provocación (Looney 2023).",
+   "Por eso no puntúa:",
+   "la subluxación no es diagnóstica de neuropatía cubital (Lluch 2020, cap.",
+   "3.2, p.",
+   "92).",
+   "Un chasquido del tríceps medial puede tomarse por el nervio;",
+   "la ecografía los distingue (Looney 2023)."
   ]
  },
  "co8|Electrodiagnóstico (velocidad de conducción nerviosa)": {
@@ -3766,20 +3796,27 @@
  "co9|Dolor en antebrazo proximal (NO en epicóndilo lateral)": {
   "frases": [
    "Localización más distal que la epicondilalgia lateral.",
-   "Puede coexistir con ella."
+   "Puede coexistir con ella.",
+   "Con el antebrazo en supinación, palpar el recorrido del radial por el dorso del antebrazo desde justo por encima del epicóndilo lateral:",
+   "el punto típico está 4–5 cm distal al epicóndilo, sobre la masa del supinador (Engin 2023)."
   ]
  },
  "co9|Dolor con extensión resistida del 3er dedo": {
   "frases": [
+   "Con el antebrazo en pronación y el codo extendido, extensión del dedo medio contra resistencia;",
+   "positivo si reproduce el dolor (Engin 2023).",
    "Ojo:",
    "el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.",
-   "Sin datos de precisión para la neuropatía radial."
+   "Sin datos de precisión para la neuropatía radial.",
+   "En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023)."
   ]
  },
  "co9|Dolor con supinación resistida con el codo extendido": {
   "frases": [
+   "Con el codo en extensión completa, el paciente supina el antebrazo contra resistencia (Engin 2023).",
    "Reproduce el dolor en el dorso del antebrazo proximal.",
-   "Precisión diagnóstica no estudiada."
+   "Precisión diagnóstica no estudiada.",
+   "En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 10, y la palpación del punto doloroso, en los 18 (Engin 2023)."
   ]
  },
  "co9|Neurodinámica del nervio radial (ULNT radial)": {
@@ -3797,14 +3834,19 @@
  },
  "co10|Dolor con la extensión activa o resistida del codo": {
   "frases": [
+   "Desde flexión completa, el paciente extiende el codo contra resistencia (Eskew 2026).",
    "Reproduce el dolor posterior.",
    "Más frecuente en varones, lanzadores, culturistas y ciclistas de montaña;",
    "los síntomas suelen seguir a un aumento brusco de la actividad.",
-   "Sin datos de precisión."
+   "Sin datos de precisión.",
+   "En una rotura completa, la extensión contra resistencia está limitada o falta, aunque el ancóneo, ayudado por la gravedad, puede suplir al tríceps en las actividades por debajo del hombro (Beazley 2017)."
   ]
  },
  "co10|Dolor a la palpación de la inserción del tríceps": {
   "frases": [
+   "Palpar la inserción en la punta del olécranon, que es ancha:",
+   "el tendón se inserta en dos láminas sobre una zona amplia (Shuttlewood 2017).",
+   "Positivo si reproduce el dolor posterior.",
    "Sin datos de precisión."
   ]
  },
@@ -3813,6 +3855,7 @@
    "En la rotura:",
    "defecto palpable e hinchazón, tras una lesión aguda o un golpe directo;",
    "preguntar por anabolizantes.",
+   "El defecto suele estar justo proximal al olécranon, y en la fase aguda la hinchazón puede ocultarlo (Beazley 2017).",
    "No hay pruebas diagnósticas específicas descritas:",
    "el diagnóstico concluyente puede requerir ecografía o RM.",
    "En la radiografía, un pequeño fragmento óseo arrancado de la punta del olécranon (signo de la escama) es patognomónico de la rotura del tríceps.",
@@ -3833,6 +3876,8 @@
  },
  "co11|Dolor en la extensión terminal del codo": {
   "frases": [
+   "Desde 20–30° de flexión, llevar el codo rápida y repetidamente a la extensión terminal;",
+   "positivo si duele el compartimento posterior (Schwab 2023).",
    "Dolor provocado por la extensión del codo, en el deportista joven (en lanzadores, sobre todo en la fase de seguimiento o desaceleración) o en el mayor.",
    "Puede asociar laxitud del ligamento colateral medial en el estrés en valgo.",
    "Sin datos de precisión."
@@ -3867,8 +3912,12 @@
  },
  "co12|Pérdida de la extensión terminal": {
   "frases": [
-   "Puede faltar la extensión terminal.",
-   "Sin datos de precisión."
+   "Medir la extensión activa y pasiva y compararla con la del otro codo (Eskew 2026).",
+   "Puede faltar la extensión terminal, con dolor a la palpación del olécranon posteromedial, crepitación y un tope firme (Schwab 2023).",
+   "Sin datos de precisión.",
+   "En los lanzadores de competición es frecuente un flexo de 5–10° que es una adaptación y no una lesión (Eskew 2026).",
+   "Y la extensión completa no la descarta:",
+   "en un caso confirmado, el lanzador tenía la flexión y la extensión completas y dolor medial, y se pensó primero en una lesión del ligamento colateral medial (Gartner 2025)."
   ]
  },
  "co12|TC (si la radiografía no es concluyente)": {
@@ -3881,16 +3930,27 @@
  "co13|Dolor a la palpación del pronador redondo": {
   "frases": [
    "Dolor en la cara anterior del codo y el antebrazo, con parestesias sobre todo del 1.º al 3.º dedo.",
-   "Sin datos de precisión."
+   "El pronador redondo se palpa unos 6 cm distal al pliegue del codo y 4 cm lateral al epicóndilo medial;",
+   "la presión mantenida 30 segundos sobre él es positiva si provoca parestesias (Balcerzak 2022).",
+   "Sin datos de precisión.",
+   "El signo de Tinel en el antebrazo proximal es positivo en menos de la mitad de los pacientes (Balcerzak 2022)."
   ]
  },
  "co13|Síntomas con la pronación resistida con el codo extendido": {
   "frases": [
-   "Sin datos de precisión."
+   "El paciente prona el antebrazo contra la resistencia de la mano del examinador, con el codo extendido (Binsaleem 2024) o entre 0 y 45° de flexión (Balcerzak 2022);",
+   "positivo si aumenta el dolor o aparecen parestesias en el territorio del mediano (Balcerzak 2022).",
+   "Sin datos de precisión.",
+   "Otras maniobras buscan otros puntos de compresión:",
+   "la flexión del codo contra resistencia, con supinación según Balcerzak, la aponeurosis bicipital;",
+   "y la flexión de la interfalángica proximal del dedo medio contra resistencia, el arco del flexor superficial, que Balcerzak considera poco fiable (Balcerzak 2022;",
+   "Binsaleem 2024)."
   ]
  },
  "co13|Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo": {
   "frases": [
+   "Contra resistencia y comparando con el otro lado:",
+   "flexión de la interfalángica del pulgar (flexor largo) y de la interfalángica distal del índice y del medio (flexor profundo) (Aljawder 2016), de la interfalángica proximal del medio (flexor superficial) y pronación (pronador redondo) (Balcerzak 2022).",
    "Sin datos de precisión."
   ]
  },
@@ -3903,7 +3963,13 @@
  "co13|Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)": {
   "frases": [
    "Síndrome motor puro, con solo una molestia vaga en el antebrazo.",
-   "Las lesiones del interóseo anterior pueden ser idiopáticas y en general no son compresivas."
+   "Pedir que haga una «O» con el pulgar y el índice:",
+   "no puede y pinza con las falanges distales extendidas (signo del «OK»);",
+   "sin alteración sensitiva (Aljawder 2016;",
+   "Park 2024).",
+   "Las lesiones del interóseo anterior pueden ser idiopáticas y en general no son compresivas.",
+   "Puede afectar solo al flexor largo del pulgar, y entonces la debilidad puede atribuirse a una rotura del tendón (Park 2024).",
+   "El efecto tenodesis, la flexión espontánea de los dedos al extender la muñeca, ayuda a distinguir la neuropatía de la rotura (Shinohara 2017)."
   ]
  },
  "co14|Tirón del brazo extendido en un menor de 5 años, sin caída": {
@@ -3915,7 +3981,14 @@
  },
  "co14|Dolor y limitación de la pronación y de la extensión del codo": {
   "frases": [
-   "Sin datos de precisión."
+   "El niño suele llevar el brazo pegado al cuerpo, con el codo en ligera flexión y el antebrazo bloqueado en pronación, y no quiere moverlo (Ulici 2019;",
+   "Lashhab 2025).",
+   "Explorar con suavidad:",
+   "hinchazón, enrojecimiento, deformidad, hematoma o crepitación ósea hacen pensar en una fractura (Ulici 2019;",
+   "Lashhab 2025).",
+   "Sin datos de precisión.",
+   "Hasta en la mitad de los casos falta el antecedente típico del tirón, y la exploración de un niño asustado es difícil.",
+   "En un estudio que recoge Lashhab, 9 de 205 niños con diagnóstico clínico de pronación dolorosa tenían una fractura (Lashhab 2025)."
   ]
  },
  "co15|Dolor medial con el lanzamiento en un deportista con el esqueleto inmaduro": {
@@ -3930,7 +4003,12 @@
  "co15|Dolor y laxitud con el estrés en valgo o el valgo móvil": {
   "frases": [
    "Mismos hallazgos que la lesión del ligamento colateral medial del adulto.",
-   "Sin datos de precisión en el niño."
+   "Comparar con el otro codo:",
+   "positivo si el valgo duele en el lado medial o abre más (Otoshi 2022;",
+   "Hart 2024).",
+   "Palpar también la apófisis del epicóndilo medial (Hart 2024).",
+   "Sin datos de precisión en el niño.",
+   "Ninguna fuente leída da el ángulo de flexión para el estrés en valgo en el niño."
   ]
  },
  "co16|Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años": {
