@@ -1371,10 +1371,23 @@
  },
  "ce1|ROM Cervical Activo con CROM": {
   "frases": [
+   "Sentado en una silla, con el CROM puesto como unas gafas y el collar magnético sobre los hombros, que el examinador estabiliza con las manos.",
+   "Tras cinco movimientos de calentamiento, desde la posición neutra hasta el máximo recorrido en cada dirección, se mantiene 3 s y se vuelve;",
+   "tres intentos por movimiento.",
+   "Flexión:",
+   "meter el mentón y llevarlo al pecho sin adelantarlo;",
+   "extensión:",
+   "mirar al techo sin despegar la espalda del respaldo;",
+   "inclinación:",
+   "mentón metido y hombros abajo, la oreja hacia el hombro;",
+   "rotación:",
+   "mentón metido y mirada horizontal, mirar por encima del hombro (Cánovas-Ambit 2021).",
    "Limitación de la movilidad cervical que reproduce el dolor al final del recorrido activo y pasivo.",
    "Hallazgo esperado en el dolor de cuello con déficit de movilidad.",
    "Una revisión de 46 estudios de fiabilidad y 21 de validez encontró fiabilidad y validez «buenas» para el CROM, el inclinómetro simple y el goniómetro Spin-T, pero 32 de los 46 estudios eran en personas sin dolor.",
-   "Sin S ni E."
+   "Sin S ni E.",
+   "En el protocolo de la técnica, a quienes tenían dolor se les pidió que los movimientos no les provocaran dolor ni mareo:",
+   "mide el recorrido, no la provocación (Cánovas-Ambit 2021)."
   ],
   "retiradas": [
    "no puntúa."
@@ -1408,9 +1421,19 @@
  },
  "ce3|Test de Spurling (Compresión Foraminal)": {
   "frases": [
-   "Extensión + inclinación lateral ipsilateral + compresión axial.",
+   "Sentado, con el examinador detrás:",
+   "inclinación lateral de la cabeza hacia el lado de los síntomas, con extensión o rotación según el estudio, y presión hacia abajo sobre la cabeza (Ghasemi 2013;",
+   "Park 2017).",
    "Positivo:",
-   "reproduce dolor radicular en el brazo."
+   "reproduce el dolor radicular o el hormigueo en el hombro o el brazo de ese lado;",
+   "el dolor solo de cuello, o en el otro lado, no cuenta (Park 2017;",
+   "Grondin 2026).",
+   "Los 5 estudios de la revisión combinan de forma distinta extensión, inclinación lateral, rotación y presión axial (uno no la aplica), y los autores piden fijar la técnica más válida;",
+   "ninguna fuente dice cuánta presión aplicar (Thoomes 2026;",
+   "Park 2017).",
+   "Con reproducción de los síntomas de brazo, LR+ 34,4;",
+   "con dolor de cuello solo, 1,70 (Grondin 2026).",
+   "Hay clínicos que desaconsejan la presión axial porque puede agravar una radiculopatía (Park 2017)."
   ],
   "retiradas": [
    "Alta especificidad para CONFIRMAR diagnóstico."
@@ -1442,12 +1465,16 @@
  },
  "ce3|Shoulder Abduction Relief Test": {
   "frases": [
-   "El paciente coloca la mano ipsilateral sobre la cabeza — si alivia el dolor radicular, positivo.",
+   "Sentado, el paciente coloca la palma de la mano del lado afectado sobre la cabeza (Ghasemi 2013).",
+   "En la variante pasiva, el examinador le mantiene la mano sobre la cabeza 5 s, para no provocar dolor de hombro ni aprensión (Grondin 2026).",
+   "Positivo:",
+   "alivia el dolor radicular.",
    "El agrupado de 2 estudios da S 49 %, E 76 %, LR+ 2,08 (IC 95 % 1,32–3,27) y LR− 0,66, certeza muy baja, pero solo pasa de 2 por el estudio antiguo:",
    "este no publica tabla 2×2, analiza lados y no pacientes (la prueba se hizo en 22 de 31 pacientes enviados a mielografía;",
    "14 lados de cada lado) y tiene riesgo de sesgo alto.",
    "El estudio de riesgo bajo (134 pacientes consecutivos, clínica más RM) da por sí solo S 50 %, E 75 %, LR+ 1,88 (1,22–2,91) y LR− 0,64.",
-   "Una variante pasiva (el examinador mantiene la mano sobre la cabeza 5 s) dio LR+ 2,05 y LR− 0,36 en un solo estudio de 85 pacientes."
+   "Una variante pasiva (el examinador mantiene la mano sobre la cabeza 5 s) dio LR+ 2,05 y LR− 0,36 en un solo estudio de 85 pacientes;",
+   "sus autores lo atribuyen a mantener la mano de forma pasiva, y avisan de que quien no tiene dolor de brazo en reposo no puede notar alivio (Grondin 2026)."
   ],
   "retiradas": [
    "Cuenta como hallazgo (decisión del usuario, 2026-10).",
@@ -1468,6 +1495,14 @@
  "ce3|Exploración neurológica: sensibilidad, fuerza y reflejos del miembro superior": {
   "frases": [
    "Siempre que se sospeche conducción comprometida.",
+   "Fuerza por miotomas:",
+   "C5, abducción del hombro;",
+   "C6, flexión del codo y extensión de la muñeca;",
+   "C7, extensión del codo;",
+   "C8, extensión del pulgar o abductor corto del pulgar;",
+   "T1, interóseos (el músculo elegido varía entre estudios).",
+   "Sensibilidad por dermatomas:",
+   "tacto ligero (algodón o pincel) para las fibras gruesas, y pinchazo, frío o calor para las finas (Yousif 2025).",
    "Sensibilidad a vibración y temperatura:",
    "buscar hipoestesia.",
    "Comparar con el lado sano.",
@@ -1476,7 +1511,10 @@
  },
  "ce3|Fuerza del grupo débil con dinamómetro de mano (② medida objetiva)": {
   "frases": [
-   "Fuerza del grupo muscular débil con dinamómetro de mano, en la misma posición y frente al lado sano."
+   "Fuerza del grupo muscular débil con dinamómetro de mano, en la misma posición y frente al lado sano.",
+   "Técnica de ruptura:",
+   "el paciente empuja contra el dinamómetro hasta que ya no puede mantener la fuerza;",
+   "el punto de contacto, el de máxima palanca, se marca para repetirlo igual (Zirkl 2024)."
   ]
  },
  "ce3|Combinación de 4 ULNT (ULNT1 y ULNT2a mediano, ULNT2b radial, ULNT3 cubital)": {
@@ -1601,6 +1639,9 @@
  },
  "ce5|ROM Cervical Activo (reducción significativa)": {
   "frases": [
+   "Recorrido activo en cada dirección con el CROM, sentado y con los hombros estabilizados por el examinador:",
+   "desde la posición neutra hasta el máximo, se mantiene 3 s y se vuelve;",
+   "tres intentos por movimiento (Cánovas-Ambit 2021).",
    "En el latigazo cervical, los síntomas y signos suelen ser más frecuentes y en general más graves en todos los parámetros físicos que en el dolor de cuello idiopático.",
    "Sin S ni E."
   ],
@@ -1653,6 +1694,11 @@
  },
  "ce5|Reposición articular (si hay mareo o inestabilidad)": {
   "frases": [
+   "Sentado, con un láser en la cabeza y una diana a 90 cm, a la altura de los ojos:",
+   "se marca la posición neutra;",
+   "con los ojos cerrados, el paciente lleva la cabeza hasta el final del recorrido a ritmo cómodo y vuelve lo más exacto posible.",
+   "Tras un intento de prueba con los ojos abiertos, 6 repeticiones por movimiento (flexión, extensión y rotación a cada lado);",
+   "el error en cm se pasa a grados y se promedia (AlDahas 2023).",
    "Error medio de reposición con láser.",
    "Síntomas en brazo → ULNT1 y neurológico."
   ]
@@ -1660,6 +1706,8 @@
  "ce5|Rotación cervical activa sentado (② medida objetiva)": {
   "frases": [
    "Misma silla y apoyo (grados).",
+   "Con el mentón metido y la mirada horizontal, mirar por encima de cada hombro, con los hombros estabilizados por el examinador;",
+   "tres intentos (Cánovas-Ambit 2021).",
    "① Gesto testigo:",
    "movimiento activo más doloroso o limitado (p.",
    "ej.",
@@ -1703,9 +1751,15 @@
  },
  "ce7|Test de reposicionamiento cabeza-neutro": {
   "frases": [
+   "Sentado, con un láser en la cabeza y una diana a 90 cm, a la altura de los ojos:",
+   "con los ojos cerrados, el paciente lleva la cabeza hasta el final del recorrido y vuelve a la posición de partida;",
+   "6 repeticiones por movimiento, y se promedia el error (AlDahas 2023).",
    "Un error mayor de 4–5° al volver a la posición de partida con los ojos cerrados indica déficit del sentido de posición cervical.",
    "Quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
-   "Sin S ni E."
+   "Sin S ni E.",
+   "El estudio de la técnica propone como umbral de déficit un error de 3–4° o más;",
+   "el número de repeticiones varía entre estudios y no hay consenso sobre el protocolo (AlDahas 2023;",
+   "AlDahas 2024)."
   ],
   "retiradas": [
    "no puntúa."
@@ -1753,9 +1807,13 @@
  "ce8|Hiperreflexia (ROT aumentados)": {
   "frases": [
    "Reflejos bicipital, tricipital, braquiorradial, rotuliano y aquíleo.",
+   "Reflejo supinador invertido:",
+   "al percutir la inserción del tendón del braquiorradial, la única respuesta es una flexión exagerada de los dedos (Balmaceno-Criss 2024).",
    "La hiperreflexia generalizada y el signo de Trömner son los más sensibles.",
    "Ningún signo aislado basta.",
-   "Sin S ni E."
+   "Sin S ni E.",
+   "La hiperreflexia es más sensible en las piernas que en los brazos, y hay personas hiperreflexas sin patología:",
+   "se interpreta con la historia clínica (Cervellini 2025)."
   ],
   "retiradas": [
    "no puntúa."
@@ -1787,9 +1845,11 @@
  "ce10|Palpación de 1ª costilla (sensibilidad y restricción)": {
   "frases": [
    "Palpación dolorosa de la 1.ª costilla y movimientos accesorios (caudal, anteroposterior, posteroanterior) dolorosos y restringidos.",
+   "También el test de resorte de la 1.ª costilla (deslizamiento caudal en sedestación), doloroso y restringido.",
    "En un Delphi de 12 expertos en terapia manual hubo consenso en que estos hallazgos ayudan a identificar su disfunción;",
    "es opinión de expertos y los autores piden estudiar su fiabilidad y validez.",
-   "Sin S ni E."
+   "Sin S ni E.",
+   "El Delphi enumera los hallazgos, pero no describe cómo se hace cada prueba."
   ],
   "retiradas": [
    "no puntúa."
@@ -1860,6 +1920,8 @@
  "ce13|Descartar lo vascular (5 D y 3 N, disección)": {
   "frases": [
    "Primero descartar lo vascular.",
+   "En la entrevista, los signos tempranos y tardíos de disfunción arterial cervical, como un dolor «distinto a cualquier otro»;",
+   "si hace falta, tensión arterial, palpación de la carótida y exploración de los pares craneales (De Best 2021).",
    "Si hay signos vasculares → urgencias hoy (fase 2)."
   ]
  },
@@ -1911,6 +1973,9 @@
  },
  "ce14|Examen manual segmentario": {
   "frases": [
+   "En supino, presión posteroanterior («springing») sobre las facetas, en el plano sagital, segmento a segmento de C2 a T1:",
+   "se juzga si el movimiento es normal o restringido y si provoca dolor;",
+   "la provocación de dolor es más fiable entre examinadores que la movilidad (Hariharan 2021).",
    "Disfunción segmentaria palpable y dolorosa.",
    "La palpación va la última."
   ]
