@@ -16,9 +16,19 @@ const BARRAS = `${BARRAS_FIJAS}, .guia-plegable[open] > summary`;
 export function altoBarras(sel = BARRAS) {
   // Apiladas desde arriba, en orden de posición (no de DOM): cada una cuenta si
   // empieza donde acaba la anterior
+  // Una barra fija, por su `top` de CSS y su alto, no por su posición en pantalla:
+  // las bandas de contexto entran con una animación (fadeUp) que las desplaza, y
+  // medidas a mitad no parecían apiladas y no contaban (CI, 2026-11)
   const rects = [...document.querySelectorAll(sel)]
-    .filter(el => ['fixed', 'sticky'].includes(getComputedStyle(el).position))
-    .map(el => el.getBoundingClientRect()).filter(r => r.height > 0)
+    .map(el => ({ el, cs: getComputedStyle(el) }))
+    .filter(({ cs }) => ['fixed', 'sticky'].includes(cs.position))
+    .map(({ el, cs }) => {
+      if (cs.position === 'fixed' && cs.display !== 'none' && !Number.isNaN(parseFloat(cs.top))) {
+        const top = parseFloat(cs.top);
+        return { top, bottom: top + el.offsetHeight, height: el.offsetHeight };
+      }
+      return el.getBoundingClientRect();
+    }).filter(r => r.height > 0)
     .sort((a, b) => a.top - b.top);
   let alto = 0;
   for (const r of rects) if (r.top <= alto + 1 && r.bottom > alto) alto = r.bottom;
@@ -103,4 +113,14 @@ export function initRazonPlegable() {
   });
   window.addEventListener('scroll', alHacerScroll, { passive: true });
   window.addEventListener('resize', alHacerScroll, { passive: true });
+  // Las bandas de contexto aparecen con su propio observador (la de la 4b, un
+  // IntersectionObserver), a veces después de la última medida: se vuelve a medir
+  // cuando una aparece, desaparece o cambia de alto
+  const remedir = () => { if (document.querySelector('details.razon[open]') && !_medida) _medida = requestAnimationFrame(medir); };
+  const mo = typeof MutationObserver === 'function' ? new MutationObserver(remedir) : null;
+  const ro = typeof ResizeObserver === 'function' ? new ResizeObserver(remedir) : null;
+  document.querySelectorAll('.context-banner').forEach(b => {
+    mo?.observe(b, { attributes: true, attributeFilter: ['class', 'style'] });
+    ro?.observe(b);
+  });
 }
