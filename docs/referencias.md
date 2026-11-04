@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **1157** referencias de literatura, con **5179** usos.
+- **1181** referencias de literatura, con **5309** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **88** usos, basadas en Lluch 2020.
-- **572** de 1157 referencias del registro revisadas. Ver «Estado de revisión».
+- **593** de 1181 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -61,6 +61,14 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
 | [Weir 2015](#weir-2015) | test 4b sin puntuar · razonamiento fase 4 · texto | 9 | **sin revisar** |
+| [Buchanan y Varacallo 2023](#buchanan-y-varacallo-2023) | test 4b sin puntuar · razonamiento 4b · texto | 3 | **sin revisar** |
+| [Davis y Kane 2023](#davis-y-kane-2023) | test 4b sin puntuar · texto | 2 | **sin revisar** |
+| [Dididze 2023](#dididze-2023) | test 4b sin puntuar · razonamiento fase 4 · texto | 7 | **sin revisar** |
+| [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) | test 4b sin puntuar · razonamiento fase 4 · texto | 4 | **sin revisar** |
+| [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) | test 4b sin puntuar · razonamiento fase 4 · texto | 4 | **sin revisar** |
+| [Shamrock y Das 2023](#shamrock-y-das-2023) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | **sin revisar** |
+| [Akhondi 2025](#akhondi-2025) | test 4b sin puntuar · razonamiento 4b · texto | 3 | **sin revisar** |
+| [Li 2026](#li-2026) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | **sin revisar** |
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 16 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
 | [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
@@ -155,10 +163,6 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [IHS 2018](#ihs-2018) | razonamiento fase 4 | 2 | **sin revisar** |
 | [Tsouknidas 2022](#tsouknidas-2022) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Carter 2023](#carter-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Dididze 2023](#dididze-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Shamrock y Das 2023](#shamrock-y-das-2023) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Smith y Varacallo 2023](#smith-y-varacallo-2023) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Trammell 2023](#trammell-2023) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) | razonamiento fase 4 | 1 | **sin revisar** |
@@ -167,7 +171,6 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Jiang 2024](#jiang-2024) | razonamiento fase 4 | 2 | **sin revisar** |
 | [Smith y Varacallo 2024](#smith-y-varacallo-2024) | razonamiento fase 4 | 1 | **sin revisar** |
 | [De Hertogh 2025](#de-hertogh-2025) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Li 2026](#li-2026) | razonamiento fase 4 | 2 | **sin revisar** |
 | [Birrell 2001](#birrell-2001) | razonamiento 4b · texto | 3 | **sin revisar** |
 | [Ganz 2003](#ganz-2003) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Loureiro 2013](#loureiro-2013) | razonamiento 4b · texto | 2 | **sin revisar** |
@@ -678,7 +681,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · razonamiento fase 2 · razonamiento fase 4 · texto | 7 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo; desde 2026-10 da también las cifras del razonamiento de tp_t2 (fase 2), con Bachmann como concordante. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 11 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
 | [Décary 2018](#décary-2018) | puntuación 4b · razonamiento fase 4 · razonamiento 4b · texto | 27 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
-| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 20 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
+| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 25 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
 | [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 8 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Revisión sistemática de 15 estudios sin metaanálisis; la ecografía de estrés y la comparación con la artro-RM salen de un solo estudio, Roedl 2016, que pasa a citarse directamente en co4. PubMed (2026-10): ninguna revisión posterior de la imagen del ligamento colateral cubital del codo (Rashidi 2021 es del pulgar). |
@@ -731,7 +734,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [George 2021](#george-2021) | pauta · razonamiento fase 4 | 9 | 2026-10 · Sin cambios: PubMed (guías de práctica clínica de lumbalgia en JOSPT y de la APTA desde 2021) no encuentra una revisión posterior de esta guía. |
 | [Martin 2021](#martin-2021) | pauta · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 10 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); las letras citadas coinciden. Se matizan en tp1 la inmovilización («puede estar indicada») y la terapia manual (con sus objetivos), y se añade la vuelta al trabajo o al deporte (B); en tp21, la tobillera o el vendaje no como tratamiento único para mejorar el equilibrio (B), pero sí para prevenir la recidiva. Es la revisión de 2021 (revisión prevista en 2025); PubMed (2026-10): sin versión posterior de la APTA. |
 | [Ammendolia 2022](#ammendolia-2022) | pauta · texto | 2 | 2026-10 · Sin cambios: es la actualización de la revisión Cochrane de 2013 y la más reciente que encontró la búsqueda en PubMed (tratamiento no quirúrgico de la estenosis lumbar) al incorporarla en 2026-10. |
-| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
+| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · tiempos de tejido · texto | 13 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
 | [Enseki 2023](#enseki-2023) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 11 | 2026-10 · Sin cambios: es la revisión vigente de la guía APTA de dolor de cadera no artrósico; PubMed (2026-10) no encuentra una posterior (la revisión de 2025 es la de artrosis, Koc 2025). |
 | [Koc 2023](#koc-2023) | pauta · razonamiento fase 4 · plan de tratamiento | 4 | 2026-10 · PDF leído entero (2026-10). Corregido en tp26: «plantillas nunca solas» es grado B (la C es combinarlas con otros tratamientos); la férula nocturna es para el dolor sistemático con los primeros pasos; los rangos del estiramiento, por estructura. Es la revisión más reciente de la APTA (en 2025 solo hay un comentario, Riel 2025, y la respuesta de los autores). |
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 13 de agosto de 2023 (PubMed). Se añade a la pauta de lu4 Ammendolia 2022 (revisión sistemática del tratamiento no quirúrgico de la estenosis, leída entera en PMC). |
@@ -751,7 +754,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido | 7 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
 | [Prill 2025](#prill-2025) | pauta · tiempos de tejido · plan de tratamiento · texto | 7 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
-| [Quzli 2025](#quzli-2025) | pauta · razonamiento fase 4 · plan de tratamiento | 3 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
+| [Quzli 2025](#quzli-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento · texto | 6 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
 | [Rich 2025](#rich-2025) | pauta · test 4b sin puntuar · tiempos de tejido · plan de tratamiento · texto | 5 | 2026-10 · Sin cambios: es el ensayo más reciente sobre tendinopatía proximal de isquiotibiales (PubMed, revisiones y ensayos desde 2024). |
 | [Salamh 2025](#salamh-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 5 | 2026-10 · Sin cambios: consenso de 2025; búsqueda en PubMed (2026-10) sin guía ni consenso posterior sobre el hombro congelado. |
 | [Wistow 2025](#wistow-2025) | pauta · plan de tratamiento | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). Se precisa que las 2–7 sesiones por semana durante 3–6 semanas son de los ensayos de hold-relax. Es posterior a la revisión de Piacenza 2024 (Musculoskelet Sci Pract), que no da una pauta mejor. |
@@ -779,7 +782,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: solo describe la técnica del test MPP; la validación es Kim 2007. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: el artículo no se ha leído entero; sus cifras (Paxinos S 79 %, E 50 %; palpación S 96 %, E 10 %; O’Brien S 16 %, E 90 %) coinciden con las que recogen Krill 2018 (tabla 3) y Cadogan 2013 (tabla 1), leídos enteros. Ningún test de h7 que lo cite puntúa. |
-| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 11 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
+| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 13 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
 | [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PubMed (bursitis de la pata de ganso, diagnóstico y prevalencia desde 2015) no encuentra ningún estudio de precisión diagnóstica ni revisión sistemática. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
 | [Dorf 2007](#dorf-2007) | test 4b sin puntuar · razonamiento 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Revisión retrospectiva de 81 pacientes con medidas del brazo afectado; las S y E por umbral (5, 8 y 10 %) salen solo de los 40 con medidas de los dos brazos, frente al brazo sano. No publica LR (las calcula Zwerus 2018). Referencia: diagnóstico clínico de los cirujanos, que probablemente veían la prensión. Se corrige la cita de co1. |
@@ -808,10 +811,9 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Rathbone 2017](#rathbone-2017) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: PubMed (fiabilidad de la palpación de puntos gatillo o banda tensa, revisiones sistemáticas desde 2009) no encuentra ninguna posterior. |
 | [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | 2026-10 · Complementada: leída entera en PMC. No hace metaanálisis; la sensibilidad S 61 %, E 63 % es el mejor estudio suelto (referencia quirúrgica, no RM como dice el resumen). Los dos tests de lu5 pasan a las cifras agrupadas de Al Nezari 2013 (metaanálisis, PDF del usuario); Tawa queda como revisión posterior. No cambia la puntuación: ningún test puntúa con ninguna de las dos cifras. |
 | [Krill 2018](#krill-2018) | test 4b sin puntuar · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). Incluye 2 estudios (Walton 2004 y Cadogan 2013) y deja fuera Chronopoulos 2004 por ser de nivel III; las cifras citadas en h7 están en sus tablas 3 y 4. |
-| [Park 2019](#park-2019) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 9 | 2026-10 · Cifras sin cambios; el test pasa a hallazgo (decisión del usuario): texto completo leído en PMC (PMC6504535, 2026-10). 20 de 24 plicas y 7 de 56 epicondilalgias positivas (S 83,3 %, E 87,5 %), sin LR publicadas. Es retrospectivo de casos y controles (plicas operadas sin epicondilalgia frente a epicondilalgias operadas sin plica), de los creadores del test, y PubMed (2026-10) no encuentra validación posterior, como el Slump o la aducción cruzada. |
+| [Park 2019](#park-2019) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 10 | 2026-10 · Cifras sin cambios; el test pasa a hallazgo (decisión del usuario): texto completo leído en PMC (PMC6504535, 2026-10). 20 de 24 plicas y 7 de 56 epicondilalgias positivas (S 83,3 %, E 87,5 %), sin LR publicadas. Es retrospectivo de casos y controles (plicas operadas sin epicondilalgia frente a epicondilalgias operadas sin plica), de los creadores del test, y PubMed (2026-10) no encuentra validación posterior, como el Slump o la aducción cruzada. |
 | [Mastromarchi 2021](#mastromarchi-2021) | test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin estudios posteriores de fiabilidad ni validez de los tests de la 1.ª costilla. Sigue como opinión de expertos; no puntúa (h9 y ce10). |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Squeeze agrupado de 4 estudios con modelo univariante de efectos aleatorios (Meta-DiSc); las 2×2 suman su n; no incluye el estudio de los creadores del test. Sin cifra agrupada para la palpación del LTPAI. Se indica el modelo en tp2. |
-| [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral. |
 | [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
 | [Mohr 2024](#mohr-2024) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: leído en PMC (2026-10). Síntesis narrativa sin agrupar; las cifras citadas en tp34 (Mahadevan y Dando) coinciden con sus tablas. |
@@ -1130,13 +1132,18 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Schneider 2013](#schneider-2013) | test 4b sin puntuar · texto | 7 | 2026-11 · Añadida: PDF del usuario leído entero (2026-11). |
 | [Schneider 2014](#schneider-2014) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: PDF del usuario leído entero (2026-11). |
 | [Mosler 2015](#mosler-2015) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Squeeze de aductores con caderas a 45° y rodillas a 90°: evidencia fuerte de que el dolor separa a los deportistas con dolor inguinal (casos y controles). |
+| [Aljawder 2016](#aljawder-2016) | test 4b sin puntuar · razonamiento 4b · texto | 5 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Llama «signo de Froment» a la pinza del interóseo anterior; no se recoge ese nombre, que es un signo del cubital. |
 | [Corpus 2016](#corpus-2016) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Técnica del signo de pinzamiento posterior de Meister; sin cifras de exactitud. |
 | [Vigotsky 2016](#vigotsky-2016) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Técnica del test de Thomas y del modificado; validez sin controlar la pelvis. |
+| [Beazley 2017](#beazley-2017) | test 4b sin puntuar · razonamiento 4b · texto | 5 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Castagna 2017](#castagna-2017) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Técnica del Jerk y del Kim en «History and clinical examination»; sin criterio de positivo para el Jerk aislado. |
 | [Park 2017](#park-2017) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Shinohara 2017](#shinohara-2017) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Shuttlewood 2017](#shuttlewood-2017) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Dhir 2018](#dhir-2018) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11), sin el apéndice suplementario. Recoge las S/E del Jerk y del Kim de Kim 2005 y concluye que la evidencia para usarlos aislados es débil (pacientes quirúrgicos, riesgo de sesgo de selección). |
 | [Bueno-Gracia 2019](#bueno-gracia-2019) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: PDF del usuario (manuscrito aceptado) leído entero (2026-11). Secuencia del neurodinámico del peroneo (Shacklock 2005), diferenciación estructural y respuesta normal en 44 personas sin síntomas. |
 | [Henry 2019](#henry-2019) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Signo de «demasiados dedos» y elevación del talón a una pierna en la disfunción del tibial posterior. |
+| [Ulici 2019](#ulici-2019) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Colatruglio 2020](#colatruglio-2020) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Técnica del test de aprensión rotuliana clásico y en movimiento; aprensión pasados los 60° y rótula alta. |
 | [Gudeman 2020](#gudeman-2020) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Caso clínico: comparación con el otro lado en la inestabilidad tibioperonea proximal. |
 | [Cánovas-Ambit 2021](#cánovas-ambit-2021) | test 4b sin puntuar · texto | 7 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
@@ -1144,33 +1151,50 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Figueroa 2021](#figueroa-2021) | test 4b sin puntuar · texto | 5 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Varo forzado a 0° y 30° con su lectura y grados, y marcha con empuje en varo. |
 | [Hariharan 2021](#hariharan-2021) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Pereira 2021](#pereira-2021) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Exploración de la subastragalina: ninguna maniobra manual la diagnostica de forma fiable. |
+| [Balcerzak 2022](#balcerzak-2022) | test 4b sin puntuar · texto | 8 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | 2026-11 · Sin cambios: solo el resumen (los PDF recibidos en 2026-10 y de nuevo en 2026-11 eran otro artículo, Cacciari, «Nomes de lugar: confim», Revista de Letras 45(1), 2005, y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral. |
 | [Koppenhaver 2022](#koppenhaver-2022) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: PDF del usuario leído entero (2026-11). |
 | [Netterström-Wedin 2022](#netterström-wedin-2022) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Publicada en línea en 2021; la clave lleva el año del número para no chocar con Netterström-Wedin 2021 (ingle). Cajón anterior agrupado: S 54 %, E 87 %, LR+ 3,97, LR− 0,54. |
+| [Otoshi 2022](#otoshi-2022) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 8 | 2026-11 · PDF del usuario leído entero (2026-11). Técnica del Arlington y del twist («Clinical Test Descriptions», p. 2, figs. 1 y 2) añadida al criterio; tabla 2: Arlington LR+ 1,40, LR− 0,26; twist LR+ 2,44, LR− 0,44. Siguen como hallazgo (18 controles, retrospectivo, explorador creador de los tests). Los controles eran 18, no 17 (corregido). El FADIR, S 43 %, E 56 % (ver Reiman 2015). |
 | [AlDahas 2023](#aldahas-2023) | test 4b sin puntuar · razonamiento 4b · texto | 6 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Baeumler 2023](#baeumler-2023) | test 4b sin puntuar · texto | 5 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Engin 2023](#engin-2023) | test 4b sin puntuar · texto | 8 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Factor 2023](#factor-2023) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Heijboer 2023](#heijboer-2023) | test 4b sin puntuar · texto | 10 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Apéndice A con la lista de pruebas de la exploración de la ingle (solo los nombres) y fiabilidad entre examinadores por entidad. |
 | [Kaiser 2023](#kaiser-2023) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Dolor en el punto N en torno al 80 % de las fracturas de estrés del navicular. |
 | [Lavoie 2023](#lavoie-2023) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: PDF del usuario leído entero (2026-11). Elongación del nervio peroneo superficial en cadáver con flexión plantar, inversión, elevación de la pierna recta y aducción de cadera. |
+| [Looney 2023](#looney-2023) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Schwab 2023](#schwab-2023) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Soares 2023](#soares-2023) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Balmaceno-Criss 2024](#balmaceno-criss-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Bateman 2024](#bateman-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Volumen y páginas tal como los da PMC, sin cotejar con la revista. |
+| [Binsaleem 2024](#binsaleem-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Cady 2024](#cady-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Procedimiento del test de la rodilla a la pared midiendo la distancia en cm. |
 | [Eimiller 2024](#eimiller-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Posición, control de la pelvis y concordancia del test de Thomas modificado. |
+| [Hart 2024](#hart-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Park 2024](#park-2024) | test 4b sin puntuar · razonamiento 4b · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Saaiq 2024](#saaiq-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Marcha en steppage del pie caído (introducción). |
 | [Stadelmann 2024](#stadelmann-2024) | test 4b sin puntuar · texto | 12 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Apéndice B: protocolo de exploración de las entidades de Doha, según Hölmich 2004 (descripción secundaria). |
 | [Zirkl 2024](#zirkl-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Adani 2025](#adani-2025) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Bassett 2025](#bassett-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Nueve cadáveres: la abducción al final del recorrido con la cadera neutra o en extensión desplaza más el nervio obturador; ningún neurodinámico del obturador tiene datos clínicos. |
 | [Cervellini 2025](#cervellini-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [DeFoor 2025](#defoor-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Tabla 1: técnica, criterio de positivo y S/E del Jerk (73/98) y del Kim (80/94), de Kim 2005. |
 | [Domínguez-Muñoz 2025](#domínguez-muñoz-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Tabla 2: cambio mínimo detectable del test de la rodilla a la pared, 1,2–1,38 cm y 3,8–5,39°. |
+| [Gartner 2025](#gartner-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Ignozzi 2025](#ignozzi-2025) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Transcripción del vídeo leída entera: cuádriceps relajado y test de aprensión en movimiento. Nivel de evidencia bajo. |
 | [Jia 2025](#jia-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Describe el Jerk en flexión de 90° y el Kim positivo con subluxación o aprensión, distinto de Castagna 2017 y DeFoor 2025. |
 | [Kobylarz 2025](#kobylarz-2025) | test 4b sin puntuar · texto | 5 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Lashhab 2025](#lashhab-2025) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Sánchez y Asuncion 2025](#sánchez-y-asuncion-2025) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: capítulo leído entero (archivo del usuario, 2026-11). |
 | [Sarac 2025](#sarac-2025) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Exploración de la inestabilidad tibioperonea proximal con la rodilla a 90° (introducción). |
 | [Younis 2025](#younis-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Localización del punto N en el dorso del navicular. |
 | [Yousif 2025](#yousif-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Biedroń 2026](#biedroń-2026) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Su frase sobre el test de Cozen describe una pronación y desviación radial resistidas sin nombrar la extensión de la muñeca (parece una errata); se usa solo la palpación del epicóndilo por el examinador y la diferencia entre codo extendido y flexionado. |
+| [Eskew 2026](#eskew-2026) | test 4b sin puntuar · texto | 8 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Volumen y páginas tal como los da PubMed (solo el número de artículo). |
 | [Oyamada 2026](#oyamada-2026) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). La altura desde la que se mira cambia el signo de «demasiados dedos» (2 de 11 positivos a ras de suelo, 10 de 11 a 40 cm). |
+| [Tahir 2026](#tahir-2026) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Watras 2026](#watras-2026) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: capítulo leído entero (archivo del usuario, 2026-11). |
 | [Hansrani 2023 (casos y controles)](#hansrani-2023-casos-y-controles) | razonamiento fase 2 | 1 | 2026-11 · Añadida en la revisión de fuentes 2026-11 (PDF del usuario, leído entero). |
 | [Hansrani 2023 (ensayo)](#hansrani-2023-ensayo) | razonamiento fase 2 | 1 | 2026-11 · Añadida en la revisión de fuentes 2026-11 (PDF del usuario, leído entero). |
@@ -1448,7 +1472,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Abraham 2022](#abraham-2022) · [ACOG 2020](#acog-2020) · [ADA 2025](#ada-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Adler 2016](#adler-2016) · [Adolfsson 2022](#adolfsson-2022) · [AEMPS 2023](#aemps-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [AGS 2023](#ags-2023) · [Akin 2022](#akin-2022) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alam 2022](#alam-2022) · [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) · [Albasri 2021](#albasri-2021) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2015](#albrecht-2015) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2023](#aldahas-2023) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Alvarez 2025](#alvarez-2025) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasilakis 2021](#anastasilakis-2021) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) · [Antunes 2024](#antunes-2024) · [Anziano 2024](#anziano-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [APTA 2013](#apta-2013) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Attardo 2022](#attardo-2022) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Awosika y Patel 2026](#awosika-y-patel-2026) · [Azmi 2025](#azmi-2025) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baeumler 2023](#baeumler-2023) · [Baffour-Awuah 2023](#baffour-awuah-2023) · [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) · [Bahendeka 2019](#bahendeka-2019) · [Bahit 2017](#bahit-2017) · [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) · [Baker 2018](#baker-2018) · [Bakker 2017](#bakker-2017) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Balchin 2022](#balchin-2022) · [Bale 2019](#bale-2019) · [Balmaceno-Criss 2024](#balmaceno-criss-2024) · [Barakatt 2009](#barakatt-2009) · [Barberán 2023](#barberán-2023) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bassand 2021](#bassand-2021) · [Bassett 2025](#bassett-2025) · [Bateman 2024](#bateman-2024) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Bazelier 2013](#bazelier-2013) · [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) · [Beamish 2025](#beamish-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Bellesini 2021](#bellesini-2021) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benatti y Pedersen 2015](#benatti-y-pedersen-2015) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Benzon 2026](#benzon-2026) · [Bergh Fahlén 2026](#bergh-fahlén-2026) · [Bergman 2025](#bergman-2025) · [Bessen 2009](#bessen-2009) · [Bettariga 2024](#bettariga-2024) · [Beuschlein 2024](#beuschlein-2024) · [Bhanu 2021](#bhanu-2021) · [Bhanu 2025](#bhanu-2025) · [Bhanu 2026](#bhanu-2026) · [Bhatti 2026](#bhatti-2026) · [Bianconi 2024](#bianconi-2024) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birkinshaw 2023](#birkinshaw-2023) · [Birrell 2001](#birrell-2001) · [Biswas 2026](#biswas-2026) · [Biz 2019](#biz-2019) · [Black 2020](#black-2020) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Ble 2017](#ble-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Bohm 2015](#bohm-2015) · [Borsati 2025](#borsati-2025) · [Boudreault 2025](#boudreault-2025) · [Boufadel 2025](#boufadel-2025) · [Boulias 2018](#boulias-2018) · [Bounds y Patel 2024](#bounds-y-patel-2024) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brittain 2023](#brittain-2023) · [Brockow 2021](#brockow-2021) · [Brod 2013](#brod-2013) · [Broncel 2015](#broncel-2015) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Brown 2023](#brown-2023) · [Bruessel 2026](#bruessel-2026) · [Brunner 2025](#brunner-2025) · [Buck 2023](#buck-2023) · [Budha 2025](#budha-2025) · [Bueno-Gracia 2019](#bueno-gracia-2019) · [Bull 2020](#bull-2020) · [Bulsara 2024](#bulsara-2024) · [Burani 2023](#burani-2023) · [Buryk-Iggers 2022](#buryk-iggers-2022) · [Bus 2024](#bus-2024) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Cady 2024](#cady-2024) · [Caliandro 2025](#caliandro-2025) · [Calvo 2025](#calvo-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Can y Correa 2023](#can-y-correa-2023) · [Canoso 1987](#canoso-1987) · [Cánovas-Ambit 2021](#cánovas-ambit-2021) · [Capiau 2023](#capiau-2023) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carnovale 2023](#carnovale-2023) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Carvalho 2022](#carvalho-2022) · [Cascia 2019](#cascia-2019) · [Cashin 2021](#cashin-2021) · [Castagna 2017](#castagna-2017) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Caulfield 2021](#caulfield-2021) · [Cervellini 2025](#cervellini-2025) · [Chamorro-Moriana 2024](#chamorro-moriana-2024) · [Champaneria 2016](#champaneria-2016) · [Chang 2026](#chang-2026) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2013](#cheatham-2013) · [Cheatham 2025](#cheatham-2025) · [Chen 2022](#chen-2022) · [Chen 2023](#chen-2023) · [Chen 2025](#chen-2025) · [Cheng 2017](#cheng-2017) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chou 2017](#chou-2017) · [Christensen 2019](#christensen-2019) · [Christensen 2026](#christensen-2026) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Coburn 2023](#coburn-2023) · [Colatruglio 2020](#colatruglio-2020) · [Colberg 2016](#colberg-2016) · [Collins y Bergman 2026](#collins-y-bergman-2026) · [Collins y Costello 2024](#collins-y-costello-2024) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Confederat 2026](#confederat-2026) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) · [Corpus 2016](#corpus-2016) · [Cortez 2025](#cortez-2025) · [Cosio 2021](#cosio-2021) · [Cosmi 2022](#cosmi-2022) · [Costello 2023](#costello-2023) · [Couch 2025](#couch-2025) · [Coussens 2022](#coussens-2022) · [Cross 2024](#cross-2024) · [CTT 2022](#ctt-2022) · [CTT 2026](#ctt-2026) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Dar y Jacob 2024](#dar-y-jacob-2024) · [Davenport 2018 (ánimo)](#davenport-2018-ánimo) · [Davenport 2018 (incontinencia)](#davenport-2018-incontinencia) · [Davenport 2019 (daños maternos)](#davenport-2019-daños-maternos) · [Davenport 2019 (dolor lumbopélvico)](#davenport-2019-dolor-lumbopélvico) · [Davenport 2019 (mortalidad fetal)](#davenport-2019-mortalidad-fetal) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Best 2021](#de-best-2021) · [De Filippis 2022](#de-filippis-2022) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [DeFoor 2025](#defoor-2025) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Deprato 2025](#deprato-2025) · [Desai 2013](#desai-2013) · [Desbiens 2022](#desbiens-2022) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devi 2026](#devi-2026) · [Devillé 2000](#devillé-2000) · [Dhesi 2024](#dhesi-2024) · [Dhir 2018](#dhir-2018) · [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Domínguez-Muñoz 2025](#domínguez-muñoz-2025) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dos Santos 2024](#dos-santos-2024) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Duman 2025](#duman-2025) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Edinoff 2021](#edinoff-2021) · [Edwards 2024](#edwards-2024) · [Eimiller 2024](#eimiller-2024) · [EMA 2014](#ema-2014) · [EMA 2018](#ema-2018) · [Engelbert 2017](#engelbert-2017) · [Engert 2024](#engert-2024) · [Englund 2003](#englund-2003) · [Enke 2018](#enke-2018) · [Enseki 2023](#enseki-2023) · [Epelde 2026](#epelde-2026) · [Evans 2014](#evans-2014) · [Evans 2018](#evans-2018) · [Evans 2023](#evans-2023) · [Evenson 2024](#evenson-2024) · [Ez Eddin 2025](#ez-eddin-2025) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farishta 2024](#farishta-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Faruqi 2024](#faruqi-2024) · [Farzam y Jan 2023](#farzam-y-jan-2023) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Ferraro 2025](#ferraro-2025) · [Ferreira 2023](#ferreira-2023) · [Figueroa 2021](#figueroa-2021) · [Filippatos 2017](#filippatos-2017) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Fong y Patel 2026](#fong-y-patel-2026) · [Forsythe 2025](#forsythe-2025) · [Forton 2022](#forton-2022) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Franchi 2017](#franchi-2017) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Fu y Levine 2015](#fu-y-levine-2015) · [Fujiwara 2025](#fujiwara-2025) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [García-Sánchez 2022](#garcía-sánchez-2022) · [Gardashli 2024](#gardashli-2024) · [Garrison 2023](#garrison-2023) · [Gausel 2017](#gausel-2017) · [Gehrke 2023](#gehrke-2023) · [Geneen 2017](#geneen-2017) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) · [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) · [Ghasemi 2013](#ghasemi-2013) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Giménez-Campos 2021](#giménez-campos-2021) · [Gleeson 2011](#gleeson-2011) · [Gluppe 2021](#gluppe-2021) · [Gobillot-Morisson 2024](#gobillot-morisson-2024) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Goyal 2025](#goyal-2025) · [Gradel 2018](#gradel-2018) · [Gragossian 2023](#gragossian-2023) · [Grant y John 2025](#grant-y-john-2025) · [Greear 2024](#greear-2024) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Guan 2026](#guan-2026) · [Gudeman 2020](#gudeman-2020) · [Gülen 2023](#gülen-2023) · [Guo 2024](#guo-2024) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2025](#hadji-2025) · [Hadji 2026](#hadji-2026) · [Hahn 2022](#hahn-2022) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Haller 2026](#haller-2026) · [Halliwell 2026](#halliwell-2026) · [Ham 2017](#ham-2017) · [Hameed 2023](#hameed-2023) · [Han 2022](#han-2022) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hansen 2015](#hansen-2015) · [Hansen 2022](#hansen-2022) · [Hansrani 2023 (casos y controles)](#hansrani-2023-casos-y-controles) · [Hansrani 2023 (ensayo)](#hansrani-2023-ensayo) · [Hanssen 2022](#hanssen-2022) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Harding y Beck 2017](#harding-y-beck-2017) · [Hariharan 2021](#hariharan-2021) · [Harley 2026](#harley-2026) · [Harrington 2023](#harrington-2023) · [Hart 2020](#hart-2020) · [Haskins 2015](#haskins-2015) · [Hawk 2017](#hawk-2017) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Heijboer 2023](#heijboer-2023) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henry 2019](#henry-2019) · [Henschke 2013](#henschke-2013) · [Hentzen 2023](#hentzen-2023) · [Herman 2023](#herman-2023) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Herrett 2021](#herrett-2021) · [Hershman 2022](#hershman-2022) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Heyward 2020](#heyward-2020) · [Hideyama 2023](#hideyama-2023) · [Hildebrand 2024](#hildebrand-2024) · [Hill 2017](#hill-2017) · [Ho 2013](#ho-2013) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Hogwood 2025](#hogwood-2025) · [Holgado 2022](#holgado-2022) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Horowitz 2023](#horowitz-2023) · [Hospers 2024](#hospers-2024) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Howe 2011](#howe-2011) · [Hu 2023](#hu-2023) · [Hu 2024](#hu-2024) · [Hudson 2025](#hudson-2025) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Humma y Patel 2024](#humma-y-patel-2024) · [Humphrey 2023](#humphrey-2023) · [Hunter 2024](#hunter-2024) · [Huruba 2021](#huruba-2021) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [Huxel 2023](#huxel-2023) · [Hwang 2023](#hwang-2023) · [Hwang 2024](#hwang-2024) · [Hyder 2021](#hyder-2021) · [Iacovides 2009](#iacovides-2009) · [Ignozzi 2025](#ignozzi-2025) · [IHS 2018](#ihs-2018) · [İlal Mert y Altun 2026](#ilal-mert-y-altun-2026) · [Iqbal 2026](#iqbal-2026) · [Irwin 2015](#irwin-2015) · [Jain 2013](#jain-2013) · [Jain 2026](#jain-2026) · [Jarbo 2017](#jarbo-2017) · [Jasionowska 2022](#jasionowska-2022) · [Jasti 2026](#jasti-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jedrychowski 2015](#jedrychowski-2015) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jia 2025](#jia-2025) · [Jiang 2024](#jiang-2024) · [Jin 2021](#jin-2021) · [Jobanputra 2026](#jobanputra-2026) · [Jödicke 2023](#jödicke-2023) · [Jogu 2026](#jogu-2026) · [Johannsen 2022](#johannsen-2022) · [Johns 2023](#johns-2023) · [Jones 2023](#jones-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kaatz 2015](#kaatz-2015) · [Kaiser 2023](#kaiser-2023) · [Kakkos 2021](#kakkos-2021) · [Kalakonda 2022](#kalakonda-2022) · [Kalfas 2025](#kalfas-2025) · [Kamonseki 2022](#kamonseki-2022) · [Kanaley 2022](#kanaley-2022) · [Kaneko 2021](#kaneko-2021) · [Kang 2023](#kang-2023) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) · [Kast 2023](#kast-2023) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kelly 2016](#kelly-2016) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kershner 2026](#kershner-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Keteyian 2019](#keteyian-2019) · [Khalil 2025](#khalil-2025) · [Khan 2023](#khan-2023) · [Khan 2025](#khan-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) · [Khan y Scott 2009](#khan-y-scott-2009) · [Khayyat 2026](#khayyat-2026) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kim y Chen 2024](#kim-y-chen-2024) · [Kim y Jang 2024](#kim-y-jang-2024) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Kishi 2026](#kishi-2026) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Kobylarz 2025](#kobylarz-2025) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Koldenhof 2026](#koldenhof-2026) · [Konstantinou 2018](#konstantinou-2018) · [Kopp 2025](#kopp-2025) · [Koppenhaver 2022](#koppenhaver-2022) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kumar 2024](#kumar-2024) · [Kunutsor 2017](#kunutsor-2017) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwak 2023](#kwak-2023) · [Kwok 2025](#kwok-2025) · [Kwon 2024](#kwon-2024) · [Lacuesta 2024](#lacuesta-2024) · [Lacy 2023](#lacy-2023) · [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Lary 2020](#lary-2020) · [Laslett 2003](#laslett-2003) · [Laslett 2004](#laslett-2004) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lavoie 2023](#lavoie-2023) · [Layton 2020](#layton-2020) · [Lazarczuk 2022](#lazarczuk-2022) · [Leander 2025](#leander-2025) · [Lebovitz 2019](#lebovitz-2019) · [Lee 2023](#lee-2023) · [Lee y Nam 2011](#lee-y-nam-2011) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Leslie y Foreman 2025](#leslie-y-foreman-2025) · [Leslie y Rawla 2023](#leslie-y-rawla-2023) · [Leslie y Rout 2024](#leslie-y-rout-2024) · [Leung 2024](#leung-2024) · [Levati 2026](#levati-2026) · [Levy 2024](#levy-2024) · [Lewis y Cook 2014](#lewis-y-cook-2014) · [Lezak 2024](#lezak-2024) · [Li 2023](#li-2023) · [Li 2024](#li-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Li y Zhang 2025](#li-y-zhang-2025) · [Liaghat 2022](#liaghat-2022) · [Liaghat 2024](#liaghat-2024) · [Liaghat 2025](#liaghat-2025) · [Liamis 2016](#liamis-2016) · [Liang 2022](#liang-2022) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2022](#lim-2022) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Lima 2023](#lima-2023) · [Limaiem 2023](#limaiem-2023) · [Lin 2020](#lin-2020) · [Lindholm 2024](#lindholm-2024) · [Litaker 2000](#litaker-2000) · [Liu 2013](#liu-2013) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lu 2020](#lu-2020) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mach 2018](#mach-2018) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Magnusson y Kjaer 2019](#magnusson-y-kjaer-2019) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mancia 2023](#mancia-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Mangone 2024](#mangone-2024) · [Mannan 2025](#mannan-2025) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) · [Martin 2021](#martin-2021) · [Martínez 2023](#martínez-2023) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McAnally 2020](#mcanally-2020) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McEvoy 2024](#mcevoy-2024) · [McIver y Siddique 2025](#mciver-y-siddique-2025) · [McKeever 2024](#mckeever-2024) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Meaadi 2023](#meaadi-2023) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Memon y Tiwari 2023](#memon-y-tiwari-2023) · [Men 2017](#men-2017) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Messier 2013](#messier-2013) · [Messineo 2024](#messineo-2024) · [Metcalfe 2019](#metcalfe-2019) · [Meyre 2022](#meyre-2022) · [Miernik 2024](#miernik-2024) · [Mikus 2013](#mikus-2013) · [Milbourn 2026](#milbourn-2026) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mitchell 2025](#mitchell-2025) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Moiz 2026](#moiz-2026) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moncrieff 2025](#moncrieff-2025) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moon 2026](#moon-2026) · [Moore 2019](#moore-2019) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Moraczewski 2023](#moraczewski-2023) · [Morales 2019](#morales-2019) · [Morris 2024](#morris-2024) · [Morris y Patel 2023](#morris-y-patel-2023) · [Moseley 2025](#moseley-2025) · [Moser 2020](#moser-2020) · [Mosler 2015](#mosler-2015) · [Mottola 2018](#mottola-2018) · [Mottola 2019](#mottola-2019) · [Mountjoy 2023](#mountjoy-2023) · [Mulla 2024](#mulla-2024) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Munteanu 2024](#munteanu-2024) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nakafero 2021](#nakafero-2021) · [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nara y Watanabe 2021](#nara-y-watanabe-2021) · [Narayan 2024](#narayan-2024) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Naugle 2012](#naugle-2012) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [Netterström-Wedin 2022](#netterström-wedin-2022) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nischal y Gupta 2023](#nischal-y-gupta-2023) · [Noble 1979](#noble-1979) · [Nochaiwong 2022](#nochaiwong-2022) · [Noetel 2024](#noetel-2024) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Noyes 2017](#noyes-2017) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oldfield 2024](#oldfield-2024) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Oyamada 2026](#oyamada-2026) · [Padda 2025](#padda-2025) · [Paik 2016](#paik-2016) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2017](#park-2017) · [Park 2019](#park-2019) · [Park 2021](#park-2021) · [Parker 2013](#parker-2013) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Patel y Launico 2025](#patel-y-launico-2025) · [Patel y Preuss 2025](#patel-y-preuss-2025) · [Paterson 2021](#paterson-2021) · [Paterson 2022](#paterson-2022) · [Pathak 2025](#pathak-2025) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedersen y Febbraio 2012](#pedersen-y-febbraio-2012) · [Pedersini 2022](#pedersini-2022) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pelliccia 2020](#pelliccia-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Pereira 2021](#pereira-2021) · [Pérez-Romero 2026](#pérez-romero-2026) · [Pesonen 2021](#pesonen-2021) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Petersen y Pedersen 2005](#petersen-y-pedersen-2005) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Pitt 2020](#pitt-2020) · [Piva 2006](#piva-2006) · [Plash 2013](#plash-2013) · [Plewa 2023](#plewa-2023) · [Ploegmakers 2023](#ploegmakers-2023) · [Podder 2024](#podder-2024) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Polaski 2019](#polaski-2019) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Polzer 2012](#polzer-2012) · [Ponna 2026](#ponna-2026) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Pravettoni 2016](#pravettoni-2016) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rangraze 2026](#rangraze-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regina 2025](#regina-2025) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Rehman 2024](#rehman-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Revel 1998](#revel-1998) · [Reychler 2021](#reychler-2021) · [Reyes 2026](#reyes-2026) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rice 2019](#rice-2019) · [Rich 2025](#rich-2025) · [Riddell 2017](#riddell-2017) · [Rider y Marra 2023](#rider-y-marra-2023) · [Ringer 2025](#ringer-2025) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rissardo 2023](#rissardo-2023) · [Rissardo 2025](#rissardo-2025) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rossi 2011](#rossi-2011) · [Roulet 2021](#roulet-2021) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rout 2025](#rout-2025) · [Rout y Afzal 2026](#rout-y-afzal-2026) · [Rowe 2023](#rowe-2023) · [Roy 2021](#roy-2021) · [Rubinger 2020](#rubinger-2020) · [Ruchat 2025](#ruchat-2025) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruggiero 2022](#ruggiero-2022) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Rusu 2023](#rusu-2023) · [Rusu 2026](#rusu-2026) · [Rytter 2008](#rytter-2008) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Saaiq 2024](#saaiq-2024) · [Sabry y Li 2026](#sabry-y-li-2026) · [Saco-Ledo 2020](#saco-ledo-2020) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sánchez y Asuncion 2025](#sánchez-y-asuncion-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sangiorgio 2024](#sangiorgio-2024) · [Sanvictores 2023](#sanvictores-2023) · [Sarac 2025](#sarac-2025) · [Saueressig 2021](#saueressig-2021) · [Savarese 2011](#savarese-2011) · [Sayudo 2024](#sayudo-2024) · [Schadler 2017](#schadler-2017) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schneider 2013](#schneider-2013) · [Schneider 2014](#schneider-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Schulman 2005](#schulman-2005) · [Schweiger 2021](#schweiger-2021) · [Scioscia 2023](#scioscia-2023) · [Scott 2024](#scott-2024) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Severinsen y Pedersen 2020](#severinsen-y-pedersen-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shalhub 2019](#shalhub-2019) · [Shamim 2026](#shamim-2026) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Shane 2014](#shane-2014) · [Shao 2022](#shao-2022) · [Sharma 2026](#sharma-2026) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Shin 2022](#shin-2022) · [Shrestha 2026](#shrestha-2026) · [Shu 2022](#shu-2022) · [Sibrack 2024](#sibrack-2024) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Silva 2024](#silva-2024) · [Simon 2024](#simon-2024) · [Simon y Rout 2025](#simon-y-rout-2025) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singh 2023](#singh-2023) · [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sizar 2024](#sizar-2024) · [Sklepinski 2026](#sklepinski-2026) · [Slade 2021](#slade-2021) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smart 2019](#smart-2019) · [Smarz 2021](#smarz-2021) · [Smeijers 2024](#smeijers-2024) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2013](#smith-2013) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Spångeus 2024](#spångeus-2024) · [Spanhove 2022](#spanhove-2022) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srinivas-Shankar 2026](#srinivas-shankar-2026) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Stadelmann 2024](#stadelmann-2024) · [Stals 2023](#stals-2023) · [Steffel 2021](#steffel-2021) · [Steiner 2026](#steiner-2026) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Stroes 2015](#stroes-2015) · [Suárez-Lledó 2018](#suárez-lledó-2018) · [Suenghataiphorn 2025](#suenghataiphorn-2025) · [Suha 2025](#suha-2025) · [Sundemo 2018](#sundemo-2018) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) · [Tanaka 2022](#tanaka-2022) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tchivileva 2020](#tchivileva-2020) · [Teichtahl 2016](#teichtahl-2016) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Tenti 2020](#tenti-2020) · [Tentolouris 2019](#tentolouris-2019) · [Testa 2024](#testa-2024) · [Thai 2023](#thai-2023) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thomas 2017](#thomas-2017) · [Thomas Manapurathe 2017](#thomas-manapurathe-2017) · [Thompson 2026](#thompson-2026) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Thota y Akbar 2023](#thota-y-akbar-2023) · [Thour 2026](#thour-2026) · [Tipton 2008](#tipton-2008) · [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) · [Tolla 2026](#tolla-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tsourdi 2021](#tsourdi-2021) · [Tsuchiya 2022](#tsuchiya-2022) · [Tsujimoto 2017](#tsujimoto-2017) · [Tumialán 2010](#tumialán-2010) · [Uson 2021](#uson-2021) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Vaegter y Jones 2020](#vaegter-y-jones-2020) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [Van der Sluiszen 2019](#van-der-sluiszen-2019) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [van Gelder 2024](#van-gelder-2024) · [Vandeputte 2026](#vandeputte-2026) · [Vastani 2023](#vastani-2023) · [Vehmanen 2021](#vehmanen-2021) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Vigotsky 2016](#vigotsky-2016) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2013](#wang-2013) · [Wang 2016](#wang-2016) · [Wang 2017](#wang-2017) · [Wang 2018](#wang-2018) · [Wang 2020](#wang-2020) · [Wang 2024](#wang-2024) · [Wang 2025](#wang-2025) · [Wang y Tariq 2025](#wang-y-tariq-2025) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waseem 2026](#waseem-2026) · [Waterway 2026](#waterway-2026) · [Wathra 2020](#wathra-2020) · [Watras 2026](#watras-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weber 2026](#weber-2026) · [Wee 2021](#wee-2021) · [Weir 2015](#weir-2015) · [Welsch 2018](#welsch-2018) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wewege 2023](#wewege-2023) · [Wewege y Jones 2021](#wewege-y-jones-2021) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wichniak 2017](#wichniak-2017) · [Wiegele 2019](#wiegele-2019) · [Wierzbiński 2023](#wierzbiński-2023) · [Wilcox 2020](#wilcox-2020) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wong 2024](#wong-2024) · [Wood 2023](#wood-2023) · [Woodley 2020](#woodley-2020) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Wu 2026](#wu-2026) · [Xia 2022](#xia-2022) · [Xia 2025](#xia-2025) · [Xiang 2025](#xiang-2025) · [Xie 2021](#xie-2021) · [Xue 2021](#xue-2021) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yanagimoto 2025](#yanagimoto-2025) · [Yang 2024](#yang-2024) · [Yang 2026](#yang-2026) · [Yang y Qu 2018](#yang-y-qu-2018) · [Yasaei 2024](#yasaei-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Younis 2025](#younis-2025) · [Yousif 2025](#yousif-2025) · [Youssef 2016](#youssef-2016) · [Yuan 2016](#yuan-2016) · [Yuen 2026](#yuen-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zeng 2024](#zeng-2024) · [Zhang 2010](#zhang-2010) · [Zhang 2026](#zhang-2026) · [Zhao 2024](#zhao-2024) · [Zhou 2025](#zhou-2025) · [Ziaks 2024](#ziaks-2024) · [Zimmerman y Hubbard 2023 (clonus)](#zimmerman-y-hubbard-2023-clonus) · [Zimmerman y Hubbard 2023 (reflejos)](#zimmerman-y-hubbard-2023-reflejos) · [Zirkl 2024](#zirkl-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022) · [Zwerver 2010](#zwerver-2010)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Abraham 2022](#abraham-2022) · [ACOG 2020](#acog-2020) · [ADA 2025](#ada-2025) · [Adani 2025](#adani-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Adler 2016](#adler-2016) · [Adolfsson 2022](#adolfsson-2022) · [AEMPS 2023](#aemps-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [AGS 2023](#ags-2023) · [Akhondi 2025](#akhondi-2025) · [Akin 2022](#akin-2022) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alam 2022](#alam-2022) · [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) · [Albasri 2021](#albasri-2021) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2015](#albrecht-2015) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2023](#aldahas-2023) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Aljawder 2016](#aljawder-2016) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Alvarez 2025](#alvarez-2025) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasilakis 2021](#anastasilakis-2021) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) · [Antunes 2024](#antunes-2024) · [Anziano 2024](#anziano-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [APTA 2013](#apta-2013) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Attardo 2022](#attardo-2022) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Awosika y Patel 2026](#awosika-y-patel-2026) · [Azmi 2025](#azmi-2025) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baeumler 2023](#baeumler-2023) · [Baffour-Awuah 2023](#baffour-awuah-2023) · [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) · [Bahendeka 2019](#bahendeka-2019) · [Bahit 2017](#bahit-2017) · [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) · [Baker 2018](#baker-2018) · [Bakker 2017](#bakker-2017) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Balcerzak 2022](#balcerzak-2022) · [Balchin 2022](#balchin-2022) · [Bale 2019](#bale-2019) · [Balmaceno-Criss 2024](#balmaceno-criss-2024) · [Barakatt 2009](#barakatt-2009) · [Barberán 2023](#barberán-2023) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bassand 2021](#bassand-2021) · [Bassett 2025](#bassett-2025) · [Bateman 2024](#bateman-2024) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Bazelier 2013](#bazelier-2013) · [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) · [Beamish 2025](#beamish-2025) · [Beazley 2017](#beazley-2017) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Bellesini 2021](#bellesini-2021) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benatti y Pedersen 2015](#benatti-y-pedersen-2015) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Benzon 2026](#benzon-2026) · [Bergh Fahlén 2026](#bergh-fahlén-2026) · [Bergman 2025](#bergman-2025) · [Bessen 2009](#bessen-2009) · [Bettariga 2024](#bettariga-2024) · [Beuschlein 2024](#beuschlein-2024) · [Bhanu 2021](#bhanu-2021) · [Bhanu 2025](#bhanu-2025) · [Bhanu 2026](#bhanu-2026) · [Bhatti 2026](#bhatti-2026) · [Bianconi 2024](#bianconi-2024) · [Biedroń 2026](#biedroń-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Binsaleem 2024](#binsaleem-2024) · [Birkinshaw 2023](#birkinshaw-2023) · [Birrell 2001](#birrell-2001) · [Biswas 2026](#biswas-2026) · [Biz 2019](#biz-2019) · [Black 2020](#black-2020) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Ble 2017](#ble-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Bohm 2015](#bohm-2015) · [Borsati 2025](#borsati-2025) · [Boudreault 2025](#boudreault-2025) · [Boufadel 2025](#boufadel-2025) · [Boulias 2018](#boulias-2018) · [Bounds y Patel 2024](#bounds-y-patel-2024) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brittain 2023](#brittain-2023) · [Brockow 2021](#brockow-2021) · [Brod 2013](#brod-2013) · [Broncel 2015](#broncel-2015) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Brown 2023](#brown-2023) · [Bruessel 2026](#bruessel-2026) · [Brunner 2025](#brunner-2025) · [Buchanan y Varacallo 2023](#buchanan-y-varacallo-2023) · [Buck 2023](#buck-2023) · [Budha 2025](#budha-2025) · [Bueno-Gracia 2019](#bueno-gracia-2019) · [Bull 2020](#bull-2020) · [Bulsara 2024](#bulsara-2024) · [Burani 2023](#burani-2023) · [Buryk-Iggers 2022](#buryk-iggers-2022) · [Bus 2024](#bus-2024) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Cady 2024](#cady-2024) · [Caliandro 2025](#caliandro-2025) · [Calvo 2025](#calvo-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Can y Correa 2023](#can-y-correa-2023) · [Canoso 1987](#canoso-1987) · [Cánovas-Ambit 2021](#cánovas-ambit-2021) · [Capiau 2023](#capiau-2023) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carnovale 2023](#carnovale-2023) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Carvalho 2022](#carvalho-2022) · [Cascia 2019](#cascia-2019) · [Cashin 2021](#cashin-2021) · [Castagna 2017](#castagna-2017) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Caulfield 2021](#caulfield-2021) · [Cervellini 2025](#cervellini-2025) · [Chamorro-Moriana 2024](#chamorro-moriana-2024) · [Champaneria 2016](#champaneria-2016) · [Chang 2026](#chang-2026) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2013](#cheatham-2013) · [Cheatham 2025](#cheatham-2025) · [Chen 2022](#chen-2022) · [Chen 2023](#chen-2023) · [Chen 2025](#chen-2025) · [Cheng 2017](#cheng-2017) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chou 2017](#chou-2017) · [Christensen 2019](#christensen-2019) · [Christensen 2026](#christensen-2026) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Coburn 2023](#coburn-2023) · [Colatruglio 2020](#colatruglio-2020) · [Colberg 2016](#colberg-2016) · [Collins y Bergman 2026](#collins-y-bergman-2026) · [Collins y Costello 2024](#collins-y-costello-2024) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Confederat 2026](#confederat-2026) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) · [Corpus 2016](#corpus-2016) · [Cortez 2025](#cortez-2025) · [Cosio 2021](#cosio-2021) · [Cosmi 2022](#cosmi-2022) · [Costello 2023](#costello-2023) · [Couch 2025](#couch-2025) · [Coussens 2022](#coussens-2022) · [Cross 2024](#cross-2024) · [CTT 2022](#ctt-2022) · [CTT 2026](#ctt-2026) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Dar y Jacob 2024](#dar-y-jacob-2024) · [Davenport 2018 (ánimo)](#davenport-2018-ánimo) · [Davenport 2018 (incontinencia)](#davenport-2018-incontinencia) · [Davenport 2019 (daños maternos)](#davenport-2019-daños-maternos) · [Davenport 2019 (dolor lumbopélvico)](#davenport-2019-dolor-lumbopélvico) · [Davenport 2019 (mortalidad fetal)](#davenport-2019-mortalidad-fetal) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Kane 2023](#davis-y-kane-2023) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Best 2021](#de-best-2021) · [De Filippis 2022](#de-filippis-2022) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [DeFoor 2025](#defoor-2025) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Deprato 2025](#deprato-2025) · [Desai 2013](#desai-2013) · [Desbiens 2022](#desbiens-2022) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devi 2026](#devi-2026) · [Devillé 2000](#devillé-2000) · [Dhesi 2024](#dhesi-2024) · [Dhir 2018](#dhir-2018) · [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Domínguez-Muñoz 2025](#domínguez-muñoz-2025) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dos Santos 2024](#dos-santos-2024) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Duman 2025](#duman-2025) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Edinoff 2021](#edinoff-2021) · [Edwards 2024](#edwards-2024) · [Eimiller 2024](#eimiller-2024) · [EMA 2014](#ema-2014) · [EMA 2018](#ema-2018) · [Engelbert 2017](#engelbert-2017) · [Engert 2024](#engert-2024) · [Engin 2023](#engin-2023) · [Englund 2003](#englund-2003) · [Enke 2018](#enke-2018) · [Enseki 2023](#enseki-2023) · [Epelde 2026](#epelde-2026) · [Eskew 2026](#eskew-2026) · [Evans 2014](#evans-2014) · [Evans 2018](#evans-2018) · [Evans 2023](#evans-2023) · [Evenson 2024](#evenson-2024) · [Ez Eddin 2025](#ez-eddin-2025) · [Factor 2023](#factor-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farishta 2024](#farishta-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Faruqi 2024](#faruqi-2024) · [Farzam y Jan 2023](#farzam-y-jan-2023) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Ferraro 2025](#ferraro-2025) · [Ferreira 2023](#ferreira-2023) · [Figueroa 2021](#figueroa-2021) · [Filippatos 2017](#filippatos-2017) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Fong y Patel 2026](#fong-y-patel-2026) · [Forsythe 2025](#forsythe-2025) · [Forton 2022](#forton-2022) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Franchi 2017](#franchi-2017) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Fu y Levine 2015](#fu-y-levine-2015) · [Fujiwara 2025](#fujiwara-2025) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [García-Sánchez 2022](#garcía-sánchez-2022) · [Gardashli 2024](#gardashli-2024) · [Garrison 2023](#garrison-2023) · [Gartner 2025](#gartner-2025) · [Gausel 2017](#gausel-2017) · [Gehrke 2023](#gehrke-2023) · [Geneen 2017](#geneen-2017) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) · [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) · [Ghasemi 2013](#ghasemi-2013) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Giménez-Campos 2021](#giménez-campos-2021) · [Gleeson 2011](#gleeson-2011) · [Gluppe 2021](#gluppe-2021) · [Gobillot-Morisson 2024](#gobillot-morisson-2024) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Goyal 2025](#goyal-2025) · [Gradel 2018](#gradel-2018) · [Gragossian 2023](#gragossian-2023) · [Grant y John 2025](#grant-y-john-2025) · [Greear 2024](#greear-2024) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Guan 2026](#guan-2026) · [Gudeman 2020](#gudeman-2020) · [Gülen 2023](#gülen-2023) · [Guo 2024](#guo-2024) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2025](#hadji-2025) · [Hadji 2026](#hadji-2026) · [Hahn 2022](#hahn-2022) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Haller 2026](#haller-2026) · [Halliwell 2026](#halliwell-2026) · [Ham 2017](#ham-2017) · [Hameed 2023](#hameed-2023) · [Han 2022](#han-2022) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hansen 2015](#hansen-2015) · [Hansen 2022](#hansen-2022) · [Hansrani 2023 (casos y controles)](#hansrani-2023-casos-y-controles) · [Hansrani 2023 (ensayo)](#hansrani-2023-ensayo) · [Hanssen 2022](#hanssen-2022) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Harding y Beck 2017](#harding-y-beck-2017) · [Hariharan 2021](#hariharan-2021) · [Harley 2026](#harley-2026) · [Harrington 2023](#harrington-2023) · [Hart 2020](#hart-2020) · [Hart 2024](#hart-2024) · [Haskins 2015](#haskins-2015) · [Hawk 2017](#hawk-2017) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Heijboer 2023](#heijboer-2023) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henry 2019](#henry-2019) · [Henschke 2013](#henschke-2013) · [Hentzen 2023](#hentzen-2023) · [Herman 2023](#herman-2023) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Herrett 2021](#herrett-2021) · [Hershman 2022](#hershman-2022) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Heyward 2020](#heyward-2020) · [Hideyama 2023](#hideyama-2023) · [Hildebrand 2024](#hildebrand-2024) · [Hill 2017](#hill-2017) · [Ho 2013](#ho-2013) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Hogwood 2025](#hogwood-2025) · [Holgado 2022](#holgado-2022) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Horowitz 2023](#horowitz-2023) · [Hospers 2024](#hospers-2024) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Howe 2011](#howe-2011) · [Hu 2023](#hu-2023) · [Hu 2024](#hu-2024) · [Hudson 2025](#hudson-2025) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Humma y Patel 2024](#humma-y-patel-2024) · [Humphrey 2023](#humphrey-2023) · [Hunter 2024](#hunter-2024) · [Huruba 2021](#huruba-2021) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [Huxel 2023](#huxel-2023) · [Hwang 2023](#hwang-2023) · [Hwang 2024](#hwang-2024) · [Hyder 2021](#hyder-2021) · [Iacovides 2009](#iacovides-2009) · [Ignozzi 2025](#ignozzi-2025) · [IHS 2018](#ihs-2018) · [İlal Mert y Altun 2026](#ilal-mert-y-altun-2026) · [Iqbal 2026](#iqbal-2026) · [Irwin 2015](#irwin-2015) · [Jain 2013](#jain-2013) · [Jain 2026](#jain-2026) · [Jarbo 2017](#jarbo-2017) · [Jasionowska 2022](#jasionowska-2022) · [Jasti 2026](#jasti-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jedrychowski 2015](#jedrychowski-2015) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jia 2025](#jia-2025) · [Jiang 2024](#jiang-2024) · [Jin 2021](#jin-2021) · [Jobanputra 2026](#jobanputra-2026) · [Jödicke 2023](#jödicke-2023) · [Jogu 2026](#jogu-2026) · [Johannsen 2022](#johannsen-2022) · [Johns 2023](#johns-2023) · [Jones 2023](#jones-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kaatz 2015](#kaatz-2015) · [Kaiser 2023](#kaiser-2023) · [Kakkos 2021](#kakkos-2021) · [Kalakonda 2022](#kalakonda-2022) · [Kalfas 2025](#kalfas-2025) · [Kamonseki 2022](#kamonseki-2022) · [Kanaley 2022](#kanaley-2022) · [Kaneko 2021](#kaneko-2021) · [Kang 2023](#kang-2023) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) · [Kast 2023](#kast-2023) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kelly 2016](#kelly-2016) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kershner 2026](#kershner-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Keteyian 2019](#keteyian-2019) · [Khalil 2025](#khalil-2025) · [Khan 2023](#khan-2023) · [Khan 2025](#khan-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) · [Khan y Scott 2009](#khan-y-scott-2009) · [Khayyat 2026](#khayyat-2026) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kim y Chen 2024](#kim-y-chen-2024) · [Kim y Jang 2024](#kim-y-jang-2024) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Kishi 2026](#kishi-2026) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Kobylarz 2025](#kobylarz-2025) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Koldenhof 2026](#koldenhof-2026) · [Konstantinou 2018](#konstantinou-2018) · [Kopp 2025](#kopp-2025) · [Koppenhaver 2022](#koppenhaver-2022) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kumar 2024](#kumar-2024) · [Kunutsor 2017](#kunutsor-2017) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwak 2023](#kwak-2023) · [Kwok 2025](#kwok-2025) · [Kwon 2024](#kwon-2024) · [Lacuesta 2024](#lacuesta-2024) · [Lacy 2023](#lacy-2023) · [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Lary 2020](#lary-2020) · [Lashhab 2025](#lashhab-2025) · [Laslett 2003](#laslett-2003) · [Laslett 2004](#laslett-2004) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lavoie 2023](#lavoie-2023) · [Layton 2020](#layton-2020) · [Lazarczuk 2022](#lazarczuk-2022) · [Leander 2025](#leander-2025) · [Lebovitz 2019](#lebovitz-2019) · [Lee 2023](#lee-2023) · [Lee y Nam 2011](#lee-y-nam-2011) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Leslie y Foreman 2025](#leslie-y-foreman-2025) · [Leslie y Rawla 2023](#leslie-y-rawla-2023) · [Leslie y Rout 2024](#leslie-y-rout-2024) · [Leung 2024](#leung-2024) · [Levati 2026](#levati-2026) · [Levy 2024](#levy-2024) · [Lewis y Cook 2014](#lewis-y-cook-2014) · [Lezak 2024](#lezak-2024) · [Li 2023](#li-2023) · [Li 2024](#li-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Li y Zhang 2025](#li-y-zhang-2025) · [Liaghat 2022](#liaghat-2022) · [Liaghat 2024](#liaghat-2024) · [Liaghat 2025](#liaghat-2025) · [Liamis 2016](#liamis-2016) · [Liang 2022](#liang-2022) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2022](#lim-2022) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Lima 2023](#lima-2023) · [Limaiem 2023](#limaiem-2023) · [Lin 2020](#lin-2020) · [Lindholm 2024](#lindholm-2024) · [Litaker 2000](#litaker-2000) · [Liu 2013](#liu-2013) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Looney 2023](#looney-2023) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lu 2020](#lu-2020) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mach 2018](#mach-2018) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Magnusson y Kjaer 2019](#magnusson-y-kjaer-2019) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mancia 2023](#mancia-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Mangone 2024](#mangone-2024) · [Mannan 2025](#mannan-2025) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) · [Martin 2021](#martin-2021) · [Martínez 2023](#martínez-2023) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McAnally 2020](#mcanally-2020) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McEvoy 2024](#mcevoy-2024) · [McIver y Siddique 2025](#mciver-y-siddique-2025) · [McKeever 2024](#mckeever-2024) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Meaadi 2023](#meaadi-2023) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Memon y Tiwari 2023](#memon-y-tiwari-2023) · [Men 2017](#men-2017) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Messier 2013](#messier-2013) · [Messineo 2024](#messineo-2024) · [Metcalfe 2019](#metcalfe-2019) · [Meyre 2022](#meyre-2022) · [Miernik 2024](#miernik-2024) · [Mikus 2013](#mikus-2013) · [Milbourn 2026](#milbourn-2026) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mitchell 2025](#mitchell-2025) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Moiz 2026](#moiz-2026) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moncrieff 2025](#moncrieff-2025) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moon 2026](#moon-2026) · [Moore 2019](#moore-2019) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Moraczewski 2023](#moraczewski-2023) · [Morales 2019](#morales-2019) · [Morris 2024](#morris-2024) · [Morris y Patel 2023](#morris-y-patel-2023) · [Moseley 2025](#moseley-2025) · [Moser 2020](#moser-2020) · [Mosler 2015](#mosler-2015) · [Mottola 2018](#mottola-2018) · [Mottola 2019](#mottola-2019) · [Mountjoy 2023](#mountjoy-2023) · [Mulla 2024](#mulla-2024) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Munteanu 2024](#munteanu-2024) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nakafero 2021](#nakafero-2021) · [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nara y Watanabe 2021](#nara-y-watanabe-2021) · [Narayan 2024](#narayan-2024) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Naugle 2012](#naugle-2012) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [Netterström-Wedin 2022](#netterström-wedin-2022) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nischal y Gupta 2023](#nischal-y-gupta-2023) · [Noble 1979](#noble-1979) · [Nochaiwong 2022](#nochaiwong-2022) · [Noetel 2024](#noetel-2024) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Noyes 2017](#noyes-2017) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oldfield 2024](#oldfield-2024) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Otoshi 2022](#otoshi-2022) · [Oyamada 2026](#oyamada-2026) · [Padda 2025](#padda-2025) · [Paik 2016](#paik-2016) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2017](#park-2017) · [Park 2019](#park-2019) · [Park 2021](#park-2021) · [Park 2024](#park-2024) · [Parker 2013](#parker-2013) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Patel y Launico 2025](#patel-y-launico-2025) · [Patel y Preuss 2025](#patel-y-preuss-2025) · [Paterson 2021](#paterson-2021) · [Paterson 2022](#paterson-2022) · [Pathak 2025](#pathak-2025) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedersen y Febbraio 2012](#pedersen-y-febbraio-2012) · [Pedersini 2022](#pedersini-2022) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pelliccia 2020](#pelliccia-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Pereira 2021](#pereira-2021) · [Pérez-Romero 2026](#pérez-romero-2026) · [Pesonen 2021](#pesonen-2021) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Petersen y Pedersen 2005](#petersen-y-pedersen-2005) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Pitt 2020](#pitt-2020) · [Piva 2006](#piva-2006) · [Plash 2013](#plash-2013) · [Plewa 2023](#plewa-2023) · [Ploegmakers 2023](#ploegmakers-2023) · [Podder 2024](#podder-2024) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Polaski 2019](#polaski-2019) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Polzer 2012](#polzer-2012) · [Ponna 2026](#ponna-2026) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Pravettoni 2016](#pravettoni-2016) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rangraze 2026](#rangraze-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regina 2025](#regina-2025) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Rehman 2024](#rehman-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Revel 1998](#revel-1998) · [Reychler 2021](#reychler-2021) · [Reyes 2026](#reyes-2026) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rice 2019](#rice-2019) · [Rich 2025](#rich-2025) · [Riddell 2017](#riddell-2017) · [Rider y Marra 2023](#rider-y-marra-2023) · [Ringer 2025](#ringer-2025) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rissardo 2023](#rissardo-2023) · [Rissardo 2025](#rissardo-2025) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rossi 2011](#rossi-2011) · [Roulet 2021](#roulet-2021) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rout 2025](#rout-2025) · [Rout y Afzal 2026](#rout-y-afzal-2026) · [Rowe 2023](#rowe-2023) · [Roy 2021](#roy-2021) · [Rubinger 2020](#rubinger-2020) · [Ruchat 2025](#ruchat-2025) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruggiero 2022](#ruggiero-2022) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Rusu 2023](#rusu-2023) · [Rusu 2026](#rusu-2026) · [Rytter 2008](#rytter-2008) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Saaiq 2024](#saaiq-2024) · [Sabry y Li 2026](#sabry-y-li-2026) · [Saco-Ledo 2020](#saco-ledo-2020) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sánchez y Asuncion 2025](#sánchez-y-asuncion-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sangiorgio 2024](#sangiorgio-2024) · [Sanvictores 2023](#sanvictores-2023) · [Sarac 2025](#sarac-2025) · [Saueressig 2021](#saueressig-2021) · [Savarese 2011](#savarese-2011) · [Sayudo 2024](#sayudo-2024) · [Schadler 2017](#schadler-2017) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schneider 2013](#schneider-2013) · [Schneider 2014](#schneider-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Schulman 2005](#schulman-2005) · [Schwab 2023](#schwab-2023) · [Schweiger 2021](#schweiger-2021) · [Scioscia 2023](#scioscia-2023) · [Scott 2024](#scott-2024) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Severinsen y Pedersen 2020](#severinsen-y-pedersen-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shalhub 2019](#shalhub-2019) · [Shamim 2026](#shamim-2026) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Shane 2014](#shane-2014) · [Shao 2022](#shao-2022) · [Sharma 2026](#sharma-2026) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Shin 2022](#shin-2022) · [Shinohara 2017](#shinohara-2017) · [Shrestha 2026](#shrestha-2026) · [Shu 2022](#shu-2022) · [Shuttlewood 2017](#shuttlewood-2017) · [Sibrack 2024](#sibrack-2024) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Silva 2024](#silva-2024) · [Simon 2024](#simon-2024) · [Simon y Rout 2025](#simon-y-rout-2025) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singh 2023](#singh-2023) · [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sizar 2024](#sizar-2024) · [Sklepinski 2026](#sklepinski-2026) · [Slade 2021](#slade-2021) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smart 2019](#smart-2019) · [Smarz 2021](#smarz-2021) · [Smeijers 2024](#smeijers-2024) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2013](#smith-2013) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Soares 2023](#soares-2023) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Spångeus 2024](#spångeus-2024) · [Spanhove 2022](#spanhove-2022) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srinivas-Shankar 2026](#srinivas-shankar-2026) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Stadelmann 2024](#stadelmann-2024) · [Stals 2023](#stals-2023) · [Steffel 2021](#steffel-2021) · [Steiner 2026](#steiner-2026) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Stroes 2015](#stroes-2015) · [Suárez-Lledó 2018](#suárez-lledó-2018) · [Suenghataiphorn 2025](#suenghataiphorn-2025) · [Suha 2025](#suha-2025) · [Sundemo 2018](#sundemo-2018) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Tahir 2026](#tahir-2026) · [Takasaki 2011](#takasaki-2011) · [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) · [Tanaka 2022](#tanaka-2022) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tchivileva 2020](#tchivileva-2020) · [Teichtahl 2016](#teichtahl-2016) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Tenti 2020](#tenti-2020) · [Tentolouris 2019](#tentolouris-2019) · [Testa 2024](#testa-2024) · [Thai 2023](#thai-2023) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thomas 2017](#thomas-2017) · [Thomas Manapurathe 2017](#thomas-manapurathe-2017) · [Thompson 2026](#thompson-2026) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Thota y Akbar 2023](#thota-y-akbar-2023) · [Thour 2026](#thour-2026) · [Tipton 2008](#tipton-2008) · [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) · [Tolla 2026](#tolla-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tsourdi 2021](#tsourdi-2021) · [Tsuchiya 2022](#tsuchiya-2022) · [Tsujimoto 2017](#tsujimoto-2017) · [Tumialán 2010](#tumialán-2010) · [Ulici 2019](#ulici-2019) · [Uson 2021](#uson-2021) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Vaegter y Jones 2020](#vaegter-y-jones-2020) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [Van der Sluiszen 2019](#van-der-sluiszen-2019) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [van Gelder 2024](#van-gelder-2024) · [Vandeputte 2026](#vandeputte-2026) · [Vastani 2023](#vastani-2023) · [Vehmanen 2021](#vehmanen-2021) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Vigotsky 2016](#vigotsky-2016) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2013](#wang-2013) · [Wang 2016](#wang-2016) · [Wang 2017](#wang-2017) · [Wang 2018](#wang-2018) · [Wang 2020](#wang-2020) · [Wang 2024](#wang-2024) · [Wang 2025](#wang-2025) · [Wang y Tariq 2025](#wang-y-tariq-2025) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waseem 2026](#waseem-2026) · [Waterway 2026](#waterway-2026) · [Wathra 2020](#wathra-2020) · [Watras 2026](#watras-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weber 2026](#weber-2026) · [Wee 2021](#wee-2021) · [Weir 2015](#weir-2015) · [Welsch 2018](#welsch-2018) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wewege 2023](#wewege-2023) · [Wewege y Jones 2021](#wewege-y-jones-2021) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wichniak 2017](#wichniak-2017) · [Wiegele 2019](#wiegele-2019) · [Wierzbiński 2023](#wierzbiński-2023) · [Wilcox 2020](#wilcox-2020) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wong 2024](#wong-2024) · [Wood 2023](#wood-2023) · [Woodley 2020](#woodley-2020) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Wu 2026](#wu-2026) · [Xia 2022](#xia-2022) · [Xia 2025](#xia-2025) · [Xiang 2025](#xiang-2025) · [Xie 2021](#xie-2021) · [Xue 2021](#xue-2021) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yanagimoto 2025](#yanagimoto-2025) · [Yang 2024](#yang-2024) · [Yang 2026](#yang-2026) · [Yang y Qu 2018](#yang-y-qu-2018) · [Yasaei 2024](#yasaei-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Younis 2025](#younis-2025) · [Yousif 2025](#yousif-2025) · [Youssef 2016](#youssef-2016) · [Yuan 2016](#yuan-2016) · [Yuen 2026](#yuen-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zeng 2024](#zeng-2024) · [Zhang 2010](#zhang-2010) · [Zhang 2026](#zhang-2026) · [Zhao 2024](#zhao-2024) · [Zhou 2025](#zhou-2025) · [Ziaks 2024](#ziaks-2024) · [Zimmerman y Hubbard 2023 (clonus)](#zimmerman-y-hubbard-2023-clonus) · [Zimmerman y Hubbard 2023 (reflejos)](#zimmerman-y-hubbard-2023-reflejos) · [Zirkl 2024](#zirkl-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022) · [Zwerver 2010](#zwerver-2010)
 
 ### AAOS 2024
 
@@ -1568,6 +1592,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Adani 2025
+
+Autores: Adani, Azalia, Gani, Mitchel y Kholinne  
+Título: *Non-traumatic Medial-Sided Elbow Pain: A Comprehensive Review of Etiologies, Diagnostic Strategies, and Treatment Approaches*  
+Publicación: Cureus 17(10):e94701  
+DOI: 10.7759/cureus.94701  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión narrativa. Dolor 5–10 mm distal y anterior al epicóndilo medial, empeora con la flexión de muñeca, la pronación o la prensión resistidas; pruebas sin validación estandarizada. Palpación y flexión-pronación resistidas de co2.
+
+Citada como:
+
+1. Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador. El punto típico está unos 5–10 mm distal y anterior al epicóndilo medial, sobre el origen flexor-pronador, a menudo sobre el pronador redondo y el flexor radial del carpo (Li 2026; Adani 2025; Tahir 2026).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101 · Li 2026 · Adani 2025 · Tahir 2026
+3. Puede haber también menos fuerza que en el otro lado al flexionar la muñeca, pronar el antebrazo o apretar, y el estiramiento pasivo (supinación con el codo, la muñeca y los dedos en extensión) puede reproducir el dolor. Según Adani, estas pruebas ayudan pero no están validadas (Adani 2025). O'Driscoll 2005 exploró la flexión de muñeca y la pronación resistidas con el codo flexionado y extendido. Sin datos de precisión.
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Li 2026 · Tahir 2026 · Adani 2025 · O'Driscoll 2005
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» | 4b · cita bajo el test | 2 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 4 |
 
 ### Adib 2023
 
@@ -1706,6 +1753,27 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Akhondi 2025
+
+Autores: Akhondi, Lui y Varacallo  
+Título: *Anterior Interosseous Syndrome*  
+Publicación: StatPearls [Internet], NBK525956 (act. 2025-07-07)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-11). La clave lleva el año de la última actualización del capítulo. Signo del «OK» o de la pinza, sin alteración sensitiva. Interóseo anterior de co13.
+
+Citada como:
+
+1. Síndrome motor puro, con solo una molestia vaga en el antebrazo. Pedir que haga una «O» con el pulgar y el índice: no puede y pinza con las falanges distales extendidas (signo del «OK»); sin alteración sensitiva (Aljawder 2016; Park 2024; Akhondi 2025).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102 · Aljawder 2016 · Park 2024 · Akhondi 2025 · Shinohara 2017
+3. Akhondi 2025 (StatPearls, NBK525956, act. 2025-07-07: historia y exploración)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 2 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Akin 2022
 
@@ -1947,6 +2015,31 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Lumbalgia aguda inespecífica» (Columna) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Fila «Radiculopatía lumbar (ciática)» (Columna) | cabecera · tiempos de tejido | 1 |
+
+### Aljawder 2016
+
+Autores: Aljawder, Faqi, Mohamed y Alkhalifa  
+Título: *Anterior interosseous nerve syndrome diagnosis and intraoperative findings: A case report*  
+Publicación: Int J Surg Case Rep 21:44–47  
+DOI: 10.1016/j.ijscr.2016.02.021  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11). Llama «signo de Froment» a la pinza del interóseo anterior; no se recoge ese nombre, que es un signo del cubital.  
+Nota: Caso clínico con discusión. Signo del «OK» (pinza con el pulgar y el índice extendidos) y fuerza de la IF del pulgar y de las IFD del índice y del medio. Co13.
+
+Citada como:
+
+1. Contra resistencia y comparando con el otro lado: flexión de la interfalángica del pulgar (flexor largo) y de la interfalángica distal del índice y del medio (flexor profundo) (Aljawder 2016), de la interfalángica proximal del medio (flexor superficial) y pronación (pronador redondo) (Balcerzak 2022).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Aljawder 2016 · Balcerzak 2022 · Dididze 2023
+3. Síndrome motor puro, con solo una molestia vaga en el antebrazo. Pedir que haga una «O» con el pulgar y el índice: no puede y pinza con las falanges distales extendidas (signo del «OK»); sin alteración sensitiva (Aljawder 2016; Park 2024; Akhondi 2025).
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102 · Aljawder 2016 · Park 2024 · Akhondi 2025 · Shinohara 2017
+5. Aljawder 2016 (Int J Surg Case Rep 21:44–47), discusión
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» | 4b · cita bajo el test | 2 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 4 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» («¿Por qué?») | 4b · razonamiento del test | 5 |
 
 ### Altman 1986
 
@@ -2624,6 +2717,39 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `AVISOS.rotulaInestable` | 6 · plan de tratamiento | 2 |
 | Rodilla | ro12 · Inestabilidad Rotuliana | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
+### Balcerzak 2022
+
+Autores: Balcerzak, Ruzik, Tubbs, Konschake, Podgórski, Borowski, Drobniewski y Olewnik  
+Título: *How to Differentiate Pronator Syndrome from Carpal Tunnel Syndrome: A Comprehensive Clinical Comparison*  
+Publicación: Diagnostics (Basel) 12(10):2433  
+DOI: 10.3390/diagnostics12102433  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión narrativa. Pronación resistida con el codo en 0–45° de flexión, compresión de 30 s sobre el pronador redondo (6 cm distal al pliegue y 4 cm lateral al epicóndilo medial), Tinel positivo en menos de la mitad, flexión resistida de la IFP del medio poco fiable. Co13.
+
+Citada como:
+
+1. Dolor en la cara anterior del codo y el antebrazo, con parestesias sobre todo del 1.º al 3.º dedo. El pronador redondo se palpa unos 6 cm distal al pliegue del codo y 4 cm lateral al epicóndilo medial; la presión mantenida 30 segundos sobre él es positiva si provoca parestesias (Balcerzak 2022).
+2. Sin datos de precisión. El signo de Tinel sobre el borde proximal del pronador redondo puede ser positivo (Dididze 2023), pero lo es en menos de la mitad de los pacientes (Balcerzak 2022).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Balcerzak 2022 · Dididze 2023
+4. El paciente prona el antebrazo contra la resistencia de la mano del examinador, con el codo extendido (Binsaleem 2024) o entre 0 y 45° de flexión (Balcerzak 2022); positivo si aumenta el dolor o aparecen parestesias en el territorio del mediano (Balcerzak 2022).
+5. Sin datos de precisión.
+
+Otras maniobras buscan otros puntos de compresión: la flexión del codo contra resistencia, con supinación según Balcerzak, la aponeurosis bicipital; y la flexión de la interfalángica proximal del dedo medio contra resistencia, el arco del flexor superficial, que Balcerzak considera poco fiable (Balcerzak 2022; Binsaleem 2024). Según StatPearls, el dolor del antebrazo anterior aumenta con la pronación resistida y la flexión del codo (Dididze 2023).
+6. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Balcerzak 2022 · Binsaleem 2024 · Dididze 2023
+7. Contra resistencia y comparando con el otro lado: flexión de la interfalángica del pulgar (flexor largo) y de la interfalángica distal del índice y del medio (flexor profundo) (Aljawder 2016), de la interfalángica proximal del medio (flexor superficial) y pronación (pronador redondo) (Balcerzak 2022).
+8. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Aljawder 2016 · Balcerzak 2022 · Dididze 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» | 4b · cita bajo el test | 3 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» (en `criterio`) | 4b · mención en el texto | 4 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» | 4b · cita bajo el test | 6 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» (en `criterio`) | 4b · mención en el texto | 7 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» | 4b · cita bajo el test | 8 |
+
 ### Balchin 2022
 
 Autores: Balchin, Tan, Golding, Bissell, Wilson, McKenna y Stavropoulos-Kalinoglou  
@@ -2951,6 +3077,33 @@ Citada como:
 | Rodilla | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
+
+### Beazley 2017
+
+Autores: Beazley, Lawrence, Drew y Modi  
+Título: *Distal Biceps and Triceps Injuries*  
+Publicación: Open Orthop J 11:1364–1372  
+DOI: 10.2174/1874325001711011364  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión narrativa. Defecto justo proximal al olécranon que la hinchazón aguda puede ocultar; en la rotura completa, extensión resistida limitada o ausente, aunque el ancóneo puede suplir al tríceps. Co10.
+
+Citada como:
+
+1. Más frecuente en varones, lanzadores, culturistas y ciclistas de montaña; los síntomas suelen seguir a un aumento brusco de la actividad. Sin datos de precisión.
+
+En una rotura completa, la extensión contra resistencia está limitada o falta, aunque el ancóneo, ayudado por la gravedad, puede suplir al tríceps en las actividades por debajo del hombro (Beazley 2017).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 103 · Eskew 2026 · Beazley 2017
+3. En la rotura: defecto palpable e hinchazón, tras una lesión aguda o un golpe directo; preguntar por anabolizantes. El defecto suele estar justo proximal al olécranon, y en la fase aguda la hinchazón puede ocultarlo (Beazley 2017). No hay pruebas diagnósticas específicas descritas: el diagnóstico concluyente puede requerir ecografía o RM.
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 103 · Beazley 2017
+5. Beazley 2017 (Open Orthop J 11:1364–1372), rotura del tríceps
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» | 4b · cita bajo el test | 2 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» | 4b · cita bajo el test | 4 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» («¿Por qué?») | 4b · razonamiento del test | 5 |
 
 ### Beckenkamp 2017
 
@@ -3297,6 +3450,29 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
+### Biedroń 2026
+
+Autores: Biedroń, Pitra, Chmura et al.  
+Título: *A Literature Review of Lateral Epicondylitis: Diagnosis, Risk Factors, Management and Treatment*  
+Publicación: Life (Basel) 16(7):1043  
+DOI: 10.3390/life16071043  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11). Su frase sobre el test de Cozen describe una pronación y desviación radial resistidas sin nombrar la extensión de la muñeca (parece una errata); se usa solo la palpación del epicóndilo por el examinador y la diferencia entre codo extendido y flexionado.  
+Nota: Revisión narrativa. Cozen de co1.
+
+Citada como:
+
+1. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según StatPearls, el dolor máximo suele estar sobre el epicóndilo lateral, a veces en un punto 1–2 cm distal, y aumenta con la extensión resistida de la muñeca, sobre todo con el codo extendido y el antebrazo en pronación (Buchanan y Varacallo 2023). Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Biedroń 2026 (Life (Basel) 16(7):1043), exploración física
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
 ### Bierma-Zeinstra 1999
 
 Publicación: J Rheumatol 26(5):1129–33  
@@ -3329,6 +3505,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 1 |
+
+### Binsaleem 2024
+
+Autores: Binsaleem  
+Título: *Median nerve entrapment neuropathy: a review on the pronator syndrome*  
+Publicación: JSES Rev Rep Tech 5(1):70–78  
+DOI: 10.1016/j.xrrt.2024.10.001  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión. Pronación resistida con el codo extendido, flexión resistida del codo (aponeurosis bicipital) y del flexor superficial del medio con el codo extendido. Co13.
+
+Citada como:
+
+1. El paciente prona el antebrazo contra la resistencia de la mano del examinador, con el codo extendido (Binsaleem 2024) o entre 0 y 45° de flexión (Balcerzak 2022); positivo si aumenta el dolor o aparecen parestesias en el territorio del mediano (Balcerzak 2022).
+2. Sin datos de precisión.
+
+Otras maniobras buscan otros puntos de compresión: la flexión del codo contra resistencia, con supinación según Balcerzak, la aponeurosis bicipital; y la flexión de la interfalángica proximal del dedo medio contra resistencia, el arco del flexor superficial, que Balcerzak considera poco fiable (Balcerzak 2022; Binsaleem 2024). Según StatPearls, el dolor del antebrazo anterior aumenta con la pronación resistida y la flexión del codo (Dididze 2023).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Balcerzak 2022 · Binsaleem 2024 · Dididze 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» | 4b · cita bajo el test | 3 |
 
 ### Birkinshaw 2023
 
@@ -4191,6 +4390,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Buchanan y Varacallo 2023
+
+Autores: Buchanan y Varacallo  
+Título: *Lateral Epicondylitis (Tennis Elbow)*  
+Publicación: StatPearls [Internet], NBK431092 (act. 2023-08-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-11). La clave lleva el año de la última actualización del capítulo. Dolor máximo sobre el epicóndilo o 1–2 cm distal; más dolor con la extensión resistida con el codo extendido y el antebrazo en pronación. Cozen de co1.
+
+Citada como:
+
+1. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según StatPearls, el dolor máximo suele estar sobre el epicóndilo lateral, a veces en un punto 1–2 cm distal, y aumenta con la extensión resistida de la muñeca, sobre todo con el codo extendido y el antebrazo en pronación (Buchanan y Varacallo 2023). Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Buchanan y Varacallo 2023 (StatPearls, NBK431092, act. 2023-08-04: historia y exploración)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Buck 2023
 
@@ -6128,6 +6350,25 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Radiculopatía lumbar (ciática)» (Columna) | cabecera · tiempos de tejido | 1 |
 
+### Davis y Kane 2023
+
+Autores: Davis y Kane  
+Título: *Ulnar Nerve Entrapment*  
+Publicación: StatPearls [Internet], NBK555929 (act. 2023-08-07)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-11). La clave lleva el año de la última actualización del capítulo y dos autores porque Davis 2024 (ciática) ya existía. Preguntar por un chasquido o resalte en el codo (movilidad del nervio en el túnel cubital). Subluxación del cubital de co8.
+
+Citada como:
+
+1. En lanzadores profesionales sin síntomas, con la ecografía como referencia, la exploración tuvo S 77 % y E 91,2 % (LR+ 8,76, LR− 0,25), y la inestabilidad del nervio no se relacionó con los síntomas ni con los tests de provocación (Looney 2023). Por eso no puntúa: la subluxación no es diagnóstica de neuropatía cubital (Lluch 2020, cap. 3.2, p. 92). Un chasquido del tríceps medial puede tomarse por el nervio; la ecografía los distingue (Looney 2023). Conviene preguntar si nota un chasquido o un resalte en el codo, que indica que el nervio se mueve en el túnel cubital (Davis y Kane 2023).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital) · Looney 2023 · Davis y Kane 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» | 4b · cita bajo el test | 2 |
+
 ### Davis y Shaw 2023
 
 Autores: Davis y Shaw  
@@ -6719,15 +6960,29 @@ Título: *Pronator Teres Syndrome*
 Publicación: StatPearls [Internet], NBK526090 (act. 2023-07-03)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4). Releído entero (2026-11) para los tests de co13 (fase 4b).
 
 Citada como:
 
-1. Dididze 2023 (StatPearls, NBK526090, act. 2023-07-03: introducción, epidemiología, historia y exploración, evaluación y diagnóstico diferencial)
+1. Sin datos de precisión. El signo de Tinel sobre el borde proximal del pronador redondo puede ser positivo (Dididze 2023), pero lo es en menos de la mitad de los pacientes (Balcerzak 2022).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Balcerzak 2022 · Dididze 2023
+3. Sin datos de precisión.
+
+Otras maniobras buscan otros puntos de compresión: la flexión del codo contra resistencia, con supinación según Balcerzak, la aponeurosis bicipital; y la flexión de la interfalángica proximal del dedo medio contra resistencia, el arco del flexor superficial, que Balcerzak considera poco fiable (Balcerzak 2022; Binsaleem 2024). Según StatPearls, el dolor del antebrazo anterior aumenta con la pronación resistida y la flexión del codo (Dididze 2023).
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Balcerzak 2022 · Binsaleem 2024 · Dididze 2023
+5. Sin datos de precisión. En el síndrome del pronador la atrofia es rara; es más habitual una debilidad leve del flexor largo del pulgar y del abductor corto del pulgar, a veces del flexor profundo del 2.º y 3.er dedo y del oponente. El pronador redondo suele estar respetado, porque recibe su rama antes de que el mediano lo atraviese (Dididze 2023).
+6. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Aljawder 2016 · Balcerzak 2022 · Dididze 2023
+7. Dididze 2023 (StatPearls, NBK526090, act. 2023-07-03: introducción, epidemiología, historia y exploración, evaluación y diagnóstico diferencial)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» | 4b · cita bajo el test | 2 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» | 4b · cita bajo el test | 4 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» | 4b · cita bajo el test | 6 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 
 ### Dobbs 2016
 
@@ -7148,6 +7403,37 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 1 |
 
+### Engin 2023
+
+Autores: Engin, Demirel, Kahraman y Ayık  
+Título: *Orthopedic Management of Radial Tunnel Syndrome: A Diagnostic and Treatment Dilemma*  
+Publicación: Eurasian J Med 55(1):59–63  
+DOI: 10.5152/eurasianjmed.2023.22274  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Serie retrospectiva de 18 pacientes. Punto doloroso 4–5 cm distal al epicóndilo lateral, sobre el supinador (en los 18); extensión resistida del dedo medio (8 de 18) y supinación resistida con el codo extendido (10 de 18). Co9.
+
+Citada como:
+
+1. Localización más distal que la epicondilalgia lateral. Puede coexistir con ella. Con el antebrazo en supinación, palpar el recorrido del radial por el dorso del antebrazo desde justo por encima del epicóndilo lateral: el punto de máximo dolor está 2–5 cm distal al epicóndilo, sobre la masa muscular móvil del antebrazo (Shamrock y Das 2023), o 4–5 cm, sobre el supinador (Engin 2023).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100 · Shamrock y Das 2023 · Engin 2023
+3. Con el codo extendido, el antebrazo en pronación y los dedos en extensión, el examinador sujeta el antebrazo distal y resiste en el dorso de la falange distal del dedo medio (Lucado 2022; Engin 2023); positivo si reproduce el dolor. Ojo: el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.
+4. Sin datos de precisión para la neuropatía radial. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023). La guía APTA la recoge como test de la epicondilalgia lateral, positivo con dolor en el epicóndilo o hasta 2 cm distal a la inserción de los extensores (Lucado 2022, tabla 5).
+5. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Lucado 2022 (tabla 5) · Engin 2023
+6. Con el codo en extensión completa, el paciente supina el antebrazo contra resistencia (Engin 2023). Reproduce el dolor en el dorso del antebrazo proximal.
+7. Precisión diagnóstica no estudiada. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 10, y la palpación del punto doloroso, en los 18 (Engin 2023). Debe reproducir el dolor sin debilidad; la flexión de la muñeca con pronación pasiva también puede reproducirlo, porque aumenta la presión en el túnel radial. Una debilidad de los extensores orienta al síndrome del interóseo posterior (Shamrock y Das 2023).
+8. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100 · Engin 2023 · Shamrock y Das 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» | 4b · cita bajo el test | 2 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» | 4b · cita bajo el test | 5 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» (en `criterio`) | 4b · mención en el texto | 6 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» (en `razonamiento.detalle`) | 4b · mención en el texto | 7 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» | 4b · cita bajo el test | 8 |
+
 ### Englund 2003
 
 Autores: Englund, Roos y Lohmander  
@@ -7234,6 +7520,39 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
+### Eskew 2026
+
+Autores: Eskew, Soth, Alawa, McGrath, Wanich, Cirino y Carr  
+Título: *A Comprehensive Review of the Physical Examination of the Elbow in the Throwing Athlete*  
+Publicación: Arthrosc Tech e70313  
+DOI: 10.1002/atn2.70313  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11). Volumen y páginas tal como los da PubMed (solo el número de artículo).  
+Nota: Nota técnica. Palpación del ligamento colateral medial 2 cm distal al epicóndilo (sensibilidad 81–94 %, sin el estudio de origen), extensión resistida desde flexión completa y flexo de 5–10° adaptativo en lanzadores. Co4, co10 y co12.
+
+Citada como:
+
+1. Palpación del ligamento colateral medial justo distal al epicóndilo medial: presión moderada entre la cara anteroinferior del epicóndilo y el tubérculo sublime del cúbito (Otoshi 2022), a unos 2 cm del epicóndilo (Eskew 2026). Positivo si duele.
+2. Sin datos de precisión. Eskew 2026 da una sensibilidad del 81–94 % del dolor en ese punto para la lesión del ligamento, y dice que ayuda a separarla de la del origen flexor-pronador, pero no da la especificidad ni dice de qué estudio sale la cifra.
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101 · Otoshi 2022 · Eskew 2026
+4. Desde flexión completa, el paciente extiende el codo contra resistencia (Eskew 2026). Reproduce el dolor posterior.
+5. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 103 · Eskew 2026 · Beazley 2017
+6. Medir la extensión activa y pasiva y compararla con la del otro codo (Eskew 2026). Puede faltar la extensión terminal, con dolor a la palpación del olécranon posteromedial, crepitación y un tope firme (Schwab 2023).
+7. Sin datos de precisión.
+
+En los lanzadores de competición es frecuente un flexo de 5–10° que es una adaptación y no una lesión (Eskew 2026). Y la extensión completa no la descarta: en un caso confirmado, el lanzador tenía la flexión y la extensión completas y dolor medial, y se pensó primero en una lesión del ligamento colateral medial (Gartner 2025).
+8. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103 · Eskew 2026 · Schwab 2023 · Gartner 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Dolor a la palpación justo distal al epicóndilo medial» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Dolor a la palpación justo distal al epicóndilo medial» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Dolor a la palpación justo distal al epicóndilo medial» | 4b · cita bajo el test | 3 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» (en `criterio`) | 4b · mención en el texto | 4 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» | 4b · cita bajo el test | 5 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» (en `criterio`) | 4b · mención en el texto | 6 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» (en `razonamiento.detalle`) | 4b · mención en el texto | 7 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» | 4b · cita bajo el test | 8 |
+
 ### Evans 2014
 
 Autores: Evans, Khoo, Radulescu, Cook, Gerlach, Papadimos y cols.  
@@ -7319,6 +7638,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Factor 2023
+
+Autores: Factor, Snopik, Albagli, Rath, Amar, Atlan y Morag  
+Título: *The «Selfie Test»: A Novel Test for the Diagnosis of Lateral Epicondylitis*  
+Publicación: Medicina (Kaunas) 59(6):1159  
+DOI: 10.3390/medicina59061159  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Estudio diagnóstico de 30 pacientes con epicondilalgia confirmada por ecografía, sin controles (no da especificidad). Técnica del test de Cozen con el codo en extensión completa, el puño cerrado y desviación radial. Cozen de co1.
+
+Citada como:
+
+1. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según StatPearls, el dolor máximo suele estar sobre el epicóndilo lateral, a veces en un punto 1–2 cm distal, y aumenta con la extensión resistida de la muñeca, sobre todo con el codo extendido y el antebrazo en pronación (Buchanan y Varacallo 2023). Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Factor 2023 (Medicina (Kaunas) 59(6):1159), métodos
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Fairbank 2011
 
@@ -8009,6 +8351,27 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### Gartner 2025
+
+Autores: Gartner, Freking, Behzadpour y Messamore  
+Título: *Olecranon stress fracture treated with headless compression screws and bone marrow aspirate concentrate augmentation: a case report and systematic review of the literature*  
+Publicación: JSES Rev Rep Tech 5(4):976–983  
+DOI: 10.1016/j.xrrt.2025.06.014  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Caso y revisión sistemática. El caso tenía la extensión completa y dolor medial, y se pensó primero en el ligamento colateral medial. Pérdida de extensión de co12.
+
+Citada como:
+
+1. Sin datos de precisión.
+
+En los lanzadores de competición es frecuente un flexo de 5–10° que es una adaptación y no una lesión (Eskew 2026). Y la extensión completa no la descarta: en un caso confirmado, el lanzador tenía la flexión y la extensión completas y dolor medial, y se pensó primero en una lesión del ligamento colateral medial (Gartner 2025).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103 · Eskew 2026 · Schwab 2023 · Gartner 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» | 4b · cita bajo el test | 2 |
 
 ### Gausel 2017
 
@@ -10138,6 +10501,25 @@ Citada como:
 |---|---|---|---|---|
 | ejercicio | — | Bloque «Carga y adaptación del tejido (mecanotransducción)» | guía de efectos del ejercicio | 1 |
 
+### Hart 2024
+
+Autores: Hart, Bauer y Bae  
+Título: *Common upper extremity gymnastics injuries and gymnastic specific return to play protocols*  
+Publicación: J Pediatr Soc North Am 6:100016  
+DOI: 10.1016/j.jposna.2024.100016  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión. Dolor a la palpación de la apófisis del epicóndilo medial; estrés en valgo positivo con apertura y laxitud frente al lado sano. Codo de la liga infantil de co15.
+
+Citada como:
+
+1. Mismos hallazgos que la lesión del ligamento colateral medial del adulto. Comparar con el otro codo: positivo si el valgo duele en el lado medial o abre más (Otoshi 2022; Hart 2024). Palpar también la apófisis del epicóndilo medial, que suele doler (Hodge y Schroeder 2023; Hart 2024).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101 · Hodge y Schroeder 2023 · Otoshi 2022 · Hart 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» | 4b · cita bajo el test | 2 |
+
 ### Haskins 2015
 
 Autores: Haskins, Osmotherly y Rivett  
@@ -10740,15 +11122,21 @@ Título: *Medial Epicondyle Apophysitis (Little League Elbow)*
 Publicación: StatPearls [Internet], NBK570592 (act. 2023-03-27)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4). Releído entero (2026-11) para el valgo de co15 (fase 4b).
 
 Citada como:
 
-1. Hodge y Schroeder 2023 (StatPearls, NBK570592, act. 2023-03-27: introducción, epidemiología, fisiopatología, historia y exploración y diagnóstico diferencial)
+1. Mismos hallazgos que la lesión del ligamento colateral medial del adulto. Comparar con el otro codo: positivo si el valgo duele en el lado medial o abre más (Otoshi 2022; Hart 2024). Palpar también la apófisis del epicóndilo medial, que suele doler (Hodge y Schroeder 2023; Hart 2024).
+2. Sin datos de precisión en el niño. Hodge y Schroeder proponen las maniobras del ligamento del adulto, dada la semejanza de las lesiones: el valgo móvil (valgo constante mientras se extiende el codo desde flexión completa) y la maniobra de ordeño, con el codo a 90°, valgo y supinación (Hodge y Schroeder 2023). Ninguna fuente leída da un ángulo propio del niño para el valgo estático.
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101 · Hodge y Schroeder 2023 · Otoshi 2022 · Hart 2024
+4. Hodge y Schroeder 2023 (StatPearls, NBK570592, act. 2023-03-27: introducción, epidemiología, fisiopatología, historia y exploración y diagnóstico diferencial)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» | 4b · cita bajo el test | 3 |
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 
 ### Hodgens y Sharman 2023
 
@@ -12060,11 +12448,11 @@ Autores: Karanasios, Korakakis, Moutzouri, Drakonaki, Koci, Pantazopoulou, Tsepi
 Título: *Diagnostic accuracy of examination tests for lateral elbow tendinopathy (LET) – A systematic review*  
 Publicación: J Hand Ther 35:541–551  
 DOI: 10.1016/j.jht.2021.02.002  
-Última revisión: 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral.
+Última revisión: 2026-11 · Sin cambios: solo el resumen (los PDF recibidos en 2026-10 y de nuevo en 2026-11 eran otro artículo, Cacciari, «Nomes de lugar: confim», Revista de Letras 45(1), 2005, y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral.
 
 Citada como:
 
-1. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce)
+1. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
 2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -13354,6 +13742,29 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
+### Lashhab 2025
+
+Autores: Lashhab y McCreary  
+Título: *What is the Role of Point of Care Ultrasound for Suspected Pulled Elbow in Children? A Narrative Literature Review*  
+Publicación: POCUS J 10(1):175–187  
+DOI: 10.24908/pocusj.v10i01.17853  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión narrativa. Historia atípica o ausente hasta en el 50 %; exploración difícil en un niño asustado; criterios de exclusión de fractura (crepitación ósea, deformidad, edema focal, cambio de color); 9 de 205 con fractura en un estudio que recoge. Co14.
+
+Citada como:
+
+1. El niño suele llevar el brazo en pronación, con el codo extendido o casi (Nardi y Schaefer 2023) o en ligera flexión (Ulici 2019), y no quiere moverlo; puede doler la cabeza del radio a la palpación, y se resiste a la pronación, la supinación, la flexión y la extensión (Nardi y Schaefer 2023). Explorar con suavidad: hinchazón, enrojecimiento, deformidad, hematoma o crepitación ósea hacen pensar en una fractura (Ulici 2019; Lashhab 2025).
+2. Sin datos de precisión.
+
+Hasta en la mitad de los casos falta el antecedente típico del tirón, y la exploración de un niño asustado es difícil. En un estudio que recoge Lashhab, 9 de 205 niños con diagnóstico clínico de pronación dolorosa tenían una fractura (Lashhab 2025). Sin manipular el brazo no suele doler, y la subluxación puede reducirse sola antes de la consulta (Nardi y Schaefer 2023).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100 · Nardi y Schaefer 2023 · Ulici 2019 · Lashhab 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» | 4b · cita bajo el test | 3 |
+
 ### Laslett 2003
 
 Autores: Laslett, Young, Aprill y McDonald  
@@ -14087,17 +14498,25 @@ Título: *Medial Epicondylitis (Golfer's Elbow)*
 Publicación: StatPearls [Internet], NBK519000 (act. 2026-01-02)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4). Releído entero (2026-11) para la técnica de los tests de co2 (fase 4b).
 
 Citada como:
 
-1. Li 2026 (StatPearls, NBK519000, act. 2026-01-02: historia y exploración)
-2. Li 2026 (StatPearls, NBK519000, act. 2026-01-02: introducción, etiología, epidemiología e historia y exploración)
+1. Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador. El punto típico está unos 5–10 mm distal y anterior al epicóndilo medial, sobre el origen flexor-pronador, a menudo sobre el pronador redondo y el flexor radial del carpo (Li 2026; Adani 2025; Tahir 2026).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101 · Li 2026 · Adani 2025 · Tahir 2026
+3. Sentado, con el codo extendido y el antebrazo en supinación completa: el examinador estabiliza el codo y, con la otra mano en la palma, resiste la flexión de la muñeca (Zwerus 2018); también la pronación contra resistencia (Li 2026; Tahir 2026). Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Li 2026 · Tahir 2026 · Adani 2025 · O'Driscoll 2005
+5. Li 2026 (StatPearls, NBK519000, act. 2026-01-02: historia y exploración)
+6. Li 2026 (StatPearls, NBK519000, act. 2026-01-02: introducción, etiología, epidemiología e historia y exploración)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
-| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» | 4b · cita bajo el test | 2 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 4 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 
 ### Li y Sun 2026
 
@@ -14770,11 +15189,11 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 193. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 223
 194. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 223 · Canoso 1987
 195. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–224
-196. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce)
+196. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
 197. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 82 y 84
 198. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 83
-199. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101
-200. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101
+199. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101 · Li 2026 · Adani 2025 · Tahir 2026
+200. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Li 2026 · Tahir 2026 · Adani 2025 · O'Driscoll 2005
 201. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
 202. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 90 (medir la movilidad activa y pasiva del codo y el antebrazo y la sensación final; sin datos de precisión)
 203. En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura).
@@ -14791,12 +15210,12 @@ Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducci
 En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
 205. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
 206. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-207. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101
+207. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101 · Otoshi 2022 · Eskew 2026
 208. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81 y 85–87
 209. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
 210. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86
 211. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-212. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83, 85 y 100
+212. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83, 85 y 100 · Quzli 2025
 213. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 214. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 93 y 100
 215. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 87
@@ -14810,292 +15229,300 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 223. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 224. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 225. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-226. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital)
-227. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92
-228. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-229. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-230. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91–92 y 101
-231. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100
-232. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100
-233. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100
-234. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 100
-235. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 103
-236. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103
-237. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 103
-238. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86, 88 y 103
-239. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 103
-240. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
-241. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85, 88–89 y 103
-242. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81 y 103
-243. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102
-244. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 102
-245. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102
-246. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 100
-247. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100
-248. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94
-249. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101
-250. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94 (capítulo de libro: opinión de los autores, sin ensayos)
-251. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94–95
-252. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 95
-253. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 255–256 · Bessen 2009 · Bachmann 2003
-254. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
-255. van Dijk 1996 (160 pacientes con una inversión, un tobillo cada uno; referencia: hallazgo quirúrgico, o seguimiento a 6 meses en los 25 no operados) da para la exploración diferida completa (días 4–7: hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla II (S 74 %, 90 de 122; E 66–74 % según cómo se cuenten los dudosos), y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos.
+226. En lanzadores profesionales sin síntomas, con la ecografía como referencia, la exploración tuvo S 77 % y E 91,2 % (LR+ 8,76, LR− 0,25), y la inestabilidad del nervio no se relacionó con los síntomas ni con los tests de provocación (Looney 2023). Por eso no puntúa: la subluxación no es diagnóstica de neuropatía cubital (Lluch 2020, cap. 3.2, p. 92). Un chasquido del tríceps medial puede tomarse por el nervio; la ecografía los distingue (Looney 2023). Conviene preguntar si nota un chasquido o un resalte en el codo, que indica que el nervio se mueve en el túnel cubital (Davis y Kane 2023).
+227. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital) · Looney 2023 · Davis y Kane 2023
+228. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92
+229. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+230. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+231. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91–92 y 101
+232. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100 · Shamrock y Das 2023 · Engin 2023
+233. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Lucado 2022 (tabla 5) · Engin 2023
+234. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100 · Engin 2023 · Shamrock y Das 2023
+235. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100
+236. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 100
+237. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 103 · Eskew 2026 · Beazley 2017
+238. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103 · Shuttlewood 2017
+239. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 103 · Beazley 2017
+240. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 103
+241. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86, 88 y 103 · Schwab 2023
+242. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 103
+243. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
+244. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85, 88–89 y 103
+245. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81 y 103
+246. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103 · Eskew 2026 · Schwab 2023 · Gartner 2025
+247. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103
+248. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Balcerzak 2022 · Dididze 2023
+249. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Balcerzak 2022 · Binsaleem 2024 · Dididze 2023
+250. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102 · Aljawder 2016 · Balcerzak 2022 · Dididze 2023
+251. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 102
+252. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102 · Aljawder 2016 · Park 2024 · Akhondi 2025 · Shinohara 2017
+253. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102
+254. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 100
+255. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100 · Nardi y Schaefer 2023 · Ulici 2019 · Lashhab 2025
+256. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94
+257. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101 · Hodge y Schroeder 2023 · Otoshi 2022 · Hart 2024
+258. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94 (capítulo de libro: opinión de los autores, sin ensayos)
+259. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94–95
+260. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 95
+261. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 255–256 · Bessen 2009 · Bachmann 2003
+262. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
+263. van Dijk 1996 (160 pacientes con una inversión, un tobillo cada uno; referencia: hallazgo quirúrgico, o seguimiento a 6 meses en los 25 no operados) da para la exploración diferida completa (días 4–7: hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla II (S 74 %, 90 de 122; E 66–74 % según cómo se cuenten los dudosos), y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos.
 
 Técnica (Lluch 2020, p. 255, fig. 14): el explorador sujeta el talón y tira de él hacia delante mientras estabiliza la tibia con la otra mano, y busca una depresión justo por delante del maléolo lateral. En la inestabilidad crónica, el surco en el cajón es lo que define la inestabilidad tibioastragalina (p. 261).
 
 En la revisión sistemática de Netterström-Wedin 2022 (6 estudios, 885 observaciones; referencias: artrografía, ecografía, RM o artroscopia) el cajón dio S 54 %, E 87 %, LR+ 3,97, LR− 0,54, con estudios muy dispares (S 12–80 %): se hizo en flexiones plantares de 0 a 60°, y unos lo leyeron por la laxitud y otros por el surco. Recomienda un umbral alto, leer como negativa una laxitud dudosa, y no leerlo por el dolor. La exploración es más exacta diferida (2–7 días) que en las primeras 48 h. Polzer 2012 describe el surco en la mitad de las roturas del LPAA.
-256. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255; van Dijk 1996 (J Bone Joint Surg Br 78-B(6)) · Polzer 2012 · Netterström-Wedin 2022
-257. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 238, 254–258, 260, 263 y 285
-258. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 255 y 261
-259. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 262; Sman 2015 (Br J Sports Med, publicado en línea en 2013); Netterström-Wedin 2021 (Phys Ther Sport 49:214–26)
-260. Sin cifras en el capítulo. Sman 2015 (RM de referencia) da S 26 %, E 88 %, LR+ 2,15 (IC 0,86–5,39); agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes, modelo univariante), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77. Los dos intervalos de la LR+ cruzan el 1.
+264. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255; van Dijk 1996 (J Bone Joint Surg Br 78-B(6)) · Polzer 2012 · Netterström-Wedin 2022
+265. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 238, 254–258, 260, 263 y 285
+266. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 255 y 261
+267. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 262; Sman 2015 (Br J Sports Med, publicado en línea en 2013); Netterström-Wedin 2021 (Phys Ther Sport 49:214–26)
+268. Sin cifras en el capítulo. Sman 2015 (RM de referencia) da S 26 %, E 88 %, LR+ 2,15 (IC 0,86–5,39); agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes, modelo univariante), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77. Los dos intervalos de la LR+ cruzan el 1.
 
 Técnica (Lluch 2020, p. 262, fig. 17): tibia estabilizada, compresión de la parte proximal del peroné contra la tibia; positivo, el dolor distal que reproduce el dolor conocido. Si la palpación y la compresión son positivas, el capítulo pide imagen: la RM es muy precisa para el esguince agudo de la sindesmosis (hasta el 95 %, p. 263).
 
 Origen (Hopkinson 1990): revisión retrospectiva de 1344 esguinces en cadetes de West Point; 15 tobillos (13 pacientes) con afectación de la sindesmosis, todos con el test positivo en la primera exploración, y 9 de los 10 revisados con calcificación del ligamento interóseo a los meses. Los autores no pudieron calcular su sensibilidad ni su especificidad. Lo usaban como cribado en todos los esguinces: si era positivo, anticipaba una recuperación más larga (55 días frente a 28 de los esguinces graves) y pedía radiografías de estrés en rotación externa y abducción para buscar una diástasis latente; las radiografías iniciales eran normales. El test solo sugiere un esguince de la sindesmosis después de descartar otras lesiones de la pierna que también duelen al apretar: fractura de tibia o peroné, síndrome compartimental, celulitis o contusiones. Según los autores, el mecanismo que más a menudo lesiona la sindesmosis es la rotación externa.
-261. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 263
-262. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 262
-263. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 262–263
-264. Maffulli 1998: 133 roturas confirmadas en cirugía y 28 controles con lesión posterior sin rotura (26 negativos; 2 dudosos contados como falsos positivos). LR de Reiman 2014 con esos datos: LR+ 13,71 (IC 95 % 3,54–51,24), LR− 0,04 (0,02–0,10). Es el único estudio. Límites: diseño de casos y controles (los casos entraron por diagnóstico clínico y los controles los descartó clínicamente el mismo autor antes de la ecografía o la RM), así que la precisión probablemente está sobrestimada; la especificidad sale de solo 28 controles. Aun así, el IC de la LR+ no baja de 3,5.
+269. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 263
+270. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 262
+271. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 262–263
+272. Maffulli 1998: 133 roturas confirmadas en cirugía y 28 controles con lesión posterior sin rotura (26 negativos; 2 dudosos contados como falsos positivos). LR de Reiman 2014 con esos datos: LR+ 13,71 (IC 95 % 3,54–51,24), LR− 0,04 (0,02–0,10). Es el único estudio. Límites: diseño de casos y controles (los casos entraron por diagnóstico clínico y los controles los descartó clínicamente el mismo autor antes de la ecografía o la RM), así que la precisión probablemente está sobrestimada; la especificidad sale de solo 28 controles. Aun así, el IC de la LR+ no baja de 3,5.
 
 Técnica original (Thompson y Doherty 1962): prono, con los pies fuera de la camilla, o de rodillas sobre una silla; se comprime la pantorrilla en el tercio medio, por debajo de su parte más ancha. Normal: el pie hace una flexión plantar pasiva. Positivo: el pie no se mueve. Los autores lo usaban junto a los demás hallazgos de la rotura: el hueco sobre el tendón, la pérdida de fuerza de flexión plantar y la pérdida del despegue en la marcha. En Maffulli 1998 se comprime con la palma de la mano, y cuenta como positivo que el tobillo no se mueva o apenas haga flexión plantar, siempre comparando con el lado sano. Se describió antes en el Reino Unido, de ahí su otro nombre, test de Simmonds (Maffulli 1998).
 
 Falsos negativos: en una rotura de 4 meses, el sóleo cicatrizado y adherido a un plantar delgado hipertrofiado transmitía la compresión al calcáneo, y el pie respondió débilmente (Thompson y Doherty 1962). Pasadas 4 semanas, el hematoma organizado puede devolver cierta continuidad al tendón y el test puede indicar que no hay rotura; la serie de Maffulli 1998 solo incluía pacientes vistos en las 4 primeras semanas. Al principio el paciente puede seguir haciendo flexión plantar, e incluso ponerse de puntillas, con el tibial posterior y los peroneos (Maffulli 1998). Según Lluch 2020 (p. 245), con los flexores largos de los dedos y el plantar delgado; por eso muchos caminan sorprendentemente bien, aunque cojeen.
-265. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 245
-266. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272
-267. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 273
-268. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 272–273
-269. Beckenkamp 2017 (66 estudios, modelo bivariante), en los estudios que aplican las dos reglas juntas, como aquí: LR− 0,09 (IC 95 % 0,06–0,13) con todos (31 estudios) y 0,08 (0,04–0,16) en los 22 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos); en adultos, 0,12 (0,07–0,19). Bachmann 2003 (univariante, niños y adultos) daba 0,17 (0,10–0,30) para la evaluación conjunta. Las dos revisiones incluyen los estudios de los creadores de la regla. El positivo es un hallazgo: LR+ 1,48 (1,30–1,68; Beckenkamp 2017).
+273. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 245
+274. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272
+275. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 273
+276. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 272–273
+277. Beckenkamp 2017 (66 estudios, modelo bivariante), en los estudios que aplican las dos reglas juntas, como aquí: LR− 0,09 (IC 95 % 0,06–0,13) con todos (31 estudios) y 0,08 (0,04–0,16) en los 22 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos); en adultos, 0,12 (0,07–0,19). Bachmann 2003 (univariante, niños y adultos) daba 0,17 (0,10–0,30) para la evaluación conjunta. Las dos revisiones incluyen los estudios de los creadores de la regla. El positivo es un hallazgo: LR+ 1,48 (1,30–1,68; Beckenkamp 2017).
 
 Derivación (Stiell 1992): 750 adultos con un traumatismo cerrado agudo del tobillo en dos urgencias universitarias; los médicos recogieron 32 variables clínicas antes de la radiografía, y en 100 pacientes un segundo médico repitió la exploración sin conocer la primera. Solo entraron en el modelo las variables asociadas a fractura en las que los dos coincidían bien (kappa > 0,6). Fractura significativa: un fragmento de más de 3 mm, porque las avulsiones menores no se inmovilizaban. La hinchazón se asociaba a fractura, pero se dejó fuera porque depende del tiempo desde la lesión y los médicos coincidían menos en ella. El dolor óseo del maléolo medial es poco frecuente, pero cuando está indica un riesgo alto de fractura.
 
 La regla original incluía también la edad de 55 años o más (el 34 % de las fracturas maleolares en el 13 % de los pacientes, probablemente por osteoporosis según los autores) y el dolor óseo del cuboides. Al refinarla (Stiell 1993, 1032 pacientes), los dos criterios resultaron innecesarios para detectar todas las fracturas y se quitaron, y la regla del pie pasó a incluir el mismo criterio de carga que la del tobillo. La regla refinada detectó, en 453 pacientes nuevos, las 50 fracturas maleolares y las 19 del mediopié.
 
 Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pierna (cuatro pasos), aunque cojee; se valora después de palpar los huesos y sin forzar al paciente. Ante una deformidad o una fractura evidente no hace falta la regla. Cautela con varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea; la regla no se desarrolló ni se probó en menores de 18 años, y se excluyó a las embarazadas. En niños de más de 6 años, varios estudios respaldan su uso, con una sensibilidad del 98,5 % (Lluch 2020, p. 257). Si el dolor y la marcha no mejoran en unos días, hay que volver a valorar.
-270. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 280
-271. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 268
-272. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 280
-273. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 249
-274. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 249
-275. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239–240
-276. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 239
-277. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 240–241
-278. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 238–241
-279. La única cifra de estos gestos es de Hutchison 2013 (21 participantes, 10 con tendinopatía en la ecografía; agrupa las exploraciones de 3 clínicos, no pacientes; en Reiman 2014): ETM monopodal S 22 %, E 93 %; salto S 43 %, E 87 %. Las LR (3,14 y 3,31) no las publica el artículo: las calcula Reiman de S y E redondeadas, sin intervalo de confianza.
+278. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 280
+279. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 268
+280. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 280
+281. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 249
+282. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 249
+283. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239–240
+284. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 239
+285. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 240–241
+286. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 238–241
+287. La única cifra de estos gestos es de Hutchison 2013 (21 participantes, 10 con tendinopatía en la ecografía; agrupa las exploraciones de 3 clínicos, no pacientes; en Reiman 2014): ETM monopodal S 22 %, E 93 %; salto S 43 %, E 87 %. Las LR (3,14 y 3,31) no las publica el artículo: las calcula Reiman de S y E redondeadas, sin intervalo de confianza.
 
 Lluch 2020 (p. 243) advierte que el dolor a la palpación es común a todas las presentaciones del Aquiles y no ayuda a distinguirlas; la guía APTA (Chimenti 2024), posterior, lo incluye entre los criterios diagnósticos de la porción media.
-280. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243; Reiman 2014 (J Athl Train 49:820–9)
-281. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 243
-282. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242 y 244
-283. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242–243
-284. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 242
-285. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 242
-286. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243
-287. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 237
-288. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 244
-289. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244
-290. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 244
-291. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 246
-292. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 244 y 246
-293. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248
-294. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248 · Henry 2019
-295. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 249 · Henry 2019 · Oyamada 2026
-296. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 248–249; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
-297. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 248–249
-298. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 250
-299. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250
-300. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250–251; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
-301. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 249–251
-302. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 252
-303. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 252
-304. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 251–252
-305. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 253
-306. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253
-307. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 257
-308. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 257 · Pereira 2021
-309. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 258
-310. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254 y 258
-311. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 257–258
-312. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 259 · Cady 2024 · Domínguez-Muñoz 2025
-313. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 259
-314. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 258–259
-315. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239 y 258–259
-316. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 260
-317. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261 · Polzer 2012
-318. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261 · Pereira 2021
-319. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261
-320. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 264
-321. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260 y 264
-322. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 285
-323. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284–285
-324. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265–266
-325. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 266–267
-326. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 266
-327. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 267
-328. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 267
-329. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 270
-330. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 271
-331. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 269–270
-332. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 253 · Younis 2025 · Kaiser 2023
-333. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 271–272
-334. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 276
-335. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 277
-336. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 277
-337. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 276–278
-338. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 276–277
-339. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 278
-340. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 278–279
-341. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 279
-342. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252 y 279
-343. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Mahadevan 2015 (J Foot Ankle Surg 54:549–53); Pitcher 2024 (Foot Ankle Orthop 9(4))
-344. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 281
-345. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Menon y Rednam 2026 (StatPearls, «Gout»)
-346. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 286
-347. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 286
-348. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284 y 286
-349. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 284
-350. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284–287
-351. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 284
-352. Beckenkamp 2017 (66 estudios, modelo bivariante), regla del tobillo: LR− 0,018 (IC 95 % 0,005–0,059) con todos (34 estudios) y 0,030 (0,009–0,099) en los 25 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos); en los 3 estudios de riesgo de sesgo bajo, 0,11 (0,02–0,79). Bachmann 2003 (univariante, niños y adultos) daba 0,08 (0,03–0,18). Las dos revisiones incluyen los estudios de los creadores de la regla. El positivo es un hallazgo: LR+ 1,53 (1,38–1,70).
+288. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243; Reiman 2014 (J Athl Train 49:820–9)
+289. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 243
+290. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242 y 244
+291. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242–243
+292. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 242
+293. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 242
+294. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243
+295. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 237
+296. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 244
+297. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244
+298. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 244
+299. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 246
+300. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 244 y 246
+301. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248
+302. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248 · Henry 2019
+303. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 249 · Henry 2019 · Oyamada 2026
+304. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 248–249; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
+305. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 248–249
+306. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 250
+307. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250
+308. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250–251; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
+309. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 249–251
+310. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 252
+311. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 252
+312. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 251–252
+313. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 253
+314. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253
+315. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 257
+316. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 257 · Pereira 2021
+317. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 258
+318. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254 y 258
+319. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 257–258
+320. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 259 · Cady 2024 · Domínguez-Muñoz 2025
+321. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 259
+322. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 258–259
+323. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239 y 258–259
+324. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 260
+325. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261 · Polzer 2012
+326. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261 · Pereira 2021
+327. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261
+328. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 264
+329. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260 y 264
+330. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 285
+331. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284–285
+332. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265–266
+333. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 266–267
+334. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 266
+335. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 267
+336. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 267
+337. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 270
+338. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 271
+339. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 269–270
+340. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 253 · Younis 2025 · Kaiser 2023
+341. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 271–272
+342. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 276
+343. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 277
+344. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 277
+345. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 276–278
+346. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 276–277
+347. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 278
+348. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 278–279
+349. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 279
+350. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252 y 279
+351. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Mahadevan 2015 (J Foot Ankle Surg 54:549–53); Pitcher 2024 (Foot Ankle Orthop 9(4))
+352. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 281
+353. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Menon y Rednam 2026 (StatPearls, «Gout»)
+354. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 286
+355. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 286
+356. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284 y 286
+357. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 284
+358. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284–287
+359. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 284
+360. Beckenkamp 2017 (66 estudios, modelo bivariante), regla del tobillo: LR− 0,018 (IC 95 % 0,005–0,059) con todos (34 estudios) y 0,030 (0,009–0,099) en los 25 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos); en los 3 estudios de riesgo de sesgo bajo, 0,11 (0,02–0,79). Bachmann 2003 (univariante, niños y adultos) daba 0,08 (0,03–0,18). Las dos revisiones incluyen los estudios de los creadores de la regla. El positivo es un hallazgo: LR+ 1,53 (1,38–1,70).
 
 Derivación (Stiell 1992): 750 adultos con un traumatismo cerrado agudo del tobillo en dos urgencias universitarias; los médicos recogieron 32 variables clínicas antes de la radiografía, y en 100 pacientes un segundo médico repitió la exploración sin conocer la primera. Solo entraron en el modelo las variables asociadas a fractura en las que los dos coincidían bien (kappa > 0,6). Fractura significativa: un fragmento de más de 3 mm, porque las avulsiones menores no se inmovilizaban. La hinchazón se asociaba a fractura, pero se dejó fuera porque depende del tiempo desde la lesión y los médicos coincidían menos en ella. El dolor óseo del maléolo medial es poco frecuente, pero cuando está indica un riesgo alto de fractura.
 
 La regla original incluía también la edad de 55 años o más (el 34 % de las fracturas maleolares en el 13 % de los pacientes, probablemente por osteoporosis según los autores) y el dolor óseo del cuboides. Al refinarla (Stiell 1993, 1032 pacientes), los dos criterios resultaron innecesarios para detectar todas las fracturas y se quitaron, y la regla del pie pasó a incluir el mismo criterio de carga que la del tobillo. La regla refinada detectó, en 453 pacientes nuevos, las 50 fracturas maleolares y las 19 del mediopié.
 
 Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pierna (cuatro pasos), aunque cojee; se valora después de palpar los huesos y sin forzar al paciente. Ante una deformidad o una fractura evidente no hace falta la regla. Cautela con varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea; la regla no se desarrolló ni se probó en menores de 18 años, y se excluyó a las embarazadas. En niños de más de 6 años, varios estudios respaldan su uso, con una sensibilidad del 98,5 % (Lluch 2020, p. 257). Si el dolor y la marcha no mejoran en unos días, hay que volver a valorar.
-353. Beckenkamp 2017 (Br J Sports Med 51:504–10), tabla 1; Bachmann 2003 (BMJ 326:417), tabla 4; Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 256–257
-354. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
-355. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
-356. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
-357. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
-358. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
-359. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
-360. Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
-361. Deformidad del codo tras una caída (luxación), o mano dormida, fría o pálida: compromiso neurovascular (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 93)
-362. Niño pequeño que no mueve el brazo tras un tirón (pronación dolorosa): descartar una fractura o una infección (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
-363. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
-364. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
-365. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
-366. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
-367. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
-368. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
-369. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
-370. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-371. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
-372. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-373. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-374. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
-375. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
-376. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
-377. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
-378. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
-379. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 149.
-380. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-381. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
-382. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
-383. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
-384. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
-385. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
-386. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
-387. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
-388. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
-389. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
-390. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
-391. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
-392. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
-393. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
-394. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
-395. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
-396. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
-397. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
-398. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
-399. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
-400. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
-401. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
-402. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 86, 89 y 93–94.
-403. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 81, 87 y 93–94.
-404. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–92 y 101.
-405. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 91–92 y 100–102.
-406. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 89–90.
-407. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100.
-408. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272.
-409. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254–257.
-410. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 241–245.
-411. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 272–273.
-412. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247–251.
-413. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 247, 252–253 y 278–280.
-414. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 252 y 287.
-415. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 280–282.
-416. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 264, 282 y 287.
-417. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235 y 287.
-418. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 285–286.
-419. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 287.
-420. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 283.
-421. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
-422. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 1, p. 70, y pp. 71–73 y tabla 2, p. 75
-423. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 69, 71 y 73, tabla 2, p. 75, y p. 76
-424. Lluch 2020, cap. 3.1 (Struyf), pp. 57–59, 61 y 63–64, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
-425. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 66–67
-426. Lluch 2020, cap. 3.1 (Struyf), pp. 53–54, 59 y 66, y cap. 3.1.1 (Powell y Lewis), p. 73
-427. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 136; cap. 4.1.3, pp. 153–154 y tabla 4; cap. 4.1.4, pp. 157–158 y 161
-428. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138 y 140–141; cap. 4.1.4, pp. 168 y 170
-429. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 138; cap. 4.1.4, p. 164
-430. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 132 y 136–137; cap. 4.1.4, pp. 162–163; cap. 4.1.5, pp. 176–177
-431. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135–137; cap. 4.1.4, pp. 160 y 162–164
-432. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), tabla 1, p. 134, y pp. 141–142; cap. 4.1.4, pp. 157–158, 170 y 174
-433. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), tabla 1, p. 134, y p. 135
-434. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–140; cap. 4.1.3, p. 152; cap. 4.1.4, tabla 9, p. 164
-435. Lluch 2020, cap. 4.1.1 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 128–129; cap. 4.1.2, pp. 135–136, 138 y 141; cap. 4.1.3, p. 153; cap. 4.1.4, p. 172
-436. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368 y 382
-437. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 369–370, 373 y 382
-438. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370–372 y 380–381
-439. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370, 372 y 380, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 398–399
-440. Lluch 2020, cap. 5.3 (Jull y Falla), p. 376, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 397–406 y 410
-441. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 367, 370–371, 379–380 y tabla 1, p. 383
-442. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368, 374–375 y 377–379
-443. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 366, 371 y 374–377
-444. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 299, 306–308 y 313
-445. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 298 y 317
-446. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 306 y 309–311
-447. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 302–303 y 312–313
-448. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 297–299, 314–324 y tabla 6, p. 323
-449. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 195–198, 206–209, 216, 219 y 221
-450. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 210–211
-451. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201, 213 y 214 (tabla 2)
-452. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 213–214 (tabla 2) y 225 (tabla 4)
-453. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191–194, 204 (tabla 1), 211–212 y 215
-454. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 195–205 (tabla 1) y 206
-455. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209–214
-456. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216–218 y 220 (tabla 3)
-457. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 221–225 (tabla 4)
-458. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85, 93–95, 100 y 102
-459. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81–82 y 89–90
-460. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–92 y 100–102
-461. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81–86, 89 y 100–103
-462. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81, 85–89 y 100–101
-463. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235–236 y 255
-464. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237, 245, 255–257, 268 y 272–273
-465. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247, 249, 254–255, 262–263 y 269–271
-466. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 269, 275 y 284–287 (tablas 6, 7 y 10)
-467. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 254 (tabla 3) y 287
-468. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 236–246 (tabla 1)
-469. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 246–253 (tabla 2)
-470. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–254 (tabla 3) y 257–258
-471. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 265–268 (tabla 5)
-472. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253, 263 y 268–273 (tabla 6)
-473. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 274–282 (tablas 7–9)
-474. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260–264 (tabla 4) y 284–285
-475. Lluch 2020
+361. Beckenkamp 2017 (Br J Sports Med 51:504–10), tabla 1; Bachmann 2003 (BMJ 326:417), tabla 4; Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 256–257
+362. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
+363. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
+364. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
+365. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
+366. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
+367. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
+368. Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
+369. Deformidad del codo tras una caída (luxación), o mano dormida, fría o pálida: compromiso neurovascular (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 93)
+370. Niño pequeño que no mueve el brazo tras un tirón (pronación dolorosa): descartar una fractura o una infección (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
+371. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
+372. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
+373. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
+374. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
+375. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
+376. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
+377. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
+378. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+379. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
+380. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+381. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+382. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
+383. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
+384. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
+385. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
+386. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
+387. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 149.
+388. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+389. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
+390. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
+391. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
+392. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
+393. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
+394. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
+395. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
+396. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
+397. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
+398. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
+399. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
+400. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
+401. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
+402. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
+403. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
+404. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
+405. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
+406. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
+407. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
+408. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
+409. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
+410. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 86, 89 y 93–94.
+411. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 81, 87 y 93–94.
+412. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–92 y 101.
+413. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 91–92 y 100–102.
+414. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 89–90.
+415. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100.
+416. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272.
+417. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254–257.
+418. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 241–245.
+419. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 272–273.
+420. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247–251.
+421. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 247, 252–253 y 278–280.
+422. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 252 y 287.
+423. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 280–282.
+424. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 264, 282 y 287.
+425. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235 y 287.
+426. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 285–286.
+427. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 287.
+428. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 283.
+429. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
+430. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 1, p. 70, y pp. 71–73 y tabla 2, p. 75
+431. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 69, 71 y 73, tabla 2, p. 75, y p. 76
+432. Lluch 2020, cap. 3.1 (Struyf), pp. 57–59, 61 y 63–64, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
+433. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 66–67
+434. Lluch 2020, cap. 3.1 (Struyf), pp. 53–54, 59 y 66, y cap. 3.1.1 (Powell y Lewis), p. 73
+435. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 136; cap. 4.1.3, pp. 153–154 y tabla 4; cap. 4.1.4, pp. 157–158 y 161
+436. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138 y 140–141; cap. 4.1.4, pp. 168 y 170
+437. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 138; cap. 4.1.4, p. 164
+438. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 132 y 136–137; cap. 4.1.4, pp. 162–163; cap. 4.1.5, pp. 176–177
+439. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135–137; cap. 4.1.4, pp. 160 y 162–164
+440. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), tabla 1, p. 134, y pp. 141–142; cap. 4.1.4, pp. 157–158, 170 y 174
+441. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), tabla 1, p. 134, y p. 135
+442. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–140; cap. 4.1.3, p. 152; cap. 4.1.4, tabla 9, p. 164
+443. Lluch 2020, cap. 4.1.1 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 128–129; cap. 4.1.2, pp. 135–136, 138 y 141; cap. 4.1.3, p. 153; cap. 4.1.4, p. 172
+444. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368 y 382
+445. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 369–370, 373 y 382
+446. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370–372 y 380–381
+447. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370, 372 y 380, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 398–399
+448. Lluch 2020, cap. 5.3 (Jull y Falla), p. 376, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 397–406 y 410
+449. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 367, 370–371, 379–380 y tabla 1, p. 383
+450. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368, 374–375 y 377–379
+451. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 366, 371 y 374–377
+452. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 299, 306–308 y 313
+453. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 298 y 317
+454. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 306 y 309–311
+455. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 302–303 y 312–313
+456. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 297–299, 314–324 y tabla 6, p. 323
+457. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 195–198, 206–209, 216, 219 y 221
+458. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 210–211
+459. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201, 213 y 214 (tabla 2)
+460. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 213–214 (tabla 2) y 225 (tabla 4)
+461. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191–194, 204 (tabla 1), 211–212 y 215
+462. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 195–205 (tabla 1) y 206
+463. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209–214
+464. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216–218 y 220 (tabla 3)
+465. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 221–225 (tabla 4)
+466. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85, 93–95, 100 y 102
+467. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81–82 y 89–90
+468. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–92 y 100–102
+469. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81–86, 89 y 100–103
+470. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81, 85–89 y 100–101
+471. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235–236 y 255
+472. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237, 245, 255–257, 268 y 272–273
+473. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247, 249, 254–255, 262–263 y 269–271
+474. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 269, 275 y 284–287 (tablas 6, 7 y 10)
+475. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 254 (tabla 3) y 287
+476. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 236–246 (tabla 1)
+477. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 246–253 (tabla 2)
+478. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–254 (tabla 3) y 257–258
+479. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 265–268 (tabla 5)
+480. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253, 263 y 268–273 (tabla 6)
+481. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 274–282 (tablas 7–9)
+482. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260–264 (tabla 4) y 284–285
+483. Lluch 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Fase 6 (plan de tratamiento) | — | `AVISOS.esqueletoInmaduro` | 6 · plan de tratamiento | 475 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaFracturaEstres.fuente` | 6 · plan de tratamiento | 475 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaFracturaEstresPie.fuente` | 6 · plan de tratamiento | 475 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaRoturaAquiles.fuente` | 6 · plan de tratamiento | 475 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaEstres` | 6 · plan de tratamiento | 475 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaEstresPie` | 6 · plan de tratamiento | 475 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreRoturaAquiles` | 6 · plan de tratamiento | 475 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.esqueletoInmaduro` | 6 · plan de tratamiento | 483 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaFracturaEstres.fuente` | 6 · plan de tratamiento | 483 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaFracturaEstresPie.fuente` | 6 · plan de tratamiento | 483 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaRoturaAquiles.fuente` | 6 · plan de tratamiento | 483 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaEstres` | 6 · plan de tratamiento | 483 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaEstresPie` | 6 · plan de tratamiento | 483 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreRoturaAquiles` | 6 · plan de tratamiento | 483 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Abducción pasiva glenohumeral <80°» | 4b · cita bajo el test | 1 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» | 4b · cita bajo el test | 3 |
@@ -15132,23 +15559,23 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 22 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Pronóstico | 5 · cita del pronóstico | 28 |
-| Hombro | — | `sistemas.8.banderasRojas.5.texto` | 2 · mención en el texto | 355 |
-| Hombro | — | `sistemas.14.banderasRojas.0.texto` | 2 · mención en el texto | 356 |
-| Hombro | — | `sistemas.15.banderasRojas.0.texto` | 2 · mención en el texto | 357 |
-| Hombro | — | `sistemas.16.banderasRojas.0.texto` | 2 · mención en el texto | 358 |
-| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 363 |
-| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 364 |
-| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 365 |
-| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 366 |
-| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 365 |
-| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 367 |
-| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 368 |
-| Hombro | — | Paso `h_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 421 |
-| Hombro | — | Paso `h_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 422 |
-| Hombro | — | Paso `h_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 423 |
-| Hombro | — | Paso `h_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 424 |
-| Hombro | — | Paso `h_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 425 |
-| Hombro | — | Paso `h_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 426 |
+| Hombro | — | `sistemas.8.banderasRojas.5.texto` | 2 · mención en el texto | 363 |
+| Hombro | — | `sistemas.14.banderasRojas.0.texto` | 2 · mención en el texto | 364 |
+| Hombro | — | `sistemas.15.banderasRojas.0.texto` | 2 · mención en el texto | 365 |
+| Hombro | — | `sistemas.16.banderasRojas.0.texto` | 2 · mención en el texto | 366 |
+| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 371 |
+| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 372 |
+| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 373 |
+| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 374 |
+| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 373 |
+| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 375 |
+| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 376 |
+| Hombro | — | Paso `h_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 429 |
+| Hombro | — | Paso `h_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 430 |
+| Hombro | — | Paso `h_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 431 |
+| Hombro | — | Paso `h_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 432 |
+| Hombro | — | Paso `h_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 433 |
+| Hombro | — | Paso `h_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 434 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Aducción de cadera disminuida» (en `razonamiento.detalle`) | 4b · mención en el texto | 29 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Rotación Interna disminuida (<24°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 30 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Apoyo monopodal (30 s)» | 4b · cita bajo el test | 31 |
@@ -15209,34 +15636,34 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Palpación dolorosa de la sínfisis y el hueso adyacente» | 4b · cita bajo el test | 69 |
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Resistencia abdominal y squeeze» | 4b · cita bajo el test | 76 |
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pronóstico | 5 · cita del pronóstico | 68 |
-| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 369 |
-| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 370 |
-| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 369 |
-| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 371 |
-| Cadera | — | Bandera roja «Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo» · Cáncer / Oncológico | 2 · razonamiento del cribado | 372 |
-| Cadera | — | Bandera amarilla «Antecedente familiar de cáncer» · Cáncer / Oncológico | 2 · razonamiento del cribado | 372 |
-| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 373 |
-| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 373 |
-| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 373 |
-| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 374 |
-| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 375 |
-| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 376 |
-| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 377 |
-| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 378 |
-| Cadera | — | Bandera roja «Fractura de estrés del acetábulo o del sacro (sacro: osteoporosis, embarazo o posparto, radioterapia pélvica, corticoides prolongados, deportistas y militares)» · Óseo / Desarrollo | 2 · razonamiento del cribado | 379 |
-| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 373 |
-| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 380 |
-| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 372 |
-| Cadera | — | Bandera amarilla «VSG como prueba de bajo coste antes que la RM» · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 369 |
-| Cadera | — | Paso `ca_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 427 |
-| Cadera | — | Paso `ca_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 428 |
-| Cadera | — | Paso `ca_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 429 |
-| Cadera | — | Paso `ca_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 430 |
-| Cadera | — | Paso `ca_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 431 |
-| Cadera | — | Paso `ca_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 432 |
-| Cadera | — | Paso `ca_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 433 |
-| Cadera | — | Paso `ca_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 434 |
-| Cadera | — | Paso `ca_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 435 |
+| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 377 |
+| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 378 |
+| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 377 |
+| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 379 |
+| Cadera | — | Bandera roja «Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo» · Cáncer / Oncológico | 2 · razonamiento del cribado | 380 |
+| Cadera | — | Bandera amarilla «Antecedente familiar de cáncer» · Cáncer / Oncológico | 2 · razonamiento del cribado | 380 |
+| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 381 |
+| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 381 |
+| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 381 |
+| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 382 |
+| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 383 |
+| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 384 |
+| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 385 |
+| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 386 |
+| Cadera | — | Bandera roja «Fractura de estrés del acetábulo o del sacro (sacro: osteoporosis, embarazo o posparto, radioterapia pélvica, corticoides prolongados, deportistas y militares)» · Óseo / Desarrollo | 2 · razonamiento del cribado | 387 |
+| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 381 |
+| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 388 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 380 |
+| Cadera | — | Bandera amarilla «VSG como prueba de bajo coste antes que la RM» · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 377 |
+| Cadera | — | Paso `ca_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 435 |
+| Cadera | — | Paso `ca_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 436 |
+| Cadera | — | Paso `ca_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 437 |
+| Cadera | — | Paso `ca_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 438 |
+| Cadera | — | Paso `ca_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 439 |
+| Cadera | — | Paso `ca_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 440 |
+| Cadera | — | Paso `ca_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 441 |
+| Cadera | — | Paso `ca_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 442 |
+| Cadera | — | Paso `ca_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 443 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» (en `razonamiento.detalle`) | 4b · mención en el texto | 77 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» | 4b · cita bajo el test | 78 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Flexión Craneocervical (CCFT) con biofeedback de presión» | 4b · cita bajo el test | 79 |
@@ -15282,21 +15709,21 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Cervical | ce14 · Dolor Cervical Idiopático | Test «Test de flexión-rotación (FRT) si es craneocervical» | 4b · cita bajo el test | 114 |
 | Cervical | ce14 · Dolor Cervical Idiopático | Test «Extensión-rotación» | 4b · cita bajo el test | 115 |
 | Cervical | ce14 · Dolor Cervical Idiopático | Pronóstico | 5 · cita del pronóstico | 116 |
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 381 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 382 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 383 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 384 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 385 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 386 |
-| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 387 |
-| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 436 |
-| Cervical | — | Paso `ce_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 437 |
-| Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 438 |
-| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 439 |
-| Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 440 |
-| Cervical | — | Paso `ce_step4b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 441 |
-| Cervical | — | Paso `ce_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 442 |
-| Cervical | — | Paso `ce_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 443 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 389 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 390 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 391 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 392 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 393 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 394 |
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 395 |
+| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 444 |
+| Cervical | — | Paso `ce_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 445 |
+| Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 446 |
+| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 447 |
+| Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 448 |
+| Cervical | — | Paso `ce_step4b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 449 |
+| Cervical | — | Paso `ce_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 450 |
+| Cervical | — | Paso `ce_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 451 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 117 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Síntomas bilaterales» (en `razonamiento.detalle`) | 4b · mención en el texto | 118 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Alivio al sentarse» (en `razonamiento.detalle`) | 4b · mención en el texto | 119 |
@@ -15324,15 +15751,15 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 140 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 141 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 142 |
-| Lumbar | — | `sistemas.13.banderasRojas.0.texto` | 2 · mención en el texto | 359 |
-| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 388 |
-| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 389 |
-| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 390 |
-| Lumbar | — | Paso `lu_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 444 |
-| Lumbar | — | Paso `lu_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 445 |
-| Lumbar | — | Paso `lu_step1c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 446 |
-| Lumbar | — | Paso `lu_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 447 |
-| Lumbar | — | Paso `lu_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 448 |
+| Lumbar | — | `sistemas.13.banderasRojas.0.texto` | 2 · mención en el texto | 367 |
+| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 396 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 397 |
+| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 398 |
+| Lumbar | — | Paso `lu_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 452 |
+| Lumbar | — | Paso `lu_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 453 |
+| Lumbar | — | Paso `lu_step1c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 454 |
+| Lumbar | — | Paso `lu_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 455 |
+| Lumbar | — | Paso `lu_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 456 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Rango disminuido, hinchazón persistente, debilidad de cuádriceps» | 4b · cita bajo el test | 143 |
 | Rodilla | ro1 · Artrosis de Rodilla | Pronóstico | 5 · cita del pronóstico | 144 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» | 4b · cita bajo el test | 145 |
@@ -15403,27 +15830,27 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signos de patología meniscal o condral» | 4b · cita bajo el test | 193 |
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signo de Foucher» | 4b · cita bajo el test | 194 |
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Pronóstico | 5 · cita del pronóstico | 195 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 391 |
-| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 392 |
-| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 393 |
-| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 394 |
-| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 395 |
-| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 396 |
-| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 397 |
-| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 398 |
-| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 399 |
-| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 400 |
-| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 401 |
-| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 449 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 399 |
+| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 400 |
+| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 401 |
+| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 402 |
+| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 403 |
+| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 404 |
+| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 405 |
+| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 406 |
+| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 407 |
+| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 408 |
+| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 409 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 457 |
 | Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 171 |
-| Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 450 |
-| Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 451 |
-| Rodilla | — | Paso `ro_step2c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 452 |
-| Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 453 |
-| Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 454 |
-| Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 455 |
-| Rodilla | — | Paso `ro_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 456 |
-| Rodilla | — | Paso `ro_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 457 |
+| Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 458 |
+| Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 459 |
+| Rodilla | — | Paso `ro_step2c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 460 |
+| Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 461 |
+| Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 462 |
+| Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 463 |
+| Rodilla | — | Paso `ro_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 464 |
+| Rodilla | — | Paso `ro_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 465 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 196 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Fuerza de prensión sin dolor (dinamómetro)» | 4b · cita bajo el test | 197 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 198 |
@@ -15460,263 +15887,264 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 223 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» («¿Por qué?») | 4b · razonamiento del test | 224 |
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de Tinel en túnel cubital» | 4b · cita bajo el test | 225 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» | 4b · cita bajo el test | 226 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Electrodiagnóstico (velocidad de conducción nerviosa)» | 4b · cita bajo el test | 227 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» | 4b · cita bajo el test | 228 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 229 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» («¿Por qué?») | 4b · razonamiento del test | 230 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» | 4b · cita bajo el test | 231 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» | 4b · cita bajo el test | 232 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» | 4b · cita bajo el test | 233 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Neurodinámica del nervio radial (ULNT radial)» | 4b · cita bajo el test | 233 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)» | 4b · cita bajo el test | 234 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Neurodinámica del nervio radial (ULNT radial)» («¿Por qué?») | 4b · razonamiento del test | 233 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)» («¿Por qué?») | 4b · razonamiento del test | 234 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» | 4b · cita bajo el test | 235 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor a la palpación de la inserción del tríceps» | 4b · cita bajo el test | 236 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» | 4b · cita bajo el test | 237 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» («¿Por qué?») | 4b · razonamiento del test | 237 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Dolor en la extensión terminal del codo» | 4b · cita bajo el test | 238 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Déficit fijo de extensión» | 4b · cita bajo el test | 239 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 240 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 240 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» («¿Por qué?») | 4b · razonamiento del test | 241 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» («¿Por qué?») | 4b · razonamiento del test | 241 |
-| Codo | co12 · Fractura de Estrés del Olécranon | Test «Dolor con la extensión del codo, sin traumatismo» | 4b · cita bajo el test | 242 |
-| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» | 4b · cita bajo el test | 236 |
-| Codo | co12 · Fractura de Estrés del Olécranon | Test «TC (si la radiografía no es concluyente)» | 4b · cita bajo el test | 236 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» | 4b · cita bajo el test | 243 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» | 4b · cita bajo el test | 243 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» | 4b · cita bajo el test | 243 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Neurodinámica del nervio mediano (ULNT mediano)» | 4b · cita bajo el test | 244 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 245 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Neurodinámica del nervio mediano (ULNT mediano)» («¿Por qué?») | 4b · razonamiento del test | 244 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» («¿Por qué?») | 4b · razonamiento del test | 245 |
-| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Tirón del brazo extendido en un menor de 5 años, sin caída» | 4b · cita bajo el test | 246 |
-| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» | 4b · cita bajo el test | 247 |
-| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Tirón del brazo extendido en un menor de 5 años, sin caída» («¿Por qué?») | 4b · razonamiento del test | 246 |
-| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor medial con el lanzamiento en un deportista con el esqueleto inmaduro» | 4b · cita bajo el test | 248 |
-| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» | 4b · cita bajo el test | 249 |
-| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Pauta de tratamiento | 5 · cita de la pauta | 250 |
-| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» | 4b · cita bajo el test | 251 |
-| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 252 |
-| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» («¿Por qué?») | 4b · razonamiento del test | 251 |
-| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» («¿Por qué?») | 4b · razonamiento del test | 252 |
-| Codo | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 360 |
-| Codo | — | `sistemas.8.banderasRojas.1.texto` | 2 · mención en el texto | 361 |
-| Codo | — | `sistemas.8.banderasRojas.2.texto` | 2 · mención en el texto | 362 |
-| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 402 |
-| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 403 |
-| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 404 |
-| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 405 |
-| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 406 |
-| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 407 |
-| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 458 |
-| Codo | — | Paso `co_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 459 |
-| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 460 |
-| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 461 |
-| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 462 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Reglas de Ottawa (si no carga)» | 4b · cita bajo el test | 253 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» | 4b · cita bajo el test | 254 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» | 4b · cita bajo el test | 254 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» (en `razonamiento.detalle`) | 4b · mención en el texto | 255 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» | 4b · cita bajo el test | 256 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Pronóstico | 5 · cita del pronóstico | 257 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» («¿Por qué?») | 4b · razonamiento del test | 254 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» («¿Por qué?») | 4b · razonamiento del test | 254 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» («¿Por qué?») | 4b · razonamiento del test | 258 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» | 4b · cita bajo el test | 259 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» (en `razonamiento.detalle`) | 4b · mención en el texto | 260 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» | 4b · cita bajo el test | 259 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Pronóstico | 5 · cita del pronóstico | 261 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» («¿Por qué?») | 4b · razonamiento del test | 262 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» («¿Por qué?») | 4b · razonamiento del test | 263 |
-| Tobillo y pie | tp3 · Rotura del Aquiles | Test «Thompson (Simmonds)» (en `razonamiento.detalle`) | 4b · mención en el texto | 264 |
-| Tobillo y pie | tp3 · Rotura del Aquiles | Pronóstico | 5 · cita del pronóstico | 265 |
-| Tobillo y pie | tp3 · Rotura del Aquiles | Test «Thompson (Simmonds)» («¿Por qué?») | 4b · razonamiento del test | 265 |
-| Tobillo y pie | tp3 · Rotura del Aquiles | Test «Hueco palpable» («¿Por qué?») | 4b · razonamiento del test | 265 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Neurovascular y cinco P» | 4b · cita bajo el test | 266 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Equimosis plantar» | 4b · cita bajo el test | 266 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Dolor en todo el ancho del mediopié» | 4b · cita bajo el test | 266 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «1.º y 2.º MT en direcciones opuestas» | 4b · cita bajo el test | 266 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Pronóstico | 5 · cita del pronóstico | 267 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «1.º y 2.º MT en direcciones opuestas» («¿Por qué?») | 4b · razonamiento del test | 268 |
-| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `razonamiento.detalle`) | 4b · mención en el texto | 269 |
-| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «5.º MT: dolor en la base» | 4b · cita bajo el test | 270 |
-| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Calcáneo: talón doloroso con equimosis» | 4b · cita bajo el test | 271 |
-| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 272 |
-| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Hinchazón y equimosis perimaleolar medial» | 4b · cita bajo el test | 273 |
-| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Resalte con la flexión dorsal y plantar» | 4b · cita bajo el test | 274 |
-| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Resalte con la flexión dorsal y plantar» («¿Por qué?») | 4b · razonamiento del test | 273 |
-| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Test de pinzamiento posterior» | 4b · cita bajo el test | 275 |
-| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Hinchazón y dolor por detrás del astrágalo» | 4b · cita bajo el test | 276 |
-| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 277 |
-| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Test de pinzamiento posterior» («¿Por qué?») | 4b · razonamiento del test | 278 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» (en `razonamiento.detalle`) | 4b · mención en el texto | 279 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» | 4b · cita bajo el test | 280 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» | 4b · cita bajo el test | 281 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Pronóstico | 5 · cita del pronóstico | 282 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» («¿Por qué?») | 4b · razonamiento del test | 283 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» («¿Por qué?») | 4b · razonamiento del test | 281 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» | 4b · cita bajo el test | 284 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» | 4b · cita bajo el test | 281 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» | 4b · cita bajo el test | 281 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Pronóstico | 5 · cita del pronóstico | 282 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» («¿Por qué?») | 4b · razonamiento del test | 285 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» («¿Por qué?») | 4b · razonamiento del test | 281 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» («¿Por qué?») | 4b · razonamiento del test | 281 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «Crepitación en flexión plantar y dorsal» | 4b · cita bajo el test | 286 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» | 4b · cita bajo el test | 281 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Pronóstico | 5 · cita del pronóstico | 282 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «Crepitación en flexión plantar y dorsal» («¿Por qué?») | 4b · razonamiento del test | 283 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» («¿Por qué?») | 4b · razonamiento del test | 281 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «ETM sobre un step en todo el rango» | 4b · cita bajo el test | 287 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «Marcha descalzo» | 4b · cita bajo el test | 288 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Pronóstico | 5 · cita del pronóstico | 282 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «ETM sobre un step en todo el rango» («¿Por qué?») | 4b · razonamiento del test | 289 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «Marcha descalzo» («¿Por qué?») | 4b · razonamiento del test | 282 |
-| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Tinel a lo largo del sural» | 4b · cita bajo el test | 287 |
-| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Palpación en prono con flexión dorsal pasiva» | 4b · cita bajo el test | 290 |
-| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Pronóstico | 5 · cita del pronóstico | 289 |
-| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Palpación en prono con flexión dorsal pasiva» («¿Por qué?») | 4b · razonamiento del test | 290 |
-| Tobillo y pie | tp13 · Bursitis Calcánea Superficial | Test «Dolor superficial e hinchazón a la presión» | 4b · cita bajo el test | 291 |
-| Tobillo y pie | tp13 · Bursitis Calcánea Superficial | Test «Dolor superficial e hinchazón a la presión» («¿Por qué?») | 4b · razonamiento del test | 292 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Dolor retromaleolar medial» | 4b · cita bajo el test | 293 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Inversión resistida» | 4b · cita bajo el test | 293 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié no va a varo» | 4b · cita bajo el test | 294 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test ««Demasiados dedos»» | 4b · cita bajo el test | 295 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pronóstico | 5 · cita del pronóstico | 296 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Dolor retromaleolar medial» («¿Por qué?») | 4b · razonamiento del test | 293 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Inversión resistida» («¿Por qué?») | 4b · razonamiento del test | 293 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié no va a varo» («¿Por qué?») | 4b · razonamiento del test | 293 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test ««Demasiados dedos»» («¿Por qué?») | 4b · razonamiento del test | 297 |
-| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Flexoextensión del primer dedo en flexión plantar completa» | 4b · cita bajo el test | 298 |
-| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Crepitación e hinchazón en la vaina» | 4b · cita bajo el test | 299 |
-| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Pronóstico | 5 · cita del pronóstico | 300 |
-| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Flexoextensión del primer dedo en flexión plantar completa» («¿Por qué?») | 4b · razonamiento del test | 301 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Tinel a lo largo del túnel» | 4b · cita bajo el test | 302 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Hinchazón en el túnel o la subastragalina posterior» | 4b · cita bajo el test | 303 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Explorar el FHL» | 4b · cita bajo el test | 303 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Pronóstico | 5 · cita del pronóstico | 304 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Tinel a lo largo del túnel» («¿Por qué?») | 4b · razonamiento del test | 304 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Dolor óseo a la palpación» | 4b · cita bajo el test | 305 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Calcáneo: compresión medial y lateral a la vez» | 4b · cita bajo el test | 305 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Astrágalo: hinchazón en el seno del tarso o posterior» | 4b · cita bajo el test | 305 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 306 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Calcáneo: compresión medial y lateral a la vez» («¿Por qué?») | 4b · razonamiento del test | 306 |
-| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Palpación del seno del tarso» | 4b · cita bajo el test | 307 |
-| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación» | 4b · cita bajo el test | 308 |
-| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Pronóstico | 5 · cita del pronóstico | 307 |
-| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación» («¿Por qué?») | 4b · razonamiento del test | 307 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Dolor retromaleolar lateral» | 4b · cita bajo el test | 309 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Subluxación de los peroneos» | 4b · cita bajo el test | 310 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Crepitación e hinchazón» | 4b · cita bajo el test | 309 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Pronóstico | 5 · cita del pronóstico | 309 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Dolor retromaleolar lateral» («¿Por qué?») | 4b · razonamiento del test | 311 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Subluxación de los peroneos» («¿Por qué?») | 4b · razonamiento del test | 311 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «KTW (rodilla a la pared)» | 4b · cita bajo el test | 312 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «Palpación anterior» | 4b · cita bajo el test | 313 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 314 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «KTW (rodilla a la pared)» («¿Por qué?») | 4b · razonamiento del test | 315 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «Palpación anterior» («¿Por qué?») | 4b · razonamiento del test | 313 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Hinchazón articular» | 4b · cita bajo el test | 316 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Cajón anterior: signo del surco» | 4b · cita bajo el test | 317 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Laxitud subastragalina» | 4b · cita bajo el test | 318 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Pronóstico | 5 · cita del pronóstico | 319 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Cajón anterior: signo del surco» («¿Por qué?») | 4b · razonamiento del test | 258 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Laxitud subastragalina» («¿Por qué?») | 4b · razonamiento del test | 319 |
-| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Hinchazón y dolor a la palpación» | 4b · cita bajo el test | 316 |
-| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Laxitud del LPAA y del LPC» | 4b · cita bajo el test | 316 |
-| Tobillo y pie | tp22 · Sinovitis Postraumática | Pronóstico | 5 · cita del pronóstico | 261 |
-| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Laxitud del LPAA y del LPC» («¿Por qué?») | 4b · razonamiento del test | 261 |
-| Tobillo y pie | tp23 · Coalición Tarsiana | Test «Movilidad subastragalina y mediotarsiana» | 4b · cita bajo el test | 261 |
-| Tobillo y pie | tp23 · Coalición Tarsiana | Pronóstico | 5 · cita del pronóstico | 261 |
-| Tobillo y pie | tp23 · Coalición Tarsiana | Test «Movilidad subastragalina y mediotarsiana» («¿Por qué?») | 4b · razonamiento del test | 261 |
-| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Perfil clínico» | 4b · cita bajo el test | 320 |
-| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Palpación de la interlínea» | 4b · cita bajo el test | 321 |
-| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Pronóstico | 5 · cita del pronóstico | 320 |
-| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Palpación de la interlínea» («¿Por qué?») | 4b · razonamiento del test | 320 |
-| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Palpación de la cúpula astragalina en flexión plantar» | 4b · cita bajo el test | 322 |
-| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Hinchazón, derrame, crepitación» | 4b · cita bajo el test | 322 |
-| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Pronóstico | 5 · cita del pronóstico | 322 |
-| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Palpación de la cúpula astragalina en flexión plantar» («¿Por qué?») | 4b · razonamiento del test | 323 |
-| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Test «Palpación de la tuberosidad medial del calcáneo» | 4b · cita bajo el test | 324 |
-| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Pronóstico | 5 · cita del pronóstico | 325 |
-| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Test «Palpación posterolateral del talón» | 4b · cita bajo el test | 324 |
-| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Pronóstico | 5 · cita del pronóstico | 326 |
-| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Test «Palpación posterolateral del talón» («¿Por qué?») | 4b · razonamiento del test | 326 |
-| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel sobre el nervio calcáneo medial» | 4b · cita bajo el test | 327 |
-| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Pronóstico | 5 · cita del pronóstico | 271 |
-| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel sobre el nervio calcáneo medial» («¿Por qué?») | 4b · razonamiento del test | 328 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Aguda: palpación calcaneocuboidea» | 4b · cita bajo el test | 329 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Gradual: interlíneas del cuboides» | 4b · cita bajo el test | 329 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Carga del antepié e inicio de la ETM» | 4b · cita bajo el test | 329 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Pronóstico | 5 · cita del pronóstico | 330 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Aguda: palpación calcaneocuboidea» («¿Por qué?») | 4b · razonamiento del test | 331 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Gradual: interlíneas del cuboides» («¿Por qué?») | 4b · razonamiento del test | 331 |
-| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Punto N» | 4b · cita bajo el test | 332 |
-| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Dolor puntual sobre cuboides o cuñas» | 4b · cita bajo el test | 266 |
-| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Pronóstico | 5 · cita del pronóstico | 333 |
-| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Punto N» («¿Por qué?») | 4b · razonamiento del test | 306 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Equimosis e hinchazón en la interlínea» | 4b · cita bajo el test | 334 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Rango de la 1.ª MTF frente al lado sano» | 4b · cita bajo el test | 335 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Dolor sobre los sesamoideos» | 4b · cita bajo el test | 336 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Pronóstico | 5 · cita del pronóstico | 337 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Rango de la 1.ª MTF frente al lado sano» («¿Por qué?») | 4b · razonamiento del test | 338 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Dolor sobre los sesamoideos» («¿Por qué?») | 4b · razonamiento del test | 338 |
-| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Palpación de la base del 2.º MT y de Lisfranc» | 4b · cita bajo el test | 339 |
-| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Estrés frente a sinovitis» | 4b · cita bajo el test | 340 |
-| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Palpación de la base del 2.º MT y de Lisfranc» («¿Por qué?») | 4b · razonamiento del test | 339 |
-| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Estrés frente a sinovitis» («¿Por qué?») | 4b · razonamiento del test | 340 |
-| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Dolor puntual sobre el cuello» | 4b · cita bajo el test | 341 |
-| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Carga axial del MT» | 4b · cita bajo el test | 341 |
-| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Pronóstico | 5 · cita del pronóstico | 342 |
-| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Palpación del espacio con compresión de los metatarsianos» | 4b · cita bajo el test | 343 |
-| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Diferencial del antepié» | 4b · cita bajo el test | 344 |
-| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Pronóstico | 5 · cita del pronóstico | 344 |
-| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Palpación del espacio con compresión de los metatarsianos» («¿Por qué?») | 4b · razonamiento del test | 344 |
-| Tobillo y pie | tp35 · Gota | Test «Articulación roja, hinchada y muy dolorosa» | 4b · cita bajo el test | 344 |
-| Tobillo y pie | tp35 · Gota | Test «Suele estar sistémicamente bien» | 4b · cita bajo el test | 345 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Sever: inserción del Aquiles (8–12 años)» | 4b · cita bajo el test | 346 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Iselin: base del 5.º MT (8–13 años)» | 4b · cita bajo el test | 347 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» | 4b · cita bajo el test | 348 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Freiberg: cabeza del 2.º–4.º MT (14–18 años)» | 4b · cita bajo el test | 349 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Pronóstico | 5 · cita del pronóstico | 350 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Sever: inserción del Aquiles (8–12 años)» («¿Por qué?») | 4b · razonamiento del test | 346 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Iselin: base del 5.º MT (8–13 años)» («¿Por qué?») | 4b · razonamiento del test | 346 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» («¿Por qué?») | 4b · razonamiento del test | 348 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Freiberg: cabeza del 2.º–4.º MT (14–18 años)» («¿Por qué?») | 4b · razonamiento del test | 351 |
-| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» (en `razonamiento.detalle`) | 4b · mención en el texto | 352 |
-| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» | 4b · cita bajo el test | 353 |
-| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «No carga cuatro pasos» | 4b · cita bajo el test | 354 |
-| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 408 |
-| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 409 |
-| Tobillo y pie | — | Pregunta `tp_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 410 |
-| Tobillo y pie | — | Pregunta `tp_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 411 |
-| Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 412 |
-| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 413 |
-| Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 414 |
-| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 415 |
-| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 416 |
-| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 417 |
-| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 418 |
-| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 419 |
-| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 420 |
-| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 420 |
-| Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 419 |
-| Tobillo y pie | — | Paso `tp_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 463 |
-| Tobillo y pie | — | Paso `tp_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 464 |
-| Tobillo y pie | — | Paso `tp_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 465 |
-| Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 466 |
-| Tobillo y pie | — | Paso `tp_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 467 |
-| Tobillo y pie | — | Paso `tp_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 468 |
-| Tobillo y pie | — | Paso `tp_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 469 |
-| Tobillo y pie | — | Paso `tp_step8` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 470 |
-| Tobillo y pie | — | Paso `tp_step9` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 314 |
-| Tobillo y pie | — | Paso `tp_step10` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 471 |
-| Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 472 |
-| Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 473 |
-| Tobillo y pie | — | Paso `tp_step13` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 474 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» (en `razonamiento.detalle`) | 4b · mención en el texto | 226 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» | 4b · cita bajo el test | 227 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Electrodiagnóstico (velocidad de conducción nerviosa)» | 4b · cita bajo el test | 228 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» | 4b · cita bajo el test | 229 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 230 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» («¿Por qué?») | 4b · razonamiento del test | 231 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» | 4b · cita bajo el test | 232 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» | 4b · cita bajo el test | 233 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» | 4b · cita bajo el test | 234 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Neurodinámica del nervio radial (ULNT radial)» | 4b · cita bajo el test | 235 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)» | 4b · cita bajo el test | 236 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Neurodinámica del nervio radial (ULNT radial)» («¿Por qué?») | 4b · razonamiento del test | 235 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)» («¿Por qué?») | 4b · razonamiento del test | 236 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» | 4b · cita bajo el test | 237 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor a la palpación de la inserción del tríceps» | 4b · cita bajo el test | 238 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» | 4b · cita bajo el test | 239 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» («¿Por qué?») | 4b · razonamiento del test | 240 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Dolor en la extensión terminal del codo» | 4b · cita bajo el test | 241 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Déficit fijo de extensión» | 4b · cita bajo el test | 242 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 243 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 243 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» («¿Por qué?») | 4b · razonamiento del test | 244 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» («¿Por qué?») | 4b · razonamiento del test | 244 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Dolor con la extensión del codo, sin traumatismo» | 4b · cita bajo el test | 245 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» | 4b · cita bajo el test | 246 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «TC (si la radiografía no es concluyente)» | 4b · cita bajo el test | 247 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» | 4b · cita bajo el test | 248 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» | 4b · cita bajo el test | 249 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» | 4b · cita bajo el test | 250 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Neurodinámica del nervio mediano (ULNT mediano)» | 4b · cita bajo el test | 251 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 252 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Neurodinámica del nervio mediano (ULNT mediano)» («¿Por qué?») | 4b · razonamiento del test | 251 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» («¿Por qué?») | 4b · razonamiento del test | 253 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Tirón del brazo extendido en un menor de 5 años, sin caída» | 4b · cita bajo el test | 254 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» | 4b · cita bajo el test | 255 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Tirón del brazo extendido en un menor de 5 años, sin caída» («¿Por qué?») | 4b · razonamiento del test | 254 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor medial con el lanzamiento en un deportista con el esqueleto inmaduro» | 4b · cita bajo el test | 256 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» | 4b · cita bajo el test | 257 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Pauta de tratamiento | 5 · cita de la pauta | 258 |
+| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» | 4b · cita bajo el test | 259 |
+| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 260 |
+| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» («¿Por qué?») | 4b · razonamiento del test | 259 |
+| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» («¿Por qué?») | 4b · razonamiento del test | 260 |
+| Codo | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 368 |
+| Codo | — | `sistemas.8.banderasRojas.1.texto` | 2 · mención en el texto | 369 |
+| Codo | — | `sistemas.8.banderasRojas.2.texto` | 2 · mención en el texto | 370 |
+| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 410 |
+| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 411 |
+| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 412 |
+| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 413 |
+| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 414 |
+| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 415 |
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 466 |
+| Codo | — | Paso `co_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 467 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 468 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 469 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 470 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Reglas de Ottawa (si no carga)» | 4b · cita bajo el test | 261 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» | 4b · cita bajo el test | 262 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» | 4b · cita bajo el test | 262 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» (en `razonamiento.detalle`) | 4b · mención en el texto | 263 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» | 4b · cita bajo el test | 264 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Pronóstico | 5 · cita del pronóstico | 265 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» («¿Por qué?») | 4b · razonamiento del test | 262 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» («¿Por qué?») | 4b · razonamiento del test | 262 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» («¿Por qué?») | 4b · razonamiento del test | 266 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» | 4b · cita bajo el test | 267 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» (en `razonamiento.detalle`) | 4b · mención en el texto | 268 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» | 4b · cita bajo el test | 267 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Pronóstico | 5 · cita del pronóstico | 269 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» («¿Por qué?») | 4b · razonamiento del test | 270 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» («¿Por qué?») | 4b · razonamiento del test | 271 |
+| Tobillo y pie | tp3 · Rotura del Aquiles | Test «Thompson (Simmonds)» (en `razonamiento.detalle`) | 4b · mención en el texto | 272 |
+| Tobillo y pie | tp3 · Rotura del Aquiles | Pronóstico | 5 · cita del pronóstico | 273 |
+| Tobillo y pie | tp3 · Rotura del Aquiles | Test «Thompson (Simmonds)» («¿Por qué?») | 4b · razonamiento del test | 273 |
+| Tobillo y pie | tp3 · Rotura del Aquiles | Test «Hueco palpable» («¿Por qué?») | 4b · razonamiento del test | 273 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Neurovascular y cinco P» | 4b · cita bajo el test | 274 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Equimosis plantar» | 4b · cita bajo el test | 274 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Dolor en todo el ancho del mediopié» | 4b · cita bajo el test | 274 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «1.º y 2.º MT en direcciones opuestas» | 4b · cita bajo el test | 274 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Pronóstico | 5 · cita del pronóstico | 275 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «1.º y 2.º MT en direcciones opuestas» («¿Por qué?») | 4b · razonamiento del test | 276 |
+| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `razonamiento.detalle`) | 4b · mención en el texto | 277 |
+| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «5.º MT: dolor en la base» | 4b · cita bajo el test | 278 |
+| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Calcáneo: talón doloroso con equimosis» | 4b · cita bajo el test | 279 |
+| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 280 |
+| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Hinchazón y equimosis perimaleolar medial» | 4b · cita bajo el test | 281 |
+| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Resalte con la flexión dorsal y plantar» | 4b · cita bajo el test | 282 |
+| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Resalte con la flexión dorsal y plantar» («¿Por qué?») | 4b · razonamiento del test | 281 |
+| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Test de pinzamiento posterior» | 4b · cita bajo el test | 283 |
+| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Hinchazón y dolor por detrás del astrágalo» | 4b · cita bajo el test | 284 |
+| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 285 |
+| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Test de pinzamiento posterior» («¿Por qué?») | 4b · razonamiento del test | 286 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» (en `razonamiento.detalle`) | 4b · mención en el texto | 287 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» | 4b · cita bajo el test | 288 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» | 4b · cita bajo el test | 289 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Pronóstico | 5 · cita del pronóstico | 290 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» («¿Por qué?») | 4b · razonamiento del test | 291 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» («¿Por qué?») | 4b · razonamiento del test | 289 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» | 4b · cita bajo el test | 292 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» | 4b · cita bajo el test | 289 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» | 4b · cita bajo el test | 289 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Pronóstico | 5 · cita del pronóstico | 290 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» («¿Por qué?») | 4b · razonamiento del test | 293 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» («¿Por qué?») | 4b · razonamiento del test | 289 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» («¿Por qué?») | 4b · razonamiento del test | 289 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «Crepitación en flexión plantar y dorsal» | 4b · cita bajo el test | 294 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» | 4b · cita bajo el test | 289 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Pronóstico | 5 · cita del pronóstico | 290 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «Crepitación en flexión plantar y dorsal» («¿Por qué?») | 4b · razonamiento del test | 291 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» («¿Por qué?») | 4b · razonamiento del test | 289 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «ETM sobre un step en todo el rango» | 4b · cita bajo el test | 295 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «Marcha descalzo» | 4b · cita bajo el test | 296 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Pronóstico | 5 · cita del pronóstico | 290 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «ETM sobre un step en todo el rango» («¿Por qué?») | 4b · razonamiento del test | 297 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «Marcha descalzo» («¿Por qué?») | 4b · razonamiento del test | 290 |
+| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Tinel a lo largo del sural» | 4b · cita bajo el test | 295 |
+| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Palpación en prono con flexión dorsal pasiva» | 4b · cita bajo el test | 298 |
+| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Pronóstico | 5 · cita del pronóstico | 297 |
+| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Palpación en prono con flexión dorsal pasiva» («¿Por qué?») | 4b · razonamiento del test | 298 |
+| Tobillo y pie | tp13 · Bursitis Calcánea Superficial | Test «Dolor superficial e hinchazón a la presión» | 4b · cita bajo el test | 299 |
+| Tobillo y pie | tp13 · Bursitis Calcánea Superficial | Test «Dolor superficial e hinchazón a la presión» («¿Por qué?») | 4b · razonamiento del test | 300 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Dolor retromaleolar medial» | 4b · cita bajo el test | 301 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Inversión resistida» | 4b · cita bajo el test | 301 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié no va a varo» | 4b · cita bajo el test | 302 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test ««Demasiados dedos»» | 4b · cita bajo el test | 303 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pronóstico | 5 · cita del pronóstico | 304 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Dolor retromaleolar medial» («¿Por qué?») | 4b · razonamiento del test | 301 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Inversión resistida» («¿Por qué?») | 4b · razonamiento del test | 301 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié no va a varo» («¿Por qué?») | 4b · razonamiento del test | 301 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test ««Demasiados dedos»» («¿Por qué?») | 4b · razonamiento del test | 305 |
+| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Flexoextensión del primer dedo en flexión plantar completa» | 4b · cita bajo el test | 306 |
+| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Crepitación e hinchazón en la vaina» | 4b · cita bajo el test | 307 |
+| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Pronóstico | 5 · cita del pronóstico | 308 |
+| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Flexoextensión del primer dedo en flexión plantar completa» («¿Por qué?») | 4b · razonamiento del test | 309 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Tinel a lo largo del túnel» | 4b · cita bajo el test | 310 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Hinchazón en el túnel o la subastragalina posterior» | 4b · cita bajo el test | 311 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Explorar el FHL» | 4b · cita bajo el test | 311 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Pronóstico | 5 · cita del pronóstico | 312 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Tinel a lo largo del túnel» («¿Por qué?») | 4b · razonamiento del test | 312 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Dolor óseo a la palpación» | 4b · cita bajo el test | 313 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Calcáneo: compresión medial y lateral a la vez» | 4b · cita bajo el test | 313 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Astrágalo: hinchazón en el seno del tarso o posterior» | 4b · cita bajo el test | 313 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 314 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Calcáneo: compresión medial y lateral a la vez» («¿Por qué?») | 4b · razonamiento del test | 314 |
+| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Palpación del seno del tarso» | 4b · cita bajo el test | 315 |
+| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación» | 4b · cita bajo el test | 316 |
+| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Pronóstico | 5 · cita del pronóstico | 315 |
+| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación» («¿Por qué?») | 4b · razonamiento del test | 315 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Dolor retromaleolar lateral» | 4b · cita bajo el test | 317 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Subluxación de los peroneos» | 4b · cita bajo el test | 318 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Crepitación e hinchazón» | 4b · cita bajo el test | 317 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Pronóstico | 5 · cita del pronóstico | 317 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Dolor retromaleolar lateral» («¿Por qué?») | 4b · razonamiento del test | 319 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Subluxación de los peroneos» («¿Por qué?») | 4b · razonamiento del test | 319 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «KTW (rodilla a la pared)» | 4b · cita bajo el test | 320 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «Palpación anterior» | 4b · cita bajo el test | 321 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 322 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «KTW (rodilla a la pared)» («¿Por qué?») | 4b · razonamiento del test | 323 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «Palpación anterior» («¿Por qué?») | 4b · razonamiento del test | 321 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Hinchazón articular» | 4b · cita bajo el test | 324 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Cajón anterior: signo del surco» | 4b · cita bajo el test | 325 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Laxitud subastragalina» | 4b · cita bajo el test | 326 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Pronóstico | 5 · cita del pronóstico | 327 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Cajón anterior: signo del surco» («¿Por qué?») | 4b · razonamiento del test | 266 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Laxitud subastragalina» («¿Por qué?») | 4b · razonamiento del test | 327 |
+| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Hinchazón y dolor a la palpación» | 4b · cita bajo el test | 324 |
+| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Laxitud del LPAA y del LPC» | 4b · cita bajo el test | 324 |
+| Tobillo y pie | tp22 · Sinovitis Postraumática | Pronóstico | 5 · cita del pronóstico | 269 |
+| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Laxitud del LPAA y del LPC» («¿Por qué?») | 4b · razonamiento del test | 269 |
+| Tobillo y pie | tp23 · Coalición Tarsiana | Test «Movilidad subastragalina y mediotarsiana» | 4b · cita bajo el test | 269 |
+| Tobillo y pie | tp23 · Coalición Tarsiana | Pronóstico | 5 · cita del pronóstico | 269 |
+| Tobillo y pie | tp23 · Coalición Tarsiana | Test «Movilidad subastragalina y mediotarsiana» («¿Por qué?») | 4b · razonamiento del test | 269 |
+| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Perfil clínico» | 4b · cita bajo el test | 328 |
+| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Palpación de la interlínea» | 4b · cita bajo el test | 329 |
+| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Pronóstico | 5 · cita del pronóstico | 328 |
+| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Palpación de la interlínea» («¿Por qué?») | 4b · razonamiento del test | 328 |
+| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Palpación de la cúpula astragalina en flexión plantar» | 4b · cita bajo el test | 330 |
+| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Hinchazón, derrame, crepitación» | 4b · cita bajo el test | 330 |
+| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Pronóstico | 5 · cita del pronóstico | 330 |
+| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Palpación de la cúpula astragalina en flexión plantar» («¿Por qué?») | 4b · razonamiento del test | 331 |
+| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Test «Palpación de la tuberosidad medial del calcáneo» | 4b · cita bajo el test | 332 |
+| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Pronóstico | 5 · cita del pronóstico | 333 |
+| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Test «Palpación posterolateral del talón» | 4b · cita bajo el test | 332 |
+| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Pronóstico | 5 · cita del pronóstico | 334 |
+| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Test «Palpación posterolateral del talón» («¿Por qué?») | 4b · razonamiento del test | 334 |
+| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel sobre el nervio calcáneo medial» | 4b · cita bajo el test | 335 |
+| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Pronóstico | 5 · cita del pronóstico | 279 |
+| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel sobre el nervio calcáneo medial» («¿Por qué?») | 4b · razonamiento del test | 336 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Aguda: palpación calcaneocuboidea» | 4b · cita bajo el test | 337 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Gradual: interlíneas del cuboides» | 4b · cita bajo el test | 337 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Carga del antepié e inicio de la ETM» | 4b · cita bajo el test | 337 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Pronóstico | 5 · cita del pronóstico | 338 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Aguda: palpación calcaneocuboidea» («¿Por qué?») | 4b · razonamiento del test | 339 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Gradual: interlíneas del cuboides» («¿Por qué?») | 4b · razonamiento del test | 339 |
+| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Punto N» | 4b · cita bajo el test | 340 |
+| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Dolor puntual sobre cuboides o cuñas» | 4b · cita bajo el test | 274 |
+| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Pronóstico | 5 · cita del pronóstico | 341 |
+| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Punto N» («¿Por qué?») | 4b · razonamiento del test | 314 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Equimosis e hinchazón en la interlínea» | 4b · cita bajo el test | 342 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Rango de la 1.ª MTF frente al lado sano» | 4b · cita bajo el test | 343 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Dolor sobre los sesamoideos» | 4b · cita bajo el test | 344 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Pronóstico | 5 · cita del pronóstico | 345 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Rango de la 1.ª MTF frente al lado sano» («¿Por qué?») | 4b · razonamiento del test | 346 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Dolor sobre los sesamoideos» («¿Por qué?») | 4b · razonamiento del test | 346 |
+| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Palpación de la base del 2.º MT y de Lisfranc» | 4b · cita bajo el test | 347 |
+| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Estrés frente a sinovitis» | 4b · cita bajo el test | 348 |
+| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Palpación de la base del 2.º MT y de Lisfranc» («¿Por qué?») | 4b · razonamiento del test | 347 |
+| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Estrés frente a sinovitis» («¿Por qué?») | 4b · razonamiento del test | 348 |
+| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Dolor puntual sobre el cuello» | 4b · cita bajo el test | 349 |
+| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Carga axial del MT» | 4b · cita bajo el test | 349 |
+| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Pronóstico | 5 · cita del pronóstico | 350 |
+| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Palpación del espacio con compresión de los metatarsianos» | 4b · cita bajo el test | 351 |
+| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Diferencial del antepié» | 4b · cita bajo el test | 352 |
+| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Pronóstico | 5 · cita del pronóstico | 352 |
+| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Palpación del espacio con compresión de los metatarsianos» («¿Por qué?») | 4b · razonamiento del test | 352 |
+| Tobillo y pie | tp35 · Gota | Test «Articulación roja, hinchada y muy dolorosa» | 4b · cita bajo el test | 352 |
+| Tobillo y pie | tp35 · Gota | Test «Suele estar sistémicamente bien» | 4b · cita bajo el test | 353 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Sever: inserción del Aquiles (8–12 años)» | 4b · cita bajo el test | 354 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Iselin: base del 5.º MT (8–13 años)» | 4b · cita bajo el test | 355 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» | 4b · cita bajo el test | 356 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Freiberg: cabeza del 2.º–4.º MT (14–18 años)» | 4b · cita bajo el test | 357 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Pronóstico | 5 · cita del pronóstico | 358 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Sever: inserción del Aquiles (8–12 años)» («¿Por qué?») | 4b · razonamiento del test | 354 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Iselin: base del 5.º MT (8–13 años)» («¿Por qué?») | 4b · razonamiento del test | 354 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» («¿Por qué?») | 4b · razonamiento del test | 356 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Freiberg: cabeza del 2.º–4.º MT (14–18 años)» («¿Por qué?») | 4b · razonamiento del test | 359 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» (en `razonamiento.detalle`) | 4b · mención en el texto | 360 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» | 4b · cita bajo el test | 361 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «No carga cuatro pasos» | 4b · cita bajo el test | 362 |
+| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 416 |
+| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 417 |
+| Tobillo y pie | — | Pregunta `tp_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 418 |
+| Tobillo y pie | — | Pregunta `tp_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 419 |
+| Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 420 |
+| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 421 |
+| Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 422 |
+| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 423 |
+| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 424 |
+| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 425 |
+| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 426 |
+| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 427 |
+| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 428 |
+| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 428 |
+| Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 427 |
+| Tobillo y pie | — | Paso `tp_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 471 |
+| Tobillo y pie | — | Paso `tp_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 472 |
+| Tobillo y pie | — | Paso `tp_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 473 |
+| Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 474 |
+| Tobillo y pie | — | Paso `tp_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 475 |
+| Tobillo y pie | — | Paso `tp_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 476 |
+| Tobillo y pie | — | Paso `tp_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 477 |
+| Tobillo y pie | — | Paso `tp_step8` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 478 |
+| Tobillo y pie | — | Paso `tp_step9` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 322 |
+| Tobillo y pie | — | Paso `tp_step10` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 479 |
+| Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 480 |
+| Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 481 |
+| Tobillo y pie | — | Paso `tp_step13` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 482 |
 
 ### Logerstedt 2017
 
@@ -15776,6 +16204,27 @@ Citada como:
 | Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 | Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 | Rodilla | — | Paso `ro_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
+
+### Looney 2023
+
+Autores: Looney, Day, Reddy, Paul, Nazarian y Cohen  
+Título: *Physical Examination Versus Ultrasonography for Detection of Ulnar Nerve Subluxation in Professional Baseball Pitchers*  
+Publicación: Orthop J Sports Med 11(11):23259671231208234  
+DOI: 10.1177/23259671231208234  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Estudio diagnóstico en lanzadores profesionales sin síntomas, con la ecografía como referencia: S 77 %, E 91,2 %, LR+ 8,76, LR− 0,25; la inestabilidad no se relacionó con los síntomas. Subluxación del cubital de co8.
+
+Citada como:
+
+1. Mientras el codo se flexiona y se extiende, palpar el nervio cubital a distintos grados de flexión, tomando como referencia la cara posteromedial del epicóndilo medial y el túnel cubital; positivo si el nervio se sube al epicóndilo o lo cruza (Looney 2023).
+2. En lanzadores profesionales sin síntomas, con la ecografía como referencia, la exploración tuvo S 77 % y E 91,2 % (LR+ 8,76, LR− 0,25), y la inestabilidad del nervio no se relacionó con los síntomas ni con los tests de provocación (Looney 2023). Por eso no puntúa: la subluxación no es diagnóstica de neuropatía cubital (Lluch 2020, cap. 3.2, p. 92). Un chasquido del tríceps medial puede tomarse por el nervio; la ecografía los distingue (Looney 2023). Conviene preguntar si nota un chasquido o un resalte en el codo, que indica que el nervio se mueve en el túnel cubital (Davis y Kane 2023).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital) · Looney 2023 · Davis y Kane 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» | 4b · cita bajo el test | 3 |
 
 ### Lopes 2025
 
@@ -15875,25 +16324,41 @@ Título: *Lateral Elbow Pain and Muscle Function Impairments. Clinical Practice 
 Publicación: J Orthop Sports Phys Ther 52(12):CPG1–CPG111  
 DOI: 10.2519/jospt.2022.0302  
 Última revisión: 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo).  
-Nota: Guía de práctica clínica APTA (literatura hasta noviembre de 2021); PDF completo descargado de orthopt.org. Leído en la sesión de dosis de codo (2026-10). Pauta de co1. También da las MCID del PRTEE (7 y 11 puntos) y del DASH (10,2), y dice que no hay estudios del QuickDASH en la epicondilalgia lateral.
+Nota: Guía de práctica clínica APTA (literatura hasta noviembre de 2021); PDF completo descargado de orthopt.org. Leído en la sesión de dosis de codo (2026-10). Pauta de co1. También da las MCID del PRTEE (7 y 11 puntos) y del DASH (10,2), y dice que no hay estudios del QuickDASH en la epicondilalgia lateral. PDF del usuario releído (2026-11): tablas 5 y 6, técnica del test de Maudsley y del de Cozen (co9 y co1).
 
 Citada como:
 
-1. La guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».
-2. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111, apéndice E)
-3. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
-4. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leído el diagnóstico diferencial, p. CPG13)
-5. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leídos el diagnóstico y la clasificación y el diagnóstico diferencial, pp. CPG12–CPG13)
-6. Lucado 2022
+1. Sentado o de pie, con el codo en extensión completa, el antebrazo en pronación y la muñeca a 30° de extensión: el examinador estabiliza el codo con el pulgar sobre el epicóndilo lateral y, con la otra mano en el dorso del 2.º y 3.er metacarpianos, resiste la extensión activa de la muñeca (Lucado 2022). Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca, o hasta 2 cm distal a la inserción del tendón común de los extensores (Lucado 2022).
+2. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según StatPearls, el dolor máximo suele estar sobre el epicóndilo lateral, a veces en un punto 1–2 cm distal, y aumenta con la extensión resistida de la muñeca, sobre todo con el codo extendido y el antebrazo en pronación (Buchanan y Varacallo 2023). Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+3. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
+4. La guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».
+5. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111, apéndice E)
+6. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
+7. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111), tabla 6, p. CPG12
+8. Con el codo extendido, el antebrazo en pronación y los dedos en extensión, el examinador sujeta el antebrazo distal y resiste en el dorso de la falange distal del dedo medio (Lucado 2022; Engin 2023); positivo si reproduce el dolor. Ojo: el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.
+9. Sin datos de precisión para la neuropatía radial. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023). La guía APTA la recoge como test de la epicondilalgia lateral, positivo con dolor en el epicóndilo o hasta 2 cm distal a la inserción de los extensores (Lucado 2022, tabla 5).
+10. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Lucado 2022 (tabla 5) · Engin 2023
+11. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leído el diagnóstico diferencial, p. CPG13)
+12. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leídos el diagnóstico y la clasificación y el diagnóstico diferencial, pp. CPG12–CPG13)
+13. Lucado 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (tiempos de tejido) | — | Subtipo «Epicondilalgia lateral» de «Tendinopatía» (Tendón) | cabecera · tiempos de tejido | 6 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» | 4b · cita bajo el test | 2 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
-| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+| Todas (tiempos de tejido) | — | Subtipo «Epicondilalgia lateral» de «Tendinopatía» (Tendón) | cabecera · tiempos de tejido | 13 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 3 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» | 4b · cita bajo el test | 5 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Pauta de tratamiento | 5 · cita de la pauta | 6 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» (en `criterio`) | 4b · mención en el texto | 8 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» (en `razonamiento.detalle`) | 4b · mención en el texto | 9 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» | 4b · cita bajo el test | 10 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 11 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 12 |
 
 ### Lucas 2009
 
@@ -18168,15 +18633,23 @@ Título: *Nursemaid Elbow*
 Publicación: StatPearls [Internet], NBK430777 (act. 2023-08-14)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4). Releído entero (2026-11) para la exploración de co14 (fase 4b).
 
 Citada como:
 
-1. Nardi y Schaefer 2023 (StatPearls, NBK430777, act. 2023-08-14: introducción, etiología, epidemiología, fisiopatología, historia y exploración, evaluación y diagnóstico diferencial)
+1. El niño suele llevar el brazo en pronación, con el codo extendido o casi (Nardi y Schaefer 2023) o en ligera flexión (Ulici 2019), y no quiere moverlo; puede doler la cabeza del radio a la palpación, y se resiste a la pronación, la supinación, la flexión y la extensión (Nardi y Schaefer 2023). Explorar con suavidad: hinchazón, enrojecimiento, deformidad, hematoma o crepitación ósea hacen pensar en una fractura (Ulici 2019; Lashhab 2025).
+2. Sin datos de precisión.
+
+Hasta en la mitad de los casos falta el antecedente típico del tirón, y la exploración de un niño asustado es difícil. En un estudio que recoge Lashhab, 9 de 205 niños con diagnóstico clínico de pronación dolorosa tenían una fractura (Lashhab 2025). Sin manipular el brazo no suele doler, y la subluxación puede reducirse sola antes de la consulta (Nardi y Schaefer 2023).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100 · Nardi y Schaefer 2023 · Ulici 2019 · Lashhab 2025
+4. Nardi y Schaefer 2023 (StatPearls, NBK430777, act. 2023-08-14: introducción, etiología, epidemiología, fisiopatología, historia y exploración, evaluación y diagnóstico diferencial)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» | 4b · cita bajo el test | 3 |
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 
 ### Narvani 2003
 
@@ -19246,34 +19719,38 @@ Nota: Resumen en PubMed (PMID 15701609; no está en PMC). Comprobación de las c
 
 Citada como:
 
-1. Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°.
-2. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+1. Puede haber también menos fuerza que en el otro lado al flexionar la muñeca, pronar el antebrazo o apretar, y el estiramiento pasivo (supinación con el codo, la muñeca y los dedos en extensión) puede reproducir el dolor. Según Adani, estas pruebas ayudan pero no están validadas (Adani 2025). O'Driscoll 2005 exploró la flexión de muñeca y la pronación resistidas con el codo flexionado y extendido. Sin datos de precisión.
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Li 2026 · Tahir 2026 · Adani 2025 · O'Driscoll 2005
+3. Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°.
+4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
 
 Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducción; desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°. Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°; suele aparecer de golpe y provoca una retirada involuntaria del brazo. Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo. Cuidado si hay síntomas en el hombro, que el test puede agravar.
 
 En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
-3. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-4. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único: S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión); LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4).
-5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-6. En O'Driscoll 2005: S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión; la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4).
-7. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–238
-8. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 236 y 238
-9. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–233
-10. O'Driscoll 2005 (Am J Sports Med 33(2):231–239; PDF del usuario, leído entero; tablas 1 y 2)
+5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+6. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único: S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión); LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4).
+7. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+8. En O'Driscoll 2005: S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión; la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4).
+9. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–238
+10. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 236 y 238
+11. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–233
+12. O'Driscoll 2005 (Am J Sports Med 33(2):231–239; PDF del usuario, leído entero; tablas 1 y 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 3 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 5 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 5 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» («¿Por qué?») | 4b · razonamiento del test | 7 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» («¿Por qué?») | 4b · razonamiento del test | 8 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» («¿Por qué?») | 4b · razonamiento del test | 9 |
-| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 10 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 2 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 5 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 7 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `razonamiento.detalle`) | 4b · mención en el texto | 8 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 7 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» («¿Por qué?») | 4b · razonamiento del test | 9 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» («¿Por qué?») | 4b · razonamiento del test | 10 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» («¿Por qué?») | 4b · razonamiento del test | 11 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 12 |
 
 ### O'Driscoll 2007
 
@@ -19451,6 +19928,29 @@ Citada como:
 | Rodilla | ro5 · Tendinopatía Rotuliana | Test «Dolor durante sentadilla en tabla inclinada (decline squat)» | 4b · cita bajo el test | 3 |
 | Rodilla | ro5 · Tendinopatía Rotuliana | Pauta de tratamiento | 5 · cita de la pauta | 4 |
 | Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+
+### Otoshi 2022
+
+Autores: Otoshi et al.  
+Título: *The influence of chronic medial epicondylar apophysitis on medial ulnar collateral ligament insufficiency*  
+Publicación: JSES Int 6(3):539–544  
+DOI: 10.1016/j.jseint.2021.12.014  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Cohorte retrospectiva de jugadores jóvenes de béisbol. Presión moderada entre la cara anteroinferior del epicóndilo medial y el tubérculo sublime; estrés en valgo positivo con dolor o molestia medial (no da el ángulo). Co4 y co15.
+
+Citada como:
+
+1. Palpación del ligamento colateral medial justo distal al epicóndilo medial: presión moderada entre la cara anteroinferior del epicóndilo y el tubérculo sublime del cúbito (Otoshi 2022), a unos 2 cm del epicóndilo (Eskew 2026). Positivo si duele.
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101 · Otoshi 2022 · Eskew 2026
+3. Mismos hallazgos que la lesión del ligamento colateral medial del adulto. Comparar con el otro codo: positivo si el valgo duele en el lado medial o abre más (Otoshi 2022; Hart 2024). Palpar también la apófisis del epicóndilo medial, que suele doler (Hodge y Schroeder 2023; Hart 2024).
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101 · Hodge y Schroeder 2023 · Otoshi 2022 · Hart 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Dolor a la palpación justo distal al epicóndilo medial» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Dolor a la palpación justo distal al epicóndilo medial» | 4b · cita bajo el test | 2 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» | 4b · cita bajo el test | 4 |
 
 ### Oyamada 2026
 
@@ -19766,31 +20266,35 @@ DOI: 10.1097/md.0000000000015497
 
 Citada como:
 
-1. En Park 2019, el punto de máximo dolor estaba en la línea radiocapitelar en 20 de 24 plicas operadas, y los síntomas mecánicos (chasquido, enganche) solo en 9 de 24; 20 de las 24 se habían diagnosticado antes como epicondilalgia lateral. La RM mostró una plica de más de 3 mm en 17 de 24, pero la plica posterolateral se ve también en casi todos los codos sin síntomas (98 % en el estudio que citan), así que verla en la imagen no basta.
-2. Park 2019 (Medicine 98:e15497): punto de máximo dolor en la línea radiocapitelar en 20 de 24 · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83–84 y 100 (dolor localizado en la línea radiohumeral posterolateral: sospechar un problema intraarticular)
-3. En el único estudio, de los creadores del test, dio S 83,3 % (20 de 24; IC 95 % 62,6–95,3) y E 87,5 % (49 de 56; IC 75,9–94,8), de las que saldrían LR+ ≈6,7 y LR− ≈0,19 (no publicadas), pero es retrospectivo de casos y controles: 24 plicas confirmadas en la artroscopia (sin epicondilalgia) frente a 56 epicondilalgias laterales operadas (sin plica), un diseño que infla la precisión, y no hay validación posterior. La RM identificó la plica en el 70,8 % de los casos.
+1. Con el codo en extensión, buscar el punto de máximo dolor en la cara posterolateral, sobre la interlínea radiocapitelar; el de la epicondilalgia lateral suele estar medial y distal al epicóndilo (Park 2019).
+2. Presente en el 83.3% de los casos confirmados artroscópicamente.
+
+En Park 2019, el punto de máximo dolor estaba en la línea radiocapitelar en 20 de 24 plicas operadas, y los síntomas mecánicos (chasquido, enganche) solo en 9 de 24; 20 de las 24 se habían diagnosticado antes como epicondilalgia lateral. La RM mostró una plica de más de 3 mm en 17 de 24, pero la plica posterolateral se ve también en casi todos los codos sin síntomas (98 % en el estudio que citan), así que verla en la imagen no basta.
+3. Park 2019 (Medicine 98:e15497): punto de máximo dolor en la línea radiocapitelar en 20 de 24 · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83–84 y 100 (dolor localizado en la línea radiohumeral posterolateral: sospechar un problema intraarticular)
+4. En el único estudio, de los creadores del test, dio S 83,3 % (20 de 24; IC 95 % 62,6–95,3) y E 87,5 % (49 de 56; IC 75,9–94,8), de las que saldrían LR+ ≈6,7 y LR− ≈0,19 (no publicadas), pero es retrospectivo de casos y controles: 24 plicas confirmadas en la artroscopia (sin epicondilalgia) frente a 56 epicondilalgias laterales operadas (sin plica), un diseño que infla la precisión, y no hay validación posterior. La RM identificó la plica en el 70,8 % de los casos.
 
 Los autores (Park 2019) lo comparan con la prueba de la plica mediopatelar de la rodilla, que se hace de forma parecida. En la artroscopia vieron la plica envolver la cabeza del radio y entrar y salir de la articulación con el movimiento del codo.
-4. Park 2019 (Medicine 98(18):e15497; retrospectivo de casos y controles, n = 24 frente a 56; texto)
-5. Sin datos de precisión.
+5. Park 2019 (Medicine 98(18):e15497; retrospectivo de casos y controles, n = 24 frente a 56; texto)
+6. Sin datos de precisión.
 
 En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía entre 90° y 110° de flexión con el antebrazo en pronación y se reprodujo en 7 de 14 pacientes; en Park 2019, los síntomas mecánicos solo estaban en 9 de 24 plicas operadas. Pedersen 2017 usó el test, junto con la palpación dolorosa de la plica y la ecografía, para indicar la artroscopia, y advierte de que el test y la ecografía solos no bastan para decidir la cirugía.
-6. Park 2019 (Medicine 98(18):e15497), introducción, resultados y discusión
-7. Park 2019 (Medicine 98(18):e15497), métodos (2.2), resultados (3.1) y discusión
-8. Park 2019 (Medicine 98(18):e15497), discusión
-9. Park 2019 (Medicine 98(18):e15497; serie retrospectiva de 24 casos; leídos en Europe PMC el resumen, los métodos y los resultados)
+7. Park 2019 (Medicine 98(18):e15497), introducción, resultados y discusión
+8. Park 2019 (Medicine 98(18):e15497), métodos (2.2), resultados (3.1) y discusión
+9. Park 2019 (Medicine 98(18):e15497), discusión
+10. Park 2019 (Medicine 98(18):e15497; serie retrospectiva de 24 casos; leídos en Europe PMC el resumen, los métodos y los resultados)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» | 4b · cita bajo el test | 2 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de plica radiocapitelar posterolateral» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de plica radiocapitelar posterolateral» | 4b · cita bajo el test | 4 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» («¿Por qué?») | 4b · razonamiento del test | 6 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de plica radiocapitelar posterolateral» («¿Por qué?») | 4b · razonamiento del test | 7 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» («¿Por qué?») | 4b · razonamiento del test | 8 |
-| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 9 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» | 4b · cita bajo el test | 3 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de plica radiocapitelar posterolateral» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de plica radiocapitelar posterolateral» | 4b · cita bajo el test | 5 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de plica radiocapitelar posterolateral» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» («¿Por qué?») | 4b · razonamiento del test | 9 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 10 |
 
 ### Park 2021
 
@@ -19808,6 +20312,31 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Park 2024
+
+Autores: Park, Sneag, Choi, Oh y Choi  
+Título: *Fascicular Involvement of the Median Nerve Trunk in the Upper Arm: Manifestation as Anterior Interosseous Nerve Syndrome With Unique Imaging Features*  
+Publicación: Korean J Radiol 25(5):449–458  
+DOI: 10.3348/kjr.2023.1218  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión (radiología). Signo del «OK», sin alteración sensitiva; formas parciales con solo el flexor largo del pulgar, que pueden confundirse con su rotura. Interóseo anterior de co13.
+
+Citada como:
+
+1. Síndrome motor puro, con solo una molestia vaga en el antebrazo. Pedir que haga una «O» con el pulgar y el índice: no puede y pinza con las falanges distales extendidas (signo del «OK»); sin alteración sensitiva (Aljawder 2016; Park 2024; Akhondi 2025).
+2. Las lesiones del interóseo anterior pueden ser idiopáticas y en general no son compresivas.
+
+Puede afectar solo al flexor largo del pulgar, y entonces la debilidad puede atribuirse a una rotura del tendón (Park 2024). El efecto tenodesis, la flexión espontánea de los dedos al extender la muñeca, ayuda a distinguir la neuropatía de la rotura (Shinohara 2017).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102 · Aljawder 2016 · Park 2024 · Akhondi 2025 · Shinohara 2017
+4. Park 2024 (Korean J Radiol 25(5):449–458), presentación clínica
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 3 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» («¿Por qué?») | 4b · razonamiento del test | 4 |
 
 ### Parker 2013
 
@@ -20821,15 +21350,23 @@ Nota: Revisión narrativa (fuentes elegidas por relevancia, sin protocolo); text
 
 Citada como:
 
-1. Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Quzli 2025, Cureus 17(11):e96151 (revisión narrativa, sin protocolo: opinión de los autores)
-2. Quzli 2025 (Cureus 17(11):e96151; revisión narrativa sin protocolo; leídas en Europe PMC la epidemiología, la presentación clínica y la exploración)
-3. Quzli 2025
+1. Dolor a la palpación de la cara lateral del codo. Palpar el epicóndilo lateral y la unión de la cabeza y el cuello del radio: en la inestabilidad posterolateral el dolor suele estar ahí, y no solo en el origen común de los extensores (Quzli 2025).
+2. El capítulo de Lluch no describe la palpación del complejo colateral lateral (su tabla 1 da el estrés en varo, el push-up y la recolocación en la mesa) y avisa de que su lesión puede confundirse con la epicondilalgia lateral, en la que la palpación lateral también duele y no es específica. Sin datos de precisión.
+
+El ligamento colateral cubital lateral va del epicóndilo lateral a la cresta del supinador del cúbito (Quzli 2025).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83, 85 y 100 · Quzli 2025
+4. Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Quzli 2025, Cureus 17(11):e96151 (revisión narrativa, sin protocolo: opinión de los autores)
+5. Quzli 2025 (Cureus 17(11):e96151; revisión narrativa sin protocolo; leídas en Europe PMC la epidemiología, la presentación clínica y la exploración)
+6. Quzli 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidadCodo` | 6 · plan de tratamiento | 3 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
-| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidadCodo` | 6 · plan de tratamiento | 6 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor lateral a la palpación (complejo colateral lateral)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor lateral a la palpación (complejo colateral lateral)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor lateral a la palpación (complejo colateral lateral)» | 4b · cita bajo el test | 3 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Pauta de tratamiento | 5 · cita de la pauta | 4 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 
 ### Raj 2020
 
@@ -22692,6 +23229,29 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_d_hematoma` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
+### Schwab 2023
+
+Autores: Schwab, Kelly y DeFroda  
+Título: *Elbow Arthroscopy for Posteromedial Impingement and Fixation of Olecranon Stress Fracture*  
+Publicación: Arthrosc Tech 12(12):e2169–e2174  
+DOI: 10.1016/j.eats.2023.07.040  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Nota técnica. Test de pinzamiento en extensión (de 20–30° a extensión terminal, rápido y repetido) y exploración de la fractura de estrés del olécranon (dolor posteromedial, falta de extensión, crepitación, tope firme). Co11 y co12.
+
+Citada como:
+
+1. Desde 20–30° de flexión, llevar el codo rápida y repetidamente a la extensión terminal; positivo si duele el compartimento posterior (Schwab 2023). Dolor provocado por la extensión del codo, en el deportista joven (en lanzadores, sobre todo en la fase de seguimiento o desaceleración) o en el mayor.
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86, 88 y 103 · Schwab 2023
+3. Medir la extensión activa y pasiva y compararla con la del otro codo (Eskew 2026). Puede faltar la extensión terminal, con dolor a la palpación del olécranon posteromedial, crepitación y un tope firme (Schwab 2023).
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103 · Eskew 2026 · Schwab 2023 · Gartner 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Dolor en la extensión terminal del codo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Dolor en la extensión terminal del codo» | 4b · cita bajo el test | 2 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» | 4b · cita bajo el test | 4 |
+
 ### Schweiger 2021
 
 Autores: Schweiger, Niederseer, Schmied, Attenhofer-Jost y Caselli  
@@ -23006,15 +23566,25 @@ Título: *Radial Tunnel Syndrome*
 Publicación: StatPearls [Internet], NBK555937 (act. 2023-08-14)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Dos autores en la clave porque Shamrock 2023 (rotura del Aquiles) ya existía. Razonamiento del árbol CIF de codo (fase 4).
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Dos autores en la clave porque Shamrock 2023 (rotura del Aquiles) ya existía. Razonamiento del árbol CIF de codo (fase 4). Releído entero (2026-11) para la técnica de los tests de co9 (fase 4b).
 
 Citada como:
 
-1. Shamrock y Das 2023 (StatPearls, NBK555937, act. 2023-08-14: introducción, epidemiología, fisiopatología, historia y exploración, evaluación y diagnóstico diferencial)
+1. Localización más distal que la epicondilalgia lateral. Puede coexistir con ella. Con el antebrazo en supinación, palpar el recorrido del radial por el dorso del antebrazo desde justo por encima del epicóndilo lateral: el punto de máximo dolor está 2–5 cm distal al epicóndilo, sobre la masa muscular móvil del antebrazo (Shamrock y Das 2023), o 4–5 cm, sobre el supinador (Engin 2023).
+2. Es el hallazgo principal de la exploración: en la epicondilalgia lateral el dolor está sobre el epicóndilo y no en el dorso del antebrazo, aunque las dos coexisten en el 5 % de los casos. Para un dolor difuso, la «regla del nueve» marca en la cara anterior del codo nueve círculos en tres filas de tres; las zonas 1 y 2 siguen el radial y duelen en el túnel radial, la 5 y la 6 siguen el mediano, y la fila medial sirve de control: si duele, el diagnóstico probablemente es otro (Shamrock y Das 2023).
+3. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100 · Shamrock y Das 2023 · Engin 2023
+4. Precisión diagnóstica no estudiada. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 10, y la palpación del punto doloroso, en los 18 (Engin 2023). Debe reproducir el dolor sin debilidad; la flexión de la muñeca con pronación pasiva también puede reproducirlo, porque aumenta la presión en el túnel radial. Una debilidad de los extensores orienta al síndrome del interóseo posterior (Shamrock y Das 2023).
+5. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100 · Engin 2023 · Shamrock y Das 2023
+6. Shamrock y Das 2023 (StatPearls, NBK555937, act. 2023-08-14: introducción, epidemiología, fisiopatología, historia y exploración, evaluación y diagnóstico diferencial)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» | 4b · cita bajo el test | 3 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» | 4b · cita bajo el test | 5 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 
 ### Shams 2025
 
@@ -23213,6 +23783,27 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
+### Shinohara 2017
+
+Autores: Shinohara, Takahashi y Hirata  
+Título: *Anterior interosseous nerve palsy mimicking rupture of the index flexor digitorum profundus after volar locking plate fixation of a distal radius fracture*  
+Publicación: Nagoya J Med Sci 79(3):421–425  
+DOI: 10.18999/nagjms.79.3.421  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Caso clínico. El efecto tenodesis distingue la parálisis del interóseo anterior de la rotura del tendón. Co13.
+
+Citada como:
+
+1. Las lesiones del interóseo anterior pueden ser idiopáticas y en general no son compresivas.
+
+Puede afectar solo al flexor largo del pulgar, y entonces la debilidad puede atribuirse a una rotura del tendón (Park 2024). El efecto tenodesis, la flexión espontánea de los dedos al extender la muñeca, ayuda a distinguir la neuropatía de la rotura (Shinohara 2017).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102 · Aljawder 2016 · Park 2024 · Akhondi 2025 · Shinohara 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 2 |
+
 ### Shrestha 2026
 
 Autores: Shrestha, Popuri, Hoffer, Qureshi, Barzilay, Dapaah et al.  
@@ -23246,6 +23837,25 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
+### Shuttlewood 2017
+
+Autores: Shuttlewood, Beazley y Smith  
+Título: *Distal triceps injuries (including snapping triceps): A systematic review of the literature*  
+Publicación: World J Orthop 8(6):507–513  
+DOI: 10.5312/wjo.v8.i6.507  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión sistemática (series y casos). El tríceps se inserta como un tendón bilaminar sobre una zona amplia de la punta del olécranon. Palpación de la inserción de co10.
+
+Citada como:
+
+1. Palpar la inserción en la punta del olécranon, que es ancha: el tendón se inserta en dos láminas sobre una zona amplia (Shuttlewood 2017). Positivo si reproduce el dolor posterior.
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103 · Shuttlewood 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor a la palpación de la inserción del tríceps» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor a la palpación de la inserción del tríceps» | 4b · cita bajo el test | 2 |
 
 ### Sibrack 2024
 
@@ -23782,6 +24392,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
+### Soares 2023
+
+Autores: Soares, Souza y Ribeiro  
+Título: *Differences in Clinical Tests for Assessing Lateral Epicondylitis Elbow in Adults Concerning Their Physical Activity Level: Test Reliability, Accuracy of Ultrasound Imaging, and Relationship with Energy Expenditure*  
+Publicación: Int J Environ Res Public Health 20(3):1794  
+DOI: 10.3390/ijerph20031794  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Estudio transversal de precisión diagnóstica (102 adultos, ecografía como referencia). Técnica del test de Cozen con el codo a 90° de flexión, el antebrazo en pronación y la muñeca neutra. Cozen de co1.
+
+Citada como:
+
+1. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según StatPearls, el dolor máximo suele estar sobre el epicóndilo lateral, a veces en un punto 1–2 cm distal, y aumenta con la extensión resistida de la muñeca, sobre todo con el codo extendido y el antebrazo en pronación (Buchanan y Varacallo 2023). Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Soares 2023 (Int J Environ Res Public Health 20(3):1794), métodos
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Sokal 2022
 
@@ -24345,6 +24978,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca1 · Artrosis de Cadera | Test «Rotación Interna disminuida (<24°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+
+### Tahir 2026
+
+Autores: Tahir, Chanian, Tiwana, Sahu y Blackwell  
+Título: *Medial Epicondylitis: A Review of Clinical Presentation, Diagnosis, and Management in the United Kingdom*  
+Publicación: Cureus 18(1):e102264  
+DOI: 10.7759/cureus.102264  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Revisión narrativa. Dolor anterior y distal al epicóndilo medial; flexión de muñeca y pronación resistidas con el codo extendido y el antebrazo en supinación. Co2.
+
+Citada como:
+
+1. Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador. El punto típico está unos 5–10 mm distal y anterior al epicóndilo medial, sobre el origen flexor-pronador, a menudo sobre el pronador redondo y el flexor radial del carpo (Li 2026; Adani 2025; Tahir 2026).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101 · Li 2026 · Adani 2025 · Tahir 2026
+3. Sentado, con el codo extendido y el antebrazo en supinación completa: el examinador estabiliza el codo y, con la otra mano en la palma, resiste la flexión de la muñeca (Zwerus 2018); también la pronación contra resistencia (Li 2026; Tahir 2026). Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Li 2026 · Tahir 2026 · Adani 2025 · O'Driscoll 2005
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» | 4b · cita bajo el test | 2 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 4 |
 
 ### Takasaki 2011
 
@@ -25092,6 +25748,25 @@ Citada como:
 | Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Fila «Prótesis de disco cervical» (Columna) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Fila «Artrodesis cervical anterior» (Columna) | cabecera · tiempos de tejido | 1 |
+
+### Ulici 2019
+
+Autores: Ulici, Herdea, Carp, Nahoi y Tevanov  
+Título: *Nursemaid's Elbow – Supination-flexion Technique Versus Hyperpronation/forced Pronation: Randomized Clinical Study*  
+Publicación: Indian J Orthop 53(1):117–121  
+DOI: 10.4103/ortho.IJOrtho_442_17  
+Última revisión: 2026-11 · Añadida: texto completo leído en PMC (2026-11).  
+Nota: Ensayo clínico aleatorizado. Brazo pegado al cuerpo, codo en ligera flexión y antebrazo bloqueado en pronación; se excluyeron los niños con signos de traumatismo o fractura (hinchazón, enrojecimiento, deformidad). Pronación dolorosa de co14.
+
+Citada como:
+
+1. El niño suele llevar el brazo en pronación, con el codo extendido o casi (Nardi y Schaefer 2023) o en ligera flexión (Ulici 2019), y no quiere moverlo; puede doler la cabeza del radio a la palpación, y se resiste a la pronación, la supinación, la flexión y la extensión (Nardi y Schaefer 2023). Explorar con suavidad: hinchazón, enrojecimiento, deformidad, hematoma o crepitación ósea hacen pensar en una fractura (Ulici 2019; Lashhab 2025).
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100 · Nardi y Schaefer 2023 · Ulici 2019 · Lashhab 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» | 4b · cita bajo el test | 2 |
 
 ### Uson 2021
 
@@ -27166,56 +27841,68 @@ Título: *Physical examination of the elbow, what is the evidence? A systematic 
 Publicación: Br J Sports Med 52(19):1253–1260 (en línea en 2017)  
 DOI: 10.1136/bjsports-2016-096712  
 Última revisión: 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7.  
-Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. La revisión que cita Lluch 2020, cap. 3.2 (ref. 9). Ojo: su texto invierte la S y la E del valgo móvil; la tabla 4 las da bien. Tests de co1, co4, co5 y co7 (codo).
+Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. La revisión que cita Lluch 2020, cap. 3.2 (ref. 9). Ojo: su texto invierte la S y la E del valgo móvil; la tabla 4 las da bien. Tests de co1, co4, co5 y co7 (codo). PDF del usuario releído (2026-11): la tabla 5 da también la técnica del Cozen y del test de la epicondilalgia medial (co1 y co2).
 
 Citada como:
 
-1. Los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
+1. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según StatPearls, el dolor máximo suele estar sobre el epicóndilo lateral, a veces en un punto 1–2 cm distal, y aumenta con la extensión resistida de la muñeca, sobre todo con el codo extendido y el antebrazo en pronación (Buchanan y Varacallo 2023). Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Buchanan y Varacallo 2023 · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
 
 En Dorf 2007, el brazo afectado apretó de media un 29 % menos en extensión que en flexión, y el sano igual en las dos posiciones; el afectado tuvo el 50 % de la fuerza del sano en extensión y el 69 % en flexión. Se midió sentado, con un dinamómetro hidráulico, con el codo a 90° y en extensión completa por delante del cuerpo. Era un centro de referencia (pacientes que ya habían fracasado con otros tratamientos), y los autores no estudiaron otras causas de dolor lateral, como el túnel radial, la artrosis radiocapitelar o las fracturas de la cabeza del radio.
-2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-3. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
-4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+4. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+5. Zwerus 2018 (Br J Sports Med 52(19):1253–1260), tabla 5
+6. Sentado, con el codo extendido y el antebrazo en supinación completa: el examinador estabiliza el codo y, con la otra mano en la palma, resiste la flexión de la muñeca (Zwerus 2018); también la pronación contra resistencia (Li 2026; Tahir 2026). Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.
+7. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Li 2026 · Tahir 2026 · Adani 2025 · O'Driscoll 2005
+8. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
+9. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
 
 Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducción; desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°. Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°; suele aparecer de golpe y provoca una retirada involuntaria del brazo. Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo. Cuidado si hay síntomas en el hombro, que el test puede agravar.
 
 En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
-5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-6. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-7. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.
-8. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-9. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad. Lluch da el 88–100 % para este test y el de recolocación juntos.
-10. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3); sin especificidad.
-11. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-12. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
-13. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
-14. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
-15. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
-16. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero)
-17. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero; tablas 4 y 5)
+10. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+11. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+12. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.
+13. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+14. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad. Lluch da el 88–100 % para este test y el de recolocación juntos.
+15. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3); sin especificidad.
+16. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+17. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+18. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+19. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
+20. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
+21. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero)
+22. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero; tablas 4 y 5)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» | 4b · cita bajo el test | 2 |
-| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Test de Polk (medial)» | 4b · cita bajo el test | 3 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 5 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 6 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 6 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» (en `razonamiento.detalle`) | 4b · mención en el texto | 7 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» | 4b · cita bajo el test | 8 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» (en `razonamiento.detalle`) | 4b · mención en el texto | 9 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» | 4b · cita bajo el test | 8 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» (en `razonamiento.detalle`) | 4b · mención en el texto | 10 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» | 4b · cita bajo el test | 11 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 12 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 13 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Test de compresión del tríceps (triceps squeeze test)» | 4b · cita bajo el test | 14 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 15 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 15 |
-| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 16 |
-| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 17 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» | 4b · cita bajo el test | 4 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 5 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» (en `criterio`) | 4b · mención en el texto | 6 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 7 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Test de Polk (medial)» | 4b · cita bajo el test | 8 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 9 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 10 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 11 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 11 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» (en `razonamiento.detalle`) | 4b · mención en el texto | 12 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» | 4b · cita bajo el test | 13 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» (en `razonamiento.detalle`) | 4b · mención en el texto | 14 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» | 4b · cita bajo el test | 13 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» (en `razonamiento.detalle`) | 4b · mención en el texto | 15 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» | 4b · cita bajo el test | 16 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 17 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 18 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Test de compresión del tríceps (triceps squeeze test)» | 4b · cita bajo el test | 19 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 20 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 20 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 21 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 22 |
 
 ### Zwerus 2022
 

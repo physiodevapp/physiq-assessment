@@ -37,7 +37,8 @@ import { tmpdir } from 'node:os';
 const { CIF_TREES } = await import('../../data.js');
 const { ORDEN_REGIONES, HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlSintomas, htmlPlanHoja, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
+const { registrarVersion } = await import('./historial.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlSintomas, htmlPlanHoja, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, elementosHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -58,8 +59,11 @@ const IMPRESAS = Object.fromEntries(hojasImpresas().map(h => [h.clave, h]));
 function rematarHoja(clave, html) {
   const h = IMPRESAS[clave];
   if (!h) return html.replaceAll('<!--FECHA-->', hoy).replaceAll('<!--QR-->', '').replaceAll('<!--HUELLA-->', '');
-  const huella = huellaHoja(h.html());
+  const canonico = h.html(), huella = huellaHoja(canonico);
   if (HUELLAS[clave]?.huella !== huella) HUELLAS[clave] = { huella, fecha: HOY_ISO };
+  // Historial (docs/esquemas/historial/<clave>.json): lo impreso de cada elemento, para que la guía
+  // diga qué cambió desde la versión de un papel
+  registrarVersion(clave, HUELLAS[clave], elementosHoja(canonico));
   // La fecha impresa es la del último cambio de contenido (la de «Hojas para imprimir»), no la de
   // generación: regenerar sin cambios no la mueve, y el papel y la lista dicen siempre lo mismo
   return rematar(html, { ruta: h.ruta, huella, fecha: fechaCorta(HUELLAS[clave].fecha) });

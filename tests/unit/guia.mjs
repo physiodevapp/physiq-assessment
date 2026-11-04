@@ -423,3 +423,93 @@ test('guía: «Preguntar a la IA» con los modos de la app (fármacos al final d
   assert.ok(extra.includes('promptPregunta({ pregunta: q, tipo: TIPO })'));
   assert.ok(!src.includes('guardarDestinoIA') && !extra.includes('guardarDestinoIA'), 'la guía no guarda nada');
 });
+
+// ── Historial de las hojas impresas: qué cambió desde la versión de un papel ──
+const CAMB = await import('../../lib/cambios-hojas.js');
+const HIST = await import('../../docs/esquemas/historial.mjs');
+
+test('historial de hojas: las marcas de elemento no cambian la huella ni llegan al papel', () => {
+  for (const h of HOJAS.hojasImpresas()) {
+    const html = h.html();
+    assert.equal(HOJAS.huellaHoja(html), HOJAS.fnv(HOJAS.sinMarcas(html)), h.clave);
+    assert.ok(!HOJAS.rematar(html, { ruta: h.ruta, huella: 'x', fecha: 'y' }).includes('<!--el:'), `${h.clave}: marcas en el papel`);
+  }
+});
+
+test('historial de hojas: cada pregunta, paso, hipótesis y test de las hojas de región es un elemento', () => {
+  for (const region of Object.keys(CIF_TREES)) {
+    const cr = HOJAS.elementosHoja(HOJAS.htmlCribado(region)).el;
+    const { siempre, especiales } = ESQ.sistemasCribado(SYSTEMIC_SCREENING, region);
+    const preguntas = [...siempre, ...especiales].flatMap(s => ESQ.preguntasDeRegion(s, region).map(q => `q-${q.id}`));
+    assert.deepEqual(Object.keys(cr).sort(), [...new Set(preguntas)].sort(), `cribado-${region}`);
+    const ar = HOJAS.elementosHoja(HOJAS.htmlArbol(region, { a4: true })).el;
+    assert.deepEqual(Object.keys(ar).sort(), CIF_TREES[region].steps.map(s => `paso-${s.id}`).sort(), `arbol-a4-${region}`);
+    // El texto del paso junta la pregunta y sus respuestas
+    const st = CIF_TREES[region].steps[0];
+    assert.ok(ar[`paso-${st.id}`][2].includes(st.options[0].label.split('—')[0].trim()), `${region}: respuestas del paso`);
+    const co = HOJAS.elementosHoja(HOJAS.htmlConfirmacion(region)).el;
+    const hyps = Object.values(HYPOTHESES).filter(h => h.region === region);
+    for (const h of hyps) {
+      assert.ok(co[`hip-${h.id}`], `hip-${h.id}`);
+      // (la clave va dentro de un comentario: sin «--», «|» ni «>»)
+      h.tests.forEach((t, k) => assert.equal(co[`test-${h.id}-${t.name}`.replace(/-{2,}/g, '-').replace(/[|>]/g, ' ')]?.[1], `test-${h.id}-${k}`, `${h.id} test ${k}`));
+      assert.equal(Object.keys(co).filter(c => c.startsWith(`test-${h.id}-`)).length, h.tests.length, `${h.id}: un elemento por test`);
+    }
+  }
+});
+
+test('historial de hojas: al día con huellas.json y con lo que imprimirían los datos de hoy', () => {
+  const guardadas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
+  const mal = [];
+  for (const h of HOJAS.hojasImpresas()) {
+    const lista = HIST.leerHistorial(h.clave), ultima = lista.at(-1);
+    const html = h.html();
+    if (!ultima || ultima.huella !== guardadas[h.clave]?.huella || ultima.fecha !== guardadas[h.clave]?.fecha) { mal.push(`${h.clave} (no es la versión de huellas.json)`); continue; }
+    if (JSON.stringify({ el: ultima.el, resto: ultima.resto }) !== JSON.stringify(HOJAS.elementosHoja(html))) mal.push(`${h.clave} (elementos)`);
+    assert.ok(lista.length <= HIST.MAX_VERSIONES, h.clave);
+    assert.equal(new Set(lista.map(v => v.huella)).size, lista.length, `${h.clave}: versiones repetidas`);
+  }
+  assert.deepEqual(mal, [], `Historial desfasado: ${mal.join(', ')}. Regenera las hojas con «node docs/esquemas/generar.mjs …» (escribe el historial) o, si ya están generadas, «node docs/esquemas/historial.mjs», y sube docs/esquemas/historial/`);
+  assert.deepEqual(JSON.parse(leer('docs', 'esquemas', 'historial', 'indice.json')), HIST.indiceHistorial(), 'historial/indice.json desfasado: node docs/esquemas/historial.mjs');
+  const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
+  assert.ok(deploy.includes('docs/esquemas/historial/*.json'), 'deploy-to-hub copia el historial');
+});
+
+test('historial de hojas: compararVersiones distingue cambio, nuevo, quitado, número, otros textos y solo formato', () => {
+  const v = (el, resto = 'Cabecera. Pie') => ({ huella: 'x', fecha: '2026-11-01', el, resto });
+  const vieja = v({ 'q-a': ['Cáncer 1', 'q-a', '¿A?'], 'q-b': ['Cáncer 2', 'q-b', '¿B?'], 'q-c': ['Cáncer 3', 'q-c', '¿C?'] });
+  // Solo formato: mismos elementos y mismo texto (otro orden de frases o espaciado no cuenta)
+  const f = CAMB.compararVersiones(vieja, v({ ...vieja.el }, 'Cabecera.  Pie'));
+  assert.ok(f.soloFormato && !f.numeracion && !f.otros);
+  assert.equal(CAMB.resumenCambios(f), 'solo formato');
+  // Un texto cambiado, sin moverse: los números siguen valiendo
+  const t = CAMB.compararVersiones(vieja, v({ ...vieja.el, 'q-b': ['Cáncer 2', 'q-b', '¿B nueva?'] }));
+  assert.equal(t.cambiados.length, 1);
+  assert.equal(t.cambiados[0].antesTexto, '¿B?');
+  assert.ok(!t.numeracion && !t.soloFormato);
+  // Una pregunta nueva en medio: la siguiente cambia de número, y una quitada
+  const n = CAMB.compararVersiones(vieja, v({ 'q-a': ['Cáncer 1', 'q-a', '¿A?'], 'q-n': ['Cáncer 2', 'q-n', '¿N?'], 'q-b': ['Cáncer 3', 'q-b', '¿B?'] }, 'Cabecera. Pie nuevo'));
+  assert.deepEqual(n.nuevos.map(x => x.clave), ['q-n']);
+  assert.deepEqual(n.movidos.map(x => [x.clave, x.antesPos, x.pos]), [['q-b', 'Cáncer 2', 'Cáncer 3']]);
+  assert.deepEqual(n.quitados.map(x => [x.clave, x.ancla]), [['q-c', '']]);
+  assert.deepEqual(n.textos, { quitadas: ['Pie'], nuevas: ['Pie nuevo'] });
+  assert.ok(n.numeracion && n.otros);
+  assert.equal(CAMB.resumenCambios(n), '1 nuevo · 1 quitado · 1 cambia de número · otros textos de la hoja');
+  assert.equal(CAMB.totalCambios(n), 4);
+  // Una frase repetida en dos páginas (el pie) cuenta una vez
+  assert.deepEqual(CAMB.compararVersiones(v({}, 'A. Pie. A. Pie.'), v({}, 'A. Pie 2. A. Pie 2.')).textos, { quitadas: ['Pie.'], nuevas: ['Pie 2.'] });
+  // Etiquetas y texto sin el número delante
+  assert.equal(CAMB.etiquetaElemento({ tipo: 'hipotesis', pos: '4' }), 'Hipótesis 4');
+  assert.equal(CAMB.etiquetaElemento({ tipo: 'test', pos: '4' }), 'Test (hipótesis 4)');
+  assert.equal(CAMB.textoElemento({ tipo: 'paso', texto: '2b ¿Dolor?' }), '¿Dolor?');
+  // Una versión antigua sin detalle (solo su huella)
+  assert.ok(!CAMB.conDetalle({ huella: 'x', fecha: '2026-10-29' }));
+  assert.equal(CAMB.versionDe([{ huella: 'a' }, { huella: 'b' }], 'b').huella, 'b');
+  assert.equal(CAMB.versionDe([{ huella: 'a' }], 'z'), null);
+});
+
+test('historial de hojas: el índice dice de qué hoja es cada versión (el papel, aunque se recargue en otra pestaña)', () => {
+  const indice = JSON.parse(leer('docs', 'esquemas', 'historial', 'indice.json'));
+  const guardadas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
+  for (const [k, v] of Object.entries(guardadas)) assert.equal(indice[v.huella], k, k);
+});

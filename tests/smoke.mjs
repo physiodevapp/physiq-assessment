@@ -2385,6 +2385,78 @@ async function checkHipPlegables(browser) {
 // puntuación, progreso, «🚑 Derivación») y, abierta, se queda fija bajo las
 // pestañas; «Replegar ▴», «Desplegar todo», enlace directo e impresión. 320 px,
 // letra normal y grande.
+// Hoja impresa de una versión anterior: qué cambió desde ella (historial de la hoja, lib/cambios-hojas.js).
+// En el aviso, una línea y la lista plegada; en la página, una marca por elemento cambiado (toque =
+// qué decía la hoja); un papel de otra hoja recargado en esta pestaña no avisa; «Hojas para imprimir»,
+// «Qué cambió» plegado y cargado al abrirlo. A 320 px, sin desbordar.
+async function checkGuiaCambios(browser, errors) {
+  const r = {};
+  // Sin «.html»: `npx serve` redirige guia.html → guia y se pierde el ?h=
+  const raiz = BASE_URL.replace(/\/$/, ''), base = `${raiz}/guia`;
+  const ctx = await browser.newContext({ viewport: { width: 320, height: 640 }, isMobile: true, hasTouch: true });
+  const page = await ctx.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (guía, cambios): ${err.message}`));
+  const huellas = await (await page.request.get(`${raiz}/docs/esquemas/huellas.json`)).json();
+  const { compararVersiones, versionDe, conDetalle } = await import('../lib/cambios-hojas.js');
+  // Una versión antigua del cribado con preguntas cambiadas (del historial real)
+  let papel = null, clave = '';
+  for (const k of ['cribado-lumbar', 'cribado-hombro', 'cribado-cadera', 'cribado-cervical', 'cribado-rodilla', 'cribado-codo', 'cribado-tobillo_pie']) {
+    const hist = await (await page.request.get(`${raiz}/docs/esquemas/historial/${k}.json`)).json();
+    const ultima = versionDe(hist, huellas[k].huella);
+    papel = hist.find(v => conDetalle(v) && v.huella !== ultima.huella && compararVersiones(v, ultima).cambiados.length);
+    if (papel) { clave = k; papel.d = compararVersiones(papel, ultima); break; }
+  }
+  r.hayCaso = !!papel;
+  if (!papel) { await ctx.close(); r.ok = false; return r; }
+  const region = clave.replace('cribado-', '');
+  await page.goto(`${base}?h=${papel.huella}#${region}/cribado`, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#guiaPapel .guia-ver');
+  // Plegado: una línea de resumen y la lista oculta; el aviso no pasa de ~260 px de alto
+  r.avisoPlegado = await page.evaluate(() => {
+    const a = document.getElementById('guiaPapel');
+    return document.getElementById('guiaPapelLista').hidden && a.getBoundingClientRect().height < 260 && /desde tu hoja del/.test(a.textContent);
+  });
+  const marcas = papel.d.cambiados.length + papel.d.nuevos.length + papel.d.movidos.length;
+  r.marcas = await page.evaluate(n => document.querySelectorAll('.guia-cambio').length === n
+    && [...document.querySelectorAll('.guia-cambio')].every(m => m.closest('.guia-item, details.guia-plegable'))
+    && document.querySelectorAll('.guia-meta-cambio').length >= 1, marcas);
+  await page.click('#guiaPapel .guia-ver');
+  r.lista = await page.evaluate(n => {
+    const l = document.getElementById('guiaPapelLista');
+    return !l.hidden && l.querySelectorAll('li').length >= n && !!l.querySelector('del, ins')
+      && document.querySelector('#guiaPapel .guia-ver').getAttribute('aria-expanded') === 'true';
+  }, papel.d.cambiados.length);
+  // La marca dentro de un bloque plegado: abrir el bloque, tocarla abre «qué decía tu hoja» sin plegarlo
+  const id = papel.d.cambiados[0].ancla;
+  await page.evaluate(id => { const d = document.getElementById(id).closest('details.guia-plegable'); if (d) d.open = true; }, id);
+  await page.locator(`#${id} .guia-cambio`).tap();
+  r.ficha = await page.waitForFunction(() => /Tu hoja impresa/.test(document.getElementById('cambioFicha')?.textContent || '') && !document.getElementById('cambioFicha').hidden, null, { timeout: 5000 }).then(() => true, () => false)
+    && await page.evaluate(id => document.getElementById(id).closest('details.guia-plegable')?.open !== false, id);
+  r.sinDesbordar = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+  // Otra pestaña: sin aviso ni marcas
+  await page.goto(`${base}?h=${papel.huella}#${region}/arbol`, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.guia-item');
+  r.otraPestana = !(await page.$('#guiaPapel')) && !(await page.$('.guia-cambio'));
+  // El papel de la confirmación (al día) recargado en el cribado: no es esta hoja, no avisa
+  await page.goto(`${base}?h=${huellas[`confirmacion-${region}`].huella}#${region}/cribado`, { waitUntil: 'networkidle' });
+  await page.waitForSelector('details.guia-plegable');
+  r.papelDeOtraHoja = !(await page.$('#guiaPapel'));
+  // Hojas para imprimir: «Qué cambió» plegado; al abrirlo, carga el detalle
+  await page.goto(`${base}#hojas`, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.guia-hoja');
+  const ver = page.locator('.guia-hoja .guia-ver[data-cargar]').first();
+  r.hojasPlegado = await page.evaluate(() => [...document.querySelectorAll('.guia-hoja > .guia-cambios')].every(c => c.hidden));
+  if (await ver.count()) {
+    await ver.tap();
+    const caja = await ver.getAttribute('aria-controls');
+    r.hojasCarga = await page.waitForFunction(id => { const c = document.getElementById(id); return c && !c.hidden && /Desde la v\.|No se puede detallar/.test(c.textContent); }, caja, { timeout: 5000 }).then(() => true, () => false);
+  }
+  r.hojasSinDesbordar = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+  await ctx.close();
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 async function checkGuiaPlegables(browser) {
   const r = {};
   const base = BASE_URL.replace(/\/$/, '') + '/guia.html';
@@ -6742,6 +6814,15 @@ async function checkGuia(browser, errors) {
       return document.querySelectorAll('[id^="paso-"]').length === CIF_TREES.lumbar.steps.length
         && /«dolor lumbar inespecífico»/.test(document.getElementById('sin-hipotesis')?.textContent || '');
     });
+    // «sigue en el paso X»: enlace a un paso que existe; tocarlo lo resalta (usuario, 2026-11)
+    r.saltos = await page.evaluate(() => {
+      const s = [...document.querySelectorAll('a.guia-salto')];
+      return s.length > 0 && s.every(a => document.getElementById(a.getAttribute('href').split('/').pop()));
+    });
+    const salto = await page.getAttribute('a.guia-salto', 'href');
+    await page.click('a.guia-salto');
+    await page.waitForSelector(`#${salto.split('/').pop()}.destacado`);
+    r.saltoVa = await page.evaluate(id => { const b = document.getElementById(id).getBoundingClientRect(); return b.top >= 0 && b.top < innerHeight; }, salto.split('/').pop());
     await page.click('.guia-hojas a:has-text("Confirmación")');
     await page.waitForSelector('[id^="test-"]', { state: 'attached' });
     r.confirmacion = await page.evaluate(async () => {
@@ -6885,8 +6966,8 @@ async function checkGuia(browser, errors) {
     // Filtro por región: su cuaderno, sus tres hojas y las generales; segundo toque, todo otra vez
     const contar = () => page.evaluate(() => ({
       cuadernos: [...document.querySelectorAll('.guia-hoja a[href*="cuaderno-"]')].map(a => a.getAttribute('href').match(/cuaderno-([^.]+)/)[1]),
-      regionales: [...document.querySelectorAll('.guia-hoja a')].map(a => a.getAttribute('href').match(/(?:cribado|arbol-a4|confirmacion)-([a-z_]+)\.pdf/)?.[1]).filter(Boolean),
-      generales: document.querySelectorAll('.guia-hoja a[href*="tejidos-"], .guia-hoja a[href*="condiciones"], .guia-hoja a[href*="ejercicio-paciente"]').length,
+      regionales: [...document.querySelectorAll('.guia-hoja > a')].map(a => a.getAttribute('href').match(/(?:cribado|arbol-a4|confirmacion)-([a-z_]+)\.pdf/)?.[1]).filter(Boolean),
+      generales: document.querySelectorAll('.guia-hoja > a[href*="tejidos-"], .guia-hoja > a[href*="condiciones"], .guia-hoja > a[href*="ejercicio-paciente"]').length,
       total: document.querySelectorAll('.guia-hoja').length }));
     const antes = await contar();
     await page.click('[data-filtro-hojas="lumbar"]');
@@ -7056,7 +7137,7 @@ async function checkGuia(browser, errors) {
   } catch (e) { r.error = e.message; }
   await context.close();
   r.fallidas = fallidas;
-  r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
+  r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol && r.saltos && r.saltoVa
     && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
@@ -7600,6 +7681,12 @@ const SECCIONES = [
     const c = await checkGuia(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; la pauta y el pronóstico de cada hipótesis, con la derivación a la vista; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con los cuadernos a doble cara, la versión de cada hoja y su PDF, y el filtro por región; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA y «¿Otro fármaco o duda?» (modo «Fármacos» de la IA, sin guardar el destino); irritabilidad suelta (#irritabilidad); la app la enlaza desde el panel de sesión («Hojas para imprimir»); cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
+  } },
+
+  { id: 'guia-cambios', titulo: 'Guía: qué cambió desde la hoja impresa (320 px):', run: async ({ browser, errors }) => {
+    const r = await checkGuiaCambios(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} papel de una versión anterior: aviso de una línea con «Ver cambios» plegado (lo quitado tachado, lo nuevo resaltado) y el PDF; una marca en cada elemento cambiado, «Con cambios» en la línea de su bloque, y tocarla dice qué decía la hoja sin plegarlo; nada en otra pestaña ni con el papel de otra hoja recargado aquí; «Hojas para imprimir» con «Qué cambió» plegado que se carga al abrirlo; sin desbordar${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'guia-plegables', titulo: 'Guía: sistemas del cribado e hipótesis de la confirmación plegables (320 px):', run: async ({ browser }) => {
