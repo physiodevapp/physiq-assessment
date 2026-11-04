@@ -2289,7 +2289,8 @@ async function checkHipPlegables(browser) {
     const prog = id => page.evaluate(i => document.getElementById(`prog_${i}`)?.textContent || '', id);
     r[`${letra}_progresoInicial`] = (await prog('h3')) === '0 de 11 tests hechos' && (await prog('h2')) === '0 de 6 tests hechos'
       && (await prog('h11')) === '0 de 1 test hecho';
-    r[`${letra}_progresoVisiblePlegada`] = await page.evaluate(() => { const x = document.getElementById('prog_h2').getBoundingClientRect(); return x.height > 0 && x.right <= innerWidth; });
+    // En móvil el progreso visible es el de la línea bajo el nombre (#meta_…); #prog_ es la copia de escritorio
+    r[`${letra}_progresoVisiblePlegada`] = await page.evaluate(() => { const m = document.querySelector('#meta_h2 .hyp-meta-movil'); const x = m.getBoundingClientRect(); return x.height > 0 && x.right <= innerWidth && m.textContent.includes('0 de 6 tests hechos'); });
     r[`${letra}_lineaCondicion`] = await page.isVisible('#phase4b .ac-nota-4b');
 
     await page.click('#hypcard_h3 .hypothesis-header');
@@ -2297,6 +2298,16 @@ async function checkHipPlegables(browser) {
     const card = page.locator('#hypcard_h3');
     await card.locator('.test-result-btn.pos').nth(0).click();
     r[`${letra}_progresoSube`] = (await prog('h3')) === '1 de 11 tests hechos';
+    // Cabecera en móvil: la misma etiqueta que la de la derecha (oculta en móvil) con
+    // el progreso como una parte más, visible y sin salirse de la cabecera
+    r[`${letra}_cabeceraPuntuacion`] = await page.evaluate(() => {
+      const m = document.querySelector('#meta_h3 .hyp-meta-movil'), h = document.querySelector('#hypcard_h3 .hypothesis-header').getBoundingClientRect();
+      const etq = document.getElementById('score_h3').textContent.trim();
+      const txt = m.textContent.replace(/\s+/g, ' ').trim();
+      const partes = [...m.querySelectorAll('.hyp-etq-parte')];
+      return m.getBoundingClientRect().height > 0 && txt.startsWith(etq.replace(/\s+/g, ' ')) && txt.endsWith('· 1 de 11 tests hechos')
+        && partes.every(p => p.getBoundingClientRect().right <= h.right + 1);
+    });
     // Bajar dentro de la tarjeta: aparece la banda con nombre y puntuación
     await page.evaluate(() => { const t = document.querySelectorAll('#hypcard_h3 .test-item')[4]; window.scrollTo(0, t.getBoundingClientRect().top + scrollY - 200); });
     await page.waitForFunction(() => document.getElementById('hypContextBanner').classList.contains('visible'));
