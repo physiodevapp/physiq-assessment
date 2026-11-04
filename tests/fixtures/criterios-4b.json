@@ -1363,7 +1363,11 @@
    "La fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical es pobre o regular (revisión de 7 artículos).",
    "Las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p.",
    "A19), no para el déficit de movilidad, que no tiene patrón de referencia;",
-   "y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %)."
+   "y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %).",
+   "En el enfoque de Maitland, el segmento sintomático se confirma si reproduce el dolor junto a una resistencia segmentaria alterada;",
+   "en el de Mulligan, el criterio es que el dolor desaparezca (Lluch 2020, cap.",
+   "5.3, p.",
+   "377)."
   ],
   "retiradas": [
    "Cuenta como hallazgo:"
@@ -1410,7 +1414,8 @@
  "ce2|Test de Reposicionamiento Cabeza-Neutro": {
   "frases": [
    "Con los ojos cerrados, el paciente vuelve a la posición de partida tras una rotación o una extensión activas;",
-   "se mide el error con un láser en una diana, al menos 3 veces por movimiento, y se promedia.",
+   "se mide el error con un láser en una diana, al menos 3 veces por movimiento, y se promedia;",
+   "tras cada movimiento, el examinador recoloca la cabeza en neutro con suavidad para no medir un error acumulado.",
    "Un error mayor de 4–5° indica déficit del sentido de posición cervical.",
    "Una revisión de alta calidad encontró que quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
    "Sin S ni E."
@@ -1582,10 +1587,18 @@
   "frases": [
    "Movilidad pasiva intervertebral de C0 a C3;",
    "el segmento sintomático más frecuente es C1–C2.",
+   "Presión manual mantenida sobre cada articulación cervical alta:",
+   "se anota si reproduce la cefalea en su zona habitual o si la resuelve durante la exploración (Lluch 2020, cap.",
+   "5.3.1, pp.",
+   "400–401 y 403).",
    "Hallazgo esperado:",
    "la cefalea se reproduce al provocar los segmentos cervicales altos implicados.",
    "Una revisión de calidad aceptable (Rubio-Ochoa, citada por la guía) da para la cefalea cervicogénica κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9 y LR− 0,43–0,49.",
-   "El FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical."
+   "El FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical.",
+   "No es exclusivo de la cervicogénica:",
+   "en un estudio de migraña, la presión manual mantenida sobre una articulación cervical alta reprodujo la cefalea en su zona dominante en un tercio de los pacientes (Lluch 2020, cap.",
+   "5.3.1, p.",
+   "401)."
   ],
   "retiradas": [
    "No puntúa (decisión del usuario):"
@@ -1699,6 +1712,9 @@
    "con los ojos cerrados, el paciente lleva la cabeza hasta el final del recorrido a ritmo cómodo y vuelve lo más exacto posible.",
    "Tras un intento de prueba con los ojos abiertos, 6 repeticiones por movimiento (flexión, extensión y rotación a cada lado);",
    "el error en cm se pasa a grados y se promedia (AlDahas 2023).",
+   "Tras cada movimiento, el examinador recoloca la cabeza en neutro con suavidad para no acumular el error (Lluch 2020, cap.",
+   "5.3, p.",
+   "380).",
    "Error medio de reposición con láser.",
    "Síntomas en brazo → ULNT1 y neurológico."
   ]
@@ -1753,7 +1769,10 @@
   "frases": [
    "Sentado, con un láser en la cabeza y una diana a 90 cm, a la altura de los ojos:",
    "con los ojos cerrados, el paciente lleva la cabeza hasta el final del recorrido y vuelve a la posición de partida;",
-   "6 repeticiones por movimiento, y se promedia el error (AlDahas 2023).",
+   "6 repeticiones por movimiento, y se promedia el error (AlDahas 2023);",
+   "tras cada movimiento, el examinador recoloca la cabeza en neutro con suavidad para no acumular el error (Lluch 2020, cap.",
+   "5.3, p.",
+   "380).",
    "Un error mayor de 4–5° al volver a la posición de partida con los ojos cerrados indica déficit del sentido de posición cervical.",
    "Quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
    "Sin S ni E.",
@@ -1935,7 +1954,10 @@
   "frases": [
    "Ojos cerrados, rotación a cada lado y extensión, y volver a la posición natural.",
    "Error >4–5° = déficit.",
-   "Con láser en cinta de cabeza y diana, al menos 3 intentos por movimiento y hacer la media."
+   "Con láser en cinta de cabeza y diana, al menos 3 intentos por movimiento y hacer la media.",
+   "Tras cada movimiento, el examinador recoloca la cabeza en neutro con suavidad para no acumular el error (Lluch 2020, cap.",
+   "5.3, p.",
+   "380)."
   ]
  },
  "ce13|Movimiento o postura que desencadena el mareo (① gesto testigo)": {
