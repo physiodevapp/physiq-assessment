@@ -828,7 +828,10 @@ function actualizarFijas() {
   const top = navAlto();
   document.querySelectorAll('details.guia-plegable').forEach(d => {
     const r = d.getBoundingClientRect();
-    const fija = d.open && !_imprimiendo && r.top < top - 1 && r.bottom > top + 48;
+    // Compacta hasta que el bloque sale entero por arriba: en el tramo final la línea
+    // sigue pegada (la empuja el final del bloque) y volver a la alta se veía como una
+    // doble raya con el recuento asomando bajo las pestañas (usuario, 2026-11)
+    const fija = d.open && !_imprimiendo && r.top < top - 1 && r.bottom > top;
     if (fija === d.classList.contains('fija')) return;
     if (!fija) { quitarFija(d); return; }
     const s = d.querySelector(':scope > summary');
