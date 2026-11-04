@@ -88,7 +88,9 @@ const RE_TARJETA = /Tarjeta de consulta (hombro|cadera|cervical|lumbar|rodilla|c
 // (referencias que data/ cita sin año, como «Criterio de Goodman»).
 function clavesDe(texto, alias = []) {
   const claves = [];
-  for (const [clave, a] of alias) if (texto.includes(a)) claves.push({ tipo: 'lit', clave });
+  // Un alias encontrado se quita del texto antes de buscar autor–año, para que
+  // «Zimmerman y Hubbard 2023, reflejos» no cuente además como «Zimmerman y Hubbard 2023».
+  for (const [clave, a] of alias) if (texto.includes(a)) { claves.push({ tipo: 'lit', clave }); texto = texto.split(a).join(' '); }
   for (const m of texto.matchAll(RE_TARJETA)) claves.push({ tipo: 'tarjeta', clave: m[1].replace(/ y /, '_') });
   for (const m of texto.matchAll(RE_NICE)) claves.push({ tipo: 'lit', clave: `NICE ${m[1]}${m[2]}` });
   for (const m of texto.matchAll(RE_AUTOR_ANO)) claves.push({ tipo: 'lit', clave: `${m[1]} ${m[2]}` });
@@ -140,7 +142,8 @@ const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g
 // Todas las citas de data/: literatura (clave → citas y usos), tarjetas
 // (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
 export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, EJERCICIO = null, REFERENCIAS = {}, testPuntua }) {
-  const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => (r.citadaComo || []).map(a => [k, a]));
+  // Las claves con el tema entre paréntesis («Hansrani 2023 (ensayo)») también valen tal cual en una `fuente`.
+  const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => [...(r.citadaComo || []), ...(r.citadaComo ? [k] : [])].map(a => [k, a]));
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
   const tarjetas = new Map();   // región → { citas: [texto], usos: [] }
   const sinFuente = [];

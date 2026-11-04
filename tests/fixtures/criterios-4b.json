@@ -1359,6 +1359,8 @@
  "ce1|PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3": {
   "frases": [
    "Movilización segmentaria posteroanterior.",
+   "En prono con el cuello en neutro, presión posteroanterior sobre los pilares articulares, a cada lado;",
+   "se gradúa la resistencia (normal, ligera, moderada o marcada) y si reproduce su dolor habitual, local o referido (Schneider 2013, de C2–3 a C6–7).",
    "Positivo si hipomóvil y reproduce síntomas.",
    "La fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical es pobre o regular (revisión de 7 artículos).",
    "Las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p.",
@@ -1490,8 +1492,28 @@
  "ce3|Reflejos tendinosos (bíceps C6, tríceps C7)": {
   "frases": [
    "Parte de la exploración neurológica (sensibilidad, fuerza y reflejos), indicada cuando se sospecha radiculopatía con conducción comprometida.",
+   "Paciente relajado, con el codo apoyado a unos 90° (sobre el muslo si está sentado, o en el brazo del examinador).",
+   "Bíceps:",
+   "un dedo sobre el tendón, justo por delante del codo, y se percute sobre el dedo;",
+   "tríceps:",
+   "se sostiene el antebrazo y se percute el tendón, justo por detrás del codo.",
+   "Se mira la contracción del músculo, no el movimiento, y se compara enseguida con el otro lado;",
+   "si no sale, refuerzo:",
+   "que apriete los dientes o hablar con él (Zimmerman y Hubbard 2023, reflejos;",
+   "Sánchez y Asuncion 2025).",
    "Puede haber déficit sensitivo, de fuerza o de reflejos ligado a la raíz afectada.",
-   "Sin S ni E."
+   "Sin S ni E.",
+   "Grados de la escala NINDS:",
+   "0, ausente;",
+   "1, pequeño o solo con refuerzo;",
+   "2, mitad baja de lo normal;",
+   "3, mitad alta;",
+   "4, aumentado, con clonus si lo hay.",
+   "Unos reflejos simétricos entre 1 y 3, sin otros signos, se consideran normales:",
+   "importa más la asimetría entre lados, y hasta un reflejo ausente en los dos lados puede ser normal.",
+   "Raíces:",
+   "bíceps C5–C6;",
+   "tríceps C7–C8, sobre todo C7 (Zimmerman y Hubbard 2023, reflejos)."
   ],
   "retiradas": [
    "no puntúa."
@@ -1508,6 +1530,7 @@
    "T1, interóseos (el músculo elegido varía entre estudios).",
    "Sensibilidad por dermatomas:",
    "tacto ligero (algodón o pincel) para las fibras gruesas, y pinchazo, frío o calor para las finas (Yousif 2025).",
+   "Con los ojos cerrados, comparar puntos simétricos, dejando unos 2 s entre estímulos (Sánchez y Asuncion 2025).",
    "Sensibilidad a vibración y temperatura:",
    "buscar hipoestesia.",
    "Comparar con el lado sano.",
@@ -1803,9 +1826,17 @@
  "ce8|Clonus de tobillo/muñeca": {
   "frases": [
    "Contracciones rítmicas involuntarias al mantener la dorsiflexión pasiva del pie.",
+   "Tobillo:",
+   "paciente relajado, con la rodilla flexionada y el tobillo a unos 90°, la pierna sostenida con una mano;",
+   "con la otra en el dorso del antepié, dorsiflexión brusca y se mantiene la presión:",
+   "cada latido se nota como una flexión plantar seguida de relajación.",
+   "En el resto de sitios (bíceps, tríceps, rótula) se provoca percutiendo el tendón como un reflejo osteotendinoso.",
+   "Más de 10 latidos es clonus sostenido (Zimmerman y Hubbard 2023, clonus).",
    "El clonus, el Babinski y el reflejo supinador invertido tienen especificidad alta;",
    "ningún signo aislado basta, cuenta el conjunto.",
-   "Sin S ni E."
+   "Sin S ni E.",
+   "El capítulo no describe la maniobra en la muñeca;",
+   "solo dice que la muñeca y los dedos oscilan más rápido que el tobillo, porque sus nervios son más cortos (Zimmerman y Hubbard 2023, clonus)."
   ],
   "retiradas": [
    "no puntúa."
@@ -1828,6 +1859,8 @@
    "Reflejos bicipital, tricipital, braquiorradial, rotuliano y aquíleo.",
    "Reflejo supinador invertido:",
    "al percutir la inserción del tendón del braquiorradial, la única respuesta es una flexión exagerada de los dedos (Balmaceno-Criss 2024).",
+   "Para percutirlo, antebrazo en semipronación y codo a unos 90°, apoyado;",
+   "el golpe, 5–8 cm por encima de la muñeca o sobre la estiloides radial (Watras 2026).",
    "Signo de Trömner:",
    "se percute la cara palmar de la falange distal del dedo medio, ligeramente flexionado;",
    "positivo si se flexionan el pulgar o el índice (Margetis y Donnally 2025).",
@@ -1838,7 +1871,8 @@
    "se interpreta con la historia clínica (Cervellini 2025).",
    "Las fuentes describen distinto el reflejo radial invertido:",
    "para una, la única respuesta es la flexión de los dedos (Balmaceno-Criss 2024);",
-   "para otra, se contraen a la vez los extensores de la muñeca y los flexores de los dedos (Margetis y Donnally 2025)."
+   "para otra, se contraen a la vez los extensores de la muñeca y los flexores de los dedos (Margetis y Donnally 2025);",
+   "para una tercera, falta la contracción normal del braquiorradial y se flexionan la muñeca y los dedos, a veces con una ligera extensión del codo, y aislado puede ser una variante normal en personas sin síntomas (Watras 2026)."
   ],
   "retiradas": [
    "no puntúa."
@@ -1885,7 +1919,11 @@
    "Rotación cervical activa hacia el lado afectado dolorosa y restringida.",
    "En un Delphi de 12 expertos en terapia manual hubo consenso en este hallazgo, pero también en la rotación contralateral dolorosa y restringida, y no en que todos los movimientos cervicales lo estén;",
    "es opinión de expertos, sin fiabilidad ni validez estudiadas.",
-   "Sin S ni E."
+   "Sin S ni E.",
+   "Prueba relacionada, la de rotación y lateroflexión cervical (CRLF):",
+   "sentado, rotación pasiva máxima de la cabeza hacia el lado contrario al explorado y, con el mentón sujeto, lateroflexión hacia el pecho hasta el final, con una ligera sobrepresión;",
+   "positiva si hay menos recorrido que en el otro lado o un tope brusco.",
+   "En 50 pacientes con dolor de cuello, ni el CRLF ni la exploración manual predijeron quién mejoraba tras manipular la 1.ª y la 2.ª costilla (Koppenhaver 2022)."
   ],
   "retiradas": [
    "no puntúa."
@@ -1996,7 +2034,17 @@
  },
  "ce14|Extensión-rotación": {
   "frases": [
-   "Positiva + disfunción segmentaria palpable y dolorosa → faceta cervical."
+   "Sentado, extensión completa de cabeza y cuello y, desde ahí, rotación a cada lado;",
+   "positiva si al final del movimiento reproduce su dolor de cuello habitual con una intensidad de 3/10 o más (Schneider 2013;",
+   "Schneider 2014).",
+   "Positiva + disfunción segmentaria palpable y dolorosa → faceta cervical.",
+   "Frente a bloqueos diagnósticos de las facetas (125 pacientes de una unidad del dolor, 42 % con bloqueo positivo), sola:",
+   "S 83 %, E 59 %, LR+ 2,02, LR− 0,29;",
+   "no basta para confirmar el dolor facetario.",
+   "Junto con la exploración manual segmentaria y la palpación de la musculatura segmentaria, las tres positivas:",
+   "S 79 %, E 84 %, LR+ 4,94 (IC 95 %:",
+   "2,80–8,20) (Schneider 2014).",
+   "Fiabilidad entre examinadores, κ 0,74–0,96 junto con las otras dos pruebas (Schneider 2013)."
   ]
  },
  "ce14|Examen manual segmentario": {
@@ -2004,6 +2052,9 @@
    "En supino, presión posteroanterior («springing») sobre las facetas, en el plano sagital, segmento a segmento de C2 a T1:",
    "se juzga si el movimiento es normal o restringido y si provoca dolor;",
    "la provocación de dolor es más fiable entre examinadores que la movilidad (Hariharan 2021).",
+   "En prono, con el cuello en neutro, la misma presión sobre los pilares articulares de C2–3 a C6–7:",
+   "positivo con resistencia moderada o marcada y su dolor habitual, local o referido, de 3/10 o más;",
+   "y la palpación de la musculatura segmentaria sobre las facetas, positiva si aumenta su dolor habitual (Schneider 2013).",
    "Disfunción segmentaria palpable y dolorosa.",
    "La palpación va la última."
   ]
