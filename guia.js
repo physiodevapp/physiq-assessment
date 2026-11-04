@@ -811,7 +811,12 @@ function pintar({ sinScroll = false } = {}) {
 
 // Alto de las pestañas fijas, para la línea fija de los bloques plegables
 const navAlto = () => document.querySelector('.guia-nav')?.offsetHeight || 0;
-function medirNav() { document.documentElement.style.setProperty('--guia-nav-alto', `${navAlto()}px`); }
+// Alto real, con decimales (offsetHeight redondea y podía dejar una rendija), y otra
+// vez cuando cambia (la fuente web llega después, letra grande)
+function medirNav() {
+  const alto = document.querySelector('.guia-nav')?.getBoundingClientRect().height || 0;
+  document.documentElement.style.setProperty('--guia-nav-alto', `${alto}px`);
+}
 function actualizarPlegarTodo() {
   const b = document.querySelector('[data-plegar-todo]');
   if (b) b.textContent = document.querySelector('details.guia-plegable:not([open])') ? 'Desplegar todo' : 'Plegar todo';
@@ -873,6 +878,8 @@ function iniciarPlegables() {
     }
   });
   window.addEventListener('resize', () => { medirNav(); programarFijas(); }, { passive: true });
+  const nav = document.querySelector('.guia-nav');
+  if (nav && typeof ResizeObserver === 'function') new ResizeObserver(() => { medirNav(); programarFijas(); }).observe(nav);
   window.addEventListener('scroll', programarFijas, { passive: true });
   // Al imprimir, todo desplegado; después, como estaba
   let antes = [];
