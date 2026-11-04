@@ -6742,6 +6742,15 @@ async function checkGuia(browser, errors) {
       return document.querySelectorAll('[id^="paso-"]').length === CIF_TREES.lumbar.steps.length
         && /«dolor lumbar inespecífico»/.test(document.getElementById('sin-hipotesis')?.textContent || '');
     });
+    // «sigue en el paso X»: enlace a un paso que existe; tocarlo lo resalta (usuario, 2026-11)
+    r.saltos = await page.evaluate(() => {
+      const s = [...document.querySelectorAll('a.guia-salto')];
+      return s.length > 0 && s.every(a => document.getElementById(a.getAttribute('href').split('/').pop()));
+    });
+    const salto = await page.getAttribute('a.guia-salto', 'href');
+    await page.click('a.guia-salto');
+    await page.waitForSelector(`#${salto.split('/').pop()}.destacado`);
+    r.saltoVa = await page.evaluate(id => { const b = document.getElementById(id).getBoundingClientRect(); return b.top >= 0 && b.top < innerHeight; }, salto.split('/').pop());
     await page.click('.guia-hojas a:has-text("Confirmación")');
     await page.waitForSelector('[id^="test-"]', { state: 'attached' });
     r.confirmacion = await page.evaluate(async () => {
@@ -7056,7 +7065,7 @@ async function checkGuia(browser, errors) {
   } catch (e) { r.error = e.message; }
   await context.close();
   r.fallidas = fallidas;
-  r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
+  r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol && r.saltos && r.saltoVa
     && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
