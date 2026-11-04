@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **1150** referencias de literatura, con **5140** usos.
+- **1150** referencias de literatura, con **5143** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **565** de 1150 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -816,7 +816,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Mohr 2024](#mohr-2024) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: leído en PMC (2026-10). Síntesis narrativa sin agrupar; las cifras citadas en tp34 (Mahadevan y Dando) coinciden con sus tablas. |
 | [Bergman 2025](#bergman-2025) | test 4b sin puntuar · razonamiento fase 2 · tiempos de tejido | 6 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Margetis y Donnally 2025](#margetis-y-donnally-2025) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 · plan de tratamiento | 12 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Margetis y Donnally 2025](#margetis-y-donnally-2025) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 · plan de tratamiento · texto | 14 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Williams 2025](#williams-2025) | test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). PAIVM frente a bloqueo de rama medial: S 0,90 (0,85–0,94), E 0,73 (0,65–0,81), de una de sus revisiones de calidad alta; coincide con ce1. La prueba de extensión-rotación para el dolor facetario (S 0,83, E 0,59, LR+ 2,01, LR− 0,29) no se añade a ce14, cuya diana no es la faceta. |
 | [Grimaldi 2026](#grimaldi-2026) | test 4b sin puntuar | 5 | 2026-10 · Sin cambios: es de 2026 y PubMed no encuentra nada posterior sobre pinzamiento isquiofemoral o dolor glúteo bajo. |
 | [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
@@ -1147,7 +1147,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Heijboer 2023](#heijboer-2023) | test 4b sin puntuar · texto | 10 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Apéndice A con la lista de pruebas de la exploración de la ingle (solo los nombres) y fiabilidad entre examinadores por entidad. |
 | [Kaiser 2023](#kaiser-2023) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Dolor en el punto N en torno al 80 % de las fracturas de estrés del navicular. |
 | [Lavoie 2023](#lavoie-2023) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: PDF del usuario leído entero (2026-11). Elongación del nervio peroneo superficial en cadáver con flexión plantar, inversión, elevación de la pierna recta y aducción de cadera. |
-| [Balmaceno-Criss 2024](#balmaceno-criss-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Balmaceno-Criss 2024](#balmaceno-criss-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Bateman 2024](#bateman-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Volumen y páginas tal como los da PMC, sin cotejar con la revista. |
 | [Cady 2024](#cady-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Procedimiento del test de la rodilla a la pared midiendo la distancia en cm. |
 | [Eimiller 2024](#eimiller-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Posición, control de la pelvis y concordancia del test de Thomas modificado. |
@@ -2662,13 +2662,19 @@ Nota: Revisión narrativa. Apartado 6.2: técnica del Hoffmann, del reflejo supi
 
 Citada como:
 
-1. Reflejos bicipital, tricipital, braquiorradial, rotuliano y aquíleo. Reflejo supinador invertido: al percutir la inserción del tendón del braquiorradial, la única respuesta es una flexión exagerada de los dedos (Balmaceno-Criss 2024). La hiperreflexia generalizada y el signo de Trömner son los más sensibles. Ningún signo aislado basta.
-2. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Balmaceno-Criss 2024 (técnica) · Cervellini 2025
+1. Reflejos bicipital, tricipital, braquiorradial, rotuliano y aquíleo. Reflejo supinador invertido: al percutir la inserción del tendón del braquiorradial, la única respuesta es una flexión exagerada de los dedos (Balmaceno-Criss 2024). Signo de Trömner: se percute la cara palmar de la falange distal del dedo medio, ligeramente flexionado; positivo si se flexionan el pulgar o el índice (Margetis y Donnally 2025). La hiperreflexia generalizada y el signo de Trömner son los más sensibles. Ningún signo aislado basta.
+2. Sin S ni E.
+
+La hiperreflexia es más sensible en las piernas que en los brazos, y hay personas hiperreflexas sin patología: se interpreta con la historia clínica (Cervellini 2025).
+
+Las fuentes describen distinto el reflejo radial invertido: para una, la única respuesta es la flexión de los dedos (Balmaceno-Criss 2024); para otra, se contraen a la vez los extensores de la muñeca y los flexores de los dedos (Margetis y Donnally 2025).
+3. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Balmaceno-Criss 2024 (técnica) · Cervellini 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» | 4b · cita bajo el test | 2 |
+| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» | 4b · cita bajo el test | 3 |
 
 ### Barakatt 2009
 
@@ -3499,7 +3505,8 @@ Citada como:
 
 Publicación: J Orthop Sports Phys Ther 47(7):A1–A83  
 DOI: 10.2519/jospt.2017.0302  
-Última revisión: 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas.
+Última revisión: 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas.  
+Nota: PDF releído (2026-11, técnica de la 4b cervical): solo describe el método del FRT y de la algometría (A19–A20); no da la técnica de la PAIVM, de los reflejos ni de la fuerza.
 
 Citada como:
 
@@ -4878,6 +4885,8 @@ Citada como:
 1. Sin S ni E.
 
 La hiperreflexia es más sensible en las piernas que en los brazos, y hay personas hiperreflexas sin patología: se interpreta con la historia clínica (Cervellini 2025).
+
+Las fuentes describen distinto el reflejo radial invertido: para una, la única respuesta es la flexión de los dedos (Balmaceno-Criss 2024); para otra, se contraen a la vez los extensores de la muñeca y los flexores de los dedos (Margetis y Donnally 2025).
 2. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Balmaceno-Criss 2024 (técnica) · Cervellini 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -16430,32 +16439,40 @@ Título: *Cervical Myelopathy*
 Publicación: StatPearls [Internet], NBK482312 (act. 2025-08-02)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído en la sesión de codo (2026-10): razonamiento del cribado de codo.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído en la sesión de codo (2026-10): razonamiento del cribado de codo. PDF releído (2026-11, técnica de la 4b cervical): técnica del Hoffmann y del Trömner, y otra descripción del reflejo radial invertido; no describe cómo se explora el clonus.
 
 Citada como:
 
 1. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A15)
 2. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración)
-3. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Balmaceno-Criss 2024 (técnica) · Cervellini 2025
-4. Margetis y Donnally 2025 — Margetis y Donnally, «Cervical Myelopathy», StatPearls [Internet], NCBI Bookshelf, última actualización 2 de agosto de 2025.
-5. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: fisiopatología, anamnesis y exploración, diagnóstico diferencial y complicaciones)
-6. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: anamnesis y diagnóstico diferencial)
-7. Margetis y Donnally 2025
+3. Reflejos bicipital, tricipital, braquiorradial, rotuliano y aquíleo. Reflejo supinador invertido: al percutir la inserción del tendón del braquiorradial, la única respuesta es una flexión exagerada de los dedos (Balmaceno-Criss 2024). Signo de Trömner: se percute la cara palmar de la falange distal del dedo medio, ligeramente flexionado; positivo si se flexionan el pulgar o el índice (Margetis y Donnally 2025). La hiperreflexia generalizada y el signo de Trömner son los más sensibles. Ningún signo aislado basta.
+4. Sin S ni E.
+
+La hiperreflexia es más sensible en las piernas que en los brazos, y hay personas hiperreflexas sin patología: se interpreta con la historia clínica (Cervellini 2025).
+
+Las fuentes describen distinto el reflejo radial invertido: para una, la única respuesta es la flexión de los dedos (Balmaceno-Criss 2024); para otra, se contraen a la vez los extensores de la muñeca y los flexores de los dedos (Margetis y Donnally 2025).
+5. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Balmaceno-Criss 2024 (técnica) · Cervellini 2025
+6. Margetis y Donnally 2025 — Margetis y Donnally, «Cervical Myelopathy», StatPearls [Internet], NCBI Bookshelf, última actualización 2 de agosto de 2025.
+7. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: fisiopatología, anamnesis y exploración, diagnóstico diferencial y complicaciones)
+8. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: anamnesis y diagnóstico diferencial)
+9. Margetis y Donnally 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaMedula.fuente` | 6 · plan de tratamiento | 7 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreMedula` | 6 · plan de tratamiento | 7 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaMedula.fuente` | 6 · plan de tratamiento | 9 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreMedula` | 6 · plan de tratamiento | 9 |
 | Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Signo de Hoffmann» | 4b · cita bajo el test | 1 |
 | Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Clonus de tobillo/muñeca» | 4b · cita bajo el test | 2 |
 | Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Evaluación de marcha (alteración)» | 4b · cita bajo el test | 2 |
-| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» | 4b · cita bajo el test | 3 |
-| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 4 |
-| Cervical | — | Pregunta `cv_n4` · Médula / Estructural | 2 · razonamiento del cribado | 4 |
-| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
-| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
-| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 4 |
-| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 4 |
+| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Hiperreflexia (ROT aumentados)» | 4b · cita bajo el test | 5 |
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 6 |
+| Cervical | — | Pregunta `cv_n4` · Médula / Estructural | 2 · razonamiento del cribado | 6 |
+| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
+| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 8 |
+| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 6 |
+| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 6 |
 
 ### Margetis y Gillis 2025
 
