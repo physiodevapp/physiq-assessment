@@ -2417,6 +2417,19 @@ async function checkGuiaPlegables(browser) {
       return d.open && Math.abs(sm.top - nav) <= 2 && sm.right <= innerWidth + 1;
     });
     r[k('sistemaFijo')] = await fija(sis);
+    // Fija arriba, barra compacta sin el recuento, y nada salta debajo (el alto perdido
+    // vuelve como margen): la posición absoluta de una pregunta no cambia al fijarse
+    r[k('sistemaCompacto')] = await sis.evaluate(async el => {
+      const it = el.querySelectorAll('.guia-item')[1], abs = () => it.getBoundingClientRect().top + scrollY;
+      const s = el.querySelector(':scope > summary'), fijaAlto = s.getBoundingClientRect().height, conFija = abs();
+      const sinRecuento = getComputedStyle(s.querySelector('.guia-meta-linea')).display === 'none';
+      window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 200);
+      await new Promise(res => requestAnimationFrame(() => requestAnimationFrame(res)));
+      const libre = !el.classList.contains('fija'), altoLibre = s.getBoundingClientRect().height;
+      return el.classList.contains('fija') === false && libre && sinRecuento && fijaAlto < altoLibre && Math.abs(abs() - conFija) <= 1;
+    });
+    await sis.evaluate(d => window.scrollTo(0, d.getBoundingClientRect().top + scrollY + 300));
+    await page.waitForTimeout(150);
     const rep = sis.locator(':scope > .guia-bloque-cuerpo > .guia-replegar');
     await rep.scrollIntoViewIfNeeded();
     await rep.click();
@@ -2474,6 +2487,10 @@ async function checkGuiaPlegables(browser) {
     await page.evaluate(() => { const t = document.getElementById('test-lu3-2'); window.scrollTo(0, t.getBoundingClientRect().top + scrollY - 150); });
     await page.waitForTimeout(150);
     r[k('confFija')] = await fija(hip);
+    r[k('confFijaPuntuacion')] = await page.evaluate(() => {
+      const d = document.getElementById('hip-lu3'), p = d.querySelector(':scope > summary [data-puntua="lu3"]');
+      return d.classList.contains('fija') && p.getBoundingClientRect().height > 0 && p.textContent.includes('Peso');
+    });
     r[k('confSinCortes')] = await page.evaluate(() => {
       const sm = document.querySelector('#hip-lu3 > summary');
       return [...sm.querySelectorAll('.hyp-etq-parte, .guia-progreso, h3')].every(e => e.getBoundingClientRect().right <= sm.getBoundingClientRect().right + 1)
