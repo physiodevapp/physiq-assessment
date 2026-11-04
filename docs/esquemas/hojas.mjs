@@ -40,6 +40,15 @@ const { numerosFormulario, refsPasoFormulario, textoRefs } = await import('../..
 // queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
 const QR_PX = 100;
 const QR = '<!--QR-->', HUELLA = '<!--HUELLA-->', FECHA = '<!--FECHA-->';
+// Marcas de elemento (pregunta, paso, hipótesis, test): rodean lo impreso de cada uno para que
+// el historial de cambios (historial.mjs) sepa qué elemento cambió entre dos versiones de la hoja.
+// No cuentan para la huella ni llegan al papel (sinMarcas()), así que añadirlas no cambia ninguna
+// versión. `clave` identifica el elemento entre versiones; `pos` es dónde está en el papel
+// («Cardiovascular 3», «Paso 2b»): si cambia, cambió la numeración; `ancla`, su id en la guía.
+const limpiaMarca = s => String(s).replace(/-{2,}/g, '-').replace(/[|>]/g, ' ');
+const marca = (clave, pos, ancla, html) => `<!--el:${limpiaMarca(clave)}|${limpiaMarca(pos)}|${limpiaMarca(ancla)}-->${html}<!--/el-->`;
+const RE_MARCA = /<!--el:[^>]*?-->|<!--\/el-->/g;
+export const sinMarcas = html => html.replace(RE_MARCA, '');
 
 // Autoría, en el pie de todas las hojas (decisión del usuario, 2026-10): quién responde del
 // contenido, de dónde sale y qué licencia tiene. CC BY-NC-ND: se puede copiar y repartir citando
@@ -143,7 +152,7 @@ export function htmlCribado(region) {
     const crit = s.criterioCompuesto
       ? `<div class="crit"><b>${esc(s.criterioCompuesto.etiqueta)}</b> — ${s.criterioCompuesto.minPositivas} o más de las preguntas ${s.criterioCompuesto.ids.map(id => idx[id]).join(', ')}${s.criterioCompuesto.filtro?.edadMax ? ` · edad ≤ ${s.criterioCompuesto.filtro.edadMax}` : ''}${s.criterioCompuesto.filtro?.evolucion ? ` · evolución: ${esc(s.criterioCompuesto.filtro.evolucion)}` : ''}</div>` : '';
     return `<section class="sis"><h2>${esc(s.icon || '')} ${esc(s.nombre)}</h2>${cab}<ol>${preguntas.map((q, k) => `
-      <li class="${q.urgencia ? 'qurg' : q.derivacion ? 'qder' : ''}">${esc(q.text)}${q.urgencia ? ' <span class="chip urg">URGENCIA</span>' : q.derivacion ? ' <span class="chip der">DERIVACIÓN</span>' : ''}${conds[k] && !comun ? ` <span class="cond">${esc(conds[k])}</span>` : ''}</li>`).join('')}</ol>${crit}</section>`;
+      <li class="${q.urgencia ? 'qurg' : q.derivacion ? 'qder' : ''}">${marca(`q-${q.id}`, `${s.nombre} ${k + 1}`, `q-${q.id}`, `${esc(q.text)}${q.urgencia ? ' <span class="chip urg">URGENCIA</span>' : q.derivacion ? ' <span class="chip der">DERIVACIÓN</span>' : ''}${conds[k] && !comun ? ` <span class="cond">${esc(conds[k])}</span>` : ''}`)}</li>`).join('')}</ol>${crit}</section>`;
   };
   const { siempre, especiales } = sistemasCribado(SYSTEMIC_SCREENING, region);
   const urg = sc.urgencia ? `<div class="aviso">${esc(sc.urgencia.titulo)}${sc.urgencia.lineas.map(l => `<div>· ${esc(l)}</div>`).join('')}</div>` : '';
@@ -295,17 +304,17 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
     const lineas = desvio ? `<div class="dops">${st.options.map(o => `<div class="dop"><b>${esc(corto(o))}</b> → ${resultado(o)}</div>`).join('')}</div>${vueltaDesvio(id)}` : '';
     // Preguntas del formulario del paciente que tocan este paso (lo que la app pone en «📝 Refiere el paciente»)
     const fp = textoRefs(refsPasoFormulario(FORMULARIOS.comun, FORMULARIOS[region], id));
-    return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}"><div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}${fp ? ` <span class="fpref">📝 ${fp}</span>` : ''}</span></div>${lineas}</div>`;
+    return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}">${marca(`paso-${id}`, `Paso ${lab(id)}`, `paso-${id}`, `<div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}${fp ? ` <span class="fpref">📝 ${fp}</span>` : ''}</span></div>${lineas}`)}</div>`;
   };
   const respuestas = (id, sigPrincipal) => {
     const i = ids.indexOf(id);
-    return `<div class="resp"><div class="rt">Respuestas</div>${steps[i].options.map((o, k) => {
+    return `<div class="resp"><div class="rt">Respuestas</div>${marca(`paso-${id}`, `Paso ${lab(id)}`, `paso-${id}`, steps[i].options.map((o, k) => {
       // Si la respuesta no sigue al siguiente paso principal, se dice adónde va
       const t = destinos(i)[k];
       const ruta = t && t !== sigPrincipal ? `<div class="ruta">→ ${principales.has(t) ? 'paso' : 'desvío'} ${esc(lab(t))}</div>` : '';
       const res = o.hypothesis.length || o.derivacion || !ruta ? resultado(o) : '';
       return `<div class="op"><div class="opt"><b>${esc(corto(o))}</b>${detalle(o) ? `<span>${esc(detalle(o))}</span>` : ''}</div><div class="fl">→</div><div class="res">${res}${ruta}</div></div>`;
-    }).join('')}</div>`;
+    }).join(''))}</div>`;
   };
 
   const M = ids.filter(id => principales.has(id));
@@ -550,9 +559,9 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     const filas = h.tests.map(t => {
       const [pos, neg] = t.cluster ? ['', ''] : lrTxt(t);
       const papel = t.tipo === 'pronostico' ? 'pronóstico' : t.cluster ? 'en clúster' : testPuntua(h, t) ? '<b class="si">puntúa</b>' : 'hallazgo';
-      return `<tr><td>${esc(t.name)}</td><td class="c">${pos}</td><td class="c">${neg}</td><td class="c">${papel}</td></tr>`;
+      return `<tr>${marca(`test-${h.id}-${t.name}`, numeroHipotesis(h.num), `test-${h.id}-${h.tests.indexOf(t)}`, `<td>${esc(t.name)}</td><td class="c">${pos}</td><td class="c">${neg}</td><td class="c">${papel}</td>`)}</tr>`;
     }).join('');
-    return `<section class="hyp"><h2><span class="num">${esc(numeroHipotesis(h.num))}</span> ${esc(h.name)}</h2>
+    return `<section class="hyp"><h2>${marca(`hip-${h.id}`, numeroHipotesis(h.num), `hip-${h.id}`, `<span class="num">${esc(numeroHipotesis(h.num))}</span> ${esc(h.name)}`)}</h2>
       <table><thead><tr><th>Test</th><th>LR+</th><th>LR−</th><th>Papel</th></tr></thead><tbody>${clusters}${filas}</tbody></table></section>`;
   }).join('');
   return `<style>${CSS}
@@ -1239,12 +1248,30 @@ export function hojasImpresas() {
   for (const id of FORMULARIOS_PACIENTE) hojas.push({ clave: `formulario-${id}`, ruta: null, html: () => htmlFormularioPaciente(id), paciente: true });
   return hojas;
 }
-export const huellaHoja = html => fnv(html);
+export const huellaHoja = html => fnv(sinMarcas(html));
+
+// ── Elementos de una hoja, para el historial de cambios ──────────────────────
+// Del HTML canónico (con marcas): { el: { clave: [pos, ancla, texto] }, resto }. `texto` es lo
+// impreso del elemento, sin etiquetas (un elemento con varias partes, como el paso del árbol y
+// sus respuestas, las junta); `resto`, el texto fuera de los elementos (cabecera, notas, pie; en
+// las hojas sin elementos, todo). Sin estilos ni scripts: si solo cambian ellos, cambió el formato.
+const textoPlano = html => html.replace(/<(style|script)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' ')
+  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&')
+  .replace(/\s+/g, ' ').trim();
+export function elementosHoja(html) {
+  const el = {};
+  const resto = html.replace(/<!--el:([^|]*)\|([^|]*)\|([^>]*?)-->([\s\S]*?)<!--\/el-->/g, (_, clave, pos, ancla, dentro) => {
+    const texto = textoPlano(dentro);
+    if (el[clave]) el[clave][2] += ` · ${texto}`; else el[clave] = [pos, ancla, texto];
+    return ' ';
+  });
+  return { el, resto: textoPlano(resto) };
+}
 export function huellasActuales() {
   return Object.fromEntries(hojasImpresas().map(h => [h.clave, huellaHoja(h.html())]));
 }
 // Pone los marcadores: el QR a la guía con la huella (?h=), la huella visible y la fecha
 export function rematar(html, { ruta, huella, fecha }) {
   // Sin ruta (la hoja del paciente) no hay QR, solo la versión
-  return html.replaceAll(QR, ruta ? qrSVG(urlRuta(ruta, huella), QR_PX) : '').replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
+  return sinMarcas(html).replaceAll(QR, ruta ? qrSVG(urlRuta(ruta, huella), QR_PX) : '').replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
 }
