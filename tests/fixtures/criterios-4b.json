@@ -3312,15 +3312,13 @@
  },
  "co1|Test de Cozen (extensión resistida de muñeca)": {
   "frases": [
-   "Sentado, con el antebrazo en pronación y el codo a 90° de flexión o extendido:",
-   "el paciente extiende la muñeca contra la resistencia del examinador, que palpa el epicóndilo lateral (Soares 2023;",
-   "Factor 2023;",
-   "Biedroń 2026).",
-   "Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca.",
+   "Sentado o de pie, con el codo en extensión completa, el antebrazo en pronación y la muñeca a 30° de extensión:",
+   "el examinador estabiliza el codo con el pulgar sobre el epicóndilo lateral y, con la otra mano en el dorso del 2.º y 3.er metacarpianos, resiste la extensión activa de la muñeca (Lucado 2022).",
+   "Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca, o hasta 2 cm distal a la inserción del tendón común de los extensores (Lucado 2022).",
    "Solo hay sensibilidad (sin especificidad publicada).",
-   "Las fuentes no coinciden en la posición del codo.",
-   "Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el paciente sentado, el hombro algo en aducción, el codo a 90° de flexión, el antebrazo en pronación y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos.",
-   "Factor 2023 lo hace con el codo en extensión completa, el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial.",
+   "La técnica es la de la guía APTA (Lucado 2022, tabla 6).",
+   "Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial.",
+   "Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos.",
    "Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada."
   ],
   "retiradas": [
@@ -3379,10 +3377,13 @@
  },
  "co2|Dolor con flexión resistida de antebrazo y pronación": {
   "frases": [
-   "Con el codo extendido y el antebrazo en supinación, el paciente flexiona la muñeca y prona el antebrazo contra resistencia (Tahir 2026).",
+   "Sentado, con el codo extendido y el antebrazo en supinación completa:",
+   "el examinador estabiliza el codo y, con la otra mano en la palma, resiste la flexión de la muñeca (Zwerus 2018);",
+   "también la pronación contra resistencia (Tahir 2026).",
    "Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.",
    "Puede haber también menos fuerza que en el otro lado al flexionar la muñeca, pronar el antebrazo o apretar, y el estiramiento pasivo (supinación con el codo, la muñeca y los dedos en extensión) puede reproducir el dolor.",
    "Según Adani, estas pruebas ayudan pero no están validadas (Adani 2025).",
+   "O'Driscoll 2005 exploró la flexión de muñeca y la pronación resistidas con el codo flexionado y extendido.",
    "Sin datos de precisión."
   ]
  },
@@ -3803,12 +3804,14 @@
  },
  "co9|Dolor con extensión resistida del 3er dedo": {
   "frases": [
-   "Con el antebrazo en pronación y el codo extendido, extensión del dedo medio contra resistencia;",
-   "positivo si reproduce el dolor (Engin 2023).",
+   "Con el codo extendido, el antebrazo en pronación y los dedos en extensión, el examinador sujeta el antebrazo distal y resiste en el dorso de la falange distal del dedo medio (Lucado 2022;",
+   "Engin 2023);",
+   "positivo si reproduce el dolor.",
    "Ojo:",
    "el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.",
    "Sin datos de precisión para la neuropatía radial.",
-   "En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023)."
+   "En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023).",
+   "La guía APTA la recoge como test de la epicondilalgia lateral, positivo con dolor en el epicóndilo o hasta 2 cm distal a la inserción de los extensores (Lucado 2022, tabla 5)."
   ]
  },
  "co9|Dolor con supinación resistida con el codo extendido": {

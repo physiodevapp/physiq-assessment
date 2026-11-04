@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **1161** referencias de literatura, con **5191** usos.
+- **1161** referencias de literatura, con **5202** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **576** de 1161 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -678,7 +678,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · razonamiento fase 2 · razonamiento fase 4 · texto | 7 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo; desde 2026-10 da también las cifras del razonamiento de tp_t2 (fase 2), con Bachmann como concordante. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 11 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
 | [Décary 2018](#décary-2018) | puntuación 4b · razonamiento fase 4 · razonamiento 4b · texto | 27 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
-| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 20 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
+| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 25 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
 | [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 8 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Revisión sistemática de 15 estudios sin metaanálisis; la ecografía de estrés y la comparación con la artro-RM salen de un solo estudio, Roedl 2016, que pasa a citarse directamente en co4. PubMed (2026-10): ninguna revisión posterior de la imagen del ligamento colateral cubital del codo (Rashidi 2021 es del pulgar). |
@@ -731,7 +731,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [George 2021](#george-2021) | pauta · razonamiento fase 4 | 9 | 2026-10 · Sin cambios: PubMed (guías de práctica clínica de lumbalgia en JOSPT y de la APTA desde 2021) no encuentra una revisión posterior de esta guía. |
 | [Martin 2021](#martin-2021) | pauta · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 10 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); las letras citadas coinciden. Se matizan en tp1 la inmovilización («puede estar indicada») y la terapia manual (con sus objetivos), y se añade la vuelta al trabajo o al deporte (B); en tp21, la tobillera o el vendaje no como tratamiento único para mejorar el equilibrio (B), pero sí para prevenir la recidiva. Es la revisión de 2021 (revisión prevista en 2025); PubMed (2026-10): sin versión posterior de la APTA. |
 | [Ammendolia 2022](#ammendolia-2022) | pauta · texto | 2 | 2026-10 · Sin cambios: es la actualización de la revisión Cochrane de 2013 y la más reciente que encontró la búsqueda en PubMed (tratamiento no quirúrgico de la estenosis lumbar) al incorporarla en 2026-10. |
-| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
+| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · tiempos de tejido · texto | 13 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
 | [Enseki 2023](#enseki-2023) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 11 | 2026-10 · Sin cambios: es la revisión vigente de la guía APTA de dolor de cadera no artrósico; PubMed (2026-10) no encuentra una posterior (la revisión de 2025 es la de artrosis, Koc 2025). |
 | [Koc 2023](#koc-2023) | pauta · razonamiento fase 4 · plan de tratamiento | 4 | 2026-10 · PDF leído entero (2026-10). Corregido en tp26: «plantillas nunca solas» es grado B (la C es combinarlas con otros tratamientos); la férula nocturna es para el dolor sistemático con los primeros pasos; los rangos del estiramiento, por estructura. Es la revisión más reciente de la APTA (en 2025 solo hay un comentario, Riel 2025, y la respuesta de los autores). |
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 13 de agosto de 2023 (PubMed). Se añade a la pauta de lu4 Ammendolia 2022 (revisión sistemática del tratamiento no quirúrgico de la estenosis, leída entera en PMC). |
@@ -779,7 +779,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: solo describe la técnica del test MPP; la validación es Kim 2007. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: el artículo no se ha leído entero; sus cifras (Paxinos S 79 %, E 50 %; palpación S 96 %, E 10 %; O’Brien S 16 %, E 90 %) coinciden con las que recogen Krill 2018 (tabla 3) y Cadogan 2013 (tabla 1), leídos enteros. Ningún test de h7 que lo cite puntúa. |
-| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 11 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
+| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 13 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
 | [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PubMed (bursitis de la pata de ganso, diagnóstico y prevalencia desde 2015) no encuentra ningún estudio de precisión diagnóstica ni revisión sistemática. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
 | [Dorf 2007](#dorf-2007) | test 4b sin puntuar · razonamiento 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Revisión retrospectiva de 81 pacientes con medidas del brazo afectado; las S y E por umbral (5, 8 y 10 %) salen solo de los 40 con medidas de los dos brazos, frente al brazo sano. No publica LR (las calcula Zwerus 2018). Referencia: diagnóstico clínico de los cirujanos, que probablemente veían la prensión. Se corrige la cita de co1. |
@@ -811,7 +811,6 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Park 2019](#park-2019) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 10 | 2026-10 · Cifras sin cambios; el test pasa a hallazgo (decisión del usuario): texto completo leído en PMC (PMC6504535, 2026-10). 20 de 24 plicas y 7 de 56 epicondilalgias positivas (S 83,3 %, E 87,5 %), sin LR publicadas. Es retrospectivo de casos y controles (plicas operadas sin epicondilalgia frente a epicondilalgias operadas sin plica), de los creadores del test, y PubMed (2026-10) no encuentra validación posterior, como el Slump o la aducción cruzada. |
 | [Mastromarchi 2021](#mastromarchi-2021) | test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin estudios posteriores de fiabilidad ni validez de los tests de la 1.ª costilla. Sigue como opinión de expertos; no puntúa (h9 y ce10). |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Squeeze agrupado de 4 estudios con modelo univariante de efectos aleatorios (Meta-DiSc); las 2×2 suman su n; no incluye el estudio de los creadores del test. Sin cifra agrupada para la palpación del LTPAI. Se indica el modelo en tp2. |
-| [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral. |
 | [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
 | [Mohr 2024](#mohr-2024) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: leído en PMC (2026-10). Síntesis narrativa sin agrupar; las cifras citadas en tp34 (Mahadevan y Dando) coinciden con sus tablas. |
@@ -1141,18 +1140,19 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Figueroa 2021](#figueroa-2021) | test 4b sin puntuar · texto | 5 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Varo forzado a 0° y 30° con su lectura y grados, y marcha con empuje en varo. |
 | [Pereira 2021](#pereira-2021) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Exploración de la subastragalina: ninguna maniobra manual la diagnostica de forma fiable. |
 | [Balcerzak 2022](#balcerzak-2022) | test 4b sin puntuar · texto | 8 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | 2026-11 · Sin cambios: solo el resumen (los PDF recibidos en 2026-10 y de nuevo en 2026-11 eran otro artículo, Cacciari, «Nomes de lugar: confim», Revista de Letras 45(1), 2005, y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral. |
 | [Netterström-Wedin 2022](#netterström-wedin-2022) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Publicada en línea en 2021; la clave lleva el año del número para no chocar con Netterström-Wedin 2021 (ingle). Cajón anterior agrupado: S 54 %, E 87 %, LR+ 3,97, LR− 0,54. |
 | [Otoshi 2022](#otoshi-2022) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 8 | 2026-11 · PDF del usuario leído entero (2026-11). Técnica del Arlington y del twist («Clinical Test Descriptions», p. 2, figs. 1 y 2) añadida al criterio; tabla 2: Arlington LR+ 1,40, LR− 0,26; twist LR+ 2,44, LR− 0,44. Siguen como hallazgo (18 controles, retrospectivo, explorador creador de los tests). Los controles eran 18, no 17 (corregido). El FADIR, S 43 %, E 56 % (ver Reiman 2015). |
 | [Baeumler 2023](#baeumler-2023) | test 4b sin puntuar · texto | 5 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Engin 2023](#engin-2023) | test 4b sin puntuar · texto | 8 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
-| [Factor 2023](#factor-2023) | test 4b sin puntuar · razonamiento 4b · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Factor 2023](#factor-2023) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Heijboer 2023](#heijboer-2023) | test 4b sin puntuar · texto | 10 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Apéndice A con la lista de pruebas de la exploración de la ingle (solo los nombres) y fiabilidad entre examinadores por entidad. |
 | [Kaiser 2023](#kaiser-2023) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Dolor en el punto N en torno al 80 % de las fracturas de estrés del navicular. |
 | [Lavoie 2023](#lavoie-2023) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: PDF del usuario leído entero (2026-11). Elongación del nervio peroneo superficial en cadáver con flexión plantar, inversión, elevación de la pierna recta y aducción de cadera. |
 | [Looney 2023](#looney-2023) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Schwab 2023](#schwab-2023) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
-| [Soares 2023](#soares-2023) | test 4b sin puntuar · razonamiento 4b · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
+| [Soares 2023](#soares-2023) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Bateman 2024](#bateman-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Volumen y páginas tal como los da PMC, sin cotejar con la revista. |
 | [Binsaleem 2024](#binsaleem-2024) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Cady 2024](#cady-2024) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Procedimiento del test de la rodilla a la pared midiendo la distancia en cm. |
@@ -1172,7 +1172,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Lashhab 2025](#lashhab-2025) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
 | [Sarac 2025](#sarac-2025) | test 4b sin puntuar · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Exploración de la inestabilidad tibioperonea proximal con la rodilla a 90° (introducción). |
 | [Younis 2025](#younis-2025) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Localización del punto N en el dorso del navicular. |
-| [Biedroń 2026](#biedroń-2026) | test 4b sin puntuar · razonamiento 4b · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Su frase sobre el test de Cozen describe una pronación y desviación radial resistidas sin nombrar la extensión de la muñeca (parece una errata); se usa solo la palpación del epicóndilo por el examinador y la diferencia entre codo extendido y flexionado. |
+| [Biedroń 2026](#biedroń-2026) | test 4b sin puntuar · razonamiento 4b · texto | 3 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Su frase sobre el test de Cozen describe una pronación y desviación radial resistidas sin nombrar la extensión de la muñeca (parece una errata); se usa solo la palpación del epicóndilo por el examinador y la diferencia entre codo extendido y flexionado. |
 | [Eskew 2026](#eskew-2026) | test 4b sin puntuar · texto | 8 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). Volumen y páginas tal como los da PubMed (solo el número de artículo). |
 | [Oyamada 2026](#oyamada-2026) | test 4b sin puntuar · texto | 2 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). La altura desde la que se mira cambia el signo de «demasiados dedos» (2 de 11 positivos a ras de suelo, 10 de 11 a 40 cm). |
 | [Tahir 2026](#tahir-2026) | test 4b sin puntuar · texto | 4 | 2026-11 · Añadida: texto completo leído en PMC (2026-11). |
@@ -1580,8 +1580,8 @@ Citada como:
 
 1. Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador. El punto típico está unos 5–10 mm distal y anterior al epicóndilo medial, sobre el origen flexor-pronador (Adani 2025; Tahir 2026).
 2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101 · Adani 2025 · Tahir 2026
-3. Puede haber también menos fuerza que en el otro lado al flexionar la muñeca, pronar el antebrazo o apretar, y el estiramiento pasivo (supinación con el codo, la muñeca y los dedos en extensión) puede reproducir el dolor. Según Adani, estas pruebas ayudan pero no están validadas (Adani 2025). Sin datos de precisión.
-4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Tahir 2026 · Adani 2025
+3. Puede haber también menos fuerza que en el otro lado al flexionar la muñeca, pronar el antebrazo o apretar, y el estiramiento pasivo (supinación con el codo, la muñeca y los dedos en extensión) puede reproducir el dolor. Según Adani, estas pruebas ayudan pero no están validadas (Adani 2025). O'Driscoll 2005 exploró la flexión de muñeca y la pronación resistidas con el codo flexionado y extendido. Sin datos de precisión.
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Tahir 2026 · Adani 2025 · O'Driscoll 2005
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3356,19 +3356,17 @@ Nota: Revisión narrativa. Cozen de co1.
 
 Citada como:
 
-1. Sentado, con el antebrazo en pronación y el codo a 90° de flexión o extendido: el paciente extiende la muñeca contra la resistencia del examinador, que palpa el epicóndilo lateral (Soares 2023; Factor 2023; Biedroń 2026). Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca.
-2. Solo hay sensibilidad (sin especificidad publicada).
+1. Solo hay sensibilidad (sin especificidad publicada).
 
-Las fuentes no coinciden en la posición del codo. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el paciente sentado, el hombro algo en aducción, el codo a 90° de flexión, el antebrazo en pronación y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Factor 2023 lo hace con el codo en extensión completa, el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
-3. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Soares 2023 · Factor 2023 · Biedroń 2026
-4. Biedroń 2026 (Life (Basel) 16(7):1043), exploración física
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Biedroń 2026 (Life (Basel) 16(7):1043), exploración física
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 3 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 4 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Bierma-Zeinstra 1999
 
@@ -7177,9 +7175,9 @@ Citada como:
 
 1. Localización más distal que la epicondilalgia lateral. Puede coexistir con ella. Con el antebrazo en supinación, palpar el recorrido del radial por el dorso del antebrazo desde justo por encima del epicóndilo lateral: el punto típico está 4–5 cm distal al epicóndilo, sobre la masa del supinador (Engin 2023).
 2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100 · Engin 2023
-3. Con el antebrazo en pronación y el codo extendido, extensión del dedo medio contra resistencia; positivo si reproduce el dolor (Engin 2023). Ojo: el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.
-4. Sin datos de precisión para la neuropatía radial. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023).
-5. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Engin 2023
+3. Con el codo extendido, el antebrazo en pronación y los dedos en extensión, el examinador sujeta el antebrazo distal y resiste en el dorso de la falange distal del dedo medio (Lucado 2022; Engin 2023); positivo si reproduce el dolor. Ojo: el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.
+4. Sin datos de precisión para la neuropatía radial. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023). La guía APTA la recoge como test de la epicondilalgia lateral, positivo con dolor en el epicóndilo o hasta 2 cm distal a la inserción de los extensores (Lucado 2022, tabla 5).
+5. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Lucado 2022 (tabla 5) · Engin 2023
 6. Con el codo en extensión completa, el paciente supina el antebrazo contra resistencia (Engin 2023). Reproduce el dolor en el dorso del antebrazo proximal.
 7. Precisión diagnóstica no estudiada. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 10, y la palpación del punto doloroso, en los 18 (Engin 2023).
 8. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100 · Engin 2023
@@ -7411,19 +7409,17 @@ Nota: Estudio diagnóstico de 30 pacientes con epicondilalgia confirmada por eco
 
 Citada como:
 
-1. Sentado, con el antebrazo en pronación y el codo a 90° de flexión o extendido: el paciente extiende la muñeca contra la resistencia del examinador, que palpa el epicóndilo lateral (Soares 2023; Factor 2023; Biedroń 2026). Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca.
-2. Solo hay sensibilidad (sin especificidad publicada).
+1. Solo hay sensibilidad (sin especificidad publicada).
 
-Las fuentes no coinciden en la posición del codo. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el paciente sentado, el hombro algo en aducción, el codo a 90° de flexión, el antebrazo en pronación y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Factor 2023 lo hace con el codo en extensión completa, el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
-3. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Soares 2023 · Factor 2023 · Biedroń 2026
-4. Factor 2023 (Medicina (Kaunas) 59(6):1159), métodos
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Factor 2023 (Medicina (Kaunas) 59(6):1159), métodos
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 3 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 4 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Fairbank 2011
 
@@ -12153,11 +12149,11 @@ Autores: Karanasios, Korakakis, Moutzouri, Drakonaki, Koci, Pantazopoulou, Tsepi
 Título: *Diagnostic accuracy of examination tests for lateral elbow tendinopathy (LET) – A systematic review*  
 Publicación: J Hand Ther 35:541–551  
 DOI: 10.1016/j.jht.2021.02.002  
-Última revisión: 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral.
+Última revisión: 2026-11 · Sin cambios: solo el resumen (los PDF recibidos en 2026-10 y de nuevo en 2026-11 eran otro artículo, Cacciari, «Nomes de lugar: confim», Revista de Letras 45(1), 2005, y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral.
 
 Citada como:
 
-1. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Soares 2023 · Factor 2023 · Biedroń 2026
+1. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Soares 2023 · Factor 2023 · Biedroń 2026
 2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -14849,11 +14845,11 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 181. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 223
 182. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 223 · Canoso 1987
 183. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–224
-184. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Soares 2023 · Factor 2023 · Biedroń 2026
+184. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Soares 2023 · Factor 2023 · Biedroń 2026
 185. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 82 y 84
 186. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 83
 187. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101 · Adani 2025 · Tahir 2026
-188. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Tahir 2026 · Adani 2025
+188. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Tahir 2026 · Adani 2025 · O'Driscoll 2005
 189. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
 190. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 90 (medir la movilidad activa y pasiva del codo y el antebrazo y la sensación final; sin datos de precisión)
 191. En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura).
@@ -14896,7 +14892,7 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 218. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
 219. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91–92 y 101
 220. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100 · Engin 2023
-221. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Engin 2023
+221. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Lucado 2022 (tabla 5) · Engin 2023
 222. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100 · Engin 2023
 223. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100
 224. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 100
@@ -15973,25 +15969,41 @@ Título: *Lateral Elbow Pain and Muscle Function Impairments. Clinical Practice 
 Publicación: J Orthop Sports Phys Ther 52(12):CPG1–CPG111  
 DOI: 10.2519/jospt.2022.0302  
 Última revisión: 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo).  
-Nota: Guía de práctica clínica APTA (literatura hasta noviembre de 2021); PDF completo descargado de orthopt.org. Leído en la sesión de dosis de codo (2026-10). Pauta de co1. También da las MCID del PRTEE (7 y 11 puntos) y del DASH (10,2), y dice que no hay estudios del QuickDASH en la epicondilalgia lateral.
+Nota: Guía de práctica clínica APTA (literatura hasta noviembre de 2021); PDF completo descargado de orthopt.org. Leído en la sesión de dosis de codo (2026-10). Pauta de co1. También da las MCID del PRTEE (7 y 11 puntos) y del DASH (10,2), y dice que no hay estudios del QuickDASH en la epicondilalgia lateral. PDF del usuario releído (2026-11): tablas 5 y 6, técnica del test de Maudsley y del de Cozen (co9 y co1).
 
 Citada como:
 
-1. La guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».
-2. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111, apéndice E)
-3. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
-4. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leído el diagnóstico diferencial, p. CPG13)
-5. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leídos el diagnóstico y la clasificación y el diagnóstico diferencial, pp. CPG12–CPG13)
-6. Lucado 2022
+1. Sentado o de pie, con el codo en extensión completa, el antebrazo en pronación y la muñeca a 30° de extensión: el examinador estabiliza el codo con el pulgar sobre el epicóndilo lateral y, con la otra mano en el dorso del 2.º y 3.er metacarpianos, resiste la extensión activa de la muñeca (Lucado 2022). Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca, o hasta 2 cm distal a la inserción del tendón común de los extensores (Lucado 2022).
+2. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+3. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Soares 2023 · Factor 2023 · Biedroń 2026
+4. La guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».
+5. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111, apéndice E)
+6. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
+7. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111), tabla 6, p. CPG12
+8. Con el codo extendido, el antebrazo en pronación y los dedos en extensión, el examinador sujeta el antebrazo distal y resiste en el dorso de la falange distal del dedo medio (Lucado 2022; Engin 2023); positivo si reproduce el dolor. Ojo: el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.
+9. Sin datos de precisión para la neuropatía radial. En una serie de 18 pacientes con síndrome del túnel radial fue positiva en 8 (Engin 2023). La guía APTA la recoge como test de la epicondilalgia lateral, positivo con dolor en el epicóndilo o hasta 2 cm distal a la inserción de los extensores (Lucado 2022, tabla 5).
+10. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 · Lucado 2022 (tabla 5) · Engin 2023
+11. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leído el diagnóstico diferencial, p. CPG13)
+12. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leídos el diagnóstico y la clasificación y el diagnóstico diferencial, pp. CPG12–CPG13)
+13. Lucado 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (tiempos de tejido) | — | Subtipo «Epicondilalgia lateral» de «Tendinopatía» (Tendón) | cabecera · tiempos de tejido | 6 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» | 4b · cita bajo el test | 2 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
-| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+| Todas (tiempos de tejido) | — | Subtipo «Epicondilalgia lateral» de «Tendinopatía» (Tendón) | cabecera · tiempos de tejido | 13 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 3 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» | 4b · cita bajo el test | 5 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Pauta de tratamiento | 5 · cita de la pauta | 6 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» (en `criterio`) | 4b · mención en el texto | 8 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» (en `razonamiento.detalle`) | 4b · mención en el texto | 9 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» | 4b · cita bajo el test | 10 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 11 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 12 |
 
 ### Lucas 2009
 
@@ -19333,34 +19345,38 @@ Nota: Resumen en PubMed (PMID 15701609; no está en PMC). Comprobación de las c
 
 Citada como:
 
-1. Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°.
-2. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+1. Puede haber también menos fuerza que en el otro lado al flexionar la muñeca, pronar el antebrazo o apretar, y el estiramiento pasivo (supinación con el codo, la muñeca y los dedos en extensión) puede reproducir el dolor. Según Adani, estas pruebas ayudan pero no están validadas (Adani 2025). O'Driscoll 2005 exploró la flexión de muñeca y la pronación resistidas con el codo flexionado y extendido. Sin datos de precisión.
+2. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Tahir 2026 · Adani 2025 · O'Driscoll 2005
+3. Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°.
+4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
 
 Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducción; desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°. Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°; suele aparecer de golpe y provoca una retirada involuntaria del brazo. Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo. Cuidado si hay síntomas en el hombro, que el test puede agravar.
 
 En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
-3. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-4. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único: S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión); LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4).
-5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-6. En O'Driscoll 2005: S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión; la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4).
-7. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–238
-8. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 236 y 238
-9. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–233
-10. O'Driscoll 2005 (Am J Sports Med 33(2):231–239; PDF del usuario, leído entero; tablas 1 y 2)
+5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+6. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único: S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión); LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4).
+7. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+8. En O'Driscoll 2005: S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión; la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4).
+9. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–238
+10. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 236 y 238
+11. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–233
+12. O'Driscoll 2005 (Am J Sports Med 33(2):231–239; PDF del usuario, leído entero; tablas 1 y 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 3 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 5 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 5 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» («¿Por qué?») | 4b · razonamiento del test | 7 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» («¿Por qué?») | 4b · razonamiento del test | 8 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» («¿Por qué?») | 4b · razonamiento del test | 9 |
-| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 10 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 2 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 5 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 7 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `razonamiento.detalle`) | 4b · mención en el texto | 8 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 7 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» («¿Por qué?») | 4b · razonamiento del test | 9 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» («¿Por qué?») | 4b · razonamiento del test | 10 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» («¿Por qué?») | 4b · razonamiento del test | 11 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 12 |
 
 ### O'Driscoll 2007
 
@@ -23910,19 +23926,17 @@ Nota: Estudio transversal de precisión diagnóstica (102 adultos, ecografía co
 
 Citada como:
 
-1. Sentado, con el antebrazo en pronación y el codo a 90° de flexión o extendido: el paciente extiende la muñeca contra la resistencia del examinador, que palpa el epicóndilo lateral (Soares 2023; Factor 2023; Biedroń 2026). Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca.
-2. Solo hay sensibilidad (sin especificidad publicada).
+1. Solo hay sensibilidad (sin especificidad publicada).
 
-Las fuentes no coinciden en la posición del codo. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el paciente sentado, el hombro algo en aducción, el codo a 90° de flexión, el antebrazo en pronación y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Factor 2023 lo hace con el codo en extensión completa, el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
-3. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Soares 2023 · Factor 2023 · Biedroń 2026
-4. Soares 2023 (Int J Environ Res Public Health 20(3):1794), métodos
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Soares 2023 (Int J Environ Res Public Health 20(3):1794), métodos
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 3 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 4 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Sokal 2022
 
@@ -24500,8 +24514,8 @@ Citada como:
 
 1. Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador. El punto típico está unos 5–10 mm distal y anterior al epicóndilo medial, sobre el origen flexor-pronador (Adani 2025; Tahir 2026).
 2. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101 · Adani 2025 · Tahir 2026
-3. Con el codo extendido y el antebrazo en supinación, el paciente flexiona la muñeca y prona el antebrazo contra resistencia (Tahir 2026). Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.
-4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Tahir 2026 · Adani 2025
+3. Sentado, con el codo extendido y el antebrazo en supinación completa: el examinador estabiliza el codo y, con la otra mano en la palma, resiste la flexión de la muñeca (Zwerus 2018); también la pronación contra resistencia (Tahir 2026). Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.
+4. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Tahir 2026 · Adani 2025 · O'Driscoll 2005
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -27238,56 +27252,68 @@ Título: *Physical examination of the elbow, what is the evidence? A systematic 
 Publicación: Br J Sports Med 52(19):1253–1260 (en línea en 2017)  
 DOI: 10.1136/bjsports-2016-096712  
 Última revisión: 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7.  
-Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. La revisión que cita Lluch 2020, cap. 3.2 (ref. 9). Ojo: su texto invierte la S y la E del valgo móvil; la tabla 4 las da bien. Tests de co1, co4, co5 y co7 (codo).
+Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. La revisión que cita Lluch 2020, cap. 3.2 (ref. 9). Ojo: su texto invierte la S y la E del valgo móvil; la tabla 4 las da bien. Tests de co1, co4, co5 y co7 (codo). PDF del usuario releído (2026-11): la tabla 5 da también la técnica del Cozen y del test de la epicondilalgia medial (co1 y co2).
 
 Citada como:
 
-1. Los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
+1. Solo hay sensibilidad (sin especificidad publicada).
+
+La técnica es la de la guía APTA (Lucado 2022, tabla 6). Zwerus 2018 (tabla 5) y Factor 2023 también lo hacen con el codo en extensión, pero con el antebrazo en pronación máxima, el puño cerrado y la mano en desviación radial. Soares 2023 (102 adultos, con la ecografía como referencia) lo hace con el codo a 90° de flexión y la muñeca neutra, con todo el esfuerzo que permita el dolor, dos veces con 2 minutos entre intentos. Según Biedroń 2026, con el codo extendido la extensión resistida de la muñeca y del dedo medio reproduce los síntomas, y con el codo flexionado reproduce el dolor cuando la degeneración es más avanzada.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce) · Lucado 2022 (tabla 6) · Zwerus 2018 (tabla 5) · Soares 2023 · Factor 2023 · Biedroń 2026
+3. Los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
 
 En Dorf 2007, el brazo afectado apretó de media un 29 % menos en extensión que en flexión, y el sano igual en las dos posiciones; el afectado tuvo el 50 % de la fuerza del sano en extensión y el 69 % en flexión. Se midió sentado, con un dinamómetro hidráulico, con el codo a 90° y en extensión completa por delante del cuerpo. Era un centro de referencia (pacientes que ya habían fracasado con otros tratamientos), y los autores no estudiaron otras causas de dolor lateral, como el túnel radial, la artrosis radiocapitelar o las fracturas de la cabeza del radio.
-2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-3. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
-4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+4. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+5. Zwerus 2018 (Br J Sports Med 52(19):1253–1260), tabla 5
+6. Sentado, con el codo extendido y el antebrazo en supinación completa: el examinador estabiliza el codo y, con la otra mano en la palma, resiste la flexión de la muñeca (Zwerus 2018); también la pronación contra resistencia (Tahir 2026). Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.
+7. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101 · Zwerus 2018 (tabla 5) · Tahir 2026 · Adani 2025 · O'Driscoll 2005
+8. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
+9. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
 
 Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducción; desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°. Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°; suele aparecer de golpe y provoca una retirada involuntaria del brazo. Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo. Cuidado si hay síntomas en el hombro, que el test puede agravar.
 
 En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
-5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-6. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-7. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.
-8. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-9. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad. Lluch da el 88–100 % para este test y el de recolocación juntos.
-10. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3); sin especificidad.
-11. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-12. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
-13. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
-14. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
-15. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
-16. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero)
-17. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero; tablas 4 y 5)
+10. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+11. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+12. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.
+13. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+14. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad. Lluch da el 88–100 % para este test y el de recolocación juntos.
+15. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3); sin especificidad.
+16. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+17. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+18. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+19. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
+20. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
+21. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero)
+22. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero; tablas 4 y 5)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» | 4b · cita bajo el test | 2 |
-| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Test de Polk (medial)» | 4b · cita bajo el test | 3 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 5 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 6 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 6 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» (en `razonamiento.detalle`) | 4b · mención en el texto | 7 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» | 4b · cita bajo el test | 8 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» (en `razonamiento.detalle`) | 4b · mención en el texto | 9 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» | 4b · cita bajo el test | 8 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» (en `razonamiento.detalle`) | 4b · mención en el texto | 10 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» | 4b · cita bajo el test | 11 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 12 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 13 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Test de compresión del tríceps (triceps squeeze test)» | 4b · cita bajo el test | 14 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 15 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 15 |
-| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 16 |
-| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 17 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 2 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» | 4b · cita bajo el test | 4 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 5 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» (en `criterio`) | 4b · mención en el texto | 6 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 7 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Test de Polk (medial)» | 4b · cita bajo el test | 8 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 9 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 10 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 11 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 11 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» (en `razonamiento.detalle`) | 4b · mención en el texto | 12 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» | 4b · cita bajo el test | 13 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» (en `razonamiento.detalle`) | 4b · mención en el texto | 14 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» | 4b · cita bajo el test | 13 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» (en `razonamiento.detalle`) | 4b · mención en el texto | 15 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» | 4b · cita bajo el test | 16 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 17 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 18 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Test de compresión del tríceps (triceps squeeze test)» | 4b · cita bajo el test | 19 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 20 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 20 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 21 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 22 |
 
 ### Zwerus 2022
 
