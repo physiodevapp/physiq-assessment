@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). Pedidos los PDF de las decisiones 14 y 15. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15 y abren las **decisiones 17–23**, pendientes del usuario. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -56,6 +56,81 @@ Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va despu�
 | Validación española de un cuestionario específico (PDQ-39 o PDQ-8) | Regla del proyecto: solo cuestionarios validados en español de España (`docs/cuestionarios.md`) | Comprobar antes de añadir nada a la calculadora (decisión 12) |
 
 **Las búsquedas de esta sesión**: la búsqueda de PubMed (E-utilities) y la de Europe PMC devolvían errores 500/503 (noviembre 2026). Los textos completos se leyeron por identificador desde PMC (servicio BioC) y las fuentes se localizaron con búsqueda web. Conviene repetir una búsqueda sistemática en PubMed cuando vuelva, sobre todo para la diatermia (casos publicados, p. ej. Nutt 2001 en *Neurology*) y la fisioterapia con estimulador cerebral profundo.
+
+## Lectura de los PDF (noviembre 2026)
+
+El usuario subió cinco documentos: el aviso de la FDA (PDF), el aviso de Salud Canadá (página guardada), la guía europea KNGF/ParkinsonNet (dos PDF), Torsney 2014 y la Cochrane de 2024 (cuatro PDF).
+
+### Qué se leyó
+
+| Clave propuesta | Referencia | Qué se leyó | Qué aporta |
+|---|---|---|---|
+| `FDA 2002 (diatermia)` | FDA Public Health Notification: Diathermy interactions with implanted leads and implanted systems with leads. 19 dic 2002 | Entero (3 pp.) | Dos muertes de pacientes con **estimulador cerebral profundo** tras diatermia (una tras cirugía oral, otra para una escoliosis), por lesión cerebral donde estaban los electrodos. **Onda corta y microondas, en modo térmico y atérmico, no deben usarse con ningún electrodo metálico implantado**, aunque el aparato esté apagado y aunque el electrodo ya no esté conectado; tampoco si tuvo un implante, salvo certeza absoluta de que se retiraron el implante y todos los electrodos («a menudo se dejan»). No se sabe si hay una distancia segura. **Con el ultrasonido «no se espera esta interacción».** Preguntar siempre por implantes antes de aplicarla. Otros implantes con electrodos: marcapasos y desfibriladores, implantes cocleares, estimuladores del crecimiento óseo, estimuladores medulares y de otros nervios |
+| `Health Canada 2003 (diatermia)` | Health Canada. Important safety information regarding diathermy therapy in patients with implanted leads and implanted systems with leads. Notice to Hospitals, 2 abr 2003 (RA-17000480) | Entero | Lo mismo que la FDA (onda corta y microondas contraindicadas con cualquier electrodo, aunque esté apagado o desconectado, o quede solo un trozo de electrodo) y **añade: ultrasonido terapéutico contraindicado encima o cerca del implante o de sus electrodos**. La dirige expresamente a fisioterapia. Cita a Nutt 2001 (*Neurology* 56:1384–1386) como caso original |
+| `Keus 2014` | Keus SHJ, Munneke M, Graziano M, et al. European Physiotherapy Guideline for Parkinson's disease. KNGF/ParkinsonNet, 2014 | Parte 1 (pp. 1–100): índice, cap. 1.2 (límites, comorbilidad, exclusiones), 3.2–3.4 (medicación, fluctuaciones, neurocirugía), 5.11 (riesgo de caída), **5.13 (banderas rojas y naranjas)**, 6.4.6–6.4.9 (vibración, masaje, dolor, respiratorio), **6.7.2–6.7.5** (fluctuaciones, dolor y fatiga, cuándo parar), 6.8.3 (estadio final) y el inicio del cap. 7. **No leídos**: caps. 2, 4, 5.1–5.10 y 5.12, 6.1–6.4.5 y 6.5–6.6 (intervenciones de ejercicio y estrategias de movimiento), la tabla 7 completa y la parte 2 (apéndices, entre ellos el 12 de efectos adversos de la medicación) | Ver «Qué aporta la guía europea» |
+| `Torsney 2014` | Torsney KM, Noyce AJ, Doherty KM, et al. Bone health in Parkinson's disease: a systematic review and meta-analysis. *J Neurol Neurosurg Psychiatry* 2014;85(10):1159–1166. [doi:10.1136/jnnp-2013-307307](https://doi.org/10.1136/jnnp-2013-307307) | Entero (8 pp.) | 23 estudios. **Osteoporosis OR 2,61** (1,69–4,03) y **fractura OR 2,28** (1,83–2,83) frente a controles; más en mujeres. Densidad mineral menor en cadera, columna lumbar y cuello femoral. **La cadera es el 50 % de las fracturas** (caídas de lado o hacia atrás con la marcha arrastrando los pies). **Las fracturas vertebrales pueden pasar desapercibidas** porque la postura encorvada se da por esperada |
+| `Ernst 2024` | Ernst M, Folkerts AK, Gollan R, et al. Physical exercise for people with Parkinson's disease: a systematic review and network meta-analysis. *Cochrane Database Syst Rev* 2024;4:CD013856. [doi:10.1002/14651858.CD013856.pub3](https://doi.org/10.1002/14651858.CD013856.pub3) | Solo el resumen (pp. 1–3 de la parte 1). **El resto se lee entero al escribir el bloque de la guía de ejercicio** (decisión 13) | 154 ensayos, 7837 participantes, casi todos con enfermedad leve a moderada y sin deterioro cognitivo importante. **Casi todos los tipos de ejercicio son mejores que no hacer nada, con poca diferencia entre ellos**: «el tipo exacto podría ser secundario». La danza y el entrenamiento de marcha, equilibrio y función, con efecto moderado en los signos motores (confianza moderada). Seguridad muy incierta: lo más notificado, **caídas** (18 estudios) y dolor (10) |
+
+
+### Qué aporta la guía europea (Keus 2014)
+
+1. **Banderas rojas (5.13)**: impedimentos que exigen aconsejar consulta médica.
+   - **Estimulador cerebral profundo**: no usar nada con un componente eléctrico, porque puede afectar a la batería si está lo bastante cerca del tórax: **onda corta, microondas, ultrasonido y electroestimulación, como la TENS o las interferenciales**. Y **«ninguna presión manual cerca de los cables»**. Cita su ref. 462 (no leída).
+   - **Complicaciones motoras complejas**: on-off impredecibles, discinesias graves y distonía en off (calambres o espasmos dolorosos).
+   - **Alteraciones mentales graves**: ilusiones, alucinaciones y trastornos del control de impulsos (tomar medicación de más sin receta, actividades repetitivas, juego, comida o sexo compulsivos).
+   - Dolor torácico, arritmias o cambios irregulares de la tensión durante el ejercicio; diabetes tipo 2 mal controlada; enfermedad sistémica aguda; cardiopatías graves (lista larga, de las guías de entrenamiento).
+2. **Banderas naranjas (5.13)**: influyen en la evaluación o la elección de la intervención.
+   - Parkinsonismos atípicos; deterioro cognitivo, psicosis, depresión o demencia; inactividad previa (empezar bajo y subir poco a poco); fatiga intensa (repartir los ejercicios, más descansos); miedo a caer o a moverse; alteraciones visuales; dolor y fatiga.
+   - **Con congelación de la marcha y rigidez axial intensa, la hidroterapia siempre supervisada de forma individual.**
+   - Betabloqueantes (la FC no sirve para la intensidad), diabetes con insulina (hipoglucemia hasta 72 h después del ejercicio intenso), saturación ≥ 90 % en la neumopatía.
+   - **Errata de la guía**: pone «Hypotension: a resting systolic blood pressure ≥200 mmHg or diastolic ≥115 mmHg», que es hipertensión. **No se usa.**
+3. **Fluctuaciones (6.7.2)**: en off responde peor, por la medicación, no por la cognición. **La capacidad física se entrena mejor en on.** Las estrategias se enseñan primero en on, pero si se necesitan en off hay que acabar practicándolas en off. Si el fisio ve fluctuaciones o mala adherencia a la medicación, aconseja hablarlo con el neurólogo.
+4. **Medicación (3.2)**: la adherencia suele ser baja (muchas tomas, deterioro cognitivo, dificultad para tragar). El fisio no la cambia; apoya que lo hable con quien la prescribe.
+5. **Neurocirugía (3.3)**: el estimulador puede mejorar o empeorar la marcha y el equilibrio; complicaciones de la estimulación: ansiedad, depresión, impulsividad y suicidio.
+6. **Dolor (6.4.8 y 6.7.3)**: no hay ensayos de fisioterapia para el dolor en el Parkinson. **Si el dolor no tiene que ver con la medicación**, la fisioterapia puede estar indicada: educación, miedo y dolor, seguir activo, progresión por tiempo y no por dolor, TENS y terapia manual (ninguna evaluada en el Parkinson); aplicar las guías generales del dolor. Aconsejar que hable del dolor con quien le receta, por si ajustar la medicación lo reduce.
+7. **Vibración de cuerpo entero (6.4.6)**: **recomendación fuerte en contra**, por seguridad.
+8. **Masaje de puntos gatillo (6.4.7)**: recomendación débil a favor, solo para el efecto que percibe el paciente y siempre combinado con otra intervención.
+9. **Cuándo parar el ejercicio (6.7.5)**: cansancio y sudor son normales; parar y consultar con náuseas, opresión o dolor torácico de más de unos minutos, falta de aire inusual (más de 40 respiraciones por minuto), fatiga o disnea intensas, mareo, palpitaciones, dolor, sudor frío, o una bajada de la TAS de más de 10 mmHg durante el ejercicio si se mide.
+10. **Riesgo de caída (5.11)**: el modelo de tres pasos (caídas y congelación del formulario previo de la guía más la velocidad en 10 m) da un riesgo a 6 meses del 17, 51 y 85 %. Factores: congelación, demencia o deterioro cognitivo leve, incontinencia urinaria, pérdida del braceo, años desde el diagnóstico, entorno y medicación.
+11. **Estadio final (6.8.3)**: Hoehn y Yahr 5. Prevenir úlceras y contracturas, postura, cambios de posición, formar a cuidadores, avisar enseguida de cambios en la piel.
+12. **Comorbilidad (1.2.2)**: la mayoría tiene varias enfermedades; más fracturas, sobre todo con demencia.
+13. **Exclusiones (1.2.3)**: suelo pélvico, a fisioterapia especializada.
+
+### Contradicciones nuevas
+
+6. **Ultrasonido con estimulador**: la FDA 2002 no espera la interacción; Salud Canadá 2003 lo contraindica encima o cerca del implante o de los electrodos; Keus 2014 lo desaconseja sin matizar la zona. **Propuesta**: seguir a Keus 2014, la más prudente y la única de fisioterapia (decisión 17).
+7. **TENS e interferenciales con estimulador**: ni la FDA ni Salud Canadá hablan de ellas (no son diatermia); Keus 2014 las pone como bandera roja. La misma guía propone la TENS para el dolor en el Parkinson, **sin estimulador**. **Propuesta**: con estimulador, ninguna electroterapia; sin estimulador, nada cambia (decisión 17).
+8. **Implantes con electrodos que no son de Parkinson** (marcapasos, estimulador medular, implante coclear): la contraindicación de la diatermia es la misma (FDA 2002; Health Canada 2003), y hoy la app no pregunta por ellos en ninguna parte. **Propuesta**: fuera de este diseño, apuntado como tarea aparte (decisión 22).
+
+### Qué cambia en el diseño
+
+- **Decisión 14 resuelta**: la línea de la diatermia ya tiene fuente y se escribe (ver la línea 9 nueva del recuadro).
+- **Decisión 15 resuelta**: la guía europea confirma la tarjeta y cambia varias líneas:
+  - **Recuadro de la fase 5**:
+    - Línea 5 (on/off): «La capacidad física se entrena mejor en on; las estrategias se aprenden en on y, si hacen falta en off, se practican también en off. Valora y reevalúa en la misma fase y anótala» (Keus 2014, 6.7.2; Osborne 2022).
+    - Línea 9 (estimulador): «**Con estimulador cerebral profundo: nada de onda corta ni microondas** (riesgo de lesión cerebral grave o muerte, aunque esté apagado o retirado si quedan electrodos), **ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables**» (FDA 2002; Health Canada 2003; Keus 2014, 5.13).
+    - **Línea nueva 11 (vibración)**: «No uses plataformas de vibración de cuerpo entero» (Keus 2014, 6.4.6, recomendación fuerte en contra).
+    - **Línea nueva 12 (hidroterapia)**: «Con congelación de la marcha y rigidez axial intensa, hidroterapia solo con supervisión individual» (Keus 2014, 5.13).
+    - **Línea nueva 13 (dolor)**: «Si el dolor no sigue a la medicación, trátalo como en las guías generales del dolor; si cambia con las tomas o con el off, que lo hable con quien le receta» (Keus 2014, 6.4.8 y 6.7.3).
+    - Línea 7 (hueso), ampliada: osteoporosis OR 2,61 y fractura OR 2,28; la cadera es la mitad de las fracturas, y **las vertebrales pasan desapercibidas tras la postura encorvada** (Torsney 2014; Tan 2014).
+  - **Fase 2**:
+    - **Pregunta nueva `pk_d_complicaciones`**: «¿Tiene periodos off que no sabe prever, movimientos involuntarios fuertes o calambres dolorosos en off?» → `derivacion` a su neurólogo (Keus 2014, 5.13).
+    - **Pregunta nueva `pk_d_mental`**: alucinaciones o conductas compulsivas nuevas (tomar medicación de más, juego, compras, comida) → `derivacion` (Keus 2014, 5.13; Simonet 2019). Para la decisión 18: puede ir `privada: true`, como el ánimo del embarazo.
+  - **Fase 6**:
+    - La red de seguridad suma los criterios de parada de Keus 2014, 6.7.5 (decisión 19).
+    - El aviso `parkinsonEstimulador` sale **en cualquier plan con estimulador**, no solo con las pautas que nombran electroterapia: 16 hipótesis la nombran hoy (h1, h2, h3, h10, ca1, ca15, ce5, ro1–ro4, co1, tp1, tp8, tp24, tp26), unas para recomendarla y otras para no hacerlo, y además el fisio puede usarla sin que la pauta la nombre (decisión 20).
+  - **Fase 4b**: con estimulador, añadir «sin presión manual cerca de los cables» a la línea de la 4b (Keus 2014, 5.13; decisión 21). Los cables van del cráneo, por detrás de la oreja y el cuello, a la batería bajo la clavícula: los tests cervicales y de hombro con presión ahí. **Redacción propia** del trayecto, pendiente de una fuente que lo describa.
+- **Decisión 13** (bloque de ejercicio): la Cochrane ya está; se lee entera en ese paso.
+
+### Decisiones nuevas (cada una con mi recomendación)
+
+17. **Qué técnicas se prohíben con estimulador**: recomiendo **seguir a Keus 2014**: ni onda corta ni microondas (FDA y Salud Canadá: lesión grave o muerte), **ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables**. Es la más prudente y la única fuente de fisioterapia.
+18. **Alucinaciones y conductas compulsivas** (`pk_d_mental`): recomiendo **incluirla como `derivacion` y `privada: true`**, para que el texto no llegue al 📄 Informe ni al prompt.
+19. **Criterios de parada de Keus 2014** en la red de seguridad de la fase 6: recomiendo **sí, solo los que el paciente puede notar**: náuseas, dolor u opresión en el pecho de más de unos minutos, falta de aire inusual, mareo, palpitaciones o sudor frío. La bajada de la TAS, solo en el recuadro de la fase 5, para el fisio.
+20. **Aviso del estimulador en la fase 6**: recomiendo que salga **en cualquier plan con estimulador marcado**.
+21. **Presión manual cerca de los cables**: recomiendo **la línea de la 4b sin el trayecto** («ninguna presión manual cerca de los cables del estimulador»), hasta tener una fuente que describa el recorrido.
+22. **Otros implantes con electrodos** (marcapasos, estimulador medular, implante coclear): recomiendo **apuntarlo como tarea aparte**, fuera del Parkinson: la contraindicación de la diatermia vale para cualquiera, y la app no lo pregunta en ninguna parte.
+23. **Registro**: entran `FDA 2002 (diatermia)`, `Health Canada 2003 (diatermia)`, `Keus 2014` y `Torsney 2014` si el texto final los usa (decisión 16). `Ernst 2024`, con el bloque de ejercicio.
 
 ## Criterio de entrada de la Fase P: sí entra
 
@@ -218,8 +293,6 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 ## Siguiente paso
 
 1. ~~Tus decisiones 1–16~~: aceptadas las 16 recomendaciones (noviembre 2026).
-2. PDF pedidos al usuario (noviembre 2026; los dominios no son accesibles desde este entorno):
-   - Decisión 14: aviso de la FDA de 2002 sobre diatermia y electrodos implantados, o el manual del médico de un estimulador cerebral profundo (contraindicaciones y advertencias).
-   - Decisión 15: guía europea de fisioterapia KNGF/ParkinsonNet 2014 (guía completa, no solo las tarjetas de consulta rápida).
-   - Opcional: Torsney 2014.
-3. Con eso: leer en PMC las revisiones del dolor y la Cochrane de 2024, cerrar el texto y pedir la revisión al usuario antes de escribir código.
+2. ~~PDF del usuario~~: leídos (noviembre 2026; ver «Lectura de los PDF»).
+3. Decisiones 17–23 del usuario.
+4. Leer en PMC una revisión del dolor en el Parkinson (para la fase 3 y la línea 13), cerrar el texto con las decisiones 17–23 y pedir la revisión al usuario antes de escribir código.
