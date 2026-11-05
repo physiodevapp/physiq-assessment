@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Decisiones pendientes del usuario** (ver «Decisiones»). Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). Pedidos los PDF de las decisiones 14 y 15. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -52,7 +52,7 @@ Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va despu�
 | **Aviso de la FDA sobre la diatermia y los electrodos implantados** (Public Health Notification, 19 dic 2002) o **el etiquetado del estimulador** (Medtronic, Abbott, Boston Scientific) | Base de la línea más seria de la tarjeta: **no aplicar diatermia** (onda corta, microondas; también ultrasonido terapéutico según el fabricante) **con un estimulador cerebral profundo implantado, aunque esté apagado o retirado si quedan los electrodos**. La búsqueda web lo describe (lesiones cerebrales graves y muertes), pero los dominios (webharvest.gov, health.ucdavis.edu, recalls-rappels.canada.ca) **no son accesibles desde este entorno**. Sin leerlo, la línea no se escribe | PDF del usuario, o abrir el entorno a esos dominios |
 | Torsney KM, et al. Bone health in Parkinson's disease: a systematic review and meta-analysis. *J Neurol Neurosurg Psychiatry* 2014;85(10):1159–1166 | Osteoporosis (OR 2,61) además de fractura | Repositorio de UCL (en abierto) o PDF del usuario |
 | Una revisión del **dolor en el Parkinson** (clasificación de Ford o la mecanicista de Mylius; p. ej. Tai y Lin 2020, PMC8302194; Buhmann 2020, PMC7592654) | Qué tipos de dolor ve el fisio (musculoesquelético, distónico, radicular, central) y cuáles cambian con la medicación. Para la fase 3 y la 4b | En abierto en PMC; se leen al cerrar las decisiones |
-| Ernst M, et al. Physical exercise for people with Parkinson's disease. *Cochrane Database Syst Rev* 2024 | Metaanálisis en red más reciente sobre tipos de ejercicio. Si se escribe un bloque en la guía «Efectos del ejercicio» | PDF del usuario |
+| Ernst M, et al. Physical exercise for people with Parkinson's disease: a systematic review and network meta-analysis. *Cochrane Database Syst Rev* 2024;4:CD013856.pub3. [doi:10.1002/14651858.CD013856.pub3](https://doi.org/10.1002/14651858.CD013856.pub3) | Metaanálisis en red más reciente sobre tipos de ejercicio. Si se escribe un bloque en la guía «Efectos del ejercicio» | **En abierto en PMC (PMC11001292)**: no hace falta PDF; se lee al escribir el bloque (decisión 13) |
 | Validación española de un cuestionario específico (PDQ-39 o PDQ-8) | Regla del proyecto: solo cuestionarios validados en español de España (`docs/cuestionarios.md`) | Comprobar antes de añadir nada a la calculadora (decisión 12) |
 
 **Las búsquedas de esta sesión**: la búsqueda de PubMed (E-utilities) y la de Europe PMC devolvían errores 500/503 (noviembre 2026). Los textos completos se leyeron por identificador desde PMC (servicio BioC) y las fuentes se localizaron con búsqueda web. Conviene repetir una búsqueda sistemática en PubMed cuando vuelva, sobre todo para la diatermia (casos publicados, p. ej. Nutt 2001 en *Neurology*) y la fisioterapia con estimulador cerebral profundo.
@@ -179,7 +179,7 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 4. **Hombro congelado como señal precoz**: Paggou 2023 lo propone; Gadgaard 2024 no encuentra más riesgo que tras un dolor lumbar. **Propuesta**: ninguna regla (decisión 7).
 5. **Estimulación cerebral profunda y fisioterapia**: Osborne 2022 no encontró estudios. **Propuesta**: solo seguridad (diatermia, fallo del estimulador), ninguna pauta propia.
 
-## Decisiones (cada una con mi recomendación)
+## Decisiones (cada una con mi recomendación; aceptadas las 16 por el usuario, noviembre 2026)
 
 1. **¿Hacer la condición especial?** Recomiendo **sí**, con la forma propuesta.
 2. **¿Estado «Sospecha»?** Recomiendo **sí**: NICE NG71 (1.2.1–1.2.2) da qué síntomas y qué hacer (derivar pronto y sin tratar). Con «Sospecha» solo sale la derivación, nunca la palabra Parkinson en el 📄 Informe.
@@ -217,6 +217,9 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 
 ## Siguiente paso
 
-1. Tus decisiones 1–16.
-2. Los PDF de la decisión 14 (diatermia) y la 15 (guía europea KNGF), más Torsney 2014 y la Cochrane de 2024 si los tienes.
-3. Con eso, leer las revisiones de dolor en PMC, cerrar el texto y volver a pedirte la revisión antes de escribir código.
+1. ~~Tus decisiones 1–16~~: aceptadas las 16 recomendaciones (noviembre 2026).
+2. PDF pedidos al usuario (noviembre 2026; los dominios no son accesibles desde este entorno):
+   - Decisión 14: aviso de la FDA de 2002 sobre diatermia y electrodos implantados, o el manual del médico de un estimulador cerebral profundo (contraindicaciones y advertencias).
+   - Decisión 15: guía europea de fisioterapia KNGF/ParkinsonNet 2014 (guía completa, no solo las tarjetas de consulta rápida).
+   - Opcional: Torsney 2014.
+3. Con eso: leer en PMC las revisiones del dolor y la Cochrane de 2024, cerrar el texto y pedir la revisión al usuario antes de escribir código.
