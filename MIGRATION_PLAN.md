@@ -513,8 +513,11 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Borrador de diseño (2026-11): `docs/parkinson.md`. Solo diseño, sin código. 8 fuentes en abierto leídas (Osborne 2022 —guía APTA, con versión en español—, NICE NG71, Simonet 2019, Pötter-Nerger 2024, LeWitt 2020, Tan 2014, Gadgaard 2024, Paggou 2023; Wang 2022 sin registrar). Forma de las demás condiciones: tarjeta (Diagnosticado / Sospecha), `SIS_PARKINSON`, línea 4b, recuadro 5, aviso y red 6. 16 decisiones para el usuario
   - [x] Decisiones 1–16 del usuario: aceptadas las 16 recomendaciones (2026-11)
   - [x] PDF del usuario leídos (2026-11): FDA 2002 y Salud Canadá 2003 (diatermia), guía europea KNGF/ParkinsonNet 2014 (banderas rojas y naranjas, fluctuaciones, dolor, vibración, cuándo parar), Torsney 2014 y el resumen de la Cochrane de 2024. Resuelven las decisiones 14 y 15. Con estimulador: sin onda corta, microondas, ultrasonido ni electroestimulación (TENS, interferenciales) y sin presión manual cerca de los cables
-  - [ ] Decisiones 17–23 del usuario
+  - [x] Decisiones 17–23 del usuario: aceptadas las 7 recomendaciones (2026-11)
+  - [x] Buhmann 2020 (dolor) leída entera en PMC y texto cerrado para revisión (`docs/parkinson.md`, «Texto cerrado para revisión», 2026-11)
+  - [ ] Revisión del usuario del texto cerrado
   - [ ] Implementación, revisión del usuario en la app y `_bloquePK` en physiq-report
+  - [ ] Aparte (decisión 22): otros implantes con electrodos (marcapasos, desfibrilador, estimulador medular, implante coclear): la diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003) y la app no lo pregunta en ninguna parte
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
 

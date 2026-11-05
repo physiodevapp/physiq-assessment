@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15 y abren las **decisiones 17–23**, pendientes del usuario. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado, pendiente de la revisión del usuario antes de escribir código** (ver «Texto cerrado para revisión»). Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -51,7 +51,7 @@ Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va despu�
 | **Guía europea de fisioterapia en la enfermedad de Parkinson** (Keus SHJ, Munneke M, Graziano M, et al. KNGF/ParkinsonNet, 2014) | La guía de fisioterapia de referencia en Europa. Seguramente da la evaluación por estadios, las fluctuaciones on/off y en qué fase citar la sesión, las estrategias de movimiento y los estímulos | PDF del usuario (se descarga de parkinsonnet.com; no está en PMC) |
 | **Aviso de la FDA sobre la diatermia y los electrodos implantados** (Public Health Notification, 19 dic 2002) o **el etiquetado del estimulador** (Medtronic, Abbott, Boston Scientific) | Base de la línea más seria de la tarjeta: **no aplicar diatermia** (onda corta, microondas; también ultrasonido terapéutico según el fabricante) **con un estimulador cerebral profundo implantado, aunque esté apagado o retirado si quedan los electrodos**. La búsqueda web lo describe (lesiones cerebrales graves y muertes), pero los dominios (webharvest.gov, health.ucdavis.edu, recalls-rappels.canada.ca) **no son accesibles desde este entorno**. Sin leerlo, la línea no se escribe | PDF del usuario, o abrir el entorno a esos dominios |
 | Torsney KM, et al. Bone health in Parkinson's disease: a systematic review and meta-analysis. *J Neurol Neurosurg Psychiatry* 2014;85(10):1159–1166 | Osteoporosis (OR 2,61) además de fractura | Repositorio de UCL (en abierto) o PDF del usuario |
-| Una revisión del **dolor en el Parkinson** (clasificación de Ford o la mecanicista de Mylius; p. ej. Tai y Lin 2020, PMC8302194; Buhmann 2020, PMC7592654) | Qué tipos de dolor ve el fisio (musculoesquelético, distónico, radicular, central) y cuáles cambian con la medicación. Para la fase 3 y la 4b | En abierto en PMC; se leen al cerrar las decisiones |
+| ~~Una revisión del dolor en el Parkinson~~ | **Leída**: Buhmann 2020 (ver «Dolor: Buhmann 2020») | — |
 | Ernst M, et al. Physical exercise for people with Parkinson's disease: a systematic review and network meta-analysis. *Cochrane Database Syst Rev* 2024;4:CD013856.pub3. [doi:10.1002/14651858.CD013856.pub3](https://doi.org/10.1002/14651858.CD013856.pub3) | Metaanálisis en red más reciente sobre tipos de ejercicio. Si se escribe un bloque en la guía «Efectos del ejercicio» | **En abierto en PMC (PMC11001292)**: no hace falta PDF; se lee al escribir el bloque (decisión 13) |
 | Validación española de un cuestionario específico (PDQ-39 o PDQ-8) | Regla del proyecto: solo cuestionarios validados en español de España (`docs/cuestionarios.md`) | Comprobar antes de añadir nada a la calculadora (decisión 12) |
 
@@ -122,7 +122,7 @@ El usuario subió cinco documentos: el aviso de la FDA (PDF), el aviso de Salud 
   - **Fase 4b**: con estimulador, añadir «sin presión manual cerca de los cables» a la línea de la 4b (Keus 2014, 5.13; decisión 21). Los cables van del cráneo, por detrás de la oreja y el cuello, a la batería bajo la clavícula: los tests cervicales y de hombro con presión ahí. **Redacción propia** del trayecto, pendiente de una fuente que lo describa.
 - **Decisión 13** (bloque de ejercicio): la Cochrane ya está; se lee entera en ese paso.
 
-### Decisiones nuevas (cada una con mi recomendación)
+### Decisiones nuevas (cada una con mi recomendación; aceptadas las 7 por el usuario, noviembre 2026)
 
 17. **Qué técnicas se prohíben con estimulador**: recomiendo **seguir a Keus 2014**: ni onda corta ni microondas (FDA y Salud Canadá: lesión grave o muerte), **ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables**. Es la más prudente y la única fuente de fisioterapia.
 18. **Alucinaciones y conductas compulsivas** (`pk_d_mental`): recomiendo **incluirla como `derivacion` y `privada: true`**, para que el texto no llegue al 📄 Informe ni al prompt.
@@ -131,6 +131,129 @@ El usuario subió cinco documentos: el aviso de la FDA (PDF), el aviso de Salud 
 21. **Presión manual cerca de los cables**: recomiendo **la línea de la 4b sin el trayecto** («ninguna presión manual cerca de los cables del estimulador»), hasta tener una fuente que describa el recorrido.
 22. **Otros implantes con electrodos** (marcapasos, estimulador medular, implante coclear): recomiendo **apuntarlo como tarea aparte**, fuera del Parkinson: la contraindicación de la diatermia vale para cualquiera, y la app no lo pregunta en ninguna parte.
 23. **Registro**: entran `FDA 2002 (diatermia)`, `Health Canada 2003 (diatermia)`, `Keus 2014` y `Torsney 2014` si el texto final los usa (decisión 16). `Ernst 2024`, con el bloque de ejercicio.
+
+## Dolor: Buhmann 2020 (noviembre 2026)
+
+| Clave propuesta | Referencia | Cómo se leyó |
+|---|---|---|
+| `Buhmann 2020` | Buhmann C, Kassubek J, Jost WH. Management of pain in Parkinson's disease. *J Parkinsons Dis* 2020;10(s1):S37–S48. [doi:10.3233/JPD-202069](https://doi.org/10.3233/JPD-202069) | PMC7592654, entero |
+
+Lo que usa el diseño:
+- El dolor afecta al **68–95 %**, en todos los estadios. En torno a la mitad se relaciona con artrosis de columna o articulaciones, amplificada por la acinesia y la rigidez, aunque la gravedad motora y el dolor no se correlacionan bien.
+- **El dolor musculoesquelético de un solo lado, como un «síndrome hombro-brazo», es una presentación precoz típica de la acinesia y la rigidez, y a menudo pasa desapercibido.** El 5,5 % refiere el dolor como primer síntoma. Coincide con Paggou 2023 y no cambia la decisión 7: sigue sin regla automática, pero entra en el «Piensa en ella si:» de la guía de condiciones especiales.
+- El dolor más frecuente es el espinal-paravertebral, luego el articular y el musculoesquelético; más en mujeres. El neuropático es minoritario.
+- **Muchos pacientes no cuentan el dolor porque no lo relacionan con el Parkinson**: hay que preguntarlo.
+- **Dolor «en percha»** (cuello y hombros) con la hipotensión ortostática, a veces con cefalea. Coincide con la pregunta 6 de cribado de LeWitt 2020 («¿dolor de cuello al estar de pie?»). Entra en `pk_d_ortostatica`.
+- La base del tratamiento es optimizar la medicación (cuando el dolor sigue al off, a las discinesias o a la distonía); eso es del médico. Los pacientes valoran la **fisioterapia como especialmente eficaz** frente al dolor musculoesquelético, sin datos de técnicas concretas. En la camptocormia dolorosa, el foco es la fisioterapia.
+- Clasificación de Ford (musculoesquelético, radicular o neuropático, distónico, acatisia, central). La única escala validada para el Parkinson es la KPPS; **no se añade** a la calculadora sin validación española comprobada (decisión 12).
+- Los fármacos y dosis de la revisión no van a la app.
+
+## Texto cerrado para revisión (noviembre 2026)
+
+Redacción final propuesta, con las 23 decisiones aplicadas. Cada frase lleva su fuente o «redacción propia». Al implementar se copia tal cual a `data/comun.js` (sistema y textos de la tarjeta) y `data/plan-tratamiento.js`.
+
+### Fase 1 — tarjeta «Parkinson»
+
+- **Título**: «Parkinson».
+- **Nota bajo el título** (redacción propia): «Márcala si tiene diagnóstico de enfermedad de Parkinson, o «Sospecha» si tiene temblor, rigidez, lentitud o problemas de equilibrio o de marcha sin diagnosticar.»
+- **Estado**: «Diagnosticado» · «Sospecha».
+- **Con «Diagnosticado»**:
+  - «Estadio (Hoehn y Yahr), si lo sabe»: 1–2 · 3 · 4–5 · No lo sabe.
+  - «¿Tiene fluctuaciones on/off?»: Sí · No · No lo sabe.
+  - Solo con fluctuaciones = Sí: «Ahora está en»: On · Off · No sabría decir. Debajo: «Anótalo: lo que mides cambia con la fase» (Osborne 2022; Keus 2014, 6.7.2).
+  - «¿Se le congela la marcha?»: Sí · No.
+  - «¿Lleva estimulador cerebral profundo?»: Sí · No · No lo sabe. Con «Sí», en rojo y nunca plegada: «**Nada de onda corta ni microondas** (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), **ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables**» (FDA 2002; Health Canada 2003; Keus 2014, 5.13). Con «No lo sabe», la misma línea precedida de «Hasta confirmarlo:» (redacción propia, la opción prudente).
+  - Las caídas: el bloque de caídas de la osteoporosis (NICE NG249), reutilizado en el sistema de la fase 2 (decisión 8).
+- **Con «Sospecha»**: solo la nota «Deriva pronto y sin tratar a un especialista: no lo diagnostiques» (NICE NG71, 1.2.2).
+
+### Fase 2 — `SIS_PARKINSON` («Parkinson», icono 🧠)
+
+Preguntas, cada una con su `razonamiento` (porque, peso y fuentes) de lo leído:
+
+| Id | Texto de la pregunta | Tipo y mensaje | Se muestra |
+|---|---|---|---|
+| `pk_u_crisis` | «En los últimos días, ¿está mucho más rígido o inmóvil que de costumbre y además tiene fiebre, está confuso, suda mucho o le cuesta tragar?» | `urgencia`: «Posible crisis acinética (síndrome de parkinsonismo-hiperpirexia): urgencias hoy» (Pötter-Nerger 2024; Simonet 2019) | Diagnosticado |
+| `pk_d_medicacion` | «¿Ha dejado de tomar su medicación del Parkinson, o no puede tomarla o retenerla (vómitos, diarrea, no puede tragar, una cirugía)?» | `derivacion`: «Contactar hoy con su neurólogo o médico: la medicación no se debe retirar de golpe» (NICE NG71, 1.3.2) | Diagnosticado |
+| `pk_d_estimulador` | «¿Han vuelto de golpe el temblor, la rigidez o la lentitud, o tiene movimientos involuntarios fuertes o cambios de conducta nuevos?» | `derivacion`: «Contactar hoy con el centro que le implantó el estimulador» (Simonet 2019) | Estimulador = Sí |
+| `pk_d_complicaciones` | «¿Tiene periodos off que no sabe prever, movimientos involuntarios fuertes o calambres dolorosos cuando está en off?» | `derivacion`: «Consultar a su neurólogo: el ajuste de la medicación puede reducirlos» (Keus 2014, 5.13 y 3.2) | Diagnosticado |
+| `pk_d_mental` | «¿Ve cosas que no están, o tiene conductas nuevas que no puede controlar (tomar medicación de más, juego, compras, comida)?» | `derivacion` y `privada: true`: «Consultar a su médico» (Keus 2014, 5.13; Simonet 2019) | Diagnosticado |
+| `pk_d_ortostatica` | «¿Se marea, ve borroso, nota las piernas flojas o le duele el cuello y los hombros al estar de pie, y se le pasa al sentarse o tumbarse?» | `derivacion`: «Medir la tensión tumbado y de pie, y comentarlo con su médico» (LeWitt 2020, tabla 3; Buhmann 2020; NICE NG71, 1.5.8) | Los dos |
+| `pk_d_tragar` | «¿Tose o se atraganta al comer o beber, o ha tenido infecciones respiratorias seguidas?» | `derivacion`: «Consultar a su médico: valoración de la deglución» (Simonet 2019; NICE NG71, 1.7.8) | Diagnosticado |
+| `pk_d_sueno` | «¿Se queda dormido de repente durante el día, sin poder evitarlo?» | `derivacion`: «Consultar a su médico; no conducir mientras tanto» (NICE NG71, 1.5.1; Simonet 2019) | Diagnosticado |
+| `pk_d_sospecha` | «Temblor, rigidez, lentitud, problemas de equilibrio o de la marcha, sin diagnóstico» | `derivacion`: «Derivar pronto y sin tratar a un especialista en trastornos del movimiento» (NICE NG71, 1.2.1–1.2.2) | Sospecha |
+
+Cambios respecto al borrador:
+- `pk_u_medicacion` y `pk_u_estimulador` pasan a `pk_d_*`: son `derivacion` hoy, y la urgencia es `pk_u_crisis` (decisión 3).
+- `pk_d_complicaciones` y `pk_d_mental` son nuevas (Keus 2014).
+- `pk_d_ortostatica` añade el dolor «en percha».
+
+Bloques del sistema (`[data-pk-bloque]`):
+- **Tensión tumbado y de pie** (decisión 10): la prueba de bipedestación de `lib/disautonomia.js`, con su reloj, reducida a tumbado y minutos 1 y 3, y la regla de hipotensión ortostática (≥ 20 mmHg de TAS o ≥ 10 de TAD), sin la del POTS (LeWitt 2020). Se abre con «Hacer la medida», como en la disautonomía. No marca la tarjeta de disautonomía.
+- **Caídas**: el de la osteoporosis (NICE NG249, sin puntuar), con las mismas preguntas y el mismo estado si las dos tarjetas están marcadas.
+
+Banderas del sistema, cada una enlazada a su pregunta (Fase M): crisis acinética → `pk_u_crisis`; retirada de la medicación → `pk_d_medicacion`; fallo del estimulador → `pk_d_estimulador`.
+
+### Fase 3
+
+`#pkNotaDolor` (`.solo-pk`), bajo la matriz de irritabilidad: «Pregunta por el dolor aunque no lo cuente: muchos no lo relacionan con el Parkinson. Anota si está en on u off, y si el dolor cambia con las tomas, que lo hable con quien le receta» (Buhmann 2020; Keus 2014, 6.7.2 y 6.7.3).
+
+### Fase 4b
+
+`.pk-nota-4b`, encima de las tarjetas:
+- Siempre: «La rigidez limita la movilidad pasiva y el temblor puede tapar la respuesta: compara con el otro lado y anota si está en on u off» (redacción propia sobre Osborne 2022 y Paggou 2023; Keus 2014, 6.7.2).
+- Con estimulador = Sí o «No lo sabe»: «Sin presión manual cerca de los cables del estimulador» (Keus 2014, 5.13; decisión 21).
+
+### Fase 5 — recuadro «Parkinson» (`.pk-fase5`, nunca se pliega)
+
+Con «Diagnosticado»:
+1. **Estimulador** (solo con Sí o «No lo sabe», primera línea y en rojo): la misma frase de la tarjeta.
+2. **Ejercicio**: «Con lo que usaron los ensayos, sin una dosis óptima establecida: aeróbico moderado a alto, al menos 3 días por semana, 30–40 min; fuerza progresiva 1–2 días por semana; equilibrio 2–3 veces por semana; marcha 20–60 min, 3–5 días por semana, 4–12 semanas. Lo ganado se pierde si se deja» (Osborne 2022). «Casi cualquier tipo de ejercicio ayuda; el tipo importa menos que hacerlo» (Ernst 2024).
+3. **Intensidad**: «La FC puede subir menos de lo esperado: vigila también el esfuerzo percibido» (Osborne 2022). «Si estaba inactivo, empieza bajo y sube poco a poco» (Keus 2014, 5.13).
+4. **Congelación o riesgo de caída**: «Bicicleta antes que cinta; usa estímulos externos (auditivos o visuales) para la marcha» (Osborne 2022). «Hidroterapia solo con supervisión individual» (Keus 2014, 5.13).
+5. **On/off**: «La capacidad física se entrena mejor en on; las estrategias se aprenden en on y, si hacen falta en off, se practican también en off. Valora y reevalúa en la misma fase y anótala» (Keus 2014, 6.7.2; Osborne 2022).
+6. **Hoehn y Yahr 4–5** (solo con ese estadio): «Las pautas se estudiaron sobre todo en estadios 1–3» (Osborne 2022). Con 4–5 se añade: «En cama o silla: prevenir úlceras y contracturas, postura, cambios de posición y formar a los cuidadores en las transferencias» (Keus 2014, 6.8.3).
+7. **Hipotensión ortostática**: «Levantarse en dos tiempos; maniobras físicas: cruzar las piernas tensando, inclinarse hacia delante, ponerse en cuclillas. Fármacos, sal y agua, con su médico» (LeWitt 2020, tabla 4).
+8. **Hueso y caídas**: «Osteoporosis y fracturas, más del doble que sin Parkinson; la cadera es la mitad de las fracturas y las vertebrales pasan desapercibidas tras la postura encorvada. Valora la tarjeta de osteoporosis» (Torsney 2014; Tan 2014).
+9. **Dolor**: «Si el dolor no sigue a la medicación, trátalo como en las guías generales del dolor, con progresión por tiempo y no por dolor; si cambia con las tomas o con el off, que lo hable con quien le receta» (Keus 2014, 6.4.8 y 6.7.3; Buhmann 2020).
+10. **Vibración**: «No uses plataformas de vibración de cuerpo entero» (Keus 2014, 6.4.6: recomendación fuerte en contra).
+11. **Ataques de sueño** (con `pk_d_sueno` = SÍ): «No le dejes solo en la bicicleta o la cinta» (redacción propia sobre Simonet 2019).
+12. **Cuándo parar** (para el fisio): «Parar y consultar con náuseas, dolor u opresión torácica de más de unos minutos, falta de aire inusual, mareo, palpitaciones, sudor frío o si la TAS baja más de 10 mmHg durante el ejercicio» (Keus 2014, 6.7.5).
+13. **Fisioterapia con experiencia en Parkinson**: «Las guías recomiendan fisioterapia con experiencia en Parkinson» (NICE NG71, 1.7.2–1.7.3; Osborne 2022).
+
+Con «Sospecha»: solo la derivación de `pk_d_sospecha`.
+
+### Fase 6
+
+- **Aviso `parkinson`** (cualquier región, con «Diagnosticado»): las líneas 2, 3 y 5 del recuadro.
+- **Aviso `parkinsonEstimulador`** (estimulador = Sí o «No lo sabe», en cualquier plan; decisión 20): la frase del estimulador.
+- **Aviso `parkinsonVibracion`**: la línea 10, solo en el plan, sin condición de hipótesis.
+- **Red de seguridad `RED_PARKINSON`** (decisión 19), escrita para el paciente:
+  - «Si en los próximos días está mucho más rígido o inmóvil con fiebre, confusión o mucho sudor, o no puede tomar su medicación: a urgencias» (Pötter-Nerger 2024; NICE NG71, 1.3.2).
+  - «Para el ejercicio y consulta si nota náuseas, dolor u opresión en el pecho que dura más de unos minutos, falta de aire fuera de lo normal, mareo, palpitaciones o sudor frío» (Keus 2014, 6.7.5).
+- Sin tope de thrust propio (decisión 9).
+
+### Salidas
+
+- `📋 Notas`: «🧠 PARKINSON: diagnosticado · H&Y 3 · fluctuaciones (valorado en on) · congelación · estimulador cerebral profundo».
+- `📄 Informe`: «ENFERMEDAD DE PARKINSON» con estadio, fluctuaciones y estimulador (sin técnicas), o con «Sospecha» «RECOMENDACIÓN DE VALORACIÓN MÉDICA»: «Se recomienda valoración por un especialista en trastornos del movimiento» (sin la palabra Parkinson).
+- Bloque de la IA `bloquePKIA()`, sin citas: lo de 📋 Notas más la regla «Con estimulador cerebral profundo, no propongas diatermia, ultrasonido ni electroestimulación». `PK_CASOS` fija el texto para `_bloquePK` de physiq-report.
+- Payload `pk`: con «Diagnosticado» `{ es, hy, fl, fa, cg, ec }`; con «Sospecha» `{ es }`. Nunca `pk_d_mental` en texto (es `privada`).
+- Modo breve, pendientes: «Estimulador cerebral profundo sin registrar» (es lo que cambia las técnicas) y, con fluctuaciones, «Fase on/off sin registrar».
+
+### Guía de condiciones especiales
+
+Fila `parkinson`:
+- **Qué es** (redacción propia): «Enfermedad neurológica que da lentitud, rigidez, temblor y problemas de equilibrio, y que se trata con medicación que hay que tomar a sus horas.»
+- **Piensa en ella si:**
+  - «Tiene temblor, rigidez, lentitud o problemas de marcha sin diagnóstico» (`pk_d_sospecha`).
+  - «Un dolor de hombro o brazo de un lado con rigidez o menos braceo» (Buhmann 2020; Paggou 2023).
+  - «Ya tiene el diagnóstico y viene por otro dolor».
+- **Al marcarla, añade:** las preguntas de la fase 2, la medida de la tensión de pie, la línea del estimulador, el recuadro de la fase 5 y los avisos de la fase 6.
+
+### Otras tareas que salen de aquí (fuera de esta condición)
+
+- **Otros implantes con electrodos** (decisión 22): marcapasos, desfibrilador, estimulador medular, implante coclear. La diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003), y la app no lo pregunta en ninguna parte. Va como casilla aparte en `MIGRATION_PLAN.md`.
+- **Bloque «Ejercicio en el Parkinson»** de la guía de ejercicio (decisión 13), con la Cochrane leída entera.
 
 ## Criterio de entrada de la Fase P: sí entra
 
@@ -294,5 +417,6 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 
 1. ~~Tus decisiones 1–16~~: aceptadas las 16 recomendaciones (noviembre 2026).
 2. ~~PDF del usuario~~: leídos (noviembre 2026; ver «Lectura de los PDF»).
-3. Decisiones 17–23 del usuario.
-4. Leer en PMC una revisión del dolor en el Parkinson (para la fase 3 y la línea 13), cerrar el texto con las decisiones 17–23 y pedir la revisión al usuario antes de escribir código.
+3. ~~Decisiones 17–23 del usuario~~: aceptadas (noviembre 2026).
+4. ~~Revisión del dolor y texto cerrado~~: hecho (ver «Dolor: Buhmann 2020» y «Texto cerrado para revisión»).
+5. **Revisión del usuario del texto cerrado.** Después, la implementación (ver «Cambios técnicos previstos»), en una sesión que empiece trayendo `main`.
