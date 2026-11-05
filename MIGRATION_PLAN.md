@@ -509,6 +509,11 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] physiq-report: lee `em` con una copia literal de `bloqueEMIA()` (`_bloqueEM`; `EM_CASOS` fija el mismo texto en los dos repositorios), physiodevapp/physiq-report#96 (2026-10)
   - [x] Cierre de lo pendiente (2026-10, rama `claude/trusting-mendel-sm0ogw`): comprobado contra NG201, NG133, NG194 y NG255; cambios A–E aceptados y revisados por el usuario (preeclampsia del posparto con NG194 1.2.4, infección del posparto hasta 8 semanas, línea de hipertensión crónica antes de la semana 20, urgencia de infección en el embarazo `em_u_infeccion_emb`, prueba de las `privada`). Ver «Cierre de lo pendiente» en el documento
   - [x] Woodley 2020 (Cochrane del suelo pélvico): leída entera del PDF del usuario (2026-10); W1 (contradicción 8) y W2 (una línea en el bloque de suelo pélvico de la fase 2, `sueloEvidencia`, fuera del payload, los resúmenes y el prompt) aceptados; W3, la fase 5 y la 6 sin cambios; revisado por el usuario. Fuera, a propósito: EPDS (sin validación española leída), aborto o interrupción reciente, muñeca y mano
+- [ ] **Enfermedad de Parkinson** (petición del usuario, 2026-11): crisis acinética y retirada de la medicación, estimulador cerebral profundo (diatermia), hipotensión ortostática, caídas y fracturas; rigidez, dolor y on/off cambian la interpretación
+  - [x] Borrador de diseño (2026-11): `docs/parkinson.md`. Solo diseño, sin código. 8 fuentes en abierto leídas (Osborne 2022 —guía APTA, con versión en español—, NICE NG71, Simonet 2019, Pötter-Nerger 2024, LeWitt 2020, Tan 2014, Gadgaard 2024, Paggou 2023; Wang 2022 sin registrar). Forma de las demás condiciones: tarjeta (Diagnosticado / Sospecha), `SIS_PARKINSON`, línea 4b, recuadro 5, aviso y red 6. 16 decisiones para el usuario
+  - [ ] Decisiones 1–16 del usuario
+  - [ ] PDF del usuario: aviso de la FDA de 2002 sobre diatermia o etiquetado de un estimulador (decisión 14; sin él no se escribe la línea) y guía europea KNGF/ParkinsonNet 2014 (decisión 15); opcionales Torsney 2014 y la Cochrane de ejercicio de 2024
+  - [ ] Implementación, revisión del usuario en la app y `_bloquePK` en physiq-report
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
 
