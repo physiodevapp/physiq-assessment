@@ -387,12 +387,12 @@ export const BLOQUES_EJERCICIO = [
       ],
     },
     fuentes: ['Liddle y Pennick 2015', 'Davenport 2019 (dolor lumbopélvico)', 'Ruchat 2025', 'Davenport 2018 (ánimo)', 'Deprato 2025', 'Woodley 2020', 'Davenport 2018 (incontinencia)', 'Beamish 2025', 'NICE NG210', 'Gluppe 2021', 'Sperstad 2016', 'Davenport 2019 (mortalidad fetal)', 'Davenport 2019 (daños maternos)', 'ACOG 2020', 'Mottola 2019', 'Mottola 2018', 'Evenson 2024', 'Davenport 2025', 'Christopher 2024', 'Deering 2024'] },
-  // Parkinson (2026-11): decisión 13 de docs/parkinson.md. Ernst 2024 leída
+  // Parkinson (2026-11, revisado por el usuario): decisión 13 de docs/parkinson.md. Ernst 2024 leída
   // entera en PMC (citas literales de un agente); Osborne 2022 y Keus 2014,
   // solo lo leído para la tarjeta (docs/parkinson.md). Niveles en
   // docs/efectos-ejercicio.md, «Bloque 11 — Parkinson: decisiones de nivel».
   { id: 'parkinson', titulo: 'Ejercicio en el Parkinson',
-    // Hoja para el paciente (docs/esquemas, «ejercicio-paciente»): pendiente de revisión del usuario (2026-11)
+    // Hoja para el paciente (docs/esquemas, «ejercicio-paciente»): revisado por el usuario (2026-11)
     tituloPaciente: 'Si tiene enfermedad de Parkinson', hojaPaciente: 'condicion',
     resumen: 'Qué tipos de ejercicio mejoran el movimiento y la calidad de vida, cuánto se sabe de su seguridad y a quién se aplican los estudios',
     apartados: {

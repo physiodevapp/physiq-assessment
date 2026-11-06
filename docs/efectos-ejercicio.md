@@ -101,7 +101,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Decidir qué entra y con qué etiqueta (`clinico` / `mecanismo` / `discutido`) | **Opus** | Hay que ver cuándo una revisión dice más de lo que demuestran sus estudios |
 | Redactar el contenido y las frases para el paciente | **Opus** | Un exceso de promesa no lo detecta ningún test |
 | Registrar las fuentes (`data/referencias.js`) y regenerar `docs/referencias.md` | **Sonnet** | Mecánico; los tests comprueban el registro |
-| Bloque 11 — Parkinson | Escrito (2026-11, Opus; texto completo de Ernst 2024 leído por un agente con citas literales) para la decisión 13 de `docs/parkinson.md`. **Pendiente de revisión del usuario.** 3 fuentes, ver «Bloque 11 — Parkinson: decisiones de nivel». El enlace desde la tarjeta (`CONDICION_EJERCICIO`), solo con «Diagnosticado», **aceptado por el usuario** (2026-11) y hecho en las fases 5 y 6 |
+| Bloque 11 — Parkinson | Escrito (2026-11, Opus; texto completo de Ernst 2024 leído por un agente con citas literales) para la decisión 13 de `docs/parkinson.md`. **Revisado por el usuario** (2026-11). 3 fuentes, ver «Bloque 11 — Parkinson: decisiones de nivel». El enlace desde la tarjeta (`CONDICION_EJERCICIO`), solo con «Diagnosticado», **aceptado por el usuario** (2026-11) y hecho en las fases 5 y 6 |
 | Enlace desde «Educación» de la fase 6 | **Sonnet** | Código sobre `irritabilidadSINSS()`, con tests; el texto del enlace es fijo |
 | Tabla hipótesis → bloque | **Opus** | Es una decisión clínica por hipótesis |
 | Revisión final antes de `main` | **Usuario** | Como en el resto de guías |
@@ -844,6 +844,6 @@ Bloque `parkinson`, «Ejercicio en el Parkinson», en `data/ejercicio.js`, para 
 | ortostatica | Si se marea o se le acelera el corazón al estar de pie (POTS) | Si le han dicho que tiene… |
 | hipermovilidad | Si tiene hipermovilidad articular | Si le han dicho que tiene… |
 | embarazo | Durante el embarazo y después del parto | Si le han dicho que tiene… |
-| parkinson | Si tiene enfermedad de Parkinson | Si le han dicho que tiene… (2026-11, pendiente de revisión) |
+| parkinson | Si tiene enfermedad de Parkinson | Si le han dicho que tiene… (2026-11, revisado por el usuario) |
 
 Cabecera, introducción y pie (`TEXTOS_EJERCICIO.hojaPaciente*`): «El ejercicio: lo que dicen los estudios»; «En pocas palabras, lo que se sabe del ejercicio. Su fisioterapeuta le indicará qué ejercicios hacer, cuánto y cómo avanzar.»; «Resumen de estudios revisados. No sustituye a lo que le indiquen su fisioterapeuta o su médico: ante cualquier duda, pregúnteles.» Trato de usted, como las frases. Un bloque nuevo necesita su `tituloPaciente` y `hojaPaciente` (prueba unitaria) y regenerar la hoja.

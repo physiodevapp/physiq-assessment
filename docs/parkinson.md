@@ -253,7 +253,7 @@ Fila `parkinson`:
 ### Otras tareas que salen de aquí (fuera de esta condición)
 
 - **Otros implantes con electrodos** (decisión 22): marcapasos, desfibrilador, estimulador medular, implante coclear. La diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003), y la app no lo pregunta en ninguna parte. Va como casilla aparte en `MIGRATION_PLAN.md`.
-- ~~**Bloque «Ejercicio en el Parkinson»** de la guía de ejercicio (decisión 13), con la Cochrane leída entera.~~ Hecho (2026-11), pendiente de revisión del usuario; enlazado desde el recuadro de la fase 5 y la fase 6 solo con «Diagnosticado» (aceptado por el usuario).
+- ~~**Bloque «Ejercicio en el Parkinson»** de la guía de ejercicio (decisión 13), con la Cochrane leída entera.~~ Hecho y revisado por el usuario (2026-11); enlazado desde el recuadro de la fase 5 y la fase 6 solo con «Diagnosticado» (aceptado por el usuario).
 
 ## Criterio de entrada de la Fase P: sí entra
 
