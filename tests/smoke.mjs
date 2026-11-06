@@ -7222,12 +7222,35 @@ async function checkGuia(browser, errors) {
       await pr.waitForSelector('#calc-disautonomia', { state: 'attached' });
       await pr.evaluate(() => { document.querySelector('#calc-disautonomia').closest('details.guia-plegable').open = true; });
       await pr.click('#calc-disautonomia summary');
-      await pr.click('[data-gc-reloj="pie"]');
+      await pr.click('#calc-disautonomia [data-gc-reloj="pie"]');
       await pr.clock.runFor(61000);
-      const fila = await pr.evaluate(() => document.querySelector('tr.ds-fila-toca')?.dataset.gcFila);
+      const fila = await pr.evaluate(() => document.querySelector('[data-gc-tabla="ds"] tr.ds-fila-toca')?.dataset.gcFila);
       await pr.clock.runFor(160000);
       await pr.fill('[data-gc-num="prueba"][data-gc-k="m1.fc"]', '95');
-      r.relojGuia = fila === 'm1' && /toma a las 3:4/.test(await pr.textContent('[data-gc-toma="m1"]'));
+      r.relojGuia = fila === 'm1' && /toma a las 3:4/.test(await pr.textContent('[data-gc-tabla="ds"] [data-gc-toma="m1"]'));
+      await pr.close();
+    }
+    // Parkinson: tensión tumbado y de pie con su reloj (minutos 1 y 3) y la regla de la hipotensión ortostática
+    {
+      const pr = await context.newPage();
+      await pr.clock.install();
+      await pr.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
+      await pr.waitForSelector('#calc-parkinson', { state: 'attached' });
+      await pr.evaluate(() => { document.querySelector('#calc-parkinson').closest('details.guia-plegable').open = true; });
+      await pr.click('#calc-parkinson summary');
+      const filas = await pr.$$eval('[data-gc-tabla="pk"] [data-gc-fila]', els => els.map(e => e.dataset.gcFila).join());
+      await pr.click('#calc-parkinson [data-gc-reloj="pie"]');
+      await pr.clock.runFor(181000);
+      const fila3 = await pr.evaluate(() => document.querySelector('[data-gc-tabla="pk"] tr.ds-fila-toca')?.dataset.gcFila);
+      const disSinReloj = await pr.evaluate(() => !document.querySelector('[data-gc-tabla="ds"] tr.ds-fila-toca')
+        && document.querySelector('[data-gc-reloj-caja="ds"] [data-modo]')?.dataset.modo === 'sin');
+      await pr.clock.runFor(60000);
+      const fin = (await pr.textContent('[data-gc-reloj-caja="pk"]')).includes('Prueba terminada: 3 min de pie');
+      await pr.fill('[data-gc-num="tension"][data-gc-k="tumbado.tas"]', '130');
+      await pr.fill('[data-gc-num="tension"][data-gc-k="tumbado.tad"]', '80');
+      await pr.fill('[data-gc-num="tension"][data-gc-k="m1.tas"]', '108');
+      const ho = (await pr.textContent('#guiaGcTension')).includes('Hipotensión ortostática');
+      r.tensionPkGuia = filas === 'tumbado,m1,m3' && fila3 === 'm3' && disSinReloj && fin && ho;
       await pr.close();
     }
     // (después de comprobar que la guía no crea la sesión: la app sí la abre)
@@ -7246,7 +7269,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol && r.saltos && r.saltoVa
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.tensionPkGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 

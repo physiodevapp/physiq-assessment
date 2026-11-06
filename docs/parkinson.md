@@ -443,6 +443,8 @@ Rama `claude/parkinson-condicion`. Lo implementado es el «Texto cerrado para re
 - **Urgencia en la transcripción**: `pk_u_crisis` tiene su entrada en `CONTRASTE_URGENCIAS` (rigidez o inmovilidad nuevas junto a fiebre, confusión, sudor o dificultad para tragar).
 - **Hojas impresas**: el cribado de las 7 regiones pasa de 2 a 3 páginas; la hoja de condiciones y la del plan (red por condición) cambian. Sin cambio del orden de los cuadernos.
 
+**Guía de consulta** (`guia.html`): el sistema sale en el cribado de cada región, con su bloque de caídas, el recuadro de la fase 5 y las líneas de la 4b (`lib/guia-condiciones.js`); la fila de la guía de condiciones; dos casillas en el formulario de `#plan` (`guia-plan.js`); y la **calculadora de la tensión tumbado y de pie** (`calcParkinsonHTML()`, `#calc-parkinson`, `guia-calc.js`), con la regla de `resultadoTension()` y el reloj de la prueba de bipedestación con los minutos 1 y 3 (un solo reloj a la vez para las dos calculadoras). Las hojas de cribado y de condiciones dicen que se calcula en la guía (QR).
+
 **Pruebas**: `tests/unit/parkinson.mjs` (incluida «marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema», con los dos estados y todas las filas) y la sección de humo `parkinson`.
 
 **Para revisar en la app**: la tarjeta con «Diagnosticado» y con «Sospecha»; la línea roja del estimulador con «Sí» y con «No lo sabe»; el sistema de la fase 2 (preguntas, medida de la tensión con su reloj, caídas, también con la tarjeta de osteoporosis marcada); la nota de la fase 3 y la de la 4b; el recuadro de la fase 5; los avisos y la red de la fase 6 (sobre todo la redacción de las dos alarmas del programa para casa); 📋 Notas, 📄 Informe y la fila de la guía de condiciones especiales.
