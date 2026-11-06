@@ -533,7 +533,7 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Revisión del usuario del texto cerrado: aprobado (2026-11)
   - [x] Implementación (2026-11, rama `claude/implantes-electrodos-diseno`): tarjeta `#cardImplantes` (un estado, 9 chips, líneas rojas nunca plegadas según los chips), sin sistema de la fase 2, estimulador cerebral profundo como un solo dato con el Parkinson, recuadro `.ie-fase5` (con las líneas de las pautas de `h1`, `ce5`, `ro2`, `ro4`), avisos y consejos para casa de la fase 6, punto de revisión del plan con IA, payload `ie`, 📋 Notas, 📄 Informe, `bloqueIEIA()` con `IE_CASOS`, pregunta del formulario como pista, fila de la guía de condiciones, 8 referencias, hojas `condiciones` y `formulario-comun` regeneradas con sus cuadernos. `tests/unit/implantes.mjs` y sección `implantes` de la prueba de humo
   - [ ] Revisión del usuario en la app
-  - [ ] physiq-report: `_bloqueIE` con una copia literal de `bloqueIEIA()`
+  - [x] physiq-report: `_bloqueIE` con una copia literal de `bloqueIEIA()` (rama `claude/implantes-bloque-ie`; `IE_CASOS` fija el mismo texto en los dos repositorios)
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
 
