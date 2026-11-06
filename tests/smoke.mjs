@@ -1167,6 +1167,8 @@ async function checkParkinson(page) {
     return !!box && !box.closest('details') && t.includes('ver Implantes con electrodos') && !box.querySelector('.alert-danger')
       && ie?.textContent.includes('riesgo de lesión cerebral grave') && t.includes('Bicicleta antes que cinta') && t.includes('plataformas de vibración') && t.includes('experiencia en Parkinson'); });
   r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .pk-fase5 .cita[data-cita^="Osborne 2022"]'));
+  // Enlace a la guía «Efectos del ejercicio» (bloque 11), solo con «Diagnosticado»
+  r.fase5Ejercicio = await page.evaluate(() => !!document.querySelector('#resultsContent .pk-fase5 [data-bloque-condicion="parkinson"]'));
   await page.evaluate(() => goToPhase('4b'));
   await page.waitForTimeout(200);
   r.nota4b = await page.isVisible('#hypothesisCards .pk-nota-4b') && (await page.textContent('#hypothesisCards .pk-nota-4b')).includes('cables del estimulador');
@@ -1177,13 +1179,16 @@ async function checkParkinson(page) {
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
     return !t.includes('Parkinson con estimulador cerebral profundo') && t.includes('Implantes con electrodos: Nada de onda corta ni microondas (riesgo de lesión cerebral')
       && t.includes('Parkinson: no uses plataformas') && t.includes('Red de seguridad (Parkinson)'); });
+  r.fase6Ejercicio = await page.evaluate(() => !!document.querySelector('#planSesion .plan-ejercicio [data-bloque-extra="parkinson"]')
+    && document.querySelector('#planSesion .plan-ejercicio').textContent.includes('Por el Parkinson'));
   // Sospecha: solo la derivación; el 📄 Informe sin la palabra Parkinson
   await abrirApp(page);
   await page.click('#pkEstado .option-btn[data-valor="sospecha"]');
   r.sospecha1 = await page.isVisible('#pkSospecha') && !(await page.isVisible('#pkDiagWrap'));
   await walkRegion(page, 'lumbar');
   r.sospecha5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .pk-fase5')?.textContent || '';
-    return t.includes('Derivar pronto y sin tratar') && !t.includes('Bicicleta'); });
+    return t.includes('Derivar pronto y sin tratar') && !t.includes('Bicicleta')
+      && !document.querySelector('#resultsContent .pk-fase5 [data-bloque-condicion]'); });
   r.informe = await page.evaluate(async () => { const i = (await import('./app.js')).buildInformeFisioterapiaText(); return i.includes('especialista en trastornos del movimiento') && !/parkinson/i.test(i); });
   r.ok = Object.values(r).every(Boolean);
   return r;
@@ -3957,7 +3962,7 @@ async function checkEjercicio(browser, errors) {
     const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
     // Los cuatro bloques escritos: ya no se pinta el apartado de pendientes
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad,embarazo'
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad,embarazo,parkinson'
       && !document.querySelector('#ejercicioCuerpo .ej-pendientes')
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });
