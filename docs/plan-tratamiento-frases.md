@@ -37,10 +37,10 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si te das un golpe en la cabeza, aunque te encuentres bien, ve hoy a urgencias; si en los días siguientes tienes un dolor de cabeza fuerte que va a más, vómitos, somnolencia o confusión, llama al 112. Si te empieza de golpe un dolor fuerte de cuello o espalda con debilidad, hormigueo o cambios al orinar, ve a urgencias ya. Un dolor muy fuerte en la ingle, la cadera o la barriga con mareo, o un brazo o una pierna muy hinchados, tensos y con un dolor desproporcionado, también. Si lo tomas por una trombosis: si te falta el aire de repente, te duele el pecho al respirar o toses sangre, llama al 112; si la pierna se te hincha más, se pone caliente o te duele más, que te vea un médico hoy. No dejes ni te saltes tu anticoagulante sin hablarlo antes con tu médico.»  
   ↳ fuente: Redacción propia sobre NICE NG232, 1.2.4 y 1.10.9 (golpe en la cabeza); Peng 2022 (hematoma epidural espinal); Lukies 2023 (hematoma del psoas); Brooker 2020 (síndrome compartimental); Vyas 2024 y NICE NG158 (embolia pulmonar y TVP, como pq_tep y pq_tvp); Steffel 2021 (no saltarse dosis) (docs/anticoagulado.md)  
   ↳ clave `alarmaAnticoagulado`
-- [ ] «Si en los próximos días está mucho más rígido o inmóvil con fiebre, confusión o mucho sudor, o no puede tomar su medicación: a urgencias.»  
+- [ ] «Si en los próximos días estás mucho más rígido o inmóvil con fiebre, confusión o mucho sudor, o no puedes tomar tu medicación, ve a urgencias.»  
   ↳ fuente: Pötter-Nerger 2024 (crisis acinética); NICE NG71, 1.3.2 (no retirar la medicación de golpe) (docs/parkinson.md)  
   ↳ clave `alarmaCrisisParkinson`
-- [ ] «Para el ejercicio y consulta si nota náuseas, dolor u opresión en el pecho que dura más de unos minutos, falta de aire fuera de lo normal, mareo, palpitaciones o sudor frío.»  
+- [ ] «Para el ejercicio y consulta si notas náuseas, dolor u opresión en el pecho que dura más de unos minutos, falta de aire fuera de lo normal, mareo, palpitaciones o sudor frío.»  
   ↳ fuente: Keus 2014, 6.7.5 (cuándo parar el ejercicio; solo lo que el paciente puede notar, decisión 19) (docs/parkinson.md)  
   ↳ clave `alarmaEjercicioParkinson`
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
