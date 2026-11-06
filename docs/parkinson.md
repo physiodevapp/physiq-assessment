@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado aprobado por el usuario (noviembre 2026)**, con sus recomendaciones de redacción propia incluidas (ver «Texto cerrado para revisión»). **Implementado (noviembre 2026, rama `claude/parkinson-condicion`)**: ver «Implementación» al final. `_bloquePK` hecho en physiq-report (rama `claude/parkinson-bloque-pk`). Siguiente: revisión del usuario en la app. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado aprobado por el usuario (noviembre 2026)**, con sus recomendaciones de redacción propia incluidas (ver «Texto cerrado para revisión»). **Implementado (noviembre 2026, rama `claude/parkinson-condicion`)**: ver «Implementación» al final. `_bloquePK` hecho en physiq-report (physiq-report#101). **Revisado por el usuario en la app (noviembre 2026).** Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -420,7 +420,7 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 3. ~~Decisiones 17–23 del usuario~~: aceptadas (noviembre 2026).
 4. ~~Revisión del dolor y texto cerrado~~: hecho (ver «Dolor: Buhmann 2020» y «Texto cerrado para revisión»).
 5. ~~Revisión del usuario del texto cerrado~~: aprobado (noviembre 2026).
-6. ~~**Implementación**~~: hecha (noviembre 2026; ver «Implementación»). `_bloquePK` hecho en physiq-report (rama `claude/parkinson-bloque-pk`). Siguiente: revisión del usuario en la app.
+6. ~~**Implementación**~~: hecha (noviembre 2026; ver «Implementación»). `_bloquePK` hecho en physiq-report (physiq-report#101). **Revisado por el usuario en la app (noviembre 2026).**
 
 ## Implementación (noviembre 2026)
 
