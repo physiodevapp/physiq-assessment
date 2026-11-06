@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. **Manual de Medtronic leído (noviembre 2026)**: confirma las decisiones 6 y 9; refuerza la 19, amplía la 10 y matiza la 21, pendientes del usuario (ver «Manual de Medtronic»). Falta, opcional, la guía de MED-EL (implante coclear).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. **Manual de Medtronic leído (noviembre 2026)**: confirma las decisiones 6 y 9; refuerza la 19, amplía la 10 y matiza la 21, pendientes del usuario (ver «Manual de Medtronic»). **Guía de MED-EL leída (noviembre 2026)**: amplía la decisión 9 para el implante coclear, pendiente del usuario (ver «Guía de MED-EL»). Ya no falta ningún PDF.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -338,6 +338,32 @@ El usuario subió el manual del fabricante en dos PDF. La parte 1 tiene el texto
 ### Registro
 
 Entra `Medtronic 2023 (neuroestimulación)`, con `citadaComo: ['Medtronic 2023']`.
+
+## Guía de MED-EL (noviembre 2026)
+
+| Clave propuesta | Referencia | Qué se leyó |
+|---|---|---|
+| `MED-EL 2026 (procedimientos médicos)` | MED-EL. Procedimientos médicos para sistemas IC/ABI de MED-EL. AW33298_17.0 (Spanish), © 2026 | La información general y las secciones de electrocirugía, terapia electroconvulsiva, «tratamiento médico o cosmético por voltaje inducido», ultrasonidos y radiación de los modelos actuales (Mi2000 TICI UNICO, Mi1250 SYNCHRONY 2); se comprobó que los demás modelos (SYNCHRONY, CONCERTO, SONATA, PULSAR, C40+, C40 y los de tronco cerebral) repiten el mismo texto de neuroestimulación, diatermia y terapia ultrasónica. **No leídos**: las condiciones de resonancia magnética de cada modelo. |
+
+### Qué dice para este diseño
+
+1. **Antes de cualquier tratamiento con corriente eléctrica u otra energía**, sobre todo cerca del implante, **retirar los componentes externos** (procesador de audio). Fuera de la cabeza y el cuello, pueden quedarse puestos solo si el profesional está presente todo el rato y el paciente sabe reconocer que el sistema funciona mal y quitarse la bobina. Si el sistema se comporta de forma anómala, se para el tratamiento y se comprueba antes de seguir.
+2. **«La neuroestimulación, la diatermia, la iontoforesis u otros tratamientos que pudieran derivar corriente inducida a los electrodos del implante no deben llevarse a cabo en la zona del implante»**: la corriente puede dañar el implante o el tejido de alrededor.
+3. **«La terapia ultrasónica no debe utilizarse en la zona del implante»**: el implante puede concentrar el campo ultrasónico y dañar al paciente o al implante. La ecografía diagnóstica, sin problema.
+4. Sin terapia electroconvulsiva en la cabeza ni el cuello. La electrocirugía monopolar, nunca en la cabeza y el cuello.
+
+### Contradicción y propuesta
+
+11. **Diatermia con implante coclear**: MED-EL la excluye «en la zona del implante»; la FDA 2002 (que nombra los implantes cocleares) y Salud Canadá 2003, en cualquier zona. **Propuesta**: mantener la línea de la decisión 6 (onda corta y microondas en ninguna zona), la de la FDA, más estricta.
+
+### Qué cambia (propuesta para el usuario)
+
+- **Decisión 9, ampliada para el coclear.** Con implante coclear: «**Ni electroterapia ni ultrasonido en la zona del implante** (cabeza y cuello). **Antes de cualquier corriente, que se quite el procesador**; fuera de la cabeza y el cuello puede dejárselo si está contigo todo el rato y sabe quitárselo si nota que funciona mal. Si funciona mal, para» (MED-EL; Houghton 2010, 4-15 y 4-17).
+- **Confirma la decisión 6** para el ultrasonido (no en la zona del implante): coincide con Salud Canadá y Houghton 2010.
+
+### Registro
+
+Entra `MED-EL 2026 (procedimientos médicos)`, con `citadaComo: ['MED-EL']`.
 
 ## Segunda pasada (noviembre 2026)
 
