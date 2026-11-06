@@ -4,7 +4,7 @@ import { assert, leer, test, SYSTEMIC_SCREENING, buildPhysiQPayload, buildInform
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const C = await import('../../lib/condiciones.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
-const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS, SIS_MASTOCITOS, SIS_OSTEOPOROSIS, SIS_EMBARAZO, SIS_ANTICOAGULADO, SIS_PARKINSON } = await import('../../data/comun.js');
+const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS, SIS_MASTOCITOS, SIS_OSTEOPOROSIS, SIS_EMBARAZO, SIS_ANTICOAGULADO, SIS_PARKINSON, IMPLANTES } = await import('../../data/comun.js');
 
 console.log('\ncondiciones especiales (guía de la cabecera)');
 
@@ -12,7 +12,7 @@ const fila = id => CONDICIONES.find(c => c.id === id);
 const html = leer('index.html');
 
 test('orden de las filas (decisión 2): transversales de la más frecuente a la menos, luego lumbar y cadera', () => {
-  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'mastocitos', 'osteoporosis', 'embarazo', 'anticoagulado', 'parkinson', 'tarlov', 'cascanueces', 'congestionPelvica']);
+  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'mastocitos', 'osteoporosis', 'embarazo', 'anticoagulado', 'parkinson', 'implantes', 'tarlov', 'cascanueces', 'congestionPelvica']);
   assert.deepEqual(CONDICIONES.filter(c => c.region).map(c => c.region), ['lumbar', 'lumbar', 'cadera']);
 });
 
@@ -46,8 +46,9 @@ test('cada pista sale de una pregunta que existe (cuestionario, sospecha, rasgos
         assert.ok(ids.has(id) || enRegion, `${c.id}: «${id}» no existe`);
       }
     }
-    // Solo el posquirúrgico no tiene pista clínica que citar (su definición es el mecanismo)
-    if (c.id !== 'posquirurgico') assert.ok(c.pistas.every(p => p.de.length), `${c.id}: pista sin pregunta de origen`);
+    // El posquirúrgico (su definición es el mecanismo) y los implantes con
+    // electrodos (sin sistema de la fase 2) no tienen pregunta de la que salir
+    if (!['posquirurgico', 'implantes'].includes(c.id)) assert.ok(c.pistas.every(p => p.de.length), `${c.id}: pista sin pregunta de origen`);
   }
 });
 
@@ -59,7 +60,17 @@ test('cada fuente es una clave del registro que ya cita la pregunta de la que sa
     const q = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas).find(x => x.id === id);
     return [...(q?.razonamiento?.fuentes || []), q?.razonamiento?.porque, q?.razonamiento?.peso].join(' ');
   };
+  // Los implantes con electrodos no tienen preguntas: sus fuentes, las que citan las líneas de su tarjeta
+  const textosImplantes = JSON.stringify(IMPLANTES);
+  const corta = f => f.replace(/\s*\(.*\)$/, '');
   for (const c of CONDICIONES) {
+    if (c.id === 'implantes') {
+      for (const f of c.fuentes) {
+        assert.ok(REFERENCIAS[f], `${c.id}: «${f}» no está en el registro`);
+        assert.ok(textosImplantes.includes(corta(f)), `${c.id}: «${f}» no la cita la tarjeta`);
+      }
+      continue;
+    }
     const textos = c.pistas.flatMap(p => p.de).map(citaDe).join(' ');
     for (const f of c.fuentes) {
       assert.ok(REFERENCIAS[f], `${c.id}: «${f}» no está en el registro`);

@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **40** frases.
+Redacción propia: **44** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -46,6 +46,15 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
   ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
   ↳ clave `alarmaSincope`
+- [ ] «No uses un aparato de TENS en casa por tu cuenta; solo si tu unidad de marcapasos lo ha probado contigo, en ese sitio y con esos parámetros.»  
+  ↳ fuente: Stühlinger 2022 (consenso EHRA: electroestimulación solo tras consultar al especialista y probarla); Mohammad 2022 (descargas inapropiadas con TENS en casa) (docs/implantes-electrodos.md)  
+  ↳ clave `implantesTensDAI`
+- [ ] «Evita doblar mucho o girar el tronco de golpe, y repetir saltos o estiramientos bruscos; pregunta a tu equipo qué límites tienes.»  
+  ↳ fuente: Medtronic 2023 (información para prescriptores: actividades que pueden romper o desplazar los componentes) (docs/implantes-electrodos.md)  
+  ↳ clave `implantesColumna`
+- [ ] «Si usas TENS en casa, que la corriente no pase por el aparato ni por los cables; si notas que interfiere, déjala y consulta.»  
+  ↳ fuente: Medtronic 2023 (información para prescriptores, apéndice A: TENS) (docs/implantes-electrodos.md)  
+  ↳ clave `implantesTensMedular`
 - [ ] «Qué hacer:»  
   ↳ etiqueta  
   ↳ clave `queHacer`
@@ -397,6 +406,26 @@ Regiones periféricas:
   ↳ **redacción propia**
 - [ ] «Parkinson con estimulador cerebral profundo, o sin confirmar si lo lleva: nada de onda corta ni microondas (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables (FDA 2002; Health Canada 2003; Keus 2014, 5.13).»  
   ↳ **redacción propia**
+- [ ] «Implantes con electrodos: Nada de onda corta ni microondas, térmicas o no, en ninguna zona, aunque el aparato esté apagado o se haya retirado y queden electrodos, ni a menos de 3 m de un aparato de onda corta encendido, aunque no sea para él. Ultrasonido terapéutico, nunca encima o cerca del aparato o de sus cables, ni si no sabes por dónde van (FDA 2002; Health Canada 2003; Houghton 2010, 3-6 y 8-6).»  
+  ↳ fuente en el texto (Houghton 2010)
+- [ ] «Implantes con electrodos: Electroterapia (TENS, interferenciales, electroestimulación), solo tras consultar a la unidad de marcapasos, que valora el riesgo y vigila la primera sesión. Lo más lejos posible del aparato, con los dos electrodos del mismo lado y nunca en la parte anterior del tórax. Si no hubo interferencia, puedes seguir en el mismo sitio y con los mismos parámetros; si cambian, otra prueba. Para enseguida si nota síntomas cardiacos (Stühlinger 2022; Suhail Arain 2023; Houghton 2010, 4-16).»  
+  ↳ fuente en el texto (Stühlinger 2022, Houghton 2010, Suhail Arain 2023)
+- [ ] «Implantes con electrodos: Ultrasonido terapéutico, en ninguna zona. Electroterapia, nunca de forma que la corriente pase sobre cualquier parte del sistema. Sin masaje ni fricción sobre el generador ni los cables (Medtronic 2023; Ghaly 2016).»  
+  ↳ fuente en el texto (Ghaly 2016)
+- [ ] «Implantes con electrodos: Nada de onda corta ni microondas (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables (FDA 2002; Health Canada 2003; Keus 2014, 5.13).»  
+  ↳ **redacción propia**
+- [ ] «Implantes con electrodos: Ni electroterapia ni ultrasonido en la zona del implante (cabeza y cuello). Antes de cualquier corriente, que se quite el procesador; fuera de la cabeza y el cuello puede dejárselo si estás con él todo el rato y sabe quitárselo si nota que funciona mal. Si funciona mal, para (MED-EL 2026; Houghton 2010, 4-15 y 4-17).»  
+  ↳ fuente en el texto (Houghton 2010)
+- [ ] «Implantes con electrodos: Electroterapia, nunca donde pueda alterar el aparato: ni encima ni cerca del aparato o de sus cables (Houghton 2010, 4-1).»  
+  ↳ fuente en el texto (Houghton 2010)
+- [ ] «Implantes con electrodos: El láser, lejos del aparato y de los cables (Medtronic 2023).»  
+  ↳ **redacción propia**
+- [ ] «Implantes con electrodos: Si no consta que se retiraron todos los electrodos, trátalo como si los llevara (FDA 2002).»  
+  ↳ **redacción propia**
+- [ ] «Implantes con electrodos: Hasta saber qué lleva (pide la tarjeta del implante), sigue todas estas reglas.»  
+  ↳ **redacción propia**
+- [ ] «Implantes con electrodos: Que evite la flexión, torsión, salto o estiramiento bruscos, excesivos o repetidos, y sobre todo inclinar mucho el tronco: pueden romper o desplazar los cables (Medtronic 2023; Ghaly 2016). Pregunta si el equipo que lo implantó le puso más límites.»  
+  ↳ fuente en el texto (Ghaly 2016)
 - [ ] «Parkinson: no uses plataformas de vibración de cuerpo entero (Keus 2014, 6.4.6: recomendación fuerte en contra).»  
   ↳ **redacción propia**
 - [ ] «Anticoagulado o antiagregado: precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3); un esfuerzo mecánico pequeño puede dar un sangrado importante (Kim 2026, un caso). De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes, solo casos de sangrado (Tominaga 2023; Kwon 2024; Kim 2026) y un consenso, en mayores, que pide informar antes del riesgo de moratón o sangrado (Hawk 2017). Antes de cada técnica, pregunta si desde la última sesión se ha dado un golpe o ha notado un hematoma o un dolor nuevos. No le digas que deje el fármaco ni que se salte una dosis (Steffel 2021).»  

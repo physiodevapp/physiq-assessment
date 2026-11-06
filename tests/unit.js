@@ -22,6 +22,7 @@ for (const tema of [
   'embarazo.mjs',
   'anticoagulado.mjs',
   'parkinson.mjs',
+  'implantes.mjs',
   'condiciones.mjs',
   'farmacos.mjs',
   'ejercicio.mjs',
