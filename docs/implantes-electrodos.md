@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. **Manual de Medtronic leído (noviembre 2026)**: confirma las decisiones 6 y 9; refuerza la 19, amplía la 10 y matiza la 21, pendientes del usuario (ver «Manual de Medtronic»). **Guía de MED-EL leída (noviembre 2026)**: amplía la decisión 9 para el implante coclear, pendiente del usuario (ver «Guía de MED-EL»). Ya no falta ningún PDF.
+Estado: **diseño (noviembre 2026), sin código. Aceptadas las 19 decisiones y todos los cambios que salieron de los PDF y de los manuales. Texto cerrado escrito, pendiente de la revisión del usuario** (ver «Texto cerrado para revisión», que manda sobre las secciones de borrador). Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. **Manual de Medtronic leído (noviembre 2026)**: confirma las decisiones 6 y 9; refuerza la 19, amplía la 10 y matiza la 21, aceptados (ver «Manual de Medtronic»). **Guía de MED-EL leída (noviembre 2026)**: amplía la decisión 9 para el implante coclear, aceptado (ver «Guía de MED-EL»). Ya no falta ningún PDF.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -228,7 +228,7 @@ Con B: la línea de Keus 2014 sale **una sola vez**, en el recuadro de los impla
 - `data/condiciones.js` + `lib/condiciones.js` (fila; la prueba de la fila por sistema no aplica, sin `transversal_*`: se añade a mano, como el posquirúrgico).
 - `formularios/comun.js` (decisión 18) y su hoja.
 - `lib/esquemas.js`, `lib/guia-condiciones.js`, `guia-plan.js`, `docs/esquemas/hojas.mjs`; hojas, historial y cuadernos regenerados.
-- `data/referencias.js`: `Suhail Arain 2023`, `Mohammad 2022`, `Barmore 2022`, `Kim 2021`, `Suarez-Fuster 2018`, `Ghaly 2016`, `Chen 2022 (electroterapia)` (`Chen 2022` ya existe) y las de los PDF si el texto final las usa; `docs/referencias.md` regenerado.
+- `data/referencias.js`: las claves de «Registro» del texto cerrado (`Stühlinger 2022`, `Houghton 2010`, `Suhail Arain 2023`, `Mohammad 2022`, `Medtronic 2023 (neuroestimulación)`, `MED-EL 2026 (procedimientos médicos)`, `Ghaly 2016`, `Suarez-Fuster 2018`); `docs/referencias.md` regenerado.
 - `tests/unit/implantes.mjs` (incluida «marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema» y la lista fija de pautas) y una sección `implantes` en la prueba de humo; la del Parkinson, con la sincronización.
 - `deploy-to-hub.yml`: `lib/implantes.js` (la prueba de los archivos importados lo exige).
 
@@ -323,7 +323,7 @@ El usuario subió el manual del fabricante en dos PDF. La parte 1 tiene el texto
 8. **ECG**: apagar el neuroestimulador antes de un ECG, porque altera el registro.
 9. **Cambios inesperados en la estimulación** con la postura o las interferencias (sensación de sacudida o descarga): el paciente la apaga antes de actividades en que una sacudida sea peligrosa, como conducir o usar herramientas eléctricas.
 
-### Qué confirma y qué cambia (propuestas para el usuario)
+### Qué confirma y qué cambia (aceptado por el usuario, noviembre 2026)
 
 - **Confirma la decisión 6** (ultrasonido en ninguna zona con el medular): el fabricante lo contraindica como diatermia en cualquier parte del cuerpo. Contradicción con Houghton 2010 (solo sobre el aparato) resuelta a favor del fabricante, que es más estricto y es el que rige el aparato.
 - **Confirma la decisión 9** (electroterapia nunca donde pueda alterar el aparato): el fabricante concreta «que la corriente no pase sobre ninguna parte del sistema». Se usa esa frase con el medular.
@@ -356,7 +356,7 @@ Entra `Medtronic 2023 (neuroestimulación)`, con `citadaComo: ['Medtronic 2023']
 
 11. **Diatermia con implante coclear**: MED-EL la excluye «en la zona del implante»; la FDA 2002 (que nombra los implantes cocleares) y Salud Canadá 2003, en cualquier zona. **Propuesta**: mantener la línea de la decisión 6 (onda corta y microondas en ninguna zona), la de la FDA, más estricta.
 
-### Qué cambia (propuesta para el usuario)
+### Qué cambia (aceptado por el usuario, noviembre 2026)
 
 - **Decisión 9, ampliada para el coclear.** Con implante coclear: «**Ni electroterapia ni ultrasonido en la zona del implante** (cabeza y cuello). **Antes de cualquier corriente, que se quite el procesador**; fuera de la cabeza y el cuello puede dejárselo si está contigo todo el rato y sabe quitárselo si nota que funciona mal. Si funciona mal, para» (MED-EL; Houghton 2010, 4-15 y 4-17).
 - **Confirma la decisión 6** para el ultrasonido (no en la zona del implante): coincide con Salud Canadá y Houghton 2010.
@@ -364,6 +364,152 @@ Entra `Medtronic 2023 (neuroestimulación)`, con `citadaComo: ['Medtronic 2023']
 ### Registro
 
 Entra `MED-EL 2026 (procedimientos médicos)`, con `citadaComo: ['MED-EL']`.
+
+## Texto cerrado para revisión (noviembre 2026)
+
+Redacción final con todas las decisiones aceptadas: las 1–19, los cambios tras los PDF (6, 7, 8, 9, 14, 20 y 21), los del manual de Medtronic (10, 19 y 21) y el de MED-EL (9). Donde las secciones de borrador de más arriba no coinciden, manda este texto. Cada frase lleva su fuente o **[propia]**. Al implementar se copia tal cual a `data/comun.js` (`IMPLANTES.textos`) y a `data/plan-tratamiento.js`.
+
+Abreviaturas de este apartado: «la unidad» = la unidad de marcapasos o de dispositivos cardiacos que lleva al paciente.
+
+### Fase 1 — tarjeta «Implantes con electrodos» (`#cardImplantes`)
+
+- **Sitio**: después de la tarjeta del Parkinson.
+- **Título**: «Implantes con electrodos».
+- **Nota bajo el título**: «Márcala si lleva un aparato implantado con cables o electrodos, aunque esté apagado, o si se lo quitaron y no sabe si quedan cables. Pregúntalo siempre antes de usar agentes físicos» **[propia]**; la última frase, de FDA 2002.
+- **Estado**: un solo botón, «Lleva». El segundo toque lo desmarca.
+- **«¿Qué lleva?»**, chips de selección múltiple, en este orden, con su id del payload:
+
+| Id | Chip |
+|---|---|
+| `mp` | Marcapasos (también sin cables o resincronizador) |
+| `dai` | Desfibrilador implantable (también subcutáneo) |
+| `em` | Estimulador medular |
+| `ecp` | Estimulador cerebral profundo |
+| `ci` | Implante coclear |
+| `on` | Otro estimulador de nervios (sacro, vago, hipogloso, nervio periférico) |
+| `co` | Estimulador del crecimiento óseo |
+| `re` | Se lo quitaron, pueden quedar electrodos |
+| `ns` | No sabe cuál |
+
+  «No sabe cuál» excluye los demás.
+- **Líneas rojas, nunca plegadas.** Salen debajo de los chips según lo marcado (tabla de «Qué línea sale con qué chip», más abajo):
+
+| Clave | Texto | Fuente |
+|---|---|---|
+| `diatermia` | «**Nada de onda corta ni microondas**, térmicas o no, en ninguna zona, aunque el aparato esté apagado o se haya retirado y queden electrodos, **ni a menos de 3 m de un aparato de onda corta encendido**, aunque no sea para él. **Ultrasonido terapéutico, nunca encima o cerca del aparato o de sus cables, ni si no sabes por dónde van.**» | FDA 2002; Health Canada 2003; Houghton 2010, 3-6 y 8-6 |
+| `cardiaco` | «**Electroterapia (TENS, interferenciales, electroestimulación), solo tras consultar a la unidad de marcapasos**, que valora el riesgo y vigila la primera sesión. Lo más lejos posible del aparato, con los dos electrodos del mismo lado y nunca en la parte anterior del tórax. Si no hubo interferencia, puedes seguir en el mismo sitio y con los mismos parámetros; si cambian, otra prueba. **Para enseguida si nota síntomas cardiacos.**» | Stühlinger 2022; Suhail Arain 2023; Houghton 2010, 4-16 |
+| `medular` | «**Ultrasonido terapéutico, en ninguna zona.** Electroterapia, nunca de forma que la corriente pase sobre cualquier parte del sistema. **Sin masaje ni fricción sobre el generador ni los cables.**» | Medtronic 2023; Ghaly 2016 |
+| `cerebral` | La línea actual del Parkinson, sin cambios: «Nada de onda corta ni microondas (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables» | FDA 2002; Health Canada 2003; Keus 2014, 5.13 |
+| `coclear` | «**Ni electroterapia ni ultrasonido en la zona del implante** (cabeza y cuello). Antes de cualquier corriente, que se quite el procesador; fuera de la cabeza y el cuello puede dejárselo si estás con él todo el rato y sabe quitárselo si nota que funciona mal. Si funciona mal, para.» | MED-EL 2026; Houghton 2010, 4-15 y 4-17 |
+| `nervio` | «Electroterapia, nunca donde pueda alterar el aparato: ni encima ni cerca del aparato o de sus cables.» | Houghton 2010, 4-1 |
+| `laser` | «El láser, lejos del aparato y de los cables.» | Medtronic 2023 |
+| `retirado` | «Si no consta que se retiraron todos los electrodos, trátalo como si los llevara.» | FDA 2002 |
+| `nosabe` | «Hasta saber qué lleva (pide la tarjeta del implante), sigue todas estas reglas.» | **[propia]**, decisión 5 |
+
+- **Qué línea sale con qué chip**:
+
+| Chips | Líneas |
+|---|---|
+| Cualquiera | `diatermia` |
+| `mp`, `dai` | `cardiaco` |
+| `em` | `medular`, `laser` |
+| `ecp` | `cerebral`, `laser` |
+| `ci` | `coclear` |
+| `on`, `co` | `nervio`; con `on`, también `laser` |
+| `re` | `retirado` |
+| `ns` o nada marcado | `cardiaco`, `nervio`, `laser`, `nosabe` |
+
+  Con varios chips salen todas las líneas que les tocan, cada una una sola vez, en el orden de la tabla de claves.
+- **Formulario del paciente** (decisión 18): la respuesta de la pregunta nueva sale como «📝 Refiere el paciente» encima de los chips. Nunca marca la tarjeta.
+
+### Relación con la tarjeta del Parkinson (decisión 11, opción B)
+
+- La fila «¿Lleva estimulador cerebral profundo?» del Parkinson y el chip `ecp` son **el mismo dato**:
+  - «Sí» en la fila marca la tarjeta de implantes con `ecp`.
+  - Marcar `ecp` pone «Sí» en la fila si la tarjeta del Parkinson está marcada.
+  - Quitar uno quita el otro.
+  - «No lo sabe» sigue solo en el Parkinson, con su «Hasta confirmarlo:».
+- La línea `cerebral` sale **una sola vez**, en la tarjeta y el recuadro de los implantes. El recuadro del Parkinson la sustituye por «Estimulador: ver Implantes con electrodos». La línea de la tarjeta del Parkinson se queda solo con «No lo sabe» (sin `ecp` no hay recuadro de implantes).
+- El aviso `parkinsonEstimulador` de la fase 6 desaparece cuando sale el aviso `implantes`, y se queda con «No lo sabe».
+- `pk.ec`, `bloquePKIA()`, `PK_CASOS` y `_bloquePK` (physiq-report) **no cambian**. La línea `cables4b` de la 4b tampoco.
+
+### Fases 2, 3, 4 y 4b
+
+Nada nuevo, salvo la `cables4b` del Parkinson, que ya existe.
+
+### Fase 5 — recuadro «Implantes con electrodos» (`.ie-fase5`, nunca se pliega)
+
+1. «Lleva: <chips marcados, en minúscula y separados por « · »>» **[propia]**.
+2. Las líneas rojas de la tarjeta, las mismas y en el mismo orden.
+3. **Con `em`**: «Que evite la flexión, torsión, salto o estiramiento bruscos, excesivos o repetidos, y sobre todo inclinar mucho el tronco: pueden romper o desplazar los cables. Pregunta si el equipo que lo implantó le puso más límites» (Medtronic 2023; Ghaly 2016; la última frase, **[propia]**).
+4. **Con una hipótesis activa cuya pauta propone la técnica** (lista fija `HIP_AGENTE_FISICO`, con prueba unitaria que falla si una pauta nueva propone una de estas técnicas) **[propia]**:
+   - `h1`: «La pauta de <nombre> admite onda corta, ultrasonido o electroestimulación: la onda corta, no; lo demás, solo dentro de las líneas de arriba».
+   - `ce5`: «La pauta de <nombre> propone TENS: solo dentro de las líneas de arriba».
+   - `ro2`, `ro4`: «La pauta de <nombre> propone electroestimulación neuromuscular: solo dentro de las líneas de arriba».
+5. «El calor superficial y el frío no tienen restricción por el implante» (Houghton 2010, tabla 1).
+
+### Fase 6
+
+- **Aviso `implantes`**, en cualquier plan con la tarjeta marcada: las líneas 2 y 3 del recuadro.
+- **Aviso por pauta**, con `h1`, `ce5`, `ro2` o `ro4` elegidas: la línea 4.
+- **Programa para casa**:
+  - Con `dai`: «No uses un aparato de TENS en casa por tu cuenta; solo si tu unidad de marcapasos lo ha probado contigo, en ese sitio y con esos parámetros» (Stühlinger 2022; Mohammad 2022).
+  - Con `em`, dos frases:
+    - «Evita doblar mucho o girar el tronco de golpe, y repetir saltos o estiramientos bruscos; pregunta a tu equipo qué límites tienes» (Medtronic 2023).
+    - «Si usas TENS en casa, que la corriente no pase por el aparato ni por los cables; si notas que interfiere, déjala y consulta» (Medtronic 2023).
+- **Sin red de seguridad nueva y sin tope de técnica nuevo.**
+
+### Salidas
+
+- **Payload `ie`**, solo con la tarjeta marcada: `{ es: 'lleva', ti: [...] }`, con los ids de la tabla en su orden; `[]` si no se ha marcado ningún chip.
+- **📋 Notas**: «⚡ IMPLANTES CON ELECTRODOS: marcapasos · estimulador medular». Sin chips: «⚡ IMPLANTES CON ELECTRODOS: sin registrar qué lleva».
+- **📄 Informe**: en antecedentes, «Portador de: marcapasos, estimulador medular» (o «Portador de un implante con electrodos», sin chips). **Sin técnicas.**
+- **Bloque de la IA `bloqueIEIA()`**, sin citas:
+  - «Implantes con electrodos: <lista>.»
+  - Siempre: «No propongas onda corta ni microondas. No propongas ultrasonido terapéutico sobre el aparato o sus cables.»
+  - Con `mp`, `dai`, `ns` o sin chips: «Con marcapasos o desfibrilador, no propongas electroterapia salvo que conste que la ha autorizado su unidad de marcapasos.»
+  - Con `em`, `ecp`, `ci`, `on` o `co`: «No propongas electroterapia sobre el aparato o sus cables.»
+  - Con `em` o `ecp`: «No propongas ultrasonido terapéutico en ninguna zona.»
+  - `IE_CASOS` fija el texto literal para `_bloqueIE` de physiq-report.
+- **Revisión del plan con IA** (`lib/revision-plan.js`), punto `alto` cuando el plan nombra onda corta, microondas, ultrasonido terapéutico, TENS, interferenciales o electroestimulación con la tarjeta marcada: «El plan propone <técnica> y el paciente lleva un implante con electrodos: comprueba que respeta las líneas de la tarjeta» **[propia]**.
+- **Modo breve**: pendiente «Implante con electrodos: qué lleva sin registrar» (`ancla: 'cardImplantes'`), con la tarjeta marcada y sin chips.
+
+### Formulario del paciente (`formularios/comun.js`, decisión 18)
+
+- **Pregunta**: «¿Llevas algún aparato implantado: marcapasos, desfibrilador, estimulador o implante del oído?»
+- **Opciones**: Sí (con `detalle`: «¿Cuál?») · No · No sé.
+- **Campos**: `ia: 'historia'` e `informe: 'Aparatos implantados'` con `antecedente: true`.
+- **Pistas**: `pistas.implantes`, la pista de la tarjeta.
+
+Cambia la hoja impresa del formulario general y su numeración G.
+
+### Guía de condiciones especiales
+
+Fila `implantes`, después del Parkinson:
+
+- **Nombre**: «Implantes con electrodos».
+- **Qué es** **[propia]**: «Aparatos implantados con cables que llevan corriente al corazón, la médula, el cerebro, un nervio o el oído. La onda corta y las microondas pueden calentar los cables y lesionar el tejido de alrededor; la electroterapia puede engañar a un marcapasos o un desfibrilador.»
+- **Piensa en ella si**:
+  - «Lleva marcapasos o desfibrilador.»
+  - «Le pusieron un estimulador para el dolor de espalda o de piernas.»
+  - «Lleva un implante coclear.»
+  - «Le quitaron un aparato y no sabe si quedan cables.»
+- **Al marcarla, añade**: «Las líneas rojas de la tarjeta, el recuadro de la fase 5 y el aviso de la fase 6.»
+- **En el plan (fase 6)** (`enPlan`): «Aviso de los agentes físicos que limita cada implante.»
+- **Fuentes**: FDA 2002 · Health Canada 2003 · Stühlinger 2022 · Houghton 2010.
+- **Línea aparte, bajo la fila**: «Un Holter implantable no se marca: la TENS no le hace daño, pero puede registrar una falsa arritmia; avisa a quien lo lee» (Suarez-Fuster 2018; Stühlinger 2022).
+
+### Registro (`data/referencias.js`)
+
+Entran estas claves (las tres primeras ya están):
+- `FDA 2002 (diatermia)`, `Health Canada 2003 (diatermia)` y `Keus 2014`, ya registradas.
+- `Stühlinger 2022`, `Houghton 2010`, `Suhail Arain 2023` y `Mohammad 2022`.
+- `Medtronic 2023 (neuroestimulación)`, con `citadaComo: ['Medtronic 2023']`.
+- `MED-EL 2026 (procedimientos médicos)`, con `citadaComo: ['MED-EL 2026']`.
+- `Ghaly 2016` y `Suarez-Fuster 2018`.
+
+Quedan fuera, porque el texto cerrado no las usa: `Barmore 2022`, `Kim 2021` y `Chen 2022 (electroterapia)`. Leídas, constan en este documento.
+
 
 ## Segunda pasada (noviembre 2026)
 
@@ -375,7 +521,6 @@ Búsqueda en PMC de fuentes en abierto para lo que se había pedido en PDF:
 
 ## Siguiente paso
 
-1. ~~Tus decisiones (1–19)~~ Hecho: aceptadas las 19 recomendaciones (noviembre 2026).
-2. ~~Los PDF 1 y 2~~ leídos (ver «Lectura de los PDF»). ~~Tus decisiones sobre los cambios 6, 7, 8, 9 y 14 y las nuevas 20 y 21~~ aceptadas (noviembre 2026). Los PDF 3–6 son ya opcionales (confirmar con un manual de fabricante lo que dice Houghton 2010 para el medular y el coclear). Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10: si cambian, se proponen al usuario antes del texto cerrado.
-3. Texto cerrado para revisión, con cada frase y su fuente, como en el Parkinson.
-4. La implementación, la revisión en la app y, después, `_bloqueIE` en physiq-report.
+1. ~~Decisiones, PDF y manuales~~ hecho (noviembre 2026).
+2. **Revisión del usuario del «Texto cerrado para revisión».**
+3. La implementación (ver «Cambios técnicos previstos»; con el formulario, `lib/revision-plan.js` y la sincronización con el Parkinson), la revisión en la app y `_bloqueIE` en physiq-report.
