@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **1181** referencias de literatura, con **5309** usos.
+- **1194** referencias de literatura, con **5568** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **88** usos, basadas en Lluch 2020.
-- **593** de 1181 referencias del registro revisadas. Ver «Estado de revisión».
+- **593** de 1194 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -69,6 +69,8 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Shamrock y Das 2023](#shamrock-y-das-2023) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | **sin revisar** |
 | [Akhondi 2025](#akhondi-2025) | test 4b sin puntuar · razonamiento 4b · texto | 3 | **sin revisar** |
 | [Li 2026](#li-2026) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | **sin revisar** |
+| [NICE NG71](#nice-ng71) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 27 | **sin revisar** |
+| [Keus 2014](#keus-2014) | razonamiento fase 2 · texto | 86 | **sin revisar** |
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 16 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
 | [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
@@ -78,11 +80,14 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Aringer 2019](#aringer-2019) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 17 | **sin revisar** |
 | [Cooper 2019](#cooper-2019) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kanis 2019](#kanis-2019) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 11 | **sin revisar** |
+| [Simonet 2019](#simonet-2019) | razonamiento fase 2 · texto | 13 | **sin revisar** |
 | [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Wiegele 2019](#wiegele-2019) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Amaniyan 2020](#amaniyan-2020) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
 | [Brooker 2020](#brooker-2020) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Buhmann 2020](#buhmann-2020) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 17 | **sin revisar** |
 | [Cardona 2020](#cardona-2020) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 9 | **sin revisar** |
+| [LeWitt 2020](#lewitt-2020) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Peker 2020](#peker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sahu 2020](#sahu-2020) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -117,6 +122,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Lukies 2023](#lukies-2023) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Matthews 2023](#matthews-2023) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Murphy 2023](#murphy-2023) | razonamiento fase 2 · razonamiento fase 4 | 2 | **sin revisar** |
+| [Paggou 2023](#paggou-2023) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 9 | **sin revisar** |
 | [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 · condiciones especiales (cabecera) | 4 | **sin revisar** |
 | [Punnapuzha 2023](#punnapuzha-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) | razonamiento fase 2 · texto | 8 | **sin revisar** |
@@ -134,6 +140,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Lim 2024](#lim-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Mangla y Hamad 2024](#mangla-y-hamad-2024) | razonamiento fase 2 · razonamiento fase 4 | 7 | **sin revisar** |
 | [Penfold 2024](#penfold-2024) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
+| [Pötter-Nerger 2024](#pötter-nerger-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sambola 2024](#sambola-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Capsoni 2025](#capsoni-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Castro y Sharma 2025](#castro-y-sharma-2025) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
@@ -606,6 +613,8 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Christopher 2024](#christopher-2024) | guía de efectos del ejercicio (cabecera) · texto | 8 | **sin revisar** |
 | [Beamish 2025](#beamish-2025) | guía de efectos del ejercicio (cabecera) · texto | 8 | **sin revisar** |
 | [Davenport 2025](#davenport-2025) | guía de efectos del ejercicio (cabecera) · texto | 36 | **sin revisar** |
+| [FDA 2002 (diatermia)](#fda-2002-diatermia) | texto | 7 | **sin revisar** |
+| [Health Canada 2003 (diatermia)](#health-canada-2003-diatermia) | texto | 7 | **sin revisar** |
 | [NICE NG123](#nice-ng123) | texto | 7 | **sin revisar** |
 | [NICE NG249](#nice-ng249) | texto | 21 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -613,6 +622,8 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [APTA 2013](#apta-2013) | texto | 7 | **sin revisar** |
 | [Plash 2013](#plash-2013) | texto | 7 | **sin revisar** |
 | [Giangregorio 2014](#giangregorio-2014) | texto | 35 | **sin revisar** |
+| [Tan 2014](#tan-2014) | texto | 7 | **sin revisar** |
+| [Torsney 2014](#torsney-2014) | texto | 7 | **sin revisar** |
 | [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) | texto | 14 | **sin revisar** |
 | [Hall 2016](#hall-2016) | texto | 7 | **sin revisar** |
 | [González-de-Olano 2017](#gonzález-de-olano-2017) | texto | 7 | **sin revisar** |
@@ -630,6 +641,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Jasionowska 2022](#jasionowska-2022) | texto | 7 | **sin revisar** |
 | [Montero-Odasso 2022](#montero-odasso-2022) | texto | 21 | **sin revisar** |
 | [Muraro 2022](#muraro-2022) | texto | 14 | **sin revisar** |
+| [Osborne 2022](#osborne-2022) | texto | 56 | **sin revisar** |
 | [Tenforde 2022](#tenforde-2022) | texto | 7 | **sin revisar** |
 | [Burani 2023](#burani-2023) | texto | 7 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
@@ -637,6 +649,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Anagnostis 2024](#anagnostis-2024) | texto | 7 | **sin revisar** |
 | [Blaess 2024](#blaess-2024) | texto | 63 | **sin revisar** |
 | [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
+| [Ernst 2024](#ernst-2024) | texto | 7 | **sin revisar** |
 | [Gak 2024](#gak-2024) | texto | 7 | **sin revisar** |
 | [Malfait 2024](#malfait-2024) | texto | 7 | **sin revisar** |
 | [Parodis 2024](#parodis-2024) | texto | 14 | **sin revisar** |
@@ -1472,7 +1485,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Abraham 2022](#abraham-2022) · [ACOG 2020](#acog-2020) · [ADA 2025](#ada-2025) · [Adani 2025](#adani-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Adler 2016](#adler-2016) · [Adolfsson 2022](#adolfsson-2022) · [AEMPS 2023](#aemps-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [AGS 2023](#ags-2023) · [Akhondi 2025](#akhondi-2025) · [Akin 2022](#akin-2022) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alam 2022](#alam-2022) · [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) · [Albasri 2021](#albasri-2021) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2015](#albrecht-2015) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2023](#aldahas-2023) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Aljawder 2016](#aljawder-2016) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Alvarez 2025](#alvarez-2025) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasilakis 2021](#anastasilakis-2021) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) · [Antunes 2024](#antunes-2024) · [Anziano 2024](#anziano-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [APTA 2013](#apta-2013) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Attardo 2022](#attardo-2022) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Awosika y Patel 2026](#awosika-y-patel-2026) · [Azmi 2025](#azmi-2025) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baeumler 2023](#baeumler-2023) · [Baffour-Awuah 2023](#baffour-awuah-2023) · [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) · [Bahendeka 2019](#bahendeka-2019) · [Bahit 2017](#bahit-2017) · [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) · [Baker 2018](#baker-2018) · [Bakker 2017](#bakker-2017) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Balcerzak 2022](#balcerzak-2022) · [Balchin 2022](#balchin-2022) · [Bale 2019](#bale-2019) · [Balmaceno-Criss 2024](#balmaceno-criss-2024) · [Barakatt 2009](#barakatt-2009) · [Barberán 2023](#barberán-2023) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bassand 2021](#bassand-2021) · [Bassett 2025](#bassett-2025) · [Bateman 2024](#bateman-2024) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Bazelier 2013](#bazelier-2013) · [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) · [Beamish 2025](#beamish-2025) · [Beazley 2017](#beazley-2017) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Bellesini 2021](#bellesini-2021) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benatti y Pedersen 2015](#benatti-y-pedersen-2015) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Benzon 2026](#benzon-2026) · [Bergh Fahlén 2026](#bergh-fahlén-2026) · [Bergman 2025](#bergman-2025) · [Bessen 2009](#bessen-2009) · [Bettariga 2024](#bettariga-2024) · [Beuschlein 2024](#beuschlein-2024) · [Bhanu 2021](#bhanu-2021) · [Bhanu 2025](#bhanu-2025) · [Bhanu 2026](#bhanu-2026) · [Bhatti 2026](#bhatti-2026) · [Bianconi 2024](#bianconi-2024) · [Biedroń 2026](#biedroń-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Binsaleem 2024](#binsaleem-2024) · [Birkinshaw 2023](#birkinshaw-2023) · [Birrell 2001](#birrell-2001) · [Biswas 2026](#biswas-2026) · [Biz 2019](#biz-2019) · [Black 2020](#black-2020) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Ble 2017](#ble-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Bohm 2015](#bohm-2015) · [Borsati 2025](#borsati-2025) · [Boudreault 2025](#boudreault-2025) · [Boufadel 2025](#boufadel-2025) · [Boulias 2018](#boulias-2018) · [Bounds y Patel 2024](#bounds-y-patel-2024) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brittain 2023](#brittain-2023) · [Brockow 2021](#brockow-2021) · [Brod 2013](#brod-2013) · [Broncel 2015](#broncel-2015) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Brown 2023](#brown-2023) · [Bruessel 2026](#bruessel-2026) · [Brunner 2025](#brunner-2025) · [Buchanan y Varacallo 2023](#buchanan-y-varacallo-2023) · [Buck 2023](#buck-2023) · [Budha 2025](#budha-2025) · [Bueno-Gracia 2019](#bueno-gracia-2019) · [Bull 2020](#bull-2020) · [Bulsara 2024](#bulsara-2024) · [Burani 2023](#burani-2023) · [Buryk-Iggers 2022](#buryk-iggers-2022) · [Bus 2024](#bus-2024) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Cady 2024](#cady-2024) · [Caliandro 2025](#caliandro-2025) · [Calvo 2025](#calvo-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Can y Correa 2023](#can-y-correa-2023) · [Canoso 1987](#canoso-1987) · [Cánovas-Ambit 2021](#cánovas-ambit-2021) · [Capiau 2023](#capiau-2023) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carnovale 2023](#carnovale-2023) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Carvalho 2022](#carvalho-2022) · [Cascia 2019](#cascia-2019) · [Cashin 2021](#cashin-2021) · [Castagna 2017](#castagna-2017) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Caulfield 2021](#caulfield-2021) · [Cervellini 2025](#cervellini-2025) · [Chamorro-Moriana 2024](#chamorro-moriana-2024) · [Champaneria 2016](#champaneria-2016) · [Chang 2026](#chang-2026) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2013](#cheatham-2013) · [Cheatham 2025](#cheatham-2025) · [Chen 2022](#chen-2022) · [Chen 2023](#chen-2023) · [Chen 2025](#chen-2025) · [Cheng 2017](#cheng-2017) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chou 2017](#chou-2017) · [Christensen 2019](#christensen-2019) · [Christensen 2026](#christensen-2026) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Coburn 2023](#coburn-2023) · [Colatruglio 2020](#colatruglio-2020) · [Colberg 2016](#colberg-2016) · [Collins y Bergman 2026](#collins-y-bergman-2026) · [Collins y Costello 2024](#collins-y-costello-2024) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Confederat 2026](#confederat-2026) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) · [Corpus 2016](#corpus-2016) · [Cortez 2025](#cortez-2025) · [Cosio 2021](#cosio-2021) · [Cosmi 2022](#cosmi-2022) · [Costello 2023](#costello-2023) · [Couch 2025](#couch-2025) · [Coussens 2022](#coussens-2022) · [Cross 2024](#cross-2024) · [CTT 2022](#ctt-2022) · [CTT 2026](#ctt-2026) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Dar y Jacob 2024](#dar-y-jacob-2024) · [Davenport 2018 (ánimo)](#davenport-2018-ánimo) · [Davenport 2018 (incontinencia)](#davenport-2018-incontinencia) · [Davenport 2019 (daños maternos)](#davenport-2019-daños-maternos) · [Davenport 2019 (dolor lumbopélvico)](#davenport-2019-dolor-lumbopélvico) · [Davenport 2019 (mortalidad fetal)](#davenport-2019-mortalidad-fetal) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Kane 2023](#davis-y-kane-2023) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Best 2021](#de-best-2021) · [De Filippis 2022](#de-filippis-2022) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [DeFoor 2025](#defoor-2025) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Deprato 2025](#deprato-2025) · [Desai 2013](#desai-2013) · [Desbiens 2022](#desbiens-2022) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devi 2026](#devi-2026) · [Devillé 2000](#devillé-2000) · [Dhesi 2024](#dhesi-2024) · [Dhir 2018](#dhir-2018) · [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Domínguez-Muñoz 2025](#domínguez-muñoz-2025) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dos Santos 2024](#dos-santos-2024) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Duman 2025](#duman-2025) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Edinoff 2021](#edinoff-2021) · [Edwards 2024](#edwards-2024) · [Eimiller 2024](#eimiller-2024) · [EMA 2014](#ema-2014) · [EMA 2018](#ema-2018) · [Engelbert 2017](#engelbert-2017) · [Engert 2024](#engert-2024) · [Engin 2023](#engin-2023) · [Englund 2003](#englund-2003) · [Enke 2018](#enke-2018) · [Enseki 2023](#enseki-2023) · [Epelde 2026](#epelde-2026) · [Eskew 2026](#eskew-2026) · [Evans 2014](#evans-2014) · [Evans 2018](#evans-2018) · [Evans 2023](#evans-2023) · [Evenson 2024](#evenson-2024) · [Ez Eddin 2025](#ez-eddin-2025) · [Factor 2023](#factor-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farishta 2024](#farishta-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Faruqi 2024](#faruqi-2024) · [Farzam y Jan 2023](#farzam-y-jan-2023) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Ferraro 2025](#ferraro-2025) · [Ferreira 2023](#ferreira-2023) · [Figueroa 2021](#figueroa-2021) · [Filippatos 2017](#filippatos-2017) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Fong y Patel 2026](#fong-y-patel-2026) · [Forsythe 2025](#forsythe-2025) · [Forton 2022](#forton-2022) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Franchi 2017](#franchi-2017) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Fu y Levine 2015](#fu-y-levine-2015) · [Fujiwara 2025](#fujiwara-2025) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [García-Sánchez 2022](#garcía-sánchez-2022) · [Gardashli 2024](#gardashli-2024) · [Garrison 2023](#garrison-2023) · [Gartner 2025](#gartner-2025) · [Gausel 2017](#gausel-2017) · [Gehrke 2023](#gehrke-2023) · [Geneen 2017](#geneen-2017) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) · [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) · [Ghasemi 2013](#ghasemi-2013) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Giménez-Campos 2021](#giménez-campos-2021) · [Gleeson 2011](#gleeson-2011) · [Gluppe 2021](#gluppe-2021) · [Gobillot-Morisson 2024](#gobillot-morisson-2024) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Goyal 2025](#goyal-2025) · [Gradel 2018](#gradel-2018) · [Gragossian 2023](#gragossian-2023) · [Grant y John 2025](#grant-y-john-2025) · [Greear 2024](#greear-2024) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Guan 2026](#guan-2026) · [Gudeman 2020](#gudeman-2020) · [Gülen 2023](#gülen-2023) · [Guo 2024](#guo-2024) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2025](#hadji-2025) · [Hadji 2026](#hadji-2026) · [Hahn 2022](#hahn-2022) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Haller 2026](#haller-2026) · [Halliwell 2026](#halliwell-2026) · [Ham 2017](#ham-2017) · [Hameed 2023](#hameed-2023) · [Han 2022](#han-2022) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hansen 2015](#hansen-2015) · [Hansen 2022](#hansen-2022) · [Hansrani 2023 (casos y controles)](#hansrani-2023-casos-y-controles) · [Hansrani 2023 (ensayo)](#hansrani-2023-ensayo) · [Hanssen 2022](#hanssen-2022) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Harding y Beck 2017](#harding-y-beck-2017) · [Hariharan 2021](#hariharan-2021) · [Harley 2026](#harley-2026) · [Harrington 2023](#harrington-2023) · [Hart 2020](#hart-2020) · [Hart 2024](#hart-2024) · [Haskins 2015](#haskins-2015) · [Hawk 2017](#hawk-2017) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Heijboer 2023](#heijboer-2023) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henry 2019](#henry-2019) · [Henschke 2013](#henschke-2013) · [Hentzen 2023](#hentzen-2023) · [Herman 2023](#herman-2023) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Herrett 2021](#herrett-2021) · [Hershman 2022](#hershman-2022) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Heyward 2020](#heyward-2020) · [Hideyama 2023](#hideyama-2023) · [Hildebrand 2024](#hildebrand-2024) · [Hill 2017](#hill-2017) · [Ho 2013](#ho-2013) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Hogwood 2025](#hogwood-2025) · [Holgado 2022](#holgado-2022) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Horowitz 2023](#horowitz-2023) · [Hospers 2024](#hospers-2024) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Howe 2011](#howe-2011) · [Hu 2023](#hu-2023) · [Hu 2024](#hu-2024) · [Hudson 2025](#hudson-2025) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Humma y Patel 2024](#humma-y-patel-2024) · [Humphrey 2023](#humphrey-2023) · [Hunter 2024](#hunter-2024) · [Huruba 2021](#huruba-2021) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [Huxel 2023](#huxel-2023) · [Hwang 2023](#hwang-2023) · [Hwang 2024](#hwang-2024) · [Hyder 2021](#hyder-2021) · [Iacovides 2009](#iacovides-2009) · [Ignozzi 2025](#ignozzi-2025) · [IHS 2018](#ihs-2018) · [İlal Mert y Altun 2026](#ilal-mert-y-altun-2026) · [Iqbal 2026](#iqbal-2026) · [Irwin 2015](#irwin-2015) · [Jain 2013](#jain-2013) · [Jain 2026](#jain-2026) · [Jarbo 2017](#jarbo-2017) · [Jasionowska 2022](#jasionowska-2022) · [Jasti 2026](#jasti-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jedrychowski 2015](#jedrychowski-2015) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jia 2025](#jia-2025) · [Jiang 2024](#jiang-2024) · [Jin 2021](#jin-2021) · [Jobanputra 2026](#jobanputra-2026) · [Jödicke 2023](#jödicke-2023) · [Jogu 2026](#jogu-2026) · [Johannsen 2022](#johannsen-2022) · [Johns 2023](#johns-2023) · [Jones 2023](#jones-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kaatz 2015](#kaatz-2015) · [Kaiser 2023](#kaiser-2023) · [Kakkos 2021](#kakkos-2021) · [Kalakonda 2022](#kalakonda-2022) · [Kalfas 2025](#kalfas-2025) · [Kamonseki 2022](#kamonseki-2022) · [Kanaley 2022](#kanaley-2022) · [Kaneko 2021](#kaneko-2021) · [Kang 2023](#kang-2023) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) · [Kast 2023](#kast-2023) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kelly 2016](#kelly-2016) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kershner 2026](#kershner-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Keteyian 2019](#keteyian-2019) · [Khalil 2025](#khalil-2025) · [Khan 2023](#khan-2023) · [Khan 2025](#khan-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) · [Khan y Scott 2009](#khan-y-scott-2009) · [Khayyat 2026](#khayyat-2026) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kim y Chen 2024](#kim-y-chen-2024) · [Kim y Jang 2024](#kim-y-jang-2024) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Kishi 2026](#kishi-2026) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Kobylarz 2025](#kobylarz-2025) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Koldenhof 2026](#koldenhof-2026) · [Konstantinou 2018](#konstantinou-2018) · [Kopp 2025](#kopp-2025) · [Koppenhaver 2022](#koppenhaver-2022) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kumar 2024](#kumar-2024) · [Kunutsor 2017](#kunutsor-2017) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwak 2023](#kwak-2023) · [Kwok 2025](#kwok-2025) · [Kwon 2024](#kwon-2024) · [Lacuesta 2024](#lacuesta-2024) · [Lacy 2023](#lacy-2023) · [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Lary 2020](#lary-2020) · [Lashhab 2025](#lashhab-2025) · [Laslett 2003](#laslett-2003) · [Laslett 2004](#laslett-2004) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lavoie 2023](#lavoie-2023) · [Layton 2020](#layton-2020) · [Lazarczuk 2022](#lazarczuk-2022) · [Leander 2025](#leander-2025) · [Lebovitz 2019](#lebovitz-2019) · [Lee 2023](#lee-2023) · [Lee y Nam 2011](#lee-y-nam-2011) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Leslie y Foreman 2025](#leslie-y-foreman-2025) · [Leslie y Rawla 2023](#leslie-y-rawla-2023) · [Leslie y Rout 2024](#leslie-y-rout-2024) · [Leung 2024](#leung-2024) · [Levati 2026](#levati-2026) · [Levy 2024](#levy-2024) · [Lewis y Cook 2014](#lewis-y-cook-2014) · [Lezak 2024](#lezak-2024) · [Li 2023](#li-2023) · [Li 2024](#li-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Li y Zhang 2025](#li-y-zhang-2025) · [Liaghat 2022](#liaghat-2022) · [Liaghat 2024](#liaghat-2024) · [Liaghat 2025](#liaghat-2025) · [Liamis 2016](#liamis-2016) · [Liang 2022](#liang-2022) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2022](#lim-2022) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Lima 2023](#lima-2023) · [Limaiem 2023](#limaiem-2023) · [Lin 2020](#lin-2020) · [Lindholm 2024](#lindholm-2024) · [Litaker 2000](#litaker-2000) · [Liu 2013](#liu-2013) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Looney 2023](#looney-2023) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lu 2020](#lu-2020) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mach 2018](#mach-2018) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Magnusson y Kjaer 2019](#magnusson-y-kjaer-2019) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mancia 2023](#mancia-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Mangone 2024](#mangone-2024) · [Mannan 2025](#mannan-2025) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) · [Martin 2021](#martin-2021) · [Martínez 2023](#martínez-2023) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McAnally 2020](#mcanally-2020) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McEvoy 2024](#mcevoy-2024) · [McIver y Siddique 2025](#mciver-y-siddique-2025) · [McKeever 2024](#mckeever-2024) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Meaadi 2023](#meaadi-2023) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Memon y Tiwari 2023](#memon-y-tiwari-2023) · [Men 2017](#men-2017) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Messier 2013](#messier-2013) · [Messineo 2024](#messineo-2024) · [Metcalfe 2019](#metcalfe-2019) · [Meyre 2022](#meyre-2022) · [Miernik 2024](#miernik-2024) · [Mikus 2013](#mikus-2013) · [Milbourn 2026](#milbourn-2026) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mitchell 2025](#mitchell-2025) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Moiz 2026](#moiz-2026) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moncrieff 2025](#moncrieff-2025) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moon 2026](#moon-2026) · [Moore 2019](#moore-2019) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Moraczewski 2023](#moraczewski-2023) · [Morales 2019](#morales-2019) · [Morris 2024](#morris-2024) · [Morris y Patel 2023](#morris-y-patel-2023) · [Moseley 2025](#moseley-2025) · [Moser 2020](#moser-2020) · [Mosler 2015](#mosler-2015) · [Mottola 2018](#mottola-2018) · [Mottola 2019](#mottola-2019) · [Mountjoy 2023](#mountjoy-2023) · [Mulla 2024](#mulla-2024) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Munteanu 2024](#munteanu-2024) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nakafero 2021](#nakafero-2021) · [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nara y Watanabe 2021](#nara-y-watanabe-2021) · [Narayan 2024](#narayan-2024) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Naugle 2012](#naugle-2012) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [Netterström-Wedin 2022](#netterström-wedin-2022) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nischal y Gupta 2023](#nischal-y-gupta-2023) · [Noble 1979](#noble-1979) · [Nochaiwong 2022](#nochaiwong-2022) · [Noetel 2024](#noetel-2024) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Noyes 2017](#noyes-2017) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oldfield 2024](#oldfield-2024) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Otoshi 2022](#otoshi-2022) · [Oyamada 2026](#oyamada-2026) · [Padda 2025](#padda-2025) · [Paik 2016](#paik-2016) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2017](#park-2017) · [Park 2019](#park-2019) · [Park 2021](#park-2021) · [Park 2024](#park-2024) · [Parker 2013](#parker-2013) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Patel y Launico 2025](#patel-y-launico-2025) · [Patel y Preuss 2025](#patel-y-preuss-2025) · [Paterson 2021](#paterson-2021) · [Paterson 2022](#paterson-2022) · [Pathak 2025](#pathak-2025) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedersen y Febbraio 2012](#pedersen-y-febbraio-2012) · [Pedersini 2022](#pedersini-2022) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pelliccia 2020](#pelliccia-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Pereira 2021](#pereira-2021) · [Pérez-Romero 2026](#pérez-romero-2026) · [Pesonen 2021](#pesonen-2021) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Petersen y Pedersen 2005](#petersen-y-pedersen-2005) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Pitt 2020](#pitt-2020) · [Piva 2006](#piva-2006) · [Plash 2013](#plash-2013) · [Plewa 2023](#plewa-2023) · [Ploegmakers 2023](#ploegmakers-2023) · [Podder 2024](#podder-2024) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Polaski 2019](#polaski-2019) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Polzer 2012](#polzer-2012) · [Ponna 2026](#ponna-2026) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Pravettoni 2016](#pravettoni-2016) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rangraze 2026](#rangraze-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regina 2025](#regina-2025) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Rehman 2024](#rehman-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Revel 1998](#revel-1998) · [Reychler 2021](#reychler-2021) · [Reyes 2026](#reyes-2026) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rice 2019](#rice-2019) · [Rich 2025](#rich-2025) · [Riddell 2017](#riddell-2017) · [Rider y Marra 2023](#rider-y-marra-2023) · [Ringer 2025](#ringer-2025) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rissardo 2023](#rissardo-2023) · [Rissardo 2025](#rissardo-2025) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rossi 2011](#rossi-2011) · [Roulet 2021](#roulet-2021) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rout 2025](#rout-2025) · [Rout y Afzal 2026](#rout-y-afzal-2026) · [Rowe 2023](#rowe-2023) · [Roy 2021](#roy-2021) · [Rubinger 2020](#rubinger-2020) · [Ruchat 2025](#ruchat-2025) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruggiero 2022](#ruggiero-2022) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Rusu 2023](#rusu-2023) · [Rusu 2026](#rusu-2026) · [Rytter 2008](#rytter-2008) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Saaiq 2024](#saaiq-2024) · [Sabry y Li 2026](#sabry-y-li-2026) · [Saco-Ledo 2020](#saco-ledo-2020) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sánchez y Asuncion 2025](#sánchez-y-asuncion-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sangiorgio 2024](#sangiorgio-2024) · [Sanvictores 2023](#sanvictores-2023) · [Sarac 2025](#sarac-2025) · [Saueressig 2021](#saueressig-2021) · [Savarese 2011](#savarese-2011) · [Sayudo 2024](#sayudo-2024) · [Schadler 2017](#schadler-2017) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schneider 2013](#schneider-2013) · [Schneider 2014](#schneider-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Schulman 2005](#schulman-2005) · [Schwab 2023](#schwab-2023) · [Schweiger 2021](#schweiger-2021) · [Scioscia 2023](#scioscia-2023) · [Scott 2024](#scott-2024) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Severinsen y Pedersen 2020](#severinsen-y-pedersen-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shalhub 2019](#shalhub-2019) · [Shamim 2026](#shamim-2026) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Shane 2014](#shane-2014) · [Shao 2022](#shao-2022) · [Sharma 2026](#sharma-2026) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Shin 2022](#shin-2022) · [Shinohara 2017](#shinohara-2017) · [Shrestha 2026](#shrestha-2026) · [Shu 2022](#shu-2022) · [Shuttlewood 2017](#shuttlewood-2017) · [Sibrack 2024](#sibrack-2024) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Silva 2024](#silva-2024) · [Simon 2024](#simon-2024) · [Simon y Rout 2025](#simon-y-rout-2025) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singh 2023](#singh-2023) · [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sizar 2024](#sizar-2024) · [Sklepinski 2026](#sklepinski-2026) · [Slade 2021](#slade-2021) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smart 2019](#smart-2019) · [Smarz 2021](#smarz-2021) · [Smeijers 2024](#smeijers-2024) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2013](#smith-2013) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Soares 2023](#soares-2023) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Spångeus 2024](#spångeus-2024) · [Spanhove 2022](#spanhove-2022) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srinivas-Shankar 2026](#srinivas-shankar-2026) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Stadelmann 2024](#stadelmann-2024) · [Stals 2023](#stals-2023) · [Steffel 2021](#steffel-2021) · [Steiner 2026](#steiner-2026) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Stroes 2015](#stroes-2015) · [Suárez-Lledó 2018](#suárez-lledó-2018) · [Suenghataiphorn 2025](#suenghataiphorn-2025) · [Suha 2025](#suha-2025) · [Sundemo 2018](#sundemo-2018) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Tahir 2026](#tahir-2026) · [Takasaki 2011](#takasaki-2011) · [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) · [Tanaka 2022](#tanaka-2022) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tchivileva 2020](#tchivileva-2020) · [Teichtahl 2016](#teichtahl-2016) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Tenti 2020](#tenti-2020) · [Tentolouris 2019](#tentolouris-2019) · [Testa 2024](#testa-2024) · [Thai 2023](#thai-2023) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thomas 2017](#thomas-2017) · [Thomas Manapurathe 2017](#thomas-manapurathe-2017) · [Thompson 2026](#thompson-2026) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Thota y Akbar 2023](#thota-y-akbar-2023) · [Thour 2026](#thour-2026) · [Tipton 2008](#tipton-2008) · [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) · [Tolla 2026](#tolla-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tsourdi 2021](#tsourdi-2021) · [Tsuchiya 2022](#tsuchiya-2022) · [Tsujimoto 2017](#tsujimoto-2017) · [Tumialán 2010](#tumialán-2010) · [Ulici 2019](#ulici-2019) · [Uson 2021](#uson-2021) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Vaegter y Jones 2020](#vaegter-y-jones-2020) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [Van der Sluiszen 2019](#van-der-sluiszen-2019) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [van Gelder 2024](#van-gelder-2024) · [Vandeputte 2026](#vandeputte-2026) · [Vastani 2023](#vastani-2023) · [Vehmanen 2021](#vehmanen-2021) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Vigotsky 2016](#vigotsky-2016) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2013](#wang-2013) · [Wang 2016](#wang-2016) · [Wang 2017](#wang-2017) · [Wang 2018](#wang-2018) · [Wang 2020](#wang-2020) · [Wang 2024](#wang-2024) · [Wang 2025](#wang-2025) · [Wang y Tariq 2025](#wang-y-tariq-2025) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waseem 2026](#waseem-2026) · [Waterway 2026](#waterway-2026) · [Wathra 2020](#wathra-2020) · [Watras 2026](#watras-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weber 2026](#weber-2026) · [Wee 2021](#wee-2021) · [Weir 2015](#weir-2015) · [Welsch 2018](#welsch-2018) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wewege 2023](#wewege-2023) · [Wewege y Jones 2021](#wewege-y-jones-2021) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wichniak 2017](#wichniak-2017) · [Wiegele 2019](#wiegele-2019) · [Wierzbiński 2023](#wierzbiński-2023) · [Wilcox 2020](#wilcox-2020) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wong 2024](#wong-2024) · [Wood 2023](#wood-2023) · [Woodley 2020](#woodley-2020) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Wu 2026](#wu-2026) · [Xia 2022](#xia-2022) · [Xia 2025](#xia-2025) · [Xiang 2025](#xiang-2025) · [Xie 2021](#xie-2021) · [Xue 2021](#xue-2021) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yanagimoto 2025](#yanagimoto-2025) · [Yang 2024](#yang-2024) · [Yang 2026](#yang-2026) · [Yang y Qu 2018](#yang-y-qu-2018) · [Yasaei 2024](#yasaei-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Younis 2025](#younis-2025) · [Yousif 2025](#yousif-2025) · [Youssef 2016](#youssef-2016) · [Yuan 2016](#yuan-2016) · [Yuen 2026](#yuen-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zeng 2024](#zeng-2024) · [Zhang 2010](#zhang-2010) · [Zhang 2026](#zhang-2026) · [Zhao 2024](#zhao-2024) · [Zhou 2025](#zhou-2025) · [Ziaks 2024](#ziaks-2024) · [Zimmerman y Hubbard 2023 (clonus)](#zimmerman-y-hubbard-2023-clonus) · [Zimmerman y Hubbard 2023 (reflejos)](#zimmerman-y-hubbard-2023-reflejos) · [Zirkl 2024](#zirkl-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022) · [Zwerver 2010](#zwerver-2010)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Abraham 2022](#abraham-2022) · [ACOG 2020](#acog-2020) · [ADA 2025](#ada-2025) · [Adani 2025](#adani-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Adler 2016](#adler-2016) · [Adolfsson 2022](#adolfsson-2022) · [AEMPS 2023](#aemps-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [AGS 2023](#ags-2023) · [Akhondi 2025](#akhondi-2025) · [Akin 2022](#akin-2022) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alam 2022](#alam-2022) · [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) · [Albasri 2021](#albasri-2021) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2015](#albrecht-2015) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2023](#aldahas-2023) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Aljawder 2016](#aljawder-2016) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Alvarez 2025](#alvarez-2025) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasilakis 2021](#anastasilakis-2021) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) · [Antunes 2024](#antunes-2024) · [Anziano 2024](#anziano-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [APTA 2013](#apta-2013) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Attardo 2022](#attardo-2022) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Awosika y Patel 2026](#awosika-y-patel-2026) · [Azmi 2025](#azmi-2025) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baeumler 2023](#baeumler-2023) · [Baffour-Awuah 2023](#baffour-awuah-2023) · [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) · [Bahendeka 2019](#bahendeka-2019) · [Bahit 2017](#bahit-2017) · [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) · [Baker 2018](#baker-2018) · [Bakker 2017](#bakker-2017) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Balcerzak 2022](#balcerzak-2022) · [Balchin 2022](#balchin-2022) · [Bale 2019](#bale-2019) · [Balmaceno-Criss 2024](#balmaceno-criss-2024) · [Barakatt 2009](#barakatt-2009) · [Barberán 2023](#barberán-2023) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bassand 2021](#bassand-2021) · [Bassett 2025](#bassett-2025) · [Bateman 2024](#bateman-2024) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Bazelier 2013](#bazelier-2013) · [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) · [Beamish 2025](#beamish-2025) · [Beazley 2017](#beazley-2017) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Bellesini 2021](#bellesini-2021) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benatti y Pedersen 2015](#benatti-y-pedersen-2015) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Benzon 2026](#benzon-2026) · [Bergh Fahlén 2026](#bergh-fahlén-2026) · [Bergman 2025](#bergman-2025) · [Bessen 2009](#bessen-2009) · [Bettariga 2024](#bettariga-2024) · [Beuschlein 2024](#beuschlein-2024) · [Bhanu 2021](#bhanu-2021) · [Bhanu 2025](#bhanu-2025) · [Bhanu 2026](#bhanu-2026) · [Bhatti 2026](#bhatti-2026) · [Bianconi 2024](#bianconi-2024) · [Biedroń 2026](#biedroń-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Binsaleem 2024](#binsaleem-2024) · [Birkinshaw 2023](#birkinshaw-2023) · [Birrell 2001](#birrell-2001) · [Biswas 2026](#biswas-2026) · [Biz 2019](#biz-2019) · [Black 2020](#black-2020) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Ble 2017](#ble-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Bohm 2015](#bohm-2015) · [Borsati 2025](#borsati-2025) · [Boudreault 2025](#boudreault-2025) · [Boufadel 2025](#boufadel-2025) · [Boulias 2018](#boulias-2018) · [Bounds y Patel 2024](#bounds-y-patel-2024) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brittain 2023](#brittain-2023) · [Brockow 2021](#brockow-2021) · [Brod 2013](#brod-2013) · [Broncel 2015](#broncel-2015) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Brown 2023](#brown-2023) · [Bruessel 2026](#bruessel-2026) · [Brunner 2025](#brunner-2025) · [Buchanan y Varacallo 2023](#buchanan-y-varacallo-2023) · [Buck 2023](#buck-2023) · [Budha 2025](#budha-2025) · [Bueno-Gracia 2019](#bueno-gracia-2019) · [Buhmann 2020](#buhmann-2020) · [Bull 2020](#bull-2020) · [Bulsara 2024](#bulsara-2024) · [Burani 2023](#burani-2023) · [Buryk-Iggers 2022](#buryk-iggers-2022) · [Bus 2024](#bus-2024) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Cady 2024](#cady-2024) · [Caliandro 2025](#caliandro-2025) · [Calvo 2025](#calvo-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Can y Correa 2023](#can-y-correa-2023) · [Canoso 1987](#canoso-1987) · [Cánovas-Ambit 2021](#cánovas-ambit-2021) · [Capiau 2023](#capiau-2023) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carnovale 2023](#carnovale-2023) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Carvalho 2022](#carvalho-2022) · [Cascia 2019](#cascia-2019) · [Cashin 2021](#cashin-2021) · [Castagna 2017](#castagna-2017) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Caulfield 2021](#caulfield-2021) · [Cervellini 2025](#cervellini-2025) · [Chamorro-Moriana 2024](#chamorro-moriana-2024) · [Champaneria 2016](#champaneria-2016) · [Chang 2026](#chang-2026) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2013](#cheatham-2013) · [Cheatham 2025](#cheatham-2025) · [Chen 2022](#chen-2022) · [Chen 2023](#chen-2023) · [Chen 2025](#chen-2025) · [Cheng 2017](#cheng-2017) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chou 2017](#chou-2017) · [Christensen 2019](#christensen-2019) · [Christensen 2026](#christensen-2026) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Coburn 2023](#coburn-2023) · [Colatruglio 2020](#colatruglio-2020) · [Colberg 2016](#colberg-2016) · [Collins y Bergman 2026](#collins-y-bergman-2026) · [Collins y Costello 2024](#collins-y-costello-2024) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Confederat 2026](#confederat-2026) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) · [Corpus 2016](#corpus-2016) · [Cortez 2025](#cortez-2025) · [Cosio 2021](#cosio-2021) · [Cosmi 2022](#cosmi-2022) · [Costello 2023](#costello-2023) · [Couch 2025](#couch-2025) · [Coussens 2022](#coussens-2022) · [Cross 2024](#cross-2024) · [CTT 2022](#ctt-2022) · [CTT 2026](#ctt-2026) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Dar y Jacob 2024](#dar-y-jacob-2024) · [Davenport 2018 (ánimo)](#davenport-2018-ánimo) · [Davenport 2018 (incontinencia)](#davenport-2018-incontinencia) · [Davenport 2019 (daños maternos)](#davenport-2019-daños-maternos) · [Davenport 2019 (dolor lumbopélvico)](#davenport-2019-dolor-lumbopélvico) · [Davenport 2019 (mortalidad fetal)](#davenport-2019-mortalidad-fetal) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Kane 2023](#davis-y-kane-2023) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Best 2021](#de-best-2021) · [De Filippis 2022](#de-filippis-2022) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [DeFoor 2025](#defoor-2025) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Deprato 2025](#deprato-2025) · [Desai 2013](#desai-2013) · [Desbiens 2022](#desbiens-2022) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devi 2026](#devi-2026) · [Devillé 2000](#devillé-2000) · [Dhesi 2024](#dhesi-2024) · [Dhir 2018](#dhir-2018) · [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Domínguez-Muñoz 2025](#domínguez-muñoz-2025) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dos Santos 2024](#dos-santos-2024) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Duman 2025](#duman-2025) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Edinoff 2021](#edinoff-2021) · [Edwards 2024](#edwards-2024) · [Eimiller 2024](#eimiller-2024) · [EMA 2014](#ema-2014) · [EMA 2018](#ema-2018) · [Engelbert 2017](#engelbert-2017) · [Engert 2024](#engert-2024) · [Engin 2023](#engin-2023) · [Englund 2003](#englund-2003) · [Enke 2018](#enke-2018) · [Enseki 2023](#enseki-2023) · [Epelde 2026](#epelde-2026) · [Ernst 2024](#ernst-2024) · [Eskew 2026](#eskew-2026) · [Evans 2014](#evans-2014) · [Evans 2018](#evans-2018) · [Evans 2023](#evans-2023) · [Evenson 2024](#evenson-2024) · [Ez Eddin 2025](#ez-eddin-2025) · [Factor 2023](#factor-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farishta 2024](#farishta-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Faruqi 2024](#faruqi-2024) · [Farzam y Jan 2023](#farzam-y-jan-2023) · [FDA 2002 (diatermia)](#fda-2002-diatermia) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Ferraro 2025](#ferraro-2025) · [Ferreira 2023](#ferreira-2023) · [Figueroa 2021](#figueroa-2021) · [Filippatos 2017](#filippatos-2017) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Fong y Patel 2026](#fong-y-patel-2026) · [Forsythe 2025](#forsythe-2025) · [Forton 2022](#forton-2022) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Franchi 2017](#franchi-2017) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Fu y Levine 2015](#fu-y-levine-2015) · [Fujiwara 2025](#fujiwara-2025) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [García-Sánchez 2022](#garcía-sánchez-2022) · [Gardashli 2024](#gardashli-2024) · [Garrison 2023](#garrison-2023) · [Gartner 2025](#gartner-2025) · [Gausel 2017](#gausel-2017) · [Gehrke 2023](#gehrke-2023) · [Geneen 2017](#geneen-2017) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) · [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) · [Ghasemi 2013](#ghasemi-2013) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Giménez-Campos 2021](#giménez-campos-2021) · [Gleeson 2011](#gleeson-2011) · [Gluppe 2021](#gluppe-2021) · [Gobillot-Morisson 2024](#gobillot-morisson-2024) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Goyal 2025](#goyal-2025) · [Gradel 2018](#gradel-2018) · [Gragossian 2023](#gragossian-2023) · [Grant y John 2025](#grant-y-john-2025) · [Greear 2024](#greear-2024) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Guan 2026](#guan-2026) · [Gudeman 2020](#gudeman-2020) · [Gülen 2023](#gülen-2023) · [Guo 2024](#guo-2024) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2025](#hadji-2025) · [Hadji 2026](#hadji-2026) · [Hahn 2022](#hahn-2022) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Haller 2026](#haller-2026) · [Halliwell 2026](#halliwell-2026) · [Ham 2017](#ham-2017) · [Hameed 2023](#hameed-2023) · [Han 2022](#han-2022) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hansen 2015](#hansen-2015) · [Hansen 2022](#hansen-2022) · [Hansrani 2023 (casos y controles)](#hansrani-2023-casos-y-controles) · [Hansrani 2023 (ensayo)](#hansrani-2023-ensayo) · [Hanssen 2022](#hanssen-2022) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Harding y Beck 2017](#harding-y-beck-2017) · [Hariharan 2021](#hariharan-2021) · [Harley 2026](#harley-2026) · [Harrington 2023](#harrington-2023) · [Hart 2020](#hart-2020) · [Hart 2024](#hart-2024) · [Haskins 2015](#haskins-2015) · [Hawk 2017](#hawk-2017) · [He 2025](#he-2025) · [Health Canada 2003 (diatermia)](#health-canada-2003-diatermia) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Heijboer 2023](#heijboer-2023) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henry 2019](#henry-2019) · [Henschke 2013](#henschke-2013) · [Hentzen 2023](#hentzen-2023) · [Herman 2023](#herman-2023) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Herrett 2021](#herrett-2021) · [Hershman 2022](#hershman-2022) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Heyward 2020](#heyward-2020) · [Hideyama 2023](#hideyama-2023) · [Hildebrand 2024](#hildebrand-2024) · [Hill 2017](#hill-2017) · [Ho 2013](#ho-2013) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Hogwood 2025](#hogwood-2025) · [Holgado 2022](#holgado-2022) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Horowitz 2023](#horowitz-2023) · [Hospers 2024](#hospers-2024) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Howe 2011](#howe-2011) · [Hu 2023](#hu-2023) · [Hu 2024](#hu-2024) · [Hudson 2025](#hudson-2025) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Humma y Patel 2024](#humma-y-patel-2024) · [Humphrey 2023](#humphrey-2023) · [Hunter 2024](#hunter-2024) · [Huruba 2021](#huruba-2021) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [Huxel 2023](#huxel-2023) · [Hwang 2023](#hwang-2023) · [Hwang 2024](#hwang-2024) · [Hyder 2021](#hyder-2021) · [Iacovides 2009](#iacovides-2009) · [Ignozzi 2025](#ignozzi-2025) · [IHS 2018](#ihs-2018) · [İlal Mert y Altun 2026](#ilal-mert-y-altun-2026) · [Iqbal 2026](#iqbal-2026) · [Irwin 2015](#irwin-2015) · [Jain 2013](#jain-2013) · [Jain 2026](#jain-2026) · [Jarbo 2017](#jarbo-2017) · [Jasionowska 2022](#jasionowska-2022) · [Jasti 2026](#jasti-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jedrychowski 2015](#jedrychowski-2015) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jia 2025](#jia-2025) · [Jiang 2024](#jiang-2024) · [Jin 2021](#jin-2021) · [Jobanputra 2026](#jobanputra-2026) · [Jödicke 2023](#jödicke-2023) · [Jogu 2026](#jogu-2026) · [Johannsen 2022](#johannsen-2022) · [Johns 2023](#johns-2023) · [Jones 2023](#jones-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kaatz 2015](#kaatz-2015) · [Kaiser 2023](#kaiser-2023) · [Kakkos 2021](#kakkos-2021) · [Kalakonda 2022](#kalakonda-2022) · [Kalfas 2025](#kalfas-2025) · [Kamonseki 2022](#kamonseki-2022) · [Kanaley 2022](#kanaley-2022) · [Kaneko 2021](#kaneko-2021) · [Kang 2023](#kang-2023) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) · [Kast 2023](#kast-2023) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kelly 2016](#kelly-2016) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kershner 2026](#kershner-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Keteyian 2019](#keteyian-2019) · [Keus 2014](#keus-2014) · [Khalil 2025](#khalil-2025) · [Khan 2023](#khan-2023) · [Khan 2025](#khan-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) · [Khan y Scott 2009](#khan-y-scott-2009) · [Khayyat 2026](#khayyat-2026) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kim y Chen 2024](#kim-y-chen-2024) · [Kim y Jang 2024](#kim-y-jang-2024) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Kishi 2026](#kishi-2026) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Kobylarz 2025](#kobylarz-2025) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Koldenhof 2026](#koldenhof-2026) · [Konstantinou 2018](#konstantinou-2018) · [Kopp 2025](#kopp-2025) · [Koppenhaver 2022](#koppenhaver-2022) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kumar 2024](#kumar-2024) · [Kunutsor 2017](#kunutsor-2017) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwak 2023](#kwak-2023) · [Kwok 2025](#kwok-2025) · [Kwon 2024](#kwon-2024) · [Lacuesta 2024](#lacuesta-2024) · [Lacy 2023](#lacy-2023) · [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Lary 2020](#lary-2020) · [Lashhab 2025](#lashhab-2025) · [Laslett 2003](#laslett-2003) · [Laslett 2004](#laslett-2004) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lavoie 2023](#lavoie-2023) · [Layton 2020](#layton-2020) · [Lazarczuk 2022](#lazarczuk-2022) · [Leander 2025](#leander-2025) · [Lebovitz 2019](#lebovitz-2019) · [Lee 2023](#lee-2023) · [Lee y Nam 2011](#lee-y-nam-2011) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Leslie y Foreman 2025](#leslie-y-foreman-2025) · [Leslie y Rawla 2023](#leslie-y-rawla-2023) · [Leslie y Rout 2024](#leslie-y-rout-2024) · [Leung 2024](#leung-2024) · [Levati 2026](#levati-2026) · [Levy 2024](#levy-2024) · [Lewis y Cook 2014](#lewis-y-cook-2014) · [LeWitt 2020](#lewitt-2020) · [Lezak 2024](#lezak-2024) · [Li 2023](#li-2023) · [Li 2024](#li-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Li y Zhang 2025](#li-y-zhang-2025) · [Liaghat 2022](#liaghat-2022) · [Liaghat 2024](#liaghat-2024) · [Liaghat 2025](#liaghat-2025) · [Liamis 2016](#liamis-2016) · [Liang 2022](#liang-2022) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2022](#lim-2022) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Lima 2023](#lima-2023) · [Limaiem 2023](#limaiem-2023) · [Lin 2020](#lin-2020) · [Lindholm 2024](#lindholm-2024) · [Litaker 2000](#litaker-2000) · [Liu 2013](#liu-2013) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Looney 2023](#looney-2023) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lu 2020](#lu-2020) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mach 2018](#mach-2018) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Magnusson y Kjaer 2019](#magnusson-y-kjaer-2019) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mancia 2023](#mancia-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Mangone 2024](#mangone-2024) · [Mannan 2025](#mannan-2025) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) · [Martin 2021](#martin-2021) · [Martínez 2023](#martínez-2023) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McAnally 2020](#mcanally-2020) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McEvoy 2024](#mcevoy-2024) · [McIver y Siddique 2025](#mciver-y-siddique-2025) · [McKeever 2024](#mckeever-2024) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Meaadi 2023](#meaadi-2023) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Memon y Tiwari 2023](#memon-y-tiwari-2023) · [Men 2017](#men-2017) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Messier 2013](#messier-2013) · [Messineo 2024](#messineo-2024) · [Metcalfe 2019](#metcalfe-2019) · [Meyre 2022](#meyre-2022) · [Miernik 2024](#miernik-2024) · [Mikus 2013](#mikus-2013) · [Milbourn 2026](#milbourn-2026) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mitchell 2025](#mitchell-2025) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Moiz 2026](#moiz-2026) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moncrieff 2025](#moncrieff-2025) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moon 2026](#moon-2026) · [Moore 2019](#moore-2019) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Moraczewski 2023](#moraczewski-2023) · [Morales 2019](#morales-2019) · [Morris 2024](#morris-2024) · [Morris y Patel 2023](#morris-y-patel-2023) · [Moseley 2025](#moseley-2025) · [Moser 2020](#moser-2020) · [Mosler 2015](#mosler-2015) · [Mottola 2018](#mottola-2018) · [Mottola 2019](#mottola-2019) · [Mountjoy 2023](#mountjoy-2023) · [Mulla 2024](#mulla-2024) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Munteanu 2024](#munteanu-2024) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nakafero 2021](#nakafero-2021) · [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nara y Watanabe 2021](#nara-y-watanabe-2021) · [Narayan 2024](#narayan-2024) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Naugle 2012](#naugle-2012) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [Netterström-Wedin 2022](#netterström-wedin-2022) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG71](#nice-ng71) · [NICE NG89](#nice-ng89) · [Nischal y Gupta 2023](#nischal-y-gupta-2023) · [Noble 1979](#noble-1979) · [Nochaiwong 2022](#nochaiwong-2022) · [Noetel 2024](#noetel-2024) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Noyes 2017](#noyes-2017) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oldfield 2024](#oldfield-2024) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Osborne 2022](#osborne-2022) · [Otoshi 2022](#otoshi-2022) · [Oyamada 2026](#oyamada-2026) · [Padda 2025](#padda-2025) · [Paggou 2023](#paggou-2023) · [Paik 2016](#paik-2016) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2017](#park-2017) · [Park 2019](#park-2019) · [Park 2021](#park-2021) · [Park 2024](#park-2024) · [Parker 2013](#parker-2013) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Patel y Launico 2025](#patel-y-launico-2025) · [Patel y Preuss 2025](#patel-y-preuss-2025) · [Paterson 2021](#paterson-2021) · [Paterson 2022](#paterson-2022) · [Pathak 2025](#pathak-2025) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedersen y Febbraio 2012](#pedersen-y-febbraio-2012) · [Pedersini 2022](#pedersini-2022) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pelliccia 2020](#pelliccia-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Pereira 2021](#pereira-2021) · [Pérez-Romero 2026](#pérez-romero-2026) · [Pesonen 2021](#pesonen-2021) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Petersen y Pedersen 2005](#petersen-y-pedersen-2005) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Pitt 2020](#pitt-2020) · [Piva 2006](#piva-2006) · [Plash 2013](#plash-2013) · [Plewa 2023](#plewa-2023) · [Ploegmakers 2023](#ploegmakers-2023) · [Podder 2024](#podder-2024) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Polaski 2019](#polaski-2019) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Polzer 2012](#polzer-2012) · [Ponna 2026](#ponna-2026) · [Pope 2023](#pope-2023) · [Pötter-Nerger 2024](#pötter-nerger-2024) · [Prakash 2018](#prakash-2018) · [Pravettoni 2016](#pravettoni-2016) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rangraze 2026](#rangraze-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regina 2025](#regina-2025) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Rehman 2024](#rehman-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Revel 1998](#revel-1998) · [Reychler 2021](#reychler-2021) · [Reyes 2026](#reyes-2026) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rice 2019](#rice-2019) · [Rich 2025](#rich-2025) · [Riddell 2017](#riddell-2017) · [Rider y Marra 2023](#rider-y-marra-2023) · [Ringer 2025](#ringer-2025) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rissardo 2023](#rissardo-2023) · [Rissardo 2025](#rissardo-2025) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rossi 2011](#rossi-2011) · [Roulet 2021](#roulet-2021) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rout 2025](#rout-2025) · [Rout y Afzal 2026](#rout-y-afzal-2026) · [Rowe 2023](#rowe-2023) · [Roy 2021](#roy-2021) · [Rubinger 2020](#rubinger-2020) · [Ruchat 2025](#ruchat-2025) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruggiero 2022](#ruggiero-2022) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Rusu 2023](#rusu-2023) · [Rusu 2026](#rusu-2026) · [Rytter 2008](#rytter-2008) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Saaiq 2024](#saaiq-2024) · [Sabry y Li 2026](#sabry-y-li-2026) · [Saco-Ledo 2020](#saco-ledo-2020) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sánchez y Asuncion 2025](#sánchez-y-asuncion-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sangiorgio 2024](#sangiorgio-2024) · [Sanvictores 2023](#sanvictores-2023) · [Sarac 2025](#sarac-2025) · [Saueressig 2021](#saueressig-2021) · [Savarese 2011](#savarese-2011) · [Sayudo 2024](#sayudo-2024) · [Schadler 2017](#schadler-2017) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schneider 2013](#schneider-2013) · [Schneider 2014](#schneider-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Schulman 2005](#schulman-2005) · [Schwab 2023](#schwab-2023) · [Schweiger 2021](#schweiger-2021) · [Scioscia 2023](#scioscia-2023) · [Scott 2024](#scott-2024) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Severinsen y Pedersen 2020](#severinsen-y-pedersen-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shalhub 2019](#shalhub-2019) · [Shamim 2026](#shamim-2026) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Shane 2014](#shane-2014) · [Shao 2022](#shao-2022) · [Sharma 2026](#sharma-2026) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Shin 2022](#shin-2022) · [Shinohara 2017](#shinohara-2017) · [Shrestha 2026](#shrestha-2026) · [Shu 2022](#shu-2022) · [Shuttlewood 2017](#shuttlewood-2017) · [Sibrack 2024](#sibrack-2024) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Silva 2024](#silva-2024) · [Simon 2024](#simon-2024) · [Simon y Rout 2025](#simon-y-rout-2025) · [Simonds 2022](#simonds-2022) · [Simonet 2019](#simonet-2019) · [Sims 2020](#sims-2020) · [Singh 2023](#singh-2023) · [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sizar 2024](#sizar-2024) · [Sklepinski 2026](#sklepinski-2026) · [Slade 2021](#slade-2021) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smart 2019](#smart-2019) · [Smarz 2021](#smarz-2021) · [Smeijers 2024](#smeijers-2024) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2013](#smith-2013) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Soares 2023](#soares-2023) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Spångeus 2024](#spångeus-2024) · [Spanhove 2022](#spanhove-2022) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srinivas-Shankar 2026](#srinivas-shankar-2026) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Stadelmann 2024](#stadelmann-2024) · [Stals 2023](#stals-2023) · [Steffel 2021](#steffel-2021) · [Steiner 2026](#steiner-2026) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Stroes 2015](#stroes-2015) · [Suárez-Lledó 2018](#suárez-lledó-2018) · [Suenghataiphorn 2025](#suenghataiphorn-2025) · [Suha 2025](#suha-2025) · [Sundemo 2018](#sundemo-2018) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Tahir 2026](#tahir-2026) · [Takasaki 2011](#takasaki-2011) · [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) · [Tan 2014](#tan-2014) · [Tanaka 2022](#tanaka-2022) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tchivileva 2020](#tchivileva-2020) · [Teichtahl 2016](#teichtahl-2016) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Tenti 2020](#tenti-2020) · [Tentolouris 2019](#tentolouris-2019) · [Testa 2024](#testa-2024) · [Thai 2023](#thai-2023) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thomas 2017](#thomas-2017) · [Thomas Manapurathe 2017](#thomas-manapurathe-2017) · [Thompson 2026](#thompson-2026) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Thota y Akbar 2023](#thota-y-akbar-2023) · [Thour 2026](#thour-2026) · [Tipton 2008](#tipton-2008) · [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) · [Tolla 2026](#tolla-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Torsney 2014](#torsney-2014) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tsourdi 2021](#tsourdi-2021) · [Tsuchiya 2022](#tsuchiya-2022) · [Tsujimoto 2017](#tsujimoto-2017) · [Tumialán 2010](#tumialán-2010) · [Ulici 2019](#ulici-2019) · [Uson 2021](#uson-2021) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Vaegter y Jones 2020](#vaegter-y-jones-2020) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [Van der Sluiszen 2019](#van-der-sluiszen-2019) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [van Gelder 2024](#van-gelder-2024) · [Vandeputte 2026](#vandeputte-2026) · [Vastani 2023](#vastani-2023) · [Vehmanen 2021](#vehmanen-2021) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Vigotsky 2016](#vigotsky-2016) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2013](#wang-2013) · [Wang 2016](#wang-2016) · [Wang 2017](#wang-2017) · [Wang 2018](#wang-2018) · [Wang 2020](#wang-2020) · [Wang 2024](#wang-2024) · [Wang 2025](#wang-2025) · [Wang y Tariq 2025](#wang-y-tariq-2025) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waseem 2026](#waseem-2026) · [Waterway 2026](#waterway-2026) · [Wathra 2020](#wathra-2020) · [Watras 2026](#watras-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weber 2026](#weber-2026) · [Wee 2021](#wee-2021) · [Weir 2015](#weir-2015) · [Welsch 2018](#welsch-2018) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wewege 2023](#wewege-2023) · [Wewege y Jones 2021](#wewege-y-jones-2021) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wichniak 2017](#wichniak-2017) · [Wiegele 2019](#wiegele-2019) · [Wierzbiński 2023](#wierzbiński-2023) · [Wilcox 2020](#wilcox-2020) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wong 2024](#wong-2024) · [Wood 2023](#wood-2023) · [Woodley 2020](#woodley-2020) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Wu 2026](#wu-2026) · [Xia 2022](#xia-2022) · [Xia 2025](#xia-2025) · [Xiang 2025](#xiang-2025) · [Xie 2021](#xie-2021) · [Xue 2021](#xue-2021) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yanagimoto 2025](#yanagimoto-2025) · [Yang 2024](#yang-2024) · [Yang 2026](#yang-2026) · [Yang y Qu 2018](#yang-y-qu-2018) · [Yasaei 2024](#yasaei-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Younis 2025](#younis-2025) · [Yousif 2025](#yousif-2025) · [Youssef 2016](#youssef-2016) · [Yuan 2016](#yuan-2016) · [Yuen 2026](#yuen-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zeng 2024](#zeng-2024) · [Zhang 2010](#zhang-2010) · [Zhang 2026](#zhang-2026) · [Zhao 2024](#zhao-2024) · [Zhou 2025](#zhou-2025) · [Ziaks 2024](#ziaks-2024) · [Zimmerman y Hubbard 2023 (clonus)](#zimmerman-y-hubbard-2023-clonus) · [Zimmerman y Hubbard 2023 (reflejos)](#zimmerman-y-hubbard-2023-reflejos) · [Zirkl 2024](#zirkl-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022) · [Zwerver 2010](#zwerver-2010)
 
 ### AAOS 2024
 
@@ -2287,7 +2300,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» | 4b · cita bajo el test | 1 |
-| Codo | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.9.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
 | Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 3 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
@@ -4469,6 +4482,42 @@ En cadáver (10 nervios peroneos superficiales de 6 cadáveres, a su salida de l
 | Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Prueba neurodinámica con sesgo peroneo» (en `criterio`) | 4b · mención en el texto | 1 |
 | Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Prueba neurodinámica con sesgo peroneo» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Prueba neurodinámica con sesgo peroneo» | 4b · cita bajo el test | 3 |
+
+### Buhmann 2020
+
+Autores: Buhmann, Kassubek y Jost  
+Título: *Management of pain in Parkinson's disease*  
+Publicación: J Parkinsons Dis 2020;10(s1):S37–S48  
+DOI: 10.3233/JPD-202069  
+Última revisión: **sin revisar**  
+Nota: PMC7592654, leído entero (2026-11). Dolor en el 68–95 %; muchos no lo cuentan porque no lo relacionan con el Parkinson; dolor «en percha» con la hipotensión ortostática; dolor musculoesquelético de un lado como presentación precoz. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Pregunta por el dolor aunque no lo cuente: muchos no lo relacionan con el Parkinson. Anota si está en on u off, y si el dolor cambia con las tomas, que lo hable con quien le receta (Buhmann 2020; Keus 2014, 6.7.2 y 6.7.3).
+2. Si el dolor no sigue a la medicación, trátalo como en las guías generales del dolor, con progresión por tiempo y no por dolor; si cambia con las tomas o con el off, que lo hable con quien le receta (Keus 2014, 6.4.8 y 6.7.3; Buhmann 2020).
+3. Buhmann 2020 — Buhmann, Kassubek y Jost, «Management of pain in Parkinson's disease», J Parkinsons Dis 2020;10(s1):S37–S48.
+4. Buhmann 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pk_d_ortostatica` · Parkinson | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_sospecha` · Parkinson | 2 · razonamiento del cribado | 3 |
+| condiciones | — | Fila «Parkinson» | guía de condiciones especiales | 4 |
+| Hombro | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 2 |
 
 ### Bull 2020
 
@@ -7520,6 +7569,29 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
+### Ernst 2024
+
+Autores: Ernst, Folkerts, Gollan et al.  
+Título: *Physical exercise for people with Parkinson's disease: a systematic review and network meta-analysis*  
+Publicación: Cochrane Database Syst Rev 2024;4:CD013856  
+DOI: 10.1002/14651858.CD013856.pub3  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario: solo el resumen leído (2026-11); el resto se lee al escribir el bloque de la guía de ejercicio (decisión 13). Casi todos los tipos de ejercicio son mejores que no hacer nada, con poca diferencia entre ellos. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Con lo que usaron los ensayos, sin una dosis óptima establecida: aeróbico moderado a alto, al menos 3 días por semana, 30–40 min; fuerza progresiva 1–2 días por semana; equilibrio 2–3 veces por semana; marcha 20–60 min, 3–5 días por semana, 4–12 semanas. Lo ganado se pierde si se deja (Osborne 2022). Casi cualquier tipo de ejercicio ayuda; el tipo importa menos que hacerlo (Ernst 2024).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
+
 ### Eskew 2026
 
 Autores: Eskew, Soth, Alawa, McGrath, Wanich, Cirino y Carr  
@@ -7792,6 +7864,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### FDA 2002 (diatermia)
+
+Autores: U.S. Food and Drug Administration  
+Título: *FDA Public Health Notification: Diathermy interactions with implanted leads and implanted systems with leads*  
+Publicación: FDA, 19 de diciembre de 2002  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero (3 pp., 2026-11). Dos muertes con estimulador cerebral profundo tras diatermia; onda corta y microondas, térmica o atérmica, contraindicadas con cualquier electrodo implantado aunque el aparato esté apagado o desconectado, o si quedan electrodos. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Nada de onda corta ni microondas (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables (FDA 2002; Health Canada 2003; Keus 2014, 5.13).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
 
 ### Fedorowski 2019
 
@@ -9192,8 +9287,8 @@ Citada como:
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 104 |
 | Lumbar | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
-| Lumbar | — | `sistemas.11.banderasRojas.5.texto` | 2 · mención en el texto | 3 |
-| Lumbar | — | `sistemas.11.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 4 |
+| Lumbar | — | `sistemas.12.banderasRojas.5.texto` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.12.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 4 |
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 105 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 106 |
 | Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 107 |
@@ -10576,6 +10671,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
+### Health Canada 2003 (diatermia)
+
+Autores: Health Canada  
+Título: *Important safety information regarding diathermy therapy in patients with implanted leads and implanted systems with leads*  
+Publicación: Notice to Hospitals, 2 de abril de 2003 (RA-17000480)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Página guardada por el usuario, leída entera (2026-11). Lo mismo que la FDA y, además, ultrasonido terapéutico contraindicado encima o cerca del implante o de sus electrodos; dirigida a fisioterapia. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Nada de onda corta ni microondas (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables (FDA 2002; Health Canada 2003; Keus 2014, 5.13).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 1 |
 
 ### Health Quality Ontario 2019
 
@@ -12783,6 +12901,121 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
+### Keus 2014
+
+Autores: Keus, Munneke, Graziano et al.  
+Título: *European Physiotherapy Guideline for Parkinson's disease*  
+Publicación: KNGF/ParkinsonNet, 2014  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario (parte 1, pp. 1–100), leídos los caps. 1.2, 3.2–3.4, 5.11, 5.13, 6.4.6–6.4.9, 6.7.2–6.7.5, 6.8.3 y el inicio del 7 (2026-11). Banderas rojas y naranjas (5.13: estimulador cerebral profundo, complicaciones motoras, alteraciones mentales, hidroterapia), fluctuaciones (6.7.2), dolor (6.4.8 y 6.7.3), vibración de cuerpo entero (6.4.6), cuándo parar (6.7.5), estadio final (6.8.3). Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Anótalo: lo que mides cambia con la fase (Osborne 2022; Keus 2014, 6.7.2).
+2. Nada de onda corta ni microondas (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables (FDA 2002; Health Canada 2003; Keus 2014, 5.13).
+3. Pregunta por el dolor aunque no lo cuente: muchos no lo relacionan con el Parkinson. Anota si está en on u off, y si el dolor cambia con las tomas, que lo hable con quien le receta (Buhmann 2020; Keus 2014, 6.7.2 y 6.7.3).
+4. La rigidez limita la movilidad pasiva y el temblor puede tapar la respuesta: compara con el otro lado y anota si está en on u off (redacción propia sobre Osborne 2022 y Paggou 2023; Keus 2014, 6.7.2).
+5. Sin presión manual cerca de los cables del estimulador (Keus 2014, 5.13).
+6. La FC puede subir menos de lo esperado: vigila también el esfuerzo percibido (Osborne 2022). Si estaba inactivo, empieza bajo y sube poco a poco (Keus 2014, 5.13).
+7. Bicicleta antes que cinta; usa estímulos externos (auditivos o visuales) para la marcha (Osborne 2022). Hidroterapia solo con supervisión individual (Keus 2014, 5.13).
+8. La capacidad física se entrena mejor en on; las estrategias se aprenden en on y, si hacen falta en off, se practican también en off. Valora y reevalúa en la misma fase y anótala (Keus 2014, 6.7.2; Osborne 2022).
+9. En cama o silla: prevenir úlceras y contracturas, postura, cambios de posición y formar a los cuidadores en las transferencias (Keus 2014, 6.8.3).
+10. Si el dolor no sigue a la medicación, trátalo como en las guías generales del dolor, con progresión por tiempo y no por dolor; si cambia con las tomas o con el off, que lo hable con quien le receta (Keus 2014, 6.4.8 y 6.7.3; Buhmann 2020).
+11. No uses plataformas de vibración de cuerpo entero (Keus 2014, 6.4.6: recomendación fuerte en contra).
+12. Parar y consultar con náuseas, dolor u opresión torácica de más de unos minutos, falta de aire inusual, mareo, palpitaciones, sudor frío o si la TAS baja más de 10 mmHg durante el ejercicio (Keus 2014, 6.7.5).
+13. Keus 2014 — Keus, Munneke, Graziano et al., «European Physiotherapy Guideline for Parkinson's disease», KNGF/ParkinsonNet, 2014, apartados 3.2, 5.13 y 6.7.2.
+14. Keus 2014 — Keus, Munneke, Graziano et al., «European Physiotherapy Guideline for Parkinson's disease», KNGF/ParkinsonNet, 2014, apartado 5.13.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pk_d_complicaciones` · Parkinson | 2 · razonamiento del cribado | 13 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_mental` · Parkinson | 2 · razonamiento del cribado | 14 |
+| Hombro | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.8.parkinson.textos.cables4b` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 8 |
+| Hombro | — | `sistemas.8.parkinson.textos.cama` | 2 · mención en el texto | 9 |
+| Hombro | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 10 |
+| Hombro | — | `sistemas.8.parkinson.textos.vibracion` | 2 · mención en el texto | 11 |
+| Hombro | — | `sistemas.8.parkinson.textos.parar` | 2 · mención en el texto | 12 |
+| Cadera | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.8.parkinson.textos.cables4b` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.8.parkinson.textos.cama` | 2 · mención en el texto | 9 |
+| Cadera | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 10 |
+| Cadera | — | `sistemas.8.parkinson.textos.vibracion` | 2 · mención en el texto | 11 |
+| Cadera | — | `sistemas.8.parkinson.textos.parar` | 2 · mención en el texto | 12 |
+| Cervical | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.8.parkinson.textos.cables4b` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.8.parkinson.textos.cama` | 2 · mención en el texto | 9 |
+| Cervical | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 10 |
+| Cervical | — | `sistemas.8.parkinson.textos.vibracion` | 2 · mención en el texto | 11 |
+| Cervical | — | `sistemas.8.parkinson.textos.parar` | 2 · mención en el texto | 12 |
+| Lumbar | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.8.parkinson.textos.cables4b` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.8.parkinson.textos.cama` | 2 · mención en el texto | 9 |
+| Lumbar | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 10 |
+| Lumbar | — | `sistemas.8.parkinson.textos.vibracion` | 2 · mención en el texto | 11 |
+| Lumbar | — | `sistemas.8.parkinson.textos.parar` | 2 · mención en el texto | 12 |
+| Rodilla | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.8.parkinson.textos.cables4b` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.8.parkinson.textos.cama` | 2 · mención en el texto | 9 |
+| Rodilla | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 10 |
+| Rodilla | — | `sistemas.8.parkinson.textos.vibracion` | 2 · mención en el texto | 11 |
+| Rodilla | — | `sistemas.8.parkinson.textos.parar` | 2 · mención en el texto | 12 |
+| Codo | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.8.parkinson.textos.cables4b` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.8.parkinson.textos.cama` | 2 · mención en el texto | 9 |
+| Codo | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 10 |
+| Codo | — | `sistemas.8.parkinson.textos.vibracion` | 2 · mención en el texto | 11 |
+| Codo | — | `sistemas.8.parkinson.textos.parar` | 2 · mención en el texto | 12 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.cables4b` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.cama` | 2 · mención en el texto | 9 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.dolor5` | 2 · mención en el texto | 10 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.vibracion` | 2 · mención en el texto | 11 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.parar` | 2 · mención en el texto | 12 |
+
 ### Khalil 2025
 
 Autores: Khalil, Marwaha y Bollu  
@@ -14419,6 +14652,39 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
+### LeWitt 2020
+
+Autores: LeWitt, Kymes y Hauser  
+Título: *Parkinson disease and orthostatic hypotension in the elderly: recognition and management of risk factors for falls*  
+Publicación: Aging Dis 2020;11(3):679–691  
+DOI: 10.14336/AD.2019.0805  
+Última revisión: **sin revisar**  
+Nota: PMC7220277, leído entero (2026-11). Hipotensión ortostática en el 47–58 %; definición (≥20/10 mmHg en 3 min) y cómo medirla (5 min tumbado, de pie a los minutos 1 y 3); preguntas de cribado (tabla 3); maniobras físicas (tabla 4). Financiación de la industria: solo se usan la definición, la medida, las preguntas y las maniobras. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Tumbado 5 min y de pie, con medida al minuto 1 y al 3; hipotensión ortostática con una caída de 20 mmHg o más de la sistólica o de 10 o más de la diastólica en los 3 primeros minutos; en la neurogénica la FC casi no sube (LeWitt 2020).
+2. Levantarse en dos tiempos; maniobras físicas: cruzar las piernas tensando, inclinarse hacia delante, ponerse en cuclillas. Fármacos, sal y agua, con su médico (LeWitt 2020, tabla 4).
+3. LeWitt 2020 — LeWitt, Kymes y Hauser, «Parkinson disease and orthostatic hypotension in the elderly: recognition and management of risk factors for falls», Aging Dis 2020;11(3):679–691, tabla 3.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pk_d_ortostatica` · Parkinson | 2 · razonamiento del cribado | 3 |
+| Hombro | — | `sistemas.8.parkinson.tension.fuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.8.parkinson.textos.ortostatica` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.8.parkinson.tension.fuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.ortostatica` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.8.parkinson.tension.fuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.ortostatica` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.8.parkinson.tension.fuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.ortostatica` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.8.parkinson.tension.fuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.ortostatica` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.8.parkinson.tension.fuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.ortostatica` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.8.parkinson.tension.fuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.ortostatica` | 2 · mención en el texto | 2 |
+
 ### Lezak 2024
 
 Autores: Lezak, Massel y Varacallo  
@@ -15559,10 +15825,10 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 22 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Pronóstico | 5 · cita del pronóstico | 28 |
-| Hombro | — | `sistemas.8.banderasRojas.5.texto` | 2 · mención en el texto | 363 |
-| Hombro | — | `sistemas.14.banderasRojas.0.texto` | 2 · mención en el texto | 364 |
-| Hombro | — | `sistemas.15.banderasRojas.0.texto` | 2 · mención en el texto | 365 |
-| Hombro | — | `sistemas.16.banderasRojas.0.texto` | 2 · mención en el texto | 366 |
+| Hombro | — | `sistemas.9.banderasRojas.5.texto` | 2 · mención en el texto | 363 |
+| Hombro | — | `sistemas.15.banderasRojas.0.texto` | 2 · mención en el texto | 364 |
+| Hombro | — | `sistemas.16.banderasRojas.0.texto` | 2 · mención en el texto | 365 |
+| Hombro | — | `sistemas.17.banderasRojas.0.texto` | 2 · mención en el texto | 366 |
 | Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 371 |
 | Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 372 |
 | Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 373 |
@@ -15751,7 +16017,7 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 140 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 141 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 142 |
-| Lumbar | — | `sistemas.13.banderasRojas.0.texto` | 2 · mención en el texto | 367 |
+| Lumbar | — | `sistemas.14.banderasRojas.0.texto` | 2 · mención en el texto | 367 |
 | Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 396 |
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 397 |
 | Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 398 |
@@ -15930,9 +16196,9 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 260 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» («¿Por qué?») | 4b · razonamiento del test | 259 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» («¿Por qué?») | 4b · razonamiento del test | 260 |
-| Codo | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 368 |
-| Codo | — | `sistemas.8.banderasRojas.1.texto` | 2 · mención en el texto | 369 |
-| Codo | — | `sistemas.8.banderasRojas.2.texto` | 2 · mención en el texto | 370 |
+| Codo | — | `sistemas.9.banderasRojas.0.texto` | 2 · mención en el texto | 368 |
+| Codo | — | `sistemas.9.banderasRojas.1.texto` | 2 · mención en el texto | 369 |
+| Codo | — | `sistemas.9.banderasRojas.2.texto` | 2 · mención en el texto | 370 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 410 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 411 |
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 412 |
@@ -19048,13 +19314,13 @@ Citada como:
 | Hombro | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.9.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.10.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
 | Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 5 |
 | Cervical | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.12.preguntas.3.urgencia` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.13.preguntas.3.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | Pregunta `l_v4` · Vascular | 2 · razonamiento del cribado | 6 |
 | Rodilla | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
@@ -19064,7 +19330,7 @@ Citada como:
 | Codo | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.12.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.13.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 6 |
 
 ### NICE NG19
@@ -19535,6 +19801,57 @@ Citada como:
 | Lumbar | — | Bandera roja «Síntomas oculares (uveítis) o cutáneos (psoriasis) asociados» · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Bandera amarilla «Historia familiar de espondilitis anquilosante» · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 
+### NICE NG71
+
+Autores: National Institute for Health and Care Excellence  
+Título: *Parkinson's disease in adults*  
+Publicación: NICE guideline NG71, 2017  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo «Recommendations» leído en la web de NICE (2026-11). Sospecha (1.2.1) y derivación pronto y sin tratar (1.2.2); no retirar la medicación de golpe (1.3.2–1.3.4); somnolencia diurna (1.5.1); hipotensión ortostática (1.5.8); fisioterapia (1.7.2–1.7.3); logopedia (1.7.8). Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Deriva pronto y sin tratar a un especialista: no lo diagnostiques (NICE NG71, 1.2.2).
+2. Hipotensión ortostática: comentarlo con su médico, con revisión de los fármacos (NICE NG71, 1.5.8).
+3. Las guías recomiendan fisioterapia con experiencia en Parkinson (NICE NG71, 1.7.2–1.7.3; Osborne 2022).
+4. NICE NG71 — NICE, «Parkinson's disease in adults», guía NG71, 2017, capítulo «Recommendations», recomendaciones 1.3.2–1.3.4.
+5. NICE NG71 — NICE, «Parkinson's disease in adults», guía NG71, 2017, capítulo «Recommendations», recomendación 1.5.8.
+6. NICE NG71 — NICE, «Parkinson's disease in adults», guía NG71, 2017, capítulo «Recommendations», recomendación 1.7.8.
+7. NICE NG71 — NICE, «Parkinson's disease in adults», guía NG71, 2017, capítulo «Recommendations», recomendación 1.5.1.
+8. NICE NG71 — NICE, «Parkinson's disease in adults», guía NG71, 2017, capítulo «Recommendations», recomendaciones 1.2.1–1.2.2.
+9. NICE NG71
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pk_d_medicacion` · Parkinson | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_ortostatica` · Parkinson | 2 · razonamiento del cribado | 5 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_tragar` · Parkinson | 2 · razonamiento del cribado | 6 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_sueno` · Parkinson | 2 · razonamiento del cribado | 7 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_sospecha` · Parkinson | 2 · razonamiento del cribado | 8 |
+| condiciones | — | Fila «Parkinson» | guía de condiciones especiales | 9 |
+| Hombro | — | `sistemas.8.parkinson.textos.sospecha` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.8.parkinson.textos.ho` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.8.parkinson.textos.sospecha` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.ho` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.8.parkinson.textos.sospecha` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.ho` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.8.parkinson.textos.sospecha` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.ho` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.8.parkinson.textos.sospecha` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.ho` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.8.parkinson.textos.sospecha` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.ho` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.sospecha` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.ho` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 3 |
+
 ### NICE NG89
 
 Publicación: Guía NICE «Venous thromboembolism in over 16s: reducing the risk of hospital-acquired deep vein thrombosis or pulmonary embolism» (21 de marzo de 2018, actualizada el 13 de agosto de 2019)  
@@ -19929,6 +20246,85 @@ Citada como:
 | Rodilla | ro5 · Tendinopatía Rotuliana | Pauta de tratamiento | 5 · cita de la pauta | 4 |
 | Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 
+### Osborne 2022
+
+Autores: Osborne, Botkin, Colon-Semenza et al.  
+Título: *Physical therapist management of Parkinson disease: a clinical practice guideline from the American Physical Therapy Association*  
+Publicación: Phys Ther 2022;102(4):pzab302  
+DOI: 10.1093/ptj/pzab302  
+Última revisión: **sin revisar**  
+Nota: PMC9046970. Leídos la introducción, los métodos, la tabla 1 y, de cada recomendación, la recomendación, beneficios, riesgos, «intentional vagueness» y exclusiones; buenas prácticas y no-recomendaciones (2026-11). Dosis de ejercicio de lo que usaron los ensayos (no una dosis óptima), FC atenuada, bicicleta antes que cinta con congelación, estudios casi solo en Hoehn y Yahr 1–3. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Anótalo: lo que mides cambia con la fase (Osborne 2022; Keus 2014, 6.7.2).
+2. La rigidez limita la movilidad pasiva y el temblor puede tapar la respuesta: compara con el otro lado y anota si está en on u off (redacción propia sobre Osborne 2022 y Paggou 2023; Keus 2014, 6.7.2).
+3. Con lo que usaron los ensayos, sin una dosis óptima establecida: aeróbico moderado a alto, al menos 3 días por semana, 30–40 min; fuerza progresiva 1–2 días por semana; equilibrio 2–3 veces por semana; marcha 20–60 min, 3–5 días por semana, 4–12 semanas. Lo ganado se pierde si se deja (Osborne 2022). Casi cualquier tipo de ejercicio ayuda; el tipo importa menos que hacerlo (Ernst 2024).
+4. La FC puede subir menos de lo esperado: vigila también el esfuerzo percibido (Osborne 2022). Si estaba inactivo, empieza bajo y sube poco a poco (Keus 2014, 5.13).
+5. Bicicleta antes que cinta; usa estímulos externos (auditivos o visuales) para la marcha (Osborne 2022). Hidroterapia solo con supervisión individual (Keus 2014, 5.13).
+6. La capacidad física se entrena mejor en on; las estrategias se aprenden en on y, si hacen falta en off, se practican también en off. Valora y reevalúa en la misma fase y anótala (Keus 2014, 6.7.2; Osborne 2022).
+7. Las pautas se estudiaron sobre todo en estadios 1–3 (Osborne 2022).
+8. Las guías recomiendan fisioterapia con experiencia en Parkinson (NICE NG71, 1.7.2–1.7.3; Osborne 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.8.parkinson.textos.estadios` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.8.parkinson.textos.estadios` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.8.parkinson.textos.estadios` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.8.parkinson.textos.estadios` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.8.parkinson.textos.estadios` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.8.parkinson.textos.estadios` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.intensidad` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.congelacion` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.onOff` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.estadios` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.experiencia` | 2 · mención en el texto | 8 |
+
 ### Otoshi 2022
 
 Autores: Otoshi et al.  
@@ -19986,6 +20382,33 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Paggou 2023
+
+Autores: Paggou, Stefanis, Chronopoulos et al.  
+Título: *Shoulder dysfunction in Parkinson disease: review of clinical, imaging findings and contributing factors*  
+Publicación: J Musculoskelet Neuronal Interact 2023;23(2):263–280  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: PMC10233223, resumen, tabla 1 y discusión (2026-11). Dolor de hombro, hombro congelado y asimetría del braceo pueden preceder a los signos cardinales; rigidez y temblor del mismo lado. Revisión narrativa. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. La rigidez limita la movilidad pasiva y el temblor puede tapar la respuesta: compara con el otro lado y anota si está en on u off (redacción propia sobre Osborne 2022 y Paggou 2023; Keus 2014, 6.7.2).
+2. Paggou 2023 — Paggou, Stefanis, Chronopoulos et al., «Shoulder dysfunction in Parkinson disease: review of clinical, imaging findings and contributing factors», J Musculoskelet Neuronal Interact 2023;23(2):263–280, tabla 1 y discusión.
+3. Paggou 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pk_d_sospecha` · Parkinson | 2 · razonamiento del cribado | 2 |
+| condiciones | — | Fila «Parkinson» | guía de condiciones especiales | 3 |
+| Hombro | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 1 |
 
 ### Paik 2016
 
@@ -21195,6 +21618,23 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Pötter-Nerger 2024
+
+Autores: Pötter-Nerger, Schrader, Jost et al.  
+Título: *The akinetic crisis in Parkinson's disease — the upper end of a spectrum of subacute akinetic states*  
+Publicación: J Neural Transm 2024;131(10):1199–1207  
+DOI: 10.1007/s00702-024-02817-8  
+Última revisión: **sin revisar**  
+Nota: PMC11489269, leído entero (2026-11). Crisis acinética: rigidez y acinesia que empeoran en 2–3 días, fiebre, alteración de la conciencia, disfagia; mortalidad del 4–23 %; desencadenantes (infecciones, cambio o retirada de la medicación, traumatismos, cirugía, calor, deshidratación). Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Pötter-Nerger 2024 — Pötter-Nerger, Schrader, Jost et al., «The akinetic crisis in Parkinson's disease — the upper end of a spectrum of subacute akinetic states», J Neural Transm 2024;131(10):1199–1207.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pk_u_crisis` · Parkinson | 2 · razonamiento del cribado | 1 |
 
 ### Prakash 2018
 
@@ -22481,7 +22921,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | — | `sistemas.11.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
+| Lumbar | — | `sistemas.12.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
 | Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
@@ -24042,6 +24482,38 @@ Citada como:
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.terapiaManual` | 2 · mención en el texto | 4 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.thrustPp` | 2 · mención en el texto | 5 |
 
+### Simonet 2019
+
+Autores: Simonet, Tolosa, Camara y Valldeoriola  
+Título: *Emergencies and critical issues in Parkinson's disease*  
+Publicación: Pract Neurol 2020;20(1):15–25 (en línea en 2019)  
+DOI: 10.1136/practneurol-2018-002075  
+Última revisión: **sin revisar**  
+Nota: PMC7029239, leído entero (2026-11). Síndrome de parkinsonismo-hiperpirexia y sus desencadenantes (tabla 1), hipotensión ortostática, ataques de sueño, disfagia, caídas y fracturas, estimulación cerebral profunda (fallo de la estimulación: contactar con el centro implantador). Revisión narrativa; sus fármacos y dosis no van a la app. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. No le dejes solo en la bicicleta o la cinta (redacción propia sobre Simonet 2019).
+2. Simonet 2019 — Simonet, Tolosa, Camara y Valldeoriola, «Emergencies and critical issues in Parkinson's disease», Pract Neurol 2020;20(1):15–25, tabla 1.
+3. Simonet 2019 — Simonet, Tolosa, Camara y Valldeoriola, «Emergencies and critical issues in Parkinson's disease», Pract Neurol 2020;20(1):15–25, apartado de la estimulación cerebral profunda.
+4. Simonet 2019 — Simonet, Tolosa, Camara y Valldeoriola, «Emergencies and critical issues in Parkinson's disease», Pract Neurol 2020;20(1):15–25.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pk_u_crisis` · Parkinson | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_medicacion` · Parkinson | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_estimulador` · Parkinson | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_mental` · Parkinson | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_tragar` · Parkinson | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `pk_d_sueno` · Parkinson | 2 · razonamiento del cribado | 4 |
+| Hombro | — | `sistemas.8.parkinson.textos.sueno` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.sueno` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.sueno` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.sueno` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.sueno` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.sueno` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.sueno` | 2 · mención en el texto | 1 |
+
 ### Sims 2020
 
 Autores: Sims, Chau y Davies  
@@ -25036,6 +25508,29 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
+### Tan 2014
+
+Autores: Tan, Wang, Zhou et al.  
+Título: *Parkinson's disease and risk of fracture: a meta-analysis of prospective cohort studies*  
+Publicación: PLoS One 2014;9(4):e94379  
+DOI: 10.1371/journal.pone.0094379  
+Última revisión: **sin revisar**  
+Nota: PMC3979831, resumen y resultados (2026-11). Riesgo de fractura HR 2,66 (6 cohortes, calidad moderada). Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Osteoporosis y fracturas, más del doble que sin Parkinson; la cadera es la mitad de las fracturas y las vertebrales pasan desapercibidas tras la postura encorvada. Valora la tarjeta de osteoporosis (Torsney 2014; Tan 2014).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+
 ### Tanaka 2022
 
 Autores: Tanaka, Inoue, Masuda, Tian, Jung y Tanaka  
@@ -25606,6 +26101,29 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `pq_compart` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
+
+### Torsney 2014
+
+Autores: Torsney, Noyce, Doherty et al.  
+Título: *Bone health in Parkinson's disease: a systematic review and meta-analysis*  
+Publicación: J Neurol Neurosurg Psychiatry 2014;85(10):1159–1166  
+DOI: 10.1136/jnnp-2013-307307  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero (8 pp., 2026-11). Osteoporosis OR 2,61 y fractura OR 2,28; la cadera, la mitad de las fracturas; las vertebrales pasan desapercibidas tras la postura encorvada. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+
+Citada como:
+
+1. Osteoporosis y fracturas, más del doble que sin Parkinson; la cadera es la mitad de las fracturas y las vertebrales pasan desapercibidas tras la postura encorvada. Valora la tarjeta de osteoporosis (Torsney 2014; Tan 2014).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.8.parkinson.textos.hueso` | 2 · mención en el texto | 1 |
 
 ### Trager 2024
 

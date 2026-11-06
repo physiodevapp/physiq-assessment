@@ -200,7 +200,7 @@ export function htmlCribado(region) {
   </div>
   ${especiales.length ? `<div class="pagina especial" data-grupo="especiales">
     <div class="grupo">Condiciones especiales · ${NOMBRES[region]}</div>
-    <div class="grupo-sub">Solo se preguntan si el paciente tiene la condición (en la app, su tarjeta de la fase 1 marcada, o el mecanismo «Post-quirúrgico»). La escala de Beighton, la sospecha del subtipo vascular, la prueba de bipedestación y la regla de la tensión en el embarazo se calculan en la guía (QR).</div>
+    <div class="grupo-sub">Solo se preguntan si el paciente tiene la condición (en la app, su tarjeta de la fase 1 marcada, o el mecanismo «Post-quirúrgico»). La escala de Beighton, la sospecha del subtipo vascular, la prueba de bipedestación, la regla de la tensión en el embarazo y la tensión tumbado y de pie del Parkinson se calculan en la guía (QR).</div>
     <div class="cols">${especiales.map(seccion).join('')}</div>
     ${pie}
   </div>` : ''}
@@ -713,9 +713,9 @@ export function htmlCondiciones() {
   const T = TEXTOS_CONDICIONES;
   // En papel: dónde están sus preguntas; en la app: dónde se marca. Las que tienen calculadora
   // en el cribado de la guía (guia-calc.js, CALC_SISTEMA) lo dicen
-  const CON_CALCULADORA = ['hipermovilidad', 'disautonomia', 'embarazo'];
+  const CON_CALCULADORA = ['hipermovilidad', 'disautonomia', 'embarazo', 'parkinson'];
   // Lo que la guía añade a la hoja de cribado de cada condición (lib/guia-condiciones.js)
-  const CON_BLOQUES = ['disautonomia', 'lupus', 'osteoporosis', 'embarazo'];
+  const CON_BLOQUES = ['disautonomia', 'lupus', 'osteoporosis', 'embarazo', 'parkinson'];
   const enGuia = c => c.id === 'posquirurgico' ? '; la tarjeta «Cirugía», en la hoja de fase 1' : `; ${[CON_BLOQUES.includes(c.id) ? 'sus otras preguntas' : '', CON_CALCULADORA.includes(c.id) ? 'la calculadora' : '', 'las líneas de la exploración', 'las recomendaciones'].filter(Boolean).join(', ').replace(/, ([^,]+)$/, ' y $1')}, en la guía (QR)`;
   const donde = c => c.destino?.tarjeta
     ? `En papel: su bloque en la página 2 de la hoja de cribado${enGuia(c)} · En la app: fase 1, tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}${c.enPlan ? ` · Plan (fase 6): ${esc(c.enPlan)}, en la guía (Plan de tratamiento) o en la app` : ''}`
@@ -1178,7 +1178,7 @@ export function htmlPlanHoja() {
     return `<p class="reg"><b>${esc2(nombreRegion(r))}</b></p><ul>${siempre}${neuro}</ul>`;
   };
   const conds = [['Lupus', PLAN.RED_LUPUS], ['Disautonomía', [PLAN.RED_DISAUTONOMIA]], ['Trastorno mastocitario o anafilaxia', [PLAN.RED_MASTOCITOS]], ['Osteoporosis', [PLAN.RED_OSTEOPOROSIS]],
-    ['Embarazo', [PLAN.RED_EMBARAZO]], ['Posparto', [PLAN.RED_POSPARTO]], ['Anticoagulado o antiagregado', [PLAN.RED_ANTICOAGULADO]]];
+    ['Embarazo', [PLAN.RED_EMBARAZO]], ['Posparto', [PLAN.RED_POSPARTO]], ['Anticoagulado o antiagregado', [PLAN.RED_ANTICOAGULADO]], ['Parkinson', PLAN.RED_PARKINSON]];
   const tarjetas = [
     `<section class="tarjeta pl"><h2>Cómo se elige el escalón (B)</h2>
       <p>Se cruzan la gravedad (por la NRS) y la irritabilidad (la de la hoja de irritabilidad; sin registrar, alta).</p>

@@ -35,7 +35,7 @@ test('un solo estado, «Toma» (decisión 2): sin «Sospecha» ni «Diagnosticad
   assert.deepEqual(A.TIPOS_AC, ['vk', 'do', 'hp', 'as', 'oa', 'ns']);
   assert.equal(A.normalizarAnticoagulado({ estado: 'sospecha' }).estado, '');
   const html = leer('index.html');
-  const card = html.slice(html.indexOf('id="cardAnticoagulado"'), html.indexOf('id="cardCronologia"'));
+  const card = html.slice(html.indexOf('id="cardAnticoagulado"'), html.indexOf('id="cardParkinson"'));
   assert.ok(card.includes("selectACEstado('toma')") && !/sospecha|diagnosticad/i.test(card));
   assert.ok(html.indexOf('id="cardEmbarazo"') < html.indexOf('id="cardAnticoagulado"'), 'después del embarazo');
 });

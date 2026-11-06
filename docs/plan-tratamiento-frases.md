@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **35** frases.
+Redacción propia: **40** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -37,6 +37,12 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si te das un golpe en la cabeza, aunque te encuentres bien, ve hoy a urgencias; si en los días siguientes tienes un dolor de cabeza fuerte que va a más, vómitos, somnolencia o confusión, llama al 112. Si te empieza de golpe un dolor fuerte de cuello o espalda con debilidad, hormigueo o cambios al orinar, ve a urgencias ya. Un dolor muy fuerte en la ingle, la cadera o la barriga con mareo, o un brazo o una pierna muy hinchados, tensos y con un dolor desproporcionado, también. Si lo tomas por una trombosis: si te falta el aire de repente, te duele el pecho al respirar o toses sangre, llama al 112; si la pierna se te hincha más, se pone caliente o te duele más, que te vea un médico hoy. No dejes ni te saltes tu anticoagulante sin hablarlo antes con tu médico.»  
   ↳ fuente: Redacción propia sobre NICE NG232, 1.2.4 y 1.10.9 (golpe en la cabeza); Peng 2022 (hematoma epidural espinal); Lukies 2023 (hematoma del psoas); Brooker 2020 (síndrome compartimental); Vyas 2024 y NICE NG158 (embolia pulmonar y TVP, como pq_tep y pq_tvp); Steffel 2021 (no saltarse dosis) (docs/anticoagulado.md)  
   ↳ clave `alarmaAnticoagulado`
+- [ ] «Si en los próximos días estás mucho más rígido o inmóvil con fiebre, confusión o mucho sudor, o no puedes tomar tu medicación, ve a urgencias.»  
+  ↳ fuente: Pötter-Nerger 2024 (crisis acinética); NICE NG71, 1.3.2 (no retirar la medicación de golpe) (docs/parkinson.md)  
+  ↳ clave `alarmaCrisisParkinson`
+- [ ] «Para el ejercicio y consulta si notas náuseas, dolor u opresión en el pecho que dura más de unos minutos, falta de aire fuera de lo normal, mareo, palpitaciones o sudor frío.»  
+  ↳ fuente: Keus 2014, 6.7.5 (cuándo parar el ejercicio; solo lo que el paciente puede notar, decisión 19) (docs/parkinson.md)  
+  ↳ clave `alarmaEjercicioParkinson`
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
   ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
   ↳ clave `alarmaSincope`
@@ -387,6 +393,12 @@ Regiones periféricas:
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Lupus con corticoides mantenidos: sin manipulación con thrust en la columna torácica (Puentedura 2015, tabla 1: corticoides a largo plazo, contraindicación absoluta). Si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
   ↳ **redacción propia**
+- [ ] «Parkinson: Con lo que usaron los ensayos, sin una dosis óptima establecida: aeróbico moderado a alto, al menos 3 días por semana, 30–40 min; fuerza progresiva 1–2 días por semana; equilibrio 2–3 veces por semana; marcha 20–60 min, 3–5 días por semana, 4–12 semanas. Lo ganado se pierde si se deja (Osborne 2022). Casi cualquier tipo de ejercicio ayuda; el tipo importa menos que hacerlo (Ernst 2024). La FC puede subir menos de lo esperado: vigila también el esfuerzo percibido (Osborne 2022). Si estaba inactivo, empieza bajo y sube poco a poco (Keus 2014, 5.13). La capacidad física se entrena mejor en on; las estrategias se aprenden en on y, si hacen falta en off, se practican también en off. Valora y reevalúa en la misma fase y anótala (Keus 2014, 6.7.2; Osborne 2022).»  
+  ↳ **redacción propia**
+- [ ] «Parkinson con estimulador cerebral profundo, o sin confirmar si lo lleva: nada de onda corta ni microondas (riesgo de lesión cerebral grave o muerte aunque esté apagado, o retirado si quedan electrodos), ni ultrasonido, TENS, interferenciales ni otra electroestimulación, ni presión manual cerca de los cables (FDA 2002; Health Canada 2003; Keus 2014, 5.13).»  
+  ↳ **redacción propia**
+- [ ] «Parkinson: no uses plataformas de vibración de cuerpo entero (Keus 2014, 6.4.6: recomendación fuerte en contra).»  
+  ↳ **redacción propia**
 - [ ] «Anticoagulado o antiagregado: precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3); un esfuerzo mecánico pequeño puede dar un sangrado importante (Kim 2026, un caso). De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes, solo casos de sangrado (Tominaga 2023; Kwon 2024; Kim 2026) y un consenso, en mayores, que pide informar antes del riesgo de moratón o sangrado (Hawk 2017). Antes de cada técnica, pregunta si desde la última sesión se ha dado un golpe o ha notado un hematoma o un dolor nuevos. No le digas que deje el fármaco ni que se salte una dosis (Steffel 2021).»  
   ↳ **redacción propia**
 - [ ] «Anticoagulante: sin manipulación con thrust en la columna torácica (Puentedura 2015, tabla 1: contraindicación absoluta); en la cervical, otra tabla lo trata como precaución (Hutting 2018, opinión de los autores). Las dos son opinión de expertos y ninguna distingue fármacos ni da un INR. Los escalones no proponen grado V; si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
@@ -691,6 +703,10 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ **redacción propia**
 - [ ] «Red de seguridad (anticoagulado o antiagregado): explicar que un golpe en la cabeza, aunque se encuentre bien, pide ir a urgencias, y que un dolor de cabeza fuerte, vómitos, somnolencia o confusión en los días siguientes piden llamar al 112; que un dolor fuerte de cuello o espalda con debilidad u hormigueo, un dolor muy fuerte en la ingle, la cadera o la barriga con mareo, o un brazo o una pierna muy hinchados y tensos con un dolor desproporcionado piden urgencias; si lo toma por una trombosis, que la falta de aire brusca, el dolor en el pecho al respirar o la tos con sangre piden llamar al 112, y que la pierna que se hincha más, se calienta o duele más pide que le vea un médico hoy; y que no deje ni se salte el fármaco sin hablarlo con su médico (NICE NG232, 1.2.4 y 1.10.9; Peng 2022; Lukies 2023; Brooker 2020; Vyas 2024; NICE NG158; Steffel 2021).»  
   ↳ fuente en el texto (NICE NG158, Vyas 2024)
+- [ ] «Red de seguridad (Parkinson): explicar que si en los próximos días está mucho más rígido o inmóvil con fiebre, confusión o mucho sudor, o no puede tomar su medicación, debe ir a urgencias (Pötter-Nerger 2024; NICE NG71, 1.3.2).»  
+  ↳ **redacción propia**
+- [ ] «Red de seguridad (Parkinson): explicar que pare el ejercicio y consulte si nota náuseas, dolor u opresión en el pecho que dura más de unos minutos, falta de aire fuera de lo normal, mareo, palpitaciones o sudor frío (Keus 2014, 6.7.5).»  
+  ↳ **redacción propia**
 - [ ] «Red de seguridad (disautonomía): explicar que, si se desmaya mientras hace ejercicio, debe parar y no volver a hacer ejercicio hasta que le vea el médico, y comprobar que lo ha entendido (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).»  
   ↳ fuente en el texto (NICE CG109, Brignole 2018)
 - [ ] «Signo comparable y la actividad que el paciente refiere como control (Maitland 2005, cap. 6, pp. 100–101 y 128).»  

@@ -1078,6 +1078,113 @@ async function checkAnticoagulado(page) {
   return r;
 }
 
+// Parkinson (Fase P, docs/parkinson.md), lumbar. Fase 1: tarjeta con sus filas,
+// la fase on/off solo con fluctuaciones y la línea del estimulador en rojo
+// (también con «No lo sabe»); fase 2: urgencia y derivaciones sin embudo, la
+// del estimulador solo con «Sí», la medida de la tensión con su reloj (minutos
+// 1 y 3) y el bloque de caídas compartido con la osteoporosis; nota de la fase
+// 3, 4b, fase 5 (estimulador primero, nunca plegado), fase 6 (avisos y red),
+// la sospecha (solo la derivación) y 320 px.
+async function checkParkinson(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor lumbar al agacharse');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.nota = (await page.textContent('#pkNota')).includes('Márcala si tiene diagnóstico de enfermedad de Parkinson');
+  r.filasOcultas = !(await page.isVisible('#pkDiagWrap'));
+  await page.click('#pkEstado .option-btn[data-valor="diagnosticado"]');
+  r.filas = await page.isVisible('#pkDiagWrap') && !(await page.isVisible('#pkFaseWrap'));
+  await page.click('[data-pk-fila="fluctuaciones"] .option-btn[data-valor="SI"]');
+  r.fase = await page.isVisible('#pkFaseWrap') && (await page.textContent('#pkFaseNota')).includes('lo que mides cambia con la fase');
+  await page.click('[data-pk-fila="fase"] .option-btn[data-valor="on"]');
+  await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="NS"]');
+  r.estDuda = (await page.textContent('#pkEstimulador')).includes('Hasta confirmarlo: nada de onda corta');
+  await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="SI"]');
+  r.estSi = await page.isVisible('#pkEstimulador .alert-danger') && (await page.textContent('#pkEstimulador')).includes('Nada de onda corta ni microondas') && !(await page.textContent('#pkEstimulador')).includes('Hasta confirmarlo');
+  // Segundo toque borra
+  await page.click('[data-pk-fila="fluctuaciones"] .option-btn[data-valor="SI"]');
+  r.segundoToque = await page.evaluate(() => state.parkinson.fluctuaciones === '' && state.parkinson.fase === '');
+  await page.click('[data-pk-fila="fluctuaciones"] .option-btn[data-valor="SI"]');
+  await page.click('[data-pk-fila="fase"] .option-btn[data-valor="on"]');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_parkinson');
+  await page.click('#tab_transversal_parkinson');
+  const P = '#panel_transversal_parkinson';
+  r.preguntas = await page.evaluate(sel => { const ids = [...document.querySelectorAll(`${sel} .sq2`)].map(e => e.id);
+    return ids.includes('sq2_pk_u_crisis') && ids.includes('sq2_pk_d_estimulador') && ids.includes('sq2_pk_d_ortostatica') && !ids.includes('sq2_pk_d_sospecha'); }, P);
+  r.sinEmbudo = await page.$$eval(`${P} [data-embudo]`, els => els.length) === 0;
+  await page.click(`${P} #sq2_pk_u_crisis .sq-btn.si`);
+  r.urgencia = await page.isVisible('#sistemicoAlert .urgencia-alert');
+  await page.click(`${P} #sq2_pk_u_crisis .sq-btn.no`);
+  await page.click(`${P} #sq2_pk_d_medicacion .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_pk_d_medicacion .sq2-deriv-msg`);
+  await page.click(`${P} #sq2_pk_d_medicacion .sq-btn.no`);
+  await page.click(`${P} #sq2_pk_d_sueno .sq-btn.si`);
+  // Medida de la tensión: tumbado y minutos 1 y 3, con su reloj
+  await page.click(`${P} [data-pk-bloque] button:has-text("Hacer la medida")`);
+  r.tabla = await page.$$eval(`${P} .pk-tabla [data-pk-et]`, els => els.map(e => e.dataset.pkEt).join()) === 'tumbado,m1,m3';
+  r.reloj = await page.isVisible(`${P} [data-pk-reloj] button:has-text("Empezar reposo tumbado")`);
+  await page.fill(`${P} [data-pk-fila-t="tumbado"][data-pk-campo="tas"]`, '130');
+  await page.fill(`${P} [data-pk-fila-t="tumbado"][data-pk-campo="tad"]`, '80');
+  await page.fill(`${P} [data-pk-fila-t="m1"][data-pk-campo="tas"]`, '108');
+  r.ho = (await page.textContent(`${P} [data-pk-resultado]`)).includes('Hipotensión ortostática');
+  r.otraCopia = await page.evaluate(() => document.querySelector('#acc_transversal_parkinson [data-pk-fila-t="m1"][data-pk-campo="tas"]')?.value === '108');
+  r.sinDisautonomia = await page.evaluate(() => !state.disautonomia.estado);
+  // Caídas: el bloque de la osteoporosis
+  await page.click(`${P} [data-pk-caidas] .option-btn >> text="2 o más"`);
+  r.caidas = await page.evaluate(() => state.parkinson.caidas.n === '2') && await page.isVisible(`${P} [data-pk-bloque] .alert-warning`);
+  // Nota de la fase 3
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForTimeout(150);
+  r.nota3 = await page.isVisible('#pkNotaDolor') && (await page.textContent('#pkNotaDolor')).includes('Pregunta por el dolor aunque no lo cuente');
+  // 320 px: la tarjeta y el acordeón, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#acc_transversal_parkinson .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.setViewportSize({ width: 1280, height: 860 });
+  // Recorrido entero: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#pkEstado .option-btn[data-valor="diagnosticado"]');
+  await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="SI"]');
+  await page.click('[data-pk-fila="congelacion"] .option-btn[data-valor="SI"]');
+  await walkRegion(page, 'lumbar');
+  r.fase5 = await page.evaluate(() => { const box = document.querySelector('#resultsContent .pk-fase5');
+    const t = box?.textContent || '';
+    return !!box && !box.closest('details') && box.querySelector('.alert-danger')?.textContent.includes('Nada de onda corta')
+      && t.includes('Bicicleta antes que cinta') && t.includes('plataformas de vibración') && t.includes('experiencia en Parkinson'); });
+  r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .pk-fase5 .cita[data-cita^="Osborne 2022"]'));
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.isVisible('#hypothesisCards .pk-nota-4b') && (await page.textContent('#hypothesisCards .pk-nota-4b')).includes('cables del estimulador');
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Parkinson con estimulador cerebral profundo') && t.includes('Parkinson: no uses plataformas') && t.includes('Red de seguridad (Parkinson)'); });
+  // Sospecha: solo la derivación; el 📄 Informe sin la palabra Parkinson
+  await abrirApp(page);
+  await page.click('#pkEstado .option-btn[data-valor="sospecha"]');
+  r.sospecha1 = await page.isVisible('#pkSospecha') && !(await page.isVisible('#pkDiagWrap'));
+  await walkRegion(page, 'lumbar');
+  r.sospecha5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .pk-fase5')?.textContent || '';
+    return t.includes('Derivar pronto y sin tratar') && !t.includes('Bicicleta'); });
+  r.informe = await page.evaluate(async () => { const i = (await import('./app.js')).buildInformeFisioterapiaText(); return i.includes('especialista en trastornos del movimiento') && !/parkinson/i.test(i); });
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // Fármacos que toma (paso 3 de la farmacología, docs/farmacos-paciente.md),
 // lumbar. Fase 1: chips de las familias escritas de la guía (sin texto libre),
 // la línea del anticoagulado, el chip de corticoides desde el lupus (solo
@@ -3463,7 +3570,7 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,anticoagulado,tarlov,cascanueces,congestionPelvica'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,anticoagulado,parkinson,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
       && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
@@ -6388,6 +6495,7 @@ async function checkSinHuecos(browser, errors) {
       window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado'); window.selectMAEstado('diagnosticado');
       window.selectOPEstado('diagnosticada'); window.selectOPFila('vertebrales', '1'); window.selectOPCaidas('1');
       window.selectEMEstado('posparto'); window.updateEM('semanasAprox', '3');
+      window.selectPKEstado('diagnosticado'); window.selectPKFila('fluctuaciones', 'SI'); window.selectPKFila('estimulador', 'NS'); window.pkTensionHacer();
     });
     for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
       await page.evaluate(f => window.goToPhase(f), f);
@@ -7102,7 +7210,7 @@ async function checkGuia(browser, errors) {
     await page.keyboard.press('Escape');
     await page.goto(`${base}#hombro/confirmacion`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-cc-tec', { state: 'attached' });
-    r.tecnica4b = await page.evaluate(() => document.querySelectorAll('.guia-cc-tec li').length === 5
+    r.tecnica4b = await page.evaluate(() => document.querySelectorAll('.guia-cc-tec li').length === 7
       && [...document.querySelectorAll('.guia-cc-test')].some(x => /lado sano/.test(x.textContent)));
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
     r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
@@ -7114,12 +7222,35 @@ async function checkGuia(browser, errors) {
       await pr.waitForSelector('#calc-disautonomia', { state: 'attached' });
       await pr.evaluate(() => { document.querySelector('#calc-disautonomia').closest('details.guia-plegable').open = true; });
       await pr.click('#calc-disautonomia summary');
-      await pr.click('[data-gc-reloj="pie"]');
+      await pr.click('#calc-disautonomia [data-gc-reloj="pie"]');
       await pr.clock.runFor(61000);
-      const fila = await pr.evaluate(() => document.querySelector('tr.ds-fila-toca')?.dataset.gcFila);
+      const fila = await pr.evaluate(() => document.querySelector('[data-gc-tabla="ds"] tr.ds-fila-toca')?.dataset.gcFila);
       await pr.clock.runFor(160000);
       await pr.fill('[data-gc-num="prueba"][data-gc-k="m1.fc"]', '95');
-      r.relojGuia = fila === 'm1' && /toma a las 3:4/.test(await pr.textContent('[data-gc-toma="m1"]'));
+      r.relojGuia = fila === 'm1' && /toma a las 3:4/.test(await pr.textContent('[data-gc-tabla="ds"] [data-gc-toma="m1"]'));
+      await pr.close();
+    }
+    // Parkinson: tensión tumbado y de pie con su reloj (minutos 1 y 3) y la regla de la hipotensión ortostática
+    {
+      const pr = await context.newPage();
+      await pr.clock.install();
+      await pr.goto(`${base}#lumbar/cribado`, { waitUntil: 'networkidle' });
+      await pr.waitForSelector('#calc-parkinson', { state: 'attached' });
+      await pr.evaluate(() => { document.querySelector('#calc-parkinson').closest('details.guia-plegable').open = true; });
+      await pr.click('#calc-parkinson summary');
+      const filas = await pr.$$eval('[data-gc-tabla="pk"] [data-gc-fila]', els => els.map(e => e.dataset.gcFila).join());
+      await pr.click('#calc-parkinson [data-gc-reloj="pie"]');
+      await pr.clock.runFor(181000);
+      const fila3 = await pr.evaluate(() => document.querySelector('[data-gc-tabla="pk"] tr.ds-fila-toca')?.dataset.gcFila);
+      const disSinReloj = await pr.evaluate(() => !document.querySelector('[data-gc-tabla="ds"] tr.ds-fila-toca')
+        && document.querySelector('[data-gc-reloj-caja="ds"] [data-modo]')?.dataset.modo === 'sin');
+      await pr.clock.runFor(60000);
+      const fin = (await pr.textContent('[data-gc-reloj-caja="pk"]')).includes('Prueba terminada: 3 min de pie');
+      await pr.fill('[data-gc-num="tension"][data-gc-k="tumbado.tas"]', '130');
+      await pr.fill('[data-gc-num="tension"][data-gc-k="tumbado.tad"]', '80');
+      await pr.fill('[data-gc-num="tension"][data-gc-k="m1.tas"]', '108');
+      const ho = (await pr.textContent('#guiaGcTension')).includes('Hipotensión ortostática');
+      r.tensionPkGuia = filas === 'tumbado,m1,m3' && fila3 === 'm3' && disSinReloj && fin && ho;
       await pr.close();
     }
     // (después de comprobar que la guía no crea la sesión: la app sí la abre)
@@ -7138,7 +7269,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol && r.saltos && r.saltoVa
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.tensionPkGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
   return r;
 }
 
@@ -7703,7 +7834,7 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 11 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, el botón de una fila de región la elige y lleva a su pregunta; con otra región pide confirmación (cancelar vuelve a la guía, también en móvil con Atrás) y la cambia; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 12 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, el botón de una fila de región la elige y lleva a su pregunta; con otra región pide confirmación (cancelar vuelve a la guía, también en móvil con Atrás) y la cambia; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -7796,6 +7927,13 @@ const SECCIONES = [
     const r = await checkAnticoagulado(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta «Toma» con sus chips, guía de fármacos en los antitrombóticos, golpe en la cabeza según el fármaco, urgencias sin plegar ni embudo, derivación, nota 4b, fase 5, fase 6 (aviso, tope y red) y 320 px`);
     if (!r.ok) console.log('\nAnticoagulado:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'parkinson', titulo: 'Parkinson (Fase P, lumbar):', run: async ({ page }) => {
+    const r = await checkParkinson(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con sus filas, fase on/off con fluctuaciones, estimulador en rojo (también «No lo sabe»), urgencia y derivaciones sin embudo, tensión tumbado y de pie con reloj (1 y 3 min), caídas compartidas, notas de las fases 3 y 4b, fase 5 nunca plegada, fase 6 (avisos y red), la sospecha sin la palabra en el informe y 320 px`);
+    if (!r.ok) console.log('\nParkinson:', JSON.stringify(r));
     return r.ok;
   } },
 

@@ -270,7 +270,7 @@ test('guía: calculadora de cuestionarios, efectos del ejercicio, preguntar a la
   // Las mismas piezas de la app, sin reescribirlas
   assert.ok(extra.includes('formularioCuestionarioHTML(def') && extra.includes('resultadoCuestionarioHTML(def') && extra.includes('ejercicioHTML()'));
   assert.ok(/Object\.entries\(TIPOS_PREGUNTA\)/.test(extra), 'los tres modos de «Preguntar a la IA»');
-  assert.ok(calc.includes('estadoReloj(RELOJ, Date.now())') && calc.includes('tomaFueraDeTiempo('), 'reloj de la prueba de bipedestación');
+  assert.ok(calc.includes('estadoReloj(RELOJ, Date.now(), MINUTOS[de])') && calc.includes('tomaFueraDeTiempo('), 'reloj de la prueba de bipedestación');
   // El cuestionario recomendado de la confirmación enlaza la calculadora
   assert.ok(src.includes('href="#cuestionarios/${id}"'));
   // Hoja de síntomas: en las hojas generales (cuadernos) y con todas las zonas de cada región
@@ -325,10 +325,11 @@ test('cribado de la guía: zonas de dolor referido e impacto de cada sistema, lo
 
 test('calculadoras de la guía: usan las reglas de la app y salen en el bloque de su condición', () => {
   const src = leer('guia-calc.js');
-  for (const f of ['resultadoHAG(', 'reglaVascular(', 'resultadoPrueba(', 'reglaTA(']) assert.ok(src.includes(f), f);
-  assert.deepEqual(Object.keys(CALC.CALC_SISTEMA).sort(), ['transversal_disautonomia', 'transversal_embarazo', 'transversal_hipermovilidad']);
+  for (const f of ['resultadoHAG(', 'reglaVascular(', 'resultadoPrueba(', 'reglaTA(', 'resultadoTension(']) assert.ok(src.includes(f), f);
+  assert.deepEqual(Object.keys(CALC.CALC_SISTEMA).sort(), ['transversal_disautonomia', 'transversal_embarazo', 'transversal_hipermovilidad', 'transversal_parkinson']);
   for (const id of Object.keys(CALC.CALC_SISTEMA)) assert.ok(SYSTEMIC_SCREENING.lumbar.sistemas.some(s => s.id === id), id);
-  assert.ok(CALC.calcHipermovilidadHTML().includes('Beighton') && CALC.calcDisautonomiaHTML().includes('FC') && CALC.calcEmbarazoHTML().includes('TAS'));
+  assert.ok(CALC.calcHipermovilidadHTML().includes('Beighton') && CALC.calcDisautonomiaHTML().includes('FC') && CALC.calcEmbarazoHTML().includes('TAS')
+    && CALC.calcParkinsonHTML().includes('data-gc-reloj-caja="pk"') && !CALC.calcParkinsonHTML().includes('Síntomas'));
 });
 
 test('número de hipótesis: la hoja y la guía pintan la cifra, nunca el carácter rodeado (ilegible desde el 10)', () => {
