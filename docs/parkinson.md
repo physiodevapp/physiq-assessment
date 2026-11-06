@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado aprobado por el usuario (noviembre 2026)**, con sus recomendaciones de redacción propia incluidas (ver «Texto cerrado para revisión»). **Implementado (noviembre 2026, rama `claude/parkinson-condicion`)**: ver «Implementación» al final. `_bloquePK` hecho en physiq-report (physiq-report#101). **Revisado por el usuario en la app (noviembre 2026).** Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
+Estado: **cerrado (noviembre 2026).** Diseño con las 23 decisiones aceptadas por el usuario, todas las fuentes leídas (en abierto y PDF del usuario), texto cerrado aprobado, implementado (rama `claude/parkinson-condicion`, physiodevapp/physiq-assessment#619 y #620; ver «Implementación» al final) y revisado por el usuario en la app. `_bloquePK` en physiq-report (physiodevapp/physiq-report#101), con el mismo texto que `bloquePKIA()` en los cuatro casos de `PK_CASOS` (comprobado, noviembre 2026). Quedan fuera dos tareas aparte, cada una con su entrada en `MIGRATION_PLAN.md`: el bloque «Ejercicio en el Parkinson» (decisión 13) y los otros implantes con electrodos (decisión 22).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -251,6 +251,8 @@ Fila `parkinson`:
 - **Al marcarla, añade:** las preguntas de la fase 2, la medida de la tensión de pie, la línea del estimulador, el recuadro de la fase 5 y los avisos de la fase 6.
 
 ### Otras tareas que salen de aquí (fuera de esta condición)
+
+Cada una tiene su propia entrada en `MIGRATION_PLAN.md` (noviembre 2026), fuera de la lista del Parkinson.
 
 - **Otros implantes con electrodos** (decisión 22): marcapasos, desfibrilador, estimulador medular, implante coclear. La diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003), y la app no lo pregunta en ninguna parte. Va como casilla aparte en `MIGRATION_PLAN.md`.
 - **Bloque «Ejercicio en el Parkinson»** de la guía de ejercicio (decisión 13), con la Cochrane leída entera.
