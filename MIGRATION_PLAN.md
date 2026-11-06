@@ -525,7 +525,8 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Borrador de diseño (2026-11): `docs/implantes-electrodos.md`. Solo diseño, sin código. Forma 2: tarjeta «Implantes con electrodos» en la fase 1 (un estado «Lleva», 9 chips), sin sistema de fase 2, recuadro de la fase 5, aviso de la fase 6 en cualquier plan y por pauta (`h1`, `ce5`, `ro2`, `ro4`), payload `ie`, 📋 Notas, 📄 Informe (solo el antecedente), `bloqueIEIA()` (copia `_bloqueIE` en physiq-report), fila de la guía y hojas. 7 fuentes nuevas leídas enteras en PMC (Suhail Arain 2023, Mohammad 2022, Barmore 2022, Kim 2021, Suarez-Fuster 2018, Ghaly 2016, Chen 2022) más las ya registradas (FDA 2002, Health Canada 2003, Keus 2014). 19 decisiones para el usuario (la 19, de la segunda pasada: cables del estimulador medular y movimientos repetidos de columna, Ghaly 2016)
   - [x] Decisiones 1–19 del usuario: aceptadas las 19 recomendaciones (2026-11); la 7–10 abiertas a lo que digan los PDF
   - [x] PDF del usuario leídos (2026-11): consenso EHRA 2022 (Stühlinger; electroestimulación solo tras consultar al especialista en dispositivos, primera sesión vigilada, lejos y del mismo lado) y Houghton 2010 (electroestimulación nunca donde pueda alterar cualquier implante electrónico, también neuroestimuladores; ultrasonido no sobre el aparato; onda corta a más de 3 m). Cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21
-  - [ ] Decisiones del usuario sobre esos cambios (6, 7, 8, 9, 14, 20, 21); manuales de fabricante, opcionales
+  - [x] Decisiones del usuario sobre esos cambios (6, 7, 8, 9, 14, 20, 21): aceptadas (2026-11)
+  - [ ] Manuales de fabricante (opcionales, para confirmar): Medtronic Intellis (información para prescriptores) y MED-EL (procedimientos médicos)
   - [ ] Texto cerrado para revisión
   - [ ] Implementación, revisión en la app y `_bloqueIE` en physiq-report
 

@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21, pendientes del usuario (ver «Lectura de los PDF»). Los manuales de los fabricantes pasan a opcionales.
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. Los manuales de los fabricantes pasan a opcionales.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -286,7 +286,7 @@ El usuario subió el consenso EHRA de 2022 (PDF, 26 pp.) y el número especial d
 9. **Ultrasonido con estimulador medular**: Ghaly (2016) lo excluye en cualquier zona. Houghton (2010) solo sobre el aparato, y aclara que las alertas son de la diatermia por ultrasonido, que no es de fisioterapia. Keus (2014, cerebral profundo) lo excluye sin zona. **Propuesta**: mantener la decisión 6 aceptada (en ninguna zona con el medular y el cerebral profundo), la opción prudente.
 10. **Onda corta**: FDA y Salud Canadá, con cualquier electrodo implantado. Houghton añade **a menos de 3 m** de quien lleve un implante electrónico, aunque no sea quien recibe el tratamiento (decisión 20, nueva).
 
-### Qué cambia en el diseño (propuestas; las decisiones aceptadas que cambian se marcan)
+### Qué cambia en el diseño (aceptado por el usuario, noviembre 2026)
 
 - **Decisión 7, cambiada.** Con marcapasos, desfibrilador, «No sabe cuál» o nada marcado: «**Electroterapia (TENS, interferenciales, electroestimulación), solo tras consultar a su unidad de marcapasos**, que valora el riesgo y vigila la primera sesión. Si no hubo interferencia, se puede seguir en el mismo sitio y con los mismos parámetros; si cambian, otra prueba. Para enseguida si nota síntomas cardiacos» (Stühlinger 2022; Suhail Arain 2023). Sustituye a «ninguna salvo autorización».
 - **Decisión 8, cambiada.** «**Lo más lejos posible del aparato y con los dos electrodos del mismo lado**, sin que la corriente cruce el aparato; nunca en la parte anterior del tórax» (Stühlinger 2022; Houghton 2010, 4-16). Sustituye a «más riesgo en el tórax».
@@ -312,6 +312,6 @@ Búsqueda en PMC de fuentes en abierto para lo que se había pedido en PDF:
 ## Siguiente paso
 
 1. ~~Tus decisiones (1–19)~~ Hecho: aceptadas las 19 recomendaciones (noviembre 2026).
-2. ~~Los PDF 1 y 2~~ leídos (ver «Lectura de los PDF»). Pendiente: **tus decisiones sobre los cambios 6, 7, 8, 9 y 14 y las nuevas 20 y 21**. Los PDF 3–6 son ya opcionales (confirmar con un manual de fabricante lo que dice Houghton 2010 para el medular y el coclear). Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10: si cambian, se proponen al usuario antes del texto cerrado.
+2. ~~Los PDF 1 y 2~~ leídos (ver «Lectura de los PDF»). ~~Tus decisiones sobre los cambios 6, 7, 8, 9 y 14 y las nuevas 20 y 21~~ aceptadas (noviembre 2026). Los PDF 3–6 son ya opcionales (confirmar con un manual de fabricante lo que dice Houghton 2010 para el medular y el coclear). Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10: si cambian, se proponen al usuario antes del texto cerrado.
 3. Texto cerrado para revisión, con cada frase y su fuente, como en el Parkinson.
 4. La implementación, la revisión en la app y, después, `_bloqueIE` en physiq-report.
