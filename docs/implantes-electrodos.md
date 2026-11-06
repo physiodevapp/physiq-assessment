@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código.** Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones para el usuario (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». Faltan PDF para cerrar la electroterapia con los implantes que no son cardiacos (ver «PDF que necesito»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». Faltan PDF para cerrar la electroterapia con los implantes que no son cardiacos (ver «PDF que necesito»).
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -196,7 +196,7 @@ Con B: la línea de Keus 2014 sale **una sola vez**, en el recuadro de los impla
 - **Asistencia ventricular (LVAD)** y **bombas de infusión implantadas** (sin electrodos): fuera.
 - **Magnetoterapia, láser, ondas de choque y punción seca con corriente (electrólisis percutánea)** con implantes: ninguna fuente leída; se buscan en los PDF de Houghton 2010 y del consenso EHRA.
 
-## Decisiones (cada una con mi recomendación)
+## Decisiones (cada una con mi recomendación; aceptadas las 19 por el usuario, noviembre 2026)
 
 1. **Dónde se pregunta**: recomiendo **tarjeta propia en la fase 1, después del Parkinson**, sin sistema de fase 2 (forma 2). Una pregunta de cribado no sirve para el coclear ni el medular, y lo que cambia es la técnica.
 2. **Nombre**: «Implantes con electrodos» (el del aviso de la FDA, «implanted leads»). Alternativa: «Aparatos implantados».
@@ -218,7 +218,7 @@ Con B: la línea de Keus 2014 sale **una sola vez**, en el recuadro de los impla
 18. **Formulario del paciente**: recomiendo **una pregunta nueva en `formularios/comun.js`** («¿Llevas algún aparato implantado: marcapasos, desfibrilador, estimulador o implante del oído?», Sí / No / No sé) como pista «📝 Refiere el paciente» sobre la tarjeta, que **nunca la marca**. Cambia la hoja impresa del formulario general. Alternativa: sin pregunta, solo la nota de la tarjeta.
 19. **Movimientos repetidos de columna con estimulador medular** (Ghaly 2016, opinión de los autores, sin datos): recomiendo **una línea en el recuadro de la fase 5, solo para el fisio**, sin regla de dosis ni aviso en la fase 6. Alternativa: dejarla fuera hasta leer el manual del fabricante, que suele dar los límites tras la implantación.
 
-## Cambios técnicos previstos (si se aceptan las decisiones)
+## Cambios técnicos previstos (con las decisiones aceptadas)
 
 - `data/comun.js`: `IMPLANTES` (tipos, textos de la tarjeta, del recuadro, del aviso, `reglaIA`, `HIP_AGENTE_FISICO` con `h1`, `ce5`, `ro2`, `ro4`). Sin sistema `transversal_*`.
 - `lib/implantes.js` (puro): estado vacío y normalización, `esCardiaco()`, `lineasImplantes()`, `iePayload()`, `lineaNotasIE()`, `informeIE()`, `bloqueIEIA()`, `pendientesIE()`, `avisosPautaIE()`. Pruebas unitarias.
@@ -257,7 +257,7 @@ Búsqueda en PMC de fuentes en abierto para lo que se había pedido en PDF:
 
 ## Siguiente paso
 
-1. Tus decisiones (1–19).
-2. Los PDF 1 y 2 (y el 4 y el 5 para la decisión 9); el 3 y el 6 son opcionales. Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10.
+1. ~~Tus decisiones (1–19)~~ Hecho: aceptadas las 19 recomendaciones (noviembre 2026).
+2. Los PDF 1 y 2 (y el 4 y el 5 para la decisión 9); el 3 y el 6 son opcionales. Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10: si cambian, se proponen al usuario antes del texto cerrado.
 3. Texto cerrado para revisión, con cada frase y su fuente, como en el Parkinson.
 4. La implementación, la revisión en la app y, después, `_bloqueIE` en physiq-report.
