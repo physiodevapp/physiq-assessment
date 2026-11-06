@@ -1102,7 +1102,9 @@ async function checkParkinson(page) {
   await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="NS"]');
   r.estDuda = (await page.textContent('#pkEstimulador')).includes('Hasta confirmarlo: nada de onda corta');
   await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="SI"]');
-  r.estSi = await page.isVisible('#pkEstimulador .alert-danger') && (await page.textContent('#pkEstimulador')).includes('Nada de onda corta ni microondas') && !(await page.textContent('#pkEstimulador')).includes('Hasta confirmarlo');
+  // Con «Sí», el chip del estimulador en «Implantes con electrodos» y la línea allí, una sola vez (docs/implantes-electrodos.md, decisión 11)
+  r.estSi = (await page.textContent('#pkEstimulador')).includes('ver Implantes con electrodos') && !(await page.textContent('#pkEstimulador')).includes('Hasta confirmarlo')
+    && await page.evaluate(() => state.implantes.tipos.includes('ecp')) && (await page.textContent('#ieLineas [data-ie-linea="cerebral"]')).includes('Nada de onda corta ni microondas');
   // Segundo toque borra
   await page.click('[data-pk-fila="fluctuaciones"] .option-btn[data-valor="SI"]');
   r.segundoToque = await page.evaluate(() => state.parkinson.fluctuaciones === '' && state.parkinson.fase === '');
@@ -1161,8 +1163,9 @@ async function checkParkinson(page) {
   await walkRegion(page, 'lumbar');
   r.fase5 = await page.evaluate(() => { const box = document.querySelector('#resultsContent .pk-fase5');
     const t = box?.textContent || '';
-    return !!box && !box.closest('details') && box.querySelector('.alert-danger')?.textContent.includes('Nada de onda corta')
-      && t.includes('Bicicleta antes que cinta') && t.includes('plataformas de vibración') && t.includes('experiencia en Parkinson'); });
+    const ie = document.querySelector('#resultsContent .ie-fase5');
+    return !!box && !box.closest('details') && t.includes('ver Implantes con electrodos') && !box.querySelector('.alert-danger')
+      && ie?.textContent.includes('riesgo de lesión cerebral grave') && t.includes('Bicicleta antes que cinta') && t.includes('plataformas de vibración') && t.includes('experiencia en Parkinson'); });
   r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .pk-fase5 .cita[data-cita^="Osborne 2022"]'));
   await page.evaluate(() => goToPhase('4b'));
   await page.waitForTimeout(200);
@@ -1172,7 +1175,8 @@ async function checkParkinson(page) {
   await page.click('#btnIrPlan');
   await page.waitForSelector('#planContenido .card');
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
-    return t.includes('Parkinson con estimulador cerebral profundo') && t.includes('Parkinson: no uses plataformas') && t.includes('Red de seguridad (Parkinson)'); });
+    return !t.includes('Parkinson con estimulador cerebral profundo') && t.includes('Implantes con electrodos: Nada de onda corta ni microondas (riesgo de lesión cerebral')
+      && t.includes('Parkinson: no uses plataformas') && t.includes('Red de seguridad (Parkinson)'); });
   // Sospecha: solo la derivación; el 📄 Informe sin la palabra Parkinson
   await abrirApp(page);
   await page.click('#pkEstado .option-btn[data-valor="sospecha"]');
@@ -1181,6 +1185,67 @@ async function checkParkinson(page) {
   r.sospecha5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .pk-fase5')?.textContent || '';
     return t.includes('Derivar pronto y sin tratar') && !t.includes('Bicicleta'); });
   r.informe = await page.evaluate(async () => { const i = (await import('./app.js')).buildInformeFisioterapiaText(); return i.includes('especialista en trastornos del movimiento') && !/parkinson/i.test(i); });
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
+// Implantes con electrodos (Fase P, docs/implantes-electrodos.md), rodilla.
+// Fase 1: un estado y 9 chips; sin chips, las líneas de «No sabe cuál»; las de
+// cada chip una vez; el estimulador cerebral profundo, un solo dato con la
+// fila del Parkinson (y su línea una sola vez); el formulario como pista;
+// fase 5 nunca plegada (con la línea de la pauta de ro4), fase 6 (avisos y
+// consejos para casa), el cribado sin sistema propio y 320 px.
+async function checkImplantes(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  const lineas = () => page.$$eval('#ieLineas [data-ie-linea]', els => els.map(e => e.dataset.ieLinea).join());
+  r.nota = (await page.textContent('#ieNota')).includes('Pregúntalo siempre antes de usar agentes físicos');
+  r.oculto = !(await page.isVisible('#ieTiposWrap'));
+  await page.click('#ieEstado .option-btn[data-valor="lleva"]');
+  r.chips = await page.$$eval('#ieTipos [data-ie-tipo]', els => els.length === 9);
+  r.sinChips = await lineas() === 'diatermia,cardiaco,nervio,laser,nosabe';
+  await page.click('#ieTipos [data-ie-tipo="mp"]');
+  await page.click('#ieTipos [data-ie-tipo="em"]');
+  r.mpEm = await lineas() === 'diatermia,cardiaco,medular,laser'
+    && (await page.textContent('#ieLineas')).includes('ni a menos de 3 m de un aparato de onda corta encendido')
+    && await page.$$eval('#ieLineas .alert-danger', els => els.every(e => !e.closest('details')));
+  await page.click('#ieTipos [data-ie-tipo="ns"]');
+  r.nsExcluye = await page.evaluate(() => state.implantes.tipos.join() === 'ns');
+  await page.click('#ieTipos [data-ie-tipo="ns"]');
+  // El estimulador cerebral profundo, un solo dato con el Parkinson
+  await page.click('#pkEstado .option-btn[data-valor="diagnosticado"]');
+  await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="SI"]');
+  r.syncDesdePk = await page.evaluate(() => state.implantes.tipos.includes('ecp'))
+    && (await page.textContent('#pkEstimulador')).includes('ver Implantes con electrodos')
+    && (await lineas()).includes('cerebral');
+  await page.click('#ieTipos [data-ie-tipo="ecp"]');
+  r.syncDesdeIe = await page.evaluate(() => state.parkinson.estimulador === '');
+  await page.click('#pkEstado .option-btn[data-valor="diagnosticado"]');
+  // 320 px: los chips y las líneas caben
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.waitForFunction(() => innerWidth === 320);
+  await page.waitForTimeout(150);
+  r.estrecho = await page.evaluate(() => document.documentElement.scrollWidth <= 320
+    && [...document.querySelectorAll('#cardImplantes .option-btn, #ieLineas .alert')].every(e => e.getBoundingClientRect().right <= 321));
+  await page.setViewportSize({ width: 1280, height: 860 });
+  // Recorrido entero: fase 2 sin sistema propio, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#ieEstado .option-btn[data-valor="lleva"]');
+  await page.click('#ieTipos [data-ie-tipo="dai"]');
+  await page.click('#ieTipos [data-ie-tipo="em"]');
+  await walkRegion(page, 'rodilla');
+  r.sinSistema = await page.evaluate(() => !document.querySelector('[id*="transversal_implantes"]'));
+  r.fase5 = await page.evaluate(() => { const box = document.querySelector('#resultsContent .ie-fase5');
+    const t = box?.textContent || '';
+    return !!box && !box.closest('details') && t.includes('Lleva: desfibrilador implantable · estimulador medular')
+      && box.querySelectorAll('.alert-danger').length >= 4 && t.includes('inclinar mucho el tronco') && t.includes('El calor superficial y el frío'); });
+  r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .ie-fase5 .cita[data-cita^="Stühlinger 2022"]'));
+  r.payload = await page.evaluate(async () => JSON.stringify((await import('./app.js')).buildPhysiQPayload().ie) === '{"es":"lleva","ti":["dai","em"]}');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Implantes con electrodos: Nada de onda corta') && t.includes('Implantes con electrodos: Electroterapia (TENS'); });
   r.ok = Object.values(r).every(Boolean);
   return r;
 }
@@ -3570,7 +3635,7 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,anticoagulado,parkinson,tarlov,cascanueces,congestionPelvica'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,anticoagulado,parkinson,implantes,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
       && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
@@ -7934,6 +7999,13 @@ const SECCIONES = [
     const r = await checkParkinson(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con sus filas, fase on/off con fluctuaciones, estimulador en rojo (también «No lo sabe»), urgencia y derivaciones sin embudo, tensión tumbado y de pie con reloj (1 y 3 min), caídas compartidas, notas de las fases 3 y 4b, fase 5 nunca plegada, fase 6 (avisos y red), la sospecha sin la palabra en el informe y 320 px`);
     if (!r.ok) console.log('\nParkinson:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'implantes', titulo: 'Implantes con electrodos (Fase P, rodilla):', run: async ({ page }) => {
+    const r = await checkImplantes(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con un estado y 9 chips, sin chips las líneas de «No sabe cuál», las de cada chip una vez y nunca plegadas, «No sabe cuál» excluye, el estimulador cerebral profundo un solo dato con el Parkinson, 320 px, sin sistema de la fase 2, fase 5 nunca plegada, payload ie y avisos de la fase 6`);
+    if (!r.ok) console.log('\nImplantes:', JSON.stringify(r));
     return r.ok;
   } },
 

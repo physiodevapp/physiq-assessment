@@ -212,10 +212,11 @@ const IRRITABILIDAD = await import('../../data/irritabilidad.js');
 const { CONDICIONES } = await import('../../data/condiciones.js');
 const { FAMILIAS_FARMACO: FARMACOS } = await import('../../data/farmacos.js');
 const { BLOQUES_EJERCICIO: EJERCICIO } = await import('../../data/ejercicio.js');
-const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua }), REFERENCIAS);
+const { IMPLANTES } = await import('../../data/comun.js');
+const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, IMPLANTES, REFERENCIAS, testPuntua }), REFERENCIAS);
 
 test('«Estado de revisión»: todo tipo de uso tiene su prioridad, ninguna referencia sale con «Afecta a: —»', () => {
-  const { lit } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua });
+  const { lit } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, IMPLANTES, REFERENCIAS, testPuntua });
   const efectos = new Set([...lit.values()].flatMap(v => v.usos.map(u => u.efecto)));
   const sinOrden = [...efectos].filter(e => !ORDEN_EFECTO.includes(e));
   assert.deepEqual(sinOrden, [], `añade a ORDEN_EFECTO (tests/referencias.mjs): ${sinOrden.join(', ')}`);
@@ -246,7 +247,7 @@ test('data/referencias.js: exactamente una referencia base de las tarjetas (tarj
 
 test('docs/referencias.md coincide con las citas de data/ y con el registro', () => {
   const actual = leer('docs', 'referencias.md');
-  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua });
+  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, IMPLANTES, REFERENCIAS, testPuntua });
   assert.ok(actual === esperado,
     'docs/referencias.md no está al día — ejecuta `node tests/gen-referencias.mjs` y comitéalo junto con el cambio');
 });

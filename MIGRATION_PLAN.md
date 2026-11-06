@@ -520,7 +520,7 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Alarmas del programa para casa pasadas a «tú», como las demás (recomendación aceptada por el usuario, 2026-11)
   - [x] Revisión del usuario en la app (hecha ya desplegado, 2026-11)
   - [x] physiq-report: `_bloquePK` con una copia literal de `bloquePKIA()` (`PK_CASOS` fija el texto en los dos repositorios), rama `claude/parkinson-bloque-pk` (2026-11)
-  - [ ] Aparte (decisión 22): otros implantes con electrodos (marcapasos, desfibrilador, estimulador medular, implante coclear): la diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003) y la app no lo pregunta en ninguna parte. Sigue en «Implantes con electrodos», abajo
+  - [x] Aparte (decisión 22): otros implantes con electrodos (marcapasos, desfibrilador, estimulador medular, implante coclear): la diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003) y la app no lo pregunta en ninguna parte. Sigue en «Implantes con electrodos», abajo
 - [ ] **Implantes con electrodos** (decisión 22 de `docs/parkinson.md`, 2026-11): diatermia y ultrasonido con cualquier implante con electrodos; electroterapia con marcapasos y desfibrilador; el estimulador cerebral profundo, un solo dato con el Parkinson
   - [x] Borrador de diseño (2026-11): `docs/implantes-electrodos.md`. Solo diseño, sin código. Forma 2: tarjeta «Implantes con electrodos» en la fase 1 (un estado «Lleva», 9 chips), sin sistema de fase 2, recuadro de la fase 5, aviso de la fase 6 en cualquier plan y por pauta (`h1`, `ce5`, `ro2`, `ro4`), payload `ie`, 📋 Notas, 📄 Informe (solo el antecedente), `bloqueIEIA()` (copia `_bloqueIE` en physiq-report), fila de la guía y hojas. 7 fuentes nuevas leídas enteras en PMC (Suhail Arain 2023, Mohammad 2022, Barmore 2022, Kim 2021, Suarez-Fuster 2018, Ghaly 2016, Chen 2022) más las ya registradas (FDA 2002, Health Canada 2003, Keus 2014). 19 decisiones para el usuario (la 19, de la segunda pasada: cables del estimulador medular y movimientos repetidos de columna, Ghaly 2016)
   - [x] Decisiones 1–19 del usuario: aceptadas las 19 recomendaciones (2026-11); la 7–10 abiertas a lo que digan los PDF
@@ -530,8 +530,10 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Decisiones del usuario: 19 reforzada (también en la fase 6 y en casa), 10 ampliada (sin masaje sobre el generador y los cables) y 21 matizada (láser lejos del neuroestimulador): aceptadas (2026-11)
   - [x] Guía de MED-EL leída (2026-11, AW33298_17.0): neuroestimulación, diatermia, iontoforesis y terapia ultrasónica, no en la zona del implante; quitar el procesador antes de cualquier corriente. Amplía la decisión 9 para el coclear (pendiente del usuario)
   - [x] Texto cerrado para revisión (`docs/implantes-electrodos.md`, 2026-11)
-  - [ ] Revisión del usuario del texto cerrado
-  - [ ] Implementación, revisión en la app y `_bloqueIE` en physiq-report
+  - [x] Revisión del usuario del texto cerrado: aprobado (2026-11)
+  - [x] Implementación (2026-11, rama `claude/implantes-electrodos-diseno`): tarjeta `#cardImplantes` (un estado, 9 chips, líneas rojas nunca plegadas según los chips), sin sistema de la fase 2, estimulador cerebral profundo como un solo dato con el Parkinson, recuadro `.ie-fase5` (con las líneas de las pautas de `h1`, `ce5`, `ro2`, `ro4`), avisos y consejos para casa de la fase 6, punto de revisión del plan con IA, payload `ie`, 📋 Notas, 📄 Informe, `bloqueIEIA()` con `IE_CASOS`, pregunta del formulario como pista, fila de la guía de condiciones, 8 referencias, hojas `condiciones` y `formulario-comun` regeneradas con sus cuadernos. `tests/unit/implantes.mjs` y sección `implantes` de la prueba de humo
+  - [ ] Revisión del usuario en la app
+  - [ ] physiq-report: `_bloqueIE` con una copia literal de `bloqueIEIA()`
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
 

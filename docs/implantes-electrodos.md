@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **diseño (noviembre 2026), sin código. Aceptadas las 19 decisiones y todos los cambios que salieron de los PDF y de los manuales. Texto cerrado escrito, pendiente de la revisión del usuario** (ver «Texto cerrado para revisión», que manda sobre las secciones de borrador). Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. **Manual de Medtronic leído (noviembre 2026)**: confirma las decisiones 6 y 9; refuerza la 19, amplía la 10 y matiza la 21, aceptados (ver «Manual de Medtronic»). **Guía de MED-EL leída (noviembre 2026)**: amplía la decisión 9 para el implante coclear, aceptado (ver «Guía de MED-EL»). Ya no falta ningún PDF.
+Estado: **implementado (noviembre 2026, rama `claude/implantes-electrodos-diseno`)** a partir del texto cerrado, **aprobado por el usuario**. Aceptadas las 19 decisiones y todos los cambios que salieron de los PDF y de los manuales. «Texto cerrado para revisión» manda sobre las secciones de borrador; ver «Implementación», al final. Pendiente: la revisión del usuario en la app y `_bloqueIE` en physiq-report. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. **Manual de Medtronic leído (noviembre 2026)**: confirma las decisiones 6 y 9; refuerza la 19, amplía la 10 y matiza la 21, aceptados (ver «Manual de Medtronic»). **Guía de MED-EL leída (noviembre 2026)**: amplía la decisión 9 para el implante coclear, aceptado (ver «Guía de MED-EL»). Ya no falta ningún PDF.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -519,8 +519,31 @@ Búsqueda en PMC de fuentes en abierto para lo que se había pedido en PDF:
 - **Estimulador medular**: Ghaly 2016, leída entera (ver «Fuentes»). Cambia la decisión 6 (ultrasonido en ninguna zona) y añade la 19. La electroterapia sigue sin fuente: el manual del fabricante (PDF 4) sigue haciendo falta.
 - **Implante coclear**: solo hay artículos de la diatermia quirúrgica (Frampton 2012), que no valen para la onda corta terapéutica. El PDF 5 sigue haciendo falta.
 
+## Implementación (noviembre 2026)
+
+Rama `claude/implantes-electrodos-diseno`. Lo implementado es el «Texto cerrado para revisión», con las frases copiadas tal cual y su fuente.
+
+**Archivos**
+- `data/comun.js`: `IMPLANTES` (chips, las 9 líneas rojas, qué líneas salen con cada chip, los textos de las fases 5 y 6 y de la IA, las líneas por pauta). Sin sistema `transversal_*`.
+- `lib/implantes.js` (puro): `implantesVacio()`, `normalizarImplantes()`, `alternarTipo()`, `clavesLineas()`, `sincronizarEstimulador()`, `pendientesIE()`, `iePayload()`, `lineaLleva()`, `lineasRecomendacionIE()`, `lineasPautaIE()`, `lineaNotasIE()`, `informeIE()`, `bloqueIEIA()`.
+- `index.html` (`#cardImplantes`, después del Parkinson), `styles.css` (`.ie-lineas`), `state.js` (`implantes`), `app.js` (tarjeta, sincronía con el Parkinson, recuadro `.ie-fase5`, payload `ie`, reinicio, restauración y pendiente del modo breve).
+- `lib/resumenes.js`, `lib/informe-narrativo.js`, `plan.js`, `lib/plan-tratamiento.js`, `data/plan-tratamiento.js` (avisos `implantes_*`, `AVISOS_IMPLANTES_PAUTA`, tres consejos para casa), `lib/revision-plan.js` y `plan-ia.js`.
+- `formularios/comun.js` (pregunta `implantes` y su pista), `data/condiciones.js` + `lib/condiciones.js` (fila con la línea del Holter), `guia-plan.js` (casillas), `data/referencias.js` (8 referencias), `tests/referencias.mjs` (`recogerCitas({ IMPLANTES })`), `.github/workflows/deploy-to-hub.yml`.
+
+**Decisiones de implementación** (sin cambiar nada clínico):
+- **Sincronía del estimulador por evento**, no genérica: con una sincronía genérica, un segundo toque para borrar la fila del Parkinson la habría vuelto a poner en «Sí». La fila en «Sí» añade el chip; otra respuesta, o borrarla, lo quita (y desmarca la tarjeta si no quedaba otro chip); el chip marcado pone la fila en «Sí» con el Parkinson diagnosticado; al pasar a «Diagnosticado» con el chip marcado, la fila pasa a «Sí»; una sesión anterior con «Sí» añade el chip.
+- **📄 Informe**: un bloque propio «IMPLANTES CON ELECTRODOS» con la línea «Portador de: …», como las demás condiciones, en vez de una línea suelta en los antecedentes.
+- **Bloque de la IA**: con la cabecera de las demás condiciones («Implantes con electrodos (condición especial marcada por el fisioterapeuta):») y la lista en «· Lleva: …»; las reglas, las del texto cerrado.
+- **Pregunta del formulario**: `ia: 'contexto'`, como las demás preguntas de salud general de la sección 6 (el texto cerrado decía `historia`); con su frase corta para el modo guía («¿Qué aparato llevas?»), que exige una prueba.
+- **Revisión del plan con IA**: una línea que contiene «nada de», «sin», «no», «ni», «evita» o «nunca» se toma como descarte y no da punto.
+- **Hojas**: cambian `condiciones` y `formulario-comun` (con su historial y los cuadernos); la hoja del plan solo imprime las redes de seguridad, y los implantes no tienen red.
+
+**Pruebas**: `tests/unit/implantes.mjs` y la sección de humo `implantes`; la del Parkinson, ajustada al dato compartido.
+
+**Para revisar en la app**: la tarjeta (sin chips, con cada chip, «No sabe cuál»); la sincronía con la fila del Parkinson; el recuadro de la fase 5 (también con `ro4` elegida); los avisos y los consejos para casa de la fase 6; 📋 Notas, 📄 Informe y la fila de la guía de condiciones.
+
 ## Siguiente paso
 
-1. ~~Decisiones, PDF y manuales~~ hecho (noviembre 2026).
-2. **Revisión del usuario del «Texto cerrado para revisión».**
-3. La implementación (ver «Cambios técnicos previstos»; con el formulario, `lib/revision-plan.js` y la sincronización con el Parkinson), la revisión en la app y `_bloqueIE` en physiq-report.
+1. ~~Decisiones, PDF, manuales, texto cerrado e implementación~~ hecho (noviembre 2026).
+2. **Revisión del usuario en la app.**
+3. `_bloqueIE` en physiq-report, con una copia literal de `bloqueIEIA()` (`IE_CASOS` fija el texto en los dos repositorios).

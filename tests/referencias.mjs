@@ -141,7 +141,7 @@ const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g
 
 // Todas las citas de data/: literatura (clave → citas y usos), tarjetas
 // (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
-export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, EJERCICIO = null, REFERENCIAS = {}, testPuntua }) {
+export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, EJERCICIO = null, IMPLANTES = null, REFERENCIAS = {}, testPuntua }) {
   // Las claves con el tema entre paréntesis («Hansrani 2023 (ensayo)») también valen tal cual en una `fuente`.
   const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => [...(r.citadaComo || []), ...(r.citadaComo ? [k] : [])].map(a => [k, a]));
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
@@ -329,6 +329,19 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
     }
   }
 
+  // Tarjeta «Implantes con electrodos» (data/comun.js, IMPLANTES;
+  // docs/implantes-electrodos.md): sin sistema de la fase 2, sus frases citan
+  // dentro del texto, como el plan.
+  if (IMPLANTES) {
+    recorrer(IMPLANTES, ['IMPLANTES'], (texto, ruta) => {
+      for (const { tipo, clave } of clavesDe(texto, alias)) {
+        if (tipo !== 'lit') continue;
+        anotar(lit, clave, texto, { region: 'comun', hyp: '—', donde: `\`${ruta.join('.')}\``,
+          fase: '1, 5 y 6 · tarjeta «Implantes con electrodos»', efecto: 'texto' });
+      }
+    });
+  }
+
   for (const [region, scr] of Object.entries(SYSTEMIC_SCREENING)) {
     if (scr.urgencia) otras.push({ region, que: `Recuadro «${scr.urgencia.titulo}»`, fase: '2', fuente: 'Literal de la tarjeta de consulta (URGENCIA)' });
     for (const sis of scr.sistemas || []) {
@@ -365,9 +378,9 @@ function lineaRegistro(r) {
   return [xs.join('  \n'), ''];
 }
 
-export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, EJERCICIO = null, REFERENCIAS, testPuntua }) {
+export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, EJERCICIO = null, IMPLANTES = null, REFERENCIAS, testPuntua }) {
   const regiones = Object.keys(CIF_TREES);
-  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua });
+  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, IMPLANTES, REFERENCIAS, testPuntua });
   const claveBase = Object.keys(REFERENCIAS).find(k => REFERENCIAS[k].tarjetas);
 
   const L = [];
