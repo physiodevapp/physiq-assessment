@@ -520,6 +520,9 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Alarmas del programa para casa pasadas a «tú», como las demás (recomendación aceptada por el usuario, 2026-11)
   - [x] Revisión del usuario en la app (hecha ya desplegado, 2026-11)
   - [x] physiq-report: `_bloquePK` con una copia literal de `bloquePKIA()` (`PK_CASOS` fija el texto en los dos repositorios), rama `claude/parkinson-bloque-pk` (2026-11)
+  - [x] Bloque «Ejercicio en el Parkinson» de la guía «Efectos del ejercicio» (decisión 13, 2026-11, rama `claude/ejercicio-parkinson`): Ernst 2024 leída entera en PMC, más lo ya leído de Osborne 2022 y Keus 2014; hoja `ejercicio-paciente` regenerada. Niveles en `docs/efectos-ejercicio.md`, «Bloque 11»
+  - [ ] Revisión del usuario del bloque, antes de `main`
+  - [ ] Enlace desde el recuadro de la fase 5 y la «Educación» de la fase 6 (`CONDICION_EJERCICIO`): propuesto solo con «Diagnosticado», pendiente de que el usuario lo acepte
   - [ ] Aparte (decisión 22): otros implantes con electrodos (marcapasos, desfibrilador, estimulador medular, implante coclear): la diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003) y la app no lo pregunta en ninguna parte
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente

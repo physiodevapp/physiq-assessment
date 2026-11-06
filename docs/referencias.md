@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **1194** referencias de literatura, con **5568** usos.
+- **1194** referencias de literatura, con **5571** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **88** usos, basadas en Lluch 2020.
 - **593** de 1194 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -70,7 +70,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Akhondi 2025](#akhondi-2025) | test 4b sin puntuar · razonamiento 4b · texto | 3 | **sin revisar** |
 | [Li 2026](#li-2026) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | **sin revisar** |
 | [NICE NG71](#nice-ng71) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 27 | **sin revisar** |
-| [Keus 2014](#keus-2014) | razonamiento fase 2 · texto | 86 | **sin revisar** |
+| [Keus 2014](#keus-2014) | razonamiento fase 2 · guía de efectos del ejercicio (cabecera) · texto | 87 | **sin revisar** |
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 16 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
 | [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
@@ -610,7 +610,9 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [ACOG 2020](#acog-2020) | guía de efectos del ejercicio (cabecera) · texto | 22 | **sin revisar** |
 | [Woodley 2020](#woodley-2020) | guía de efectos del ejercicio (cabecera) · texto | 8 | **sin revisar** |
 | [Gluppe 2021](#gluppe-2021) | guía de efectos del ejercicio (cabecera) · texto | 8 | **sin revisar** |
+| [Osborne 2022](#osborne-2022) | guía de efectos del ejercicio (cabecera) · texto | 57 | **sin revisar** |
 | [Christopher 2024](#christopher-2024) | guía de efectos del ejercicio (cabecera) · texto | 8 | **sin revisar** |
+| [Ernst 2024](#ernst-2024) | guía de efectos del ejercicio (cabecera) · texto | 8 | **sin revisar** |
 | [Beamish 2025](#beamish-2025) | guía de efectos del ejercicio (cabecera) · texto | 8 | **sin revisar** |
 | [Davenport 2025](#davenport-2025) | guía de efectos del ejercicio (cabecera) · texto | 36 | **sin revisar** |
 | [FDA 2002 (diatermia)](#fda-2002-diatermia) | texto | 7 | **sin revisar** |
@@ -641,7 +643,6 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Jasionowska 2022](#jasionowska-2022) | texto | 7 | **sin revisar** |
 | [Montero-Odasso 2022](#montero-odasso-2022) | texto | 21 | **sin revisar** |
 | [Muraro 2022](#muraro-2022) | texto | 14 | **sin revisar** |
-| [Osborne 2022](#osborne-2022) | texto | 56 | **sin revisar** |
 | [Tenforde 2022](#tenforde-2022) | texto | 7 | **sin revisar** |
 | [Burani 2023](#burani-2023) | texto | 7 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
@@ -649,7 +650,6 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Anagnostis 2024](#anagnostis-2024) | texto | 7 | **sin revisar** |
 | [Blaess 2024](#blaess-2024) | texto | 63 | **sin revisar** |
 | [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
-| [Ernst 2024](#ernst-2024) | texto | 7 | **sin revisar** |
 | [Gak 2024](#gak-2024) | texto | 7 | **sin revisar** |
 | [Malfait 2024](#malfait-2024) | texto | 7 | **sin revisar** |
 | [Parodis 2024](#parodis-2024) | texto | 14 | **sin revisar** |
@@ -7576,14 +7576,16 @@ Título: *Physical exercise for people with Parkinson's disease: a systematic re
 Publicación: Cochrane Database Syst Rev 2024;4:CD013856  
 DOI: 10.1002/14651858.CD013856.pub3  
 Última revisión: **sin revisar**  
-Nota: PDF del usuario: solo el resumen leído (2026-11); el resto se lee al escribir el bloque de la guía de ejercicio (decisión 13). Casi todos los tipos de ejercicio son mejores que no hacer nada, con poca diferencia entre ellos. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
+Nota: Resumen leído para la tarjeta (2026-11); el texto completo, en PMC con citas literales, al escribir el bloque «Ejercicio en el Parkinson» de la guía de ejercicio (decisión 13, 2026-11): poblaciones (casi todo leve a moderado, sin deterioro cognitivo importante), resultados a ≤ 6 semanas (sin conclusión sobre si el efecto se mantiene), seguridad con certeza muy baja, congelación de la marcha no concluyente. Casi todos los tipos de ejercicio son mejores que no hacer nada, con poca diferencia entre ellos. Condición especial «Parkinson» (Fase P, docs/parkinson.md).
 
 Citada como:
 
 1. Con lo que usaron los ensayos, sin una dosis óptima establecida: aeróbico moderado a alto, al menos 3 días por semana, 30–40 min; fuerza progresiva 1–2 días por semana; equilibrio 2–3 veces por semana; marcha 20–60 min, 3–5 días por semana, 4–12 semanas. Lo ganado se pierde si se deja (Osborne 2022). Casi cualquier tipo de ejercicio ayuda; el tipo importa menos que hacerlo (Ernst 2024).
+2. Ernst 2024
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| ejercicio | — | Bloque «Ejercicio en el Parkinson» | guía de efectos del ejercicio | 2 |
 | Hombro | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 1 |
@@ -12926,11 +12928,13 @@ Citada como:
 12. Parar y consultar con náuseas, dolor u opresión torácica de más de unos minutos, falta de aire inusual, mareo, palpitaciones, sudor frío o si la TAS baja más de 10 mmHg durante el ejercicio (Keus 2014, 6.7.5).
 13. Keus 2014 — Keus, Munneke, Graziano et al., «European Physiotherapy Guideline for Parkinson's disease», KNGF/ParkinsonNet, 2014, apartados 3.2, 5.13 y 6.7.2.
 14. Keus 2014 — Keus, Munneke, Graziano et al., «European Physiotherapy Guideline for Parkinson's disease», KNGF/ParkinsonNet, 2014, apartado 5.13.
+15. Keus 2014
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pk_d_complicaciones` · Parkinson | 2 · razonamiento del cribado | 13 |
 | Todas (sistemas comunes) | — | Pregunta `pk_d_mental` · Parkinson | 2 · razonamiento del cribado | 14 |
+| ejercicio | — | Bloque «Ejercicio en el Parkinson» | guía de efectos del ejercicio | 15 |
 | Hombro | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.8.parkinson.textos.estimulador` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.8.parkinson.textos.dolor` | 2 · mención en el texto | 3 |
@@ -20265,9 +20269,11 @@ Citada como:
 6. La capacidad física se entrena mejor en on; las estrategias se aprenden en on y, si hacen falta en off, se practican también en off. Valora y reevalúa en la misma fase y anótala (Keus 2014, 6.7.2; Osborne 2022).
 7. Las pautas se estudiaron sobre todo en estadios 1–3 (Osborne 2022).
 8. Las guías recomiendan fisioterapia con experiencia en Parkinson (NICE NG71, 1.7.2–1.7.3; Osborne 2022).
+9. Osborne 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| ejercicio | — | Bloque «Ejercicio en el Parkinson» | guía de efectos del ejercicio | 9 |
 | Hombro | — | `sistemas.8.parkinson.textos.fase` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.8.parkinson.textos.tecnica4b` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.8.parkinson.textos.ejercicio` | 2 · mención en el texto | 3 |
