@@ -69,7 +69,7 @@ El usuario subió cinco documentos: el aviso de la FDA (PDF), el aviso de Salud 
 | `Health Canada 2003 (diatermia)` | Health Canada. Important safety information regarding diathermy therapy in patients with implanted leads and implanted systems with leads. Notice to Hospitals, 2 abr 2003 (RA-17000480) | Entero | Lo mismo que la FDA (onda corta y microondas contraindicadas con cualquier electrodo, aunque esté apagado o desconectado, o quede solo un trozo de electrodo) y **añade: ultrasonido terapéutico contraindicado encima o cerca del implante o de sus electrodos**. La dirige expresamente a fisioterapia. Cita a Nutt 2001 (*Neurology* 56:1384–1386) como caso original |
 | `Keus 2014` | Keus SHJ, Munneke M, Graziano M, et al. European Physiotherapy Guideline for Parkinson's disease. KNGF/ParkinsonNet, 2014 | Parte 1 (pp. 1–100): índice, cap. 1.2 (límites, comorbilidad, exclusiones), 3.2–3.4 (medicación, fluctuaciones, neurocirugía), 5.11 (riesgo de caída), **5.13 (banderas rojas y naranjas)**, 6.4.6–6.4.9 (vibración, masaje, dolor, respiratorio), **6.7.2–6.7.5** (fluctuaciones, dolor y fatiga, cuándo parar), 6.8.3 (estadio final) y el inicio del cap. 7. **No leídos**: caps. 2, 4, 5.1–5.10 y 5.12, 6.1–6.4.5 y 6.5–6.6 (intervenciones de ejercicio y estrategias de movimiento), la tabla 7 completa y la parte 2 (apéndices, entre ellos el 12 de efectos adversos de la medicación) | Ver «Qué aporta la guía europea» |
 | `Torsney 2014` | Torsney KM, Noyce AJ, Doherty KM, et al. Bone health in Parkinson's disease: a systematic review and meta-analysis. *J Neurol Neurosurg Psychiatry* 2014;85(10):1159–1166. [doi:10.1136/jnnp-2013-307307](https://doi.org/10.1136/jnnp-2013-307307) | Entero (8 pp.) | 23 estudios. **Osteoporosis OR 2,61** (1,69–4,03) y **fractura OR 2,28** (1,83–2,83) frente a controles; más en mujeres. Densidad mineral menor en cadera, columna lumbar y cuello femoral. **La cadera es el 50 % de las fracturas** (caídas de lado o hacia atrás con la marcha arrastrando los pies). **Las fracturas vertebrales pueden pasar desapercibidas** porque la postura encorvada se da por esperada |
-| `Ernst 2024` | Ernst M, Folkerts AK, Gollan R, et al. Physical exercise for people with Parkinson's disease: a systematic review and network meta-analysis. *Cochrane Database Syst Rev* 2024;4:CD013856. [doi:10.1002/14651858.CD013856.pub3](https://doi.org/10.1002/14651858.CD013856.pub3) | Solo el resumen (pp. 1–3 de la parte 1). **El resto se lee entero al escribir el bloque de la guía de ejercicio** (decisión 13) | 154 ensayos, 7837 participantes, casi todos con enfermedad leve a moderada y sin deterioro cognitivo importante. **Casi todos los tipos de ejercicio son mejores que no hacer nada, con poca diferencia entre ellos**: «el tipo exacto podría ser secundario». La danza y el entrenamiento de marcha, equilibrio y función, con efecto moderado en los signos motores (confianza moderada). Seguridad muy incierta: lo más notificado, **caídas** (18 estudios) y dolor (10) |
+| `Ernst 2024` | Ernst M, Folkerts AK, Gollan R, et al. Physical exercise for people with Parkinson's disease: a systematic review and network meta-analysis. *Cochrane Database Syst Rev* 2024;4:CD013856. [doi:10.1002/14651858.CD013856.pub3](https://doi.org/10.1002/14651858.CD013856.pub3) | Solo el resumen (pp. 1–3 de la parte 1) para la tarjeta; **entera en PMC al escribir el bloque de la guía de ejercicio** (decisión 13, 2026-11) | 154 ensayos, 7837 participantes, casi todos con enfermedad leve a moderada y sin deterioro cognitivo importante. **Casi todos los tipos de ejercicio son mejores que no hacer nada, con poca diferencia entre ellos**: «el tipo exacto podría ser secundario». La danza y el entrenamiento de marcha, equilibrio y función, con efecto moderado en los signos motores (confianza moderada). Seguridad muy incierta: lo más notificado, **caídas** (18 estudios) y dolor (10) |
 
 
 ### Qué aporta la guía europea (Keus 2014)
@@ -120,7 +120,7 @@ El usuario subió cinco documentos: el aviso de la FDA (PDF), el aviso de Salud 
     - La red de seguridad suma los criterios de parada de Keus 2014, 6.7.5 (decisión 19).
     - El aviso `parkinsonEstimulador` sale **en cualquier plan con estimulador**, no solo con las pautas que nombran electroterapia: 16 hipótesis la nombran hoy (h1, h2, h3, h10, ca1, ca15, ce5, ro1–ro4, co1, tp1, tp8, tp24, tp26), unas para recomendarla y otras para no hacerlo, y además el fisio puede usarla sin que la pauta la nombre (decisión 20).
   - **Fase 4b**: con estimulador, añadir «sin presión manual cerca de los cables» a la línea de la 4b (Keus 2014, 5.13; decisión 21). Los cables van del cráneo, por detrás de la oreja y el cuello, a la batería bajo la clavícula: los tests cervicales y de hombro con presión ahí. **Redacción propia** del trayecto, pendiente de una fuente que lo describa.
-- **Decisión 13** (bloque de ejercicio): la Cochrane ya está; se lee entera en ese paso.
+- **Decisión 13** (bloque de ejercicio): **hecha** (2026-11): bloque `parkinson` en `data/ejercicio.js`, con la Cochrane leída entera; ver `docs/efectos-ejercicio.md`, «Bloque 11».
 
 ### Decisiones nuevas (cada una con mi recomendación; aceptadas las 7 por el usuario, noviembre 2026)
 
@@ -255,7 +255,7 @@ Fila `parkinson`:
 Cada una tiene su propia entrada en `MIGRATION_PLAN.md` (noviembre 2026), fuera de la lista del Parkinson.
 
 - **Otros implantes con electrodos** (decisión 22): marcapasos, desfibrilador, estimulador medular, implante coclear. La diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003), y la app no lo pregunta en ninguna parte. Va como casilla aparte en `MIGRATION_PLAN.md`.
-- **Bloque «Ejercicio en el Parkinson»** de la guía de ejercicio (decisión 13), con la Cochrane leída entera.
+- ~~**Bloque «Ejercicio en el Parkinson»** de la guía de ejercicio (decisión 13), con la Cochrane leída entera.~~ Hecho y revisado por el usuario (2026-11); enlazado desde el recuadro de la fase 5 y la fase 6 solo con «Diagnosticado» (aceptado por el usuario).
 
 ## Criterio de entrada de la Fase P: sí entra
 
@@ -369,7 +369,7 @@ Fila `parkinson`: «qué es», «Piensa en ella si:» (temblor, rigidez, lentitu
 
 ### Guía «Efectos del ejercicio»
 
-Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022 y la Cochrane de 2024, pendiente). Se propone como paso aparte (decisión 13), con el procedimiento de `docs/efectos-ejercicio.md`.
+Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022 y la Cochrane de 2024, pendiente). Se propone como paso aparte (decisión 13), con el procedimiento de `docs/efectos-ejercicio.md`. **Escrito** (2026-11): `docs/efectos-ejercicio.md`, «Bloque 11 — Parkinson: decisiones de nivel».
 
 ## Contradicciones y huecos entre fuentes
 
