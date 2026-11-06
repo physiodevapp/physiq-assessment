@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». Faltan PDF para cerrar la electroterapia con los implantes que no son cardiacos (ver «PDF que necesito»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21, pendientes del usuario (ver «Lectura de los PDF»). Los manuales de los fabricantes pasan a opcionales.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -238,14 +238,68 @@ Desde el entorno llegan PubMed y el texto de PMC; las editoriales y los fabrican
 
 | # | Fuente | Enlace | Para qué |
 |---|---|---|---|
-| 1 | **Stühlinger M, Burri H, Vernooy K, et al.** EHRA consensus on prevention and management of interference due to medical procedures in patients with cardiac implantable electronic devices. *Europace* 2022;24(9):1512–1537 | [PMC11636572](https://pmc.ncbi.nlm.nih.gov/articles/PMC11636572/) · [doi:10.1093/europace/euac040](https://doi.org/10.1093/europace/euac040) | La guía de referencia de cardiología: qué dice de la TENS, la electroestimulación, la diatermia y el ultrasonido con marcapasos y desfibrilador, con su grado. Decide las decisiones 7 y 8 |
-| 2 | **Houghton PE, Nussbaum EL, Hoens AM** (autores según recuerdo; PubMed no los lista). Electrophysical agents — contraindications and precautions: an evidence-based approach to clinical decision making in physical therapy. *Physiother Can* 2010;62(5):1–80 | [PMC3031347](https://pmc.ncbi.nlm.nih.gov/articles/PMC3031347/) · [doi:10.3138/ptc.62.5](https://doi.org/10.3138/ptc.62.5) | El consenso canadiense de fisioterapia: contraindicaciones de cada agente físico con dispositivos electrónicos implantados (también láser, magnetoterapia, ondas de choque si los trata) |
+| 1 | ✅ **Recibido y leído (noviembre 2026).** **Stühlinger M, Burri H, Vernooy K, et al.** EHRA consensus on prevention and management of interference due to medical procedures in patients with cardiac implantable electronic devices. *Europace* 2022;24(9):1512–1537 | [PMC11636572](https://pmc.ncbi.nlm.nih.gov/articles/PMC11636572/) · [doi:10.1093/europace/euac040](https://doi.org/10.1093/europace/euac040) | La guía de referencia de cardiología: qué dice de la TENS, la electroestimulación, la diatermia y el ultrasonido con marcapasos y desfibrilador, con su grado. Decide las decisiones 7 y 8 |
+| 2 | ✅ **Recibido y leído (noviembre 2026).** **Houghton PE, Nussbaum EL, Hoens AM** (autores comprobados en el PDF). Electrophysical agents — contraindications and precautions: an evidence-based approach to clinical decision making in physical therapy. *Physiother Can* 2010;62(5):1–80 | [PMC3031347](https://pmc.ncbi.nlm.nih.gov/articles/PMC3031347/) · [doi:10.3138/ptc.62.5](https://doi.org/10.3138/ptc.62.5) | El consenso canadiense de fisioterapia: contraindicaciones de cada agente físico con dispositivos electrónicos implantados (también láser, magnetoterapia, ondas de choque si los trata) |
 | 3 | **Digby GC, Daubney ME, Baggs J, Campbell D, Simpson CS, et al.** Physiotherapy and cardiac rhythm devices: a review of the current scope of practice. *Europace* 2009;11(7):850–859 | [doi:10.1093/europace/eup102](https://doi.org/10.1093/europace/eup102) | La revisión de fisioterapia y dispositivos cardiacos (opcional si llega el 1) |
 | 4 | **Manual del médico de un estimulador medular**: Medtronic (Intellis o Inceptiv), Abbott (Proclaim o Eterna), Boston Scientific (WaveWriter) o Nevro (HFX); basta uno, el más usado en tu entorno | Bibliotecas de manuales: [manuals.medtronic.com](https://manuals.medtronic.com) · [manuals.eifu.abbott](https://manuals.eifu.abbott) · bostonscientific.com (sección «eLabeling») · nevro.com | La sección de diatermia, ultrasonido, TENS y otra electroterapia. Decide la decisión 9 para el medular |
 | 5 | **Guía de procedimientos médicos de un implante coclear**: Cochlear («Nucleus Medical Procedures») o MED-EL («Medical Procedures for MED-EL Implant Systems») | En cochlear.com y medel.com, sección de profesionales | Lo mismo para el coclear |
 | 6 | (Opcional) Manual de un estimulador de nervio sacro (Medtronic InterStim) o del vago (LivaNova) | manuals.medtronic.com · livanova.com | Lo mismo para «Otro estimulador de nervios» |
 
 Para cada uno: el PDF entero o, si es un manual largo, solo las páginas de advertencias y precauciones («Warnings», «Precautions», «Medical procedures»).
+
+## Lectura de los PDF (noviembre 2026)
+
+El usuario subió el consenso EHRA de 2022 (PDF, 26 pp.) y el número especial de *Physiotherapy Canada* de 2010 (PDF, 83 pp.).
+
+### Qué se leyó
+
+| Clave propuesta | Referencia | Qué se leyó | Qué es |
+|---|---|---|---|
+| `Stühlinger 2022` | Stühlinger M, Burri H, Vernooy K, et al. EHRA consensus on prevention and management of interference due to medical procedures in patients with cardiac implantable electronic devices. *Europace* 2022;24(9):1512–1537. [doi:10.1093/europace/euac040](https://doi.org/10.1093/europace/euac040) | Antecedentes, método, tablas 1–5 (categorías, señales que interfieren, efectos, listas de comprobación), **la sección entera de TENS, electroestimulación muscular y estimulador medular** (pp. 1528–1530, con sus recomendaciones) y el inicio de «otros procedimientos». **No leídos**: electrocauterio, ablación, radioterapia, resonancia, endoscopia y el anexo de radiografías, que no son de fisioterapia | Consenso de 20 expertos de la EHRA más dos de cada sociedad (HRS, LAHRS, APHRS), revisión hasta junio 2021; tres categorías («should do this», «may be used», «should not be used»), que los autores dicen que no equivalen a las clases I–III ni a los niveles A–C de una guía |
+| `Houghton 2010` | Houghton PE, Nussbaum EL, Hoens AM. Electrophysical agents — contraindications and precautions: an evidence-based approach to clinical decision making in physical therapy. *Physiother Can* 2010;62(5):1–80. [doi:10.3138/ptc.62.5](https://doi.org/10.3138/ptc.62.5) | Cap. 1 (propósito, método, definiciones), tabla 1 (resumen de las recomendaciones) y, de cada agente, la sección de dispositivos electrónicos: ultrasonido 3-6, electroestimulación 4-1, más 4-16 (tórax y corazón), 4-15 (cuello) y 4-17 (cabeza), onda corta 8-5 y 8-6, y las listas de láser, calor superficial y frío. **No leídos**: el resto de condiciones de cada agente, la guía de práctica segura (cap. 9) y los anexos | Consenso de fisioterapia: encuesta a 8 expertos de Canadá y EE. UU., 17 libros de texto, las guías de la APA (Australia) y de la CSP (Reino Unido) y revisión de la literatura hasta marzo 2008. **Contraindicación** = posible reacción grave (los autores la ponen aunque falte evidencia); **precaución**; **seguro**. Cada recomendación con su nivel de evidencia (bajo, moderado, fuerte). No trata las microondas |
+
+### Qué dicen para este diseño
+
+**Stühlinger 2022 (EHRA)**
+1. En la tabla de señales que interfieren, la **electroestimulación terapéutica (TENS, estimulación muscular, estimulador medular) tiene incidencia alta** (más de 1 de cada 10) de sobredetección y de estimulación o terapia del desfibrilador inapropiadas. La **diatermia terapéutica**, incidencia baja (menos de 1 de cada 1000) de lo mismo. El consenso trata el funcionamiento del aparato, no el calentamiento de los cables, que es el riesgo de la FDA.
+2. **Lo que más pesa es dónde se aplica la corriente**: lo más arriesgado es la aplicación bilateral, con el aparato dentro del flujo de corriente, cerca del dispositivo. El modo y el tipo de corriente, poco. Cualquier dispositivo puede verse afectado.
+3. **Recomendaciones** («should do this»):
+   - **La TENS y la otra electroestimulación, solo tras consultar a un especialista en dispositivos**.
+   - **Lo más lejos posible del aparato**, y mejor **con los electrodos del mismo lado**.
+   - **La primera sesión**: con marcapasos dependiente, con el electrograma y los marcadores vigilados por personal formado en dispositivos; con desfibrilador, bajo su vigilancia, con ECG continuo y un desfibrilador al lado.
+   - **Si las pruebas no ven interacción, se puede seguir sin ese personal**, siempre que no cambien el sitio, los parámetros ni la programación del aparato. **Si cambian, se repite la prueba.**
+   - Se anima a la telemonitorización. **La sesión se interrumpe enseguida si hay síntomas cardiacos**, y se reevalúa con el especialista.
+   - El plan lo diseñan **juntos el fisioterapeuta y el centro de dispositivos**.
+4. **Holter implantable**: sin medidas, salvo recuperar los registros, que pueden llenarse de artefactos.
+
+**Houghton 2010**
+1. **Ultrasonido (3-6)**, continuo o pulsado: **no directamente sobre el marcapasos u otro aparato electrónico** (desfibrilador, estimuladores), esté o no funcionando. **Solo si se sabe dónde están exactamente los componentes**, y vigilando al paciente si se aplica lejos de ellos. Evidencia baja: no se conocen efectos adversos publicados. Las alertas de lesión o muerte son de la **diatermia por ultrasonido**, que «no es un aparato que usen los fisioterapeutas». La CSP solo evita el ultrasonido térmico (continuo).
+2. **Electroestimulación (4-1)**, TENS, electroestimulación neuromuscular y corriente pulsada de alto voltaje: **no aplicarla donde pueda alterar el funcionamiento** de un aparato electrónico implantado: marcapasos, desfibrilador, **neuroestimuladores medulares o cerebrales, estimuladores del crecimiento óseo**. Hacer un ECG durante la aplicación para ver si interfiere con el marcapasos o cambia la frecuencia cardiaca, y avisar a los médicos de que los artefactos de la TENS en el ECG no son arritmias. Evidencia moderada. Unos autores la contraindican solo sobre el aparato y otros en cualquier zona. En 51 pacientes con marcapasos a demanda, 20 aparatos de TENS en 4 o más zonas no dieron ninguna interferencia.
+3. **Tórax (4-16)**: con marcapasos, evitar la TENS en la parte anterior del tórax; nada de electroestimulación de los intercostales. **Cabeza (4-17) y parte anterior del cuello (4-15)**: la electroestimulación está contraindicada en cualquier persona (tabla 1).
+4. **Onda corta (8-6)**: **ninguna forma, térmica o no térmica, a menos de 3 m de una persona con un implante electrónico**, sea cual sea la zona o el aparato. Quitar los audífonos y cualquier aparato externo. Evidencia fuerte.
+5. **Láser de baja intensidad, calor superficial y frío**: se pueden usar **sobre la zona de un aparato electrónico** (tabla 1 y listas de cada agente).
+
+### Contradicciones nuevas
+
+7. **Electroterapia con marcapasos o desfibrilador**: EHRA (2022) permite seguir tras una prueba sin interacción. Houghton (2010) la contraindica solo donde pueda alterar el aparato. Mohammad (2022) desaconseja la TENS en casa con desfibrilador. Suhail Arain (2023) coincide con EHRA. **Propuesta**: seguir a EHRA, el más reciente y el de los especialistas que hacen la prueba (decisión 7, cambiada).
+8. **TENS en casa con desfibrilador**: Mohammad (2022), nunca. EHRA, posible tras la prueba si no cambian el sitio ni los parámetros. **Propuesta**: «no la uses en casa por tu cuenta; solo si tu unidad de marcapasos la ha probado contigo, en ese sitio y con esos parámetros» (decisión 14, cambiada).
+9. **Ultrasonido con estimulador medular**: Ghaly (2016) lo excluye en cualquier zona. Houghton (2010) solo sobre el aparato, y aclara que las alertas son de la diatermia por ultrasonido, que no es de fisioterapia. Keus (2014, cerebral profundo) lo excluye sin zona. **Propuesta**: mantener la decisión 6 aceptada (en ninguna zona con el medular y el cerebral profundo), la opción prudente.
+10. **Onda corta**: FDA y Salud Canadá, con cualquier electrodo implantado. Houghton añade **a menos de 3 m** de quien lleve un implante electrónico, aunque no sea quien recibe el tratamiento (decisión 20, nueva).
+
+### Qué cambia en el diseño (propuestas; las decisiones aceptadas que cambian se marcan)
+
+- **Decisión 7, cambiada.** Con marcapasos, desfibrilador, «No sabe cuál» o nada marcado: «**Electroterapia (TENS, interferenciales, electroestimulación), solo tras consultar a su unidad de marcapasos**, que valora el riesgo y vigila la primera sesión. Si no hubo interferencia, se puede seguir en el mismo sitio y con los mismos parámetros; si cambian, otra prueba. Para enseguida si nota síntomas cardiacos» (Stühlinger 2022; Suhail Arain 2023). Sustituye a «ninguna salvo autorización».
+- **Decisión 8, cambiada.** «**Lo más lejos posible del aparato y con los dos electrodos del mismo lado**, sin que la corriente cruce el aparato; nunca en la parte anterior del tórax» (Stühlinger 2022; Houghton 2010, 4-16). Sustituye a «más riesgo en el tórax».
+- **Decisión 9, cambiada.** Con estimulador medular, cerebral profundo, otro estimulador de nervios o del crecimiento óseo: «**Electroterapia, nunca donde pueda alterar el aparato**: ni encima ni cerca del aparato o de sus cables» (Houghton 2010, 4-1). Con el cerebral profundo sigue la línea de Keus 2014, más estricta. Con el implante coclear, la cabeza y el cuello ya están contraindicados para cualquiera (Houghton 2010, 4-15 y 4-17), y se aplica la misma frase. Desaparece la nota gris «pendiente de los manuales»; los manuales pasan a opcionales.
+- **Decisión 6, precisión.** A la línea del ultrasonido se añade «**si no sabes por dónde van el aparato y los cables, no lo uses**» (Houghton 2010, 3-6).
+- **Decisión 14, cambiada.** Programa para casa con desfibrilador: «No uses un aparato de TENS en casa por tu cuenta; solo si tu unidad de marcapasos lo ha probado contigo, en ese sitio y con esos parámetros» (Stühlinger 2022; Mohammad 2022).
+- **Decisión 20, nueva: 3 m de la onda corta.** En la línea roja: «y que no esté a menos de 3 m de un aparato de onda corta encendido, aunque no sea para él» (Houghton 2010, 8-6). Lo recomiendo: es la única con evidencia fuerte y cambia cómo se organiza la sala.
+- **Decisión 21, nueva: lo que sí se puede.** Una línea informativa en el recuadro de la fase 5: «El láser de baja intensidad, el calor superficial y el frío no tienen restricción por el implante» (Houghton 2010, tabla 1). Lo recomiendo, para no restringir de más.
+- **Decisión 4, refuerzo.** El Holter implantable fuera de la tarjeta: EHRA no pide medidas, solo saber que los registros pueden tener artefactos.
+
+### Registro
+
+Entran `Stühlinger 2022` y `Houghton 2010`. Ninguno de los dos existe ya en `data/referencias.js`.
 
 ## Segunda pasada (noviembre 2026)
 
@@ -258,6 +312,6 @@ Búsqueda en PMC de fuentes en abierto para lo que se había pedido en PDF:
 ## Siguiente paso
 
 1. ~~Tus decisiones (1–19)~~ Hecho: aceptadas las 19 recomendaciones (noviembre 2026).
-2. Los PDF 1 y 2 (y el 4 y el 5 para la decisión 9); el 3 y el 6 son opcionales. Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10: si cambian, se proponen al usuario antes del texto cerrado.
+2. ~~Los PDF 1 y 2~~ leídos (ver «Lectura de los PDF»). Pendiente: **tus decisiones sobre los cambios 6, 7, 8, 9 y 14 y las nuevas 20 y 21**. Los PDF 3–6 son ya opcionales (confirmar con un manual de fabricante lo que dice Houghton 2010 para el medular y el coclear). Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10: si cambian, se proponen al usuario antes del texto cerrado.
 3. Texto cerrado para revisión, con cada frase y su fuente, como en el Parkinson.
 4. La implementación, la revisión en la app y, después, `_bloqueIE` en physiq-report.
