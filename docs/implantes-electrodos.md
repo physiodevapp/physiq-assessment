@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. Los manuales de los fabricantes pasan a opcionales.
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 19 recomendaciones (noviembre 2026)**; las 7–10 quedan abiertas a lo que digan los PDF. Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». **PDF del usuario leídos (noviembre 2026)**: consenso EHRA 2022 y Houghton 2010; cambian las decisiones 7, 8, 9 y 14, precisan la 6 y añaden la 20 y la 21; **aceptados todos los cambios por el usuario (noviembre 2026)** (ver «Lectura de los PDF»). Donde las secciones de borrador no coinciden con «Qué cambia en el diseño», manda esta última. **Manual de Medtronic leído (noviembre 2026)**: confirma las decisiones 6 y 9; refuerza la 19, amplía la 10 y matiza la 21, pendientes del usuario (ver «Manual de Medtronic»). Falta, opcional, la guía de MED-EL (implante coclear).
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -300,6 +300,44 @@ El usuario subió el consenso EHRA de 2022 (PDF, 26 pp.) y el número especial d
 ### Registro
 
 Entran `Stühlinger 2022` y `Houghton 2010`. Ninguno de los dos existe ya en `data/referencias.js`.
+
+## Manual de Medtronic (noviembre 2026)
+
+El usuario subió el manual del fabricante en dos PDF. La parte 1 tiene el texto en español; la parte 2 solo trae otros idiomas (danés y portugués) y no se usa.
+
+### Qué se leyó
+
+| Clave propuesta | Referencia | Qué se leyó |
+|---|---|---|
+| `Medtronic 2023 (neuroestimulación)` | Medtronic. Terapia contra el dolor de Medtronic: Inceptiv, Inceptiv LT, Intellis Pro, Intellis, Vanta, Sequentia LT. Sistemas de neuroestimulación para la terapia contra el dolor. Información para los facultativos que realizan la prescripción. M996038A022 Rev. A, 2023-01-15 (publicado en la biblioteca de manuales de Medtronic, 2023-10-13) | La parte en español entera, salvo la implantación, la programación y los efectos adversos de la cirugía: contraindicaciones, advertencias (interferencias, tabla 1, otros dispositivos implantados), información para el paciente (actividades) y el apéndice A de interferencias (contraindicaciones, advertencias, medidas preventivas, notas) |
+
+### Qué dice para este diseño
+
+1. **Contraindicación: diatermia.** No aplicar diatermia de onda corta, de microondas ni **diatermia terapéutica mediante ultrasonidos**: la energía pasa por el sistema y daña el tejido donde están los polos, con lesiones graves o la muerte. Vale **en cualquier parte del cuerpo**, con el sistema **encendido o apagado**, **dé calor o no**, y **mientras quede algún componente** (electrodo, extensión o generador). Hay que pedir al paciente que avise a todo el personal sanitario de que no se le puede aplicar.
+2. **Tabla 1**: los «ultrasonidos terapéuticos» y la TENS figuran entre los procedimientos que pueden afectar al sistema.
+3. **TENS (medida preventiva)**: no colocar los polos de forma que **la corriente pase sobre cualquier parte del sistema**. Si el paciente nota que la TENS interfiere, debe dejarla hasta consultar al médico.
+4. **Actividades**: el paciente debe evitar **los movimientos de flexión, torsión, salto o estiramiento repentinos, excesivos o repetitivos**, que pueden romper o desplazar los componentes (pérdida de estimulación, estimulación intermitente, nueva cirugía). **Con estimulación medular, sobre todo, evitar inclinar excesivamente el tronco.** En el paracaidismo, el tirón al abrirse puede desplazar o romper el electrodo.
+5. **Manipulación**: el paciente debe **evitar manipular o frotar el sistema a través de la piel**, porque puede dañar los componentes, desplazar el electrodo, erosionar la piel o estimular en el lugar del implante.
+6. **Láser**: con «procedimientos con láser», apagar el neuroestimulador y **dirigir el láser lejos del sistema**. El manual no distingue el láser quirúrgico del terapéutico.
+7. **Con marcapasos o desfibrilador a la vez**: los impulsos del neuroestimulador pueden alterar la detección del dispositivo cardiaco, y los médicos de los dos deben comentarlo (implantarlos en lados opuestos, salida bipolar).
+8. **ECG**: apagar el neuroestimulador antes de un ECG, porque altera el registro.
+9. **Cambios inesperados en la estimulación** con la postura o las interferencias (sensación de sacudida o descarga): el paciente la apaga antes de actividades en que una sacudida sea peligrosa, como conducir o usar herramientas eléctricas.
+
+### Qué confirma y qué cambia (propuestas para el usuario)
+
+- **Confirma la decisión 6** (ultrasonido en ninguna zona con el medular): el fabricante lo contraindica como diatermia en cualquier parte del cuerpo. Contradicción con Houghton 2010 (solo sobre el aparato) resuelta a favor del fabricante, que es más estricto y es el que rige el aparato.
+- **Confirma la decisión 9** (electroterapia nunca donde pueda alterar el aparato): el fabricante concreta «que la corriente no pase sobre ninguna parte del sistema». Se usa esa frase con el medular.
+- **Decisión 19, reforzada.** Ya no es solo opinión de Ghaly 2016: es instrucción del fabricante. Propongo cambiar la línea y su sitio:
+  - Texto: «**Que evite la flexión, torsión, salto o estiramiento bruscos, excesivos o repetidos, y sobre todo inclinar mucho el tronco: pueden romper o desplazar los cables.** Pregunta si el equipo que lo implantó le puso más límites» (Medtronic 2023; Ghaly 2016; la última frase **[propia]**).
+  - Sitio: en el recuadro de la fase 5 **y también en el aviso de la fase 6**, porque cambia la elección del ejercicio. Sigue sin regla de dosis.
+  - Programa para casa: «Evita doblar mucho o girar el tronco de golpe y repetir saltos o estiramientos bruscos; pregunta a tu equipo qué límites tienes» (adaptación al «tú» de la frase de Medtronic 2023).
+- **Decisión 10, ampliada.** Con el medular: «**Sin masaje ni fricción sobre el generador ni los cables**» (Medtronic 2023: no manipular ni frotar el sistema a través de la piel). Con el cerebral profundo sigue la de Keus 2014. Con los demás implantes, nada (sin fuente).
+- **Decisión 21, matizada.** La línea «el láser de baja intensidad, el calor superficial y el frío no tienen restricción por el implante» (Houghton 2010) se queda para el calor y el frío. Para el láser, con cualquier neuroestimulador, se añade «el láser, lejos del aparato y de los cables» (Medtronic 2023). El fabricante es más estricto y es el que rige el aparato.
+- **Nada más cambia.** Lo de las cardioversiones, la electrocirugía, la resonancia y la seguridad de aeropuertos no es de fisioterapia.
+
+### Registro
+
+Entra `Medtronic 2023 (neuroestimulación)`, con `citadaComo: ['Medtronic 2023']`.
 
 ## Segunda pasada (noviembre 2026)
 
