@@ -1,6 +1,6 @@
 # Implantes con electrodos — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código.** Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 18 decisiones para el usuario (ver «Decisiones»). Faltan PDF para cerrar la electroterapia con los implantes que no son cardiacos (ver «PDF que necesito»).
+Estado: **borrador de diseño (noviembre 2026), sin código.** Viene de la decisión 22 de `docs/parkinson.md` y de la casilla «Otros implantes con electrodos» de `MIGRATION_PLAN.md` (Fase P). 19 decisiones para el usuario (ver «Decisiones»). **Segunda pasada (noviembre 2026)**: Ghaly 2016, leída entera, confirma la diatermia y el ultrasonido con el estimulador medular y añade la decisión 19; ver «Segunda pasada». Faltan PDF para cerrar la electroterapia con los implantes que no son cardiacos (ver «PDF que necesito»).
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesión; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión del usuario.
 
@@ -8,7 +8,7 @@ Reglas, como en las otras condiciones: solo fuentes leídas enteras en esta sesi
 
 - **El problema.** La FDA (2002) y Salud Canadá (2003) contraindican la **onda corta y las microondas**, térmicas o atérmicas, con **cualquier electrodo metálico implantado**: marcapasos y desfibriladores, implantes cocleares, estimuladores del crecimiento óseo, estimuladores medulares, cerebrales profundos y de otros nervios. Vale aunque el aparato esté apagado, aunque el electrodo esté desconectado o aunque solo quede un trozo de electrodo. Salud Canadá añade el **ultrasonido terapéutico** encima o cerca del implante o de sus electrodos. Hoy la app solo lo avisa con el estimulador cerebral profundo de la tarjeta del Parkinson. Un paciente con marcapasos o con estimulador medular no recibe ningún aviso, y 16 pautas nombran la electroterapia o el ultrasonido (unas para recomendarlos y otras para desaconsejarlos).
 - **La electroterapia con marcapasos o desfibrilador** (TENS, interferenciales, electroestimulación neuromuscular) **sí tiene fuentes leídas en abierto**. El estudio más grande (Suhail Arain 2023, 107 desfibriladores modernos) vio interferencias en el 15,9 % de los pacientes, sobre todo con los electrodos en el tórax (14 % frente al 2,8 % en el cuello) y con más intensidad; concluye que **antes de usar TENS con un desfibrilador hay que probarlo bajo la supervisión de un especialista en dispositivos**. Hay casos de **descargas inapropiadas** del desfibrilador y de **inhibición del marcapasos** con TENS (Mohammad 2022). La revisión de Barmore 2022 resume el riesgo de la TENS para desfibriladores y marcapasos antiguos. La guía de referencia, el consenso EHRA de 2022 sobre interferencias por procedimientos médicos, está en PMC solo como PDF y no se ha podido leer: se pide.
-- **Con los implantes que no son cardiacos** (estimulador medular, implante coclear, otros neuroestimuladores, estimulador del crecimiento óseo), **la electroterapia no tiene fuente leída**. Lo dicen los manuales de los fabricantes, que no son accesibles desde este entorno. Se piden en PDF. Hasta leerlos, la propuesta solo escribe la diatermia y el ultrasonido para ellos.
+- **Con los implantes que no son cardiacos** (estimulador medular, implante coclear, otros neuroestimuladores, estimulador del crecimiento óseo), **la electroterapia no tiene fuente leída**. Para el medular, Ghaly 2016 confirma que **no se usa onda corta, microondas ni ultrasonido terapéutico, esté encendido o apagado**, pero no dice nada de la TENS. Lo dicen los manuales de los fabricantes, que no son accesibles desde este entorno. Se piden en PDF. Hasta leerlos, la propuesta solo escribe la diatermia y el ultrasonido para ellos.
 - **Propongo la forma 2**: una **tarjeta propia en la fase 1** («Implantes con electrodos», un solo estado «Lleva», chips de qué implante), **sin sistema de fase 2** (ninguna fuente leída da una pregunta de cribado propia), un recuadro de la fase 5, un aviso de la fase 6 en cualquier plan, payload, 📋 Notas, 📄 Informe (solo el antecedente) y bloque de la IA. El estimulador cerebral profundo pasa a ser **un solo dato** que se ve en las dos tarjetas (Parkinson e implantes), con la línea de técnicas escrita una sola vez.
 
 ## Qué hay hoy en la app
@@ -56,6 +56,7 @@ Cinco la proponen (`h1`, `ce5`, `ro2`, `ro4` y, en parte, `co1` sin recomendaci�
 | `Barmore 2022` | Barmore W, Patel H, Voong C, Tarallo C. Effects of medically generated electromagnetic interference from medical devices on cardiac implantable electronic devices: a review. *World J Cardiol* 2022;14(8):446–453. [doi:10.4330/wjc.v14.i8.446](https://doi.org/10.4330/wjc.v14.i8.446) (PMC9453256) | Revisión narrativa | Las interferencias pueden inhibir el marcapaso (bradicardia, incluso parada) o dar descargas inapropiadas del desfibrilador. **Más riesgo con la TENS para desfibriladores y algunos marcapasos de generaciones anteriores**; casos de descarga con TENS en un desfibrilador subcutáneo (cuello, axila, espalda) y en uno transvenoso. Riesgo bajo entre estimulador medular o cerebral profundo y el dispositivo cardiaco (casos). Para que convivan, probar en el «peor escenario» y bajar la salida del estimulador al mínimo eficaz. Las recomendaciones del área son **opinión de expertos** |
 | `Kim 2021` | Kim M, Park JK, et al. Neuromuscular electrical stimulation for a dysphagic stroke patient with cardiac pacemaker using magnet mode change: a case report. *World J Clin Cases* 2021;9(19):5313–5318. [doi:10.12998/wjcc.v9.i19.5313](https://doi.org/10.12998/wjcc.v9.i19.5313) (PMC8283601) | Un caso | Electroestimulación neuromuscular faríngea con marcapasos: **se retrasó hasta hablar con cardiología y con el fabricante**; la primera sesión, con el marcapasos reprogramado por el técnico y el cardiólogo presente; después, con un imán sobre el aparato y médico delante, ECG tras cada sesión. Cita (sin que se hayan leído) que la AHA aconseja no usar TENS en el tronco con marcapasos o desfibrilador y que la FDA pone los dispositivos eléctricos implantados como contraindicación de los estimuladores musculares |
 | `Suarez-Fuster 2018` | Suarez-Fuster L, Oh C, et al. Transcutaneous electrical nerve stimulation electromagnetic interference in an implantable loop recorder. *J Arrhythm* 2018;34(1):96–97. [doi:10.1002/joa3.12009](https://doi.org/10.1002/joa3.12009) (PMC5828268) | Un caso | La TENS en casa hizo que un **Holter implantable** registrara una falsa fibrilación auricular. **No era contraindicación seguir con la TENS**; quien lee el registro tiene que saberlo para no tomar decisiones equivocadas |
+| `Ghaly 2016` | Ghaly RF, Tverdohleb T, Candido KD, Knezevic NN. Do we need to establish guidelines for patients with neuromodulation implantable devices, including spinal cord stimulators undergoing nonspinal surgeries? *Surg Neurol Int* 2016;7:18. [doi:10.4103/2152-7806.176373](https://doi.org/10.4103/2152-7806.176373) (PMC4766801) | Dos casos y revisión narrativa (perioperatoria) | **«La diatermia por onda corta, microondas y ultrasonido terapéutico no debe usarse en pacientes con estimulador medular implantado»**: la energía pasa por el sistema y puede dar lesión grave del tejido e incluso la muerte, **esté encendido o apagado**. El manual de seguridad de la FDA (no leído) avisa de la diatermia, otros estimuladores implantados, la litotricia, la desfibrilación externa, la radioterapia y el ultrasonido de alta potencia. **Los movimientos repetidos de columna en algunos deportes o trabajos (levantamiento de pesas, construcción) pueden romper o desplazar los cables.** Con desfibrilador y neuroestimulador a la vez, probar los dos aparatos juntos. No hay guías ni consenso para estos pacientes; sin datos de la TENS |
 | `Chen 2022 (electroterapia)` | Chen PY, et al. Clinical applications and consideration of interventions of electrotherapy for orthopedic and neurological rehabilitation. *J Chin Med Assoc* 2022;85(1):24–29 (PMC12755623). [doi:10.1097/JCMA.0000000000000634](https://doi.org/10.1097/JCMA.0000000000000634) | Revisión narrativa de electroterapia | «En general, los marcapasos, el embarazo y la epilepsia se consideran contraindicaciones de la electroestimulación»; los electrodos no se ponen en la cabeza, el cuello, el tórax ni el abdomen. **Sin fuente para esa frase**: solo como contraste (ver «Contradicciones») |
 
 ### Salvedades de lectura
@@ -64,11 +65,13 @@ Cinco la proponen (`h1`, `ce5`, `ro2`, `ro4` y, en parte, `co1` sin recomendaci�
 - **Suhail Arain 2023** probó solo TENS, en cuello y tórax, 1 minuto. No dice nada de las interferenciales, la electroestimulación neuromuscular ni las extremidades.
 - **Lo que Kim 2021 atribuye a la AHA y a la FDA** (TENS en el tronco, estimuladores musculares) no se ha leído en su fuente: no se cita como AHA ni como FDA.
 - **Leídas solo en parte, no se citan**: dos revisiones perioperatorias (PMC13266869, PMC11150116), que solo nombran la TENS y los neuroestimuladores como fuentes de interferencia, y una revisión de autocuidado tras el marcapasos (PMC12430239), que trata el hombro tras la implantación (no es de este diseño).
+- **Descartadas por no ser de fisioterapia**: Frampton 2012 (PMC3954286), sobre la diatermia **quirúrgica** (bisturí eléctrico) con implante coclear: monopolar nunca en cabeza y cuello, bipolar a más de 2 cm (guía del British Cochlear Implant Group, no leída). No dice nada de la onda corta terapéutica y no se cita para ella. Una revisión de electroanalgesia (PMC11198869) no trata los implantes.
+- **Houghton 2010** consta en Europe PMC como no abierta, con PDF solo desde el visor: sigue en «PDF que necesito».
 - **Búsquedas**: PubMed (E-utilities) funcionó en esta sesión; el texto completo, por el servicio BioC de PMC o la herramienta de PubMed. Las webs de los fabricantes (medtronic.com, bostonscientific.com, cochlear.com, nevro.com) están bloqueadas por el proxy. El PDF del consenso EHRA en PMC pide una comprobación del navegador que no se ha intentado saltar.
 
 ## Contradicciones y huecos entre fuentes
 
-1. **Ultrasonido con implante**: la FDA 2002 no espera interacción; Salud Canadá 2003 lo contraindica encima o cerca del implante o de los electrodos; Keus 2014 lo prohíbe sin zona, pero solo con estimulador cerebral profundo. **Propuesta**: con cualquier implante, seguir a Salud Canadá (encima o cerca del implante y de sus electrodos); con el cerebral profundo, Keus 2014 como ya está (decisión 6).
+1. **Ultrasonido con implante**: la FDA 2002 no espera interacción; Salud Canadá 2003 lo contraindica encima o cerca del implante o de los electrodos; Keus 2014 (cerebral profundo) y Ghaly 2016 (medular) lo excluyen sin zona. **Propuesta**: con cualquier implante, seguir a Salud Canadá (encima o cerca del implante y de sus electrodos); con el cerebral profundo y el medular, en ninguna zona (decisión 6).
 2. **TENS con desfibrilador: prohibida o probada antes.** Mohammad 2022 aconseja no usarla en casa; Suhail Arain 2023 dice que los datos de la contraindicación general son antiguos y propone probarla antes, con un especialista en dispositivos; Chen 2022 pone el marcapasos como contraindicación sin fuente. Las tres coinciden en que **no la decide el fisioterapeuta solo**. **Propuesta**: con marcapasos o desfibrilador, ninguna electroterapia salvo que la unidad de dispositivos o cardiología la haya probado y autorizado para esa zona; nunca para usar en casa con desfibrilador (decisión 7).
 3. **Distancia**: Mohammad 2022 cree el riesgo menor en las piernas; Suhail Arain 2023 no lo probó y vio una TV/FV en el cuello. **Propuesta**: decir que el riesgo es mayor en el tórax y cerca del aparato, sin dar las extremidades por seguras (decisión 8).
 4. **Marcapasos sin cables y Holter implantable**: la FDA y Salud Canadá hablan de electrodos («leads»). Un marcapasos sin cables es un aparato metálico en el corazón sin electrodos; un Holter implantable no estimula. Ninguna fuente leída los trata para la diatermia. **Propuesta**: el marcapasos sin cables, como cualquier marcapasos **[propia]**, la opción prudente; el Holter implantable, fuera de la tarjeta, con solo una línea de Suarez-Fuster 2018 en la fila de la guía (decisión 4).
@@ -118,7 +121,8 @@ Mismos principios que las otras condiciones: capa transversal; el árbol CIF y e
 - **Línea roja nunca plegada**, con cualquier chip (decisión 6): «**Nada de onda corta ni microondas**, térmicas o atérmicas, en ninguna zona, aunque el aparato esté apagado o se haya retirado y queden electrodos; **ni ultrasonido encima o cerca del aparato o de sus cables**» (FDA 2002; Health Canada 2003).
 - **Con marcapasos, desfibrilador, «No sabe cuál» o nada marcado**, segunda línea roja (decisión 7): «**Ninguna electroterapia** (TENS, interferenciales, electroestimulación) salvo que la unidad de dispositivos o cardiología la haya probado y autorizado para esa zona. Más riesgo en el tórax, cerca del aparato y con más intensidad. **Con desfibrilador, nunca para usar en casa**» (Suhail Arain 2023; Mohammad 2022; Barmore 2022; Kim 2021).
 - **Con estimulador cerebral profundo**: la línea actual del Parkinson (Keus 2014), una sola vez (decisión 11).
-- **Con estimulador medular, coclear, otro estimulador de nervios o del crecimiento óseo**: solo la primera línea hasta leer los manuales; debajo, en gris: «La electroterapia con este aparato: pendiente de los manuales del fabricante; consulta al equipo que lo implantó» **[propia]** (decisión 9).
+- **Con estimulador medular**: la primera línea con «ni ultrasonido terapéutico en ninguna zona» (Ghaly 2016). La de los movimientos repetidos de columna va solo en el recuadro de la fase 5 (decisión 19).
+- **Con estimulador medular, coclear, otro estimulador de nervios o del crecimiento óseo**: hasta leer los manuales, nada más de la electroterapia; debajo, en gris: «La electroterapia con este aparato: pendiente de los manuales del fabricante; consulta al equipo que lo implantó» **[propia]** (decisión 9).
 
 ### Fases 2, 3 y 4
 
@@ -135,12 +139,13 @@ Nada: ningún test usa electroterapia ni diatermia. Con el cerebral profundo, la
 3. La de la electroterapia con marcapasos o desfibrilador (decisión 7).
 4. Con el cerebral profundo, la del Parkinson (decisión 11).
 5. Con el estimulador medular u otros, la nota gris de pendiente (decisión 9).
-6. Con una hipótesis activa cuya pauta propone la técnica (`h1`, `ce5`, `ro2`, `ro4`; lista fija con prueba unitaria, como `HIP_PUNCION_SECA` del anticoagulado): «La pauta de <hipótesis> propone <técnica>: con este implante, no» o «solo con autorización de cardiología» **[propia]** (decisión 12).
+6. Con el estimulador medular: «Los movimientos repetidos de columna con carga (levantamiento de pesos, algunos trabajos) pueden romper o desplazar los cables: tenlo en cuenta al dosificar el ejercicio y pregunta si el equipo que lo implantó le puso límites» (Ghaly 2016; la segunda mitad, **[propia]**) (decisión 19).
+7. Con una hipótesis activa cuya pauta propone la técnica (`h1`, `ce5`, `ro2`, `ro4`; lista fija con prueba unitaria, como `HIP_PUNCION_SECA` del anticoagulado): «La pauta de <hipótesis> propone <técnica>: con este implante, no» o «solo con autorización de cardiología» **[propia]** (decisión 12).
 
 ### Fase 6 — plan de tratamiento
 
-- **Aviso `implantes`** en cualquier plan con la tarjeta marcada (como `parkinsonEstimulador`, decisión 20 del Parkinson): las líneas 2–5 del recuadro (decisión 13).
-- **Aviso por pauta**: con `h1`, `ce5`, `ro2` o `ro4` elegidas, la línea 6 (decisión 12).
+- **Aviso `implantes`** en cualquier plan con la tarjeta marcada (como `parkinsonEstimulador`, decisión 20 del Parkinson): las líneas 2–5 del recuadro, sin la 6 (decisión 13).
+- **Aviso por pauta**: con `h1`, `ce5`, `ro2` o `ro4` elegidas, la línea 7 (decisión 12).
 - **Programa para casa**, solo con desfibrilador (decisión 14): «No uses un aparato de TENS en casa» (Mohammad 2022).
 - **Sin red de seguridad nueva** ni tope de técnica nuevo: lo que cambia es la elección del agente físico, no un riesgo que el paciente deba vigilar (decisión 15).
 
@@ -198,7 +203,7 @@ Con B: la línea de Keus 2014 sale **una sola vez**, en el recuadro de los impla
 3. **Chips**: los 9 de la tarjeta. El marcapasos sin cables y el resincronizador, dentro de «Marcapasos»; el subcutáneo, dentro de «Desfibrilador».
 4. **Marcapasos sin cables y Holter implantable**: recomiendo **el sin cables como cualquier marcapasos [propia]** y **el Holter implantable fuera de la tarjeta**, con su línea en la guía de condiciones (Suarez-Fuster 2018).
 5. **Nada marcado o «No sabe cuál»**: recomiendo **todas las líneas**, la opción prudente (como «No lo sabe» del anticoagulado).
-6. **Diatermia y ultrasonido, con cualquier implante**: recomiendo **onda corta y microondas en ninguna zona; ultrasonido no encima ni cerca del aparato o los cables** (FDA 2002; Health Canada 2003). Con el cerebral profundo, Keus 2014 como ya está.
+6. **Diatermia y ultrasonido, con cualquier implante**: recomiendo **onda corta y microondas en ninguna zona; ultrasonido no encima ni cerca del aparato o los cables** (FDA 2002; Health Canada 2003). Con el cerebral profundo (Keus 2014) y el medular (Ghaly 2016), ultrasonido terapéutico en ninguna zona.
 7. **Electroterapia con marcapasos o desfibrilador**: recomiendo **ninguna salvo autorización de la unidad de dispositivos o cardiología, tras probarla para esa zona; con desfibrilador, nunca en casa** (Suhail Arain 2023; Mohammad 2022; Barmore 2022; Kim 2021). **Provisional hasta leer el consenso EHRA 2022** (PDF 1): si da otra regla, se cambia.
 8. **Distancia**: recomiendo **decir que el riesgo es mayor en el tórax, cerca del aparato y con más intensidad**, sin dar ninguna zona por segura.
 9. **Electroterapia con estimulador medular, coclear, otros neuroestimuladores y del crecimiento óseo**: recomiendo **no escribir nada hasta leer los manuales** (PDF 4–6); mientras, la nota gris «pendiente, consulta al equipo que lo implantó» **[propia]**. Alternativa: aplicarles la línea de los cardiacos sin fuente.
@@ -211,6 +216,7 @@ Con B: la línea de Keus 2014 sale **una sola vez**, en el recuadro de los impla
 16. **Payload `ie`**: recomiendo `{ es, ti }` solo con la tarjeta marcada, y la copia `_bloqueIE` en physiq-report en otra PR.
 17. **Revisión del plan con IA**: recomiendo **un punto `alto`** en `lib/revision-plan.js` si propone diatermia, ultrasonido o electroterapia con la tarjeta marcada. Para el informe narrativo, nada (no propone técnicas).
 18. **Formulario del paciente**: recomiendo **una pregunta nueva en `formularios/comun.js`** («¿Llevas algún aparato implantado: marcapasos, desfibrilador, estimulador o implante del oído?», Sí / No / No sé) como pista «📝 Refiere el paciente» sobre la tarjeta, que **nunca la marca**. Cambia la hoja impresa del formulario general. Alternativa: sin pregunta, solo la nota de la tarjeta.
+19. **Movimientos repetidos de columna con estimulador medular** (Ghaly 2016, opinión de los autores, sin datos): recomiendo **una línea en el recuadro de la fase 5, solo para el fisio**, sin regla de dosis ni aviso en la fase 6. Alternativa: dejarla fuera hasta leer el manual del fabricante, que suele dar los límites tras la implantación.
 
 ## Cambios técnicos previstos (si se aceptan las decisiones)
 
@@ -222,7 +228,7 @@ Con B: la línea de Keus 2014 sale **una sola vez**, en el recuadro de los impla
 - `data/condiciones.js` + `lib/condiciones.js` (fila; la prueba de la fila por sistema no aplica, sin `transversal_*`: se añade a mano, como el posquirúrgico).
 - `formularios/comun.js` (decisión 18) y su hoja.
 - `lib/esquemas.js`, `lib/guia-condiciones.js`, `guia-plan.js`, `docs/esquemas/hojas.mjs`; hojas, historial y cuadernos regenerados.
-- `data/referencias.js`: `Suhail Arain 2023`, `Mohammad 2022`, `Barmore 2022`, `Kim 2021`, `Suarez-Fuster 2018`, `Chen 2022 (electroterapia)` (`Chen 2022` ya existe) y las de los PDF si el texto final las usa; `docs/referencias.md` regenerado.
+- `data/referencias.js`: `Suhail Arain 2023`, `Mohammad 2022`, `Barmore 2022`, `Kim 2021`, `Suarez-Fuster 2018`, `Ghaly 2016`, `Chen 2022 (electroterapia)` (`Chen 2022` ya existe) y las de los PDF si el texto final las usa; `docs/referencias.md` regenerado.
 - `tests/unit/implantes.mjs` (incluida «marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema» y la lista fija de pautas) y una sección `implantes` en la prueba de humo; la del Parkinson, con la sincronización.
 - `deploy-to-hub.yml`: `lib/implantes.js` (la prueba de los archivos importados lo exige).
 
@@ -241,9 +247,17 @@ Desde el entorno llegan PubMed y el texto de PMC; las editoriales y los fabrican
 
 Para cada uno: el PDF entero o, si es un manual largo, solo las páginas de advertencias y precauciones («Warnings», «Precautions», «Medical procedures»).
 
+## Segunda pasada (noviembre 2026)
+
+Búsqueda en PMC de fuentes en abierto para lo que se había pedido en PDF:
+
+- **Consenso EHRA 2022 y Houghton 2010**: Europe PMC no da el texto (error 500) y el PDF de PMC pide la comprobación del navegador. Siguen pedidos.
+- **Estimulador medular**: Ghaly 2016, leída entera (ver «Fuentes»). Cambia la decisión 6 (ultrasonido en ninguna zona) y añade la 19. La electroterapia sigue sin fuente: el manual del fabricante (PDF 4) sigue haciendo falta.
+- **Implante coclear**: solo hay artículos de la diatermia quirúrgica (Frampton 2012), que no valen para la onda corta terapéutica. El PDF 5 sigue haciendo falta.
+
 ## Siguiente paso
 
-1. Tus decisiones (1–18).
+1. Tus decisiones (1–19).
 2. Los PDF 1 y 2 (y el 4 y el 5 para la decisión 9); el 3 y el 6 son opcionales. Con ellos, una tanda de lectura que puede cambiar las decisiones 7–10.
 3. Texto cerrado para revisión, con cada frase y su fuente, como en el Parkinson.
 4. La implementación, la revisión en la app y, después, `_bloqueIE` en physiq-report.
