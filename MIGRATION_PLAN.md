@@ -515,7 +515,7 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] PDF del usuario leídos (2026-11): FDA 2002 y Salud Canadá 2003 (diatermia), guía europea KNGF/ParkinsonNet 2014 (banderas rojas y naranjas, fluctuaciones, dolor, vibración, cuándo parar), Torsney 2014 y el resumen de la Cochrane de 2024. Resuelven las decisiones 14 y 15. Con estimulador: sin onda corta, microondas, ultrasonido ni electroestimulación (TENS, interferenciales) y sin presión manual cerca de los cables
   - [x] Decisiones 17–23 del usuario: aceptadas las 7 recomendaciones (2026-11)
   - [x] Buhmann 2020 (dolor) leída entera en PMC y texto cerrado para revisión (`docs/parkinson.md`, «Texto cerrado para revisión», 2026-11)
-  - [ ] Revisión del usuario del texto cerrado
+  - [x] Revisión del usuario del texto cerrado: aprobado (2026-11)
   - [ ] Implementación, revisión del usuario en la app y `_bloquePK` en physiq-report
   - [ ] Aparte (decisión 22): otros implantes con electrodos (marcapasos, desfibrilador, estimulador medular, implante coclear): la diatermia está contraindicada con cualquiera (FDA 2002; Health Canada 2003) y la app no lo pregunta en ninguna parte
 

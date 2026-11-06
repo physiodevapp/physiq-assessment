@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado, pendiente de la revisión del usuario antes de escribir código** (ver «Texto cerrado para revisión»). Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado aprobado por el usuario (noviembre 2026)**, con sus recomendaciones de redacción propia incluidas (ver «Texto cerrado para revisión»). Siguiente: implementación en una sesión nueva. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -150,7 +150,7 @@ Lo que usa el diseño:
 
 ## Texto cerrado para revisión (noviembre 2026)
 
-Redacción final propuesta, con las 23 decisiones aplicadas. Cada frase lleva su fuente o «redacción propia». Al implementar se copia tal cual a `data/comun.js` (sistema y textos de la tarjeta) y `data/plan-tratamiento.js`.
+**Aprobado por el usuario (noviembre 2026).** Redacción final, con las 23 decisiones aplicadas. Cada frase lleva su fuente o «redacción propia». Al implementar se copia tal cual a `data/comun.js` (sistema y textos de la tarjeta) y `data/plan-tratamiento.js`.
 
 ### Fase 1 — tarjeta «Parkinson»
 
@@ -419,4 +419,5 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 2. ~~PDF del usuario~~: leídos (noviembre 2026; ver «Lectura de los PDF»).
 3. ~~Decisiones 17–23 del usuario~~: aceptadas (noviembre 2026).
 4. ~~Revisión del dolor y texto cerrado~~: hecho (ver «Dolor: Buhmann 2020» y «Texto cerrado para revisión»).
-5. **Revisión del usuario del texto cerrado.** Después, la implementación (ver «Cambios técnicos previstos»), en una sesión que empiece trayendo `main`.
+5. ~~Revisión del usuario del texto cerrado~~: aprobado (noviembre 2026).
+6. **Implementación** (ver «Cambios técnicos previstos» y «Texto cerrado para revisión»), en una sesión nueva que empiece trayendo `main`. Después, revisión del usuario en la app y `_bloquePK` en physiq-report.
