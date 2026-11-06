@@ -68,6 +68,8 @@ export const BASE_STATE = {
   osteoporosis:     { estado: '', causa: '', vertebrales: '', reciente: false, otras: false, tratamiento: '', corticoides: '', factores: {}, caidas: { n: '', lesion: false, suelo: false, conciencia: false, fragilidad: false } },
   embarazo:         { estado: '', semanas: null, familiar: '', fecha: '', semanasAprox: null, parto: '', esfinter: false, occipitoposterior: false, lactancia: '', animo: {}, suelo: {} },
   anticoagulado:    { estado: '', toma: [] },
+  parkinson:        { estado: '', estadio: '', fluctuaciones: '', fase: '', congelacion: '', estimulador: '',
+    caidas: { n: '', lesion: false, suelo: false, conciencia: false, fragilidad: false }, tension: null },
   farmacos:         { toma: [] },
   cuestionarios:    {},
   sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },

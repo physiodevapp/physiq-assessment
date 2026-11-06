@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado aprobado por el usuario (noviembre 2026)**, con sus recomendaciones de redacción propia incluidas (ver «Texto cerrado para revisión»). Siguiente: implementación en una sesión nueva. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
+Estado: **borrador de diseño (noviembre 2026), sin código. Aceptadas por el usuario las 16 recomendaciones (noviembre 2026)** (ver «Decisiones»). **PDF del usuario leídos** (noviembre 2026; ver «Lectura de los PDF»): resuelven las decisiones 14 y 15. **Aceptadas también las decisiones 17–23** (noviembre 2026). **Texto cerrado aprobado por el usuario (noviembre 2026)**, con sus recomendaciones de redacción propia incluidas (ver «Texto cerrado para revisión»). **Implementado (noviembre 2026, rama `claude/parkinson-condicion`)**: ver «Implementación» al final. Siguiente: revisión del usuario en la app y `_bloquePK` en physiq-report. Fuentes en abierto leídas en esta sesión: 8 (ver «Fuentes leídas»). Faltan PDF del usuario para cerrar dos puntos de seguridad (ver «Pendiente de leer»).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -420,4 +420,29 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 3. ~~Decisiones 17–23 del usuario~~: aceptadas (noviembre 2026).
 4. ~~Revisión del dolor y texto cerrado~~: hecho (ver «Dolor: Buhmann 2020» y «Texto cerrado para revisión»).
 5. ~~Revisión del usuario del texto cerrado~~: aprobado (noviembre 2026).
-6. **Implementación** (ver «Cambios técnicos previstos» y «Texto cerrado para revisión»), en una sesión nueva que empiece trayendo `main`. Después, revisión del usuario en la app y `_bloquePK` en physiq-report.
+6. ~~**Implementación**~~: hecha (noviembre 2026; ver «Implementación»). Siguiente: revisión del usuario en la app y `_bloquePK` en physiq-report.
+
+## Implementación (noviembre 2026)
+
+Rama `claude/parkinson-condicion`. Lo implementado es el «Texto cerrado para revisión», con las frases copiadas tal cual y su fuente.
+
+**Archivos**
+- `data/comun.js`: `SIS_PARKINSON` (`transversal_parkinson`, `soloParkinson: true`, icono 🧠), después del anticoagulado en los 7 `data/<región>.js`. Cada pregunta y bandera lleva `pk`: `'diagnosticado'`, `'estimulador'` (estimulador en «Sí») o `'sospecha'`; sin `pk` (solo `pk_d_ortostatica`), con los dos estados. `parkinson` guarda las filas, la medida de la tensión y los textos (`PK.textos`).
+- `lib/parkinson.js` (puro): estado vacío y normalización, `elementoPKVisible()`, `resultadoTension()` (TAS −20 o TAD −10 al minuto 1 o 3), `resultadoCaidasPK()`, `pendientesPK()`, `pkPayload()`, `datosPK()`, `lineaEstimulador()`, `lineasRecomendacionPK()`, `lineaNotasPK()`, `informePK()`, `bloquePKIA()`.
+- `app.js`: tarjeta (`_pintarPKUI`, `selectPKEstado`, `selectPKFila`), bloque de la fase 2 (`[data-pk-bloque]`: medida de la tensión y caídas), reloj (`pkRelojEmpezar`/`pkRelojParar`, el de la disautonomía con los minutos 1 y 3: `estadoReloj(reloj, ahora, minutos)` en `lib/disautonomia.js` acepta ahora los minutos), recuadro `.pk-fase5`.
+- `phase4b.js` (`.pk-nota-4b`), `index.html` (`#cardParkinson`, `#pkNotaDolor`), `lib/resumenes.js`, `lib/informe-narrativo.js`, `plan.js`, `lib/plan-tratamiento.js`, `data/plan-tratamiento.js`, `data/condiciones.js` + `lib/condiciones.js`, `lib/esquemas.js`, `lib/guia-condiciones.js`, `guia-plan.js`, `docs/esquemas/hojas.mjs`, `data/guia.js` (`CONTRASTE_URGENCIAS.pk_u_crisis`), `data/referencias.js`.
+
+**Decisiones de implementación** (sin cambiar nada clínico):
+- **Caídas compartidas** (decisión 8): el bloque es el mismo de la osteoporosis (`_caidasBloqueHTML()`), con `state.parkinson.caidas`. Con las dos tarjetas marcadas, cada respuesta se escribe en las dos y, al marcar una con la otra ya marcada, la que no tiene respuestas toma las de la otra (`_sincronizarCaidas()`).
+- **Payload `pk`**: exactamente `{ es, hy, fl, fa, cg, ec }` o `{ es }`. Las caídas y la respuesta de los ataques de sueño no van al payload: el recuadro de la fase 5 las lee aparte (`_datosRecuadroPK()`), así que `bloquePKIA()` (y `_bloquePK` de physiq-report) solo depende del payload.
+- **Líneas condicionales del recuadro**: la 4 (congelación o riesgo de caída) sale con congelación «Sí» o con alguna caída en el último año; la 6, solo con Hoehn y Yahr 4–5 (las dos frases juntas); la 11, con `pk_d_sueno` en SÍ; el resto, siempre con «Diagnosticado». Con «Sospecha», solo la derivación de `pk_d_sospecha`.
+- **Estimulador «No lo sabe»**: la línea de la tarjeta, del recuadro y de la 4b sale también, con «Hasta confirmarlo:» delante; la pregunta de la fase 2 sobre el fallo del estimulador, solo con «Sí». El aviso `parkinsonEstimulador` de la fase 6, con «Sí» o «No lo sabe».
+- **Red de la fase 6** (`RED_PARKINSON`, dos entradas): el programa para casa lleva las dos frases del texto cerrado tal cual (en tercera persona, no en «tú» como las demás alarmas: **para revisar**); el cierre de la sesión, «Red de seguridad (Parkinson): explicar que…» con las mismas frases.
+- **Razonamiento de las preguntas**: «por qué» y «cuánto pesa» redactados solo con lo que este documento recoge de cada fuente. `pk_d_sospecha` lleva además un «En detalle» con el dolor de hombro o brazo de un lado (Buhmann 2020; Paggou 2023), del que sale la segunda pista de la guía de condiciones; sin regla (decisión 7).
+- **Registro**: `Osborne 2022`, `NICE NG71`, `Simonet 2019` (publicada en 2020; la clave es la del diseño), `Pötter-Nerger 2024`, `LeWitt 2020`, `Keus 2014`, `Buhmann 2020`, `FDA 2002 (diatermia)` y `Health Canada 2003 (diatermia)` (con `citadaComo` sin el paréntesis), `Torsney 2014`, `Tan 2014`, `Ernst 2024` y `Paggou 2023`. Fuera, porque el texto no las usa: `Wang 2022` y `Gadgaard 2024`.
+- **Urgencia en la transcripción**: `pk_u_crisis` tiene su entrada en `CONTRASTE_URGENCIAS` (rigidez o inmovilidad nuevas junto a fiebre, confusión, sudor o dificultad para tragar).
+- **Hojas impresas**: el cribado de las 7 regiones pasa de 2 a 3 páginas; la hoja de condiciones y la del plan (red por condición) cambian. Sin cambio del orden de los cuadernos.
+
+**Pruebas**: `tests/unit/parkinson.mjs` (incluida «marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema», con los dos estados y todas las filas) y la sección de humo `parkinson`.
+
+**Para revisar en la app**: la tarjeta con «Diagnosticado» y con «Sospecha»; la línea roja del estimulador con «Sí» y con «No lo sabe»; el sistema de la fase 2 (preguntas, medida de la tensión con su reloj, caídas, también con la tarjeta de osteoporosis marcada); la nota de la fase 3 y la de la 4b; el recuadro de la fase 5; los avisos y la red de la fase 6 (sobre todo la redacción de las dos alarmas del programa para casa); 📋 Notas, 📄 Informe y la fila de la guía de condiciones especiales.

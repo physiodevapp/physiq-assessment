@@ -21,6 +21,7 @@ for (const tema of [
   'osteoporosis.mjs',
   'embarazo.mjs',
   'anticoagulado.mjs',
+  'parkinson.mjs',
   'condiciones.mjs',
   'farmacos.mjs',
   'ejercicio.mjs',
