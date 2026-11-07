@@ -1,6 +1,6 @@
 # Familia 14 de la guía de fármacos: antiparkinsonianos y agonistas dopaminérgicos — borrador
 
-Estado: **borrador de diseño (noviembre 2026). Solo diseño, sin código.** Viene de la lista «Fuera de este diseño» de `docs/parkinson.md` («Los fármacos antiparkinsonianos como familia de la guía de fármacos»). El usuario la pidió el 2026-11. Se sigue el procedimiento por familia de `docs/farmacologia.md` (paso 2), con sus límites:
+Estado: **escrita, pendiente de la revisión del usuario (noviembre 2026).** Ver «Escritura (noviembre 2026)» al final. Viene de la lista «Fuera de este diseño» de `docs/parkinson.md` («Los fármacos antiparkinsonianos como familia de la guía de fármacos»). El usuario la pidió el 2026-11. Se sigue el procedimiento por familia de `docs/farmacologia.md` (paso 2), con sus límites:
 - nunca se propone cambiar, suspender ni ajustar la medicación;
 - no hay interacciones;
 - el fármaco concreto se consulta en CIMA;
@@ -78,7 +78,35 @@ Los imprescindibles son los dos primeros. Los demás, según las decisiones 1 y 
 
 ## Siguiente paso
 
-1. Decisiones 1–7 del usuario.
-2. PDF de StatPearls del usuario (como mínimo, levodopa y agonistas dopaminérgicos).
-3. Lectura de las revisiones de PMC con un agente.
-4. Escribir la familia, PR sin fusionar y revisión del usuario.
+1. ~~PDF de StatPearls del usuario~~: los ocho, leídos enteros (noviembre 2026).
+2. ~~Lectura de las revisiones de PMC con un agente~~: siete leídas enteras.
+3. ~~Escribir la familia~~: hecho, con las recomendaciones de las decisiones 1, 2, 4, 6 y 7 aplicadas; la 3 (enlace desde la tarjeta) y la 5 (aviso de la fase 6), sin hacer.
+4. **Revisión del usuario** de la familia y de las decisiones 1–7.
+
+## Escritura (noviembre 2026)
+
+**Decisiones aplicadas a la espera de confirmación** (las recomendaciones; se cambian en la revisión):
+- 1: id `antiparkinsonianos`, nombre «Antiparkinsonianos y agonistas dopaminérgicos». Sin entrada en `data/farmacos-paciente.js`, así que el chip de «Fármacos que toma» lleva por ahora el nombre largo; el corto «Antiparkinsonianos» entra con la decisión 5.
+- 2: el trihexifenidilo entra, con los efectos generales de los anticolinérgicos de Ghossein 2023 (boca seca, estreñimiento, retención de orina, visión borrosa, menos sudor, confusión en mayores, demencia). **El biperideno no aparece en ninguna fuente leída**, así que no está en `ejemplos` ni en CIMA. Ninguna fuente trata los anticolinérgicos en el Parkinson ni las caídas.
+- 4: sin chip derivado de la tarjeta de Parkinson.
+- 6: familia 14, al final.
+- 7: «Nunca aconsejes dejarlos ni bajarlos», sin cifras de días ni de dosis.
+- **Sin hacer**: la 3 (enlace «Fármacos del Parkinson →» en la tarjeta y en el recuadro de la fase 5) y la 5 (aviso de la fase 6), que se hacen tras la revisión.
+
+**Fuentes** (todas en `data/referencias.js`):
+- StatPearls, PDF del usuario, leídos enteros: `Gandhi y Saadabadi 2023` (levodopa), `Leyden y Tadi 2023` (carbidopa), `Choi y Horner 2023` (agonistas), `Muranova y Shanina 2023` (levodopa, carbidopa y entacapona), `Chang y Ramphul 2023` (amantadina), `Patel y Saadabadi 2025` (IMAO; solo lo de la MAO-B), `Mansur 2023` (piernas inquietas), `Ghossein 2023` (anticolinérgicos).
+- PMC, leídas enteras: `Fanciulli 2025` (guía alemana: dolor, sueño, hipotensión ortostática), `Fanciulli 2026` (hipotensión ortostática), `Koschel 2022` (retirada de la medicación), `Pötter-Nerger 2024 (guía)` (crisis acinética y síndromes de retirada; citada en la frase como «Pötter-Nerger 2024, guía»), `Scanferla y Djamshidian 2026` (conductas impulsivas), `Di Laudo 2023` (somnolencia), `Mogavero 2026` (piernas inquietas).
+- Ya en el registro: `Pötter-Nerger 2024` (crisis acinética, leída para la tarjeta de Parkinson).
+- Leída y no usada: Allen 2024 (dolor y su manejo no farmacológico en el Parkinson; trata el ejercicio, no los fármacos). Sin leer, solo resumen en PMC: Scanga 2023 (sueño) y la guía AASM 2025 de piernas inquietas.
+
+**Discrepancia anotada en la guía**: los inhibidores de la MAO-B y la somnolencia (su capítulo de StatPearls advierte de ataques de sueño; Di Laudo 2023 los cuenta entre los que la reducen). Además, el capítulo de la levodopa pide tomarla con las comidas y, a la vez, lejos de las comidas con proteína: la guía solo dice lo segundo, como efecto sobre la absorción.
+
+**Redacción propia** (sin fuente; se revisa):
+- «Que lo tome no descarta una trombosis: las preguntas de la fase 2 siguen valiendo.»
+- «Si la sesión no rinde igual según el día, pregunta a qué hora tomó la medicación.» y «Las fuentes leídas para esta familia no dan un horario para el ejercicio; lo que dice la guía de fisioterapia sobre la fase on está en la tarjeta de Parkinson.»
+- «Es la pregunta de la tarjeta de Parkinson; con fiebre y rigidez, a urgencias.»
+- Los «que lo sepa su neurólogo» y «coméntalo», que convierten lo que dicen las fuentes en cuándo consultar.
+
+**Huecos** (sin fuente leída; la guía no los rellena): la curación de los tejidos; el horario del ejercicio respecto a la toma (solo la guía de fisioterapia, ya en la tarjeta); las discinesias como causa de caídas o lesión; los anticolinérgicos en el Parkinson (caídas, marcha, calor); el síndrome serotoninérgico con los inhibidores de la MAO-B (además, sería una interacción, fuera de los límites); pesadillas.
+
+**Hecho además**: tests de orden (14 familias) en `tests/unit/farmacos.mjs` y la sección `farmacos` del humo; hoja `farmacos` y cuadernos regenerados; `docs/referencias.md` regenerado.
