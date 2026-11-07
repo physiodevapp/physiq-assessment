@@ -2706,8 +2706,13 @@ async function checkGuiaCambios(browser, errors) {
     return res && res.querySelectorAll('li').length === n && (res.querySelector('.guia-cambios-paginas b')?.textContent || '') === linea
       && document.querySelector('input[data-fecha-copia="cuaderno-completo"]').value === '';
   }, { n: esperadas.length, linea: lineaVieja }, { timeout: 3000 }).then(() => esperadas.length > 0, () => false);
+  const avisoVisible = () => page.evaluate(() => { const m = document.querySelector('[data-movida="cuaderno-completo"]'); return !!m && m.getBoundingClientRect().height > 0; });
+  r.versionOcultaAviso = !(await avisoVisible());
   await page.fill('input[data-v-copia="cuaderno-completo"]', completo.huella);
   r.versionActual = /está al día/.test(await res());
+  await page.fill('input[data-v-copia="cuaderno-completo"]', '');
+  // sin versión vuelve el aviso (si el cambio de orden es aún reciente y lo hay)
+  r.sinVersionAviso = await page.evaluate(() => { const m = document.querySelector('[data-movida="cuaderno-completo"]'); return !m || m.getBoundingClientRect().height > 0; });
   await page.fill('input[data-v-copia="cuaderno-completo"]', 'deadbeef');
   r.versionDesconocida = /No reconozco/.test(await res());
   await page.goto(`${base}?c=${VIEJA}#hojas`, { waitUntil: 'networkidle' });
@@ -2716,6 +2721,7 @@ async function checkGuiaCambios(browser, errors) {
     return caja && !caja.hidden && document.querySelector('input[data-v-copia="cuaderno-completo"]').value === '9a8bcd04'
       && caja.querySelectorAll('[data-copia-res] li').length === n;
   }, esperadas.length, { timeout: 5000 }).then(() => true, () => false);
+  r.qrOcultaAviso = !(await avisoVisible());
   r.qrSinDesbordar = await page.evaluate(() => innerWidth === 320 && document.documentElement.scrollWidth <= 320);
   await ctx.close();
   r.ok = Object.values(r).every(Boolean);
