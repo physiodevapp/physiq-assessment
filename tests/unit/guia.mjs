@@ -448,6 +448,16 @@ test('cuadernos: las páginas a reimprimir de cada hoja empiezan en impar, acaba
   assert.equal(CAMB.paginasReimprimir(ej, ['x']), null);
   assert.equal(CAMB.paginasReimprimir({ paginas: 12 }, ['a']), null);
 });
+
+test('cuadernos: con la fecha de impresión, las hojas que cambiaron ese día o después', () => {
+  const c = { ordenFecha: '2026-10-31', hojas: { a: 'x', b: 'y', c: 'z' } };
+  const h = { a: { fecha: '2026-10-31' }, b: { fecha: '2026-11-06' }, c: { fecha: '2026-11-07' } };
+  assert.deepEqual(CAMB.hojasCambiadasDesde(c, h, '2026-11-05'), { entero: false, claves: ['c', 'b'] });
+  assert.deepEqual(CAMB.hojasCambiadasDesde(c, h, '2026-11-06').claves, ['c', 'b'], 'ese mismo día cuenta');
+  assert.deepEqual(CAMB.hojasCambiadasDesde(c, h, '2026-11-08').claves, []);
+  assert.deepEqual(CAMB.hojasCambiadasDesde(c, h, '2026-10-30'), { entero: true, claves: [] }, 'antes del orden de hojas: entero');
+  assert.equal(CAMB.hojasCambiadasDesde(c, h, ''), null);
+});
 const HIST = await import('../../docs/esquemas/historial.mjs');
 
 test('historial de hojas: las marcas de elemento no cambian la huella ni llegan al papel', () => {
