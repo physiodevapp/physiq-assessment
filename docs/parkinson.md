@@ -1,6 +1,6 @@
 # Enfermedad de Parkinson — diseño
 
-Estado: **cerrado (noviembre 2026).** Diseño con las 23 decisiones aceptadas por el usuario, todas las fuentes leídas (en abierto y PDF del usuario), texto cerrado aprobado, implementado (rama `claude/parkinson-condicion`, physiodevapp/physiq-assessment#619 y #620; ver «Implementación» al final) y revisado por el usuario en la app. `_bloquePK` en physiq-report (physiodevapp/physiq-report#101), con el mismo texto que `bloquePKIA()` en los cuatro casos de `PK_CASOS` (comprobado, noviembre 2026). Quedan fuera dos tareas aparte, cada una con su entrada en `MIGRATION_PLAN.md`: el bloque «Ejercicio en el Parkinson» (decisión 13) y los otros implantes con electrodos (decisión 22).
+Estado: **cerrado (noviembre 2026).** Diseño con las 23 decisiones aceptadas por el usuario, todas las fuentes leídas (en abierto y PDF del usuario), texto cerrado aprobado, implementado (rama `claude/parkinson-condicion`, physiodevapp/physiq-assessment#619 y #620; ver «Implementación» al final) y revisado por el usuario en la app. `_bloquePK` en physiq-report (physiodevapp/physiq-report#101), con el mismo texto que `bloquePKIA()` en los cuatro casos de `PK_CASOS` (comprobado, noviembre 2026). Las tres tareas que salieron aparte, cada una con su entrada en `MIGRATION_PLAN.md`, están cerradas y revisadas por el usuario (noviembre 2026): el bloque «Ejercicio en el Parkinson» (decisión 13), los otros implantes con electrodos (decisión 22, `docs/implantes-electrodos.md`) y la familia de antiparkinsonianos de la guía de fármacos (`docs/farmacos-antiparkinsonianos.md`).
 
 Es una posible condición especial de la Fase P (`MIGRATION_PLAN.md`). Va después de la hipermovilidad, el POTS, el lupus, el trastorno mastocitario, la osteoporosis, el embarazo y el paciente anticoagulado. Si se hace la tarjeta, la guía de condiciones especiales (`docs/condiciones-especiales.md`) tiene que añadir su fila. Lo exige un test unitario para todo sistema `transversal_*` con `soloX: true`.
 
@@ -403,7 +403,7 @@ Un bloque «Ejercicio en el Parkinson» tendría fuentes clínicas (Osborne 2022
 - Parkinsonismos atípicos (atrofia multisistémica, parálisis supranuclear progresiva) y parkinsonismo por fármacos. Osborne 2022 los excluye.
 - El ánimo, la psicosis y los trastornos del control de impulsos (Simonet 2019): del médico.
 - La disfagia más allá de derivar: es de logopedia (NICE NG71, 1.7.8).
-- Los fármacos antiparkinsonianos como familia de la guía de fármacos (`docs/farmacologia.md`): habría que proponerla aparte, con sus fuentes.
+- ~~Los fármacos antiparkinsonianos como familia de la guía de fármacos~~: hecha y revisada (noviembre 2026), `docs/farmacos-antiparkinsonianos.md`. Los parkinsonismos atípicos se dejan fuera (decisión del usuario, noviembre 2026: sin guía de fisioterapia que los cubra).
 
 ## Cambios técnicos previstos (si se aceptan las decisiones)
 

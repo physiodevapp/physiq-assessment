@@ -1,6 +1,6 @@
 # Familia 14 de la guía de fármacos: antiparkinsonianos y agonistas dopaminérgicos — borrador
 
-Estado: **escrita; decisiones 1–7 aceptadas por el usuario (noviembre 2026); la revisión del contenido de la familia, pendiente.** Ver «Escritura (noviembre 2026)» al final. Viene de la lista «Fuera de este diseño» de `docs/parkinson.md` («Los fármacos antiparkinsonianos como familia de la guía de fármacos»). El usuario la pidió el 2026-11. Se sigue el procedimiento por familia de `docs/farmacologia.md` (paso 2), con sus límites:
+Estado: **cerrada (noviembre 2026).** Escrita, decisiones 1–7 aceptadas, enlace y aviso hechos y revisada por el usuario en la app (physiodevapp/physiq-assessment#624). Ver «Escritura (noviembre 2026)» al final. Viene de la lista «Fuera de este diseño» de `docs/parkinson.md` («Los fármacos antiparkinsonianos como familia de la guía de fármacos»). El usuario la pidió el 2026-11. Se sigue el procedimiento por familia de `docs/farmacologia.md` (paso 2), con sus límites:
 - nunca se propone cambiar, suspender ni ajustar la medicación;
 - no hay interacciones;
 - el fármaco concreto se consulta en CIMA;
@@ -82,7 +82,7 @@ Los imprescindibles son los dos primeros. Los demás, según las decisiones 1 y 
 2. ~~Lectura de las revisiones de PMC con un agente~~: siete leídas enteras.
 3. ~~Escribir la familia~~: hecho.
 4. ~~Decisiones 1–7~~: aceptadas por el usuario (noviembre 2026). Hechas también la 3 y la 5 (ver «Enlace y aviso»).
-5. **Revisión del usuario** del contenido de la familia y del aviso.
+5. ~~Revisión del usuario~~ del contenido de la familia y del aviso: hecha en la app (noviembre 2026).
 
 ## Enlace y aviso (noviembre 2026)
 
