@@ -26,14 +26,21 @@ w = PdfWriter()
 for i, pag in enumerate(doc.pages, start=1):
     if i in con_numero:
         an, al = float(pag.mediabox.width), float(pag.mediabox.height)
-        pag.add_transformation(Transformation().scale(ESCALA).translate(an * (1 - ESCALA) / 2, al * (1 - ESCALA)))
+        dx, dy = an * (1 - ESCALA) / 2, al * (1 - ESCALA)
+        pag.add_transformation(Transformation().scale(ESCALA).translate(dx, dy))
+        # Los enlaces de la hoja (los QR) no siguen a la transformación: se escalan igual a mano
+        for ref in pag.get('/Annots') or []:
+            anot = ref.get_object()
+            if '/Rect' in anot:
+                x0, y0, x1, y1 = [float(v) for v in anot['/Rect']]
+                anot[NameObject('/Rect')] = ArrayObject([FloatObject(round(v * ESCALA + d, 2)) for v, d in ((x0, dx), (y0, dy), (x1, dx), (y1, dy))])
         pag.merge_page(num.pages[i - 1])
     w.add_page(pag)
 # Índice de la portada: cada fila, un enlace (sin borde) a la primera página de su hoja
 # (hecho a mano: el Link de pypdf deja el número de página en /Dest, y el destino de un enlace
 # interno tiene que ser la referencia a la página, o algunos visores no saltan)
 portada = w.pages[0]
-anotaciones = ArrayObject()
+anotaciones = ArrayObject(list(portada.get('/Annots') or []))  # el enlace del QR de la portada
 for e in config.get('enlaces', []):
     enlace = DictionaryObject({
         NameObject('/Type'): NameObject('/Annot'),

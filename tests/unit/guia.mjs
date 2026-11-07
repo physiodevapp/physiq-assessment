@@ -405,7 +405,14 @@ test('cuadernos a doble cara al día: docs/esquemas/cuadernos.json lleva la vers
     assert.equal(d.archivo, createHash('sha256').update(pdf).digest('hex').slice(0, 8), `${l.clave}: «archivo» es la huella del PDF guardado (el enlace de la guía la usa para no abrir una copia vieja)`);
     // Navegación (paginar.py): un enlace por fila del índice de la portada y marcadores del visor
     const texto = pdf.toString('latin1');
-    assert.equal((texto.match(/\/Subtype \/Link/g) || []).length, claves.length, `${l.clave}: un enlace por hoja en el índice de la portada`);
+    // Enlaces internos (las filas del índice) y externos (cada QR también es un enlace a su URL: el de la
+    // portada, el de cada hoja con QR y los de la hoja neuro)
+    const enlaces = (texto.match(/\/Subtype \/Link/g) || []).length, uri = (texto.match(/\/S \/URI/g) || []).length;
+    assert.equal(enlaces - uri, claves.length, `${l.clave}: un enlace por hoja en el índice de la portada`);
+    // Chromium escribe la URI con escapes octales (\072 = «:»)
+    const uris = [...texto.matchAll(/\/URI \(((?:\\.|[^\\)])*)\)/g)].map(m => m[1].replace(/\\([0-7]{1,3})/g, (_, o) => String.fromCharCode(parseInt(o, 8))).replace(/\\(.)/g, '$1'));
+    assert.ok(uris.includes(`${ESQ.URL_GUIA}?c=${d.huella}#hojas`), `${l.clave}: el QR de la portada es un enlace a su URL`);
+    assert.ok(uri >= claves.length + 1, `${l.clave}: el QR de cada hoja también es un enlace`);
     assert.ok(/\/Outlines/.test(texto) && /\/PageMode \/UseOutlines/.test(texto), `${l.clave}: con marcadores (sección → hoja)`);
     assert.ok(!claves.includes('ejercicio-paciente'), 'la hoja del paciente va aparte');
     // Colocación: en qué página empieza cada hoja (para los enlaces del índice y los marcadores). Cada hoja empieza
@@ -493,7 +500,9 @@ const HIST = await import('../../docs/esquemas/historial.mjs');
 test('historial de hojas: las marcas de elemento no cambian la huella ni llegan al papel', () => {
   for (const h of HOJAS.hojasImpresas()) {
     const html = h.html();
-    assert.equal(HOJAS.huellaHoja(html), HOJAS.fnv(HOJAS.sinMarcas(html)), h.clave);
+    assert.equal(HOJAS.huellaHoja(html), HOJAS.fnv(HOJAS.sinEnlacesQR(HOJAS.sinMarcas(html))), h.clave);
+    // El QR del PDF digital también es un enlace a la URL que codifica; el enlace no cuenta en la huella
+    if (h.ruta) assert.ok(HOJAS.rematar(html, { ruta: h.ruta, huella: 'x', fecha: 'y' }).includes(`<a class="qr-enlace" href="${ESQ.urlRuta(h.ruta, 'x')}"`), `${h.clave}: QR con enlace`);
     assert.ok(!HOJAS.rematar(html, { ruta: h.ruta, huella: 'x', fecha: 'y' }).includes('<!--el:'), `${h.clave}: marcas en el papel`);
   }
 });
@@ -574,4 +583,18 @@ test('historial de hojas: el índice dice de qué hoja es cada versión (el pape
   const indice = JSON.parse(leer('docs', 'esquemas', 'historial', 'indice.json'));
   const guardadas = JSON.parse(leer('docs', 'esquemas', 'huellas.json'));
   for (const [k, v] of Object.entries(guardadas)) assert.equal(indice[v.huella], k, k);
+});
+
+// Decisión del usuario (2026-11): el cuaderno lleva hojas para consultar, nunca para rellenar. Solo los
+// formularios del paciente y la hoja de ejercicios (fuera de los cuadernos) llevan casillas o líneas.
+test('hojas de consulta: ninguna hoja del cuaderno lleva casillas ni líneas para rellenar', () => {
+  const enCuaderno = new Set(ESQ.definicionCuadernos(ESQ.ORDEN_REGIONES, r => r).flatMap(c => c.secciones.flatMap(s => s.hojas)));
+  const rellenables = [];
+  for (const h of HOJAS.hojasImpresas()) {
+    const cuerpo = h.html().replace(/<style[\s\S]*?<\/style>/g, '');
+    if (/class="(caja|lin|linea)["\s]|_{5,}|<input/.test(cuerpo)) rellenables.push(h.clave);
+  }
+  assert.ok(enCuaderno.size > 5, 'las hojas de los cuadernos');
+  assert.deepEqual(rellenables.filter(k => enCuaderno.has(k)), []);
+  assert.deepEqual(rellenables.filter(k => !/^formulario-|^ejercicio-paciente$/.test(k)), [], 'solo las del paciente se rellenan');
 });
