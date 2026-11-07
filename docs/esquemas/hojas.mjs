@@ -1012,8 +1012,8 @@ export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, or
   <div class="pagina">
     <div class="banda"><div><div class="marca">PhysiQ-Assessment · Cuaderno de consulta</div><h1>${esc(portada.titulo || titulo)}</h1>
       ${portada.subtitulo ? `<div class="tit2">${esc(portada.subtitulo)}</div>` : ''}</div>
-      <div class="qr-guia">${QR}<span>Hojas para imprimir</span></div></div>
-    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en la cara delantera de su propio papel (hay páginas en blanco a propósito) y numera sus páginas por sí misma, abajo en la esquina exterior («Cribado · Lumbar 1/2»). Cada hoja lleva su versión («v.») y su QR a la guía de consulta. Si una hoja cambia, «Hojas para imprimir» lo dice: imprímela (su PDF suelto, o sus páginas de este cuaderno) y sustitúyela junto con esta portada; las demás no cambian aunque ocupe más o menos papel. Solo si allí la fecha de «orden de hojas» es posterior a la de aquí (se añadió, quitó o movió una hoja) hay que reimprimir el cuaderno entero.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · orden de hojas desde: <b>${esc(ordenFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
+      <div class="qr-guia">${QR}<span>Qué reimprimir</span></div></div>
+    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en la cara delantera de su propio papel (hay páginas en blanco a propósito) y numera sus páginas por sí misma, abajo en la esquina exterior («Cribado · Lumbar 1/2»). Cada hoja lleva su versión («v.») y su QR a la guía de consulta. Escanea el QR: la guía compara este cuaderno con el actual y dice qué hojas han cambiado y qué páginas del PDF imprimir para sustituirlas, junto con esta portada; las demás no cambian aunque ocupe más o menos papel. Si se añadió, quitó o movió una hoja, dice que lo reimprimas entero.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · orden de hojas desde: <b>${esc(ordenFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
     <div class="indice">Índice</div>
   <div class="cuerpo"><table>${filas}</table></div>
     <div class="pie-fijo">${AUTORIA_HTML}</div>
@@ -1048,7 +1048,7 @@ export function htmlNumerosCuaderno(total, numeradas) {
     .num .sec { font-size: 9px; color: #6b7280; letter-spacing: .5px; text-transform: uppercase; }
     .num b { font-size: 12px; }</style>${paginas}`;
 }
-// La QR de la portada: «Hojas para imprimir», sin huella (cada hoja lleva la suya)
+// La QR de la portada: «Hojas para imprimir» con la versión del cuaderno (?c=), para saber qué reimprimir
 export const rematarPortada = (html, url) => html.replaceAll(QR, qrSVG(url, QR_PX));
 // Huella del cuaderno: la de las versiones de sus hojas, en orden
 export const huellaCuaderno = huellas => fnv(Object.entries(huellas).map(([k, v]) => `${k}:${v}`).join('|'));

@@ -38,6 +38,19 @@ export function indiceHistorial() {
   }
   return Object.fromEntries(Object.entries(indice).sort());
 }
+// docs/esquemas/cuadernos-historial.json: { huella: { clave, fecha, hojas } } de cada versión de
+// cada cuaderno (huella = huellaCuaderno(hojas), la «cuaderno v.» de su portada y el ?c= de su QR).
+// Con ella la guía dice exactamente qué hojas de una copia impresa han cambiado. Nunca se recorta:
+// un cuaderno impreso hace meses también tiene que reconocerse.
+export const RUTA_CUADERNOS_HISTORIAL = join(DIR, '..', 'cuadernos-historial.json');
+export const leerCuadernosHistorial = () => (existsSync(RUTA_CUADERNOS_HISTORIAL) ? JSON.parse(readFileSync(RUTA_CUADERNOS_HISTORIAL, 'utf8')) : {});
+export function registrarCuaderno(huella, { clave, fecha, hojas }) {
+  const h = leerCuadernosHistorial();
+  if (h[huella]) return false;
+  h[huella] = { clave, fecha, hojas };
+  writeFileSync(RUTA_CUADERNOS_HISTORIAL, JSON.stringify(Object.fromEntries(Object.entries(h).sort())) + '\n');
+  return true;
+}
 function escribirIndice() { writeFileSync(RUTA_INDICE, JSON.stringify(indiceHistorial()) + '\n'); }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

@@ -32,7 +32,7 @@ jobs:
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
           # Hojas impresas (docs/esquemas): su huella, para que la guía avise si un papel está desfasado, y los PDF para reimprimirlas
           mkdir -p physiq-hub/assessment/docs/esquemas
-          cp docs/esquemas/huellas.json docs/esquemas/cuadernos.json docs/esquemas/*.pdf physiq-hub/assessment/docs/esquemas/
+          cp docs/esquemas/huellas.json docs/esquemas/cuadernos.json docs/esquemas/cuadernos-historial.json docs/esquemas/*.pdf physiq-hub/assessment/docs/esquemas/
           # Y el historial de versiones de cada hoja: qué cambió desde la versión de un papel (lib/cambios-hojas.js)
           mkdir -p physiq-hub/assessment/docs/esquemas/historial
           cp docs/esquemas/historial/*.json physiq-hub/assessment/docs/esquemas/historial/
