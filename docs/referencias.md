@@ -23483,7 +23483,7 @@ Citada como:
 1. Rupp 2021
 2. Las posiciones de la tabla son para distinguir 4 de 5. Explora en decúbito supino, de arriba abajo, cada lado por separado y en isométrico (Rupp 2021).
 3. Compara siempre con la mejilla. Tacto ligero con una mota de algodón, en menos de 1 cm de piel y con los ojos cerrados; pinchazo con la punta y la parte roma de un imperdible, y si hay dudas, ocho aciertos de diez (Rupp 2021).
-4. Por eso la hoja da puntos y no bandas: explora el punto clave y compara con el otro lado (Rupp 2021).
+4. Por eso la tabla da puntos y no bandas: explora el punto clave y compara con el otro lado (Rupp 2021).
 5. La mayoría de las raíces inervan más de un músculo y la mayoría de los músculos reciben más de una raíz: un músculo por raíz es una simplificación (Rupp 2021).
 6. La exploración de la ISNCSCI no incluye los reflejos: los de esta hoja vienen de otra fuente (Rupp 2021; Zimmerman y Hubbard 2023).
 7. Datos de la ISNCSCI (Rupp 2021, © ASIA) escritos con nuestras palabras; sin su tabla ni su figura.

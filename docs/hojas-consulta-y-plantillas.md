@@ -29,7 +29,7 @@ Tres partes:
   - P1: zona, lado (vacío = el de la región), profundidad, constante o intermitente, descripción con las palabras del paciente, NRS e irritabilidad.
   - P2–P4: lo mismo, más la relación con P1 (juntos, uno empeora el otro, independiente, no lo sabe) y la regla de qué síntoma dosifica en la fase 6 («el más irritable; si empatan, P1»).
   - Todo sale de `lib/sintomas.js` y `docs/sintomas-multiples.md`; no se escribe nada clínico nuevo.
-- **Cara 2:** igual que ahora (las zonas de cada región con sus pasos del árbol, los recordatorios y la red neurológica).
+- **Sin cara 2** (decisión del usuario, 2026-11): las zonas de cada región con sus pasos del árbol no se usaban en papel; quedan solo en la guía (`#sintomas`). La hoja conserva la única línea de seguridad, el recordatorio del periné de lumbar (cola de caballo, pregunta `l6`), literal de `data/lumbar.js`.
 - **QR:** sigue llevando a `#sintomas`.
 
 ### Qué no cambia
@@ -69,13 +69,11 @@ Debajo de la tabla:
 - **Reflejos:** la escala de 0 a 4+, con la fuente de reflejos.
 - **Recuadro rojo, «Signos de neurona motora superior: derivar»:** hiperreflexia, Hoffmann, Babinski, clonus de más de unas pocas batidas. Remite a las preguntas de urgencia que ya existen y no añade ninguna.
 
-**Cara 2, el dibujo.**
-- Los puntos sensitivos clave sobre la silueta, por delante y por detrás, cada uno con su nivel.
-- La silueta es la de react-native-body-highlighter (MIT), la misma librería de la fase 2. Tiene vista frontal y dorsal, de hombre y de mujer; aquí basta una figura.
-- **Puntos, no bandas** (decisión 3): los mapas de bandas no coinciden entre autores (Lee 2008; Downs y Laporte 2011), y los puntos clave sí están consensuados. Una nota lo dice: «los bordes de un dermatoma varían entre personas y se solapan; explora el punto clave».
-- **Lado:** en la vista frontal, la derecha del paciente queda a la izquierda de quien mira. Se rotula «DER» e «IZQ» del paciente en las dos vistas, para que no haya dudas.
-
-**Sin imágenes de Kenhub en el papel** (decisión 4). La guía enlaza los artículos de Kenhub: con tu suscripción los ves completos en el móvil.
+**Cara 2, sin dibujo propio** (decisión del usuario, 2026-11, que sustituye a la primera versión con puntos sobre la silueta: aportaba poca precisión).
+- **Recomendada, la hoja oficial de ASIA:** gratuita y sin cuenta, con el dibujo de los puntos clave; se puede fotocopiar sin modificarla, así que se imprime aparte y se tiene junto a la hoja. Pendiente: un QR a ella cuando el usuario confirme la URL (la web de ASIA no se puede abrir desde la sesión).
+- **QR a Kenhub** (artículos «Dermatomas» y «Miotomas» en español, comprobados): probado sin sesión (2026-11): el artículo y sus dibujos se ven enteros, algunas tablas de datos salen difuminadas y Kenhub puede mostrar un aviso para registrarse (gratis). Un QR es un enlace, no una imagen: la decisión 4 (ninguna imagen de Kenhub en el papel) se mantiene.
+- **Puntos, no bandas** (decisión 3): la tabla da el punto clave de cada raíz, porque los mapas de bandas no coinciden entre autores (Lee 2008; Downs y Laporte 2011).
+- La silueta (`siluetaPuntosSVG()`, `data/siluetas-hojas.js`) queda para el body chart de la parte C.
 
 ### La página de la guía (`guia.html#neuro`)
 

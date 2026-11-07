@@ -7365,12 +7365,12 @@ async function checkGuia(browser, errors) {
     // Síntomas: las zonas de lumbar enlazan sus pasos del árbol y el periné recuerda la cola de caballo
     await page.goto(`${base}#sintomas`, { waitUntil: 'networkidle' });
     r.sintomasGuia = await page.evaluate(() => !!document.querySelector('a[href="#lumbar/arbol/paso-lu_step1c"]') && !!document.querySelector('a[href="#lumbar/cribado/q-l6"]'));
-    // Dermatomas, miotomas y reflejos (#neuro): las dos siluetas con sus puntos, las 10 raíces con
+    // Dermatomas, miotomas y reflejos (#neuro): sin dibujo propio (los de Kenhub), las 10 raíces con
     // músculo clave, los 5 reflejos, el recuadro de neurona motora superior, Kenhub y citas tocables
     await page.goto(`${base}#neuro`, { waitUntil: 'networkidle' });
     r.neuroGuia = await page.evaluate(() => {
       const c = document.getElementById('guiaContenido');
-      return c.querySelectorAll('.guia-neuro-figs svg').length === 2 && c.querySelectorAll('.guia-neuro-figs circle').length === 28
+      return !c.querySelector('.guia-neuro-figs, svg circle')
         && c.querySelectorAll('.guia-neuro-tabla')[0].querySelectorAll('tbody tr').length === 10
         && c.querySelectorAll('.guia-neuro-tabla')[2].querySelectorAll('tbody tr').length === 5
         && !!c.querySelector('.guia-neuro-nms') && [...c.querySelectorAll('a[href*="kenhub.com"]')].length === 2

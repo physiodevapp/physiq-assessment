@@ -82,7 +82,7 @@ export const TEXTOS_NEURO = {
   variabilidad: [
     'Los mapas de dermatomas de los libros no coinciden entre sí y casi ninguno muestra que los dermatomas vecinos se solapan (Lee 2008; Downs y Laporte 2011).',
     'Casi toda la piel la inervan dos o más raíces, y en el miembro superior se espera más variación que en el resto; los dermatomas son mayores de lo que dibujan los libros (Lee 2008).',
-    'Por eso la hoja da puntos y no bandas: explora el punto clave y compara con el otro lado (Rupp 2021).',
+    'Por eso la tabla da puntos y no bandas: explora el punto clave y compara con el otro lado (Rupp 2021).',
     'La mayoría de las raíces inervan más de un músculo y la mayoría de los músculos reciben más de una raíz: un músculo por raíz es una simplificación (Rupp 2021).',
   ],
   // Raíz o nervio periférico (Downs y Laporte 2011; Margetis y Hall 2026)
@@ -103,33 +103,17 @@ export const TEXTOS_NEURO = {
   nmsDecision: 'Un Hoffmann aislado, sin síntomas ni otros hallazgos, no cambió el manejo ni justificó una prueba de imagen (Margetis y Hall 2026). Con síntomas o más signos, valoración médica: la exploración sola no basta para decidir (Assir y Das 2022). Si encajan con una mielopatía cervical o una cola de caballo, usa sus preguntas de urgencia del cribado.',
   // Límite de la ISNCSCI
   limite: 'La exploración de la ISNCSCI no incluye los reflejos: los de esta hoja vienen de otra fuente (Rupp 2021; Zimmerman y Hubbard 2023).',
-  hojaOficial: 'La hoja oficial de exploración de ASIA (ISNCSCI) se puede fotocopiar sin modificarla; está en la web de ASIA.',
+  hojaOficial: 'La hoja oficial de exploración de ASIA (ISNCSCI), con el dibujo de los puntos clave, se puede fotocopiar sin modificarla; descárgala de la web de ASIA (asia-spinalinjury.org).',
   derechos: 'Datos de la ISNCSCI (Rupp 2021, © ASIA) escritos con nuestras palabras; sin su tabla ni su figura.',
 };
 
 // Fuentes de la hoja y de la guía (claves de data/referencias.js), para «Fuentes» y para el índice
 export const FUENTES_NEURO = ['Rupp 2021', 'Lee 2008', 'Downs y Laporte 2011', 'Zimmerman y Hubbard 2023', 'Margetis y Hall 2026', 'Assir y Das 2022'];
 
-// Kenhub (solo en la guía, nunca en el papel): artículos comprobados (2026-11), con su versión en español
+// Kenhub: artículos comprobados (2026-11), con su versión en español. En la hoja impresa van como QR
+// (las ilustraciones de dermatomas y miotomas, vistas con el móvil sobre el papel; decisión del
+// usuario, 2026-11: el dibujo propio de puntos no aportaba precisión), y en la guía como enlaces.
 export const KENHUB_NEURO = [
   { nombre: 'Dermatomas', es: 'https://www.kenhub.com/es/library/anatomia-es/dermatomas', en: 'https://www.kenhub.com/en/library/anatomy/dermatomes' },
   { nombre: 'Miotomas', es: 'https://www.kenhub.com/es/library/anatomia-es/miotomas', en: 'https://www.kenhub.com/en/library/anatomy/myotomes' },
 ];
-
-// Dónde va cada punto sensitivo clave en el dibujo de la hoja (coordenadas del dibujo de
-// data/siluetas-hojas.js y data/siluetas.js, figura de hombre), medidas sobre él a partir de los
-// grupos musculares del dibujo original (2026-11). Lado derecho del paciente: a la izquierda de
-// quien mira en la vista frontal y a la derecha en la posterior. [x, y, xEtiqueta, yEtiqueta]:
-// la etiqueta va fuera de la figura o en un hueco, con una línea guía hasta el punto.
-export const PUNTOS_DIBUJO = {
-  frente: {
-    C3: [300, 300, 392, 308], C4: [243, 307, 120, 290], T2: [257, 458, 120, 420], C5: [186, 492, 60, 480], T1: [214, 497, 60, 540],
-    T3: [300, 372, 395, 345], T4: [300, 400, 395, 380], T5: [300, 425, 395, 415], T6: [300, 445, 395, 450], T7: [300, 478, 395, 485],
-    T8: [300, 512, 395, 520], T9: [300, 546, 395, 555], T10: [300, 580, 395, 590], T11: [300, 630, 395, 630], T12: [300, 680, 395, 670],
-    L1: [305, 750, 395, 745], L2: [309, 820, 395, 820], L3: [318, 950, 345, 960], L4: [305, 1250, 350, 1255], L5: [270, 1305, 175, 1365],
-  },
-  espalda: {
-    C2: [1100, 195, 1185, 175], C6: [1372, 722, 1430, 700], C7: [1350, 772, 1430, 770], C8: [1312, 770, 1430, 840],
-    'S4-5': [1092, 765, 1110, 728], S3: [1125, 780, 1142, 800], S2: [1158, 985, 1235, 985], S1: [1180, 1316, 1240, 1290],
-  },
-};

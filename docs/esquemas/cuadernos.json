@@ -1,7 +1,7 @@
 {
   "cuaderno-cadera": {
-    "huella": "ce6fbb21",
-    "archivo": "ac72e390",
+    "huella": "933e094e",
+    "archivo": "521b3b19",
     "fecha": "2026-11-07",
     "paginas": 30,
     "hojas": {
@@ -11,8 +11,8 @@
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
@@ -35,8 +35,8 @@
     "ordenFecha": "2026-11-07"
   },
   "cuaderno-cervical": {
-    "huella": "9dcea462",
-    "archivo": "1bb3401c",
+    "huella": "eaa44399",
+    "archivo": "04b2ba45",
     "fecha": "2026-11-07",
     "paginas": 30,
     "hojas": {
@@ -46,8 +46,8 @@
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
@@ -70,8 +70,8 @@
     "ordenFecha": "2026-11-07"
   },
   "cuaderno-codo": {
-    "huella": "3570122a",
-    "archivo": "98402346",
+    "huella": "2f52ed81",
+    "archivo": "741e196c",
     "fecha": "2026-11-07",
     "paginas": 30,
     "hojas": {
@@ -81,8 +81,8 @@
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
@@ -105,16 +105,16 @@
     "ordenFecha": "2026-11-07"
   },
   "cuaderno-completo": {
-    "huella": "345a2af0",
-    "archivo": "e3aeb4d5",
+    "huella": "61ac5da3",
+    "archivo": "7c52a4f5",
     "fecha": "2026-11-07",
     "paginas": 78,
     "hojas": {
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
@@ -176,8 +176,8 @@
     "ordenFecha": "2026-11-07"
   },
   "cuaderno-hombro": {
-    "huella": "670cb6cd",
-    "archivo": "055721df",
+    "huella": "334aea22",
+    "archivo": "741817a7",
     "fecha": "2026-11-07",
     "paginas": 30,
     "hojas": {
@@ -187,8 +187,8 @@
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
@@ -211,8 +211,8 @@
     "ordenFecha": "2026-11-07"
   },
   "cuaderno-lumbar": {
-    "huella": "882ca591",
-    "archivo": "40d57e83",
+    "huella": "31e7e97e",
+    "archivo": "39d8bbc3",
     "fecha": "2026-11-07",
     "paginas": 30,
     "hojas": {
@@ -222,8 +222,8 @@
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
@@ -246,8 +246,8 @@
     "ordenFecha": "2026-11-07"
   },
   "cuaderno-rodilla": {
-    "huella": "9f91bbf1",
-    "archivo": "13549337",
+    "huella": "53d4d7de",
+    "archivo": "e01a8669",
     "fecha": "2026-11-07",
     "paginas": 30,
     "hojas": {
@@ -257,8 +257,8 @@
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
@@ -281,8 +281,8 @@
     "ordenFecha": "2026-11-07"
   },
   "cuaderno-tobillo_pie": {
-    "huella": "b8cf4bf8",
-    "archivo": "357a1648",
+    "huella": "3fc6f927",
+    "archivo": "f90832cc",
     "fecha": "2026-11-07",
     "paginas": 30,
     "hojas": {
@@ -292,8 +292,8 @@
       "fase1": "18d660ee",
       "condiciones": "c252801d",
       "irritabilidad": "708321f5",
-      "sintomas": "c06cba9d",
-      "neuro": "93a585ec",
+      "sintomas": "939bcabb",
+      "neuro": "813a99ee",
       "plan": "6a14a639",
       "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",

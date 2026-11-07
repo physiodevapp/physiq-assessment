@@ -29,7 +29,6 @@ const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
 const NEURO = await import('../../data/neuro.js');
-const { siluetaPuntosSVG } = await import('../../lib/neuro.js');
 const POSQ = await import('../../lib/posquirurgico.js');
 const { HIP_POSQUIRURGICA } = await import('../../data/comun.js');
 const { ORDEN_REGIONES } = await import('../../lib/esquemas.js');
@@ -1103,15 +1102,15 @@ export function htmlFase1() {
 
 // ── Síntomas (fase 3): qué registrar de cada síntoma (P1–P4) y las zonas de cada región ──
 // Hoja de consulta (decisión del usuario, 2026-11): sin casillas ni huecos. Lo que la tarjeta
-// «Síntomas» de la app registra (lib/sintomas.js) y, en la segunda página, las zonas de cada región
-// con los pasos del árbol donde la app las recuerda (`pasos`), los recordatorios de zona y la red
-// neurológica. QR → guia.html#sintomas.
+// «Síntomas» de la app registra (lib/sintomas.js) y el recordatorio de zona que es de seguridad (el
+// periné, en lumbar). Las zonas de cada región con sus pasos del árbol, solo en la guía (decisión del
+// usuario, 2026-11: en papel no se usaban). QR → guia.html#sintomas.
 export function htmlSintomas() {
   const ops = lista => lista.map(esc).join(' · ');
   const campo = (et, txt) => `<li><b>${et}</b> ${txt}</li>`;
   const relaciones = Object.values(SINT.RELACIONES).map(r => `<li><b>${esc(r.boton)}</b>${r.texto ? `: ${esc(r.texto)}` : ''}</li>`).join('');
   const p1 = `<section class="s"><h2>P1 · síntoma principal</h2><ul>
-      ${campo('Zona:', 'una o varias de la región (página 2), o descrita con sus palabras.')}
+      ${campo('Zona:', 'una o varias de la región (en la guía, con el QR), o descrita con sus palabras.')}
       ${campo('Lado:', 'Derecho · Izquierdo · Bilateral · Central. Si no se marca, es el de la región.')}
       ${campo('Profundidad:', ops(SINT.PROFUNDIDADES) + '.')}
       ${campo('Patrón:', ops(SINT.PATRONES) + '.')}
@@ -1123,13 +1122,9 @@ export function htmlSintomas() {
       ${campo('NRS:', 'el suyo, de 0 a 10.')}
       ${campo('Irritabilidad:', ops(SINT.NIVELES_IRRITABILIDAD) + ', estimada directamente.')}
       ${campo('Con P1:', '')}</ul><ul class="rel">${relaciones}</ul></section>`;
-  const regiones = ORDEN_REGIONES.filter(r => ZONAS_SINTOMA[r]?.length).map(r => {
-    const steps = CIF_TREES[r].steps;
-    const paso = id => { const i = steps.findIndex(st => st.id === id); return i < 0 ? null : etiquetaPaso(steps[i], i); };
-    const filas = ZONAS_SINTOMA[r].map(z => `<tr><td>${esc(z.nombre)}${z.central ? ' <span class="nota">(central)</span>' : ''}</td><td>${(z.pasos || []).map(paso).filter(Boolean).join(', ') || '—'}</td></tr>`
-      + (z.recordatorio ? `<tr class="rec"><td colspan="2">⚠️ ${esc(z.recordatorio.texto)}</td></tr>` : '')).join('');
-    return `<section class="r"><h3>${esc(nombreRegion(r))}</h3><table><thead><tr><th>Zona</th><th>Pasos</th></tr></thead><tbody>${filas}</tbody></table></section>`;
-  }).join('');
+  // La única línea de seguridad de las zonas (el recordatorio del periné en lumbar, literal de data/)
+  const recordatorios = ORDEN_REGIONES.flatMap(r => (ZONAS_SINTOMA[r] || []).filter(z => z.recordatorio)
+    .map(z => `<p class="aviso"><b>⚠️ ${esc(nombreRegion(r))} · ${esc(z.nombre)}:</b> ${esc(z.recordatorio.texto)}</p>`)).join('');
   return `<style>${CSS}${CSS_UNA}
     .pagina + .pagina { break-before: page; }
     .cuerpo h2 { font-size: 13.5px; margin: 0 0 6px; color: #1e3a8a; }
@@ -1138,34 +1133,27 @@ export function htmlSintomas() {
     .s ul { margin: 0; padding-left: 14px; } .s li { margin: 0 0 4px; } .s ul.rel { padding-left: 26px; margin-top: -2px; }
     .nota { color: #6b7280; font-size: 10px; }
     .reglas { margin-top: 10px; font-size: 11px; color: #374151; } .reglas li { margin-bottom: 3px; }
-    .rs { column-count: 2; column-gap: 16px; }
-    .r { break-inside: avoid; margin-bottom: 10px; } .r h3 { font-size: 12.5px; margin: 0 0 3px; color: #1e3a8a; }
-    .r table { width: 100%; border-collapse: collapse; font-size: 10.5px; } .r th { text-align: left; color: #6b7280; font-weight: 600; font-size: 9.5px; }
-    .r td { border-top: 1px solid #e5e7eb; padding: 2px 3px; vertical-align: top; } .r td:last-child { white-space: nowrap; width: 70px; }
-    .r tr.rec td { font-size: 9.5px; color: #b42318; white-space: normal; }
-    .cont { font-size: 15px; font-weight: bold; margin: 0 0 8px; }
+    .aviso { margin-top: 10px; border: 2px solid #dc2626; background: #fef2f2; border-radius: 8px; padding: 6px 10px; font-size: 11px; color: #7f1d1d; }
     .pie-v .qr-huella { display: inline; margin-left: 4px; }</style>
   <div class="pagina">
-    <div class="cab-hoja"><div class="cab-txt"><h1>Síntomas (fase 3)</h1><div class="sub">Qué registrar de cada síntoma, como en la tarjeta «Síntomas» de la app: el principal (P1) y hasta tres más. Las zonas de cada región y los pasos del árbol donde importan, en la página 2.</div></div>
+    <div class="cab-hoja"><div class="cab-txt"><h1>Síntomas (fase 3)</h1><div class="sub">Qué registrar de cada síntoma, como en la tarjeta «Síntomas» de la app: el principal (P1) y hasta tres más. Las zonas de cada región y los pasos del árbol donde la app las recuerda, en la guía (QR).</div></div>
       <div class="qr-guia">${QR}<span>Zonas y pasos</span>${HUELLA}</div></div>
     <div class="cuerpo"><div class="ss">${p1}${p24}</div>
       <ul class="reglas">
         <li>Un síntoma en otra región («no valorada hoy») solo lleva lado, NRS y una nota: no entra en el árbol.</li>
         <li>Pregunta cómo es con sus palabras y anótalas tal cual: la descripción del paciente vale más que la etiqueta.</li>
-        <li>La zona de un síntoma recuerda, en los pasos del árbol de la página 2, lo que refiere el paciente: nunca contesta el paso.</li>
+        <li>La zona de un síntoma recuerda, en los pasos del árbol (lista en la guía), lo que refiere el paciente: nunca contesta el paso.</li>
         <li>En la app, el plan de la fase 6 se dosifica por el síntoma más irritable (P1 si empatan) y avisa de un síntoma «Independiente» de P1.</li>
-      </ul></div>
+      </ul>${recordatorios}</div>
     <div class="pie-fijo"><span class="pie">Generado desde los datos de la app (data/&lt;región&gt;.js, lib/sintomas.js) el ${FECHA}. ${AUTORIA_HTML}</span></div>
-  </div>
-  <div class="pagina"><div class="cont">Zonas de cada región y pasos del árbol donde la app las recuerda</div>
-    <div class="cuerpo"><div class="rs">${regiones}</div></div>
-    <div class="pie-fijo"><span class="pie pie-v">Síntomas (fase 3) · ${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div></div>`;
+  </div>`;
 }
 
 // ── Dermatomas, miotomas y reflejos (data/neuro.js) ──────────────────────────
 // Hoja de consulta (docs/hojas-consulta-y-plantillas.md, parte B): cara 1, la tabla por raíz, la
-// gradación y los signos de neurona motora superior; cara 2, los puntos sensitivos clave sobre
-// la silueta por delante y por detrás, y por qué puntos y no bandas. Datos de la ISNCSCI con
+// gradación y los reflejos; cara 2, QR a las ilustraciones de Kenhub (dermatomas, miotomas) y la
+// hoja oficial de ASIA, la escala de reflejos, los signos de neurona motora superior y por qué
+// puntos y no bandas (sin dibujo propio: decisión del usuario, 2026-11). Datos de la ISNCSCI con
 // nuestras palabras (© ASIA: ni su tabla ni su figura). QR → guia.html#neuro.
 export function htmlNeuro() {
   const T = NEURO.TEXTOS_NEURO, R = NEURO.REFLEJOS;
@@ -1193,9 +1181,10 @@ export function htmlNeuro() {
     .nms h2 { color: #b91c1c !important; margin-top: 0 !important; }
     .nms ul { margin: 2px 0 4px; padding-left: 14px; } .nms li { margin: 0 0 2px; }
     .nms .dec { font-weight: 600; color: #7f1d1d; margin: 0; }
-    .figs { display: flex; justify-content: center; gap: 70px; margin: 0 0 4px; }
-    .fig { text-align: center; } .fig .cap { font-weight: 700; color: #1e3a8a; font-size: 11px; margin-bottom: 2px; }
-    .fig .lados { display: flex; justify-content: space-between; font-size: 9px; color: #6b7280; padding: 0 8px; }
+    .qrs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 2px 0 6px; }
+    .qrk { display: flex; gap: 6px; align-items: center; border: 1.5px solid #cbd5e1; border-radius: 7px; padding: 4px 6px; font-size: 9.5px; }
+    .qrk.asia { border: 2px solid #1e3a8a; background: #eef2ff; }
+    .qrk svg { flex: none; width: 88px; height: 88px; }
     .cuerpo ul.l { margin: 2px 0; padding-left: 14px; } .cuerpo ul.l li { margin: 0 0 2px; }
     .pie-v .qr-huella { display: inline; margin-left: 4px; }</style>
   <div class="pagina">
@@ -1211,16 +1200,15 @@ export function htmlNeuro() {
       </div>
       <h2>Reflejos osteotendinosos</h2>
       <table class="t"><thead><tr><th>Reflejo</th><th>Raíces</th><th>Nervio</th><th>Dónde golpear</th></tr></thead><tbody>${filasRef}</tbody></table>
-      <p class="nota">Escala, técnica e interpretación de los reflejos: en la página 2. ${cita(T.limite)} ${esc(T.hojaOficial)}</p>
+      <p class="nota">Escala, técnica e interpretación de los reflejos: en la página 2. ${cita(T.limite)}</p>
     </div>
     <div class="pie-fijo"><span class="pie">${esc(T.derechos)} Fuentes: ${esc(fuentes)}. Generado desde los datos de la app (data/neuro.js) el ${FECHA}. ${AUTORIA_HTML}</span></div>
   </div>
-  <div class="pagina"><div class="cont">Puntos sensitivos clave (lado derecho del paciente)</div>
+  <div class="pagina"><div class="cont">Ilustraciones, reflejos y signos de neurona motora superior</div>
     <div class="cuerpo">
-      <div class="figs">
-        <div class="fig"><div class="cap">Por delante</div><div class="lados"><span>DER del paciente</span><span>IZQ</span></div>${siluetaPuntosSVG('frente', NEURO.PUNTOS_DIBUJO.frente, { ancho: 200 })}</div>
-        <div class="fig"><div class="cap">Por detrás</div><div class="lados"><span>IZQ</span><span>DER del paciente</span></div>${siluetaPuntosSVG('espalda', NEURO.PUNTOS_DIBUJO.espalda, { ancho: 200 })}</div>
-      </div>
+      <h2>Ilustraciones: con el móvil sobre la hoja</h2>
+      <div class="qrs"><div class="qrk asia"><div><b>Recomendada: hoja oficial de ASIA</b><br>${esc(T.hojaOficial)} Gratuita y sin cuenta: imprímela y tenla junto a esta hoja.</div></div>
+        ${NEURO.KENHUB_NEURO.map(k => `<div class="qrk">${qrSVG(k.es, 88)}<div><b>${esc(k.nombre)} (Kenhub)</b><br>Los puntos de la tabla y las bandas de los libros, dibujados. Se ve sin cuenta (puede pedir registrarse, gratis); con cuenta, también las tablas.</div></div>`).join('')}</div>
       <h2>Reflejos: escala y técnica</h2>
       <div class="dos">
         <div class="caja-g"><b>Escala (0–4)</b>${lista(T.escalaReflejos)}<p class="nota">${cita(T.nivelesReflejos)}</p></div>
