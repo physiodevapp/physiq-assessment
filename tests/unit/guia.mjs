@@ -458,6 +458,27 @@ test('cuadernos: con la fecha de impresión, las hojas que cambiaron ese día o 
   assert.deepEqual(CAMB.hojasCambiadasDesde(c, h, '2026-10-30'), { entero: true, claves: [] }, 'antes del orden de hojas: entero');
   assert.equal(CAMB.hojasCambiadasDesde(c, h, ''), null);
 });
+
+test('cuadernos: con la «cuaderno v.» de la portada, exactamente las hojas con otra versión', () => {
+  const actual = { hojas: { a: '1', b: '2', c: '3' } };
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: 'x', c: 'y' } }), { entero: false, claves: ['b', 'c'] });
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: '2', c: '3' } }).claves, []);
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', c: '3' } }), { entero: true, claves: [] }, 'otra lista: entero');
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { b: '2', a: '1', c: '3' } }).entero, true, 'otro orden: entero');
+  assert.equal(CAMB.hojasCambiadasEnCopia(actual, null), null);
+});
+
+test('cuadernos: el historial reconoce cada versión (la «cuaderno v.» de la portada y el ?c= de su QR)', () => {
+  const hist = JSON.parse(leer('docs', 'esquemas', 'cuadernos-historial.json'));
+  const actuales = JSON.parse(leer('docs', 'esquemas', 'cuadernos.json'));
+  const mal = Object.entries(hist).filter(([v, e]) => HOJAS.huellaCuaderno(e.hojas) !== v).map(([v]) => v);
+  assert.deepEqual(mal, [], 'cada versión del historial es la huella de sus hojas');
+  for (const [clave, d] of Object.entries(actuales)) {
+    assert.deepEqual(hist[d.huella], { clave, fecha: d.fecha, hojas: d.hojas }, `${clave}: su v. ${d.huella} en cuadernos-historial.json (regenera con «node docs/esquemas/generar.mjs cuadernos»)`);
+  }
+  assert.ok(leer('docs', 'esquemas', 'generar.mjs').includes('`${URL_GUIA}?c=${huella}#hojas`'), 'el QR de la portada lleva la versión del cuaderno');
+  assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('docs/esquemas/cuadernos-historial.json'), 'deploy-to-hub copia el historial de cuadernos');
+});
 const HIST = await import('../../docs/esquemas/historial.mjs');
 
 test('historial de hojas: las marcas de elemento no cambian la huella ni llegan al papel', () => {

@@ -37,7 +37,7 @@ import { tmpdir } from 'node:os';
 const { CIF_TREES } = await import('../../data.js');
 const { ORDEN_REGIONES, HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
-const { registrarVersion } = await import('./historial.mjs');
+const { registrarVersion, registrarCuaderno } = await import('./historial.mjs');
 const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlSintomas, htmlPlanHoja, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, elementosHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
@@ -209,7 +209,7 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     const mismoOrden = previo?.inicio && JSON.stringify(Object.keys(previo.inicio)) === JSON.stringify(Object.keys(inicio));
     const ordenFecha = mismoOrden ? (previo.ordenFecha || previo.paginasFecha) : new Date().toISOString().slice(0, 10);
     const portada = join(tmp, `${lib.clave}-portada.pdf`);
-    const filas = await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), ordenFecha: ISO_A_CORTA(ordenFecha), huella }), `${URL_GUIA}#hojas`), portada, filasIndice);
+    const filas = await pdfDe(rematarPortada(htmlPortadaCuaderno({ titulo: lib.titulo, portada: lib.portada, secciones, fecha: ISO_A_CORTA(fecha), ordenFecha: ISO_A_CORTA(ordenFecha), huella }), `${URL_GUIA}?c=${huella}#hojas`), portada, filasIndice);
     if (filas.length !== secciones.flatMap(s => s.filas).length || filas.some(f => f.px[3] > 1123 || f.px[2] > 794)) throw new Error(`${lib.clave}: no se han podido medir las filas del índice`);
     if (paginas(portada) !== 1) throw new Error(`${lib.clave}: la portada no cabe en una página`);
     const unido = join(tmp, `${lib.clave}-unido.pdf`), numeros = join(tmp, `${lib.clave}-numeros.pdf`);
@@ -228,6 +228,7 @@ if (regArg === 'cuadernos' || (regArg === 'todas' && tipoArg === 'todos')) {
     // maqueta (portada, numeración) sin cambiar ninguna hoja, así nadie abre una copia vieja en caché
     const archivo = createHash('sha256').update(readFileSync(join(DIR, `${lib.clave}.pdf`))).digest('hex').slice(0, 8);
     CUADERNOS[lib.clave] = { huella, archivo, fecha, paginas: pag, hojas, inicio, ordenFecha };
+    registrarCuaderno(huella, { clave: lib.clave, fecha, hojas });
     console.log(`${lib.clave}: ${pag} páginas (${pag / 2} hojas de papel) · v. ${huella}`);
   }
   rmSync(tmp, { recursive: true, force: true });

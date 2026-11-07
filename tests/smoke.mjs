@@ -2690,6 +2690,33 @@ async function checkGuiaCambios(browser, errors) {
     .every(el => el.getBoundingClientRect().right <= 320 - 12));
   await fecha.fill('');
   r.fechaVacia = await page.waitForFunction(() => /Si lo imprimiste después del/.test(document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
+  // «cuaderno v.» de la portada: exacta (versión de cada hoja), borra la fecha; la actual está al día;
+  // una desconocida lo dice. Y el QR de la portada (?c=) abre ese cuaderno con la lista ya hecha
+  const { hojasCambiadasEnCopia } = await import(new URL('./lib/cambios-hojas.js', new URL('../', import.meta.url)).href);
+  const hist = await (await page.request.get(`${raiz}/docs/esquemas/cuadernos-historial.json`)).json();
+  const completo = (await (await page.request.get(`${raiz}/docs/esquemas/cuadernos.json`)).json())['cuaderno-completo'];
+  const VIEJA = '9a8bcd04';   // la del cuaderno completo del 3 nov 2026 (la foto del usuario)
+  const esperadas = hojasCambiadasEnCopia(completo, hist[VIEJA]).claves;
+  const lineaVieja = esperadas.length ? paginasReimprimir(completo, esperadas).texto : '';
+  const res = () => page.evaluate(() => document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || '');
+  await fecha.fill(hoy);
+  await page.fill('input[data-v-copia="cuaderno-completo"]', VIEJA);
+  r.versionVieja = await page.waitForFunction(({ n, linea }) => {
+    const res = document.querySelector('[data-copia-res="cuaderno-completo"]');
+    return res && res.querySelectorAll('li').length === n && (res.querySelector('.guia-cambios-paginas b')?.textContent || '') === linea
+      && document.querySelector('input[data-fecha-copia="cuaderno-completo"]').value === '';
+  }, { n: esperadas.length, linea: lineaVieja }, { timeout: 3000 }).then(() => esperadas.length > 0, () => false);
+  await page.fill('input[data-v-copia="cuaderno-completo"]', completo.huella);
+  r.versionActual = /está al día/.test(await res());
+  await page.fill('input[data-v-copia="cuaderno-completo"]', 'deadbeef');
+  r.versionDesconocida = /No reconozco/.test(await res());
+  await page.goto(`${base}?c=${VIEJA}#hojas`, { waitUntil: 'networkidle' });
+  r.qrPortada = await page.waitForFunction(n => {
+    const caja = document.getElementById('cambiadas-cuaderno-completo');
+    return caja && !caja.hidden && document.querySelector('input[data-v-copia="cuaderno-completo"]').value === '9a8bcd04'
+      && caja.querySelectorAll('[data-copia-res] li').length === n;
+  }, esperadas.length, { timeout: 5000 }).then(() => true, () => false);
+  r.qrSinDesbordar = await page.evaluate(() => innerWidth === 320 && document.documentElement.scrollWidth <= 320);
   await ctx.close();
   r.ok = Object.values(r).every(Boolean);
   return r;
@@ -7947,7 +7974,7 @@ const SECCIONES = [
 
   { id: 'guia-cambios', titulo: 'Guía: qué cambió desde la hoja impresa (320 px):', run: async ({ browser, errors }) => {
     const r = await checkGuiaCambios(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} papel de una versión anterior: aviso de una línea con «Ver cambios» plegado (lo quitado tachado, lo nuevo resaltado) y el PDF; una marca en cada elemento cambiado, «Con cambios» en la línea de su bloque, y tocarla dice qué decía la hoja sin plegarlo; nada en otra pestaña ni con el papel de otra hoja recargado aquí; «Hojas para imprimir» con «Qué cambió» plegado que se carga al abrirlo; sin desbordar; en un cuaderno, las páginas del PDF que hay que reimprimir (portada y cada hoja cambiada) con «Copiar», y con «¿Cuándo lo imprimiste?» solo las que cambiaron desde entonces (o entero si es de antes del orden de hojas), sin salirse del margen a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} papel de una versión anterior: aviso de una línea con «Ver cambios» plegado (lo quitado tachado, lo nuevo resaltado) y el PDF; una marca en cada elemento cambiado, «Con cambios» en la línea de su bloque, y tocarla dice qué decía la hoja sin plegarlo; nada en otra pestaña ni con el papel de otra hoja recargado aquí; «Hojas para imprimir» con «Qué cambió» plegado que se carga al abrirlo; sin desbordar; en un cuaderno, las páginas del PDF que hay que reimprimir (portada y cada hoja cambiada) con «Copiar», y con «¿Cuándo lo imprimiste?» solo las que cambiaron desde entonces (o entero si es de antes del orden de hojas), o con la «cuaderno v.» de su portada (escrita o del QR, ?c=) exactamente las hojas con otra versión, sin salirse del margen a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
