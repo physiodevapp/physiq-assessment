@@ -103,13 +103,15 @@ export const TEXTOS_NEURO = {
   nmsDecision: 'Un Hoffmann aislado, sin síntomas ni otros hallazgos, no cambió el manejo ni justificó una prueba de imagen (Margetis y Hall 2026). Con síntomas o más signos, valoración médica: la exploración sola no basta para decidir (Assir y Das 2022). Si encajan con una mielopatía cervical o una cola de caballo, usa sus preguntas de urgencia del cribado.',
   // Límite de la ISNCSCI
   limite: 'La exploración de la ISNCSCI no incluye los reflejos: los de esta hoja vienen de otra fuente (Rupp 2021; Zimmerman y Hubbard 2023).',
-  hojaOficial: 'La hoja oficial de exploración de ASIA (ISNCSCI), con el dibujo de los puntos clave, se puede fotocopiar sin modificarla; descárgala de la web de ASIA.',
+  hojaOficial: 'La hoja oficial de exploración de ASIA (ISNCSCI, en español), con el dibujo de los puntos clave, se puede copiar libremente pero no modificar; descárgala de la web de ASIA.',
   derechos: 'Datos de la ISNCSCI (Rupp 2021, © ASIA) escritos con nuestras palabras; sin su tabla ni su figura.',
 };
 
-// Hoja oficial de ASIA (ISNCSCI): su página en la web de ASIA, hallada en el buscador (2026-11; la web
-// no se puede abrir desde la sesión). QR en la hoja impresa y enlace en la guía.
-export const ASIA_HOJA = 'https://asia-spinalinjury.org/?p=4292';
+// Hoja oficial de ASIA (ISNCSCI, REV 04/19, en español): el PDF de la web de ASIA, enlace dado por el
+// usuario con el PDF (2026-11). En su pie: «Este formulario puede ser copiado libremente pero no puede
+// ser alterado sin permiso de la American Spinal Injury Association»; por eso el dibujo no se recorta
+// para esta hoja: QR en la hoja impresa y enlace en la guía.
+export const ASIA_HOJA = 'https://asia-spinalinjury.org/wp-content/uploads/2024/04/Spanish-ISNCSCI-Worksheet-final.pdf';
 
 // Fuentes de la hoja y de la guía (claves de data/referencias.js), para «Fuentes» y para el índice
 export const FUENTES_NEURO = ['Rupp 2021', 'Lee 2008', 'Downs y Laporte 2011', 'Zimmerman y Hubbard 2023', 'Margetis y Hall 2026', 'Assir y Das 2022'];
