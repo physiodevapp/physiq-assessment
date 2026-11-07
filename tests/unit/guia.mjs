@@ -427,6 +427,27 @@ test('guía: «Preguntar a la IA» con los modos de la app (fármacos al final d
 
 // ── Historial de las hojas impresas: qué cambió desde la versión de un papel ──
 const CAMB = await import('../../lib/cambios-hojas.js');
+
+test('cuadernos: las páginas a reimprimir de cada hoja empiezan en impar, acaban en par y no se solapan, con la portada', () => {
+  const cuadernos = JSON.parse(leer('docs', 'esquemas', 'cuadernos.json'));
+  for (const [clave, d] of Object.entries(cuadernos)) {
+    const hojas = Object.keys(d.inicio);
+    const p = CAMB.paginasReimprimir(d, hojas);
+    assert.ok(p, clave);
+    assert.equal(p.portada[0], 1, clave);
+    const todos = [p.portada, ...hojas.map(k => p.porHoja[k])].sort((a, b) => a[0] - b[0]);
+    for (const [a, b] of todos) assert.ok(a % 2 === 1 && b % 2 === 0 && b >= a, `${clave}: ${a}-${b}`);
+    for (let i = 1; i < todos.length; i++) assert.equal(todos[i][0], todos[i - 1][1] + 1, `${clave}: sin huecos ni solapes`);
+    assert.equal(todos.at(-1)[1], d.paginas, clave);
+    assert.equal(p.texto, `1-${d.paginas}`, `${clave}: todas las hojas juntas = el cuaderno entero`);
+  }
+  const ej = { paginas: 12, inicio: { a: 3, b: 5, c: 9, d: 11 } };
+  assert.deepEqual(CAMB.paginasReimprimir(ej, ['c']).texto, '1-2, 9-10');
+  assert.deepEqual(CAMB.paginasReimprimir(ej, ['a', 'd']).texto, '1-4, 11-12');
+  assert.deepEqual(CAMB.paginasReimprimir(ej, ['b']).porHoja.b, [5, 8]);
+  assert.equal(CAMB.paginasReimprimir(ej, ['x']), null);
+  assert.equal(CAMB.paginasReimprimir({ paginas: 12 }, ['a']), null);
+});
 const HIST = await import('../../docs/esquemas/historial.mjs');
 
 test('historial de hojas: las marcas de elemento no cambian la huella ni llegan al papel', () => {
