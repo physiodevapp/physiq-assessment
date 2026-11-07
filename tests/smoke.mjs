@@ -2638,12 +2638,16 @@ async function checkGuiaCambios(browser, errors) {
     const caja = await ver.getAttribute('aria-controls');
     r.hojasCarga = await page.waitForFunction(id => { const c = document.getElementById(id); return c && !c.hidden && /Desde la v\.|No se puede detallar/.test(c.textContent); }, caja, { timeout: 5000 }).then(() => true, () => false);
   }
-  r.hojasSinDesbordar = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+  // 320 fijo, no innerWidth: en móvil la ventana se ensancha hasta el contenido que se sale
+  r.hojasSinDesbordar = await page.evaluate(() => innerWidth === 320 && document.documentElement.scrollWidth <= 320);
   // Cuaderno con una hoja cambiada hoy: «Cambiaron después» dice qué páginas del PDF imprimir
   // (la portada y las de cada hoja) y «Copiar» las deja en el portapapeles
   const hoy = new Date().toISOString().slice(0, 10);
+  // Las mismas que cambiaron en noviembre de 2026: una línea de páginas larga en el cuaderno completo
+  const CAMBIAN_HOY = k => ['plan', 'condiciones', 'farmacos'].includes(k) || k.startsWith('cribado-');
+  const { paginasReimprimir } = await import(new URL('./lib/cambios-hojas.js', new URL('../', import.meta.url)).href);
   await page.route('**/docs/esquemas/huellas.json*', async route => {
-    const j = await (await route.fetch()).json(); for (const h of Object.values(j)) h.fecha = '2000-01-01'; j.plan.fecha = hoy; await route.fulfill({ json: j });
+    const j = await (await route.fetch()).json(); for (const [k, h] of Object.entries(j)) h.fecha = CAMBIAN_HOY(k) ? hoy : '2000-01-01'; await route.fulfill({ json: j });
   });
   await page.route('**/docs/esquemas/cuadernos.json*', async route => {
     const j = await (await route.fetch()).json(); j['cuaderno-lumbar'].ordenFecha = '2000-01-01'; await route.fulfill({ json: j });
@@ -2654,16 +2658,38 @@ async function checkGuiaCambios(browser, errors) {
   const boton = page.locator('[aria-controls="cambiadas-cuaderno-lumbar"]');
   await boton.waitFor({ timeout: 5000 }).catch(() => {});
   if (await boton.count()) await boton.tap();
-  r.paginasReimprimir = await page.evaluate(({ ini, fin }) => {
+  r.paginasReimprimir = await page.evaluate(({ ini, fin, esperada }) => {
     const caja = document.getElementById('cambiadas-cuaderno-lumbar');
     const linea = caja?.querySelector('.guia-cambios-paginas b')?.textContent || '';
     const plan = [...(caja?.querySelectorAll('li') || [])].find(li => li.textContent.includes('Plan de tratamiento'));
-    return !!caja && !caja.hidden && linea === `1-2, ${ini}-${fin}`
+    return !!caja && !caja.hidden && linea === esperada
       && !!plan && plan.textContent.includes(`págs. ${ini}-${fin}`) && caja.textContent.includes('la portada (págs. 1-2)') && caja.textContent.includes('busca cada hoja por su nombre');
-  }, { ini: cuad.inicio.plan, fin: Object.values(cuad.inicio).filter(v => v > cuad.inicio.plan).sort((x, y) => x - y)[0] - 1 || cuad.paginas });
+  }, { ini: cuad.inicio.plan, fin: Object.values(cuad.inicio).filter(v => v > cuad.inicio.plan).sort((x, y) => x - y)[0] - 1 || cuad.paginas,
+    esperada: paginasReimprimir(cuad, Object.keys(cuad.hojas).filter(CAMBIAN_HOY)).texto });
   await page.locator('#cambiadas-cuaderno-lumbar .guia-copiar').tap();
   r.paginasCopiadas = await page.evaluate(() => navigator.clipboard.readText()) === await page.textContent('#cambiadas-cuaderno-lumbar .guia-cambios-paginas b');
-  r.paginasSinDesbordar = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+  r.paginasSinDesbordar = await page.evaluate(() => innerWidth === 320 && document.documentElement.scrollWidth <= 320);
+  // «¿Cuándo lo imprimiste?» en el cuaderno completo (orden de hojas real, del 31 oct 2026):
+  // antes de esa fecha → entero; hoy → solo las que cambiaron hoy, con su línea de páginas larga,
+  // que no se sale del margen; sin fecha → la lista de siempre
+  const bc = page.locator('[aria-controls="cambiadas-cuaderno-completo"]');
+  if (await bc.count()) await bc.tap();
+  const fecha = page.locator('input[data-fecha-copia="cuaderno-completo"]');
+  const ordenC = (await (await page.request.get(`${raiz}/docs/esquemas/cuadernos.json`)).json())['cuaderno-completo'].ordenFecha;
+  const antes = new Date(new Date(`${ordenC}T12:00:00`).getTime() - 864e5).toISOString().slice(0, 10);
+  await fecha.fill(antes);
+  r.fechaEntero = await page.waitForFunction(() => /reimprime el cuaderno entero/.test(document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
+  await fecha.fill(hoy);
+  r.fechaHoy = await page.waitForFunction(() => {
+    const res = document.querySelector('[data-copia-res="cuaderno-completo"]');
+    const n = res?.querySelectorAll('li').length;
+    return n === 10 && /Desde el .*incluido/.test(res.textContent) && !document.getElementById('cambiadas-cuaderno-completo').hidden;
+  }, null, { timeout: 3000 }).then(() => true, () => false);
+  // 320 fijo, no innerWidth: en móvil la ventana se ensancha hasta el contenido que se sale
+  r.fechaSinSalirseDelMargen = await page.evaluate(() => innerWidth === 320 && [...document.querySelectorAll('#cambiadas-cuaderno-completo, #cambiadas-cuaderno-completo *')]
+    .every(el => el.getBoundingClientRect().right <= 320 - 12));
+  await fecha.fill('');
+  r.fechaVacia = await page.waitForFunction(() => /Si lo imprimiste después del/.test(document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
   await ctx.close();
   r.ok = Object.values(r).every(Boolean);
   return r;
@@ -7921,7 +7947,7 @@ const SECCIONES = [
 
   { id: 'guia-cambios', titulo: 'Guía: qué cambió desde la hoja impresa (320 px):', run: async ({ browser, errors }) => {
     const r = await checkGuiaCambios(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} papel de una versión anterior: aviso de una línea con «Ver cambios» plegado (lo quitado tachado, lo nuevo resaltado) y el PDF; una marca en cada elemento cambiado, «Con cambios» en la línea de su bloque, y tocarla dice qué decía la hoja sin plegarlo; nada en otra pestaña ni con el papel de otra hoja recargado aquí; «Hojas para imprimir» con «Qué cambió» plegado que se carga al abrirlo; sin desbordar; en un cuaderno, las páginas del PDF que hay que reimprimir (portada y cada hoja cambiada) con «Copiar»${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} papel de una versión anterior: aviso de una línea con «Ver cambios» plegado (lo quitado tachado, lo nuevo resaltado) y el PDF; una marca en cada elemento cambiado, «Con cambios» en la línea de su bloque, y tocarla dice qué decía la hoja sin plegarlo; nada en otra pestaña ni con el papel de otra hoja recargado aquí; «Hojas para imprimir» con «Qué cambió» plegado que se carga al abrirlo; sin desbordar; en un cuaderno, las páginas del PDF que hay que reimprimir (portada y cada hoja cambiada) con «Copiar», y con «¿Cuándo lo imprimiste?» solo las que cambiaron desde entonces (o entero si es de antes del orden de hojas), sin salirse del margen a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
