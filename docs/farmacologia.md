@@ -115,7 +115,7 @@ Las fuentes cuentan en `docs/referencias.md` como «guía de fármacos» (`recog
 11. Diuréticos y otros antihipertensivos (deshidratación, hipopotasemia y calambres, ortostatismo)
 12. Insulina y antidiabéticos (hipoglucemia con el ejercicio, SGLT2 y deshidratación)
 13. Fármacos que tocan el hueso: bifosfonatos, denosumab, inhibidores de la aromatasa (fractura atípica de fémur con dolor de muslo, osteonecrosis, artralgias)
-14. Antiparkinsonianos y agonistas dopaminérgicos (añadida en 2026-11 a petición del usuario; escrita con 15 fuentes leídas, pendiente de su revisión; diseño, decisiones y estado en `docs/farmacos-antiparkinsonianos.md`)
+14. Antiparkinsonianos y agonistas dopaminérgicos (añadida en 2026-11 a petición del usuario; escrita con 16 fuentes leídas, con aviso de la fase 6 y enlace desde la tarjeta de Parkinson, revisada por el usuario; diseño, decisiones y estado en `docs/farmacos-antiparkinsonianos.md`)
 
 Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido: cada frase de la guía sale de una fuente leída.
 
