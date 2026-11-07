@@ -1,6 +1,6 @@
 # Hojas de consulta, plantillas y hoja neurológica (dermatomas, miotomas, reflejos)
 
-Estado: **decisiones 1–11 aceptadas por el usuario (noviembre 2026). Partes A y B implementadas (PR «Hojas de consulta y hoja neurológica»), con el cambio de la guía de añadir, quitar o mover hojas en vez de reimprimir el cuaderno entero (petición del usuario). Parte C (body chart) pendiente.** Fuentes leídas enteras: las seis de la tabla; extractos en el registro (`data/referencias.js`).
+Estado: **decisiones 1–11 aceptadas por el usuario (noviembre 2026). Partes A y B implementadas y revisadas por el usuario (noviembre 2026; PR «Hojas de consulta y hoja neurológica»), con el cambio de la guía de añadir, quitar o mover hojas en vez de reimprimir el cuaderno entero (petición del usuario). Parte C (body chart) pendiente.** Fuentes leídas enteras: las seis de la tabla; extractos en el registro (`data/referencias.js`).
 
 ## Principio: el cuaderno es una guía de consulta, no un formulario
 
