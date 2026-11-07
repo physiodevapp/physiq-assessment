@@ -119,13 +119,21 @@ Todas se leen completas antes de escribir el texto que se apoya en ellas, y entr
 
 | # | Fuente | Para qué | Acceso |
 |---|--------|----------|--------|
-| 1 | Rupp et al. 2021, *International Standards for Neurological Classification of Spinal Cord Injury: Revised 2019*, Top Spinal Cord Inj Rehabil 27(2):1–22 (PMC8152171); misma revisión en Spinal Cord 2021 (PMC8737267) | Puntos sensitivos y músculos clave; gradación de fuerza y sensibilidad | Abierto. En lectura |
+| 1 | Rupp et al. 2021, *International Standards for Neurological Classification of Spinal Cord Injury: Revised 2019*, Top Spinal Cord Inj Rehabil 27(2):1–22 (PMID 34108832, PMC8152171) | Puntos sensitivos y músculos clave; gradación de fuerza y sensibilidad | Gratis para leer, pero PMC solo lo tiene en PDF y la sesión no llega al PDF: **PDF del usuario**. © ASIA: ver «Derechos de la ISNCSCI» |
 | 2 | Lee, McPhee y Stringer 2008, *An evidence-based approach to human dermatomes*, Clin Anat 21:363–73 (PMID 18470936) | Variabilidad y solapamiento de los dermatomas; por qué puntos y no bandas | No está en PMC: **PDF del usuario** |
 | 3 | Downs y Laporte 2011, *Conflicting dermatome maps: educational and clinical implications*, JOSPT 41 (PMID 21628826) | Por qué los mapas no coinciden | No está en PMC: **PDF del usuario** |
 | 4 | StatPearls, *Deep Tendon Reflexes* | Niveles de los reflejos, técnica, escala 0–4+ | **PDF del usuario** |
 | 5 | StatPearls, *Dermatomes* y *Upper motor neuron lesions* (o el capítulo de exploración neurológica que tengas) | Signos de neurona motora superior; contraste de niveles | **PDF del usuario** |
 | 6 | Maitland 2005 y Hengeveld y Banks 2005 (ya en el registro) | Leyenda del body chart | Ya leídos para la fase 6; se releen las páginas del body chart |
 | 7 | Kenhub (con tu suscripción) | Solo enlaces desde la guía, nunca en el papel | Enlace |
+
+### Derechos de la ISNCSCI
+
+El folleto de la ISNCSCI lleva © ASIA 2019: «No part of this publication may be modified, reproduced… without prior written permission of ASIA». La única excepción es la hoja de exploración («worksheet»), que se puede fotocopiar sin modificarla. Por eso:
+
+- **En la hoja de PhysiQ** no se copia ni su tabla ni su dibujo. Se da, con nuestras palabras y nuestro dibujo, qué punto y qué músculo explora cada raíz, citando la ISNCSCI como fuente. No es una opinión legal: si prefieres ir sobre seguro, se pide permiso a ASIA (decisión 11).
+- **En la guía** se enlaza la hoja oficial de ASIA, sin modificar, para quien quiera usarla tal cual.
+- La versión de Spinal Cord 2021 (PMC8737267) **no es la misma**: son cinco casos de clasificación, sin la lista de puntos ni de músculos. Se descarta como fuente de la tabla.
 
 ## Qué no hace
 
@@ -147,12 +155,13 @@ Todas se leen completas antes de escribir el texto que se apoya en ellas, y entr
 8. **Body chart en dos versiones, hombre y mujer.** Alternativa: una sola, neutra, si prefieres no elegir al fotocopiar.
 9. **Body chart sin QR.**
 10. **Reflejos solo con fuente leída.** Hasta tener las fuentes 4 y 5, la columna de reflejos no se imprime.
+11. **ISNCSCI con nuestras palabras y nuestro dibujo, citada**, sin copiar su tabla ni su figura, y la hoja oficial de ASIA enlazada desde la guía. Alternativa: pedir permiso a ASIA antes de imprimir.
 
 ## Orden
 
 Para que reimprimas el cuaderno entero una sola vez:
 
-1. **Lecturas:** la ISNCSCI (en curso) y tus PDF de las fuentes 2–5.
+1. **Lecturas:** tus PDF de las fuentes 1–5.
 2. **Una sola PR, A + B:** Irritabilidad y Síntomas como consulta y la hoja neurológica con su página de la guía. Cuadernos regenerados una vez, con el nuevo `ordenFecha`.
 3. **Otra PR, C:** el body chart y, si lo decides, las plantillas rellenables. No toca el cuaderno, así que no obliga a reimprimir nada.
 
