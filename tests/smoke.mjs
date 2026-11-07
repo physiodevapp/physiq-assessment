@@ -2659,7 +2659,7 @@ async function checkGuiaCambios(browser, errors) {
     const linea = caja?.querySelector('.guia-cambios-paginas b')?.textContent || '';
     const plan = [...(caja?.querySelectorAll('li') || [])].find(li => li.textContent.includes('Plan de tratamiento'));
     return !!caja && !caja.hidden && linea === `1-2, ${ini}-${fin}`
-      && !!plan && plan.textContent.includes(`págs. ${ini}-${fin}`) && caja.textContent.includes('la portada (págs. 1-2)');
+      && !!plan && plan.textContent.includes(`págs. ${ini}-${fin}`) && caja.textContent.includes('la portada (págs. 1-2)') && caja.textContent.includes('busca cada hoja por su nombre');
   }, { ini: cuad.inicio.plan, fin: Object.values(cuad.inicio).filter(v => v > cuad.inicio.plan).sort((x, y) => x - y)[0] - 1 || cuad.paginas });
   await page.locator('#cambiadas-cuaderno-lumbar .guia-copiar').tap();
   r.paginasCopiadas = await page.evaluate(() => navigator.clipboard.readText()) === await page.textContent('#cambiadas-cuaderno-lumbar .guia-cambios-paginas b');

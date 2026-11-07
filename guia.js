@@ -686,7 +686,8 @@ function htmlHojas() {
       <a href="${urlPDF(l.clave, d.archivo || d.huella)}" target="_blank" rel="noopener" aria-label="Descargar ${esc(l.titulo)} en PDF">PDF ↗</a>
       ${cambiadas.length ? `<div id="${idCamb}" class="guia-cambios" hidden><p class="guia-cambios-nota">${base ? `Si lo imprimiste después del ${esc(fechaLarga(base))}, basta` : 'Basta'} con sustituir las que cambiaron después de imprimirlo, y la portada${pags ? ` (págs. ${pags.rango(pags.portada)})` : ''}:</p>
         ${pags ? (pags.texto === `1-${d.paginas}` ? `<p class="guia-cambios-paginas">Han cambiado todas: imprime el cuaderno entero.</p>`
-          : `<p class="guia-cambios-paginas">Del PDF actual, a doble cara, imprime las páginas <b>${esc(pags.texto)}</b> <button type="button" class="guia-copiar" data-copiar="${esc(pags.texto)}">Copiar</button></p>`) : ''}
+          : `<p class="guia-cambios-paginas">Del PDF actual, a doble cara, imprime las páginas <b>${esc(pags.texto)}</b> <button type="button" class="guia-copiar" data-copiar="${esc(pags.texto)}">Copiar</button></p>
+            <p class="guia-cambios-nota">Son números del PDF actual: en tu copia impresa, busca cada hoja por su nombre.</p>`) : ''}
         <ul>${cambiadas.map(k => `<li><a href="${urlPDF(k, HUELLAS[k].huella)}" target="_blank" rel="noopener">${esc(nombreHojaImpresa(k, nombreRegion))} ↗</a> · ${esc(fechaCortaDe(HUELLAS[k].fecha))}${pags?.porHoja[k] ? ` · págs. ${pags.rango(pags.porHoja[k])}` : ''}</li>`).join('')}</ul></div>` : ''}</li>`;
   }) : [];
   return `<p class="guia-nota">Cada hoja impresa lleva su versión bajo el QR («v. …»). Si no coincide con la de esta lista, la hoja ha cambiado: descarga el PDF y reimprímela. «Reciente» = cambió en los últimos ${DIAS_RECIENTE} días (${recientes} de ${Object.keys(HUELLAS).length}).</p>
