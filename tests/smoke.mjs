@@ -2678,7 +2678,7 @@ async function checkGuiaCambios(browser, errors) {
   const ordenC = (await (await page.request.get(`${raiz}/docs/esquemas/cuadernos.json`)).json())['cuaderno-completo'].ordenFecha;
   const antes = new Date(new Date(`${ordenC}T12:00:00`).getTime() - 864e5).toISOString().slice(0, 10);
   await fecha.fill(antes);
-  r.fechaEntero = await page.waitForFunction(() => /reimprime el cuaderno entero/.test(document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
+  r.fechaEntero = await page.waitForFunction(() => /reimprímelo entero/.test(document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
   await fecha.fill(hoy);
   r.fechaHoy = await page.waitForFunction(() => {
     const res = document.querySelector('[data-copia-res="cuaderno-completo"]');
@@ -2689,14 +2689,17 @@ async function checkGuiaCambios(browser, errors) {
   r.fechaSinSalirseDelMargen = await page.evaluate(() => innerWidth === 320 && [...document.querySelectorAll('#cambiadas-cuaderno-completo, #cambiadas-cuaderno-completo *')]
     .every(el => el.getBoundingClientRect().right <= 320 - 12));
   await fecha.fill('');
-  r.fechaVacia = await page.waitForFunction(() => /Si lo imprimiste después del/.test(document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
+  r.fechaVacia = await page.waitForFunction(() => /Si lo imprimiste después del|Ninguna hoja ha cambiado desde el/.test(document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
   // «cuaderno v.» de la portada: exacta (versión de cada hoja), borra la fecha; la actual está al día;
   // una desconocida lo dice. Y el QR de la portada (?c=) abre ese cuaderno con la lista ya hecha
   const { hojasCambiadasEnCopia } = await import(new URL('./lib/cambios-hojas.js', new URL('../', import.meta.url)).href);
   const hist = await (await page.request.get(`${raiz}/docs/esquemas/cuadernos-historial.json`)).json();
   const completo = (await (await page.request.get(`${raiz}/docs/esquemas/cuadernos.json`)).json())['cuaderno-completo'];
   const VIEJA = '9a8bcd04';   // la del cuaderno completo del 3 nov 2026 (la foto del usuario)
-  const esperadas = hojasCambiadasEnCopia(completo, hist[VIEJA]).claves;
+  const cmp = hojasCambiadasEnCopia(completo, hist[VIEJA]);
+  // Se imprimen las cambiadas y las nuevas; se listan también las que se quitan o se mueven
+  const esperadas = [...cmp.claves, ...cmp.nuevas.map(x => x.clave)];
+  const nLista = esperadas.length + cmp.quitadas.length + cmp.movidas.length;
   const lineaVieja = esperadas.length ? paginasReimprimir(completo, esperadas).texto : '';
   const res = () => page.evaluate(() => document.querySelector('[data-copia-res="cuaderno-completo"]')?.textContent || '');
   await fecha.fill(hoy);
@@ -2705,7 +2708,7 @@ async function checkGuiaCambios(browser, errors) {
     const res = document.querySelector('[data-copia-res="cuaderno-completo"]');
     return res && res.querySelectorAll('li').length === n && (res.querySelector('.guia-cambios-paginas b')?.textContent || '') === linea
       && document.querySelector('input[data-fecha-copia="cuaderno-completo"]').value === '';
-  }, { n: esperadas.length, linea: lineaVieja }, { timeout: 3000 }).then(() => esperadas.length > 0, () => false);
+  }, { n: nLista, linea: lineaVieja }, { timeout: 3000 }).then(() => esperadas.length > 0, () => false);
   const avisoVisible = () => page.evaluate(() => { const m = document.querySelector('[data-movida="cuaderno-completo"]'); return !!m && m.getBoundingClientRect().height > 0; });
   r.versionOcultaAviso = !(await avisoVisible());
   await page.fill('input[data-v-copia="cuaderno-completo"]', completo.huella);
@@ -2720,7 +2723,7 @@ async function checkGuiaCambios(browser, errors) {
     const caja = document.getElementById('cambiadas-cuaderno-completo');
     return caja && !caja.hidden && document.querySelector('input[data-v-copia="cuaderno-completo"]').value === '9a8bcd04'
       && caja.querySelectorAll('[data-copia-res] li').length === n;
-  }, esperadas.length, { timeout: 5000 }).then(() => true, () => false);
+  }, nLista, { timeout: 5000 }).then(() => true, () => false);
   r.qrOcultaAviso = !(await avisoVisible());
   r.qrSinDesbordar = await page.evaluate(() => innerWidth === 320 && document.documentElement.scrollWidth <= 320);
   await ctx.close();
@@ -7362,6 +7365,18 @@ async function checkGuia(browser, errors) {
     // Síntomas: las zonas de lumbar enlazan sus pasos del árbol y el periné recuerda la cola de caballo
     await page.goto(`${base}#sintomas`, { waitUntil: 'networkidle' });
     r.sintomasGuia = await page.evaluate(() => !!document.querySelector('a[href="#lumbar/arbol/paso-lu_step1c"]') && !!document.querySelector('a[href="#lumbar/cribado/q-l6"]'));
+    // Dermatomas, miotomas y reflejos (#neuro): las dos siluetas con sus puntos, las 10 raíces con
+    // músculo clave, los 5 reflejos, el recuadro de neurona motora superior, Kenhub y citas tocables
+    await page.goto(`${base}#neuro`, { waitUntil: 'networkidle' });
+    r.neuroGuia = await page.evaluate(() => {
+      const c = document.getElementById('guiaContenido');
+      return c.querySelectorAll('.guia-neuro-figs svg').length === 2 && c.querySelectorAll('.guia-neuro-figs circle').length === 28
+        && c.querySelectorAll('.guia-neuro-tabla')[0].querySelectorAll('tbody tr').length === 10
+        && c.querySelectorAll('.guia-neuro-tabla')[2].querySelectorAll('tbody tr').length === 5
+        && !!c.querySelector('.guia-neuro-nms') && [...c.querySelectorAll('a[href*="kenhub.com"]')].length === 2
+        && c.querySelectorAll('button.cita').length >= 6 && !!c.querySelector('[data-ia-ctx] .ia-parrafo')
+        && document.documentElement.scrollWidth <= innerWidth;
+    });
     await page.goto(`${base}#lumbar/arbol`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-fpref', { state: 'attached' });
     r.formArbol = await page.evaluate(() => /📝 Formulario: R1, R2, R4, R6/.test(document.querySelector('#paso-lu_step1')?.textContent || ''));

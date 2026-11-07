@@ -38,7 +38,7 @@ const { CIF_TREES } = await import('../../data.js');
 const { ORDEN_REGIONES, HOJAS_TEJIDO, definicionCuadernos, nombreHojaImpresa, URL_GUIA } = await import('../../lib/esquemas.js');
 const { nombreRegion } = await import('../../lib/region.js');
 const { registrarVersion, registrarCuaderno } = await import('./historial.mjs');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlSintomas, htmlPlanHoja, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, elementosHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlSintomas, htmlNeuro, htmlPlanHoja, htmlFase1, htmlEjercicioPaciente, htmlFormularioPaciente, FORMULARIOS_PACIENTE, hojasImpresas, huellaHoja, elementosHoja, rematar, htmlPortadaCuaderno, htmlNumerosCuaderno, HTML_PAGINA_BLANCA, rematarPortada, huellaCuaderno } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -125,6 +125,7 @@ const SUELTAS = {
   farmacos: [['farmacos', htmlFarmacos]],
   irritabilidad: [['irritabilidad', htmlIrritabilidad]],
   sintomas: [['sintomas', htmlSintomas]],
+  neuro: [['neuro', htmlNeuro]],
   plan: [['plan', htmlPlanHoja]],
   fase1: [['fase1', htmlFase1]],
   'ejercicio-paciente': [['ejercicio-paciente', htmlEjercicioPaciente]],

@@ -459,12 +459,14 @@ test('cuadernos: con la fecha de impresión, las hojas que cambiaron ese día o 
   assert.equal(CAMB.hojasCambiadasDesde(c, h, ''), null);
 });
 
-test('cuadernos: con la «cuaderno v.» de la portada, exactamente las hojas con otra versión', () => {
-  const actual = { hojas: { a: '1', b: '2', c: '3' } };
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: 'x', c: 'y' } }), { entero: false, claves: ['b', 'c'] });
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: '2', c: '3' } }).claves, []);
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', c: '3' } }), { entero: true, claves: [] }, 'otra lista: entero');
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { b: '2', a: '1', c: '3' } }).entero, true, 'otro orden: entero');
+test('cuadernos: con la «cuaderno v.» de la portada, qué sustituir, añadir, quitar y mover (nunca entero)', () => {
+  const actual = { hojas: { a: '1', b: '2', n: '9', c: '3', d: '4' } };
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: 'x', c: '3', d: '4', z: '5' } }),
+    { claves: ['b'], nuevas: [{ clave: 'n', tras: 'b' }], quitadas: ['z'], movidas: [] });
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', c: '3', b: '2', n: '9', d: '4' } }),
+    { claves: [], nuevas: [], quitadas: [], movidas: [{ clave: 'c', tras: 'n' }] }, 'una hoja movida: solo esa');
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia({ hojas: { x: '1', a: '2' } }, { hojas: { a: '2' } }).nuevas, [{ clave: 'x', tras: null }], 'la primera, tras la portada');
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { ...actual.hojas } }), { claves: [], nuevas: [], quitadas: [], movidas: [] });
   assert.equal(CAMB.hojasCambiadasEnCopia(actual, null), null);
 });
 

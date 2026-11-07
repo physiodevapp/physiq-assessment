@@ -1,6 +1,6 @@
 # Hojas de consulta, plantillas y hoja neurológica (dermatomas, miotomas, reflejos)
 
-Estado: **borrador de diseño para revisión del usuario (noviembre 2026). Nada implementado.** Al aceptarlo, cada parte se hace en su propia sesión y PR, en el orden del final.
+Estado: **decisiones 1–11 aceptadas por el usuario (noviembre 2026). Partes A y B implementadas (PR «Hojas de consulta y hoja neurológica»), con el cambio de la guía de añadir, quitar o mover hojas en vez de reimprimir el cuaderno entero (petición del usuario). Parte C (body chart) pendiente.** Fuentes leídas enteras: las seis de la tabla; extractos en el registro (`data/referencias.js`).
 
 ## Principio: el cuaderno es una guía de consulta, no un formulario
 
@@ -62,7 +62,7 @@ Tener en la carpeta, sin buscarlo, qué explorar para cada raíz: dónde está s
 | L5 | … | Extensor largo del dedo gordo | — |
 | S1 | … | Flexores plantares del tobillo | Aquíleo (S1) |
 
-Los músculos y puntos clave son los de la ISNCSCI (fuente 1). Los niveles de los reflejos están **pendientes de fuente**: los de la tabla son los habituales y se confirman con las fuentes 4 y 5 antes de imprimir nada. Si dos fuentes no coinciden en un nivel, la hoja da el de la ISNCSCI o el de la fuente de reflejos y lo dice; nunca se elige sin decirlo.
+Los músculos y puntos clave son los de la ISNCSCI (fuente 1). Los niveles de los reflejos son los de Zimmerman y Hubbard 2023: bicipital y braquiorradial C5–C6, tricipital C7–C8 (sobre todo C7), rotuliano L2–L4 (sobre todo L4), aquíleo S1; la hoja avisa de que el mismo capítulo da otros niveles para el rotuliano y el aquíleo. Si dos fuentes no coinciden en un nivel, la hoja da el de la ISNCSCI o el de la fuente de reflejos y lo dice; nunca se elige sin decirlo.
 
 Debajo de la tabla:
 - **Gradación:** cómo se puntúan la fuerza (0–5, NT) y la sensibilidad (0, 1, 2, NT, comparando con la cara), tal como la ISNCSCI.
@@ -86,7 +86,7 @@ Debajo de la tabla:
 
 ### Dónde va
 
-- En `HOJAS_GENERALES`, después de Síntomas (decisión 5). Cambia la lista de hojas, así que **cambia el `ordenFecha` de todos los cuadernos**: «Hojas para imprimir» dirá que se reimprima entero quien lo imprimió antes. Para evitar dos reimpresiones seguidas, conviene hacer A y B en la misma tanda de impresión (ver «Orden»).
+- En `HOJAS_GENERALES`, después de Síntomas (decisión 5). Cambia la lista de hojas y el `ordenFecha` de todos los cuadernos, pero **no hace falta reimprimirlos enteros**: con la «cuaderno v.» de la portada, la guía dice qué hoja añadir y detrás de cuál, y qué sustituir (petición del usuario, 2026-11).
 - QR → `guia.html#neuro`.
 
 ### La app
