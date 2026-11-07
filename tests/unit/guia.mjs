@@ -273,11 +273,18 @@ test('guía: calculadora de cuestionarios, efectos del ejercicio, preguntar a la
   assert.ok(calc.includes('estadoReloj(RELOJ, Date.now(), MINUTOS[de])') && calc.includes('tomaFueraDeTiempo('), 'reloj de la prueba de bipedestación');
   // El cuestionario recomendado de la confirmación enlaza la calculadora
   assert.ok(src.includes('href="#cuestionarios/${id}"'));
-  // Hoja de síntomas: en las hojas generales (cuadernos) y con todas las zonas de cada región
+  // Hoja de síntomas: en las hojas generales (cuadernos), una página, sin la lista de zonas (solo en
+  // la guía, decisión del usuario 2026-11) pero con cada recordatorio de zona, que es de seguridad
   assert.ok(ESQ.HOJAS_GENERALES.includes('sintomas'));
   const sint = HOJAS.htmlSintomas();
   const { ZONAS_SINTOMA } = DATOS_APP;
-  for (const r of ESQ.ORDEN_REGIONES) for (const z of ZONAS_SINTOMA[r] || []) assert.ok(sint.includes(z.nombre.replace(/&/g, '&amp;')), `${r}: falta la zona ${z.nombre}`);
+  assert.equal((sint.match(/class="pagina"/g) || []).length, 1, 'la hoja de síntomas tiene una página');
+  let recs = 0;
+  for (const r of ESQ.ORDEN_REGIONES) for (const z of ZONAS_SINTOMA[r] || []) if (z.recordatorio) {
+    recs++; assert.ok(sint.includes(z.recordatorio.texto.replace(/&/g, '&amp;')), `${r}: falta el recordatorio de ${z.nombre}`);
+  }
+  assert.ok(recs >= 1);
+  assert.ok(extra.includes('ZONAS_SINTOMA'), 'las zonas de cada región siguen en la guía (#sintomas)');
   // Hoja de fase 1: la tarjeta «Cirugía» con sus protocolos y complicaciones
   const f1 = HOJAS.htmlFase1();
   for (const t of [...POSQ_LIB.PROTOCOLOS, ...POSQ_LIB.COMPLICACIONES.map(c => c.label)]) assert.ok(f1.includes(t), `fase 1 sin «${t}»`);
@@ -459,12 +466,14 @@ test('cuadernos: con la fecha de impresión, las hojas que cambiaron ese día o 
   assert.equal(CAMB.hojasCambiadasDesde(c, h, ''), null);
 });
 
-test('cuadernos: con la «cuaderno v.» de la portada, exactamente las hojas con otra versión', () => {
-  const actual = { hojas: { a: '1', b: '2', c: '3' } };
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: 'x', c: 'y' } }), { entero: false, claves: ['b', 'c'] });
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: '2', c: '3' } }).claves, []);
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', c: '3' } }), { entero: true, claves: [] }, 'otra lista: entero');
-  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { b: '2', a: '1', c: '3' } }).entero, true, 'otro orden: entero');
+test('cuadernos: con la «cuaderno v.» de la portada, qué sustituir, añadir, quitar y mover (nunca entero)', () => {
+  const actual = { hojas: { a: '1', b: '2', n: '9', c: '3', d: '4' } };
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', b: 'x', c: '3', d: '4', z: '5' } }),
+    { claves: ['b'], nuevas: [{ clave: 'n', tras: 'b' }], quitadas: ['z'], movidas: [] });
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { a: '1', c: '3', b: '2', n: '9', d: '4' } }),
+    { claves: [], nuevas: [], quitadas: [], movidas: [{ clave: 'c', tras: 'n' }] }, 'una hoja movida: solo esa');
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia({ hojas: { x: '1', a: '2' } }, { hojas: { a: '2' } }).nuevas, [{ clave: 'x', tras: null }], 'la primera, tras la portada');
+  assert.deepEqual(CAMB.hojasCambiadasEnCopia(actual, { hojas: { ...actual.hojas } }), { claves: [], nuevas: [], quitadas: [], movidas: [] });
   assert.equal(CAMB.hojasCambiadasEnCopia(actual, null), null);
 });
 

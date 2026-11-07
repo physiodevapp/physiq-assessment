@@ -28,6 +28,7 @@ const { BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercic
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
+const NEURO = await import('../../data/neuro.js');
 const POSQ = await import('../../lib/posquirurgico.js');
 const { HIP_POSQUIRURGICA } = await import('../../data/comun.js');
 const { ORDEN_REGIONES } = await import('../../lib/esquemas.js');
@@ -826,19 +827,19 @@ export function htmlFarmacos() {
   });
 }
 
-// ── Irritabilidad (fase 3): la matriz para marcar en papel, la regla y qué implica cada nivel ──
+// ── Irritabilidad (fase 3): la matriz como tabla de criterios, la regla y qué implica cada nivel ──
+// Hoja de consulta (decisión del usuario, 2026-11): sin casillas ni huecos; se rellena en la guía (QR).
 export function htmlIrritabilidad() {
   const T = TEXTOS_IRRITABILIDAD;
   const filas = ITEMS_IRRITABILIDAD.map(it => `<tr><th>${esc(it.nombre)}${it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : ''}</th>
-    ${it.opciones.map((o, i) => `<td><span class="caja"></span><span class="n">${i}</span> ${esc(o.valor)}</td>`).join('')}</tr>`).join('');
+    ${it.opciones.map((o, i) => `<td><span class="n">${i}</span> ${esc(o.valor)}</td>`).join('')}</tr>`).join('');
   const nivel = (n, clase, textos) => `<div class="nivel ${clase}"><b>${n}</b>${textos.map(t => `<p>${esc(t)}</p>`).join('')}</div>`;
   return paginaUna({
     titulo: 'Irritabilidad (fase 3)',
-    sub: `La misma matriz y la misma regla que la app (fases 3 y 6). Marca una casilla por fila. ${esc(T.pistaBreve)}`,
+    sub: `La misma matriz y la misma regla que la app (fases 3 y 6): en cada fila, la columna que describe al paciente. ${esc(T.pistaBreve)}`,
     qr: 'Calculadora e IA',
     cuerpo: `<table class="matriz"><thead><tr><th></th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>${filas}</tbody></table>
-      <div class="regla"><h2>Cómo se calcula</h2>${reglaIrritabilidad().map(p => `<p>${p}</p>`).join('')}
-        <div class="calc"><span>Suelo (tiempo en calmarse): ____</span><span>Reposo + movimiento + tolerancia = ____ → ____</span><span><b>Nivel</b> (el más alto): ____</span></div></div>
+      <div class="regla"><h2>Cómo se calcula</h2>${reglaIrritabilidad().map(p => `<p>${p}</p>`).join('')}</div>
       <h2 class="t-niveles">Qué implica cada nivel</h2>
       <div class="niveles">${nivel('Baja', 'baja', [T.hastaLimite])}${nivel('Moderada', 'moderada', [T.hastaDolor])}${nivel('Alta', 'alta', [T.hastaDolor, T.alta])}</div>
       <p class="margen">${esc(T.margen)} ${esc(T.incompleta)}</p>`,
@@ -850,11 +851,9 @@ export function htmlIrritabilidad() {
       .matriz thead th { background: #eef2ff; text-align: center; font-size: 11px; color: #3730a3; padding: 4px; }
       .matriz tbody th { width: 30%; font-size: 12.5px; }
       .ayuda { font-weight: normal; font-size: 9.5px; color: #6b7280; margin-top: 3px; }
-      .caja { display: inline-block; width: 13px; height: 13px; border: 1.6px solid #475569; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
       .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; vertical-align: -3px; margin-right: 3px; }
       h2 { font-size: 14px; margin: 0 0 5px; color: #1e3a8a; }
       .regla { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; } .regla p { margin: 0 0 5px; }
-      .calc { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 11px; }
       .niveles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .nivel { border-radius: 8px; padding: 8px 10px; border: 1.5px solid; } .nivel b { font-size: 13px; } .nivel p { margin: 4px 0 0; font-size: 10.5px; }
       .nivel.baja { border-color: #16a34a; background: #f0fdf4; } .nivel.baja b { color: #15803d; }
@@ -1013,7 +1012,7 @@ export function htmlPortadaCuaderno({ titulo, portada = {}, secciones, fecha, or
     <div class="banda"><div><div class="marca">PhysiQ-Assessment · Cuaderno de consulta</div><h1>${esc(portada.titulo || titulo)}</h1>
       ${portada.subtitulo ? `<div class="tit2">${esc(portada.subtitulo)}</div>` : ''}</div>
       <div class="qr-guia">${QR}<span>Qué reimprimir</span></div></div>
-    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en la cara delantera de su propio papel (hay páginas en blanco a propósito) y numera sus páginas por sí misma, abajo en la esquina exterior («Cribado · Lumbar 1/2»). Cada hoja lleva su versión («v.») y su QR a la guía de consulta. Escanea el QR: la guía compara este cuaderno con el actual y dice qué hojas han cambiado y qué páginas del PDF imprimir para sustituirlas, junto con esta portada; las demás no cambian aunque ocupe más o menos papel. Si se añadió, quitó o movió una hoja, dice que lo reimprimas entero.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · orden de hojas desde: <b>${esc(ordenFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
+    <div class="info"><div class="nota">Para imprimir <b>a doble cara</b>: cada hoja empieza en la cara delantera de su propio papel (hay páginas en blanco a propósito) y numera sus páginas por sí misma, abajo en la esquina exterior («Cribado · Lumbar 1/2»). Cada hoja lleva su versión («v.») y su QR a la guía de consulta. Escanea el QR: la guía compara este cuaderno con el actual y dice qué hojas han cambiado y qué páginas del PDF imprimir para sustituirlas, junto con esta portada; las demás no cambian aunque ocupe más o menos papel. Si se añadió, quitó o movió una hoja, dice cuál y dónde va.<br>Último cambio de contenido: <b>${esc(fecha)}</b> · orden de hojas desde: <b>${esc(ordenFecha || fecha)}</b> · cuaderno v. ${esc(huella)}</div></div>
     <div class="indice">Índice</div>
   <div class="cuerpo"><table>${filas}</table></div>
     <div class="pie-fijo">${AUTORIA_HTML}</div>
@@ -1101,63 +1100,125 @@ export function htmlFase1() {
   });
 }
 
-// ── Síntomas (fase 3): P1–P4 para marcar en papel y las zonas de cada región ──
-// Lo que la tarjeta «Síntomas» de la app registra (lib/sintomas.js) y, en la segunda página, las
-// zonas de cada región con los pasos del árbol donde la app las recuerda (`pasos`), los recordatorios
-// de zona y la red neurológica. QR → guia.html#sintomas.
+// ── Síntomas (fase 3): qué registrar de cada síntoma (P1–P4) y las zonas de cada región ──
+// Hoja de consulta (decisión del usuario, 2026-11): sin casillas ni huecos. Lo que la tarjeta
+// «Síntomas» de la app registra (lib/sintomas.js) y el recordatorio de zona que es de seguridad (el
+// periné, en lumbar). Las zonas de cada región con sus pasos del árbol, solo en la guía (decisión del
+// usuario, 2026-11: en papel no se usaban). QR → guia.html#sintomas.
 export function htmlSintomas() {
-  const caja = '<span class="caja"></span>';
-  const ops = (lista) => lista.map(o => `<span class="op">${caja} ${esc(o)}</span>`).join('');
-  const lin = (et, c = '') => `<div class="f"><span>${et}</span><i class="lin${c}"></i></div>`;
-  const tarjeta = n => {
-    const p1 = n === 1;
-    return `<section class="s"><h2>P${n}${p1 ? ' · síntoma principal' : ''}</h2>
-      ${lin('Zona:')}${p1 ? '' : `<div class="f">${ops(['Otra región (no valorada hoy)'])}</div>`}
-      <div class="f"><b>Lado</b>${ops(['Derecho', 'Izquierdo', 'Bilateral', 'Central'])}</div>
-      <div class="f">${ops(SINT.PROFUNDIDADES)}<span class="sep"></span>${ops(SINT.PATRONES)}</div>
-      <div class="f"><b>NRS</b> <i class="lin c"></i>/10 ${p1 ? '<span class="nota">(su irritabilidad: hoja de irritabilidad)</span>' : `<b class="ml">Irritabilidad</b>${ops(SINT.NIVELES_IRRITABILIDAD)}`}</div>
-      ${p1 ? `<div class="f"><b>Cómo es</b>${ops(SINT.CHIPS_DESCRIPCION)}</div>` : `<div class="f"><b>Con P1</b>${ops(Object.values(SINT.RELACIONES).map(r => r.boton))}</div>`}
-      ${lin(p1 ? 'Descripción:' : 'Nota:')}</section>`;
-  };
-  const regiones = ORDEN_REGIONES.filter(r => ZONAS_SINTOMA[r]?.length).map(r => {
-    const steps = CIF_TREES[r].steps;
-    const paso = id => { const i = steps.findIndex(st => st.id === id); return i < 0 ? null : etiquetaPaso(steps[i], i); };
-    const filas = ZONAS_SINTOMA[r].map(z => `<tr><td>${esc(z.nombre)}${z.central ? ' <span class="nota">(central)</span>' : ''}</td><td>${(z.pasos || []).map(paso).filter(Boolean).join(', ') || '—'}</td></tr>`
-      + (z.recordatorio ? `<tr class="rec"><td colspan="2">⚠️ ${esc(z.recordatorio.texto)}</td></tr>` : '')).join('');
-    return `<section class="r"><h3>${esc(nombreRegion(r))}</h3><table><thead><tr><th>Zona</th><th>Pasos</th></tr></thead><tbody>${filas}</tbody></table></section>`;
-  }).join('');
+  const ops = lista => lista.map(esc).join(' · ');
+  const campo = (et, txt) => `<li><b>${et}</b> ${txt}</li>`;
+  const relaciones = Object.values(SINT.RELACIONES).map(r => `<li><b>${esc(r.boton)}</b>${r.texto ? `: ${esc(r.texto)}` : ''}</li>`).join('');
+  const p1 = `<section class="s"><h2>P1 · síntoma principal</h2><ul>
+      ${campo('Zona:', 'una o varias de la región (en la guía, con el QR), o descrita con sus palabras.')}
+      ${campo('Lado:', 'Derecho · Izquierdo · Bilateral · Central. Si no se marca, es el de la región.')}
+      ${campo('Profundidad:', ops(SINT.PROFUNDIDADES) + '.')}
+      ${campo('Patrón:', ops(SINT.PATRONES) + '.')}
+      ${campo('Cómo es:', ops(SINT.CHIPS_DESCRIPCION) + ', o con las palabras del paciente.')}
+      ${campo('NRS e irritabilidad:', 'las de la fase 3 (hoja de irritabilidad).')}</ul></section>`;
+  const p24 = `<section class="s"><h2>P2–P4 · hasta tres más</h2><ul>
+      ${campo('Zona:', 'como P1, u «otra región (no valorada hoy)», que solo lleva lado, NRS y una nota.')}
+      ${campo('Lado, profundidad, patrón:', 'como P1.')}
+      ${campo('NRS:', 'el suyo, de 0 a 10.')}
+      ${campo('Irritabilidad:', ops(SINT.NIVELES_IRRITABILIDAD) + ', estimada directamente.')}
+      ${campo('Con P1:', '')}</ul><ul class="rel">${relaciones}</ul></section>`;
+  // La única línea de seguridad de las zonas (el recordatorio del periné en lumbar, literal de data/)
+  const recordatorios = ORDEN_REGIONES.flatMap(r => (ZONAS_SINTOMA[r] || []).filter(z => z.recordatorio)
+    .map(z => `<p class="aviso"><b>⚠️ ${esc(nombreRegion(r))} · ${esc(z.nombre)}:</b> ${esc(z.recordatorio.texto)}</p>`)).join('');
   return `<style>${CSS}${CSS_UNA}
     .pagina + .pagina { break-before: page; }
     .cuerpo h2 { font-size: 13.5px; margin: 0 0 6px; color: #1e3a8a; }
     .ss { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .s { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 10px; font-size: 11.5px; }
-    .f { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 6px 0; }
-    .op { white-space: nowrap; display: inline-flex; align-items: baseline; gap: 3px; } .sep { width: 6px; } .ml { margin-left: 8px; }
-    .caja { display: inline-block; width: 11px; height: 11px; border: 1.5px solid #334155; border-radius: 2px; vertical-align: -1px; }
-    .lin { flex: 1; min-width: 80px; border-bottom: 1px solid #94a3b8; height: 13px; display: inline-block; } .lin.c { flex: 0 0 40px; min-width: 40px; }
+    .s ul { margin: 0; padding-left: 14px; } .s li { margin: 0 0 4px; } .s ul.rel { padding-left: 26px; margin-top: -2px; }
     .nota { color: #6b7280; font-size: 10px; }
     .reglas { margin-top: 10px; font-size: 11px; color: #374151; } .reglas li { margin-bottom: 3px; }
-    .rs { column-count: 2; column-gap: 16px; }
-    .r { break-inside: avoid; margin-bottom: 10px; } .r h3 { font-size: 12.5px; margin: 0 0 3px; color: #1e3a8a; }
-    .r table { width: 100%; border-collapse: collapse; font-size: 10.5px; } .r th { text-align: left; color: #6b7280; font-weight: 600; font-size: 9.5px; }
-    .r td { border-top: 1px solid #e5e7eb; padding: 2px 3px; vertical-align: top; } .r td:last-child { white-space: nowrap; width: 70px; }
-    .r tr.rec td { font-size: 9.5px; color: #b42318; white-space: normal; }
-    .cont { font-size: 15px; font-weight: bold; margin: 0 0 8px; }
+    .aviso { margin-top: 10px; border: 2px solid #dc2626; background: #fef2f2; border-radius: 8px; padding: 6px 10px; font-size: 11px; color: #7f1d1d; }
     .pie-v .qr-huella { display: inline; margin-left: 4px; }</style>
   <div class="pagina">
-    <div class="cab-hoja"><div class="cab-txt"><h1>Síntomas (fase 3)</h1><div class="sub">Lo que registra la tarjeta «Síntomas» de la app: el principal (P1) y hasta tres más. Las zonas de cada región y los pasos del árbol donde importan, en la página 2.</div></div>
+    <div class="cab-hoja"><div class="cab-txt"><h1>Síntomas (fase 3)</h1><div class="sub">Qué registrar de cada síntoma, como en la tarjeta «Síntomas» de la app: el principal (P1) y hasta tres más. Las zonas de cada región y los pasos del árbol donde la app las recuerda, en la guía (QR).</div></div>
       <div class="qr-guia">${QR}<span>Zonas y pasos</span>${HUELLA}</div></div>
-    <div class="cuerpo"><div class="ss">${[1, 2, 3, 4].map(tarjeta).join('')}</div>
+    <div class="cuerpo"><div class="ss">${p1}${p24}</div>
       <ul class="reglas">
         <li>Un síntoma en otra región («no valorada hoy») solo lleva lado, NRS y una nota: no entra en el árbol.</li>
-        <li>La zona de un síntoma recuerda, en los pasos del árbol de la página 2, lo que refiere el paciente: nunca contesta el paso.</li>
+        <li>Pregunta cómo es con sus palabras y anótalas tal cual: la descripción del paciente vale más que la etiqueta.</li>
+        <li>La zona de un síntoma recuerda, en los pasos del árbol (lista en la guía), lo que refiere el paciente: nunca contesta el paso.</li>
         <li>En la app, el plan de la fase 6 se dosifica por el síntoma más irritable (P1 si empatan) y avisa de un síntoma «Independiente» de P1.</li>
-      </ul></div>
+      </ul>${recordatorios}</div>
     <div class="pie-fijo"><span class="pie">Generado desde los datos de la app (data/&lt;región&gt;.js, lib/sintomas.js) el ${FECHA}. ${AUTORIA_HTML}</span></div>
+  </div>`;
+}
+
+// ── Dermatomas, miotomas y reflejos (data/neuro.js) ──────────────────────────
+// Hoja de consulta (docs/hojas-consulta-y-plantillas.md, parte B): cara 1, la tabla por raíz, la
+// gradación y los reflejos; cara 2, QR a las ilustraciones de Kenhub (dermatomas, miotomas) y la
+// hoja oficial de ASIA, la escala de reflejos, los signos de neurona motora superior y por qué
+// puntos y no bandas (sin dibujo propio: decisión del usuario, 2026-11). Datos de la ISNCSCI con
+// nuestras palabras (© ASIA: ni su tabla ni su figura). QR → guia.html#neuro.
+export function htmlNeuro() {
+  const T = NEURO.TEXTOS_NEURO, R = NEURO.REFLEJOS;
+  const cita = t => esc(t);
+  const filasRaiz = NEURO.RAICES_MIOTOMA.map(r => `<tr><th>${r.raiz}</th><td>${esc(r.punto)}</td><td><b>${esc(r.musculo)}</b><div class="pos">${esc(r.posicion)}</div></td><td>${r.reflejos.map(k => esc(R[k].nombre)).join(', ') || '—'}</td></tr>`).join('');
+  const mitad = Math.ceil(NEURO.RAICES_SOLO_PUNTO.length / 2);
+  const tablaPunto = arr => `<table class="t"><tbody>${arr.map(r => `<tr><th>${r.raiz}</th><td>${esc(r.punto)}</td></tr>`).join('')}</tbody></table>`;
+  const filasRef = Object.values(R).map(r => `<tr><th>${esc(r.nombre)}</th><td>${esc(r.niveles)}</td><td>${esc(r.nervio)}</td><td>${esc(r.golpe)}</td></tr>`).join('');
+  const lista = arr => `<ul>${arr.map(x => `<li>${cita(x)}</li>`).join('')}</ul>`;
+  const fuentes = NEURO.FUENTES_NEURO.join(' · ');
+  return `<style>${CSS}${CSS_UNA}
+    .pagina + .pagina { break-before: page; }
+    body { font-size: 9.8px; line-height: 1.3; }
+    .cuerpo h2 { font-size: 11.5px; margin: 6px 0 3px; color: #1e3a8a; }
+    table.t { width: 100%; border-collapse: collapse; }
+    table.t th, table.t td { border: 1px solid #cbd5e1; padding: 2px 4px; text-align: left; vertical-align: top; }
+    table.t thead th { background: #eef2ff; color: #3730a3; font-size: 9.5px; }
+    table.t tbody th { width: 34px; color: #1e3a8a; }
+    .pos { color: #4b5563; font-size: 8.6px; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .caja-g { border: 1.5px solid #cbd5e1; border-radius: 7px; padding: 5px 8px; }
+    .caja-g ul { margin: 2px 0 0; padding-left: 13px; } .caja-g li { margin: 0 0 1px; }
+    .nota { color: #4b5563; font-size: 9.5px; margin: 3px 0 0; }
+    .nms { border: 2px solid #dc2626; background: #fef2f2; border-radius: 8px; padding: 6px 10px; margin-top: 8px; }
+    .nms h2 { color: #b91c1c !important; margin-top: 0 !important; }
+    .nms ul { margin: 2px 0 4px; padding-left: 14px; } .nms li { margin: 0 0 2px; }
+    .nms .dec { font-weight: 600; color: #7f1d1d; margin: 0; }
+    .qrs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 2px 0 6px; }
+    .qrk { display: flex; gap: 6px; align-items: center; border: 1.5px solid #cbd5e1; border-radius: 7px; padding: 4px 6px; font-size: 9.5px; }
+    .qrk.asia { border: 2px solid #1e3a8a; background: #eef2ff; }
+    .qrk svg { flex: none; width: 88px; height: 88px; }
+    .cuerpo ul.l { margin: 2px 0; padding-left: 14px; } .cuerpo ul.l li { margin: 0 0 2px; }
+    .pie-v .qr-huella { display: inline; margin-left: 4px; }</style>
+  <div class="pagina">
+    <div class="cab-hoja"><div class="cab-txt"><h1>${esc(T.titulo)}</h1><div class="sub">${esc(T.sub)}</div></div>
+      <div class="qr-guia">${QR}<span>Por qué, técnica e IA</span>${HUELLA}</div></div>
+    <div class="cuerpo">
+      <table class="t"><thead><tr><th>Raíz</th><th>Punto sensitivo clave</th><th>Músculo clave · posición para el grado 4–5</th><th>Reflejo que la incluye</th></tr></thead><tbody>${filasRaiz}</tbody></table>
+      <h2>Raíces sin músculo clave: solo su punto sensitivo</h2>
+      <div class="dos">${tablaPunto(NEURO.RAICES_SOLO_PUNTO.slice(0, mitad))}${tablaPunto(NEURO.RAICES_SOLO_PUNTO.slice(mitad))}</div>
+      <div class="dos" style="margin-top:8px">
+        <div class="caja-g"><b>Fuerza (0–5)</b>${lista(T.fuerza)}<p class="nota">${cita(T.fuerzaNota)}</p></div>
+        <div class="caja-g"><b>Sensibilidad (0–2)</b>${lista(T.sensibilidad)}<p class="nota">${cita(T.sensibilidadNota)}</p></div>
+      </div>
+      <h2>Reflejos osteotendinosos</h2>
+      <table class="t"><thead><tr><th>Reflejo</th><th>Raíces</th><th>Nervio</th><th>Dónde golpear</th></tr></thead><tbody>${filasRef}</tbody></table>
+      <p class="nota">Escala, técnica e interpretación de los reflejos: en la página 2. ${cita(T.limite)}</p>
+    </div>
+    <div class="pie-fijo"><span class="pie">${esc(T.derechos)} Fuentes: ${esc(fuentes)}. Generado desde los datos de la app (data/neuro.js) el ${FECHA}. ${AUTORIA_HTML}</span></div>
   </div>
-  <div class="pagina"><div class="cont">Zonas de cada región y pasos del árbol donde la app las recuerda</div>
-    <div class="cuerpo"><div class="rs">${regiones}</div></div>
-    <div class="pie-fijo"><span class="pie pie-v">Síntomas (fase 3) · ${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div></div>`;
+  <div class="pagina"><div class="cont">Ilustraciones, reflejos y signos de neurona motora superior</div>
+    <div class="cuerpo">
+      <h2>Ilustraciones: con el móvil sobre la hoja</h2>
+      <div class="qrs"><div class="qrk asia">${qrSVG(NEURO.ASIA_HOJA, 88)}<div><b>Recomendada: hoja oficial de ASIA</b><br>${esc(T.hojaOficial)} Gratuita y sin cuenta.</div></div>
+        ${NEURO.KENHUB_NEURO.map(k => `<div class="qrk">${qrSVG(k.es, 88)}<div><b>${esc(k.nombre)} (Kenhub)</b><br>Los puntos de la tabla y las bandas de los libros, dibujados. Se ve sin cuenta (puede pedir registrarse, gratis); con cuenta, también las tablas.</div></div>`).join('')}</div>
+      <h2>Reflejos: escala y técnica</h2>
+      <div class="dos">
+        <div class="caja-g"><b>Escala (0–4)</b>${lista(T.escalaReflejos)}<p class="nota">${cita(T.nivelesReflejos)}</p></div>
+        <div class="caja-g"><p style="margin:0">${cita(T.tecnicaReflejos)}</p><p class="nota">${cita(T.interpretacionReflejos)}</p></div>
+      </div>
+      <div class="nms"><h2>${esc(T.nmsTitulo)}</h2>${lista(T.nms)}<p class="dec">${cita(T.nmsDecision)}</p></div>
+      <h2>Por qué puntos y no bandas</h2><ul class="l">${T.variabilidad.map(x => `<li>${cita(x)}</li>`).join('')}</ul>
+      <h2>Raíz o nervio periférico</h2><ul class="l">${T.raizNervio.map(x => `<li>${cita(x)}</li>`).join('')}</ul>
+    </div>
+    <div class="pie-fijo"><span class="pie pie-v">${esc(T.titulo)} · ${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div></div>`;
 }
 
 // ── Plan de tratamiento (fase 6): el contenido fijo del que la app elige ──────
@@ -1242,6 +1303,7 @@ export function hojasImpresas() {
   hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
   hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
   hojas.push({ clave: 'sintomas', ruta: 'sintomas', html: htmlSintomas });
+  hojas.push({ clave: 'neuro', ruta: 'neuro', html: htmlNeuro });
   hojas.push({ clave: 'plan', ruta: 'plan', html: htmlPlanHoja });
   hojas.push({ clave: 'fase1', ruta: 'fase1', html: htmlFase1 });
   hojas.push({ clave: 'ejercicio-paciente', ruta: null, html: htmlEjercicioPaciente, paciente: true });
