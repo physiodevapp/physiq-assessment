@@ -7373,7 +7373,7 @@ async function checkGuia(browser, errors) {
       return !c.querySelector('.guia-neuro-figs, svg circle')
         && c.querySelectorAll('.guia-neuro-tabla')[0].querySelectorAll('tbody tr').length === 10
         && c.querySelectorAll('.guia-neuro-tabla')[2].querySelectorAll('tbody tr').length === 5
-        && !!c.querySelector('.guia-neuro-nms') && [...c.querySelectorAll('a[href*="kenhub.com"]')].length === 2
+        && !!c.querySelector('.guia-neuro-nms') && [...c.querySelectorAll('a[href*="kenhub.com"]')].length === 2 && !!c.querySelector('a[href^="https://asia-spinalinjury.org/"]')
         && c.querySelectorAll('button.cita').length >= 6 && !!c.querySelector('[data-ia-ctx] .ia-parrafo')
         && document.documentElement.scrollWidth <= innerWidth;
     });

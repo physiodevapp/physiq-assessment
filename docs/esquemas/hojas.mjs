@@ -1207,7 +1207,7 @@ export function htmlNeuro() {
   <div class="pagina"><div class="cont">Ilustraciones, reflejos y signos de neurona motora superior</div>
     <div class="cuerpo">
       <h2>Ilustraciones: con el móvil sobre la hoja</h2>
-      <div class="qrs"><div class="qrk asia"><div><b>Recomendada: hoja oficial de ASIA</b><br>${esc(T.hojaOficial)} Gratuita y sin cuenta: imprímela y tenla junto a esta hoja.</div></div>
+      <div class="qrs"><div class="qrk asia">${qrSVG(NEURO.ASIA_HOJA, 88)}<div><b>Recomendada: hoja oficial de ASIA</b><br>${esc(T.hojaOficial)} Gratuita y sin cuenta.</div></div>
         ${NEURO.KENHUB_NEURO.map(k => `<div class="qrk">${qrSVG(k.es, 88)}<div><b>${esc(k.nombre)} (Kenhub)</b><br>Los puntos de la tabla y las bandas de los libros, dibujados. Se ve sin cuenta (puede pedir registrarse, gratis); con cuenta, también las tablas.</div></div>`).join('')}</div>
       <h2>Reflejos: escala y técnica</h2>
       <div class="dos">

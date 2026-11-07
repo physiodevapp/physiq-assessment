@@ -70,7 +70,7 @@ Debajo de la tabla:
 - **Recuadro rojo, «Signos de neurona motora superior: derivar»:** hiperreflexia, Hoffmann, Babinski, clonus de más de unas pocas batidas. Remite a las preguntas de urgencia que ya existen y no añade ninguna.
 
 **Cara 2, sin dibujo propio** (decisión del usuario, 2026-11, que sustituye a la primera versión con puntos sobre la silueta: aportaba poca precisión).
-- **Recomendada, la hoja oficial de ASIA:** gratuita y sin cuenta, con el dibujo de los puntos clave; se puede fotocopiar sin modificarla, así que se imprime aparte y se tiene junto a la hoja. Pendiente: un QR a ella cuando el usuario confirme la URL (la web de ASIA no se puede abrir desde la sesión).
+- **Recomendada, la hoja oficial de ASIA:** gratuita y sin cuenta, con el dibujo de los puntos clave; se puede fotocopiar sin modificarla, así que se imprime aparte y se tiene junto a la hoja. Lleva un QR a su página (`ASIA_HOJA`, `data/neuro.js`: `https://asia-spinalinjury.org/?p=4292`, hallada en el buscador; la web de ASIA no se puede abrir desde la sesión).
 - **QR a Kenhub** (artículos «Dermatomas» y «Miotomas» en español, comprobados): probado sin sesión (2026-11): el artículo y sus dibujos se ven enteros, algunas tablas de datos salen difuminadas y Kenhub puede mostrar un aviso para registrarse (gratis). Un QR es un enlace, no una imagen: la decisión 4 (ninguna imagen de Kenhub en el papel) se mantiene.
 - **Puntos, no bandas** (decisión 3): la tabla da el punto clave de cada raíz, porque los mapas de bandas no coinciden entre autores (Lee 2008; Downs y Laporte 2011).
 - La silueta (`siluetaPuntosSVG()`, `data/siluetas-hojas.js`) queda para el body chart de la parte C.
