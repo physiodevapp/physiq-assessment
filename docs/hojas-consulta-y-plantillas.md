@@ -25,7 +25,7 @@ Tres partes:
 
 ### Fase 1 (`htmlFase1()`)
 
-- Como Irritabilidad y Síntomas (decisión del usuario, 2026-11): sin casillas ni líneas. Las opciones de mecanismo, cronología, la tarjeta «Cirugía», las banderas rojas y el riesgo psicosocial van como texto («Respuesta: Sí · No»); se marcan en la app o en la calculadora de la guía (`#fase1`, QR).
+- Como Irritabilidad y Síntomas (decisión del usuario, 2026-11; revisado por el usuario): sin casillas ni líneas. Las opciones de mecanismo, cronología, la tarjeta «Cirugía», las banderas rojas y el riesgo psicosocial van como texto («Respuesta: Sí · No»); se marcan en la app o en la calculadora de la guía (`#fase1`, QR).
 - Un test (`tests/unit/guia.mjs`, «hojas de consulta») falla si una hoja de los cuadernos vuelve a llevar casillas o líneas; solo las llevan las del paciente (formularios y ejercicios), fuera de los cuadernos.
 
 ### Síntomas (`htmlSintomas()`)
