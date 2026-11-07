@@ -41,6 +41,11 @@ const { numerosFormulario, refsPasoFormulario, textoRefs } = await import('../..
 // queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
 const QR_PX = 100;
 const QR = '<!--QR-->', HUELLA = '<!--HUELLA-->', FECHA = '<!--FECHA-->';
+// Un QR que en el PDF digital también es un enlace a la misma URL (en papel no se ve; decisión del
+// usuario, 2026-11: para abrirlo desde la pantalla y ver adónde lleva). La huella no cuenta el
+// enlace (`sinEnlacesQR`), así que añadirlo no cambia la versión de ninguna hoja.
+const qrEnlace = (url, px) => `<a class="qr-enlace" href="${url.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" style="display:block;flex:none">${qrSVG(url, px)}</a>`;
+export const sinEnlacesQR = html => html.replace(/<a class="qr-enlace" href="[^"]*" style="[^"]*">([\s\S]*?)<\/a>/g, '$1');
 // Marcas de elemento (pregunta, paso, hipótesis, test): rodean lo impreso de cada uno para que
 // el historial de cambios (historial.mjs) sepa qué elemento cambió entre dos versiones de la hoja.
 // No cuentan para la huella ni llegan al papel (sinMarcas()), así que añadirlas no cambia ninguna
@@ -1048,37 +1053,39 @@ export function htmlNumerosCuaderno(total, numeradas) {
     .num b { font-size: 12px; }</style>${paginas}`;
 }
 // La QR de la portada: «Hojas para imprimir» con la versión del cuaderno (?c=), para saber qué reimprimir
-export const rematarPortada = (html, url) => html.replaceAll(QR, qrSVG(url, QR_PX));
+export const rematarPortada = (html, url) => html.replaceAll(QR, qrEnlace(url, QR_PX));
 // Huella del cuaderno: la de las versiones de sus hojas, en orden
 export const huellaCuaderno = huellas => fnv(Object.entries(huellas).map(([k, v]) => `${k}:${v}`).join('|'));
 
 // ── Fase 1: banderas rojas generales y riesgo psicosocial (data/fase1.js) ─────
 // Lo mismo que la tarjeta de la app, para marcar en papel; el QR abre su calculadora.
 export function htmlFase1() {
+  // Hoja de consulta (decisión del usuario, 2026-11, como Irritabilidad y Síntomas): sin casillas ni
+  // líneas; qué preguntar y qué opciones hay. Se marca en la app, o en la calculadora de la guía (QR).
   const T = TEXTOS_FASE1;
-  const caja = '<span class="caja"></span>';
-  const banderas = BANDERAS_FASE1.map((b, i) => `<tr><td class="n">${i + 1}</td><td>${esc(b.texto)}</td><td class="c">${caja} Sí</td><td class="c">${caja} No</td></tr>`).join('');
-  const preguntas = PREGUNTAS_PSICO.map(p => `<tr><td>${esc(p.texto)}<div class="sug">Si «Sí» o «Dudoso»: ${esc(p.cuestionarios)}</div></td>${RESPUESTAS_PSICO.map(r => `<td class="c">${caja} ${esc(r)}</td>`).join('')}</tr>`).join('');
+  const ops = arr => arr.map(esc).join(' · ');
+  const banderas = BANDERAS_FASE1.map((b, i) => `<tr><td class="n">${i + 1}</td><td>${esc(b.texto)}</td></tr>`).join('');
+  const preguntas = PREGUNTAS_PSICO.map(p => `<tr><td>${esc(p.texto)}</td><td class="sug">${esc(p.cuestionarios)}</td></tr>`).join('');
   return paginaUna({
     titulo: 'Fase 1',
-    sub: 'Lo mismo que la fase 1 de la app, para marcar en papel: mecanismo, cronología, la tarjeta «Cirugía», banderas rojas y riesgo psicosocial. Las banderas de cada sistema van con el cribado de la región (en la guía, QR de su hoja de cribado); el motivo y lo que cuenta el paciente, en el formulario del paciente.',
+    sub: 'Qué se registra en la fase 1 de la app: mecanismo, cronología, la tarjeta «Cirugía», banderas rojas y riesgo psicosocial. Se marca en la app, o en la calculadora de la guía (QR). Las banderas de cada sistema van con el cribado de la región (en la guía, QR de su hoja de cribado); el motivo y lo que cuenta el paciente, en el formulario del paciente.',
     qr: 'Calculadora e IA',
-    cuerpo: `<div class="mc"><div><b>Mecanismo de inicio:</b> ${['Traumático', 'Insidioso', POSQ.MECANISMO_POSQUIRURGICO].map(m => `<span>${caja} ${esc(m)}</span>`).join('')}</div>
-      <div><b>Cronología:</b> ${['Agudo (<6 semanas)', 'Subagudo', 'Crónico (>3 meses)'].map(m => `<span>${caja} ${esc(m)}</span>`).join('')}</div></div>
+    cuerpo: `<div class="mc"><div><b>Mecanismo de inicio:</b> ${ops(['Traumático', 'Insidioso', POSQ.MECANISMO_POSQUIRURGICO])}</div>
+      <div><b>Cronología:</b> ${ops(['Agudo (<6 semanas)', 'Subagudo', 'Crónico (>3 meses)'])}</div></div>
       <div class="cir"><h2>🏥 Cirugía (con mecanismo «${esc(POSQ.MECANISMO_POSQUIRURGICO)}»)</h2>
-        <div class="cir-f"><span>Intervención: <i class="lin"></i></span><span>Fecha (o semanas aprox.): <i class="lin c"></i></span></div>
-        <div class="cir-ops"><b>Protocolo del cirujano:</b>${POSQ.PROTOCOLOS.map(p => `<span class="op">${caja} ${esc(p)}</span>`).join('')}</div>
-        <div class="cir-f"><span>Restricciones: <i class="lin"></i></span></div>
-        <div class="cir-ops"><b>Complicaciones:</b>${POSQ.COMPLICACIONES.map(c => `<span class="op">${caja} ${esc(c.label)}</span>`).join('')}<span class="op">${caja} Otra: <i class="lin c"></i></span></div>
+        <ul class="cir-l">
+          <li><b>Intervención</b> y <b>fecha</b> (o semanas aproximadas).</li>
+          <li><b>Protocolo del cirujano:</b> ${ops(POSQ.PROTOCOLOS)}.</li>
+          <li><b>Restricciones</b> que pone el protocolo.</li>
+          <li><b>Complicaciones:</b> ${ops(POSQ.COMPLICACIONES.map(c => c.label))} · otra.</li></ul>
         <p class="cir-n">Añade: las preguntas de complicaciones del cribado (fase 2) y la hipótesis «${esc(POSQ.NOMBRE_HIP_POSQ)}», siempre la primera y sin tests: ${esc(POSQ.TEXTO_PAUTA_POSQ)}; sin protocolo, «${esc(POSQ.TEXTO_SIN_PROTOCOLO)}». Cada pauta de las demás hipótesis: ${esc(POSQ.TEXTO_PAUTA_COMPATIBLE)}</p></div>
-      <h2>🚩 Banderas rojas</h2><p class="aviso-g">${esc(T.banderasAviso)}</p>
+      <h2>🚩 Banderas rojas</h2><p class="aviso-g">${esc(T.banderasAviso)} Respuesta: Sí · No.</p>
       <table class="t">${banderas}</table>
       <p class="si-pos"><b>Con alguna «Sí»:</b> ${esc(T.banderaAlerta.replace(/^Bandera Roja Detectada\.\s*/, ''))}</p>
-      <h2>🧠 Riesgo psicosocial</h2><p>${esc(T.psicoIntro)}:</p>
-      <div class="niveles">${NIVELES_PSICO.map(n => `<span>${caja} ${n.emoji} ${esc(n.valor)}</span>`).join('')}</div>
+      <h2>🧠 Riesgo psicosocial</h2><p>${esc(T.psicoIntro)}: ${NIVELES_PSICO.map(n => `${n.emoji} ${esc(n.valor)}`).join(' · ')}.</p>
       <p>${T.herramienta}</p>
-      <h3>Con riesgo alto</h3><p>${esc(T.psicoAlto)}</p>
-      <table class="t">${preguntas}</table>`,
+      <h3>Con riesgo alto</h3><p>${esc(T.psicoAlto)} Respuesta: ${ops(RESPUESTAS_PSICO)}.</p>
+      <table class="t"><thead><tr><th>Pregunta</th><th>Si «Sí» o «Dudoso»</th></tr></thead><tbody>${preguntas}</tbody></table>`,
     pie: `<span>Un SÍ en una bandera roja no exige derivación inmediata salvo emergencia clara: interpretar en el contexto clínico.</span><span class="pie">Generado desde los datos de la app (data/fase1.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
     css: `
       .cuerpo h2 { font-size: 15px; margin: 6px 0 4px; color: #1e3a8a; } .cuerpo h3 { font-size: 12.5px; margin: 10px 0 2px; }
@@ -1087,15 +1094,11 @@ export function htmlFase1() {
       .t { width: 100%; border-collapse: collapse; margin: 2px 0 8px; font-size: 12px; }
       .t td { border-bottom: 1px solid #e5e7eb; padding: 6px 4px; vertical-align: top; }
       .t td.n { width: 18px; font-weight: bold; color: #7c4ddb; } .t td.c { width: 74px; white-space: nowrap; }
-      .caja { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #334155; border-radius: 2px; vertical-align: -2px; margin-right: 3px; }
-      .sug { font-size: 10px; color: #6b7280; margin-top: 2px; }
+      .t th { text-align: left; font-size: 10.5px; color: #6b7280; font-weight: 600; padding: 2px 4px; } .t td.sug { font-size: 10.5px; color: #4b5563; width: 42%; }
       .si-pos { border-left: 3px solid #d0342c; padding: 4px 8px; background: #fde8e8; }
-      .niveles { display: flex; gap: 24px; font-size: 12.5px; margin: 4px 0 8px; }
-      .mc { font-size: 12px; margin: 0 0 8px; display: grid; gap: 4px; } .mc span { margin-left: 12px; }
+      .mc { font-size: 12px; margin: 0 0 8px; display: grid; gap: 4px; }
       .cir { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 6px 10px; margin: 0 0 8px; }
-      .cir h2 { margin-top: 0 !important; } .cir-f { display: flex; gap: 18px; font-size: 12px; margin: 5px 0; flex-wrap: wrap; } .cir-f > span { flex: 1 1 auto; display: flex; align-items: flex-end; gap: 4px; }
-      .lin { flex: 1; min-width: 120px; border-bottom: 1px solid #94a3b8; height: 14px; display: inline-block; } .lin.c { flex: 0 0 110px; min-width: 110px; }
-      .cir-ops { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-size: 12px; margin: 5px 0; } .cir-ops .op { white-space: nowrap; display: inline-flex; align-items: baseline; gap: 3px; }
+      .cir h2 { margin-top: 0 !important; }       .cir-l { margin: 4px 0; padding-left: 16px; font-size: 12px; } .cir-l li { margin: 0 0 3px; }
       .cir-n { font-size: 10.5px !important; color: #4b5563; margin: 4px 0 0 !important; }`,
   });
 }
@@ -1207,8 +1210,8 @@ export function htmlNeuro() {
   <div class="pagina"><div class="cont">Ilustraciones, reflejos y signos de neurona motora superior</div>
     <div class="cuerpo">
       <h2>Ilustraciones: con el móvil sobre la hoja</h2>
-      <div class="qrs"><div class="qrk asia">${qrSVG(NEURO.ASIA_HOJA, 88)}<div><b>Recomendada: hoja oficial de ASIA</b><br>${esc(T.hojaOficial)} Gratuita y sin cuenta.</div></div>
-        ${NEURO.KENHUB_NEURO.map(k => `<div class="qrk">${qrSVG(k.es, 88)}<div><b>${esc(k.nombre)} (Kenhub)</b><br>Los puntos de la tabla y las bandas de los libros, dibujados. Se ve sin cuenta (puede pedir registrarse, gratis); con cuenta, también las tablas.</div></div>`).join('')}</div>
+      <div class="qrs"><div class="qrk asia">${qrEnlace(NEURO.ASIA_HOJA, 88)}<div><b>Recomendada: hoja oficial de ASIA</b><br>${esc(T.hojaOficial)} Gratuita y sin cuenta.</div></div>
+        ${NEURO.KENHUB_NEURO.map(k => `<div class="qrk">${qrEnlace(k.es, 88)}<div><b>${esc(k.nombre)} (Kenhub)</b><br>Los puntos de la tabla y las bandas de los libros, dibujados. Se ve sin cuenta (puede pedir registrarse, gratis); con cuenta, también las tablas.</div></div>`).join('')}</div>
       <h2>Reflejos: escala y técnica</h2>
       <div class="dos">
         <div class="caja-g"><b>Escala (0–4)</b>${lista(T.escalaReflejos)}<p class="nota">${cita(T.nivelesReflejos)}</p></div>
@@ -1310,7 +1313,7 @@ export function hojasImpresas() {
   for (const id of FORMULARIOS_PACIENTE) hojas.push({ clave: `formulario-${id}`, ruta: null, html: () => htmlFormularioPaciente(id), paciente: true });
   return hojas;
 }
-export const huellaHoja = html => fnv(sinMarcas(html));
+export const huellaHoja = html => fnv(sinEnlacesQR(sinMarcas(html)));
 
 // ── Elementos de una hoja, para el historial de cambios ──────────────────────
 // Del HTML canónico (con marcas): { el: { clave: [pos, ancla, texto] }, resto }. `texto` es lo
@@ -1335,5 +1338,5 @@ export function huellasActuales() {
 // Pone los marcadores: el QR a la guía con la huella (?h=), la huella visible y la fecha
 export function rematar(html, { ruta, huella, fecha }) {
   // Sin ruta (la hoja del paciente) no hay QR, solo la versión
-  return sinMarcas(html).replaceAll(QR, ruta ? qrSVG(urlRuta(ruta, huella), QR_PX) : '').replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
+  return sinMarcas(html).replaceAll(QR, ruta ? qrEnlace(urlRuta(ruta, huella), QR_PX) : '').replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
 }
