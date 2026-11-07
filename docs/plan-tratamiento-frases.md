@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **44** frases.
+Redacción propia: **45** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -701,6 +701,16 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `hueso` (texto revisado; su cita va dentro)
 - [ ] «Inhibidores de la aromatasa: en un ensayo con 121 mujeres inactivas con dolor articular, fuerza supervisada 2 días por semana (6 ejercicios, 3 series de 8–12 repeticiones, subiendo el peso tras dos sesiones haciendo 12 repeticiones en cada serie) y 150 minutos semanales de aeróbico, del 50 % al 60–80 % de la frecuencia cardíaca máxima en el primer mes, durante 12 meses, bajaron el peor dolor 1,6 puntos (29 %), frente a una subida del 3 % con los cuidados habituales, sin efectos adversos (Irwin 2015). El beneficio más claro llegó a los 12 meses (Irwin 2015).»  
   ↳ guía de fármacos, familia `hueso` (texto revisado; su cita va dentro)
+- [ ] «Toma antiparkinsonianos o agonistas dopaminérgicos:»  
+  ↳ **redacción propia** (rótulo del aviso de `antiparkinsonianos`)
+- [ ] «En la sesión: cambios lentos de tumbado a de pie, con una pausa sentado; si se marea y no puede sentarse o tumbarse enseguida, que cruce las piernas y apriete piernas, glúteos y abdomen, o que se ponga de puntillas (Fanciulli 2026; Fanciulli 2025).»  
+  ↳ guía de fármacos, familia `antiparkinsonianos` (texto revisado; su cita va dentro)
+- [ ] «Caídas: las que ocurren sin tropiezo ni resbalón pueden ser por hipotensión ortostática (Fanciulli 2026).»  
+  ↳ guía de fármacos, familia `antiparkinsonianos` (texto revisado; su cita va dentro)
+- [ ] «Comidas y levodopa: una comida rica en proteína reduce su absorción, y una comida grasa la retrasa unas 2 horas (Gandhi y Saadabadi 2023).»  
+  ↳ guía de fármacos, familia `antiparkinsonianos` (texto revisado; su cita va dentro)
+- [ ] «Si se duerme en la sesión o en situaciones monótonas, que lo sepa su médico; mientras dure, no debe conducir (Fanciulli 2025).»  
+  ↳ guía de fármacos, familia `antiparkinsonianos` (texto revisado; su cita va dentro)
 - [ ] «No le digas que deje ni cambie la medicación: las dudas, a quien la prescribe.»  
   ↳ **redacción propia** (resume las frases «Nunca aconsejes…» de cada familia; decisión 18 de docs/farmacos-paciente.md)
 

@@ -12,9 +12,9 @@ console.log('\nguía de fármacos (cabecera)');
 
 const textos = a => [].concat(a.texto, a.detalle ?? []);
 
-test('las 13 familias de docs/farmacologia.md, en su orden', () => {
+test('las 14 familias de docs/farmacologia.md, en su orden', () => {
   assert.deepEqual(FAMILIAS_FARMACO.map(f => f.id), ['aine', 'corticoides', 'antitromboticos', 'opioides', 'gabapentinoides',
-    'antidepresivos', 'sedantes', 'estatinas', 'fluoroquinolonas', 'betabloqueantes', 'antihipertensivos', 'antidiabeticos', 'hueso']);
+    'antidepresivos', 'sedantes', 'estatinas', 'fluoroquinolonas', 'betabloqueantes', 'antihipertensivos', 'antidiabeticos', 'hueso', 'antiparkinsonianos']);
   for (const f of FAMILIAS_FARMACO) assert.ok(f.nombre && f.ejemplos, f.id);
   assert.deepEqual(APARTADOS_FARMACO.map(a => a.id), ['dolor', 'visceral', 'ejercicio', 'sueno', 'consultar']);
 });

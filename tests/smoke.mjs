@@ -1160,7 +1160,15 @@ async function checkParkinson(page) {
   await page.click('#pkEstado .option-btn[data-valor="diagnosticado"]');
   await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="SI"]');
   await page.click('[data-pk-fila="congelacion"] .option-btn[data-valor="SI"]');
+  // Enlace a la guía de fármacos, abierta en los antiparkinsonianos (docs/farmacos-antiparkinsonianos.md, decisión 3)
+  await page.click('#cardParkinson button:has-text("Fármacos del Parkinson")');
+  await page.waitForSelector('#farmOverlay.open');
+  r.guiaFarmacos = await page.evaluate(() => document.querySelector('#farmCuerpo [data-familia="antiparkinsonianos"]')?.open === true
+    && [...document.querySelectorAll('#farmCuerpo [data-familia]')].filter(d => d.open).length === 1);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open'));
   await walkRegion(page, 'lumbar');
+  r.fase5Farmacos = await page.evaluate(() => !!document.querySelector('#resultsContent .pk-fase5 button[onclick*="antiparkinsonianos"]'));
   r.fase5 = await page.evaluate(() => { const box = document.querySelector('#resultsContent .pk-fase5');
     const t = box?.textContent || '';
     const ie = document.querySelector('#resultsContent .ie-fase5');
@@ -1188,7 +1196,8 @@ async function checkParkinson(page) {
   await walkRegion(page, 'lumbar');
   r.sospecha5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .pk-fase5')?.textContent || '';
     return t.includes('Derivar pronto y sin tratar') && !t.includes('Bicicleta')
-      && !document.querySelector('#resultsContent .pk-fase5 [data-bloque-condicion]'); });
+      && !document.querySelector('#resultsContent .pk-fase5 [data-bloque-condicion]')
+      && !document.querySelector('#resultsContent .pk-fase5 button[onclick*="antiparkinsonianos"]'); });
   r.informe = await page.evaluate(async () => { const i = (await import('./app.js')).buildInformeFisioterapiaText(); return i.includes('especialista en trastornos del movimiento') && !/parkinson/i.test(i); });
   r.ok = Object.values(r).every(Boolean);
   return r;
@@ -3790,7 +3799,7 @@ async function checkCondiciones(browser, errors) {
 }
 
 // Guía de fármacos (docs/farmacologia.md, paso 2): diálogo centrado con las
-// 13 familias plegadas y en orden, sin bloque de pendientes (ya no queda
+// 14 familias plegadas y en orden, sin bloque de pendientes (ya no queda
 // ninguna) y acabando en su pie; dentro, «✨ IA» con contexto (por encima del
 // velo) y citas; farmacosPreguntarIA() abre «Preguntar a la IA» en la
 // modalidad «Fármacos»; en móvil desde «Herramientas», atrás cierra; 320 px;
@@ -3814,7 +3823,7 @@ async function checkFarmacos(browser, errors) {
     const p = document.getElementById('farmPanel').getBoundingClientRect();
     const fam = [...document.querySelectorAll('#farmCuerpo .farm-familia')];
     return document.getElementById('farmOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && fam.map(f => f.dataset.familia).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas,betabloqueantes,antihipertensivos,antidiabeticos,hueso' && fam.every(f => !f.open);
+      && fam.map(f => f.dataset.familia).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas,betabloqueantes,antihipertensivos,antidiabeticos,hueso,antiparkinsonianos' && fam.every(f => !f.open);
   });
   // Sin familias pendientes: ni bloque ni atajo, y la guía acaba en su pie, sin huecos
   r.sinPendientes = await page.evaluate(() => {
@@ -7910,7 +7919,7 @@ const SECCIONES = [
 
   { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
     const c = await checkFarmacos(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las 13 familias plegadas y en orden (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos, fármacos que tocan el hueso), sin bloque de pendientes y acabando en su pie, los AINE y el hueso con sus cinco apartados y citas; «Ficha técnica (CIMA)»: seis enlaces de AINE al buscador de CIMA en otra pestaña, sin nada en la URL, y tocar uno copia su nombre; sigue abierta al volver de otra pestaña; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; farmacosPreguntarIA() abre «Preguntar a la IA» en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA y con los enlaces a CIMA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las 14 familias plegadas y en orden (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos, fármacos que tocan el hueso, antiparkinsonianos), sin bloque de pendientes y acabando en su pie, los AINE y el hueso con sus cinco apartados y citas; «Ficha técnica (CIMA)»: seis enlaces de AINE al buscador de CIMA en otra pestaña, sin nada en la URL, y tocar uno copia su nombre; sigue abierta al volver de otra pestaña; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; farmacosPreguntarIA() abre «Preguntar a la IA» en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA y con los enlaces a CIMA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
