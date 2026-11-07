@@ -1,7 +1,7 @@
 {
   "cuaderno-cadera": {
-    "huella": "2814ae30",
-    "archivo": "35633bc8",
+    "huella": "e29603e9",
+    "archivo": "ea9d54d3",
     "fecha": "2026-11-07",
     "paginas": 28,
     "hojas": {
@@ -13,7 +13,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c"
     },
@@ -33,8 +33,8 @@
     "ordenFecha": "2026-10-31"
   },
   "cuaderno-cervical": {
-    "huella": "bea22d9d",
-    "archivo": "ff282a2f",
+    "huella": "c5e60b2c",
+    "archivo": "737c8b40",
     "fecha": "2026-11-07",
     "paginas": 28,
     "hojas": {
@@ -46,7 +46,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c"
     },
@@ -66,8 +66,8 @@
     "ordenFecha": "2026-10-31"
   },
   "cuaderno-codo": {
-    "huella": "1f9c1e35",
-    "archivo": "91689668",
+    "huella": "3b721494",
+    "archivo": "83ce9c46",
     "fecha": "2026-11-07",
     "paginas": 28,
     "hojas": {
@@ -79,7 +79,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c"
     },
@@ -99,8 +99,8 @@
     "ordenFecha": "2026-10-31"
   },
   "cuaderno-completo": {
-    "huella": "ba37f2e5",
-    "archivo": "b3853f2a",
+    "huella": "59dd726c",
+    "archivo": "8bfdb5cd",
     "fecha": "2026-11-07",
     "paginas": 76,
     "hojas": {
@@ -109,7 +109,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c",
       "cribado-cervical": "b1da49ad",
@@ -168,8 +168,8 @@
     "ordenFecha": "2026-10-31"
   },
   "cuaderno-hombro": {
-    "huella": "95f0f074",
-    "archivo": "de738a82",
+    "huella": "c92f8a1d",
+    "archivo": "d0c2b0f9",
     "fecha": "2026-11-07",
     "paginas": 28,
     "hojas": {
@@ -181,7 +181,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c"
     },
@@ -201,8 +201,8 @@
     "ordenFecha": "2026-10-31"
   },
   "cuaderno-lumbar": {
-    "huella": "8a7dc3a0",
-    "archivo": "ae2b2c53",
+    "huella": "8b3aafd9",
+    "archivo": "d42396a4",
     "fecha": "2026-11-07",
     "paginas": 28,
     "hojas": {
@@ -214,7 +214,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c"
     },
@@ -234,8 +234,8 @@
     "ordenFecha": "2026-10-31"
   },
   "cuaderno-rodilla": {
-    "huella": "ef873600",
-    "archivo": "cb002b31",
+    "huella": "6516a8b9",
+    "archivo": "efc2d43d",
     "fecha": "2026-11-07",
     "paginas": 28,
     "hojas": {
@@ -247,7 +247,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c"
     },
@@ -267,8 +267,8 @@
     "ordenFecha": "2026-10-31"
   },
   "cuaderno-tobillo_pie": {
-    "huella": "0e4ecd93",
-    "archivo": "6ee91d4f",
+    "huella": "3060a1ae",
+    "archivo": "f746faa7",
     "fecha": "2026-11-07",
     "paginas": 28,
     "hojas": {
@@ -280,7 +280,7 @@
       "irritabilidad": "ec35256c",
       "sintomas": "63967bed",
       "plan": "6a14a639",
-      "farmacos": "fc0eef27",
+      "farmacos": "83bcafb2",
       "tejidos-blandos": "7279a518",
       "tejidos-hueso": "de168e4c"
     },

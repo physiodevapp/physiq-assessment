@@ -25,7 +25,7 @@ Propuesta de `ejemplos`, todos con presentación en España; cada nombre de `cim
 | Inhibidores de la MAO-B | rasagilina, safinamida, selegilina |
 | Inhibidores de la COMT | entacapona, opicapona |
 | Otros | amantadina |
-| Anticolinérgicos (decisión 2) | trihexifenidilo, biperideno |
+| Anticolinérgicos (decisión 2) | trihexifenidilo, biperideno (solo Ko 2024 lo nombra) |
 
 ## Pistas por apartado (qué buscar en las fuentes)
 
@@ -93,7 +93,7 @@ Los imprescindibles son los dos primeros. Los demás, según las decisiones 1 y 
 
 **Decisiones** (las recomendaciones, aceptadas por el usuario en noviembre 2026):
 - 1: id `antiparkinsonianos`, nombre «Antiparkinsonianos y agonistas dopaminérgicos». Chip corto «Antiparkinsonianos» (entra con la decisión 5).
-- 2: el trihexifenidilo entra, con los efectos generales de los anticolinérgicos de Ghossein 2023 (boca seca, estreñimiento, retención de orina, visión borrosa, menos sudor, confusión en mayores, demencia). **El biperideno no aparece en ninguna fuente leída**, así que no está en `ejemplos` ni en CIMA. Ninguna fuente trata los anticolinérgicos en el Parkinson ni las caídas.
+- 2: el trihexifenidilo entra, con los efectos generales de los anticolinérgicos de Ghossein 2023 (boca seca, estreñimiento, retención de orina, visión borrosa, menos sudor, confusión en mayores, demencia). El biperideno no aparecía en ninguna fuente leída; una búsqueda aparte en PMC (2026-11) no encontró revisiones, guías ni cohortes grandes sobre él (solo un caso clínico de abuso, Espi Martínez 2012), pero sí `Ko 2024`, cohorte que lo incluye entre los anticolinérgicos que mide. Por decisión del usuario (2026-11) entra en `ejemplos` y en CIMA, con Ko 2024 citado en la frase de los anticolinérgicos: lo que dice la familia de ellos es de la clase. Leídas en esa búsqueda y no usadas: Ward y Citrome 2018, Crispo 2016, Mehdizadeh 2021, Layton 2020, Chiappini 2022, Pham Nguyen 2025. Si se quiere una fuente propia: Barrett 2021 (Mov Disord Clin Pract) o LeWitt 2024 (J Neural Transm), solo con resumen en PMC, en PDF. Ninguna fuente trata los anticolinérgicos en el Parkinson ni las caídas.
 - 4: sin chip derivado de la tarjeta de Parkinson.
 - 6: familia 14, al final.
 - 7: «Nunca aconsejes dejarlos ni bajarlos», sin cifras de días ni de dosis.

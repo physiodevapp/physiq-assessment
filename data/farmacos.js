@@ -1142,12 +1142,13 @@ export const FAMILIAS_FARMACO = [
   // decisiones en docs/farmacos-antiparkinsonianos.md): ocho capítulos de
   // StatPearls (PDF del usuario) y siete fuentes de PMC leídos enteros, más el
   // artículo de Pötter-Nerger 2024 ya leído para la tarjeta de Parkinson. El
-  // biperideno no aparece en ninguna fuente leída y queda fuera de `ejemplos`.
+  // biperideno solo lo nombra Ko 2024, entre los anticolinérgicos que mide: lo
+  // que dice la familia de los anticolinérgicos es de la clase (usuario, 2026-11).
   {
     id: 'antiparkinsonianos',
     nombre: 'Antiparkinsonianos y agonistas dopaminérgicos',
-    ejemplos: 'Levodopa (con carbidopa o benserazida); agonistas dopaminérgicos (pramipexol, ropinirol, rotigotina, apomorfina); inhibidores de la MAO-B (rasagilina, safinamida, selegilina); inhibidores de la COMT (entacapona, opicapona); amantadina; anticolinérgicos (trihexifenidilo)',
-    cima: ['levodopa', 'carbidopa', 'benserazida', 'pramipexol', 'ropinirol', 'rotigotina', 'apomorfina', 'rasagilina', 'safinamida', 'selegilina', 'entacapona', 'opicapona', 'amantadina', 'trihexifenidilo'],
+    ejemplos: 'Levodopa (con carbidopa o benserazida); agonistas dopaminérgicos (pramipexol, ropinirol, rotigotina, apomorfina); inhibidores de la MAO-B (rasagilina, safinamida, selegilina); inhibidores de la COMT (entacapona, opicapona); amantadina; anticolinérgicos (trihexifenidilo, biperideno)',
+    cima: ['levodopa', 'carbidopa', 'benserazida', 'pramipexol', 'ropinirol', 'rotigotina', 'apomorfina', 'rasagilina', 'safinamida', 'selegilina', 'entacapona', 'opicapona', 'amantadina', 'trihexifenidilo', 'biperideno'],
     apartados: {
       dolor: {
         texto: [
@@ -1170,7 +1171,7 @@ export const FAMILIAS_FARMACO = [
           'Movimientos involuntarios (discinesias): la levodopa da complicaciones motoras en alrededor del 50 % de quienes la toman 5–10 años (Gandhi y Saadabadi 2023); la entacapona las adelanta o empeora (Muranova y Shanina 2023), y los inhibidores de la MAO-B pueden hacerlas aparecer o empeorarlas junto con la levodopa (Patel y Saadabadi 2025).',
           'Alucinaciones, confusión, delirios y agitación: de lo más frecuente en mayores con la levodopa (Gandhi y Saadabadi 2023) y con el uso prolongado de los agonistas (Choi y Horner 2023); también con la amantadina (Chang y Ramphul 2023) y los inhibidores de la MAO-B (Patel y Saadabadi 2025).',
           'Entacapona: la orina se vuelve rojiza o naranja, sin importancia; la diarrea llega al 10 %, y si persiste puede ser una colitis (Muranova y Shanina 2023).',
-          'Anticolinérgicos (trihexifenidilo) y amantadina: boca seca, estreñimiento y retención de orina (Chang y Ramphul 2023; Ghossein 2023). Los anticolinérgicos, además, visión borrosa, taquicardia, menos sudor y más temperatura y, en mayores, peor memoria y confusión; empeoran una demencia (Ghossein 2023). Los antiparkinsonianos, sobre todo los anticolinérgicos, empeoran el estreñimiento (Fanciulli 2025).',
+          'Anticolinérgicos (trihexifenidilo, biperideno) y amantadina: boca seca, estreñimiento y retención de orina (Chang y Ramphul 2023; Ghossein 2023; Ko 2024). Los anticolinérgicos, además, visión borrosa, taquicardia, menos sudor y más temperatura y, en mayores, peor memoria y confusión; empeoran una demencia (Ghossein 2023). Los antiparkinsonianos, sobre todo los anticolinérgicos, empeoran el estreñimiento (Fanciulli 2025).',
         ],
         detalle: [
           'Los agonistas derivados del cornezuelo (bromocriptina, cabergolina), hoy poco usados en el Parkinson, pueden dar fibrosis pulmonar, pleural, peritoneal o de las válvulas del corazón (Choi y Horner 2023).',
@@ -1218,7 +1219,7 @@ export const FAMILIAS_FARMACO = [
         ],
       },
     },
-    fuentes: ['Gandhi y Saadabadi 2023', 'Leyden y Tadi 2023', 'Choi y Horner 2023', 'Muranova y Shanina 2023', 'Chang y Ramphul 2023', 'Patel y Saadabadi 2025', 'Mansur 2023', 'Ghossein 2023', 'Fanciulli 2025', 'Fanciulli 2026', 'Koschel 2022', 'Pötter-Nerger 2024', 'Pötter-Nerger 2024 (guía)', 'Scanferla y Djamshidian 2026', 'Di Laudo 2023', 'Mogavero 2026'],
+    fuentes: ['Gandhi y Saadabadi 2023', 'Leyden y Tadi 2023', 'Choi y Horner 2023', 'Muranova y Shanina 2023', 'Chang y Ramphul 2023', 'Patel y Saadabadi 2025', 'Mansur 2023', 'Ghossein 2023', 'Fanciulli 2025', 'Fanciulli 2026', 'Koschel 2022', 'Pötter-Nerger 2024', 'Pötter-Nerger 2024 (guía)', 'Scanferla y Djamshidian 2026', 'Di Laudo 2023', 'Mogavero 2026', 'Ko 2024'],
   },
 ];
 
