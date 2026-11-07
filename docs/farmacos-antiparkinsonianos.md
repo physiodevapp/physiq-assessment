@@ -1,6 +1,6 @@
 # Familia 14 de la guía de fármacos: antiparkinsonianos y agonistas dopaminérgicos — borrador
 
-Estado: **escrita, pendiente de la revisión del usuario (noviembre 2026).** Ver «Escritura (noviembre 2026)» al final. Viene de la lista «Fuera de este diseño» de `docs/parkinson.md` («Los fármacos antiparkinsonianos como familia de la guía de fármacos»). El usuario la pidió el 2026-11. Se sigue el procedimiento por familia de `docs/farmacologia.md` (paso 2), con sus límites:
+Estado: **escrita; decisiones 1–7 aceptadas por el usuario (noviembre 2026); la revisión del contenido de la familia, pendiente.** Ver «Escritura (noviembre 2026)» al final. Viene de la lista «Fuera de este diseño» de `docs/parkinson.md` («Los fármacos antiparkinsonianos como familia de la guía de fármacos»). El usuario la pidió el 2026-11. Se sigue el procedimiento por familia de `docs/farmacologia.md` (paso 2), con sus límites:
 - nunca se propone cambiar, suspender ni ajustar la medicación;
 - no hay interacciones;
 - el fármaco concreto se consulta en CIMA;
@@ -80,18 +80,24 @@ Los imprescindibles son los dos primeros. Los demás, según las decisiones 1 y 
 
 1. ~~PDF de StatPearls del usuario~~: los ocho, leídos enteros (noviembre 2026).
 2. ~~Lectura de las revisiones de PMC con un agente~~: siete leídas enteras.
-3. ~~Escribir la familia~~: hecho, con las recomendaciones de las decisiones 1, 2, 4, 6 y 7 aplicadas; la 3 (enlace desde la tarjeta) y la 5 (aviso de la fase 6), sin hacer.
-4. **Revisión del usuario** de la familia y de las decisiones 1–7.
+3. ~~Escribir la familia~~: hecho.
+4. ~~Decisiones 1–7~~: aceptadas por el usuario (noviembre 2026). Hechas también la 3 y la 5 (ver «Enlace y aviso»).
+5. **Revisión del usuario** del contenido de la familia y del aviso.
+
+## Enlace y aviso (noviembre 2026)
+
+- **Decisión 3**: «Qué vigilar con su medicación: Fármacos del Parkinson →» en la tarjeta de Parkinson (solo con «Diagnosticado», dentro de `#pkDiagWrap`) y «Fármacos del Parkinson →» en su recuadro de la fase 5 (solo con «Diagnosticado»); los dos llaman a `abrirFarmacos({ familia: 'antiparkinsonianos' })`, como el anticoagulado. Humo: sección `parkinson` (abre la guía con solo esa familia desplegada; sin enlace con «Sospecha»).
+- **Decisión 5**: entrada en `data/farmacos-paciente.js`: chip «Antiparkinsonianos», rótulo «Toma antiparkinsonianos o agonistas dopaminérgicos» y cuatro frases copiadas literales de la familia: los cambios de postura y las maniobras de contrapresión en la sesión (Fanciulli 2026; Fanciulli 2025), las caídas sin tropiezo (Fanciulli 2026), las comidas y la levodopa (Gandhi y Saadabadi 2023) y dormirse en la sesión y la conducción (Fanciulli 2025). No repite el aviso `parkinson` de la tarjeta (ejercicio, intensidad, on/off). `docs/plan-tratamiento-frases.md`, la hoja `farmacos` y los cuadernos, regenerados.
 
 ## Escritura (noviembre 2026)
 
-**Decisiones aplicadas a la espera de confirmación** (las recomendaciones; se cambian en la revisión):
-- 1: id `antiparkinsonianos`, nombre «Antiparkinsonianos y agonistas dopaminérgicos». Sin entrada en `data/farmacos-paciente.js`, así que el chip de «Fármacos que toma» lleva por ahora el nombre largo; el corto «Antiparkinsonianos» entra con la decisión 5.
+**Decisiones** (las recomendaciones, aceptadas por el usuario en noviembre 2026):
+- 1: id `antiparkinsonianos`, nombre «Antiparkinsonianos y agonistas dopaminérgicos». Chip corto «Antiparkinsonianos» (entra con la decisión 5).
 - 2: el trihexifenidilo entra, con los efectos generales de los anticolinérgicos de Ghossein 2023 (boca seca, estreñimiento, retención de orina, visión borrosa, menos sudor, confusión en mayores, demencia). **El biperideno no aparece en ninguna fuente leída**, así que no está en `ejemplos` ni en CIMA. Ninguna fuente trata los anticolinérgicos en el Parkinson ni las caídas.
 - 4: sin chip derivado de la tarjeta de Parkinson.
 - 6: familia 14, al final.
 - 7: «Nunca aconsejes dejarlos ni bajarlos», sin cifras de días ni de dosis.
-- **Sin hacer**: la 3 (enlace «Fármacos del Parkinson →» en la tarjeta y en el recuadro de la fase 5) y la 5 (aviso de la fase 6), que se hacen tras la revisión.
+- 3 y 5: hechas, ver «Enlace y aviso».
 
 **Fuentes** (todas en `data/referencias.js`):
 - StatPearls, PDF del usuario, leídos enteros: `Gandhi y Saadabadi 2023` (levodopa), `Leyden y Tadi 2023` (carbidopa), `Choi y Horner 2023` (agonistas), `Muranova y Shanina 2023` (levodopa, carbidopa y entacapona), `Chang y Ramphul 2023` (amantadina), `Patel y Saadabadi 2025` (IMAO; solo lo de la MAO-B), `Mansur 2023` (piernas inquietas), `Ghossein 2023` (anticolinérgicos).

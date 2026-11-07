@@ -541,8 +541,9 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
 - [ ] **Familia 14 de la guía de fármacos: antiparkinsonianos y agonistas dopaminérgicos** (de «Fuera de este diseño» de `docs/parkinson.md`; petición del usuario, 2026-11)
   - [x] Borrador de diseño (2026-11): `docs/farmacos-antiparkinsonianos.md`. Solo diseño, sin código. 7 decisiones y los PDF de StatPearls que hacen falta
   - [x] PDF de StatPearls del usuario (8) y lectura de 7 revisiones de PMC, todo entero (2026-11)
-  - [x] Escrita en `data/farmacos.js` con las recomendaciones de las decisiones 1, 2, 4, 6 y 7; sin hacer la 3 (enlace desde la tarjeta) ni la 5 (aviso de la fase 6)
-  - [ ] Revisión del usuario de la familia y de las decisiones 1–7
+  - [x] Escrita en `data/farmacos.js` con las recomendaciones de las decisiones 1, 2, 4, 6 y 7
+  - [x] Decisiones 1–7 aceptadas por el usuario (2026-11); hechos el enlace desde la tarjeta y el recuadro de Parkinson (3) y el aviso de la fase 6 (5)
+  - [ ] Revisión del usuario del contenido de la familia y del aviso
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
 

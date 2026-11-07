@@ -1160,7 +1160,15 @@ async function checkParkinson(page) {
   await page.click('#pkEstado .option-btn[data-valor="diagnosticado"]');
   await page.click('[data-pk-fila="estimulador"] .option-btn[data-valor="SI"]');
   await page.click('[data-pk-fila="congelacion"] .option-btn[data-valor="SI"]');
+  // Enlace a la guía de fármacos, abierta en los antiparkinsonianos (docs/farmacos-antiparkinsonianos.md, decisión 3)
+  await page.click('#cardParkinson button:has-text("Fármacos del Parkinson")');
+  await page.waitForSelector('#farmOverlay.open');
+  r.guiaFarmacos = await page.evaluate(() => document.querySelector('#farmCuerpo [data-familia="antiparkinsonianos"]')?.open === true
+    && [...document.querySelectorAll('#farmCuerpo [data-familia]')].filter(d => d.open).length === 1);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open'));
   await walkRegion(page, 'lumbar');
+  r.fase5Farmacos = await page.evaluate(() => !!document.querySelector('#resultsContent .pk-fase5 button[onclick*="antiparkinsonianos"]'));
   r.fase5 = await page.evaluate(() => { const box = document.querySelector('#resultsContent .pk-fase5');
     const t = box?.textContent || '';
     const ie = document.querySelector('#resultsContent .ie-fase5');
@@ -1188,7 +1196,8 @@ async function checkParkinson(page) {
   await walkRegion(page, 'lumbar');
   r.sospecha5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .pk-fase5')?.textContent || '';
     return t.includes('Derivar pronto y sin tratar') && !t.includes('Bicicleta')
-      && !document.querySelector('#resultsContent .pk-fase5 [data-bloque-condicion]'); });
+      && !document.querySelector('#resultsContent .pk-fase5 [data-bloque-condicion]')
+      && !document.querySelector('#resultsContent .pk-fase5 button[onclick*="antiparkinsonianos"]'); });
   r.informe = await page.evaluate(async () => { const i = (await import('./app.js')).buildInformeFisioterapiaText(); return i.includes('especialista en trastornos del movimiento') && !/parkinson/i.test(i); });
   r.ok = Object.values(r).every(Boolean);
   return r;
