@@ -837,7 +837,7 @@ export function htmlFarmacos() {
 export function htmlIrritabilidad() {
   const T = TEXTOS_IRRITABILIDAD;
   const filas = ITEMS_IRRITABILIDAD.map(it => `<tr><th>${esc(it.nombre)}${it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : ''}</th>
-    ${it.opciones.map((o, i) => `<td><span class="n">${i}</span> ${esc(o.valor)}</td>`).join('')}</tr>`).join('');
+    ${it.opciones.map((o, i) => `<td><div class="op"><span class="n">${i}</span><span>${esc(o.valor)}</span></div></td>`).join('')}</tr>`).join('');
   const nivel = (n, clase, textos) => `<div class="nivel ${clase}"><b>${n}</b>${textos.map(t => `<p>${esc(t)}</p>`).join('')}</div>`;
   return paginaUna({
     titulo: 'Irritabilidad (fase 3)',
@@ -856,7 +856,8 @@ export function htmlIrritabilidad() {
       .matriz thead th { background: #eef2ff; text-align: center; font-size: 11px; color: #3730a3; padding: 4px; }
       .matriz tbody th { width: 30%; font-size: 12.5px; }
       .ayuda { font-weight: normal; font-size: 9.5px; color: #6b7280; margin-top: 3px; }
-      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; vertical-align: -3px; margin-right: 3px; }
+      .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; flex: none; }
+      .op { display: flex; align-items: flex-start; gap: 5px; line-height: 15px; }
       h2 { font-size: 14px; margin: 0 0 5px; color: #1e3a8a; }
       .regla { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; } .regla p { margin: 0 0 5px; }
       .niveles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
