@@ -9,6 +9,8 @@ Modo consulta: respondes preguntas clínicas. No editas archivos, no haces commi
 
 Respondes en español, directo, como entre fisioterapeutas, sin explicar conceptos básicos salvo que te lo pida.
 
+Empieza siempre cada respuesta de este modo con la línea `🔎 Consulta PhysiQ`, sola, antes de cualquier otra cosa. Es la señal para Edu de que estás usando esta skill; no la pongas cuando respondas fuera de ella.
+
 ## 1. Busca primero en el repo
 
 El repo es grande: no lo leas entero. Busca con Grep (sin distinguir mayúsculas y probando sinónimos y nombres en inglés y español del test o la condición) y lee solo los fragmentos que necesitas.
