@@ -428,7 +428,7 @@ export const BLOQUES_EJERCICIO = [
     },
     fuentes: ['Ernst 2024', 'Osborne 2022', 'Keus 2014'] },
   { id: 'oncologico', titulo: 'Ejercicio tras un cáncer',
-    // Bloque 12 (docs/efectos-ejercicio.md, propuesta aceptada por el usuario, 2026-11)
+    // Bloque 12 (docs/efectos-ejercicio.md, propuesta aceptada y bloque revisado por el usuario, 2026-11)
     tituloPaciente: 'Si ha tenido un cáncer', hojaPaciente: 'condicion',
     resumen: 'Qué mejora el ejercicio durante y después del tratamiento de un cáncer, qué no está demostrado y qué se sabe de su seguridad',
     apartados: {
