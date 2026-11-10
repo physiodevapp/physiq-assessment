@@ -122,6 +122,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 8 — Embarazo y posparto | Propuesta **aceptada por el usuario** con las recomendaciones (2026-10): un bloque, enlace en los dos estados sin excepciones, sin `lu8` ni `ca10` en la tabla. Lectura hecha (2026-10, Sonnet): 9 fuentes en PMC y 8 PDF del usuario. Escrito (2026-10, Opus) y enlazado desde la tarjeta (textos aceptados por el usuario, 2026-10), **revisado por el usuario** (2026-10). Ver «Bloque 8 — lectura de fuentes» y «Bloque 8 — decisiones de nivel» |
 | Bloque 9 — Trastorno mastocitario y anafilaxia | **No se hace** (usuario, 2026-10, con la recomendación de la propuesta; decisión 2): nada sobre el ejercicio en estas personas llega a `clinico`. Christensen 2019 (PDF del usuario), leído después, no lo cambia. En su lugar, una línea sobre la anafilaxia por ejercicio en el aviso `mastocitos` de la tarjeta, **revisada por el usuario** (2026-10). Ver «Bloque 9 — propuesta» y «Bloque 9 — decisión» |
 | Bloque 10 — Tras una TVP (síndrome postrombótico) | **No se hace** (usuario, 2026-10, con las recomendaciones de la propuesta, tras leer Steiner 2026 en PDF): nada sobre el ejercicio tras una TVP llega a `clinico` con certeza suficiente ni da una frase para el paciente. En su lugar, cambios en la tarjeta anticoagulado (línea `trasTVP` y `RED_ANTICOAGULADO`), pendientes de revisión del usuario. Ver «Bloque 10 — propuesta» y «Bloque 10 — decisión» |
+| Bloque 12 — Antecedente de cáncer | Hecho (2026-11): propuesta aceptada por el usuario con sus cuatro decisiones, bloque `oncologico` escrito con Campbell 2019 (PDF con tablas) y Sturgeon 2023 (PMC), leídas enteras; enlazado desde el recuadro de la fase 5 y la «Educación» de la fase 6 con los dos estados; hoja para el paciente regenerada; revisado por el usuario (2026-11). Ver «Bloque 12 — Antecedente de cáncer: propuesta» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 | Condiciones también en la fase 6 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): disautonomía → ortostática e hipermovilidad → su bloque, en «Educación», con la misma regla de estados que el recuadro (`CONDICION_EJERCICIO`, `condicionEnlazaEjercicio()`); la hipermovilidad deja de enlazarse también con la regla de sospecha vascular cumplida, en las dos fases. Ver «Una sola regla de estados» |
@@ -801,6 +802,79 @@ Bloque `parkinson`, «Ejercicio en el Parkinson», en `data/ejercicio.js`, para 
 - **Para el paciente**: dos frases — el ejercicio regular «mejora algo» el movimiento y la calidad de vida y casi cualquier tipo sirve, así que conviene elegir uno que le guste y pueda mantener (evidencia 0); y lo ganado se pierde si se deja (evidencia 3, Osborne 2022). Ninguna sobre frenar la enfermedad, la seguridad, las caídas ni la congelación.
 - **Sin dosis**: ni minutos, ni días, ni intensidad (Ernst 2024 no la analiza; la cita como posible explicación de las diferencias, en «Ampliar»). La dosis sigue siendo la del recuadro de la fase 5 y el aviso de la fase 6.
 - **Enlace** (recomendación **aceptada por el usuario**, 2026-11; hecho en `CONDICION_EJERCICIO`, motivo `parkinson`, con `parkinson: state.parkinson` en las tarjetas de `plan.js`): desde el recuadro de la fase 5 y la «Educación» de la fase 6, solo con «Diagnosticado», nunca con «Sospecha» (sin diagnóstico no hay a quién aplicar los ensayos, y el recuadro con sospecha solo pide derivar). Textos propuestos: fase 5, «Qué tipos de ejercicio ayudan y hasta dónde llega lo demostrado; la dosis sigue siendo la de este recuadro.»; fase 6, «Por el Parkinson: sus frases para el paciente dicen que casi cualquier ejercicio ayuda algo y que lo ganado se pierde si se deja; la dosis es la del aviso de este plan.» `BLOQUE_POR_HIPOTESIS`: ninguna hipótesis regional es el Parkinson, sin cambios.
+
+## Bloque 12 — Antecedente de cáncer: propuesta (2026-11)
+
+Decisión 13 de `docs/antecedente-oncologico.md` (aceptada por el usuario). **Propuesta aprobada por el usuario (2026-11), con las cuatro decisiones según mi recomendación**; el bloque está escrito en `data/ejercicio.js` (`oncologico`).
+
+### 1. Alcance
+
+«Ejercicio tras un cáncer»: qué hace el ejercicio en quien ha tenido un cáncer, durante y después del tratamiento, y hasta dónde llega lo demostrado, resultado por resultado. **Fuera**: la supervivencia y la recaída (ninguna fuente leída en esta sesión las trata; el bloque no dirá nada de ellas, ni a favor ni en contra), la prevención del cáncer y la dosis (la dosis es la del recuadro de la fase 5 y el aviso de la fase 6, como en el bloque 11).
+
+### 2. Fuentes
+
+- **Campbell 2019** (consenso del ACSM, PDF del usuario con tablas, leído en esta sesión): clasifica cada resultado en evidencia fuerte, moderada o insuficiente (secciones 2.3–2.5, tabla 2).
+- **Sturgeon 2023** (revisión sistemática que actualiza los diez resultados «insuficientes» de Campbell 2019, PMC10757127, leída entera): 78 estudios y 13 481 supervivientes; ningún resultado cambia de categoría: «there remains insufficient evidence for a FITT prescription for any outcome». No usa más grados que «suficiente o insuficiente para una prescripción».
+- **Schmitz 2019** (PMC, ya leída): solo para el marco (evaluar, aconsejar, derivar; programa supervisado con secuelas).
+- Ya en el registro y leídas: **Irwin 2015** (artralgia por inhibidores de la aromatasa), **McNeish 2023** (neuropatía y caídas).
+
+### 3. Lectura de Campbell 2019 (citas literales en el PDF, secciones 2.3–2.5)
+
+- **Evidencia fuerte** («benefit has been consistently demonstrated»): ansiedad y síntomas depresivos (aeróbico moderado 3 veces/semana 12 semanas, o combinado 2 veces 6–12 semanas; la fuerza sola no; mejor supervisado); fatiga (aeróbico moderado 3 veces/semana ≥ 12 semanas; «the effect for low intensity training was weak»; eficacia independiente de la supervisión); calidad de vida (combinado 2–3 veces/semana ≥ 12 semanas; mejor supervisado); función física autodeclarada (aeróbico, fuerza o combinado 3 veces/semana 8–12 semanas; «unsupervised programs may be effective in older cancer survivors»; solo medida autodeclarada); linfedema del brazo tras cáncer de mama: la fuerza progresiva supervisada es **segura**, no se ha demostrado que prevenga ni mejore el linfedema, y no se traslada a otros cánceres.
+- **Evidencia moderada**: hueso (inconsistente en conjunto; con un año de fuerza más impacto, enlentecer o mejorar algo la densidad mineral; caminar no basta; puede no ser seguro con osteoporosis o metástasis en cadera o columna); sueño (revisiones contradictorias, ensayos posteriores con efectos pequeños a moderados).
+- **Evidencia insuficiente** («does not mean that cancer survivors… should remain sedentary»): cardiotoxicidad (resultados prometedores en animales y algunos en función ventricular humana), neuropatía por quimioterapia, función cognitiva, caídas (ningún ensayo con caídas como resultado principal), náuseas, dolor (dos ensayos: artralgia por inhibidores de la aromatasa y hombro en cáncer de cabeza y cuello), función sexual y tolerancia al tratamiento.
+
+### 3b. Lectura de Sturgeon 2023 (citas literales)
+
+- Hueso: fuerza moderada a vigorosa más impacto, al menos 2 veces/semana durante al menos 12 meses, «remains the most beneficial modality to preserve BMD»; la combinación de fuerza moderada y aeróbico «neither slowed bone loss nor increased BMD»; con osteoporosis o metástasis óseas, su seguridad «has yet to be evaluated».
+- Sueño: revisiones contradictorias (una con efecto pequeño, otra sin efecto); «summary measures… were mixed».
+- Corazón: función ventricular, «insufficient evidence»; función vascular, «a moderate effect… with aerobic exercise training», en estudios pequeños y como resultado secundario.
+- Neuropatía: «promising… but not proven»; 7 estudios a favor y 6 sin beneficio.
+- Cognición: beneficio en la autodeclarada, preliminar; en la medida, «equivocal».
+- Caídas y equilibrio: 5 a favor, 5 sin beneficio, «no studies found harm»; «existing falls prevention approaches may be considered».
+- Náuseas: sin diferencia. Dolor: el 65 % de los estudios, a favor, pero heterogéneos e insuficientes. Función sexual: solo cáncer de próstata, 2 de 3 a favor. Tolerancia al tratamiento: muchos estudios no confirman beneficio, pero «current data do not suggest that exercise would impede treatment tolerance».
+- Limitaciones: muchos ensayos piloto con participantes sintomáticos (el beneficio puede ser menor en quien tiene pocos síntomas); sobre todo mama y próstata; excluye yoga, deporte y fisioterapia.
+
+### 4. Niveles propuestos (tras leer Sturgeon 2023)
+
+| Afirmación | Nivel |
+|---|---|
+| Fatiga: el aeróbico moderado la reduce; el muy suave apenas | `clinico` |
+| Ansiedad y síntomas depresivos: aeróbico o combinado; la fuerza sola no | `clinico` |
+| Calidad de vida (combinado) y función física autodeclarada | `clinico` |
+| Linfedema del brazo tras cáncer de mama: fuerza progresiva supervisada segura; no previene ni mejora | `clinico` |
+| Hueso: densidad mineral con fuerza más impacto durante un año | `mecanismo` (como en el bloque 2: la densidad es un marcador, no fracturas) |
+| Sueño | `discutido` (revisiones contradictorias) |
+| Corazón: protección frente a la cardiotoxicidad solo en animales; en personas, la función ventricular sin efecto demostrado y la vascular con un efecto moderado del aeróbico en estudios pequeños | `mecanismo` |
+| Neuropatía, cognición medida, caídas, náuseas, dolor, función sexual, tolerancia al tratamiento: no demostrado (Sturgeon 2023); ningún estudio de caídas encontró daño y el ejercicio no empeora la tolerancia al tratamiento | `clinico` (como hecho de los estudios, precedente de los bloques 6–8 y 11) |
+| Dolor por inhibidores de la aromatasa: menos dolor con fuerza más aeróbico | `clinico` (Irwin 2015; ya en la guía de fármacos) |
+
+### 5. Frases para el paciente (candidatas, cada una sobre una afirmación `clinico`)
+
+- «Tras un cáncer, el ejercicio ayuda con el cansancio, el ánimo y la calidad de vida. Para el cansancio conviene que sea moderado: el muy suave apenas lo cambia.»
+- «Si tiene linfedema en el brazo tras un cáncer de mama, hacer fuerza empezando con poco peso y subiendo despacio, con supervisión, es seguro.»
+
+Ninguna sobre supervivencia, recaída, el corazón, el hueso ni la neuropatía.
+
+### 6. Enlaces
+
+- Desde el recuadro de la fase 5 y la «Educación» de la fase 6 (`CONDICION_EJERCICIO`, motivo `oncologico`), **con los dos estados** («Tratamiento terminado» y «En tratamiento»): Campbell 2019 recoge los resultados durante y después del tratamiento.
+- `BLOQUE_POR_HIPOTESIS`: sin cambios (ninguna hipótesis regional es el antecedente de cáncer).
+- Hoja para el paciente: `tituloPaciente: 'Si ha tenido un cáncer'`, `hojaPaciente: 'condicion'`, y regenerar `ejercicio-paciente`.
+
+### 7. Riesgos de redacción
+
+- La evidencia viene sobre todo del cáncer de mama y no siempre de quien más lo necesita (Campbell 2019, 2.3): se dice en «evidencia».
+- «Insuficiente» no es «no sirve»: se dice con la frase de Campbell, para no desanimar.
+- La palabra «cardioprotector» no aparece: solo animales y marcadores.
+- La función física es autodeclarada: no se presenta como fuerza o capacidad medida.
+
+### Decisiones (cada una con mi recomendación)
+
+1. **Alcance sin supervivencia ni recaída.** *Recomiendo* sí: no hay fuente leída, y es donde más se exagera.
+2. **Hueso como `mecanismo`.** *Recomiendo* sí, por coherencia con el bloque 2.
+3. **Enlace con los dos estados.** *Recomiendo* sí.
+4. **Las dos frases para el paciente de arriba.** *Recomiendo* estas dos y ninguna más.
 
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
