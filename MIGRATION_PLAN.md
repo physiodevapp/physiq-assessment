@@ -546,7 +546,7 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Revisión del usuario del contenido de la familia y del aviso, en la app desplegada (2026-11, physiodevapp/physiq-assessment#624)
 - [ ] **Antecedente de cáncer (superviviente)** (petición del usuario, 2026-11): metástasis óseas, riesgo cardiaco tardío por el tratamiento (antraciclinas, trastuzumab, radioterapia con el corazón en el campo), compresión medular metastásica, neuropatía y caídas, linfedema; dosis de ejercicio en supervivientes
   - [x] Borrador de diseño (2026-11): `docs/antecedente-oncologico.md`. Solo diseño, sin código. 5 fuentes nuevas leídas enteras en PMC (Campbell 2019, Schmitz 2019, Campbell 2022, Gilchrist 2019, Sturgeon 2023; sin sus tablas) más las ya registradas. Tarjeta (Tratamiento terminado / En tratamiento), `SIS_ONCOLOGICO`, línea 4b, recuadro 5, aviso y red 6. 14 decisiones para el usuario
-  - [ ] Decisiones del usuario
+  - [x] Decisiones del usuario: aceptadas las 14 recomendaciones (2026-11)
   - [ ] Leer NICE NG234 (web), McNeish 2023 (PMC) y los PDF del usuario (guía ESC 2022 de cardio-oncología; Campbell 2019 y 2022 con sus tablas)
   - [ ] Texto cerrado para revisión
   - [ ] Implementación, tests y prueba de humo

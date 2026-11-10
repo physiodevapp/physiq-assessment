@@ -1,6 +1,6 @@
 # Antecedente de cáncer (superviviente) — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código.** Petición del usuario tras preparar una primera visita de un paciente de 81 años con un cáncer superado y desacondicionamiento físico, que quiere hacer ejercicio en el gimnasio. 14 decisiones para el usuario (ver «Decisiones»). Hasta que se acepten, nada de esto entra en `data/` ni en la app.
+Estado: **borrador de diseño (noviembre 2026), sin código; aceptadas por el usuario las 14 recomendaciones (noviembre 2026).** Petición del usuario tras preparar una primera visita de un paciente de 81 años con un cáncer superado y desacondicionamiento físico, que quiere hacer ejercicio en el gimnasio. Siguiente paso: «Texto cerrado para revisión», que el usuario aprueba antes de implementar.
 
 Reglas, como en las otras condiciones de la Fase P: solo fuentes leídas enteras (en esta sesión o en una anterior, con su nota en `data/referencias.js`); ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** y es una decisión del usuario.
 
@@ -152,7 +152,7 @@ Una línea encima de las tarjetas, sin tocar las LR (decisión 10):
 - **Linfedema fuera del cáncer de mama**: sin datos (Campbell 2019 lo dice).
 - **Neuropatía**: el ejercicio no tiene pruebas sobre la neuropatía (Sturgeon 2023), pero sí los programas de caídas en general.
 
-## Decisiones (cada una con mi recomendación)
+## Decisiones (cada una con mi recomendación; aceptadas las 14 por el usuario, noviembre 2026)
 
 1. **Estados**: «Tratamiento terminado» y «En tratamiento» (con la terapia hormonal dentro de «En tratamiento»). *Recomiendo* los dos: en tratamiento activo cambian la sepsis y la fatiga; la terapia hormonal dura 5–10 años y la toman muchos supervivientes.
 2. **Tipo de cáncer como chips, sin texto libre.** *Recomiendo* chips: el texto libre no cambia nada en la app y arriesga datos identificables.
@@ -176,7 +176,7 @@ Una línea encima de las tarjetas, sin tocar las LR (decisión 10):
 
 ## Siguiente paso
 
-1. El usuario decide sobre las 14 decisiones.
+1. ~~El usuario decide sobre las 14 decisiones.~~ Aceptadas las 14 recomendaciones (noviembre 2026).
 2. Leer NICE NG234 (web), McNeish 2023 (PMC) y los PDF.
 3. Texto cerrado para revisión, como en las demás condiciones.
 4. Implementación en una rama propia, con tests unitarios (`tests/unit/oncologico.mjs`, incluido «marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema») y su sección de la prueba de humo.
