@@ -551,7 +551,8 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [ ] PDF del usuario pendientes (guía ESC 2022 de cardio-oncología). Campbell 2019 y 2022 con sus tablas leídos (2026-11): triaje de la NCCN (tabla 4), precauciones por secuela (tabla 5) y cuándo es imprescindible la consulta con metástasis (tabla 1, DR3), aplicados al implementar. McNeish 2023 leída entera (2026-11): la neuropatía no se asoció a las caídas en su muestra
   - [x] Texto cerrado aprobado por el usuario (2026-11), con los cambios de NICE NG234
   - [x] Implementación, tests y prueba de humo (2026-11): tarjeta `#cardOncologico`, `SIS_ONCOLOGICO` (2 urgencias y 3 derivaciones), notas de las fases 3 y 4b, recuadro `.on-fase5`, avisos y `RED_ONCOLOGICO` de la fase 6, payload `on`, 📋 Notas, 📄 Informe, `bloqueONIA` con `ON_CASOS`, pendientes del modo breve, fila de la guía de condiciones, 6 referencias nuevas (Sturgeon 2023 fuera: el texto final no la cita); `tests/unit/oncologico.mjs` y sección de humo `oncologico`. Pendiente de revisión del usuario en la app
-  - [ ] physiq-report: copia literal del bloque de la IA
+  - [x] Revisión del usuario (2026-11, physiodevapp/physiq-assessment#635)
+  - [x] physiq-report: `_bloqueON` con una copia literal de `bloqueONIA()` (rama `claude/oncologico-bloque-on`, physiodevapp/physiq-report#103; `ON_CASOS` fija el mismo texto en los dos repositorios)
   - [ ] Bloque «Ejercicio en supervivientes de cáncer» de la guía de ejercicio (decisión 13), enlazado desde la condición
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
