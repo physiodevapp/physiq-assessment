@@ -164,7 +164,7 @@ Una línea encima de las tarjetas, sin tocar las LR (decisión 10):
 8. **Linfedema que aumenta**: derivación no urgente; **celulitis** sobre linfedema como urgencia solo si se lee una fuente. *Recomiendo* así.
 9. **Línea de la fatiga en la fase 3.** *Recomiendo* sí: evita que una fatiga alta se lea como irritabilidad alta y frene el ejercicio que la trata.
 10. **Sin thrust en la zona de una metástasis ósea**: no está en las fuentes leídas (Campbell 2022 habla de movimientos rápidos o cargados al final del recorrido). *Recomiendo* escribirlo como **[propia]** con tu visto bueno, o leer una fuente de terapia manual antes.
-11. **Precauciones del brazo con linfedema** (manguito de tensión, punciones, presión): prácticas extendidas sin fuente leída. *Recomiendo* no escribirlas hasta leer una fuente.
+11. **Precauciones del brazo con linfedema** (manguito de tensión, punciones, presión): prácticas extendidas sin fuente leída. *Recomiendo* no escribirlas hasta leer una fuente. **Respondida en parte** con la tabla 5 de Campbell 2019 (noviembre 2026): la manga de compresión durante el ejercicio, según prefiera el paciente (no hay pruebas a favor ni en contra); el manguito de tensión, las punciones y la presión siguen sin escribirse.
 12. **Payload `on`** y copia en physiq-report. *Recomiendo* sí, con la misma forma que las demás (texto literal fijado en los dos repos).
 13. **Bloque «Ejercicio en supervivientes de cáncer»** de la guía de ejercicio, después de la condición y enlazado desde ella. *Recomiendo* sí, en una sesión aparte, con Campbell 2019 y Schmitz 2019 como base y las afirmaciones por nivel.
 14. **McNeish 2023**: leer entera antes de citarla o quitarla. *Recomiendo* leerla (está en PMC).
@@ -172,7 +172,6 @@ Una línea encima de las tarjetas, sin tocar las LR (decisión 10):
 ## PDF que necesito
 
 - Guía ESC 2022 de cardio-oncología (Lyon 2022).
-- Campbell 2019 y Campbell 2022 completos, con las tablas.
 
 ## Siguiente paso
 
@@ -278,3 +277,14 @@ PDF del usuario (NICE, «Spinal metastases and metastatic spinal cord compressio
 - **1.12.1**: ofrecer rehabilitación desde el diagnóstico, con profesionales sanitarios.
 
 **Qué cambia**: la urgencia de compresión medular queda cerrada (1.3.2); el dolor de columna con rasgos de metástasis pasa de derivación «pronto» a urgencia en 24 h (`on_u_columna`, 1.3.3); se añade la línea 8 bis del recuadro (1.3.6) y la red de seguridad lleva los dos plazos. El dolor óseo fuera de la columna sigue como derivación **[propia]**.
+
+## Lectura de las tablas de Campbell 2019 y 2022 (noviembre 2026)
+
+PDF del usuario de los dos consensos, leídos con sus tablas (las notas del registro dicen ahora «PDF del usuario leído, incluidas las tablas»). Se aplicaron al implementar, aprobados por el usuario, con las mismas reglas.
+
+- **Campbell 2019, tabla 4** (triaje adaptado de la NCCN): sin comorbilidad, ninguna valoración médica más antes del ejercicio; con neuropatía periférica, artritis o problemas musculoesqueléticos, hueso frágil o linfedema, valoración médica recomendada, adaptar el ejercicio a lo que se encuentre y valorar derivar a personal formado (incluye fisioterapeutas); con cirugía de pulmón o abdomen, ostomía, enfermedad cardiopulmonar, ataxia, fatiga extrema, déficit nutricional grave, empeoramiento (por ejemplo, del linfedema) o metástasis óseas, valoración y autorización médica previas y derivación a personal formado.
+- **Campbell 2019, tabla 5** (precauciones por secuela): hueso frágil o metástasis óseas, sin impactos, sin flexión ni extensión extremas del tronco, sin flexión ni extensión del tronco con carga y sin giros bruscos, prevenir las caídas y, si refiere dolor, que lo valore el equipo médico antes de seguir; ostomía, vaciar la bolsa antes, fuerza con poca resistencia y progresión lenta, sin Valsalva, adaptar los ejercicios de tronco que den presión o abombamiento, y más riesgo de deshidratación con ileostomía; neuropatía periférica, valorar estabilidad, equilibrio y marcha antes, bicicleta estática o agua mejor que caminar si afecta a la estabilidad (o cinta con barandillas), máquinas mejor que pesos libres, mancuernas recubiertas o guantes acolchados; linfedema, la manga de compresión durante el ejercicio según prefiera (pruebas insuficientes); mayores, valorar condición física y función antes de empezar.
+- **Campbell 2022, tabla 1, DR3** (89 % de acuerdo): con metástasis óseas, la orientación médica antes de un programa estructurado es imprescindible con lesiones inestables o de estabilidad desconocida, dolor óseo o su tratamiento en los últimos 3 meses, o una fractura por la enfermedad en el último año; «con precaución» se definió sobre todo (47 %) como empezar con movimiento activo sin carga y progresar despacio si no aumenta el dolor ni aparecen síntomas.
+
+**Qué cambia**: una línea nueva del recuadro de la fase 5, tras la de metástasis, con el triaje de la tabla 4, y una línea roja de la tarjeta con «Ostomía»; la línea de metástasis de la tarjeta y la 1 del recuadro dicen cuándo la consulta es imprescindible (DR3) y la 1 cómo empezar; la lista de qué evitar de la tabla 5 entra en la línea de la 4b, en la 1 del recuadro y en el aviso `oncologicoMetastasis`, con «si refiere dolor óseo, que lo valore su equipo médico antes de seguir»; línea propia de la ostomía en el recuadro (sustituye a la frase [propia] del borrador); la 6 (neuropatía) pasa a la tabla 5 más los programas de caídas y McNeish 2023; la 5 (linfedema) añade la manga de compresión; la 4 (programa supervisado) añade la valoración de la condición física y la función antes de empezar. Sturgeon 2023 deja de citarse en el texto final y sale del registro hasta que se use.
+

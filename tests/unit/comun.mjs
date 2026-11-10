@@ -70,6 +70,7 @@ export const BASE_STATE = {
   anticoagulado:    { estado: '', toma: [] },
   parkinson:        { estado: '', estadio: '', fluctuaciones: '', fase: '', congelacion: '', estimulador: '',
     caidas: { n: '', lesion: false, suelo: false, conciencia: false, fragilidad: false }, tension: null },
+  oncologico:       { estado: '', canceres: [], tratamientos: [], metastasis: '', zonas: [], revision: '', secuelas: [], linfedema: [] },
   farmacos:         { toma: [] },
   cuestionarios:    {},
   sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },

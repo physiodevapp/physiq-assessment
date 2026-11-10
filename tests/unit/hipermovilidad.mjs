@@ -86,7 +86,7 @@ test('una urgencia marcada SÍ nunca desaparece al cambiar las respuestas de sos
 test('seguridad: marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema', () => {
   for (const r of VALID_REGIONS) {
     const urgentes = SYSTEMIC_SCREENING[r].sistemas.filter(s => !s.soloHipermovilidad && !s.soloPosquirurgico && !s.soloDisautonomia
-      && !s.soloLupus && !s.soloMastocitos && !s.soloOsteoporosis && !s.soloEmbarazo && !s.soloAnticoagulado && !s.soloParkinson)
+      && !s.soloLupus && !s.soloMastocitos && !s.soloOsteoporosis && !s.soloEmbarazo && !s.soloAnticoagulado && !s.soloParkinson && !s.soloOncologico)
       .flatMap(s => s.preguntas).filter(q => q.urgencia);
     const respuestas = { ...Object.fromEntries(urgentes.map(q => [q.id, 'SI'])), hm_s_familia: 'SI' };
     let sin, htmlSin;
