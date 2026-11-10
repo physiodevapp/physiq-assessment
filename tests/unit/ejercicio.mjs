@@ -26,7 +26,7 @@ const muestra = () => ({
 });
 
 test('los bloques de docs/efectos-ejercicio.md, en su orden (mioquinas dentro del antiinflamatorio), y los tres niveles', () => {
-  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'centrales', 'ortostatica', 'hipermovilidad', 'embarazo', 'parkinson']);
+  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'centrales', 'ortostatica', 'hipermovilidad', 'embarazo', 'parkinson', 'oncologico']);
   for (const b of BLOQUES_EJERCICIO) assert.ok(b.titulo && b.resumen, b.id);
   assert.deepEqual(Object.keys(NIVELES_EJERCICIO), ['clinico', 'mecanismo', 'discutido']);
   for (const n of Object.values(NIVELES_EJERCICIO)) assert.ok(n.corto && n.explicacion.length > 20);
@@ -159,7 +159,7 @@ test('enlace de la fase 6: ofrece también el otro bloque, sin cambiar el princi
 });
 
 test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuestionario de ánimo con síntomas, «antiinflamatorio» solo con lupus', () => {
-  assert.deepEqual(E.motivosEjercicio({}), { animo: false, reumatica: false, ortostatica: false, hipermovilidad: false, embarazo: false, parkinson: false });
+  assert.deepEqual(E.motivosEjercicio({}), { animo: false, reumatica: false, ortostatica: false, hipermovilidad: false, embarazo: false, parkinson: false, oncologico: false });
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Bajo' }).animo, false);
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Medio' }).animo, true);
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Alto' }).animo, true);
@@ -198,6 +198,10 @@ test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteopor
   const pk = E.enlaceCondicionEjercicioHTML('parkinson', { estado: 'diagnosticado' });
   assert.ok(pk.includes('data-bloque-condicion="parkinson"') && pk.includes(TEXTOS_EJERCICIO.enlaceCondicionParkinson));
   assert.equal(E.enlaceCondicionEjercicioHTML('parkinson', { estado: 'sospecha' }), '');
+  for (const estado of ['terminado', 'tratamiento']) {
+    const on = E.enlaceCondicionEjercicioHTML('oncologico', { estado });
+    assert.ok(on.includes('data-bloque-condicion="oncologico"') && on.includes(TEXTOS_EJERCICIO.enlaceCondicionOncologico), estado);
+  }
   for (const c of ['mastocitos', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c, { estado: 'diagnosticado' }), '', c);
   // Sin estado, nada
   for (const c of ['lupus', 'osteoporosis', 'disautonomia', 'hipermovilidad', 'embarazo', 'parkinson']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
@@ -207,9 +211,10 @@ test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteopor
   assert.ok(app.includes("enlaceCondicionEjercicioHTML('hipermovilidad', { estado: d.es, subtipo: d.st, vs: d.vs })"));
   assert.ok(app.includes("enlaceCondicionEjercicioHTML('embarazo', { estado: d.es })"));
   assert.ok(app.includes("enlaceCondicionEjercicioHTML('parkinson', { estado: d.es })"));
+  assert.ok(app.includes("enlaceCondicionEjercicioHTML('oncologico', { estado: d.es })"));
   assert.ok(!/\? ''\s*:\s*enlaceCondicionEjercicioHTML|\? enlaceCondicionEjercicioHTML/.test(app), 'sin condiciones sueltas en app.js');
   for (const t of [TEXTOS_EJERCICIO.enlaceCondicionLupus, TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis, TEXTOS_EJERCICIO.enlaceCondicionDisautonomia, TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad,
-    TEXTOS_EJERCICIO.enlaceMotivoOrtostatica, TEXTOS_EJERCICIO.enlaceMotivoHipermovilidad, TEXTOS_EJERCICIO.enlaceCondicionEmbarazo, TEXTOS_EJERCICIO.enlaceMotivoEmbarazo, TEXTOS_EJERCICIO.enlaceCondicionParkinson, TEXTOS_EJERCICIO.enlaceMotivoParkinson]) {
+    TEXTOS_EJERCICIO.enlaceMotivoOrtostatica, TEXTOS_EJERCICIO.enlaceMotivoHipermovilidad, TEXTOS_EJERCICIO.enlaceCondicionEmbarazo, TEXTOS_EJERCICIO.enlaceMotivoEmbarazo, TEXTOS_EJERCICIO.enlaceCondicionParkinson, TEXTOS_EJERCICIO.enlaceMotivoParkinson, TEXTOS_EJERCICIO.enlaceCondicionOncologico, TEXTOS_EJERCICIO.enlaceMotivoOncologico]) {
     for (const f of ['lib/resumenes.js', 'lib/lupus.js', 'lib/osteoporosis.js', 'lib/disautonomia.js', 'lib/hipermovilidad.js', 'lib/embarazo.js', 'lib/parkinson.js', 'informe-ia.js', 'lib/informe-narrativo.js']) assert.ok(!leer(f).includes(t), f);
   }
 });
@@ -268,6 +273,11 @@ test('condiciones: la fase 6 enlaza lo mismo que el recuadro de la fase 5 en cad
     const pk = E.motivosEjercicio({ tarjetas: { parkinson: { estado } } }).parkinson;
     assert.equal(pk, estado === 'diagnosticado', `parkinson ${estado}`);
     assert.equal(pk, E.enlaceCondicionEjercicioHTML('parkinson', { estado }) !== '', `parkinson f5/f6 ${estado}`);
+  }
+  for (const estado of ['', 'terminado', 'tratamiento']) {
+    const on = E.motivosEjercicio({ tarjetas: { oncologico: { estado } } }).oncologico;
+    assert.equal(on, !!estado, `oncologico ${estado}`);
+    assert.equal(on, E.enlaceCondicionEjercicioHTML('oncologico', { estado }) !== '', `oncologico f5/f6 ${estado}`);
   }
 });
 

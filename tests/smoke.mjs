@@ -1360,6 +1360,7 @@ async function checkOncologico(page) {
     return !!box && !box.closest('details') && t.includes('Antecedente de cáncer.') && t.includes('triaje de la NCCN')
       && t.includes('1,3–3,6 veces') && t.includes('que vacíe la bolsa') && t.includes('teléfono de 24 horas de oncología') && t.includes('qué cambios vigilar'); });
   r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .on-fase5 .cita[data-cita^="Campbell 2022"]'));
+  r.fase5Ejercicio = await page.evaluate(() => !!document.querySelector('#resultsContent .on-fase5 [data-bloque-condicion="oncologico"]'));
   r.payload = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().on?.mo === 'si');
   await page.evaluate(() => goToPhase('4b'));
   await page.waitForTimeout(200);
@@ -1371,6 +1372,7 @@ async function checkOncologico(page) {
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
     return t.includes('Antecedente de cáncer: Objetivo: aeróbico moderado') && t.includes('Antecedente de cáncer con metástasis óseas')
       && t.includes('Hasta tener la valoración, intensidad ligera') && t.includes('Red de seguridad (antecedente de cáncer)'); });
+  r.fase6Ejercicio = await page.evaluate(() => !!document.querySelector('#planContenido [data-bloque-extra="oncologico"]'));
   r.ok = Object.values(r).every(Boolean);
   return r;
 }
@@ -4170,7 +4172,7 @@ async function checkEjercicio(browser, errors) {
     const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
     // Los cuatro bloques escritos: ya no se pinta el apartado de pendientes
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad,embarazo,parkinson'
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad,embarazo,parkinson,oncologico'
       && !document.querySelector('#ejercicioCuerpo .ej-pendientes')
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });
@@ -8236,7 +8238,7 @@ const SECCIONES = [
 
   { id: 'oncologico', titulo: 'Antecedente de cáncer (Fase P, lumbar):', run: async ({ page }) => {
     const r = await checkOncologico(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con dos estados, chips («No lo sabe» excluye), revisión del corazón solo con tratamiento cardiotóxico, líneas rojas nunca plegadas (corazón, tensión en los dos brazos, metástasis con «Hasta confirmarlo:»), segundo toque borra, osteoporosis sin marcarla, guía de fármacos en el hueso, 320 px, dos urgencias y derivaciones sin embudo, nota de la fase 3, 4b, fase 5 nunca plegada, payload on y avisos y red de la fase 6`);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con dos estados, chips («No lo sabe» excluye), revisión del corazón solo con tratamiento cardiotóxico, líneas rojas nunca plegadas (corazón, tensión en los dos brazos, metástasis con «Hasta confirmarlo:»), segundo toque borra, osteoporosis sin marcarla, guía de fármacos en el hueso, 320 px, dos urgencias y derivaciones sin embudo, nota de la fase 3, 4b, fase 5 nunca plegada, payload on, avisos y red de la fase 6 y enlace al bloque «Ejercicio tras un cáncer» en las fases 5 y 6`);
     if (!r.ok) console.log('\nAntecedente de cáncer:', JSON.stringify(r));
     return r.ok;
   } },
