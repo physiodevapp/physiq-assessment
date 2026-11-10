@@ -68,12 +68,16 @@ test('líneas rojas de la tarjeta: metástasis (con «Hasta confirmarlo:»), cor
   assert.ok(app.includes("onclick=\"irATarjetaOP()\"") && app.includes("abrirFarmacos({ familia: 'hueso' })"));
 });
 
-test('fase 2: dos urgencias y tres derivaciones; quién ve cada una; sin embudo; banderas enlazadas', () => {
-  assert.deepEqual(SIS_ONCOLOGICO.preguntas.filter(q => q.urgencia).map(q => q.id), ['on_u_medula', 'on_u_columna']);
+test('fase 2: tres urgencias y tres derivaciones; quién ve cada una; sin embudo; banderas enlazadas', () => {
+  assert.deepEqual(SIS_ONCOLOGICO.preguntas.filter(q => q.urgencia).map(q => q.id), ['on_u_medula', 'on_u_columna', 'on_u_miocarditis']);
   assert.deepEqual(SIS_ONCOLOGICO.preguntas.filter(q => q.derivacion).map(q => q.id), ['on_d_hueso', 'on_d_corazon', 'on_d_linfedema']);
   assert.match(SIS_ONCOLOGICO.preguntas[1].urgencia, /24 h/);
   assert.deepEqual(visibles('terminado'), ['on_u_medula', 'on_u_columna', 'on_d_hueso']);
   assert.ok(visibles('tratamiento', { tratamientos: ['cardiotoxico'] }).includes('on_d_corazon'));
+  // Miocarditis por inmunoterapia: solo «En tratamiento» con el chip «Inmunoterapia» (Lyon 2022)
+  assert.ok(visibles('tratamiento', { tratamientos: ['inmuno'] }).includes('on_u_miocarditis'));
+  assert.ok(!visibles('terminado', { tratamientos: ['inmuno'] }).includes('on_u_miocarditis'));
+  assert.ok(!visibles('tratamiento', { tratamientos: ['quimio'] }).includes('on_u_miocarditis'));
   assert.ok(visibles('terminado', { tratamientos: ['rtCorazon'] }).includes('on_d_corazon'));
   assert.ok(!visibles('terminado', { tratamientos: ['ns'] }).includes('on_d_corazon'), 'solo con tratamiento cardiotóxico');
   assert.ok(visibles('terminado', { secuelas: ['linfedema'] }).includes('on_d_linfedema'));
@@ -88,7 +92,7 @@ test('fase 2: dos urgencias y tres derivaciones; quién ve cada una; sin embudo;
   withState({ region: 'lumbar', ...on('terminado'), sistemicoAnswers: { on_u_medula: 'SI', on_d_hueso: 'SI' }, sistemicoAlerta: true }, () => {
     const d = buildPhysiQPayload();
     assert.ok(d.ur.includes(SIS_ONCOLOGICO.preguntas[0].urgencia));
-    assert.ok(d.dv.includes(SIS_ONCOLOGICO.preguntas[2].derivacion));
+    assert.ok(d.dv.includes(SIS_ONCOLOGICO.preguntas.find(q => q.id === 'on_d_hueso').derivacion));
   });
   withState({ region: 'lumbar', ...on(), sistemicoAnswers: { on_u_medula: 'SI' } }, () => assert.deepEqual(buildPhysiQPayload().ur, []), 'sin la tarjeta no cuenta');
   // En modo breve las urgencias no se pliegan
@@ -146,13 +150,15 @@ test('📋 Notas, 📄 Informe (solo el antecedente) e informe con IA (sin fuent
 
 test('fase 5: líneas en su orden, condicionales, todas con fuente salvo las [propias] aprobadas', () => {
   const lin = (d = {}) => K.lineasRecomendacionON({ es: 'terminado', cn: [], tr: [], mo: null, mz: [], rc: null, sc: [], li: [], ...d });
-  assert.deepEqual(lin(), [T.triaje, T.dosis, T.supervisado, T.vigilar]);
-  assert.deepEqual(lin({ es: 'tratamiento', mo: 'si', tr: ['cardiotoxico'], sc: ['linfedema', 'ostomia', 'neuropatia'] }),
-    [T.metastasis5, T.triaje, T.cardiotoxico5, T.dosis, T.supervisado, T.linfedema5, T.ostomia5, T.neuropatia5, T.enTratamiento, T.vigilar]);
+  assert.deepEqual(lin(), [T.triaje, T.dosis, T.ejercicioESC, T.supervisado, T.vigilar]);
+  assert.deepEqual(lin({ es: 'tratamiento', mo: 'si', tr: ['cardiotoxico', 'rtCorazon'], sc: ['linfedema', 'ostomia', 'neuropatia'] }),
+    [T.metastasis5, T.triaje, T.cardiotoxico5, T.autonomico, T.dosis, T.ejercicioESC, T.supervisado, T.linfedema5, T.ostomia5, T.neuropatia5, T.enTratamiento, T.vigilar]);
   assert.ok(lin({ mo: 'ns' })[0].startsWith('Hasta confirmarlo: consulta con su equipo médico'));
   assert.ok(!lin({ mo: 'no' }).some(l => l.includes('equipo médico antes del ejercicio estructurado')));
   // Las tablas de Campbell 2019 y 2022 (PDF del usuario)
   assert.ok(T.metastasis5.includes('Campbell 2019, tabla 5') && T.metastasis5.includes('Campbell 2022, tabla 1') && T.metastasis4b.includes('Campbell 2019, tabla 5'));
+  // La guía ESC 2022 (PDF del usuario)
+  assert.ok(T.cardiaco.includes('Lyon 2022') && T.tensionBrazos.includes('Lyon 2022') && T.autonomico.includes('Lyon 2022') && T.ejercicioESC.includes('Lyon 2022'));
   assert.ok(T.triaje.includes('Campbell 2019, tabla 4') && T.ostomia5.includes('Campbell 2019, tabla 5') && T.neuropatia5.includes('McNeish 2023'));
   // Todas las líneas citan una fuente del registro salvo las de redacción propia aprobada
   const PROPIAS = ['nota', 'ayudaTratamiento', 'duda', 'cardiacoAlterado', 'osteoporosis', 'hormonal', 'neuropatia4b', 'ligera', 'iaCorazon', 'iaMetastasis'];
@@ -181,7 +187,14 @@ test('fase 6: aviso con cualquier plan; metástasis y corazón según la tarjeta
   // Sin tope de thrust propio
   assert.ok(!P.construirPlan({ ...base, oncologico: onc({ metastasis: true }) }).avisosHip.some(a => /thrust/i.test(a)));
   // Los avisos son las frases del recuadro, tal cual
-  assert.ok(PD.AVISOS.oncologico.includes(T.dosis) && PD.AVISOS.oncologico.includes(T.supervisado));
+  assert.ok(PD.AVISOS.oncologico.includes(T.dosis) && PD.AVISOS.oncologico.includes(T.ejercicioESC) && PD.AVISOS.oncologico.includes(T.supervisado));
+  assert.ok(PD.AVISOS.oncologicoAutonomico.endsWith(T.autonomico));
+  // Radioterapia con el corazón en el campo: su aviso; inmunoterapia en curso: su red (Lyon 2022)
+  assert.ok(P.construirPlan({ ...base, oncologico: onc({ rtCorazon: true }) }).avisosHip.includes(PD.AVISOS.oncologicoAutonomico));
+  assert.ok(!P.construirPlan({ ...base, oncologico: onc() }).avisosHip.includes(PD.AVISOS.oncologicoAutonomico));
+  const conInmuno = P.construirPlan({ ...base, oncologico: onc({ inmuno: true }) });
+  assert.ok(conInmuno.alarmasCasa.includes(PD.TEXTOS_CASA.alarmaMiocarditis.texto), 'red de la miocarditis');
+  assert.ok(!P.construirPlan({ ...base, oncologico: onc() }).alarmasCasa.includes(PD.TEXTOS_CASA.alarmaMiocarditis.texto));
   assert.ok(PD.AVISOS.oncologicoMetastasis.endsWith(T.metastasis5) && PD.AVISOS.oncologicoCorazon.includes(T.cardiotoxico5) && PD.AVISOS.oncologicoCorazon.endsWith(T.ligera));
   assert.ok(PD.TEXTOS_SESION.cierreOncologico.includes('NICE NG234, 1.3.2') && PD.TEXTOS_SESION.cierreOncologico.includes('NICE NG234, 1.3.3') && PD.TEXTOS_SESION.cierreOncologico.includes('NICE CG151'));
   assert.ok(leer('plan.js').includes('onActivo(state.oncologico)'));
