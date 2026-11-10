@@ -53,12 +53,12 @@ Búsqueda de noviembre 2026 en `data/`:
 
 ### Salvedades de lectura
 
-- **McNeish 2023** (J Geriatr Oncol, PMID 37776612): solo el resumen. Se cita solo para la asociación de la neuropatía con el equilibrio y las caídas, y con esa salvedad, o se lee entera antes de implementar (decisión 14).
+- **McNeish 2023** (J Geriatr Oncol, PMID 37776612, PMC10841675): **leída entera por un agente (noviembre 2026), sin tablas.** Cambia lo que se esperaba: en 50 supervivientes tratados con quimioterapia (88 % mujeres, 62 % cáncer de mama), la neuropatía autodeclarada **no** se asoció a las caídas («CIPN (p=0.41)…were not significantly associated with falls»); sí lo hizo la función ejecutiva (tiempo de reacción). Se cayó el 34 % en el último año. Limitaciones: un centro, transversal, muestra pequeña, neuropatía sin exploración. No sirve para decir que la neuropatía causa caídas; sí para decir que el riesgo de caídas en estos pacientes es alto y no depende solo de la neuropatía (decisión 14, resuelta).
 - **Las tablas no llegaron** en Campbell 2019 (la de autorización médica por condición, basada en las guías NCCN) ni en Campbell 2022 (factores de riesgo de complicación esquelética). Hacen falta para cerrar las decisiones 5 y 6.
 
 ### Pendiente de leer (no se citan hasta leerlas)
 
-- **NICE NG234** (metástasis vertebrales y compresión medular metastásica, 2023): síntomas que piden urgencia y plazo. Necesaria para la urgencia de la fase 2 (decisión 4). En la web de NICE.
+- **NICE NG234** (metástasis vertebrales y compresión medular metastásica, 2023): síntomas que piden urgencia y plazo. Necesaria para la urgencia de la fase 2 (decisión 4). **La web de NICE rechaza la descarga automática (HTTP 403, noviembre 2026)**: hace falta que el usuario pegue el capítulo «Recommendations» o aporte el PDF. No hay otra fuente leída en el repo sobre sus síntomas (Jayarangaiah 2023 solo se usa para el antecedente de cáncer).
 - **Lyon 2022** (guía ESC de cardio-oncología, Eur Heart J 43(41):4229-361, doi:10.1093/eurheartj/ehac244): sin acceso abierto ni resumen en PubMed. PDF del usuario.
 - **Tablas de Campbell 2019 y Campbell 2022**: PDF del usuario.
 - **Hipercalcemia maligna** (confusión, sed, estreñimiento): fuente por elegir (StatPearls en NCBI Bookshelf es accesible). Solo si se acepta la decisión 7.
@@ -150,7 +150,7 @@ Una línea encima de las tarjetas, sin tocar las LR (decisión 10):
 - **Autorización**: Campbell 2019 no pide pruebas para empezar ejercicio ligero en la mayoría; Gilchrist 2019 pide prueba de esfuerzo antes de la rehabilitación cardio-oncológica en los grupos de riesgo. No se contradicen (poblaciones distintas), pero hay que decidir a quién se aplica cada una en la tarjeta (decisión 5).
 - **Intensidad inicial**: Campbell 2019 da la dosis objetivo (≥ 60 % de 1RM); en un paciente desacondicionado y mayor, el punto de partida queda por debajo. El consenso no da un punto de partida numérico en el texto leído **[propia: «empezar por debajo y llegar en semanas»]**.
 - **Linfedema fuera del cáncer de mama**: sin datos (Campbell 2019 lo dice).
-- **Neuropatía**: el ejercicio no tiene pruebas sobre la neuropatía (Sturgeon 2023), pero sí los programas de caídas en general.
+- **Neuropatía y caídas**: se repite que la neuropatía por quimioterapia causa caídas, pero en el único estudio leído no se asoció (McNeish 2023); el ejercicio tampoco tiene pruebas sobre la neuropatía (Sturgeon 2023). Lo que sí sostienen las fuentes es aplicar los programas de caídas habituales (Campbell 2019; Sturgeon 2023).
 
 ## Decisiones (cada una con mi recomendación; aceptadas las 14 por el usuario, noviembre 2026)
 
@@ -177,7 +177,88 @@ Una línea encima de las tarjetas, sin tocar las LR (decisión 10):
 ## Siguiente paso
 
 1. ~~El usuario decide sobre las 14 decisiones.~~ Aceptadas las 14 recomendaciones (noviembre 2026).
-2. Leer NICE NG234 (web), McNeish 2023 (PMC) y los PDF.
-3. Texto cerrado para revisión, como en las demás condiciones.
+2. ~~Leer McNeish 2023~~ (hecho). Leer NICE NG234 (texto o PDF del usuario: la web bloquea la descarga) y los PDF.
+3. Texto cerrado para revisión: escrito abajo (noviembre 2026), pendiente de la aprobación del usuario; la urgencia de compresión medular queda abierta hasta leer NICE NG234.
 4. Implementación en una rama propia, con tests unitarios (`tests/unit/oncologico.mjs`, incluido «marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema») y su sección de la prueba de humo.
 5. Bloque de la guía de ejercicio (decisión 13), en otra sesión.
+
+## Texto cerrado para revisión (noviembre 2026)
+
+Con las 14 decisiones aceptadas. Lo que va entre comillas es el texto que verá el clínico; **[propia]** marca redacción sin fuente que el usuario aprueba aquí. Manda sobre las secciones de borrador. **Una pieza sigue abierta**: la urgencia de compresión medular metastásica (decisión 4), hasta leer NICE NG234.
+
+### Fase 1 — tarjeta «Antecedente de cáncer» (`#cardOncologico`, después de la de implantes)
+
+- Nota bajo el título: «Márcala si ha tenido un cáncer, aunque esté curado. No sustituye a la pregunta del cribado de cada región, que se hace a todos.» **[propia]**
+- Estado (`selectONEstado`, segundo toque borra): «Tratamiento terminado» · «En tratamiento». Ayuda bajo «En tratamiento»: «Incluye la terapia hormonal de mantenimiento (anastrozol, letrozol, exemestano, tamoxifeno, o para la próstata).» **[propia]**
+- «¿Qué cáncer?» (chips, varios): Mama · Próstata · Colorrectal · Pulmón · Hematológico · Cabeza y cuello · Ginecológico · Otro · No lo sabe («No lo sabe» excluye los demás).
+- «¿Qué tratamientos recibió?» (chips): Cirugía con ganglios extirpados · Quimioterapia · Antraciclinas o trastuzumab · Radioterapia con el corazón en el campo (tórax, mama izquierda, mediastino) · Radioterapia del cuello o del mediastino · Terapia hormonal · Inmunoterapia · No lo sabe.
+- «¿Metástasis en los huesos?»: No · Sí · No lo sabe. Con «Sí», «¿Dónde?» (chips): Columna · Pelvis o cadera · Fémur · Otras.
+- «¿Le revisaron el corazón después del tratamiento?» (solo con «Antraciclinas o trastuzumab», «Radioterapia con el corazón en el campo» o «No lo sabe» en tratamientos): Sí, normal · Sí, alterado · No · No lo sabe.
+- «Secuelas» (chips): Neuropatía (hormigueo o adormecimiento en pies o manos) · Linfedema · Ostomía · Fatiga · Osteoporosis. Con «Linfedema», «¿Dónde?»: Brazo derecho · Brazo izquierdo · Pierna derecha · Pierna izquierda.
+- Líneas rojas de la tarjeta (nunca plegadas):
+  - Metástasis óseas «Sí» o «No lo sabe»: «Antes del ejercicio estructurado, consulta con su equipo médico (Campbell 2022).» Con «No lo sabe», empieza por «Hasta confirmarlo:».
+  - Tratamiento cardiotóxico (antraciclinas o trastuzumab, o radioterapia con el corazón en el campo) con revisión «No», «No lo sabe» o sin responder: «Recibió un tratamiento que puede dañar el corazón años después. Pide una valoración cardiaca antes del ejercicio de intensidad moderada (Gilchrist 2019).» Con «Sí, alterado»: «Sigue los límites de su cardiólogo; si no los tienes, pídeselos antes del ejercicio moderado.» **[propia, la segunda]**
+  - Radioterapia del cuello o del mediastino: «Mide la tensión en los dos brazos: la radioterapia puede estrechar la arteria de un lado (Gilchrist 2019).»
+  - Osteoporosis en secuelas: «Si tiene osteoporosis, marca también su tarjeta.» con «Ir a la tarjeta →» (no la marca).
+  - Terapia hormonal: «Qué vigilar con estos fármacos →», abre la guía de fármacos en la familia de fármacos del hueso.
+- `_pintarONUI()` pone `body.oncologico`; un cambio vacía la 4b (`_invalidar4b()`) y repinta el cribado.
+
+### Fase 2 — sistema «Antecedente de cáncer» (`SIS_ONCOLOGICO`, `transversal_oncologico`, `soloOncologico: true`, sin embudo)
+
+- **`on_u_medula`, urgencia — ABIERTA hasta leer NICE NG234.** Borrador: «¿Tiene un dolor de espalda o de cuello nuevo, o que ha cambiado, con debilidad o torpeza en las piernas, adormecimiento, o cambios nuevos al orinar o en el control del intestino?» → «Posible compresión medular por metástasis: a urgencias hoy.» El texto, los síntomas exactos y el plazo los fija NG234. Razonamiento enlazado a `l6`, `op_u_medula`, `ac_u_espinal`, sin repetirlas.
+- **`on_d_hueso`, derivación**: «¿Tiene un dolor nuevo en un hueso o en la espalda que no se le pasa, no cambia con la postura o empeora por la noche?» → «Dolor óseo nuevo con antecedente de cáncer: que lo valore pronto su oncólogo o su médico.» Razonamiento: `l2` (Downie 2013; el antecedente de cáncer es la bandera de malignidad que más pesa), `l_on2`/`cv1` (dolor nocturno).
+- **`on_d_corazon`, derivación** (solo con tratamiento cardiotóxico): «¿Tiene desde hace poco más falta de aire, los tobillos más hinchados o palpitaciones?» → «Síntomas cardiacos tras un tratamiento que puede dañar el corazón: a cardiología antes del ejercicio moderado (Gilchrist 2019).»
+- **`on_d_linfedema`, derivación** (solo con «Linfedema» o «Cirugía con ganglios extirpados»): «¿Se le ha hinchado más el brazo o la pierna, o le ha aparecido hinchazón nueva?» → «Linfedema nuevo o que aumenta: que lo valore su médico o su fisioterapeuta de linfedema.» **[propia; decisión 8]** Sin urgencia de celulitis hasta leer una fuente.
+- Banderas del sistema, cada una enlazada a su pregunta. Sin hipercalcemia (decisión 7).
+- Pendientes del modo breve: «Metástasis óseas sin registrar» y, con tratamiento cardiotóxico, «Revisión del corazón sin registrar».
+
+### Fase 3
+
+`#onNotaFatiga`, bajo la matriz de irritabilidad, con la tarjeta marcada y «Fatiga» en secuelas: «La fatiga del cáncer no es irritabilidad: el ejercicio moderado la reduce, y el suave apenas (Campbell 2019). Dosifica por cómo toleró la sesión anterior.»
+
+### Fase 4b
+
+Línea encima de las tarjetas (`.on-nota-4b`), sin tocar las LR:
+- Con metástasis óseas «Sí» o «No lo sabe»: «Metástasis óseas: sin movimientos rápidos ni cargados al final del recorrido en la zona de la lesión (Campbell 2022), y sin thrust en esa zona.» (la última parte, **[propia, decisión 10]**).
+- Con «Neuropatía»: «Neuropatía: las pruebas de sensibilidad y equilibrio pueden salir alteradas por ella; compáralas con su línea base.» **[propia]**
+- Nada sobre el brazo con linfedema (decisión 11).
+
+### Fase 5 — recuadro «Antecedente de cáncer» (`.on-fase5`, nunca se pliega)
+
+Cabecera con los datos de la tarjeta. Líneas, en este orden (cada una con su fuente al lado, botón de cita):
+1. Metástasis óseas: «Consulta con su equipo médico antes del ejercicio estructurado. Evita los movimientos rápidos o cargados al final del recorrido en la zona de la lesión; empieza con cargas bajas y progresa despacio mientras no aumente el dolor; prevén las caídas (Campbell 2022).»
+2. Tratamiento cardiotóxico: «Más riesgo cardiaco tardío, sobre todo con 60 años o más al tratarse: los supervivientes a 5 años tienen 1,3–3,6 veces más mortalidad cardiovascular. Antes del ejercicio moderado, valoración cardiopulmonar (prueba de esfuerzo, o marcha de 6 minutos como alternativa) (Gilchrist 2019).»
+3. Dosis: «Objetivo: aeróbico moderado al menos 3 veces por semana, al menos 30 minutos, al menos 8–12 semanas; y fuerza al menos 2 veces por semana, al menos 2 series de 8–15 repeticiones al 60 % de 1RM o más. Para la fatiga hace falta intensidad moderada; la suave apenas la reduce. Si no lo tolera, baja la dosis aunque quede por debajo (Campbell 2019).»
+4. «Con secuelas o deterioro físico, mejor un programa supervisado por un profesional sanitario que uno comunitario (Schmitz 2019).»
+5. Linfedema del brazo: «Tras un cáncer de mama, la fuerza progresiva supervisada de grandes grupos musculares, 2–3 veces por semana, empezando bajo y subiendo despacio, es segura; en el linfedema de otros cánceres no hay datos (Campbell 2019).»
+6. Neuropatía o caídas: «Aplica los programas de prevención de caídas habituales (Campbell 2019; Montero-Odasso 2022). En supervivientes tratados con quimioterapia, la neuropatía no se asoció a las caídas en el único estudio leído, y sí la función ejecutiva (McNeish 2023).»
+7. Terapia hormonal: «Qué vigilar con estos fármacos →» (guía de fármacos, fármacos del hueso).
+8. En tratamiento: «Si se encuentra mal o tiene fiebre, a urgencias o al teléfono de 24 horas de oncología (NICE CG151).»
+9. Enlace al bloque de la guía de ejercicio (decisión 13), cuando exista.
+
+### Fase 6
+
+- `construirPlan({ oncologico })` (null o `{ estado, metastasis, cardiotoxico, revisionCardiaca, linfedema, neuropatia }`):
+  - Aviso `oncologico` (cualquier plan): líneas 3 y 4 del recuadro.
+  - Aviso `oncologicoMetastasis` (metástasis «Sí» o «No lo sabe»): línea 1.
+  - Aviso `oncologicoCorazon` (cardiotóxico sin revisión, o «No lo sabe»): línea 2, con «Hasta tener la valoración, intensidad ligera.» **[propia]**
+  - Sin tope de thrust propio salvo la línea de la 4b.
+- Red de seguridad `RED_ONCOLOGICO`: «Dolor de espalda nuevo con debilidad, adormecimiento o cambios al orinar → urgencias hoy (pendiente de NG234). Dolor óseo nuevo que no se pasa → su médico pronto. En tratamiento, fiebre o malestar → urgencias o teléfono de oncología (NICE CG151).»
+
+### Salidas
+
+- Payload `on` (solo con la tarjeta marcada): `{ es, cn[], tr[], mo, mz[], rc, sc[], li[] }` — estado, cánceres (texto), tratamientos, metástasis óseas, dónde, revisión cardiaca, secuelas, miembro del linfedema.
+- 📋 Notas: «🎗 ANTECEDENTE DE CÁNCER: mama · terminado · quimioterapia, antraciclinas o trastuzumab, radioterapia (corazón en el campo) · metástasis óseas: no · corazón revisado: no · secuelas: neuropatía, fatiga».
+- 📄 Informe: «ANTECEDENTE ONCOLÓGICO» con el cáncer, los tratamientos y las secuelas; sin técnicas ni recomendaciones de ejercicio.
+- Bloque de la IA `bloqueONIA()` (sin citas): los datos de la tarjeta y «Con tratamiento cardiotóxico sin revisión cardiaca, no propongas ejercicio de intensidad moderada sin valoración previa. Con metástasis óseas, nada de movimientos rápidos o cargados al final del recorrido en la zona de la lesión.» `ON_CASOS` fija el texto; copia `_bloqueON` en physiq-report.
+
+### Guía de condiciones especiales y hojas
+
+- Fila `oncologico`: «Qué es: haber tenido un cáncer, aunque esté curado; los tratamientos y sus secuelas cambian el ejercicio.» «Piensa en ella si: ha tenido un cáncer o toma terapia hormonal tras uno.» «Al marcarla, añade: preguntas de metástasis óseas, corazón y linfedema; recuadro con la dosis de ejercicio; avisos y red de seguridad del plan.» Fuentes: Campbell 2019, Campbell 2022, Gilchrist 2019, Schmitz 2019.
+- Hojas regeneradas: `condiciones`, cribado de las 7 regiones, `plan`, y sus cuadernos.
+
+### Tests
+
+- `tests/unit/oncologico.mjs`: visibilidad por estado y chips; líneas rojas; «marcar la tarjeta, todos los chips, nunca quita ni rebaja una urgencia de otro sistema»; payload; `ON_CASOS`; nada de la tarjeta en el 📄 Informe salvo el antecedente; ninguna línea sin fuente fuera de las marcadas **[propia]**.
+- Prueba de humo, sección `oncologico`.
+- Referencias nuevas en `data/referencias.js`: Campbell 2019, Schmitz 2019, Campbell 2022, Gilchrist 2019, Sturgeon 2023, McNeish 2023 (la clave `Campbell 2020` ya existe y es otro trabajo: estas llevan su año, sin choque) y `docs/referencias.md` regenerado.
