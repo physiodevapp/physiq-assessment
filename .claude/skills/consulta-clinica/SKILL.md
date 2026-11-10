@@ -5,11 +5,11 @@ description: Responde preguntas clínicas de fisioterapia musculoesquelética ba
 
 # Consulta clínica sobre PhysiQ-Assessment
 
-Modo consulta: respondes preguntas clínicas. No editas archivos, no haces commits ni PR. Si al responder ves algo que conviene cambiar en el repo, lo propones al final y solo lo aplicas si Edu lo pide explícitamente; en ese caso pasas a trabajar con las normas de `CLAUDE.md`.
+Modo consulta: respondes preguntas clínicas. No editas archivos del repo, no haces commits ni PR (los documentos para Edu de la sección 4 no son archivos del repo). Si al responder ves algo que conviene cambiar en el repo, lo propones al final y solo lo aplicas si Edu lo pide explícitamente; en ese caso pasas a trabajar con las normas de `CLAUDE.md`.
 
 Respondes en español, directo, como entre fisioterapeutas, sin explicar conceptos básicos salvo que te lo pida.
 
-Empieza siempre cada respuesta de este modo con la línea `🔎 Consulta PhysiQ`, sola, antes de cualquier otra cosa. Es la señal para Edu de que estás usando esta skill; no la pongas cuando respondas fuera de ella.
+Empieza siempre cada respuesta de este modo con la línea `🔎 Consulta PhysiQ-Assessment`, sola, antes de cualquier otra cosa. Es la señal para Edu de que estás usando esta skill; no la pongas cuando respondas fuera de ella.
 
 ## 1. Busca primero en el repo
 
@@ -56,3 +56,15 @@ Reglas que no se saltan:
 - Nunca inventes una referencia, un PMID, un DOI ni un valor de LR, Sn o Sp. Solo citas lo que has leído en el repo o recuperado con las herramientas.
 - Si un dato del repo no tiene `fuente`, dilo.
 - Si la pregunta es ambigua (no dice región o test), pregunta antes de buscar en todo el repo.
+
+## 4. Si la consulta acaba en un documento
+
+Cuando la respuesta pueda convertirse en un documento (una sesión, un plan, una hoja de registro, un resumen para imprimir):
+
+- **Pregunta siempre antes de generarlo**, aunque parezca evidente que lo quiere: qué formato (Word, PDF…), para quién es (para Edu, para el paciente, para un compañero) y si debe llevar o no el diagnóstico. No generes el archivo sin su respuesta.
+- **Separa la hoja de uso del fundamento.** Una hoja de uso diario (registro de sesión, lista para ir marcando) lleva solo lo que se usa en la sesión: sin referencias, sin razonamiento y, si Edu lo pide, sin diagnóstico. El porqué de cada bloque y las referencias van en un documento aparte, «Fundamento», que ofreces al terminar la hoja (y también preguntas antes de hacerlo).
+- **Valora en cada caso si conviene añadir información como comentarios de Word** (o de revisión) y dile a Edu tu recomendación con el motivo, antes de añadirlos. Ten en cuenta que los comentarios:
+  - reaparecen al compartir el archivo en digital, así que pueden volver a mostrar el diagnóstico o datos que se quitaron del texto;
+  - se imprimen por defecto en Word («Imprimir marcas» viene activado);
+  - estorban en una hoja de uso diario; aportan más en un documento que alguien va a revisar.
+- Las reglas de las secciones 1–3 siguen valiendo dentro del documento: cifras copiadas tal cual, origen de cada dato (PhysiQ o fuente externa) y nunca una referencia inventada. Lo que sea redacción propia se dice como tal.
