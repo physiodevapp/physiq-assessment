@@ -544,6 +544,16 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Escrita en `data/farmacos.js` con las recomendaciones de las decisiones 1, 2, 4, 6 y 7
   - [x] Decisiones 1–7 aceptadas por el usuario (2026-11); hechos el enlace desde la tarjeta y el recuadro de Parkinson (3) y el aviso de la fase 6 (5)
   - [x] Revisión del usuario del contenido de la familia y del aviso, en la app desplegada (2026-11, physiodevapp/physiq-assessment#624)
+- [ ] **Antecedente de cáncer (superviviente)** (petición del usuario, 2026-11): metástasis óseas, riesgo cardiaco tardío por el tratamiento (antraciclinas, trastuzumab, radioterapia con el corazón en el campo), compresión medular metastásica, neuropatía y caídas, linfedema; dosis de ejercicio en supervivientes
+  - [x] Borrador de diseño (2026-11): `docs/antecedente-oncologico.md`. Solo diseño, sin código. 5 fuentes nuevas leídas enteras en PMC (Campbell 2019, Schmitz 2019, Campbell 2022, Gilchrist 2019, Sturgeon 2023; sin sus tablas) más las ya registradas. Tarjeta (Tratamiento terminado / En tratamiento), `SIS_ONCOLOGICO`, línea 4b, recuadro 5, aviso y red 6. 14 decisiones para el usuario
+  - [x] Decisiones del usuario: aceptadas las 14 recomendaciones (2026-11)
+  - [x] NICE NG234 leída (PDF del usuario, 2026-11): urgencia de compresión medular (1.3.2) y dolor de columna con rasgos de metástasis en 24 h (1.3.3)
+  - [ ] PDF del usuario pendientes (guía ESC 2022 de cardio-oncología). Campbell 2019 y 2022 con sus tablas leídos (2026-11): triaje de la NCCN (tabla 4), precauciones por secuela (tabla 5) y cuándo es imprescindible la consulta con metástasis (tabla 1, DR3), aplicados al implementar. McNeish 2023 leída entera (2026-11): la neuropatía no se asoció a las caídas en su muestra
+  - [x] Texto cerrado aprobado por el usuario (2026-11), con los cambios de NICE NG234
+  - [x] Implementación, tests y prueba de humo (2026-11): tarjeta `#cardOncologico`, `SIS_ONCOLOGICO` (2 urgencias y 3 derivaciones), notas de las fases 3 y 4b, recuadro `.on-fase5`, avisos y `RED_ONCOLOGICO` de la fase 6, payload `on`, 📋 Notas, 📄 Informe, `bloqueONIA` con `ON_CASOS`, pendientes del modo breve, fila de la guía de condiciones, 6 referencias nuevas (Sturgeon 2023 fuera: el texto final no la cita); `tests/unit/oncologico.mjs` y sección de humo `oncologico`. Pendiente de revisión del usuario en la app
+  - [x] Revisión del usuario (2026-11, physiodevapp/physiq-assessment#635)
+  - [x] physiq-report: `_bloqueON` con una copia literal de `bloqueONIA()` (rama `claude/oncologico-bloque-on`, physiodevapp/physiq-report#103; `ON_CASOS` fija el mismo texto en los dos repositorios)
+  - [ ] Bloque «Ejercicio en supervivientes de cáncer» de la guía de ejercicio (decisión 13), enlazado desde la condición
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
 

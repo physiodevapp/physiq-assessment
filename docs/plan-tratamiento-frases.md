@@ -43,6 +43,9 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Para el ejercicio y consulta si notas náuseas, dolor u opresión en el pecho que dura más de unos minutos, falta de aire fuera de lo normal, mareo, palpitaciones o sudor frío.»  
   ↳ fuente: Keus 2014, 6.7.5 (cuándo parar el ejercicio; solo lo que el paciente puede notar, decisión 19) (docs/parkinson.md)  
   ↳ clave `alarmaEjercicioParkinson`
+- [ ] «Si te cuesta andar o notas debilidad, adormecimiento, un dolor que baja por un brazo o una pierna, o cambios al orinar o en el intestino, ve hoy a urgencias. Si tienes un dolor de espalda o de cuello nuevo, intenso, que va a más o te despierta por la noche, llama a tu oncología: que te vean en 24 h. Si estás en tratamiento y tienes fiebre o te encuentras mal, ve a urgencias o llama al teléfono de oncología.»  
+  ↳ fuente: NICE NG234, 1.3.2 y 1.3.3 (compresión medular y dolor de columna con rasgos de metástasis); NICE CG151 (sepsis neutropénica) (docs/antecedente-oncologico.md)  
+  ↳ clave `alarmaOncologico`
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
   ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
   ↳ clave `alarmaSincope`
@@ -428,6 +431,12 @@ Regiones periféricas:
   ↳ fuente en el texto (Ghaly 2016)
 - [ ] «Parkinson: no uses plataformas de vibración de cuerpo entero (Keus 2014, 6.4.6: recomendación fuerte en contra).»  
   ↳ **redacción propia**
+- [ ] «Antecedente de cáncer: Objetivo: aeróbico moderado al menos 3 veces por semana, al menos 30 minutos, al menos 8–12 semanas; y fuerza al menos 2 veces por semana, al menos 2 series de 8–15 repeticiones al 60 % de 1RM o más. Para la fatiga hace falta intensidad moderada; la suave apenas la reduce. Si no lo tolera, baja la dosis aunque quede por debajo (Campbell 2019). Con secuelas o deterioro físico, mejor un programa supervisado por un profesional sanitario que uno comunitario (Schmitz 2019). Antes de empezar, valora la condición física y la función (Campbell 2019, tabla 5).»  
+  ↳ fuente en el texto (Campbell 2019, Schmitz 2019)
+- [ ] «Antecedente de cáncer con metástasis óseas: Consulta con su equipo médico antes del ejercicio estructurado, imprescindible si la lesión es inestable o de estabilidad desconocida, si ha tenido dolor óseo o tratamiento para él en los últimos 3 meses, o una fractura por la enfermedad en el último año (Campbell 2022, tabla 1). Evita los impactos, la flexión y la extensión extremas del tronco, la flexión o la extensión del tronco con carga y los giros bruscos (Campbell 2019, tabla 5), y los movimientos rápidos o cargados al final del recorrido en la zona de la lesión (Campbell 2022); empieza con movimiento activo sin carga y progresa despacio mientras no aumente el dolor (Campbell 2022, tabla 1); prevén las caídas (Campbell 2022). Si refiere dolor óseo, que lo valore su equipo médico antes de seguir (Campbell 2019, tabla 5).»  
+  ↳ fuente en el texto (Campbell 2019, Campbell 2022)
+- [ ] «Antecedente de cáncer con un tratamiento que puede dañar el corazón, sin revisión cardiaca: Más riesgo cardiaco tardío, sobre todo con 60 años o más al tratarse: los supervivientes a 5 años tienen 1,3–3,6 veces más mortalidad cardiovascular. Antes del ejercicio moderado, valoración cardiopulmonar (prueba de esfuerzo, o marcha de 6 minutos como alternativa) (Gilchrist 2019). Hasta tener la valoración, intensidad ligera.»  
+  ↳ fuente en el texto (Gilchrist 2019)
 - [ ] «Anticoagulado o antiagregado: precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3); un esfuerzo mecánico pequeño puede dar un sangrado importante (Kim 2026, un caso). De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes, solo casos de sangrado (Tominaga 2023; Kwon 2024; Kim 2026) y un consenso, en mayores, que pide informar antes del riesgo de moratón o sangrado (Hawk 2017). Antes de cada técnica, pregunta si desde la última sesión se ha dado un golpe o ha notado un hematoma o un dolor nuevos. No le digas que deje el fármaco ni que se salte una dosis (Steffel 2021).»  
   ↳ **redacción propia**
 - [ ] «Anticoagulante: sin manipulación con thrust en la columna torácica (Puentedura 2015, tabla 1: contraindicación absoluta); en la cervical, otra tabla lo trata como precaución (Hutting 2018, opinión de los autores). Las dos son opinión de expertos y ninguna distingue fármacos ni da un INR. Los escalones no proponen grado V; si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
@@ -746,6 +755,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ **redacción propia**
 - [ ] «Red de seguridad (Parkinson): explicar que pare el ejercicio y consulte si nota náuseas, dolor u opresión en el pecho que dura más de unos minutos, falta de aire fuera de lo normal, mareo, palpitaciones o sudor frío (Keus 2014, 6.7.5).»  
   ↳ **redacción propia**
+- [ ] «Red de seguridad (antecedente de cáncer): Dificultad para andar, debilidad, adormecimiento, dolor que baja por un brazo o una pierna, o cambios al orinar o en el intestino → urgencias hoy (NICE NG234, 1.3.2). Dolor de espalda o cuello nuevo, intenso, que va a más o le despierta por la noche → su oncología en 24 h (NICE NG234, 1.3.3). En tratamiento, fiebre o malestar → urgencias o teléfono de oncología (NICE CG151).»  
+  ↳ fuente en el texto (NICE NG234, NICE CG151)
 - [ ] «Red de seguridad (disautonomía): explicar que, si se desmaya mientras hace ejercicio, debe parar y no volver a hacer ejercicio hasta que le vea el médico, y comprobar que lo ha entendido (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).»  
   ↳ fuente en el texto (NICE CG109, Brignole 2018)
 - [ ] «Signo comparable y la actividad que el paciente refiere como control (Maitland 2005, cap. 6, pp. 100–101 y 128).»  

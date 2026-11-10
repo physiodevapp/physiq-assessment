@@ -1264,6 +1264,117 @@ async function checkImplantes(page) {
   return r;
 }
 
+// Antecedente de cáncer (Fase P, docs/antecedente-oncologico.md), lumbar.
+// Fase 1: dos estados, chips («No lo sabe» excluye), filas que dependen de
+// otras y líneas rojas nunca plegadas; fase 2: dos urgencias sin embudo y las
+// derivaciones según la tarjeta; nota de la fase 3, 4b, fase 5 (nunca
+// plegada), fase 6 (avisos y red) y 320 px.
+async function checkOncologico(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  const lineas = () => page.$$eval('#onLineas [data-on-linea]', els => els.map(e => e.dataset.onLinea).join());
+  const chip = (lista, id) => page.click(`[data-on-lista="${lista}"] [data-on-chip="${id}"]`);
+  await page.fill('#motivoConsulta', 'Dolor lumbar al agacharse');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.nota = (await page.textContent('#onNota')).includes('Márcala si ha tenido un cáncer, aunque esté curado');
+  r.oculto = !(await page.isVisible('#onCuerpo'));
+  await page.click('#onEstado .option-btn[data-valor="terminado"]');
+  r.cuerpo = await page.isVisible('#onCuerpo') && !(await page.isVisible('#onRevisionWrap')) && !(await page.isVisible('#onZonasWrap'));
+  await chip('canceres', 'mama');
+  await chip('canceres', 'ns');
+  r.nsExcluye = await page.evaluate(() => state.oncologico.canceres.join() === 'ns');
+  await chip('canceres', 'mama');
+  await chip('tratamientos', 'cardiotoxico');
+  await chip('tratamientos', 'rtCuello');
+  await chip('tratamientos', 'hormonal');
+  r.revision = await page.isVisible('#onRevisionWrap');
+  r.lineasCorazon = await lineas() === 'cardiaco,tensionBrazos'
+    && await page.$$eval('#onLineas .alert-danger', els => els.every(e => !e.closest('details')));
+  await page.click('[data-on-fila="revision"] .option-btn[data-valor="si_alterado"]');
+  r.alterado = (await lineas()) === 'cardiacoAlterado,tensionBrazos';
+  await page.click('[data-on-fila="revision"] .option-btn[data-valor="si_alterado"]');
+  r.segundoToque = await page.evaluate(() => state.oncologico.revision === '');
+  await page.click('[data-on-fila="metastasis"] .option-btn[data-valor="ns"]');
+  r.metDuda = (await page.textContent('#onLineas')).includes('Hasta confirmarlo: antes del ejercicio estructurado');
+  await page.click('[data-on-fila="metastasis"] .option-btn[data-valor="si"]');
+  r.zonas = await page.isVisible('#onZonasWrap');
+  await chip('zonas', 'columna');
+  await chip('secuelas', 'linfedema');
+  r.linfedema = await page.isVisible('#onLinfedemaWrap');
+  await chip('linfedema', 'brazoIzquierdo');
+  await chip('secuelas', 'fatiga');
+  await chip('secuelas', 'neuropatia');
+  await chip('secuelas', 'osteoporosis');
+  r.osteoporosis = await page.isVisible('#onOsteoporosis') && await page.evaluate(() => !state.osteoporosis.estado);
+  await page.click('#onHormonal button');
+  await page.waitForSelector('#farmOverlay.open');
+  r.guiaFarmacos = await page.evaluate(() => document.querySelector('#farmCuerpo [data-familia="hueso"]')?.open === true);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open'));
+  // 320 px: los chips y las líneas caben
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.waitForFunction(() => innerWidth === 320);
+  // Espera a que el diseño se asiente (filas.js reparte los botones con un
+  // ResizeObserver): con la CI cargada, 150 ms fijos no bastaban.
+  const cabeOncologico = () => document.documentElement.scrollWidth <= 320
+    && [...document.querySelectorAll('#cardOncologico .option-btn, #onLineas .alert')].every(e => e.getBoundingClientRect().right <= 321);
+  r.estrecho = await page.waitForFunction(cabeOncologico, null, { timeout: 5000 }).then(() => true, () => false);
+  if (!r.estrecho) r.estrechoDetalle = await page.evaluate(() => ({
+    ancho: document.documentElement.scrollWidth,
+    fuera: [...document.querySelectorAll('#cardOncologico .option-btn, #onLineas .alert')]
+      .filter(e => e.getBoundingClientRect().right > 321).map(e => `${e.textContent.trim().slice(0, 40)} → ${Math.round(e.getBoundingClientRect().right)}`),
+  }));
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_oncologico');
+  await page.click('#tab_transversal_oncologico');
+  const P = '#panel_transversal_oncologico';
+  r.preguntas = await page.evaluate(sel => [...document.querySelectorAll(`${sel} .sq2`)].map(e => e.id).join(), P)
+    === 'sq2_on_u_medula,sq2_on_u_columna,sq2_on_d_hueso,sq2_on_d_corazon,sq2_on_d_linfedema';
+  r.sinEmbudo = await page.$$eval(`${P} [data-embudo]`, els => els.length) === 0;
+  await page.click(`${P} #sq2_on_u_columna .sq-btn.si`);
+  r.urgencia = await page.isVisible('#sistemicoAlert .urgencia-alert');
+  await page.click(`${P} #sq2_on_u_columna .sq-btn.no`);
+  await page.click(`${P} #sq2_on_d_corazon .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_on_d_corazon .sq2-deriv-msg`);
+  await page.click(`${P} #sq2_on_d_corazon .sq-btn.no`);
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForTimeout(150);
+  r.nota3 = await page.isVisible('#onNotaFatiga') && (await page.textContent('#onNotaFatiga')).includes('La fatiga del cáncer no es irritabilidad');
+  // Recorrido entero: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#onEstado .option-btn[data-valor="tratamiento"]');
+  await chip('canceres', 'mama');
+  await chip('tratamientos', 'cardiotoxico');
+  await page.click('[data-on-fila="metastasis"] .option-btn[data-valor="si"]');
+  await chip('secuelas', 'neuropatia');
+  await chip('secuelas', 'ostomia');
+  await walkRegion(page, 'lumbar');
+  r.fase5 = await page.evaluate(() => { const box = document.querySelector('#resultsContent .on-fase5');
+    const t = box?.textContent || '';
+    return !!box && !box.closest('details') && t.includes('Antecedente de cáncer.') && t.includes('triaje de la NCCN')
+      && t.includes('1,3–3,6 veces') && t.includes('que vacíe la bolsa') && t.includes('teléfono de 24 horas de oncología') && t.includes('qué cambios vigilar'); });
+  r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .on-fase5 .cita[data-cita^="Campbell 2022"]'));
+  r.payload = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().on?.mo === 'si');
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.isVisible('#hypothesisCards .on-nota-4b') && (await page.textContent('#hypothesisCards .on-nota-4b')).includes('sin thrust en esa zona');
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Antecedente de cáncer: Objetivo: aeróbico moderado') && t.includes('Antecedente de cáncer con metástasis óseas')
+      && t.includes('Hasta tener la valoración, intensidad ligera') && t.includes('Red de seguridad (antecedente de cáncer)'); });
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // Fármacos que toma (paso 3 de la farmacología, docs/farmacos-paciente.md),
 // lumbar. Fase 1: chips de las familias escritas de la guía (sin texto libre),
 // la línea del anticoagulado, el chip de corticoides desde el lupus (solo
@@ -3737,7 +3848,7 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,anticoagulado,parkinson,implantes,tarlov,cascanueces,congestionPelvica'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,anticoagulado,parkinson,implantes,oncologico,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
       && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
@@ -7389,7 +7500,7 @@ async function checkGuia(browser, errors) {
     await page.keyboard.press('Escape');
     await page.goto(`${base}#hombro/confirmacion`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.guia-cc-tec', { state: 'attached' });
-    r.tecnica4b = await page.evaluate(() => document.querySelectorAll('.guia-cc-tec li').length === 7
+    r.tecnica4b = await page.evaluate(() => document.querySelectorAll('.guia-cc-tec li').length === 9
       && [...document.querySelectorAll('.guia-cc-test')].some(x => /lado sano/.test(x.textContent)));
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
     r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
@@ -8120,6 +8231,13 @@ const SECCIONES = [
     const r = await checkImplantes(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con un estado y 9 chips, sin chips las líneas de «No sabe cuál», las de cada chip una vez y nunca plegadas, «No sabe cuál» excluye, el estimulador cerebral profundo un solo dato con el Parkinson, 320 px, sin sistema de la fase 2, fase 5 nunca plegada, payload ie y avisos de la fase 6`);
     if (!r.ok) console.log('\nImplantes:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'oncologico', titulo: 'Antecedente de cáncer (Fase P, lumbar):', run: async ({ page }) => {
+    const r = await checkOncologico(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con dos estados, chips («No lo sabe» excluye), revisión del corazón solo con tratamiento cardiotóxico, líneas rojas nunca plegadas (corazón, tensión en los dos brazos, metástasis con «Hasta confirmarlo:»), segundo toque borra, osteoporosis sin marcarla, guía de fármacos en el hueso, 320 px, dos urgencias y derivaciones sin embudo, nota de la fase 3, 4b, fase 5 nunca plegada, payload on y avisos y red de la fase 6`);
+    if (!r.ok) console.log('\nAntecedente de cáncer:', JSON.stringify(r));
     return r.ok;
   } },
 

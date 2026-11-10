@@ -1243,7 +1243,7 @@ export function htmlPlanHoja() {
     return `<p class="reg"><b>${esc2(nombreRegion(r))}</b></p><ul>${siempre}${neuro}</ul>`;
   };
   const conds = [['Lupus', PLAN.RED_LUPUS], ['Disautonomía', [PLAN.RED_DISAUTONOMIA]], ['Trastorno mastocitario o anafilaxia', [PLAN.RED_MASTOCITOS]], ['Osteoporosis', [PLAN.RED_OSTEOPOROSIS]],
-    ['Embarazo', [PLAN.RED_EMBARAZO]], ['Posparto', [PLAN.RED_POSPARTO]], ['Anticoagulado o antiagregado', [PLAN.RED_ANTICOAGULADO]], ['Parkinson', PLAN.RED_PARKINSON]];
+    ['Embarazo', [PLAN.RED_EMBARAZO]], ['Posparto', [PLAN.RED_POSPARTO]], ['Anticoagulado o antiagregado', [PLAN.RED_ANTICOAGULADO]], ['Parkinson', PLAN.RED_PARKINSON], ['Antecedente de cáncer', [PLAN.RED_ONCOLOGICO]]];
   const tarjetas = [
     `<section class="tarjeta pl"><h2>Cómo se elige el escalón (B)</h2>
       <p>Se cruzan la gravedad (por la NRS) y la irritabilidad (la de la hoja de irritabilidad; sin registrar, alta).</p>

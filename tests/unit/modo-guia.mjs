@@ -377,7 +377,7 @@ const { CONTRASTE_URGENCIAS } = await import('../../data/guia.js');
 const SIN_RESP = ids => ids.map(id => ({ id, respuesta: '' }));
 const detecta = (tr, ids = Object.keys(CONTRASTE_URGENCIAS)) => RI.urgenciasEnTranscripcion(tr, SIN_RESP(ids)).map(u => u.id);
 
-const CONDICIONALES = ['soloPosquirurgico', 'soloHipermovilidad', 'soloDisautonomia', 'soloLupus', 'soloMastocitos', 'soloOsteoporosis', 'soloEmbarazo', 'soloAnticoagulado', 'soloParkinson'];
+const CONDICIONALES = ['soloPosquirurgico', 'soloHipermovilidad', 'soloDisautonomia', 'soloLupus', 'soloMastocitos', 'soloOsteoporosis', 'soloEmbarazo', 'soloAnticoagulado', 'soloParkinson', 'soloOncologico'];
 const preguntasUrgentes = condicionales => {
   const ids = new Map();
   for (const r of Object.keys(SYSTEMIC_SCREENING)) {
@@ -392,7 +392,7 @@ const preguntasUrgentes = condicionales => {
 test('urgencias en la transcripción: todas las preguntas de urgencia, de las 7 regiones y de las condiciones especiales, tienen tema y patrones válidos', () => {
   const regionales = preguntasUrgentes(false), condiciones = preguntasUrgentes(true);
   assert.equal(regionales.size, 36);
-  assert.equal(condiciones.size, 41, 'paso 6: las de las condiciones especiales');
+  assert.equal(condiciones.size, 43, 'paso 6: las de las condiciones especiales');
   assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), [...regionales.keys(), ...condiciones.keys()].sort(), 'una entrada por pregunta de urgencia, ni más ni menos');
   for (const [id, c] of Object.entries(CONTRASTE_URGENCIAS)) {
     assert.ok(c.tema && c.patrones.length, id);
@@ -475,6 +475,8 @@ test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada
     ac_u_psoas: ['Tengo el muslo dormido y me duele la ingle.'],
     ac_u_pared: ['Me ha salido un bulto en la tripa al toser.'],
     ac_u_compartimental: ['El gemelo lo tengo duro como una piedra.'],
+    on_u_medula: ['Desde hace unos días tengo debilidad en las dos piernas.', 'Me dijeron que podía ser una compresión medular.'],
+    on_u_columna: ['El dolor de espalda es cada vez más fuerte.', 'Me encontraron metástasis en la columna.'],
     pk_u_crisis: ['Desde el lunes estoy mucho más rígido y tengo fiebre.', 'Tengo fiebre y no me puedo mover de la cama.'],
   };
   for (const [id, frases] of Object.entries(casos)) {
@@ -532,7 +534,7 @@ test('urgencias en la transcripción: un SÍ ya marcado no avisa; un NO o sin re
   assert.deepEqual(RI.revisarInforme('Informe.', { datos, transcripcion: tr }).filter(p => p.id === 'urgencia-transcripcion'), []);
 });
 
-test('urgencias en la transcripción: en las transcripciones reales, con las 77 preguntas sin responder, solo la cefalea en trueno de Javier', () => {
+test('urgencias en la transcripción: en las transcripciones reales, con las 79 preguntas sin responder, solo la cefalea en trueno de Javier', () => {
   const dir = 'tests/fixtures/informes';
   const ids = Object.keys(CONTRASTE_URGENCIAS);
   const archivos = readdirSync(join(RAIZ, dir)).filter(f => /transcripcion\.txt$/.test(f));

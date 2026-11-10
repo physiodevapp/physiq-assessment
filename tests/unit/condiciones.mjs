@@ -4,7 +4,7 @@ import { assert, leer, test, SYSTEMIC_SCREENING, buildPhysiQPayload, buildInform
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const C = await import('../../lib/condiciones.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
-const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS, SIS_MASTOCITOS, SIS_OSTEOPOROSIS, SIS_EMBARAZO, SIS_ANTICOAGULADO, SIS_PARKINSON, IMPLANTES } = await import('../../data/comun.js');
+const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS, SIS_MASTOCITOS, SIS_OSTEOPOROSIS, SIS_EMBARAZO, SIS_ANTICOAGULADO, SIS_PARKINSON, SIS_ONCOLOGICO, IMPLANTES } = await import('../../data/comun.js');
 
 console.log('\ncondiciones especiales (guía de la cabecera)');
 
@@ -12,12 +12,12 @@ const fila = id => CONDICIONES.find(c => c.id === id);
 const html = leer('index.html');
 
 test('orden de las filas (decisión 2): transversales de la más frecuente a la menos, luego lumbar y cadera', () => {
-  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'mastocitos', 'osteoporosis', 'embarazo', 'anticoagulado', 'parkinson', 'implantes', 'tarlov', 'cascanueces', 'congestionPelvica']);
+  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'mastocitos', 'osteoporosis', 'embarazo', 'anticoagulado', 'parkinson', 'implantes', 'oncologico', 'tarlov', 'cascanueces', 'congestionPelvica']);
   assert.deepEqual(CONDICIONES.filter(c => c.region).map(c => c.region), ['lumbar', 'lumbar', 'cadera']);
 });
 
 test('cada sistema transversal que solo se ve al marcarlo tiene su fila (una condición nueva añade la suya)', () => {
-  const PORCLAVE = { soloPosquirurgico: 'posquirurgico', soloHipermovilidad: 'hipermovilidad', soloDisautonomia: 'disautonomia', soloLupus: 'lupus', soloMastocitos: 'mastocitos', soloOsteoporosis: 'osteoporosis', soloEmbarazo: 'embarazo', soloAnticoagulado: 'anticoagulado', soloParkinson: 'parkinson' };
+  const PORCLAVE = { soloPosquirurgico: 'posquirurgico', soloHipermovilidad: 'hipermovilidad', soloDisautonomia: 'disautonomia', soloLupus: 'lupus', soloMastocitos: 'mastocitos', soloOsteoporosis: 'osteoporosis', soloEmbarazo: 'embarazo', soloAnticoagulado: 'anticoagulado', soloParkinson: 'parkinson', soloOncologico: 'oncologico' };
   const claves = new Set(Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas)
     .flatMap(s => Object.keys(s).filter(k => /^solo[A-Z]/.test(k) && s[k] === true)));
   for (const k of claves) {
@@ -46,9 +46,10 @@ test('cada pista sale de una pregunta que existe (cuestionario, sospecha, rasgos
         assert.ok(ids.has(id) || enRegion, `${c.id}: «${id}» no existe`);
       }
     }
-    // El posquirúrgico (su definición es el mecanismo) y los implantes con
-    // electrodos (sin sistema de la fase 2) no tienen pregunta de la que salir
-    if (!['posquirurgico', 'implantes'].includes(c.id)) assert.ok(c.pistas.every(p => p.de.length), `${c.id}: pista sin pregunta de origen`);
+    // El posquirúrgico (su definición es el mecanismo), los implantes con
+    // electrodos (sin sistema de la fase 2) y el antecedente de cáncer (su
+    // definición es el antecedente) no tienen pregunta de la que salir
+    if (!['posquirurgico', 'implantes', 'oncologico'].includes(c.id)) assert.ok(c.pistas.every(p => p.de.length), `${c.id}: pista sin pregunta de origen`);
   }
 });
 
@@ -63,7 +64,16 @@ test('cada fuente es una clave del registro que ya cita la pregunta de la que sa
   // Los implantes con electrodos no tienen preguntas: sus fuentes, las que citan las líneas de su tarjeta
   const textosImplantes = JSON.stringify(IMPLANTES);
   const corta = f => f.replace(/\s*\(.*\)$/, '');
+  // El antecedente de cáncer: sus fuentes, las que citan su tarjeta, su sistema y su recuadro
+  const textosOncologico = JSON.stringify(SIS_ONCOLOGICO);
   for (const c of CONDICIONES) {
+    if (c.id === 'oncologico') {
+      for (const f of c.fuentes) {
+        assert.ok(REFERENCIAS[f], `${c.id}: «${f}» no está en el registro`);
+        assert.ok(textosOncologico.includes(f), `${c.id}: «${f}» no la cita la condición`);
+      }
+      continue;
+    }
     if (c.id === 'implantes') {
       for (const f of c.fuentes) {
         assert.ok(REFERENCIAS[f], `${c.id}: «${f}» no está en el registro`);
