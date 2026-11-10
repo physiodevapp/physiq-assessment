@@ -1316,9 +1316,16 @@ async function checkOncologico(page) {
   // 320 px: los chips y las líneas caben
   await page.setViewportSize({ width: 320, height: 800 });
   await page.waitForFunction(() => innerWidth === 320);
-  await page.waitForTimeout(150);
-  r.estrecho = await page.evaluate(() => document.documentElement.scrollWidth <= 320
-    && [...document.querySelectorAll('#cardOncologico .option-btn, #onLineas .alert')].every(e => e.getBoundingClientRect().right <= 321));
+  // Espera a que el diseño se asiente (filas.js reparte los botones con un
+  // ResizeObserver): con la CI cargada, 150 ms fijos no bastaban.
+  const cabeOncologico = () => document.documentElement.scrollWidth <= 320
+    && [...document.querySelectorAll('#cardOncologico .option-btn, #onLineas .alert')].every(e => e.getBoundingClientRect().right <= 321);
+  r.estrecho = await page.waitForFunction(cabeOncologico, null, { timeout: 5000 }).then(() => true, () => false);
+  if (!r.estrecho) r.estrechoDetalle = await page.evaluate(() => ({
+    ancho: document.documentElement.scrollWidth,
+    fuera: [...document.querySelectorAll('#cardOncologico .option-btn, #onLineas .alert')]
+      .filter(e => e.getBoundingClientRect().right > 321).map(e => `${e.textContent.trim().slice(0, 40)} → ${Math.round(e.getBoundingClientRect().right)}`),
+  }));
   await page.setViewportSize({ width: 1280, height: 860 });
   await page.click('#phase1 .btn-primary');
   await page.waitForTimeout(150);
