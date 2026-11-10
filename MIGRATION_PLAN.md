@@ -547,8 +547,8 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
 - [ ] **Antecedente de cáncer (superviviente)** (petición del usuario, 2026-11): metástasis óseas, riesgo cardiaco tardío por el tratamiento (antraciclinas, trastuzumab, radioterapia con el corazón en el campo), compresión medular metastásica, neuropatía y caídas, linfedema; dosis de ejercicio en supervivientes
   - [x] Borrador de diseño (2026-11): `docs/antecedente-oncologico.md`. Solo diseño, sin código. 5 fuentes nuevas leídas enteras en PMC (Campbell 2019, Schmitz 2019, Campbell 2022, Gilchrist 2019, Sturgeon 2023; sin sus tablas) más las ya registradas. Tarjeta (Tratamiento terminado / En tratamiento), `SIS_ONCOLOGICO`, línea 4b, recuadro 5, aviso y red 6. 14 decisiones para el usuario
   - [x] Decisiones del usuario: aceptadas las 14 recomendaciones (2026-11)
-  - [ ] Leer NICE NG234 (la web bloquea la descarga: texto o PDF del usuario) y los PDF del usuario (guía ESC 2022 de cardio-oncología; Campbell 2019 y 2022 con sus tablas). McNeish 2023 leída entera (2026-11): la neuropatía no se asoció a las caídas en su muestra
-  - [x] Texto cerrado para revisión (2026-11), pendiente de la aprobación del usuario; la urgencia de compresión medular, abierta hasta leer NG234
+  - [x] NICE NG234 leída (PDF del usuario, 2026-11): urgencia de compresión medular (1.3.2) y dolor de columna con rasgos de metástasis en 24 h (1.3.3). [ ] Pendientes y los PDF del usuario (guía ESC 2022 de cardio-oncología; Campbell 2019 y 2022 con sus tablas). McNeish 2023 leída entera (2026-11): la neuropatía no se asoció a las caídas en su muestra
+  - [x] Texto cerrado aprobado por el usuario (2026-11), con los cambios de NICE NG234
   - [ ] Implementación, tests y prueba de humo
   - [ ] physiq-report: copia literal del bloque de la IA
   - [ ] Bloque «Ejercicio en supervivientes de cáncer» de la guía de ejercicio (decisión 13), enlazado desde la condición

@@ -1,6 +1,6 @@
 # Antecedente de cáncer (superviviente) — diseño
 
-Estado: **borrador de diseño (noviembre 2026), sin código; aceptadas por el usuario las 14 recomendaciones (noviembre 2026).** Petición del usuario tras preparar una primera visita de un paciente de 81 años con un cáncer superado y desacondicionamiento físico, que quiere hacer ejercicio en el gimnasio. Siguiente paso: «Texto cerrado para revisión», que el usuario aprueba antes de implementar.
+Estado: **borrador de diseño (noviembre 2026), sin código; aceptadas por el usuario las 14 recomendaciones (noviembre 2026).** Petición del usuario tras preparar una primera visita de un paciente de 81 años con un cáncer superado y desacondicionamiento físico, que quiere hacer ejercicio en el gimnasio. **Texto cerrado aprobado por el usuario (noviembre 2026)**, con los cambios de NICE NG234 (PDF del usuario, leído en sus capítulos 1.2, 1.3, 1.6 y 1.12; ver «Lectura de NICE NG234»). En implementación.
 
 Reglas, como en las otras condiciones de la Fase P: solo fuentes leídas enteras (en esta sesión o en una anterior, con su nota en `data/referencias.js`); ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes o decidida por el usuario; lo que no tiene fuente va marcado como **[propia]** y es una decisión del usuario.
 
@@ -58,7 +58,7 @@ Búsqueda de noviembre 2026 en `data/`:
 
 ### Pendiente de leer (no se citan hasta leerlas)
 
-- **NICE NG234** (metástasis vertebrales y compresión medular metastásica, 2023): síntomas que piden urgencia y plazo. Necesaria para la urgencia de la fase 2 (decisión 4). **La web de NICE rechaza la descarga automática (HTTP 403, noviembre 2026)**: hace falta que el usuario pegue el capítulo «Recommendations» o aporte el PDF. No hay otra fuente leída en el repo sobre sus síntomas (Jayarangaiah 2023 solo se usa para el antecedente de cáncer).
+- **NICE NG234** (metástasis vertebrales y compresión medular metastásica, 2023): síntomas que piden urgencia y plazo. Necesaria para la urgencia de la fase 2 (decisión 4). **Leída (PDF del usuario, noviembre 2026)**: ver «Lectura de NICE NG234».
 - **Lyon 2022** (guía ESC de cardio-oncología, Eur Heart J 43(41):4229-361, doi:10.1093/eurheartj/ehac244): sin acceso abierto ni resumen en PubMed. PDF del usuario.
 - **Tablas de Campbell 2019 y Campbell 2022**: PDF del usuario.
 - **Hipercalcemia maligna** (confusión, sed, estreñimiento): fuente por elegir (StatPearls en NCBI Bookshelf es accesible). Solo si se acepta la decisión 7.
@@ -184,7 +184,7 @@ Una línea encima de las tarjetas, sin tocar las LR (decisión 10):
 
 ## Texto cerrado para revisión (noviembre 2026)
 
-Con las 14 decisiones aceptadas. Lo que va entre comillas es el texto que verá el clínico; **[propia]** marca redacción sin fuente que el usuario aprueba aquí. Manda sobre las secciones de borrador. **Una pieza sigue abierta**: la urgencia de compresión medular metastásica (decisión 4), hasta leer NICE NG234.
+Con las 14 decisiones aceptadas. Lo que va entre comillas es el texto que verá el clínico; **[propia]** marca redacción sin fuente que el usuario aprueba aquí. Manda sobre las secciones de borrador. La urgencia de compresión medular (decisión 4) se cerró con NICE NG234.
 
 ### Fase 1 — tarjeta «Antecedente de cáncer» (`#cardOncologico`, después de la de implantes)
 
@@ -205,8 +205,9 @@ Con las 14 decisiones aceptadas. Lo que va entre comillas es el texto que verá 
 
 ### Fase 2 — sistema «Antecedente de cáncer» (`SIS_ONCOLOGICO`, `transversal_oncologico`, `soloOncologico: true`, sin embudo)
 
-- **`on_u_medula`, urgencia — ABIERTA hasta leer NICE NG234.** Borrador: «¿Tiene un dolor de espalda o de cuello nuevo, o que ha cambiado, con debilidad o torpeza en las piernas, adormecimiento, o cambios nuevos al orinar o en el control del intestino?» → «Posible compresión medular por metástasis: a urgencias hoy.» El texto, los síntomas exactos y el plazo los fija NG234. Razonamiento enlazado a `l6`, `op_u_medula`, `ac_u_espinal`, sin repetirlas.
-- **`on_d_hueso`, derivación**: «¿Tiene un dolor nuevo en un hueso o en la espalda que no se le pasa, no cambia con la postura o empeora por la noche?» → «Dolor óseo nuevo con antecedente de cáncer: que lo valore pronto su oncólogo o su médico.» Razonamiento: `l2` (Downie 2013; el antecedente de cáncer es la bandera de malignidad que más pesa), `l_on2`/`cv1` (dolor nocturno).
+- **`on_u_medula`, urgencia** (NICE NG234, 1.3.2 y recuadro 1): «¿Tiene, desde hace poco, dificultad para andar, debilidad en brazos o piernas, adormecimiento u hormigueo, un dolor que baja por un brazo o una pierna, o cambios al orinar o en el control del intestino?» → «Posible compresión medular por metástasis: urgencia oncológica, a urgencias hoy sin demora.» Razonamiento: NG234 1.3.2 («Treat this as an oncological emergency») y recuadro 1 (síntomas y signos de compresión medular); enlazado a `l6`, `op_u_medula` y `ac_u_espinal`, sin repetirlas.
+- **`on_u_columna`, urgencia en 24 h** (NICE NG234, 1.3.3 y recuadro 1; sustituye a la derivación `on_d_hueso` del borrador): «¿Tiene un dolor de espalda o de cuello nuevo o que ha cambiado, que es intenso y no cede, va a más, empeora al estar de pie, sentado o al moverse, al toser, estornudar o hacer fuerza en el baño, le despierta por la noche, o le da calambres en las piernas al caminar?» → «Dolor de columna con rasgos de metástasis en alguien con cáncer: valoración por su oncología en 24 h.» Razonamiento: NG234 1.3.3 (consejo del coordinador en 24 h) y 1.3.6 (con dolor lumbar ya estudiado y sin metástasis, explicar qué vigilar y consultar con urgencia si cambia o empeora: por eso «nuevo o que ha cambiado»); el dolor localizado a la presión es un hallazgo de la exploración y va en el razonamiento; enlaza con `l2` (Downie 2013) y `l_on2`/`cv1`.
+- **`on_d_hueso`, derivación** (fuera de la columna): «¿Tiene un dolor nuevo en otro hueso (cadera, muslo, brazo, costillas) que no se le pasa?» → «Dolor óseo nuevo con antecedente de cáncer: que lo valore pronto su oncólogo o su médico.» **[propia]**: NG234 trata solo la columna.
 - **`on_d_corazon`, derivación** (solo con tratamiento cardiotóxico): «¿Tiene desde hace poco más falta de aire, los tobillos más hinchados o palpitaciones?» → «Síntomas cardiacos tras un tratamiento que puede dañar el corazón: a cardiología antes del ejercicio moderado (Gilchrist 2019).»
 - **`on_d_linfedema`, derivación** (solo con «Linfedema» o «Cirugía con ganglios extirpados»): «¿Se le ha hinchado más el brazo o la pierna, o le ha aparecido hinchazón nueva?» → «Linfedema nuevo o que aumenta: que lo valore su médico o su fisioterapeuta de linfedema.» **[propia; decisión 8]** Sin urgencia de celulitis hasta leer una fuente.
 - Banderas del sistema, cada una enlazada a su pregunta. Sin hipercalcemia (decisión 7).
@@ -234,6 +235,7 @@ Cabecera con los datos de la tarjeta. Líneas, en este orden (cada una con su fu
 6. Neuropatía o caídas: «Aplica los programas de prevención de caídas habituales (Campbell 2019; Montero-Odasso 2022). En supervivientes tratados con quimioterapia, la neuropatía no se asoció a las caídas en el único estudio leído, y sí la función ejecutiva (McNeish 2023).»
 7. Terapia hormonal: «Qué vigilar con estos fármacos →» (guía de fármacos, fármacos del hueso).
 8. En tratamiento: «Si se encuentra mal o tiene fiebre, a urgencias o al teléfono de 24 horas de oncología (NICE CG151).»
+8 bis. Siempre: «Explícale qué cambios vigilar (dolor de espalda nuevo o que empeora, debilidad, adormecimiento, cambios al orinar) y que consulte con urgencia si aparecen (NICE NG234, 1.3.6).»
 9. Enlace al bloque de la guía de ejercicio (decisión 13), cuando exista.
 
 ### Fase 6
@@ -243,7 +245,7 @@ Cabecera con los datos de la tarjeta. Líneas, en este orden (cada una con su fu
   - Aviso `oncologicoMetastasis` (metástasis «Sí» o «No lo sabe»): línea 1.
   - Aviso `oncologicoCorazon` (cardiotóxico sin revisión, o «No lo sabe»): línea 2, con «Hasta tener la valoración, intensidad ligera.» **[propia]**
   - Sin tope de thrust propio salvo la línea de la 4b.
-- Red de seguridad `RED_ONCOLOGICO`: «Dolor de espalda nuevo con debilidad, adormecimiento o cambios al orinar → urgencias hoy (pendiente de NG234). Dolor óseo nuevo que no se pasa → su médico pronto. En tratamiento, fiebre o malestar → urgencias o teléfono de oncología (NICE CG151).»
+- Red de seguridad `RED_ONCOLOGICO`: «Dificultad para andar, debilidad, adormecimiento, dolor que baja por un brazo o una pierna, o cambios al orinar o en el intestino → urgencias hoy (NICE NG234, 1.3.2). Dolor de espalda o cuello nuevo, intenso, que va a más o le despierta por la noche → su oncología en 24 h (NICE NG234, 1.3.3). En tratamiento, fiebre o malestar → urgencias o teléfono de oncología (NICE CG151).»
 
 ### Salidas
 
@@ -261,4 +263,18 @@ Cabecera con los datos de la tarjeta. Líneas, en este orden (cada una con su fu
 
 - `tests/unit/oncologico.mjs`: visibilidad por estado y chips; líneas rojas; «marcar la tarjeta, todos los chips, nunca quita ni rebaja una urgencia de otro sistema»; payload; `ON_CASOS`; nada de la tarjeta en el 📄 Informe salvo el antecedente; ninguna línea sin fuente fuera de las marcadas **[propia]**.
 - Prueba de humo, sección `oncologico`.
-- Referencias nuevas en `data/referencias.js`: Campbell 2019, Schmitz 2019, Campbell 2022, Gilchrist 2019, Sturgeon 2023, McNeish 2023 (la clave `Campbell 2020` ya existe y es otro trabajo: estas llevan su año, sin choque) y `docs/referencias.md` regenerado.
+- Referencias nuevas en `data/referencias.js`: Campbell 2019, Schmitz 2019, Campbell 2022, Gilchrist 2019, Sturgeon 2023, McNeish 2023, NICE NG234 (la clave `Campbell 2020` ya existe y es otro trabajo: estas llevan su año, sin choque) y `docs/referencias.md` regenerado.
+
+## Lectura de NICE NG234 (noviembre 2026)
+
+PDF del usuario (NICE, «Spinal metastases and metastatic spinal cord compression», NG234, publicada el 6 de septiembre de 2023; sustituye a la CG75). Leídos los capítulos 1.2 (información), 1.3 (reconocimiento), 1.6 (movilización) y 1.12 (rehabilitación).
+
+- **Recuadro 1**, factores que sugieren metástasis vertebrales o compresión medular: cáncer pasado, actual o sospechado; dolor con rasgos de metástasis («severe unremitting back pain», «progressive back pain», «mechanical pain (aggravated by standing, sitting or moving)», «back pain aggravated by straining (for example, coughing, sneezing or bowel movements)», «night-time back pain disturbing sleep», «localised tenderness», «claudication (muscle pain or cramping in the legs when walking or exercising)»); síntomas y signos de compresión medular («bladder or bowel dysfunction», «gait disturbance or difficulty walking», «limb weakness», «neurological signs of spinal cord or cauda equina compression», «numbness, paraesthesia or sensory loss», «radicular pain»).
+- **1.3.2**: cáncer pasado o actual con síntomas o signos de compresión medular → contacto inmediato, «Treat this as an oncological emergency».
+- **1.3.3**: cáncer pasado o actual con dolor de rasgos de metástasis → consejo del coordinador «within 24 hours».
+- **1.3.6**: con cáncer y dolor lumbar sin evidencia clínica de metástasis (por ejemplo, imagen previa), explicar qué cambios vigilar y que consulte con urgencia si cambian o empeoran.
+- **1.2.2**: que sepan a quién llamar si aparecen síntomas nuevos o empeoran.
+- **1.6.2–1.6.4** (movilización tras una compresión medular, en el hospital): vigilar continuamente los síntomas neurológicos y el dolor; si aumentan, volver a la posición en la que ceden y revaluar la estabilidad. Fuera del ámbito de la consulta; no se escribe en la app.
+- **1.12.1**: ofrecer rehabilitación desde el diagnóstico, con profesionales sanitarios.
+
+**Qué cambia**: la urgencia de compresión medular queda cerrada (1.3.2); el dolor de columna con rasgos de metástasis pasa de derivación «pronto» a urgencia en 24 h (`on_u_columna`, 1.3.3); se añade la línea 8 bis del recuadro (1.3.6) y la red de seguridad lleva los dos plazos. El dolor óseo fuera de la columna sigue como derivación **[propia]**.
