@@ -392,7 +392,7 @@ const preguntasUrgentes = condicionales => {
 test('urgencias en la transcripción: todas las preguntas de urgencia, de las 7 regiones y de las condiciones especiales, tienen tema y patrones válidos', () => {
   const regionales = preguntasUrgentes(false), condiciones = preguntasUrgentes(true);
   assert.equal(regionales.size, 36);
-  assert.equal(condiciones.size, 43, 'paso 6: las de las condiciones especiales');
+  assert.equal(condiciones.size, 44, 'paso 6: las de las condiciones especiales');
   assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), [...regionales.keys(), ...condiciones.keys()].sort(), 'una entrada por pregunta de urgencia, ni más ni menos');
   for (const [id, c] of Object.entries(CONTRASTE_URGENCIAS)) {
     assert.ok(c.tema && c.patrones.length, id);
@@ -477,6 +477,7 @@ test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada
     ac_u_compartimental: ['El gemelo lo tengo duro como una piedra.'],
     on_u_medula: ['Desde hace unos días tengo debilidad en las dos piernas.', 'Me dijeron que podía ser una compresión medular.'],
     on_u_columna: ['El dolor de espalda es cada vez más fuerte.', 'Me encontraron metástasis en la columna.'],
+    on_u_miocarditis: ['Desde que empecé la inmunoterapia tengo palpitaciones.', 'El oncólogo habló de una miocarditis.'],
     pk_u_crisis: ['Desde el lunes estoy mucho más rígido y tengo fiebre.', 'Tengo fiebre y no me puedo mover de la cama.'],
   };
   for (const [id, frases] of Object.entries(casos)) {
