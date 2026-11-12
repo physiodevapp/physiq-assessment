@@ -1270,7 +1270,8 @@ export function htmlPlanHoja() {
     `<section class="tarjeta pl"><h2>Seguir o cambiar · columna</h2>${lista(PLAN.REGLAS_MES)}</section>`,
     `<section class="tarjeta pl"><h2>Seguir o cambiar · periféricas</h2>${lista(PLAN.REGLAS_MES_PERIFERICAS)}</section>`,
     `<section class="tarjeta pl"><h2>Red de seguridad por región (cierre de la sesión)</h2>${ORDEN_REGIONES.map(redRegion).join('')}</section>`,
-    `<section class="tarjeta pl"><h2>Red de seguridad por condición especial</h2>${conds.map(([n, l]) => `<p class="reg"><b>${esc2(n)}</b></p><ul>${l.map(x => red(x.cierre)).join('')}</ul>`).join('')}</section>`,
+    // Una tarjeta por condición: entera, la de todas no cabía en una columna y se partía
+    ...conds.map(([n, l], i) => `<section class="tarjeta pl">${i === 0 ? '<h2>Red de seguridad por condición especial</h2>' : ''}<p class="reg"><b>${esc2(n)}</b></p><ul>${l.map(x => red(x.cierre)).join('')}</ul></section>`),
   ];
   return paginasVarias({
     titulo: 'Plan de tratamiento (fase 6)',
