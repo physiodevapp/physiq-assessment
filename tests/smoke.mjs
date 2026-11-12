@@ -2986,7 +2986,7 @@ async function checkBandaIrritabilidad(browser) {
   await page.waitForFunction(() => document.getElementById('irrContextBanner').classList.contains('visible'));
   const a = await banda();
   r.sinRegistrar = a.vis && a.txt.includes('sin registrar') && a.txt.includes('0 de 4');
-  await page.locator('#irritabTarjetas [data-key="movimiento"]').nth(2).click();
+  await page.locator('#irritabTarjetas [data-key="reposo"]').nth(2).click();
   await page.waitForFunction(() => document.getElementById('irrContextBanner').textContent.includes('moderada'));
   const b = await banda();
   r.cambia = b.txt.includes('falta tiempo en calmarse');
@@ -3006,7 +3006,7 @@ async function checkBandaIrritabilidad(browser) {
   r.guiaArriba = !(await gb()).vis;   // con el recuadro a la vista, sin banda
   await g.evaluate(() => { const f = document.querySelectorAll('.guia-irr-fila')[1]; window.scrollTo(0, f.getBoundingClientRect().top + scrollY - 120); });
   await g.waitForFunction(() => !document.getElementById('guiaIrrBanda').hidden);
-  await g.locator('.guia-irr-fila').nth(3).locator('[data-irr]').nth(1).click();
+  await g.locator('.guia-irr-fila').nth(2).locator('[data-irr]').nth(1).click();
   await g.waitForFunction(() => document.getElementById('guiaIrrBanda').textContent.includes('moderada'));
   r.guiaCambia = (await gb()).txt.includes('1 de 4');
   await g.click('#guiaIrrBanda');
@@ -7644,7 +7644,10 @@ async function checkIrritabilidad(page) {
   r.sinPreseleccion = await page.evaluate(() => !document.querySelector('.irritab-btn.selected') && state.irritabilidadNivel === null)
     && (await resumen()).includes('Irritabilidad no registrada');
   r.filas = await page.evaluate(() => [...document.querySelectorAll('#irritabTabla tbody tr td:first-child')].map(td => td.firstChild.textContent).join('|'))
-    === 'Dolor en reposo|Dolor con movimiento|Tolerancia al estrés físico|Tiempo en calmarse';
+    === 'Dolor en reposo|Tolerancia al estrés físico|Tiempo en calmarse|Dolor con movimiento'
+    // Decisión 124: dos grupos, lo que cuenta el paciente y lo que se confirma al explorar
+    && await page.evaluate(() => [...document.querySelectorAll('#irritabTabla tr.irritab-grupo th')].map(t => t.textContent).join('|') === 'Lo que cuenta el paciente|Al explorar'
+      && !!document.querySelector('#irritabTabla .irritab-decide'));
   r.unaLineaEscritorio = await page.evaluate(() => [...document.querySelectorAll('#irritabTabla .irritab-select')]
     .every(sel => new Set([...sel.children].map(b => Math.round(b.getBoundingClientRect().top))).size === 1));
   r.impactoEnSeveridad = await page.evaluate(() => !!document.querySelector('.card #nrsLabel ~ #impactoActividades .irritab-btn')

@@ -58,9 +58,9 @@ test('irritabilidad: sin preselección; nada contestado → no registrada; lo qu
   assert.deepEqual(I.nivelMatriz(M()), { nivel: null, incompleta: true, sinCalma: true });
   assert.deepEqual(I.nivelMatriz({}), { nivel: null, incompleta: true, sinCalma: true });
   assert.deepEqual(I.nivelMatriz(undefined), { nivel: null, incompleta: true, sinCalma: true });
-  assert.deepEqual(I.nivelMatriz(M('', '', '', HORAS)), { nivel: 'moderada', incompleta: true, sinCalma: false });
-  assert.deepEqual(I.nivelMatriz(M('Ausente', 'Al final del rango con SP', 'Alta')), { nivel: 'baja', incompleta: true, sinCalma: true });
-  assert.deepEqual(I.nivelMatriz(M('Ausente', 'Al final del rango con SP', 'Alta', MIN)), { nivel: 'baja', incompleta: false, sinCalma: false });
+  assert.deepEqual(I.nivelMatriz(M('', '', '', HORAS)), { nivel: 'moderada', incompleta: true, sinCalma: false, soloExploracion: false });
+  assert.deepEqual(I.nivelMatriz(M('Ausente', 'Al final del rango con SP', 'Alta')), { nivel: 'baja', incompleta: true, sinCalma: true, soloExploracion: false });
+  assert.deepEqual(I.nivelMatriz(M('Ausente', 'Al final del rango con SP', 'Alta', MIN)), { nivel: 'baja', incompleta: false, sinCalma: false, soloExploracion: false });
   // El dolor y la discapacidad de las sesiones antiguas no cuentan
   assert.equal(I.nivelMatriz({ dolor: 'Alta (≥7/10)', discapacidad: 'Alta', reposo: 'Ausente', movimiento: 'Al final del rango con SP', tolerancia: 'Alta' }).nivel, 'baja');
   assert.deepEqual(I.matrizVacia('Alta'), { reposo: '', movimiento: '', tolerancia: '', calma: '', discapacidad: 'Alta' });
@@ -69,6 +69,29 @@ test('irritabilidad: sin preselección; nada contestado → no registrada; lo qu
   assert.match(st, /irritabilidad: \{ reposo: '', movimiento: '', tolerancia: '', calma: '', discapacidad: '' \}/);
   assert.match(st, /irritabilidadNivel: null/);
   assert.ok(!/irritab-btn selected/.test(leer('index.html')), 'ningún botón de la matriz viene marcado');
+});
+
+test('irritabilidad: dos grupos (decisión 124) — lo que cuenta el paciente decide, la exploración confirma; la regla no cambia', () => {
+  assert.deepEqual(I.gruposMatriz().map(g => [g.nombre, g.items.map(i => i.clave)]), [
+    ['Lo que cuenta el paciente', ['reposo', 'tolerancia', 'calma']],
+    ['Al explorar', ['movimiento']],
+  ]);
+  assert.deepEqual(DI.ITEMS_IRRITABILIDAD.map(i => i.clave), ['reposo', 'movimiento', 'tolerancia', 'calma'], 'el orden del prompt no cambia');
+  // Solo falta el dolor con movimiento → pendiente de confirmar al explorar
+  const r = I.nivelMatriz(M('Intermitente', '', 'Moderada', HORAS));
+  assert.deepEqual(r, { nivel: 'moderada', incompleta: true, sinCalma: false, soloExploracion: true });
+  assert.equal(I.bandaIrritabilidad(M('Intermitente', '', 'Moderada', HORAS)).detalle, 'falta confirmar al explorar');
+  assert.equal(I.nivelMatriz(M('', '', 'Moderada', HORAS)).soloExploracion, false);
+  // El dolor en reposo presente avisa, pero no cambia el nivel
+  assert.equal(I.avisoReposo(M('Presente')), true);
+  assert.equal(I.avisoReposo(M('Intermitente')), false);
+  assert.equal(I.nivelMatriz(M('Presente', '', '', MIN)).nivel, 'moderada', 'reposo presente no da alta por sí solo');
+  const T = DI.TEXTOS_IRRITABILIDAD;
+  for (const k of ['decideConfirma', 'pendienteExploracion', 'reposoPresente']) assert.ok(T[k], k);
+  const app = leer('app.js');
+  assert.match(app, /gruposMatriz\(\)/);
+  assert.match(app, /T\.reposoPresente/);
+  assert.match(leer('guia.js'), /gruposMatriz\(\)/);
 });
 
 test('irritabilidad: la fase 3 y la fase 6 dan el mismo nivel con cualquier matriz', () => {
