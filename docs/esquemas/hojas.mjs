@@ -849,7 +849,7 @@ export function htmlIrritabilidad() {
       <div class="regla"><h2>Cómo se calcula</h2>${reglaIrritabilidad().map(p => `<p>${p}</p>`).join('')}</div>
       <h2 class="t-niveles">Qué implica cada nivel</h2>
       <div class="niveles">${nivel('Baja', 'baja', [T.hastaLimite])}${nivel('Moderada', 'moderada', [T.hastaDolor])}${nivel('Alta', 'alta', [T.hastaDolor, T.alta])}</div>
-      <p class="margen">${esc(T.margen)} ${esc(T.incompleta)} ${esc(T.reposoPresente)}</p>`,
+      <p class="margen">${esc(T.margen)} ${esc(T.incompleta)} ${esc(T.reposoPresente)} ${esc(T.activoPasivo)}</p>`,
     pie: `<span>El impacto en las actividades (${ITEM_IMPACTO.opciones.map(o => esc(o.valor).toLowerCase()).join(' · ')}) es gravedad: se anota aparte, junto al NRS.</span><span class="pie">Generado desde los datos de la app (data/irritabilidad.js, lib/irritabilidad.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
     css: `
       body { font-size: 11.5px; }

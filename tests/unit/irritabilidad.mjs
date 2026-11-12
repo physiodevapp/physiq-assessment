@@ -87,7 +87,8 @@ test('irritabilidad: dos grupos (decisión 124) — lo que cuenta el paciente de
   assert.equal(I.avisoReposo(M('Intermitente')), false);
   assert.equal(I.nivelMatriz(M('Presente', '', '', MIN)).nivel, 'moderada', 'reposo presente no da alta por sí solo');
   const T = DI.TEXTOS_IRRITABILIDAD;
-  for (const k of ['decideConfirma', 'pendienteExploracion', 'reposoPresente']) assert.ok(T[k], k);
+  for (const k of ['decideConfirma', 'pendienteExploracion', 'reposoPresente', 'activoPasivo']) assert.ok(T[k], k);
+  assert.ok(leer('guia.js').includes('TEXTOS_IRRITABILIDAD.activoPasivo') && leer('docs/esquemas/hojas.mjs').includes('T.activoPasivo'), 'activo < pasivo: aviso en la guía y la hoja');
   const app = leer('app.js');
   assert.match(app, /gruposMatriz\(\)/);
   assert.match(app, /T\.reposoPresente/);
