@@ -22,7 +22,7 @@ const { dolorInespecifico } = await import('../../lib/region.js');
 const { qrSVG } = await import('./qr.mjs');
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const { ITEMS_IRRITABILIDAD, ITEM_IMPACTO, TEXTOS_IRRITABILIDAD } = await import('../../data/irritabilidad.js');
-const { reglaIrritabilidad } = await import('../../lib/irritabilidad.js');
+const { reglaIrritabilidad, gruposMatriz } = await import('../../lib/irritabilidad.js');
 const { BANDERAS_FASE1, TEXTOS_FASE1, NIVELES_PSICO, PREGUNTAS_PSICO, RESPUESTAS_PSICO } = await import('../../data/fase1.js');
 const { BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercicio.js');
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
@@ -836,18 +836,20 @@ export function htmlFarmacos() {
 // Hoja de consulta (decisión del usuario, 2026-11): sin casillas ni huecos; se rellena en la guía (QR).
 export function htmlIrritabilidad() {
   const T = TEXTOS_IRRITABILIDAD;
-  const filas = ITEMS_IRRITABILIDAD.map(it => `<tr><th>${esc(it.nombre)}${it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : ''}</th>
-    ${it.opciones.map((o, i) => `<td><div class="op"><span class="n">${i}</span><span>${esc(o.valor)}</span></div></td>`).join('')}</tr>`).join('');
+  const fila = it => `<tr><th>${esc(it.nombre)}${it.ayuda ? `<div class="ayuda">${esc(it.ayuda)}</div>` : ''}</th>
+    ${it.opciones.map((o, i) => `<td><div class="op"><span class="n">${i}</span><span>${esc(o.valor)}</span></div></td>`).join('')}</tr>`;
+  // Decisión 124: dos grupos, lo que cuenta el paciente decide y la exploración confirma
+  const filas = gruposMatriz().map(g => `<tr class="grupo"><th colspan="4">${esc(g.nombre)}</th></tr>${g.items.map(fila).join('')}`).join('');
   const nivel = (n, clase, textos) => `<div class="nivel ${clase}"><b>${n}</b>${textos.map(t => `<p>${esc(t)}</p>`).join('')}</div>`;
   return paginaUna({
     titulo: 'Irritabilidad (fase 3)',
     sub: `La misma matriz y la misma regla que la app (fases 3 y 6): en cada fila, la columna que describe al paciente. ${esc(T.pistaBreve)}`,
     qr: 'Calculadora e IA',
-    cuerpo: `<table class="matriz"><thead><tr><th></th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>${filas}</tbody></table>
+    cuerpo: `<p class="decide">${esc(T.decideConfirma)}</p><table class="matriz"><thead><tr><th></th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>${filas}</tbody></table>
       <div class="regla"><h2>Cómo se calcula</h2>${reglaIrritabilidad().map(p => `<p>${p}</p>`).join('')}</div>
       <h2 class="t-niveles">Qué implica cada nivel</h2>
       <div class="niveles">${nivel('Baja', 'baja', [T.hastaLimite])}${nivel('Moderada', 'moderada', [T.hastaDolor])}${nivel('Alta', 'alta', [T.hastaDolor, T.alta])}</div>
-      <p class="margen">${esc(T.margen)} ${esc(T.incompleta)}</p>`,
+      <p class="margen">${esc(T.margen)} ${esc(T.incompleta)} ${esc(T.reposoPresente)}</p>`,
     pie: `<span>El impacto en las actividades (${ITEM_IMPACTO.opciones.map(o => esc(o.valor).toLowerCase()).join(' · ')}) es gravedad: se anota aparte, junto al NRS.</span><span class="pie">Generado desde los datos de la app (data/irritabilidad.js, lib/irritabilidad.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
     css: `
       body { font-size: 11.5px; }
@@ -855,6 +857,8 @@ export function htmlIrritabilidad() {
       .matriz th, .matriz td { border: 1.5px solid #cbd5e1; padding: 8px 8px; text-align: left; vertical-align: top; }
       .matriz thead th { background: #eef2ff; text-align: center; font-size: 11px; color: #3730a3; padding: 4px; }
       .matriz tbody th { width: 30%; font-size: 12.5px; }
+      .matriz tr.grupo th { background: #f1f5f9; font-size: 10.5px; text-transform: uppercase; letter-spacing: .5px; color: #334155; padding: 4px 8px; }
+      .decide { margin: 0 0 4px; font-weight: 600; color: #1f2937; }
       .ayuda { font-weight: normal; font-size: 9.5px; color: #6b7280; margin-top: 3px; }
       .n { display: inline-block; min-width: 15px; height: 15px; border-radius: 8px; background: #7c4ddb; color: #fff; text-align: center; font-size: 9.5px; font-weight: bold; line-height: 1; align-content: center; text-box: trim-both cap alphabetic; flex: none; }
       .op { display: flex; align-items: flex-start; gap: 5px; line-height: 15px; }
