@@ -37,7 +37,7 @@ Cuando cites algo del repo, di de dónde sale: región, fase de la app (1, 2, 3,
 
 ## 2. Si el repo no lo cubre, busca fuera
 
-Si la respuesta no está en el repo, o está solo en parte, dilo de forma explícita ("Esto no está en PhysiQ") antes de seguir.
+Si la respuesta no está en el repo, o está solo en parte, dilo de forma explícita ("Esto no está en PhysiQ-Assessment") antes de seguir.
 
 Usa, por este orden, lo que tengas disponible en la sesión:
 1. Herramientas de PubMed o Consensus, si están cargadas.
@@ -47,8 +47,8 @@ Prioriza guías de práctica clínica, revisiones sistemáticas y estudios de pr
 
 ## 3. Formato de la respuesta
 
-- **En PhysiQ**: lo que dice el repo, con su origen.
-- **Fuera de PhysiQ**: solo si hizo falta buscar fuera, separado del bloque anterior.
+- **En PhysiQ-Assessment**: lo que dice el repo, con su origen.
+- **Fuera de PhysiQ-Assessment**: solo si hizo falta buscar fuera, separado del bloque anterior.
 - **Posible actualización**: solo si una fuente externa más reciente o de más calidad contradice un dato del repo (un LR, un criterio, una bandera roja, una pauta). Señálalo con la referencia, sin darlo por corregido. Mira antes en `data/referencias.js` si esa referencia ya tiene `revision` y con qué resultado.
 - **Referencias**: las del repo con la cita de su campo `fuente` (y el DOI del registro si lo tiene); las externas en Vancouver, con PMID y DOI en la misma línea cuando existan.
 
@@ -71,4 +71,4 @@ Cuando la respuesta pueda convertirse en un documento (una sesión, un plan, una
   - reaparecen al compartir el archivo en digital, así que pueden volver a mostrar el diagnóstico o datos que se quitaron del texto;
   - se imprimen por defecto en Word («Imprimir marcas» viene activado);
   - estorban en una hoja de uso diario; aportan más en un documento que alguien va a revisar.
-- Las reglas de las secciones 1–3 siguen valiendo dentro del documento: cifras copiadas tal cual, origen de cada dato (PhysiQ o fuente externa) y nunca una referencia inventada. Lo que sea redacción propia se dice como tal.
+- Las reglas de las secciones 1–3 siguen valiendo dentro del documento: cifras copiadas tal cual, origen de cada dato (PhysiQ-Assessment o fuente externa) y nunca una referencia inventada. Lo que sea redacción propia se dice como tal.
