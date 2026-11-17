@@ -62,6 +62,16 @@ Reglas que no se saltan:
 Cuando la respuesta pueda convertirse en un documento (una sesión, un plan, una hoja de registro, un resumen para imprimir):
 
 - **Pregunta siempre antes de generarlo**, aunque parezca evidente que lo quiere: qué formato (Word, PDF…), para quién es (para Edu, para el paciente, para un compañero), si debe llevar o no el diagnóstico y cómo quiere el fundamento (ver el punto siguiente). No generes el archivo sin su respuesta.
+- **Formatos que ofrecer:** Word, PDF y **App de sesión + Word anexo**. Recomienda la app cuando el documento es un plan o un registro que Edu va a seguir durante la sesión (móvil, tablet u ordenador); Word o PDF cuando es para imprimir o entregar sin más.
+- **App de sesión** (motor en `app-sesion/`; lee su `LEEME.md` antes de empezar):
+  - Escribe el plan del caso en el formato del `LEEME.md` y genera la app con `node .claude/skills/consulta-clinica/app-sesion/construir.mjs <plan.js> <salida.html>`. Si `construir.mjs` da problemas, corrígelos; no los saltes.
+  - Publícala con la herramienta Artifact y `capabilities: {downloads: true}`. Si Edu la quiere en el navegador fuera de Claude, genera también la versión `--local` y envíasela.
+  - **Nunca pongas el nombre del paciente** en el plan ni en la página publicada: Edu lo escribe en la app y solo va al Word.
+  - Los **textos cortos, las respuestas rápidas y los avisos** son redacción propia: dilo al entregar la app y pide a Edu que los revise. Los textos completos y las cifras se copian tal cual del plan.
+  - Los avisos de seguridad (urgencias, condición del plan, red de seguridad) van siempre enteros (`completo: true`), nunca solo en texto corto.
+  - Las preguntas que se pueden contestar antes de la sesión van en «Antes de empezar» (modo Preparar), con respuestas rápidas; en sesión, solo lo que se marca.
+  - El fundamento sigue las reglas de abajo: nunca dentro de la app ni del Word anexo.
+- **Word anexo:** lo genera la app con el `Documento_base.docx` de Edu, que se carga en cada dispositivo y no está en el repo. El nombre del archivo es `<Paciente> — dd-mm-aaaa HH.mm — Anexo N.docx`, con N = número de sesión, para que quede junto al documento principal en «Transcripciones». Avisa de que lo registrado en la app queda solo en ese dispositivo hasta que se descarga el Word.
 - **Fundamento: pregunta siempre cómo lo quiere.** El fundamento es el porqué de cada bloque o apartado y sus referencias, sin redacción de relleno. En la misma pregunta del punto anterior, ofrece estas tres opciones con tu recomendación:
   1. **Archivo aparte** («Fundamento de …»). Recomiéndalo cuando el documento va sin diagnóstico o lo va a ver otra persona: las fuentes suelen nombrar el diagnóstico y, en el mismo archivo, reaparecería al compartirlo en digital.
   2. **Apartado final en página nueva** dentro del mismo archivo, para imprimirlo por separado. Recomiéndalo cuando el documento es solo para Edu.
