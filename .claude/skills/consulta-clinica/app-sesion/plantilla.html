@@ -1,0 +1,962 @@
+<title>Sesión de tratamiento</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: una columna de trabajo (máx. 780 px) con barra fija arriba; bloques de la sesión como tarjetas, filas grandes para tocar. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --surface2: #eef2f7; --line: #d5dce5; --line2: #b9c3cf;
+  --fg: #142233; --fg2: #4a5a6c; --fg3: #6c7a8a;
+  --accent: #153d63; --accent-fg: #ffffff; --accent-soft: #e2ebf5;
+  --ok: #1d6b45; --ok-soft: #e1f2e8; --warn: #8a5a00; --warn-soft: #fbf1dc; --red: #b3261e; --red-soft: #fbe7e5;
+  --font: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0d141c; --surface: #152030; --surface2: #1b293b; --line: #2a3a4f; --line2: #3b4f68;
+  --fg: #e6edf5; --fg2: #a9b8c9; --fg3: #8494a7;
+  --accent: #8cb8e6; --accent-fg: #0d141c; --accent-soft: #1e3450;
+  --ok: #6fd3a0; --ok-soft: #173a2a; --warn: #f0c36b; --warn-soft: #3a2f16; --red: #ff8a80; --red-soft: #3d1c1c;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0d141c; --surface: #152030; --surface2: #1b293b; --line: #2a3a4f; --line2: #3b4f68;
+  --fg: #e6edf5; --fg2: #a9b8c9; --fg3: #8494a7;
+  --accent: #8cb8e6; --accent-fg: #0d141c; --accent-soft: #1e3450;
+  --ok: #6fd3a0; --ok-soft: #173a2a; --warn: #f0c36b; --warn-soft: #3a2f16; --red: #ff8a80; --red-soft: #3d1c1c;
+  color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.45; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 780px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+main.wrap { padding-block: 16px 96px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px }
+
+/* Barra fija */
+.barra { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.barra .wrap { display: flex; align-items: center; gap: 12px; min-height: 56px; padding-block: 6px }
+.barra h1 { font-size: 1rem; margin: 0; line-height: 1.2; min-width: 0 }
+.barra h1 small { display: block; font-weight: 400; color: var(--fg3); font-size: .8rem }
+.barra .prog { margin-left: auto; font-family: var(--mono); font-size: .85rem; color: var(--fg2); white-space: nowrap; font-variant-numeric: tabular-nums }
+.btn { font: inherit; font-weight: 700; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--line2); background: var(--surface); color: var(--fg); cursor: pointer; }
+.btn-pri { background: var(--accent); color: var(--accent-fg); border-color: var(--accent) }
+.btn:focus-visible, .chk:focus-visible, .evn button:focus-visible, .seg button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
+.btn[disabled] { opacity: .5; cursor: default }
+
+/* Tarjetas */
+section.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 12px; min-width: 0 }
+.card > header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap }
+.card h2 { font-size: 1.15rem; margin: 0; text-wrap: balance }
+.card h3 { font-size: .95rem; margin: 6px 0 0; color: var(--fg2) }
+.min { font-family: var(--mono); font-size: .8rem; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 99px; white-space: nowrap }
+.cuenta { margin-left: auto; font-family: var(--mono); font-size: .8rem; color: var(--fg3); font-variant-numeric: tabular-nums }
+.cuenta.completa { color: var(--ok) }
+.sub { color: var(--fg2); font-size: .9rem; margin: 0 }
+.etq { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--fg3); font-weight: 700 }
+
+/* Datos de la sesión */
+.campos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px }
+.campos .ancho { grid-column: 1 / -1 }
+label.campo { display: grid; gap: 4px; min-width: 0 }
+input[type=text], input[type=date], input[type=time], input[type=number], textarea {
+  font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--line2); border-radius: 8px; padding: 10px 12px; min-height: 44px; width: 100%; min-width: 0 }
+textarea { min-height: 64px; resize: vertical; line-height: 1.4 }
+.nses { display: flex; gap: 6px; flex-wrap: wrap }
+.nses button { font: inherit; font-family: var(--mono); min-width: 44px; min-height: 44px; border-radius: 8px; border: 1px solid var(--line2); background: var(--surface); color: var(--fg); cursor: pointer }
+.nses button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent) }
+.plantilla { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: var(--surface2); border-radius: 8px; padding: 10px 12px }
+.plantilla .estado { flex: 1 1 200px; min-width: 0; font-size: .9rem }
+.plantilla .ok { color: var(--ok); font-weight: 700 }
+.plantilla .falta { color: var(--warn); font-weight: 700 }
+.privado { font-size: .85rem; color: var(--fg3); margin: 0 }
+
+/* Condición */
+.cond { border-color: var(--warn); }
+.cond .pregunta { font-weight: 700 }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.seg button { font: inherit; font-weight: 700; min-height: 48px; border-radius: 8px; border: 1px solid var(--line2); background: var(--surface); color: var(--fg); cursor: pointer; padding: 6px 10px }
+.seg button[aria-pressed="true"][data-v="si"] { background: var(--ok-soft); border-color: var(--ok); color: var(--ok) }
+.seg button[aria-pressed="true"][data-v="no"] { background: var(--red-soft); border-color: var(--red); color: var(--red) }
+.aviso { border-radius: 8px; padding: 10px 12px; font-size: .92rem }
+.aviso-warn { background: var(--warn-soft); color: var(--fg) }
+.aviso-red { background: var(--red-soft); color: var(--red); font-weight: 700 }
+.aviso-reducido { background: var(--red-soft); color: var(--fg); border-left: 4px solid var(--red) }
+
+/* Ítems marcables */
+.items { display: grid; gap: 4px }
+.chk { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; width: 100%; text-align: left; font: inherit; color: var(--fg);
+  background: transparent; border: 0; border-radius: 8px; padding: 10px 8px; min-height: 44px; cursor: pointer }
+@media (hover: hover) { .chk:hover { background: var(--surface2) } }
+.chk .caja { width: 24px; height: 24px; border: 2px solid var(--line2); border-radius: 6px; display: grid; place-items: center; margin-top: 1px; background: var(--surface) }
+.chk .caja svg { width: 16px; height: 16px; opacity: 0 }
+.chk[aria-checked="true"] .caja { background: var(--ok); border-color: var(--ok) }
+.chk[aria-checked="true"] .caja svg { opacity: 1 }
+.chk[aria-checked="true"] .txt { color: var(--fg2) }
+.chk[aria-disabled="true"] { cursor: default; opacity: .55 }
+.chk[aria-disabled="true"] .caja { border-style: dashed }
+.tag-no { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--red); margin-left: 6px }
+
+/* EVN */
+.medida { display: grid; gap: 6px; padding: 8px 0 }
+.medida .nombre { font-weight: 700; font-size: .92rem }
+.evn { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 4px }
+.evn button { font: inherit; font-family: var(--mono); min-height: 44px; border-radius: 6px; border: 1px solid var(--line2); background: var(--surface); color: var(--fg); cursor: pointer; padding: 0; font-variant-numeric: tabular-nums }
+.evn button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent) }
+@media (max-width: 420px) { .evn { grid-template-columns: repeat(6, minmax(0, 1fr)) } .evn button:last-child:nth-child(odd) { grid-column: auto } }
+.medidas-grupo { border-top: 1px dashed var(--line); padding-top: 6px }
+
+/* Programa para casa */
+.ejer { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 6px }
+.ejer .cab { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline }
+.ejer .cab b { font-size: 1rem }
+.ejer .dosis { font-family: var(--mono); font-size: .82rem; color: var(--accent) }
+.ejer p { margin: 0; color: var(--fg2); font-size: .93rem }
+.ejer .chk { padding-left: 0 }
+
+/* Progresión */
+.prog-tabla { overflow-x: auto }
+table { border-collapse: collapse; width: 100%; font-size: .9rem }
+th, td { text-align: left; vertical-align: top; padding: 8px; border-bottom: 1px solid var(--line) }
+th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--fg3) }
+tr.actual td { background: var(--warn-soft); font-weight: 700 }
+.fila-movil { display: none }
+@media (max-width: 640px) {
+  .prog-tabla { display: none }
+  .fila-movil { display: grid; gap: 8px }
+  .fase { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 4px }
+  .fase.actual { border-color: var(--warn); background: var(--warn-soft) }
+  .fase dt { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--fg3); font-weight: 700; margin-top: 4px }
+  .fase dd { margin: 0 }
+}
+details { border-top: 1px solid var(--line); padding-top: 8px }
+summary { cursor: pointer; font-weight: 700; min-height: 40px; display: flex; align-items: center }
+ul.lista { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 6px; font-size: .93rem }
+.comparar input { min-height: 40px; padding: 6px 8px }
+.comparar td:first-child { font-weight: 700 }
+
+/* Pie */
+.acciones { display: grid; gap: 10px }
+.acciones .fila { display: flex; gap: 10px; flex-wrap: wrap }
+.acciones .fila .btn { flex: 1 1 200px }
+.msg { font-size: .92rem; margin: 0; min-height: 1.4em }
+.msg.err { color: var(--red); font-weight: 700 }
+.msg.ok { color: var(--ok); font-weight: 700 }
+.confirmar { background: var(--red-soft); border-radius: 8px; padding: 12px; display: grid; gap: 8px }
+.confirmar .fila .btn { flex: 1 1 140px }
+@media (max-width: 480px) {
+  main.wrap { gap: 12px }
+  section.card { padding: 14px 12px }
+  .campos { grid-template-columns: 1fr }
+  .barra h1 small { display: none }
+}
+@media (prefers-reduced-motion: no-preference) { .chk .caja { transition: background .12s, border-color .12s } }
+
+/* Plegado */
+[data-sec] { scroll-margin-top: calc(var(--alto-barra, 64px) + 12px) }
+.cuerpo { display: grid; gap: 12px; min-width: 0 }
+.card > header.plegable { cursor: pointer; flex-wrap: nowrap; align-items: center }
+.card > header.plegable h2 { flex: 1 1 auto; min-width: 0 }
+button.plegar { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; min-height: 32px; width: 100% }
+.chev { flex: 0 0 auto; width: 32px; height: 32px; display: grid; place-items: center; color: var(--fg3); border-radius: 6px }
+.chev svg { width: 18px; height: 18px }
+@media (prefers-reduced-motion: no-preference) { .chev svg { transition: transform .15s } }
+section.plegada .chev svg { transform: rotate(-90deg) }
+section.plegada { gap: 0 }
+.tag-notas { font-size: .75rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 99px; padding: 2px 8px; white-space: nowrap }
+.card > header.plegable .cuenta { margin-left: 0 }
+.card > header.plegable .meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 0 0 auto }
+@media (max-width: 480px) {
+  .card > header.plegable { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 8px; row-gap: 4px }
+  .card > header.plegable h2 { grid-column: 1 }
+  .card > header.plegable .meta { grid-column: 1; grid-row: 2 }
+  .card > header.plegable .chev { grid-column: 2; grid-row: 1 / span 2; align-self: center }
+}
+.pasos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px }
+.pasos .btn { min-height: 52px; padding: 6px 12px; display: grid; gap: 0; text-align: left; font-weight: 700; line-height: 1.25 }
+.pasos .btn small { font-weight: 400; color: var(--fg3); font-size: .78rem }
+.pasos .sig { text-align: right; grid-column: 2 }
+.pasos .ant { grid-column: 1 }
+.inicio { font-size: .85rem; color: var(--fg2); margin: 0 }
+.inicio b { font-family: var(--mono); font-weight: 500; color: var(--fg) }
+
+/* Barra inferior de anterior / siguiente (móvil y tablet vertical) */
+.barra-pasos { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)) }
+.barra-pasos .in { max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 52px minmax(0, 1fr) 52px; align-items: center; gap: 8px; min-height: 56px }
+.barra-pasos button { font: inherit; width: 52px; height: 44px; border-radius: 8px; border: 1px solid var(--line2); background: var(--surface); color: var(--fg); cursor: pointer; display: grid; place-items: center }
+.barra-pasos button[disabled] { opacity: .35; cursor: default }
+.barra-pasos button svg { width: 22px; height: 22px }
+.barra-pasos button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
+.barra-pasos .donde { text-align: center; min-width: 0; line-height: 1.2 }
+.barra-pasos .donde b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.barra-pasos .donde span { font-family: var(--mono); font-size: .75rem; color: var(--fg3) }
+body.con-barra-pasos main.wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) }
+@media (min-width: 1024px) { .barra-pasos { display: none } }
+
+/* Navegación: chips (móvil y tablet vertical) */
+.barra .chips-wrap { display: block; min-height: 0; padding-block: 0 8px }
+.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; scroll-padding-inline: 16px }
+.chips::-webkit-scrollbar { display: none }
+.chips .ir, .indice .ir { font: inherit; cursor: pointer; text-align: left }
+.chips .ir { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 99px;
+  border: 1px solid var(--line2); background: var(--surface); color: var(--fg); text-decoration: none; font-size: .88rem; font-weight: 700 }
+.chips .ir .c, .indice .ir .c { font-family: var(--mono); font-weight: 500; font-size: .75rem; color: var(--fg3); font-variant-numeric: tabular-nums }
+.chips .ir.completa .c, .indice .ir.completa .c { color: var(--ok) }
+.chips .ir.activo { background: var(--accent); color: var(--accent-fg); border-color: var(--accent) }
+.chips .ir.activo .c { color: inherit }
+.chips .ir:focus-visible, .indice .ir:focus-visible, button.plegar:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
+aside.indice { display: none }
+
+/* Índice lateral (tablet horizontal y ordenador) */
+@media (min-width: 1024px) {
+  .barra .chips-wrap { display: none }
+  .barra .wrap { max-width: 1084px }
+  .layout { display: grid; grid-template-columns: 240px minmax(0, 780px); gap: 24px; justify-content: center;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+  .layout > main.wrap { padding-left: 0; padding-right: 0; margin: 0; max-width: none }
+  aside.indice { display: block; position: sticky; top: calc(var(--alto-barra, 64px) + 16px); align-self: start;
+    max-height: calc(100vh - var(--alto-barra, 64px) - 32px); overflow-y: auto; padding-block: 16px }
+  .indice nav { display: grid; gap: 2px }
+  .indice .etq { display: block; padding: 0 10px 8px }
+  .indice .ir { width: 100%; border: 0; background: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; min-height: 40px; padding: 6px 10px;
+    border-radius: 8px; color: var(--fg); text-decoration: none; font-size: .95rem }
+  .indice .ir .min-l { font-family: var(--mono); font-size: .72rem; color: var(--fg3); margin-left: 6px }
+  .indice .ir.sub-b { padding-left: 22px }
+  .indice .ir.activo { background: var(--accent-soft); font-weight: 700 }
+}
+@media (min-width: 1024px) and (hover: hover) { .indice .ir:hover { background: var(--surface2) } }
+
+/* Modo Preparar / En sesión */
+.barra h1 { flex: 1 1 auto; overflow: hidden }
+.barra h1 .nom { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block }
+.modo { flex: 0 0 auto; display: inline-grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line2); border-radius: 8px; overflow: hidden }
+.modo button { font: inherit; font-size: .85rem; font-weight: 700; min-height: 40px; padding: 0 10px; border: 0; background: var(--surface); color: var(--fg2); cursor: pointer }
+.modo button + button { border-left: 1px solid var(--line2) }
+.modo button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg) }
+.modo button:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px }
+@media (max-width: 380px) { .modo button { padding: 0 8px; font-size: .8rem } #btnWordArriba { padding: 0 12px } .barra .wrap { gap: 8px } }
+
+/* Ítem con texto corto y detalle */
+.item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start }
+.mas { font: inherit; width: 44px; height: 44px; border: 0; background: none; color: var(--fg3); cursor: pointer; border-radius: 8px; display: grid; place-items: center }
+.mas svg { width: 20px; height: 20px }
+.mas[aria-expanded="true"] { color: var(--accent) }
+.mas:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px }
+@media (hover: hover) { .mas:hover { background: var(--surface2) } }
+.detalle { grid-column: 1 / -1; margin: 0 8px 8px 46px; font-size: .92rem; color: var(--fg2) }
+
+/* Preguntas con respuesta rápida */
+.preguntas { display: grid }
+.pq { display: grid; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line) }
+.pq:last-child { border-bottom: 0 }
+.pq .q { font-weight: 700; font-size: .95rem; margin: 0 }
+.opts { display: flex; flex-wrap: wrap; gap: 6px }
+.opts button { font: inherit; font-size: .92rem; min-height: 44px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line2); background: var(--surface); color: var(--fg); cursor: pointer; flex: 1 1 auto }
+.opts button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); font-weight: 700 }
+.opts button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
+.alerta-q { margin: 0; font-size: .9rem; font-weight: 700; color: var(--red) }
+
+/* Nota a demanda */
+.nota { display: grid; gap: 6px; min-width: 0 }
+.nota-btn { justify-self: start; font: inherit; font-size: .9rem; font-weight: 700; color: var(--accent); background: none; border: 1px dashed var(--line2); border-radius: 8px; min-height: 40px; padding: 0 12px; cursor: pointer }
+.nota-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
+.nota textarea { min-height: 56px }
+
+/* Resumen de lo preparado (modo sesión) */
+.preparado { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: .9rem }
+.preparado li { display: grid; grid-template-columns: minmax(0, 1fr); color: var(--fg2) }
+.preparado b { color: var(--fg) }
+
+/* Mientras se escribe: fuera los chips y la barra inferior, que el teclado ya ocupa sitio */
+body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: none !important }
+
+/* Móvil y tablet vertical: la barra fija de abajo ya hace de anterior / siguiente */
+@media (max-width: 1023px) { .pasos { display: none } }
+</style>
+
+<div class="barra"><div class="wrap">
+  <h1 id="tituloBarra"><span class="nom" id="tituloSesion">Sesión 1</span><small id="tituloSub"></small></h1>
+  <div class="modo" role="group" aria-label="Modo">
+    <button type="button" data-modo="preparar" aria-pressed="false">Preparar</button>
+    <button type="button" data-modo="sesion" aria-pressed="false">En sesión</button>
+  </div>
+  <button class="btn btn-pri" id="btnWordArriba" type="button">Word</button>
+</div>
+<div class="wrap chips-wrap"><nav class="chips" id="chips" aria-label="Secciones"></nav></div>
+</div>
+
+<div class="layout">
+<aside class="indice" aria-label="Índice"><span class="etq">Secciones</span><nav id="indice"></nav></aside>
+<main class="wrap" id="app">
+  <section class="card" aria-labelledby="hDatos" data-sec="datos" id="sec_datos">
+    <header><h2 id="hDatos">Datos de la sesión</h2></header>
+    <p class="sub" id="resumen"></p>
+    <div class="campos">
+      <div class="ancho"><span class="etq" id="lblN">Número de sesión (título del anexo)</span>
+        <div class="nses" role="group" aria-labelledby="lblN" id="nses"></div></div>
+      <label class="campo"><span class="etq">Fecha</span><input type="date" id="fFecha"></label>
+      <label class="campo"><span class="etq">Hora</span><input type="time" id="fHora" step="300"></label>
+      <label class="campo ancho"><span class="etq">Paciente (nombre completo, como en su carpeta)</span><input type="text" id="fPaciente" autocomplete="off" placeholder="Nombre y apellidos"></label>
+      <label class="campo ancho"><span class="etq">Profesional (cabecera del Word)</span><input type="text" id="fProfesional" autocomplete="name" placeholder="Tu nombre"></label>
+    </div>
+    <div class="plantilla">
+      <span class="estado" id="estadoPlantilla">Comprobando la plantilla…</span>
+      <button class="btn" type="button" id="btnPlantilla">Cargar plantilla</button>
+      <input type="file" id="filePlantilla" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+    </div>
+    <p class="privado">El nombre, lo que registras y la plantilla se guardan solo en este dispositivo. Ese guardado puede borrarse (navegación privada, borrar datos del navegador): lo que vale es el Word que descargas al terminar.</p>
+  </section>
+
+  <section class="card cond" aria-labelledby="hCond" data-sec="cond" id="sec_cond">
+    <header><h2 id="hCond">Antes de tratar</h2></header>
+    <p class="pregunta" id="condTitulo"></p>
+    <div class="seg" role="group" id="condSeg">
+      <button type="button" data-v="si" aria-pressed="false"></button>
+      <button type="button" data-v="no" aria-pressed="false"></button>
+    </div>
+    <div class="aviso aviso-reducido" id="avisoReducido" hidden></div>
+    <div class="aviso aviso-warn" id="condSiNo"></div>
+    <div class="aviso aviso-red" id="condUrg"></div>
+    <div id="resumenPreparado" hidden><span class="etq">De la preparación</span><ul class="preparado" id="listaPreparado"></ul></div>
+  </section>
+
+  <div id="secciones" style="display:grid;grid-template-columns:minmax(0,1fr);gap:16px;min-width:0"></div>
+
+  <section class="card" aria-labelledby="hNotas" data-sec="notas" id="sec_notas">
+    <header><h2 id="hNotas">Notas de la sesión</h2></header>
+    <div id="notaGeneral"></div>
+  </section>
+
+  <section class="card acciones" aria-labelledby="hFin" data-sec="fin" id="sec_fin">
+    <header><h2 id="hFin">Al terminar</h2></header>
+    <p class="sub" id="nombreArchivo"></p>
+    <div class="fila">
+      <button class="btn btn-pri" type="button" id="btnWord">Descargar Word del anexo</button>
+      <button class="btn" type="button" id="btnNueva">Empezar otra sesión</button>
+    </div>
+    <div class="confirmar" id="confirmar" hidden>
+      <b>¿Borrar lo registrado en esta sesión?</b>
+      <span class="sub">Se vacían las marcas, respuestas, notas y medidas. Se mantienen el paciente, el profesional y la plantilla. Descarga antes el Word si no lo has hecho.</span>
+      <div class="fila"><button class="btn" type="button" id="btnCancelar">Cancelar</button><button class="btn btn-pri" type="button" id="btnBorrar">Borrar y empezar</button></div>
+    </div>
+    <p class="msg" id="msg" role="status"></p>
+  </section>
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+/*PLAN*/
+</script>
+<script>
+/*ANEXO*/
+</script>
+<script>
+(function () {
+  const P = globalThis.PLAN, A = globalThis.ANEXO;
+  const CLAVE = 'registro-' + P.id, CLAVE_PROF = 'profesional', CLAVE_MODO = 'modo-' + P.id, CLAVE_PLEG = 'plegado-' + P.id;
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const el = (tag, attrs, ...hijos) => {
+    const e = document.createElement(tag);
+    for (const k in (attrs || {})) {
+      if (k === 'class') e.className = attrs[k];
+      else if (attrs[k] !== undefined && attrs[k] !== null && attrs[k] !== false) e.setAttribute(k, attrs[k]);
+    }
+    hijos.flat().forEach(h => h != null && e.append(h));
+    return e;
+  };
+  const leer = (k, def) => { try { const v = localStorage.getItem(k); return v == null ? def : v; } catch (e) { return def; } };
+  const escribir = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+  const TICK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--surface)"/></svg>';
+  const INFO = '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+  const CHEV = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const FLECHA = d => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + (d < 0 ? 'M15 5l-7 7 7 7' : 'M9 5l7 7-7 7') + '" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  // ---- estado (solo en este dispositivo) ----
+  const vacio = () => ({ sesion: { n: 1, fecha: '', hora: '', paciente: '', profesional: '' }, condicion: '', hecho: {}, respuestas: {}, notas: {}, medidas: {}, comparar: {}, notasGenerales: '' });
+  let R = vacio();
+  try { const g = JSON.parse(leer(CLAVE, 'null')); if (g && g.sesion) R = Object.assign(vacio(), g); } catch (e) {}
+  if (R.fractura && !R.condicion) R.condicion = R.fractura; // registros de la primera versión
+  delete R.fractura;
+  if (!R.sesion.profesional) R.sesion.profesional = leer(CLAVE_PROF, '');
+  const dos = n => String(n).padStart(2, '0');
+  const ahora = new Date();
+  if (!R.sesion.fecha) R.sesion.fecha = ahora.getFullYear() + '-' + dos(ahora.getMonth() + 1) + '-' + dos(ahora.getDate());
+  if (!R.sesion.hora) { const d = new Date(ahora); d.setMinutes(Math.round(d.getMinutes() / 5) * 5, 0, 0); R.sesion.hora = dos(d.getHours()) + ':' + dos(d.getMinutes()); }
+  let tGuardar = null;
+  function guardar() {
+    clearTimeout(tGuardar);
+    tGuardar = setTimeout(() => { escribir(CLAVE, JSON.stringify(R)); escribir(CLAVE_PROF, R.sesion.profesional || ''); }, 250);
+  }
+  const suspendido = it => !!P.condicion && R.condicion === 'no' && it.soloSiCondicion;
+  let modo = leer(CLAVE_MODO, 'preparar') === 'sesion' ? 'sesion' : 'preparar';
+  let listo = false; // true cuando ya existen la barra inferior y el hueco final
+
+  // ---- piezas ----
+  // Casilla marcable. En «En sesión» enseña el texto corto y el completo bajo el botón ⓘ.
+  function item(it, textoFijo) {
+    const caja = el('div', { class: 'item' });
+    const b = el('button', { type: 'button', class: 'chk', role: 'checkbox', 'data-id': it.id }, el('span', { class: 'caja' }), el('span', { class: 'txt' }));
+    b.querySelector('.caja').innerHTML = TICK;
+    b._item = it; b._textoFijo = textoFijo;
+    b.addEventListener('click', () => {
+      if (b.getAttribute('aria-disabled') === 'true') return;
+      if (R.hecho[it.id]) delete R.hecho[it.id]; else R.hecho[it.id] = true;
+      guardar(); pintarMarcas();
+    });
+    caja.append(b);
+    if (!textoFijo && it.corto && !it.completo) {
+      const mas = el('button', { type: 'button', class: 'mas', 'aria-expanded': 'false', 'aria-label': 'Ver el texto completo' });
+      mas.innerHTML = INFO;
+      const det = el('p', { class: 'detalle', hidden: '' }, it.texto);
+      mas.addEventListener('click', () => { const ab = det.hidden; det.hidden = !ab; mas.setAttribute('aria-expanded', String(ab)); });
+      caja.append(mas, det);
+      caja._mas = mas; caja._det = det;
+    }
+    return caja;
+  }
+  function pintarTextos() {
+    $$('.chk').forEach(b => {
+      const it = b._item, corto = modo === 'sesion' && it.corto && !it.completo && !b._textoFijo;
+      const t = b.querySelector('.txt');
+      t.firstChild ? (t.firstChild.textContent = b._textoFijo || (corto ? it.corto : it.texto)) : t.append(document.createTextNode(b._textoFijo || (corto ? it.corto : it.texto)));
+      const caja = b.parentNode;
+      if (caja._mas) { caja._mas.hidden = !corto; if (!corto) { caja._det.hidden = true; caja._mas.setAttribute('aria-expanded', 'false'); } }
+    });
+  }
+  // Nota que solo abre el teclado si la pides.
+  function nota(id, etiqueta, guardarEn) {
+    const g = guardarEn || R.notas;
+    const caja = el('div', { class: 'nota' });
+    const btn = el('button', { type: 'button', class: 'nota-btn' }, '+ ' + (etiqueta || 'Nota'));
+    const t = el('textarea', { id: 'n_' + id, rows: 2, 'aria-label': etiqueta || 'Nota' });
+    t.value = g[id] || '';
+    t.hidden = !t.value; btn.hidden = !!t.value;
+    btn.addEventListener('click', () => { btn.hidden = true; t.hidden = false; t.focus(); });
+    t.addEventListener('input', () => { if (t.value) g[id] = t.value; else if (g === R.notas) delete g[id]; else g[id] = ''; guardar(); });
+    t.addEventListener('blur', () => { if (!t.value.trim()) { t.hidden = true; btn.hidden = false; } });
+    caja.append(btn, t);
+    return caja;
+  }
+  // Grupo de respuestas rápidas (una o varias). El segundo toque sobre la marcada la quita.
+  function opciones(def, destino, alCambiar) {
+    const g = el('div', { class: 'opts', role: 'group', 'aria-label': def.q || def.etiqueta || '' });
+    const alerta = el('p', { class: 'alerta-q', hidden: '' });
+    const pintar = () => {
+      const v = destino[def.id];
+      const elegidas = Array.isArray(v) ? v : (v ? [v] : []);
+      $$('button', g).forEach(b => b.setAttribute('aria-pressed', String(elegidas.includes(b.dataset.v))));
+      const al = (def.alertas && elegidas.map(e => def.alertas[e]).filter(Boolean)) || [];
+      alerta.textContent = al.join(' '); alerta.hidden = !al.length;
+    };
+    def.opciones.forEach(o => {
+      const b = el('button', { type: 'button', 'data-v': o }, o);
+      b.addEventListener('click', () => {
+        if (def.multi) {
+          let v = Array.isArray(destino[def.id]) ? destino[def.id].slice() : [];
+          const excl = def.exclusivas || [];
+          if (v.includes(o)) v = v.filter(x => x !== o);
+          else v = excl.includes(o) ? [o] : v.filter(x => !excl.includes(x)).concat(o);
+          if (v.length) destino[def.id] = v; else delete destino[def.id];
+        } else {
+          if (destino[def.id] === o) delete destino[def.id]; else destino[def.id] = o;
+        }
+        guardar(); pintar(); if (alCambiar) alCambiar();
+      });
+      g.append(b);
+    });
+    pintar();
+    return [g, alerta];
+  }
+  function textoMedida(id) {
+    const m = P.medidas.find(x => x.id === id), v = R.medidas[id];
+    if (v == null || v === '' || (Array.isArray(v) && !v.length)) return 'sin registrar';
+    return m && m.tipo === 'evn' ? v + '/10' : (Array.isArray(v) ? v.join(', ') : String(v));
+  }
+  function pintarInicios() { $$('.inicio[data-de]').forEach(p => { p.querySelector('b').textContent = textoMedida(p.dataset.de); }); }
+  function medidaUI(m) {
+    const caja = el('div', { class: 'medida' }, el('span', { class: 'nombre', id: 'lb_' + m.id }, m.etiqueta));
+    if (m.inicio) caja.append(el('p', { class: 'inicio', 'data-de': m.inicio }, 'Al inicio (Reevaluación): ', el('b', {}, '')));
+    if (m.tipo === 'evn') {
+      const g = el('div', { class: 'evn', role: 'group', 'aria-labelledby': 'lb_' + m.id });
+      for (let v = 0; v <= 10; v++) {
+        const b = el('button', { type: 'button', 'data-v': v, 'aria-pressed': String(R.medidas[m.id] === v) }, String(v));
+        b.addEventListener('click', () => {
+          if (R.medidas[m.id] === v) delete R.medidas[m.id]; else R.medidas[m.id] = v;
+          $$('button', g).forEach(x => x.setAttribute('aria-pressed', String(Number(x.dataset.v) === R.medidas[m.id])));
+          guardar(); pintarInicios();
+        });
+        g.append(b);
+      }
+      caja.append(g);
+    } else if (m.tipo === 'opciones') {
+      caja.append(...opciones(m, R.medidas, pintarInicios));
+    } else {
+      const i = el('input', { type: 'text', id: 'm_' + m.id, 'aria-labelledby': 'lb_' + m.id, placeholder: 'Resultado' });
+      i.value = R.medidas[m.id] || '';
+      i.addEventListener('input', () => { if (i.value) R.medidas[m.id] = i.value; else delete R.medidas[m.id]; guardar(); pintarInicios(); });
+      caja.append(i);
+    }
+    if (m.nota) caja.append(nota(m.id, m.nota));
+    return caja;
+  }
+  function tarjeta(id, titulo, min, sub) {
+    const s = el('section', { class: 'card', 'aria-labelledby': 'h_' + id, 'data-bloque': id, 'data-sec': id, id: 'sec_' + id });
+    const h = el('header', {}, el('h2', { id: 'h_' + id }, titulo));
+    if (min) h.append(el('span', { class: 'min' }, min + ' min'));
+    h.append(el('span', { class: 'cuenta', 'data-cuenta': id }));
+    s.append(h);
+    if (sub) s.append(el('p', { class: 'sub' }, sub));
+    return s;
+  }
+
+  // ---- montaje ----
+  $('#resumen').textContent = P.resumen + '. ' + P.tipo;
+  $('#tituloSub').textContent = P.nombre || '';
+  if (P.condicion) {
+    $('#condTitulo').textContent = P.condicion.titulo;
+    $('#condSiNo').textContent = P.condicion.siNo;
+    $('#condUrg').textContent = P.condicion.urgencias;
+    $('#condSeg').setAttribute('aria-label', P.condicion.pregunta);
+    $('#condSeg [data-v="si"]').textContent = P.condicion.si;
+    $('#condSeg [data-v="no"]').textContent = P.condicion.no;
+  }
+
+  const nses = $('#nses');
+  Array.from({ length: P.sesiones || 4 }, (_, k) => k + 1).forEach(n => {
+    const b = el('button', { type: 'button', 'data-n': n }, String(n));
+    b.addEventListener('click', () => { R.sesion.n = n; guardar(); pintarSesion(); });
+    nses.append(b);
+  });
+  const otra = el('input', { type: 'number', min: 1, max: 99, id: 'nOtra', 'aria-label': 'Otro número de sesión', style: 'width:84px', placeholder: 'Otra' });
+  otra.addEventListener('input', () => { const v = parseInt(otra.value, 10); if (v > 0) { R.sesion.n = v; guardar(); pintarSesion(true); } });
+  nses.append(otra);
+  [['fFecha', 'fecha'], ['fHora', 'hora'], ['fPaciente', 'paciente'], ['fProfesional', 'profesional']].forEach(([id, k]) => {
+    const i = $('#' + id); i.value = R.sesion[k] || '';
+    i.addEventListener('input', () => { R.sesion[k] = i.value; guardar(); pintarNombre(); });
+  });
+  $$('.seg button').forEach(b => b.addEventListener('click', () => {
+    R.condicion = R.condicion === b.dataset.v ? '' : b.dataset.v;
+    guardar(); pintarCondicion(); pintarMarcas();
+  }));
+
+  if (!P.condicion) $('#sec_cond').remove();
+  const cont = $('#secciones');
+  // Antes de empezar: respuestas rápidas, se rellena al preparar.
+  const sa = tarjeta('antes', P.antes.titulo, P.antes.min, 'Con la familia, antes de la sesión. Toca la respuesta; la nota solo si hace falta.');
+  const lp = el('div', { class: 'preguntas' });
+  P.antes.items.forEach(it => {
+    const pq = el('div', { class: 'pq', 'data-pq': it.id }, el('p', { class: 'q' }, it.texto));
+    if (it.opciones) pq.append(...opciones(Object.assign({ q: it.texto }, it), R.respuestas, () => { pintarMarcas(); pintarPreparado(); }));
+    pq.append(nota(it.id, it.nota || 'Nota'));
+    lp.append(pq);
+  });
+  sa.append(lp); cont.append(sa);
+
+  // Bloques de la sesión
+  P.bloques.forEach(b => {
+    const s = tarjeta(b.id, b.nombre, b.min);
+    b.grupos.forEach(g => {
+      if (g.titulo) s.append(el('h3', {}, g.titulo));
+      const l = el('div', { class: 'items' });
+      g.items.forEach(it => l.append(item(it)));
+      s.append(l);
+    });
+    const ms = P.medidas.filter(m => m.bloque === b.id);
+    if (ms.length) {
+      const mg = el('div', { class: 'medidas-grupo' }, el('span', { class: 'etq' }, 'Medidas'));
+      ms.forEach(m => mg.append(medidaUI(m)));
+      s.append(mg);
+    }
+    s.append(nota(b.id, 'Nota de ' + b.nombre.toLowerCase()));
+    cont.append(s);
+  });
+
+  // Programa para casa
+  const sc = tarjeta('casa', P.casa.titulo, null, P.casa.sub.charAt(0).toUpperCase() + P.casa.sub.slice(1) + '. ' + P.casa.nota);
+  P.casa.ejercicios.forEach(e => {
+    const c = el('div', { class: 'ejer' }, el('div', { class: 'cab' }, el('b', {}, e.nombre), el('span', { class: 'dosis' }, e.dosis)), el('p', { class: 'como' }, e.como));
+    c.append(item(e, 'Enseñado y comprobado'));
+    c.append(nota(e.id));
+    sc.append(c);
+  });
+  cont.append(sc);
+
+  // Progresión del mes (solo al preparar)
+  const sp = tarjeta('prog', 'Progresión del mes');
+  sp.querySelector('[data-cuenta]').remove();
+  sp.append(el('p', { class: 'sub' }, P.progresion.regla));
+  const tbody = el('tbody');
+  P.progresion.filas.forEach(f => tbody.append(el('tr', { 'data-n': f.n }, el('td', {}, f.etiqueta), f.celdas.map(c => el('td', {}, c)))));
+  sp.append(el('div', { class: 'prog-tabla' }, el('table', {}, el('thead', {}, el('tr', {}, el('th', {}, 'Sesión'), P.progresion.columnas.map(c => el('th', {}, c)))), tbody)));
+  const movil = el('div', { class: 'fila-movil' });
+  P.progresion.filas.forEach(f => {
+    const dl = el('dl', { class: 'fase', 'data-n': f.n }, el('b', {}, f.etiqueta));
+    P.progresion.columnas.forEach((c, k) => dl.append(el('dt', {}, c), el('dd', {}, f.celdas[k])));
+    movil.append(dl);
+  });
+  sp.append(movil);
+  sp.append(el('details', {}, el('summary', {}, 'Seguir o cambiar'), el('ul', { class: 'lista' }, P.seguir.map(t => el('li', {}, t)))));
+  sp.append(el('details', {}, el('summary', {}, 'Durante todo el mes'), el('ul', { class: 'lista' }, P.durante.map(t => el('li', {}, t)))));
+  const dComp = el('details', { id: 'detComparar' }, el('summary', {}, 'Medidas para comparar en la sesión ' + (P.comparar ? P.comparar.sesion : '')));
+  const tcb = el('tbody');
+  (P.comparar ? P.comparar.filas : []).forEach(k => {
+    const i = el('input', { type: 'text', id: 'k_' + k.id, 'aria-label': k.medida + ' en la sesión ' + P.comparar.sesion });
+    i.value = R.comparar[k.id] || '';
+    i.addEventListener('input', () => { if (i.value) R.comparar[k.id] = i.value; else delete R.comparar[k.id]; guardar(); });
+    tcb.append(el('tr', {}, el('td', {}, k.medida), el('td', {}, k.inicial), el('td', {}, i)));
+  });
+  dComp.append(el('div', { class: 'prog-tabla', style: 'display:block' }, el('table', { class: 'comparar' }, el('thead', {}, el('tr', {}, el('th', {}, 'Medida'), el('th', {}, 'Inicial'), el('th', {}, 'Sesión ' + (P.comparar ? P.comparar.sesion : '')))), tcb)));
+  sp.append(dComp);
+  cont.append(sp);
+
+  $('#notaGeneral').append(nota('general', 'Nota para el anexo', { get general() { return R.notasGenerales; }, set general(v) { R.notasGenerales = v; } }));
+
+  // ---- pintado ----
+  let pintarMarcas = function () {
+    let hechos = 0, total = 0;
+    $$('.chk').forEach(b => {
+      const it = b._item, sus = suspendido(it);
+      b.setAttribute('aria-checked', String(!!R.hecho[it.id] && !sus));
+      b.setAttribute('aria-disabled', String(sus));
+      const tag = b.querySelector('.tag-no');
+      if (sus && !tag) b.querySelector('.txt').append(el('span', { class: 'tag-no' }, P.condicion.noAplicar));
+      if (!sus && tag) tag.remove();
+      if (!sus) { total++; if (R.hecho[it.id]) hechos++; }
+    });
+    $$('[data-cuenta]').forEach(c => {
+      const id = c.dataset.cuenta, sec = c.closest('[data-bloque]');
+      let h = 0, n = 0;
+      if (id === 'antes') { n = P.antes.items.length; h = P.antes.items.filter(it => R.respuestas[it.id] || R.notas[it.id]).length; }
+      else { const bs = $$('.chk', sec).filter(b => b.getAttribute('aria-disabled') !== 'true'); n = bs.length; h = bs.filter(b => b.getAttribute('aria-checked') === 'true').length; }
+      c.textContent = n ? h + '/' + n : '';
+      c.classList.toggle('completa', n > 0 && h === n);
+    });
+    pintarNav();
+  };
+  function pintarCondicion() {
+    if (!P.condicion) return;
+    $$('.seg button').forEach(b => b.setAttribute('aria-pressed', String(R.condicion === b.dataset.v)));
+    const av = $('#avisoReducido');
+    av.hidden = R.condicion !== 'no';
+    av.textContent = P.condicion.reducido;
+  }
+  function pintarPreparado() {
+    const l = $('#listaPreparado'); l.textContent = '';
+    P.antes.items.forEach(it => {
+      const v = R.respuestas[it.id], n = (R.notas[it.id] || '').trim();
+      const t = [Array.isArray(v) ? v.join(', ') : v, n].filter(Boolean).join(' · ');
+      if (t) l.append(el('li', {}, el('span', {}, el('b', {}, (it.corto || it.texto.split(':')[0]) + ': '), t)));
+    });
+    $('#resumenPreparado').hidden = modo !== 'sesion' || !l.children.length;
+  }
+  function pintarSesion(desdeOtra) {
+    const n = R.sesion.n;
+    $$('#nses button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.n) === n)));
+    if (!desdeOtra) otra.value = n > (P.sesiones || 4) ? n : '';
+    $$('tr[data-n], dl[data-n]').forEach(f => f.classList.toggle('actual', Number(f.dataset.n) === n));
+    if (P.comparar && n === P.comparar.sesion) $('#detComparar').open = true;
+    pintarNombre();
+  }
+  function pintarNombre() {
+    $('#tituloSesion').textContent = 'Sesión ' + R.sesion.n + (R.sesion.paciente.trim() ? ' · ' + R.sesion.paciente.trim() : '');
+    $('#nombreArchivo').textContent = 'Se guardará como: ' + A.nombreArchivo(R.sesion);
+  }
+
+  // ---- secciones, modos y navegación ----
+  const SECCIONES = [
+    { id: 'datos', corto: 'Datos', largo: 'Datos de la sesión', plegable: true, modos: ['preparar'] },
+    ...(P.condicion ? [{ id: 'cond', corto: P.condicion.corto || 'Condición', largo: 'Antes de tratar' }] : []),
+    { id: 'antes', corto: P.antes.corto || 'Antes', largo: P.antes.titulo, plegable: true, min: P.antes.min, modos: ['preparar'] },
+    ...P.bloques.map(b => ({ id: b.id, corto: b.corto || b.nombre, largo: b.nombre, plegable: !b.fijo, min: b.min, sesion: true })),
+    { id: 'casa', corto: 'Casa', largo: P.casa.titulo, plegable: true },
+    { id: 'prog', corto: 'Mes', largo: 'Progresión del mes', plegable: true, modos: ['preparar'] },
+    { id: 'notas', corto: 'Notas', largo: 'Notas de la sesión', plegable: true },
+    { id: 'fin', corto: 'Terminar', largo: 'Al terminar' }
+  ];
+  const visibles = () => SECCIONES.filter(s => !s.modos || s.modos.includes(modo));
+  const secEl = id => document.getElementById('sec_' + id);
+  const reducido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const acordeon = () => window.matchMedia('(max-width: 1023px)').matches;
+  let plegadas = {};
+  try { plegadas = JSON.parse(leer(CLAVE_PLEG, '{}')) || {}; } catch (e) {}
+
+  const tieneNotas = sec => $$('textarea, input[type=text]', sec).some(i => i.value && i.value.trim());
+  function pintarTagNotas(sec) { const t = sec.querySelector(':scope > header .tag-notas'); if (t) t.hidden = !(sec.classList.contains('plegada') && tieneNotas(sec)); }
+  function plegar(id, cerrar) {
+    const sec = secEl(id); if (!sec || !sec._cuerpo) return;
+    if (!cerrar && acordeon()) visibles().forEach(o => { if (o.plegable && o.id !== id && !secEl(o.id).classList.contains('plegada')) plegar(o.id, true); });
+    sec._cuerpo.hidden = cerrar;
+    sec.classList.toggle('plegada', cerrar);
+    sec._btn.setAttribute('aria-expanded', String(!cerrar));
+    if (cerrar) plegadas[id] = true; else delete plegadas[id];
+    escribir(CLAVE_PLEG, JSON.stringify(plegadas)); pintarTagNotas(sec);
+    if (listo) ajustarRelleno();
+  }
+  function hacerPlegable(info) {
+    const sec = secEl(info.id), header = sec.querySelector(':scope > header'), h2 = header.querySelector('h2');
+    const btn = el('button', { type: 'button', class: 'plegar', 'aria-expanded': 'true', 'aria-controls': 'cu_' + info.id });
+    while (h2.firstChild) btn.append(h2.firstChild);
+    h2.append(btn);
+    header.classList.add('plegable');
+    header.append(el('span', { class: 'tag-notas', hidden: '' }, 'notas'));
+    const meta = el('span', { class: 'meta' });
+    Array.from(header.children).filter(c => c !== h2).forEach(c => meta.append(c));
+    header.append(meta);
+    const ch = el('span', { class: 'chev' }); ch.innerHTML = CHEV; header.append(ch);
+    const cu = el('div', { class: 'cuerpo', id: 'cu_' + info.id });
+    Array.from(sec.children).filter(c => c !== header).forEach(c => cu.append(c));
+    sec.append(cu);
+    sec._cuerpo = cu; sec._btn = btn;
+    btn.addEventListener('click', () => {
+      const abrir = sec.classList.contains('plegada');
+      plegar(info.id, !abrir);
+      if (abrir && acordeon()) { colocar(info.id); requestAnimationFrame(() => colocar(info.id)); }
+    });
+    header.addEventListener('click', e => { if (!e.target.closest('button')) btn.click(); });
+    sec.addEventListener('input', () => pintarTagNotas(sec));
+    if (plegadas[info.id]) plegar(info.id, true);
+  }
+  function colocar(id) {
+    const sec = secEl(id); if (!sec) return;
+    const alto = $('.barra').offsetHeight;
+    window.scrollTo({ top: Math.max(0, sec.getBoundingClientRect().top + window.scrollY - alto - 12), behavior: 'auto' });
+  }
+  let tColocar = null;
+  function ir(id, enfocar) {
+    const sec = secEl(id); if (!sec) return;
+    if (sec.classList.contains('plegada')) plegar(id, false);
+    fijarDestino(id);
+    colocar(id);
+    clearTimeout(tColocar);
+    requestAnimationFrame(() => { if (destino === id) colocar(id); });
+    tColocar = setTimeout(() => { if (destino === id) colocar(id); }, 250);
+    if (enfocar) { const f = sec._btn || sec.querySelector('h2'); if (f) { if (!sec._btn) f.setAttribute('tabindex', '-1'); f.focus({ preventScroll: true }); } }
+  }
+  function pasar(desde, hacia) {
+    const o = SECCIONES.find(s => s.id === desde);
+    if (o && o.plegable && !acordeon()) plegar(desde, true);
+    ir(hacia, true);
+  }
+  // Anterior / siguiente al final de cada sección, según el modo.
+  SECCIONES.forEach(info => secEl(info.id).append(el('div', { class: 'pasos', 'data-pasos': info.id })));
+  function pintarPasos() {
+    const vs = visibles();
+    vs.forEach((info, k) => {
+      const caja = $('[data-pasos="' + info.id + '"]'); caja.textContent = '';
+      const ant = vs[k - 1], sig = vs[k + 1];
+      if (ant) { const b = el('button', { type: 'button', class: 'btn ant' }, el('small', {}, '← Anterior'), ant.largo); b.addEventListener('click', () => pasar(info.id, ant.id)); caja.append(b); }
+      if (sig) { const b = el('button', { type: 'button', class: 'btn sig' }, el('small', {}, 'Siguiente →'), sig.largo); b.addEventListener('click', () => pasar(info.id, sig.id)); caja.append(b); }
+    });
+  }
+  SECCIONES.filter(s => s.plegable).forEach(hacerPlegable);
+
+  const chips = $('#chips'), indice = $('#indice');
+  SECCIONES.forEach(info => {
+    chips.append(el('button', { type: 'button', class: 'ir', 'data-ir': info.id }, info.corto, el('span', { class: 'c' })));
+    indice.append(el('button', { type: 'button', 'data-ir': info.id, class: 'ir' + (info.sesion ? ' sub-b' : '') },
+      el('span', {}, info.largo, info.min ? el('span', { class: 'min-l' }, info.min + "'") : null), el('span', { class: 'c' })));
+  });
+  [chips, indice].forEach(n => n.addEventListener('click', e => { const a = e.target.closest('[data-ir]'); if (a) ir(a.dataset.ir, true); }));
+  function pintarNav() {
+    SECCIONES.forEach(info => {
+      let txt = '', completa = false;
+      if (info.id === 'cond') txt = R.condicion === 'si' ? 'sí' : R.condicion === 'no' ? 'no' : '?';
+      else { const c = $('[data-cuenta="' + info.id + '"]'); if (c && c.textContent) { txt = c.textContent; completa = c.classList.contains('completa'); } }
+      $$('[data-ir="' + info.id + '"]').forEach(a => { a.querySelector('.c').textContent = txt; a.classList.toggle('completa', completa); });
+    });
+    if (actual) pintarBarraPasos();
+  }
+
+  let actual = '', destino = null;
+  function soltarDestino() { if (!destino) return; destino = null; marcarActual(); }
+  function fijarDestino(id) { destino = id; activar(id); }
+  // Solo el scroll hecho a mano (dedo, rueda o teclas de desplazamiento) devuelve el mando a la posición.
+  document.addEventListener('click', e => {
+    const sec = e.target.closest('section[data-sec]');
+    if (!sec || e.target.closest('.pasos')) return;
+    fijarDestino(sec.dataset.sec);
+  });
+  window.addEventListener('wheel', soltarDestino, { passive: true });
+  window.addEventListener('touchmove', soltarDestino, { passive: true });
+  window.addEventListener('keydown', e => {
+    if (e.target.matches && e.target.matches('input, textarea')) return;
+    if (['PageUp', 'PageDown', 'ArrowUp', 'ArrowDown', 'Home', 'End', ' '].includes(e.key)) soltarDestino();
+  });
+  function marcarActual() {
+    if (destino) return;
+    const tope = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--alto-barra')) || 64) + 24;
+    const vs = visibles();
+    let id = vs[0].id;
+    vs.forEach(info => { const s = secEl(info.id); if (s.getBoundingClientRect().top <= tope) id = info.id; });
+    activar(id);
+  }
+  function activar(id) {
+    if (id === actual) return;
+    actual = id;
+    pintarBarraPasos();
+    $$('[data-ir]').forEach(a => { const on = a.dataset.ir === id; a.classList.toggle('activo', on); if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
+    const c = chips.querySelector('[data-ir="' + id + '"]');
+    if (c && chips.offsetParent) {
+      const izq = c.offsetLeft - chips.offsetLeft, der = izq + c.offsetWidth;
+      if (izq < chips.scrollLeft + 16) chips.scrollLeft = Math.max(0, izq - 16);
+      else if (der > chips.scrollLeft + chips.clientWidth - 16) chips.scrollLeft = der - chips.clientWidth + 16;
+    }
+  }
+
+  // Barra inferior (móvil y tablet vertical)
+  const bp = el('nav', { class: 'barra-pasos', 'aria-label': 'Sección anterior y siguiente' });
+  const bpAnt = el('button', { type: 'button', id: 'bpAnt' }), bpSig = el('button', { type: 'button', id: 'bpSig' });
+  bpAnt.innerHTML = FLECHA(-1); bpSig.innerHTML = FLECHA(1);
+  const bpDonde = el('div', { class: 'donde', 'aria-live': 'polite' }, el('b'), el('span'));
+  bp.append(el('div', { class: 'in' }, bpAnt, bpDonde, bpSig));
+  document.body.append(bp); document.body.classList.add('con-barra-pasos');
+  function pintarBarraPasos() {
+    const vs = visibles();
+    const k = Math.max(0, vs.findIndex(s => s.id === actual));
+    const info = vs[k], ant = vs[k - 1], sig = vs[k + 1];
+    bpDonde.querySelector('b').textContent = info.largo;
+    const c = document.querySelector('#chips [data-ir="' + info.id + '"] .c');
+    bpDonde.querySelector('span').textContent = (k + 1) + ' de ' + vs.length + (c && c.textContent && info.id !== 'cond' ? ' · ' + c.textContent : '');
+    bpAnt.disabled = !ant; bpSig.disabled = !sig;
+    bpAnt.setAttribute('aria-label', ant ? 'Anterior: ' + ant.largo : 'No hay sección anterior');
+    bpSig.setAttribute('aria-label', sig ? 'Siguiente: ' + sig.largo : 'No hay sección siguiente');
+  }
+  bpAnt.addEventListener('click', () => { const vs = visibles(), k = vs.findIndex(s => s.id === actual); if (k > 0) pasar(actual, vs[k - 1].id); });
+  bpSig.addEventListener('click', () => { const vs = visibles(), k = vs.findIndex(s => s.id === actual); if (k >= 0 && k < vs.length - 1) pasar(actual, vs[k + 1].id); });
+
+  // Mientras se escribe se ocultan chips y barra inferior; al terminar, vuelve el campo a la vista.
+  function medirBarra() { document.documentElement.style.setProperty('--alto-barra', $('.barra').offsetHeight + 'px'); ajustarRelleno(); }
+  const relleno = el('div', { id: 'relleno', 'aria-hidden': 'true' });
+  $('#app').append(relleno);
+  function ajustarRelleno() {
+    const vs = visibles(), ultima = secEl(vs[vs.length - 1].id);
+    const alto = $('.barra').offsetHeight, abajo = bp.offsetParent ? bp.offsetHeight : 0;
+    relleno.style.height = Math.max(0, window.innerHeight - alto - ultima.offsetHeight - 24 - abajo) + 'px';
+  }
+  document.addEventListener('focusin', e => { if (e.target.matches('input[type=text], input[type=number], textarea')) { document.body.classList.add('escribiendo'); medirBarra(); } });
+  document.addEventListener('focusout', e => {
+    const campo = e.target;
+    // Solo al salir de un campo de texto (cierre del teclado); al salir de un botón no se mueve nada.
+    if (!campo.matches || !campo.matches('input[type=text], input[type=number], textarea')) return;
+    setTimeout(() => {
+      const a = document.activeElement;
+      if (a && a.matches('input[type=text], input[type=number], textarea')) return;
+      document.body.classList.remove('escribiendo'); medirBarra();
+      const cerca = campo && campo.isConnected && !campo.hidden && campo.closest('.pq, .nota, .medida, label, section');
+      if (cerca) cerca.scrollIntoView({ block: 'nearest' });
+    }, 80);
+  });
+
+  // Modo Preparar / En sesión
+  function aplicarModo() {
+    $$('.modo button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.modo === modo)));
+    SECCIONES.forEach(info => {
+      const ver = !info.modos || info.modos.includes(modo);
+      secEl(info.id).hidden = !ver;
+      $$('[data-ir="' + info.id + '"]').forEach(a => { a.hidden = !ver; });
+    });
+    $$('.ejer .como').forEach(p => { p.hidden = modo === 'sesion'; });
+    pintarTextos(); pintarPasos(); pintarPreparado();
+    unaAbierta(); ajustarRelleno(); actual = ''; destino = null; marcarActual();
+  }
+  $$('.modo button').forEach(b => b.addEventListener('click', () => {
+    if (modo === b.dataset.modo) return;
+    modo = b.dataset.modo; escribir(CLAVE_MODO, modo);
+    aplicarModo(); window.scrollTo({ top: 0, behavior: 'auto' });
+  }));
+  function unaAbierta() {
+    if (!acordeon()) return;
+    const abiertas = visibles().filter(s => s.plegable && !secEl(s.id).classList.contains('plegada'));
+    abiertas.slice(1).forEach(s => plegar(s.id, true));
+  }
+  window.matchMedia('(max-width: 1023px)').addEventListener('change', unaAbierta);
+  let pend = false;
+  window.addEventListener('scroll', () => { if (pend) return; pend = true; requestAnimationFrame(() => { pend = false; marcarActual(); }); }, { passive: true });
+  window.addEventListener('resize', () => { medirBarra(); marcarActual(); });
+  window.addEventListener('load', () => { medirBarra(); marcarActual(); });
+
+  // ---- plantilla (IndexedDB, solo en este dispositivo) ----
+  let plantilla = null;
+  function idb() {
+    return new Promise((ok, mal) => {
+      try {
+        const rq = indexedDB.open('anexo-sesion', 1);
+        rq.onupgradeneeded = () => rq.result.createObjectStore('p');
+        rq.onsuccess = () => ok(rq.result); rq.onerror = () => mal(rq.error);
+      } catch (e) { mal(e); }
+    });
+  }
+  async function leerPlantilla() {
+    try { const db = await idb(); return await new Promise(ok => { const rq = db.transaction('p').objectStore('p').get('base'); rq.onsuccess = () => ok(rq.result || null); rq.onerror = () => ok(null); }); }
+    catch (e) { return null; }
+  }
+  async function guardarPlantilla(v) {
+    try { const db = await idb(); await new Promise(ok => { const tx = db.transaction('p', 'readwrite'); tx.objectStore('p').put(v, 'base'); tx.oncomplete = ok; tx.onerror = ok; }); return true; }
+    catch (e) { return false; }
+  }
+  function pintarPlantilla(notaTxt) {
+    const e = $('#estadoPlantilla'); e.textContent = '';
+    if (plantilla) { e.append(el('span', { class: 'ok' }, 'Plantilla cargada: '), plantilla.nombre); if (notaTxt) e.append(' · ' + notaTxt); $('#btnPlantilla').textContent = 'Cambiar'; }
+    else { e.append(el('span', { class: 'falta' }, 'Falta la plantilla. '), 'Carga el Documento_base.docx de la unidad (una vez en cada dispositivo).'); $('#btnPlantilla').textContent = 'Cargar plantilla'; }
+  }
+  $('#btnPlantilla').addEventListener('click', () => $('#filePlantilla').click());
+  $('#filePlantilla').addEventListener('change', async ev => {
+    const f = ev.target.files && ev.target.files[0]; ev.target.value = '';
+    if (!f) return;
+    const bytes = await f.arrayBuffer();
+    if (typeof JSZip === 'undefined') { aviso('No se ha podido cargar el lector de Word. Recarga la página con conexión.', 'err'); return; }
+    const err = await A.comprobarPlantilla(JSZip, bytes);
+    if (err) { aviso('Esa plantilla no sirve: ' + err, 'err'); return; }
+    plantilla = { nombre: f.name, bytes: bytes, fecha: Date.now() };
+    const ok = await guardarPlantilla(plantilla);
+    pintarPlantilla(ok ? '' : 'solo para esta visita (este navegador no deja guardarla)');
+    aviso('Plantilla lista.', 'ok');
+  });
+
+  // ---- descarga ----
+  function aviso(t, tipo) { const m = $('#msg'); m.textContent = t; m.className = 'msg' + (tipo ? ' ' + tipo : ''); }
+  let descargas = null;
+  async function descargar() {
+    const local = !(window.claude && window.claude.use);
+    const irA = (id, foco) => { if (modo !== 'preparar') { modo = 'preparar'; escribir(CLAVE_MODO, modo); aplicarModo(); } ir('datos'); setTimeout(() => { const f = $(foco); if (f) f.focus(); }, 300); };
+    if (!plantilla) { aviso('Antes de descargar, carga la plantilla (en «Datos de la sesión», modo Preparar).', 'err'); irA('datos', '#btnPlantilla'); return; }
+    if (!R.sesion.paciente.trim()) { aviso('Escribe el nombre del paciente: va en el Word y en el nombre del archivo.', 'err'); irA('datos', '#fPaciente'); return; }
+    if (typeof JSZip === 'undefined') { aviso('No se ha podido cargar el generador de Word. Recarga la página con conexión.', 'err'); return; }
+    if (!descargas && !local) { aviso('Esta vista no permite descargar archivos. Abre la página en claude.ai, en el navegador o en la app de Claude.', 'err'); return; }
+    const botones = [$('#btnWord'), $('#btnWordArriba')];
+    botones.forEach(b => b.disabled = true);
+    aviso('Preparando el Word…');
+    try {
+      const bytes = await A.construirAnexo(JSZip, plantilla.bytes.slice(0), P, R);
+      const nombre = A.nombreArchivo(R.sesion);
+      const blob = new Blob([bytes], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+      if (descargas) await descargas.save({ filename: nombre, data: blob });
+      else { const url = URL.createObjectURL(blob); const a = el('a', { href: url, download: nombre, hidden: '' }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 10000); }
+      aviso('Word listo: ' + nombre, 'ok');
+    } catch (e) {
+      const c = e && e.code;
+      if (c === 'declined') aviso('Descarga cancelada.');
+      else if (c === 'rate_limited') aviso('Ya hay una descarga pendiente de confirmar.', 'err');
+      else if (c === 'unavailable' || c === 'not_granted' || c === 'capability_disabled') aviso('Esta vista no permite descargar archivos. Abre la página en claude.ai, en el navegador o en la app de Claude.', 'err');
+      else aviso('No se ha podido generar el Word: ' + ((e && e.message) || e), 'err');
+    } finally { botones.forEach(b => b.disabled = false); }
+  }
+  $('#btnWord').addEventListener('click', descargar);
+  $('#btnWordArriba').addEventListener('click', descargar);
+  $('#btnNueva').addEventListener('click', () => { $('#confirmar').hidden = false; $('#btnCancelar').focus(); });
+  $('#btnCancelar').addEventListener('click', () => { $('#confirmar').hidden = true; $('#btnNueva').focus(); });
+  $('#btnBorrar').addEventListener('click', () => {
+    const s = R.sesion;
+    R = vacio();
+    Object.assign(R.sesion, { paciente: s.paciente, profesional: s.profesional, n: (Number(s.n) || 0) + 1, fecha: s.fecha, hora: s.hora });
+    escribir(CLAVE, JSON.stringify(R)); escribir(CLAVE_MODO, 'preparar');
+    location.reload();
+  });
+
+  listo = true;
+  pintarCondicion(); pintarSesion(); pintarMarcas(); pintarInicios(); medirBarra(); aplicarModo();
+  leerPlantilla().then(v => { if (v && v.bytes) plantilla = v; pintarPlantilla(); });
+  if (window.claude && window.claude.use) window.claude.use('downloads').then(d => { descargas = d; }).catch(() => {});
+})();
+</script>
