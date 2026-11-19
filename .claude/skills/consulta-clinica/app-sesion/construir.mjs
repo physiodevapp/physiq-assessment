@@ -36,7 +36,8 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 let html = fs.readFileSync(path.join(aqui, 'plantilla.html'), 'utf8');
 html = html.replace(/<title>[^<]*<\/title>/, '<title>' + esc(P.titulo) + '</title>');
 // Reemplazo con función: el texto del plan puede llevar «$» y no debe interpretarse.
-html = html.replace('/*PLAN*/', () => planTexto).replace('/*ANEXO*/', () => fs.readFileSync(path.join(aqui, 'anexo.js'), 'utf8'));
+html = html.replace('/*PLAN*/', () => planTexto).replace('/*ANEXO*/', () => fs.readFileSync(path.join(aqui, 'anexo.js'), 'utf8'))
+  .replace('/*AMPLIAR_IA*/', () => ampliarIA());
 if (local) {
   html = '<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n'
     + '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
@@ -45,6 +46,20 @@ if (local) {
 }
 fs.writeFileSync(salida, html);
 console.log('Escrito ' + salida + ' (' + Math.round(html.length / 1024) + ' KB)');
+
+// «Ampliar con IA»: el mismo ampliar-ia.js de la app (raíz del repo), no una copia, así un
+// cambio del prompt o de los destinos llega también aquí. Es un módulo ES sin imports: se
+// quitan los `export` y se envuelve para dejar solo globalThis.AmpliarIA. Sin `ia` en el
+// plan no se incrusta nada.
+function ampliarIA() {
+  if (!P.ia) return '';
+  const ruta = path.join(aqui, '..', '..', '..', '..', 'ampliar-ia.js');
+  const src = fs.readFileSync(ruta, 'utf8');
+  if (/^\s*import\b/m.test(src)) throw new Error('ampliar-ia.js importa módulos: no se puede incrustar.');
+  const sinExport = src.replace(/^export (const|function|let) /gm, '$1 ');
+  if (/^export\b/m.test(sinExport)) throw new Error('ampliar-ia.js tiene un export que construir.mjs no sabe quitar.');
+  return 'globalThis.AmpliarIA = (() => {\n' + sinExport + '\nreturn { initAmpliarIA, iaParrafoHTML };\n})();';
+}
 
 function comprobar(P) {
   const e = [];
@@ -88,5 +103,9 @@ function comprobar(P) {
   ((P.casa && P.casa.ejercicios) || []).forEach(x => anota(x.id, 'casa'));
   if (P.condicion) for (const k of ['corto', 'titulo', 'pregunta', 'si', 'no', 'siNo', 'urgencias', 'reducido', 'noAplicar', 'noAplicado', 'anexoSi', 'anexoNo']) if (!P.condicion[k]) e.push('A «condicion» le falta «' + k + '».');
   if (P.comparar && (!P.comparar.sesion || !Array.isArray(P.comparar.filas))) e.push('«comparar» necesita «sesion» y «filas».');
+  if (P.ia) {
+    if (!P.ia.contexto || typeof P.ia.contexto !== 'string') e.push('«ia» necesita «contexto» (de qué va el plan, sin datos del paciente).');
+    else if (/\b(paciente|nombre)\s*:/i.test(P.ia.contexto)) e.push('«ia.contexto» no debe llevar datos del paciente: sale en la pregunta a la IA.');
+  }
   return e;
 }

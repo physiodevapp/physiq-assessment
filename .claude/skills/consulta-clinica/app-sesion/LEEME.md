@@ -6,7 +6,7 @@ Motor de la «App de sesión» de la skill `consulta-clinica` (sección 4 de `SK
 |---|---|
 | `plantilla.html` | La página: diseño, modos «Preparar» / «En sesión», navegación (chips, índice lateral, barra inferior), guardado en el dispositivo. Sin contenido clínico. |
 | `anexo.js` | Genera el Word del anexo en el navegador a partir del `Documento_base.docx` de la unidad. |
-| `construir.mjs` | Une plantilla, generador y plan, y comprueba el plan antes. |
+| `construir.mjs` | Une plantilla, generador y plan, y comprueba el plan antes. Con `ia` en el plan, incrusta también el `ampliar-ia.js` de la raíz del repo (el de la app, no una copia). |
 | `ejemplo-lumbar-caida.js` | Plan de referencia (dolor lumbar tras caída en un paciente mayor; genérico, no es un paciente real). |
 
 La plantilla de la clínica **no** está en el repo: lleva el logo y los datos de la clínica, y la app la carga desde cada dispositivo («Cargar plantilla»).
@@ -31,6 +31,7 @@ globalThis.PLAN = {
   nombre: 'Lumbar tras caída · ejemplo',// subtítulo de la barra; nunca el nombre del paciente
   sesiones: 4,                 // botones de número de sesión
   resumen: '…', tipo: '…',     // una línea cada uno: el caso y el plan (A/B, sesiones, minutos)
+  ia: { contexto: 'el plan de tratamiento de …' },  // opcional: «✨ Ampliar con IA» (ver abajo); nunca datos del paciente
 
   condicion: {                 // opcional: condición de seguridad que reduce el plan
     corto: 'Fractura', titulo: 'Condición para aplicar este plan: …', pregunta: 'Fractura vertebral descartada',
@@ -77,6 +78,15 @@ globalThis.PLAN = {
 ```
 
 `construir.mjs` para con la lista de problemas si falta algo, si un `id` se repite, si una medida apunta a un bloque que no existe, si un texto corto pasa de 60 caracteres o si una alerta no corresponde a ninguna opción.
+
+## Ampliar con IA (opcional)
+
+Con `ia: { contexto }` en el plan, la app lleva el «✨ Ampliar con IA» de PhysiQ-Assessment (`ampliar-ia.js`): al final de cada texto del plan, «✨ IA ↗ ▾», y al seleccionar texto, una barra «✨ Ampliar en … ↗». La ▾ elige Perplexity (por defecto), Google en modo IA o Claude, con la ventaja de cada una, y la elección se recuerda en el dispositivo (la misma clave que la app). El prompt es el de la app con el enfoque práctico: «Soy fisioterapeuta. Explícame con más detalle este fragmento sobre <contexto>, apartado «<sección>»: «…». Qué quiere decir en la práctica clínica…», más la frase de fuentes y «Cita las fuentes con enlace.».
+
+- **Solo en «Preparar».** En «En sesión» no hay enlaces ni barra (`body.ia-off`, y sin `data-ia-ctx`).
+- **Solo los textos del plan:** «Antes de tratar», las preguntas de «Antes», los ítems de los bloques, el «cómo» de los ejercicios de casa, la progresión (regla, celdas), «Seguir o cambiar» y «Durante todo el mes». **Nunca** lo que se escribe o se marca (paciente, profesional, notas, medidas, respuestas) ni el aviso «No aplicar» (`.ia-excluir`). `contexto` sale en cada pregunta: describe el caso sin nada que identifique al paciente (`construir.mjs` rechaza «paciente:» o «nombre:»).
+- Es el mismo archivo que la app: un cambio de prompt o destinos en `ampliar-ia.js` llega al reconstruir. `tests/unit.js` comprueba que sigue pudiéndose incrustar. En el visor de claude.ai la página va en un iframe, por eso se llama con `initAmpliarIA({ enIframe: true, arriba: '.barra', abajo: '.barra-pasos' })`.
+- Sin `ia`, no se incrusta nada.
 
 ## Lo que guarda el dispositivo
 

@@ -260,16 +260,23 @@ const _tactil = () => !!window.matchMedia?.('(pointer: coarse)').matches;
 // Franja visible de la página: entre lo fijo de arriba (cabecera, barra de
 // fases, barras de contexto de las fases 2 y 4b) y los botones fijos de abajo
 // (móvil). La barra y el menú no se pintan encima de eso.
+// Otra página que use el módulo (la app de sesión de la skill consulta-clinica)
+// pasa sus propios selectores a initAmpliarIA({ arriba, abajo }); ahí también
+// cuentan las barras `sticky`, que en la app no se miran.
 const _FIJOS_ARRIBA = '.app-header, .phase-nav, .mobile-phase-bar, .sis-context-banner, .hyp-context-banner';
+let _opts = {};
 function _franjaVisible() {
   let arriba = 0, abajo = innerHeight;
-  const fijo = el => getComputedStyle(el).position === 'fixed';
-  document.querySelectorAll(_FIJOS_ARRIBA).forEach(el => {
+  const pos = el => getComputedStyle(el).position;
+  const fijo = el => pos(el) === 'fixed' || (!!_opts.arriba && pos(el) === 'sticky');
+  document.querySelectorAll(_opts.arriba || _FIJOS_ARRIBA).forEach(el => {
     const r = el.getBoundingClientRect();
     if (r.height > 0 && fijo(el) && r.top < innerHeight / 2) arriba = Math.max(arriba, r.bottom);
   });
-  const nav = document.querySelector('.phase.active .nav-buttons');
-  if (nav && fijo(nav)) { const r = nav.getBoundingClientRect(); if (r.height > 0) abajo = Math.min(abajo, r.top); }
+  const navs = _opts.abajo ? document.querySelectorAll(_opts.abajo) : [document.querySelector('.phase.active .nav-buttons')];
+  navs.forEach(nav => {
+    if (nav && pos(nav) === 'fixed') { const r = nav.getBoundingClientRect(); if (r.height > 0) abajo = Math.min(abajo, r.top); }
+  });
   return { arriba, abajo };
 }
 
@@ -373,8 +380,13 @@ const _HTML_MENU = () => `
   </a>`).join('')}
   <div class="ia-menu-nota">${NOTA_CUENTAS} Solo se envía el texto clínico de PhysiQ (el «¿Por qué?», la pauta, el plan…), nunca datos del paciente. Consulta externa: PhysiQ no revisa la respuesta.</div>`;
 
-export function initAmpliarIA() {
-  if (window.self !== window.top || _barra || !document.body) return;
+// Opciones (solo para otras páginas; la app llama sin ellas): `enIframe` deja
+// funcionar el módulo dentro de un iframe (el visor de claude.ai publica las
+// páginas en uno; el hub, no: la app nunca lo pasa); `arriba` y `abajo`,
+// selectores de las barras fijas de esa página.
+export function initAmpliarIA({ enIframe = false, arriba = null, abajo = null } = {}) {
+  if ((!enIframe && window.self !== window.top) || _barra || !document.body) return;
+  _opts = { arriba, abajo };
   _barra = document.createElement('div');
   _barra.id = 'iaBarra'; _barra.className = 'ia-barra'; _barra.hidden = true;
   _barra.innerHTML = `<a class="ia-barra-ir" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer"></a><button type="button" class="ia-elegir" aria-haspopup="menu" aria-label="Elegir la IA">▾</button>`;

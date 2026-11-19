@@ -1,4 +1,5 @@
 // «¿Por qué?» del cribado, del árbol CIF y de los tests, «Ampliar con IA». Se ejecuta desde tests/unit.js.
+import vm from 'node:vm';
 import { assert, readFileSync, join, TESTS, leer, test, HYPOTHESES, SYSTEMIC_SCREENING, testPuntua,
    pesoTest, PESO_TEST, buildTestItem, lrEfectiva, claveRegistro, enlaceCita, citasHTML, citasEnTexto,
    citasTest, state, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
@@ -548,6 +549,24 @@ test('ampliar con IA: el módulo no importa nada (no puede leer datos del pacien
   assert.ok(!/^\s*import\b/m.test(src) && !/\bimport\(/.test(src), 'ampliar-ia.js no importa módulos');
   assert.ok(!/\bstate\b/.test(src.replace(/\/\/.*$/gm, '')), 'ampliar-ia.js no toca state');
   assert.equal(ampliarIA.attrIA('«a» "b" <c> & d'), '«a» &quot;b&quot; &lt;c&gt; &amp; d');
+});
+
+// La app de sesión de la skill consulta-clinica (.claude/skills/consulta-clinica/app-sesion)
+// incrusta este mismo archivo: construir.mjs quita los `export` de declaraciones y deja
+// globalThis.AmpliarIA. Un `export { … }`, `export default` o un import la romperían.
+test('ampliar con IA: se puede incrustar en la app de sesión de la skill (construir.mjs)', () => {
+  const src = leer('ampliar-ia.js');
+  const sinExport = src.replace(/^export (const|function|let) /gm, '$1 ');
+  assert.ok(!/^export\b/m.test(sinExport), 'solo «export const|function|let»');
+  assert.ok(leer('.claude/skills/consulta-clinica/app-sesion/construir.mjs').includes("'ampliar-ia.js'"), 'construir.mjs lee el ampliar-ia.js del repo');
+  const ctx = {};
+  ctx.globalThis = ctx;
+  vm.runInNewContext(`globalThis.AmpliarIA = (() => {\n${sinExport}\nreturn { initAmpliarIA, iaParrafoHTML };\n})();`, ctx);
+  assert.equal(typeof ctx.AmpliarIA.initAmpliarIA, 'function');
+  assert.ok(ctx.AmpliarIA.iaParrafoHTML().includes('ia-parrafo-ir'));
+  // Las opciones de otra página no cambian lo que hace la app (sin opciones, nada en un iframe)
+  assert.ok(/initAmpliarIA\(\{ enIframe = false, arriba = null, abajo = null \} = \{\}\)/.test(src));
+  assert.ok(/if \(\(!enIframe && window\.self !== window\.top\)/.test(src));
 });
 
 test('ampliar con IA: solo el razonamiento (y el criterio en la 4b) lleva data-ia-ctx y «✨ IA» (fase 2 y tarjetas 4b)', () => {

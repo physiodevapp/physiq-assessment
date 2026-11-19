@@ -69,6 +69,7 @@ Cuando la respuesta pueda convertirse en un documento (una sesión, un plan, una
   - **Nunca pongas el nombre del paciente** en el plan ni en la página publicada: Edu lo escribe en la app y solo va al Word.
   - Los **textos cortos, las respuestas rápidas y los avisos** son redacción propia: dilo al entregar la app y pide a Edu que los revise. Los textos completos y las cifras se copian tal cual del plan.
   - Los avisos de seguridad (urgencias, condición del plan, red de seguridad) van siempre enteros (`completo: true`), nunca solo en texto corto.
+  - Pon siempre `ia: { contexto }` en el plan (el caso en una frase, sin nada del paciente): la app lleva entonces el «✨ Ampliar con IA» de la app (Perplexity, Google en modo IA o Claude), solo en «Preparar» y solo sobre los textos del plan. Detalle en el `LEEME.md`.
   - Las preguntas que se pueden contestar antes de la sesión van en «Antes de empezar» (modo Preparar), con respuestas rápidas; en sesión, solo lo que se marca.
   - El fundamento sigue las reglas de abajo: nunca dentro de la app ni del Word anexo.
 - **Word anexo:** lo genera la app con el `Documento_base.docx` de Edu, que se carga en cada dispositivo y no está en el repo. El nombre del archivo es `<Paciente> — dd-mm-aaaa HH.mm — Anexo N.docx`, con N = número de sesión, para que quede junto al documento principal en «Transcripciones». Avisa de que lo registrado en la app queda solo en ese dispositivo hasta que se descarga el Word.

@@ -271,6 +271,34 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
 
 /* Móvil y tablet vertical: la barra fija de abajo ya hace de anterior / siguiente */
 @media (max-width: 1023px) { .pasos { display: none } }
+
+/* Ampliar con IA (ampliar-ia.js del repo, incrustado por construir.mjs): «✨ IA ↗ ▾» al final de
+   cada texto del plan y barra bajo el texto seleccionado. Solo en «Preparar» (body.ia-off en sesión). */
+.ia-parrafo { white-space: nowrap; font-size: .8rem; font-weight: 400 }
+.ia-parrafo-ir { color: var(--accent); text-decoration: none; padding-left: 2px; position: relative }
+.ia-parrafo-ir::after, .ia-elegir::after { content: ''; position: absolute; inset: -6px 0 }
+.ia-elegir { position: relative; background: none; border: 0; cursor: pointer; font: inherit; color: var(--fg3); padding: 0 6px; line-height: 1 }
+@media (hover: hover) { .ia-parrafo-ir:hover { text-decoration: underline } .ia-elegir:hover { color: var(--accent) } }
+.item > .ia-parrafo { grid-column: 1 / -1; padding: 0 0 4px 38px; display: block }
+body.ia-off .ia-parrafo, body.ia-off .ia-barra, body.ia-off .ia-menu { display: none !important }
+.ia-barra { position: fixed; z-index: 60; display: flex; align-items: stretch; background: var(--surface2); border: 1px solid var(--accent); border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.18); user-select: none; -webkit-user-select: none; font-size: .85rem; overflow: hidden }
+.ia-barra[hidden], .ia-menu[hidden] { display: none }
+.ia-barra-ir { color: var(--accent); text-decoration: none; padding: 10px 6px 10px 14px; white-space: nowrap; font-weight: 700 }
+.ia-barra .ia-elegir { padding: 0 12px 0 8px; border-left: 1px solid var(--line2) }
+.ia-menu { position: fixed; z-index: 61; width: min(320px, calc(100vw - 32px)); background: var(--surface); border: 1px solid var(--line2); border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.18); padding: 8px }
+.ia-menu-tit { font-family: var(--mono); font-size: .7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--fg3); padding: 4px 8px 6px }
+.ia-menu-op { display: block; padding: 8px; border-radius: 8px; text-decoration: none; border: 1px solid transparent; color: var(--fg2) }
+.ia-menu-op:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px }
+.ia-menu-op.actual { border-color: var(--accent); background: var(--accent-soft) }
+.ia-menu-nombre { display: flex; justify-content: space-between; font-size: .9rem; color: var(--fg); font-weight: 700 }
+.ia-menu-check { color: var(--accent); visibility: hidden }
+.ia-menu-op.actual .ia-menu-check { visibility: visible }
+.ia-menu-desc { display: block; font-size: .8rem; line-height: 1.4; margin-top: 2px }
+.ia-menu-nota { font-size: .75rem; line-height: 1.4; color: var(--fg3); padding: 6px 8px 2px }
+@media (hover: hover) { .ia-menu-op:hover { border-color: var(--line2) } }
+@media print { .ia-parrafo, .ia-barra, .ia-menu { display: none !important } }
 </style>
 
 <div class="barra"><div class="wrap">
@@ -351,6 +379,9 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
 /*ANEXO*/
 </script>
 <script>
+/*AMPLIAR_IA*/
+</script>
+<script>
 (function () {
   const P = globalThis.PLAN, A = globalThis.ANEXO;
   const CLAVE = 'registro-' + P.id, CLAVE_PROF = 'profesional', CLAVE_MODO = 'modo-' + P.id, CLAVE_PLEG = 'plegado-' + P.id;
@@ -394,7 +425,18 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
 
   // ---- piezas ----
   // Casilla marcable. En «En sesión» enseña el texto corto y el completo bajo el botón ⓘ.
-  function item(it, textoFijo) {
+  // Ampliar con IA: solo los textos del plan, nunca lo que se escribe o se marca
+  // (paciente, notas, medidas, respuestas). `data-ia` guarda el contexto y
+  // aplicarModo() lo pasa a `data-ia-ctx` (el atributo que lee el módulo) solo en «Preparar».
+  const IA = P.ia && globalThis.AmpliarIA ? globalThis.AmpliarIA : null;
+  function conIA(nodo, apartado, enlace) {
+    if (!IA || !nodo) return nodo;
+    nodo.dataset.ia = P.ia.contexto + ', apartado «' + apartado + '»';
+    nodo.dataset.iaTipo = 'practica';
+    if (enlace) { if (nodo.tagName !== 'P') nodo.dataset.iaParrafo = ''; nodo.insertAdjacentHTML('beforeend', IA.iaParrafoHTML()); }
+    return nodo;
+  }
+  function item(it, textoFijo, apartado) {
     const caja = el('div', { class: 'item' });
     const b = el('button', { type: 'button', class: 'chk', role: 'checkbox', 'data-id': it.id }, el('span', { class: 'caja' }), el('span', { class: 'txt' }));
     b.querySelector('.caja').innerHTML = TICK;
@@ -408,11 +450,12 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
     if (!textoFijo && it.corto && !it.completo) {
       const mas = el('button', { type: 'button', class: 'mas', 'aria-expanded': 'false', 'aria-label': 'Ver el texto completo' });
       mas.innerHTML = INFO;
-      const det = el('p', { class: 'detalle', hidden: '' }, it.texto);
+      const det = el('p', { class: 'detalle ia-excluir', hidden: '' }, it.texto);
       mas.addEventListener('click', () => { const ab = det.hidden; det.hidden = !ab; mas.setAttribute('aria-expanded', String(ab)); });
       caja.append(mas, det);
       caja._mas = mas; caja._det = det;
     }
+    if (!textoFijo && apartado) conIA(caja, apartado, true);
     return caja;
   }
   function pintarTextos() {
@@ -517,6 +560,7 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
     $('#condTitulo').textContent = P.condicion.titulo;
     $('#condSiNo').textContent = P.condicion.siNo;
     $('#condUrg').textContent = P.condicion.urgencias;
+    ['#condTitulo', '#condSiNo', '#condUrg'].forEach(sel => conIA($(sel), 'Antes de tratar', true));
     $('#condSeg').setAttribute('aria-label', P.condicion.pregunta);
     $('#condSeg [data-v="si"]').textContent = P.condicion.si;
     $('#condSeg [data-v="no"]').textContent = P.condicion.no;
@@ -546,7 +590,7 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
   const sa = tarjeta('antes', P.antes.titulo, P.antes.min, 'Con la familia, antes de la sesión. Toca la respuesta; la nota solo si hace falta.');
   const lp = el('div', { class: 'preguntas' });
   P.antes.items.forEach(it => {
-    const pq = el('div', { class: 'pq', 'data-pq': it.id }, el('p', { class: 'q' }, it.texto));
+    const pq = el('div', { class: 'pq', 'data-pq': it.id }, conIA(el('p', { class: 'q' }, it.texto), P.antes.titulo, true));
     if (it.opciones) pq.append(...opciones(Object.assign({ q: it.texto }, it), R.respuestas, () => { pintarMarcas(); pintarPreparado(); }));
     pq.append(nota(it.id, it.nota || 'Nota'));
     lp.append(pq);
@@ -559,7 +603,7 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
     b.grupos.forEach(g => {
       if (g.titulo) s.append(el('h3', {}, g.titulo));
       const l = el('div', { class: 'items' });
-      g.items.forEach(it => l.append(item(it)));
+      g.items.forEach(it => l.append(item(it, null, b.nombre)));
       s.append(l);
     });
     const ms = P.medidas.filter(m => m.bloque === b.id);
@@ -575,7 +619,7 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
   // Programa para casa
   const sc = tarjeta('casa', P.casa.titulo, null, P.casa.sub.charAt(0).toUpperCase() + P.casa.sub.slice(1) + '. ' + P.casa.nota);
   P.casa.ejercicios.forEach(e => {
-    const c = el('div', { class: 'ejer' }, el('div', { class: 'cab' }, el('b', {}, e.nombre), el('span', { class: 'dosis' }, e.dosis)), el('p', { class: 'como' }, e.como));
+    const c = el('div', { class: 'ejer' }, el('div', { class: 'cab' }, el('b', {}, e.nombre), el('span', { class: 'dosis' }, e.dosis)), conIA(el('p', { class: 'como' }, e.como), P.casa.titulo + ' · ' + e.nombre.replace(/^\d+\.\s*/, ''), true));
     c.append(item(e, 'Enseñado y comprobado'));
     c.append(nota(e.id));
     sc.append(c);
@@ -585,19 +629,19 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
   // Progresión del mes (solo al preparar)
   const sp = tarjeta('prog', 'Progresión del mes');
   sp.querySelector('[data-cuenta]').remove();
-  sp.append(el('p', { class: 'sub' }, P.progresion.regla));
+  sp.append(conIA(el('p', { class: 'sub' }, P.progresion.regla), 'Progresión del mes', true));
   const tbody = el('tbody');
-  P.progresion.filas.forEach(f => tbody.append(el('tr', { 'data-n': f.n }, el('td', {}, f.etiqueta), f.celdas.map(c => el('td', {}, c)))));
+  P.progresion.filas.forEach(f => tbody.append(el('tr', { 'data-n': f.n }, el('td', {}, f.etiqueta), f.celdas.map((c, k) => conIA(el('td', {}, c), 'Progresión del mes · ' + f.etiqueta + ' · ' + P.progresion.columnas[k], true)))));
   sp.append(el('div', { class: 'prog-tabla' }, el('table', {}, el('thead', {}, el('tr', {}, el('th', {}, 'Sesión'), P.progresion.columnas.map(c => el('th', {}, c)))), tbody)));
   const movil = el('div', { class: 'fila-movil' });
   P.progresion.filas.forEach(f => {
     const dl = el('dl', { class: 'fase', 'data-n': f.n }, el('b', {}, f.etiqueta));
-    P.progresion.columnas.forEach((c, k) => dl.append(el('dt', {}, c), el('dd', {}, f.celdas[k])));
+    P.progresion.columnas.forEach((c, k) => dl.append(el('dt', {}, c), conIA(el('dd', {}, f.celdas[k]), 'Progresión del mes · ' + f.etiqueta + ' · ' + c, true)));
     movil.append(dl);
   });
   sp.append(movil);
-  sp.append(el('details', {}, el('summary', {}, 'Seguir o cambiar'), el('ul', { class: 'lista' }, P.seguir.map(t => el('li', {}, t)))));
-  sp.append(el('details', {}, el('summary', {}, 'Durante todo el mes'), el('ul', { class: 'lista' }, P.durante.map(t => el('li', {}, t)))));
+  sp.append(el('details', {}, el('summary', {}, 'Seguir o cambiar'), el('ul', { class: 'lista' }, P.seguir.map(t => conIA(el('li', {}, t), 'Seguir o cambiar', true)))));
+  sp.append(el('details', {}, el('summary', {}, 'Durante todo el mes'), el('ul', { class: 'lista' }, P.durante.map(t => conIA(el('li', {}, t), 'Durante todo el mes', true)))));
   const dComp = el('details', { id: 'detComparar' }, el('summary', {}, 'Medidas para comparar en la sesión ' + (P.comparar ? P.comparar.sesion : '')));
   const tcb = el('tbody');
   (P.comparar ? P.comparar.filas : []).forEach(k => {
@@ -620,7 +664,7 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
       b.setAttribute('aria-checked', String(!!R.hecho[it.id] && !sus));
       b.setAttribute('aria-disabled', String(sus));
       const tag = b.querySelector('.tag-no');
-      if (sus && !tag) b.querySelector('.txt').append(el('span', { class: 'tag-no' }, P.condicion.noAplicar));
+      if (sus && !tag) b.querySelector('.txt').append(el('span', { class: 'tag-no ia-excluir' }, P.condicion.noAplicar));
       if (!sus && tag) tag.remove();
       if (!sus) { total++; if (R.hecho[it.id]) hechos++; }
     });
@@ -857,6 +901,8 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
       $$('[data-ir="' + info.id + '"]').forEach(a => { a.hidden = !ver; });
     });
     $$('.ejer .como').forEach(p => { p.hidden = modo === 'sesion'; });
+    $$('[data-ia]').forEach(n => { if (modo === 'preparar') n.setAttribute('data-ia-ctx', n.dataset.ia); else n.removeAttribute('data-ia-ctx'); });
+    document.body.classList.toggle('ia-off', modo !== 'preparar');
     pintarTextos(); pintarPasos(); pintarPreparado();
     unaAbierta(); ajustarRelleno(); actual = ''; destino = null; marcarActual();
   }
@@ -956,6 +1002,7 @@ body.escribiendo .barra .chips-wrap, body.escribiendo .barra-pasos { display: no
 
   listo = true;
   pintarCondicion(); pintarSesion(); pintarMarcas(); pintarInicios(); medirBarra(); aplicarModo();
+  if (IA) IA.initAmpliarIA({ enIframe: true, arriba: '.barra', abajo: '.barra-pasos' });
   leerPlantilla().then(v => { if (v && v.bytes) plantilla = v; pintarPlantilla(); });
   if (window.claude && window.claude.use) window.claude.use('downloads').then(d => { descargas = d; }).catch(() => {});
 })();
