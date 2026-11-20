@@ -7210,6 +7210,18 @@ async function checkEntrena(browser, errors) {
     await desliza(8, 60); const corto = !(await enInicio());
     await desliza(8, 170);
     r.deslizar = lejos && corto && await enInicio();
+    // Asa de las hojas inferiores: arrastrar poco la deja; arrastrar hacia abajo la cierra (y gasta su entrada)
+    // A ritmo de dedo (30 ms por paso), para que un arrastre corto no cuente como gesto rápido
+    const arrastraHoja = dy => page.evaluate(async dy => {
+      const h = document.querySelector('.hoja-sel'), y0 = h.getBoundingClientRect().top + 10;
+      const t = (y, tipo) => { const toque = new Touch({ identifier: 2, target: h, clientX: 160, clientY: y }); h.dispatchEvent(new TouchEvent(tipo, { touches: tipo === 'touchend' ? [] : [toque], changedTouches: [toque], bubbles: true })); };
+      t(y0, 'touchstart'); for (let k = 1; k <= 10; k++) { await new Promise(r => setTimeout(r, 30)); t(y0 + dy * k / 10, 'touchmove'); } t(y0 + dy, 'touchend');
+    }, dy).then(() => page.waitForTimeout(450));
+    await c('[data-acc="preguntar-ia"]');
+    const conAsa = !!(await page.$('.hoja-sel .asa'));
+    await page.waitForTimeout(300); await arrastraHoja(30); const quieta = !!(await page.$('.velo'));
+    await page.waitForTimeout(300); await arrastraHoja(160);
+    r.asa = conAsa && quieta && !(await page.$('.velo')) && await enInicio();
     // Hojas: «Papel» con la imagen del cuaderno y el PDF versionado; esencia con «✨ IA»
     await c('[data-hoja="arbol"]'); await c('[data-hv-modo="papel"]');
     await page.waitForFunction(() => { const i = document.querySelector('.papel img'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 8000 });
@@ -7228,7 +7240,32 @@ async function checkEntrena(browser, errors) {
     r.fallidas = fallidas;
   } catch (e) { r.error = e.message; }
   await context.close();
-  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'papel', 'pdf', 'esencia', 'manifest', 'sw', 'cabe'].every(k => r[k]);
+  // Versión nueva (lib/version.js sellado y version.json distinto, como el aviso de la app):
+  // el aviso sale en el inicio, nunca durante una partida, y «×» lo cierra
+  try {
+    const ctxV = await browser.newContext({ viewport: { width: 320, height: 720 } });
+    await ctxV.route('**/lib/version.js', async route => {
+      const res = await route.fetch();
+      route.fulfill({ response: res, body: (await res.text()).replace("VERSION_SHA = 'dev'", "VERSION_SHA = 'aaaaaaa'") });
+    });
+    await ctxV.route('**/version.json', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ sha: 'bbbbbbb', fecha: '2026-11-20T10:00:00Z' }) }));
+    const pv = await ctxV.newPage();
+    pv.on('pageerror', err => errors.push(`pageerror (entrena, versión): ${err.message}`));
+    await pv.goto(BASE_URL.replace(/\/$/, '') + '/entrena.html', { waitUntil: 'networkidle' });
+    const enInicio = await pv.waitForSelector('#versionAviso', { timeout: 5000 }).then(() => true).catch(() => false);
+    const cabeV = await pv.$eval('#versionAviso', a => { const b = a.getBoundingClientRect(); return b.left >= 0 && b.right <= innerWidth && b.height < 80; });
+    await pv.click('[data-modo="flechas"]'); await pv.waitForTimeout(150);
+    const fueraEnJuego = !(await pv.$('#versionAviso'));
+    await pv.click('[data-acc="inicio"]'); await pv.waitForTimeout(150);
+    const vuelve = !!(await pv.$('#versionAviso'));
+    await pv.click('#versionAviso [data-v="cerrar"]'); await pv.waitForTimeout(100);
+    const cerrado = !(await pv.$('#versionAviso'));
+    const pie = await pv.$eval('.pie-version .enlace', b => b.textContent.trim());
+    r.version = enInicio && cabeV && fueraEnJuego && vuelve && cerrado && pie === 'Actualizar';
+    if (!r.version) r.versionDetalle = { enInicio, cabeV, fueraEnJuego, vuelve, cerrado, pie };
+    await ctxV.close();
+  } catch (e) { r.error = (r.error || '') + ' versión: ' + e.message; }
+  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'asa', 'papel', 'pdf', 'esencia', 'manifest', 'sw', 'cabe', 'version'].every(k => r[k]);
   return r;
 }
 
@@ -8186,7 +8223,7 @@ const SECCIONES = [
 
   { id: 'entrena', titulo: 'Entrena (entrena.html, el juego de los árboles y los tests, instalable):', run: async ({ browser, errors }) => {
     const r = await checkEntrena(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no); la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

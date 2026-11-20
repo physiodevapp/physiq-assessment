@@ -63,7 +63,16 @@ Cada pantalla que no es el inicio añade una entrada al historial y cada ventana
 botón o el gesto del sistema) cierra la ventana o vuelve al inicio, nunca sale de la app desde un
 juego; cerrar con su botón gasta su entrada. Deslizar desde el borde izquierdo (24 px, 90 px de
 recorrido) hace lo mismo, con una flecha que sigue al dedo; no se activa en Safari de iPhone, que ya
-tiene ese gesto, pero sí en la app instalada en iPhone, que no tiene Atrás.
+tiene ese gesto, pero sí en la app instalada en iPhone, que no tiene Atrás. Las hojas que suben desde
+abajo llevan asa: arrastrarlas hacia abajo desde arriba las cierra, como las de la app.
+
+## Versión nueva
+
+Como la app: compara su `lib/version.js` con `version.json` (sin caché) al abrir y al volver, como
+mucho una vez por minuto. Con una versión nueva, el inicio del juego (nunca una partida) muestra abajo
+«Hay una versión nueva · Actualizar»; «×» lo cierra para esa versión y el pie mantiene «Actualizar».
+Antes de recargar vuelve a pedir sus archivos sin caché; si tras recargar la versión aún no ha llegado,
+dice que se está publicando (`sessionStorage` `physiq-entrena-recarga`).
 
 ## Instalación
 
