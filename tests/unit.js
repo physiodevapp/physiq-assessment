@@ -42,6 +42,7 @@ for (const tema of [
   'citas.mjs',
   'silueta.mjs',
   'guia.mjs',
+  'entrena.mjs',
   'modo-guia.mjs',
 ]) await import(`./unit/${tema}`);
 

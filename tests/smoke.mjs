@@ -7161,6 +7161,77 @@ async function checkLetra(browser, errors) {
 }
 
 // Guía de consulta (guia.html): la página que abre el QR de cada esquema impreso
+// Entrena (entrena.html): el juego. Lógica en lib/entrena.js (tests/unit/entrena.mjs); aquí, lo
+// que solo se ve en el navegador: Atrás, el gesto del borde, la hoja «Papel» y que cabe.
+async function checkEntrena(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 320, height: 720 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+  const fallidas = [];
+  page.on('pageerror', err => errors.push(`pageerror (entrena): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (entrena): ${msg.text()}`); });
+  page.on('response', res => { if (res.url().startsWith(BASE_URL) && res.status() >= 400) fallidas.push(`${res.status()} ${res.url()}`); });
+  const r = {};
+  const c = async s => { await page.click(s, { timeout: 5000 }); await page.waitForTimeout(120); };
+  const enInicio = () => page.$('[data-modo="flechas"]').then(Boolean);
+  try {
+    await page.goto(BASE_URL.replace(/\/$/, '') + '/entrena.html#lumbar', { waitUntil: 'networkidle' });
+    await page.waitForSelector('[data-modo="flechas"]', { timeout: 10000 });
+    r.region = (await page.$eval('.titulo-region .h1', e => e.textContent)).includes('Lumbar');
+    // Un modo de cada tipo arranca y vuelve
+    r.modos = true;
+    for (const m of ['flechas', 'desliza', 'enpaso', 'caso', 'completa', 'dequien', 'bateria', 'positivo', 'pesa']) {
+      await c(`[data-modo="${m}"]`);
+      if (m === 'completa') { await c('[data-acc="pista-completa"]'); r.pista = await page.$eval('.pregunta-caja p', e => e.textContent.trim().length > 3); }
+      if (!(await page.$('.barra-juego'))) r.modos = false;
+      await c('[data-acc="inicio"]');
+    }
+    await c('[data-modo="hoja"]'); await c('[data-nivel="1"]'); r.hoja = (await page.$$('[data-hueco]')).length > 0; await c('[data-acc="inicio"]');
+    // Atrás
+    await c('[data-modo="flechas"]'); await page.goBack(); await page.waitForTimeout(250);
+    r.atras = await enInicio() && /\/entrena(\.html)?(#|$)/.test(page.url());   // serve quita el .html
+    await c('[data-modo="flechas"]'); await c('[data-acc="ayuda"]');
+    const abierta = !!(await page.$('.velo'));
+    await page.goBack(); await page.waitForTimeout(250);
+    r.atrasVentana = abierta && !(await page.$('.velo')) && !!(await page.$('.barra-juego'));
+    await page.goBack(); await page.waitForTimeout(250);
+    r.atrasDos = await enInicio();
+    // Cerrar con su botón no deja entradas sueltas: tras abrir y cerrar varias veces, un Atrás vuelve al inicio
+    await c('[data-modo="flechas"]');
+    for (let i = 0; i < 3; i++) { await c('[data-acc="ayuda"]'); await c('.velo [data-x="cerrar"]'); }
+    await page.goBack(); await page.waitForTimeout(250);
+    r.sinEntradasSueltas = await enInicio();
+    // Deslizar desde el borde
+    const desliza = (x0, x1) => page.evaluate(([x0, x1]) => {
+      const t = (x, tipo) => { const toque = new Touch({ identifier: 1, target: document.body, clientX: x, clientY: 400 }); document.body.dispatchEvent(new TouchEvent(tipo, { touches: tipo === 'touchend' ? [] : [toque], changedTouches: [toque], bubbles: true })); };
+      t(x0, 'touchstart'); for (let x = x0; x <= x1; x += 15) t(x, 'touchmove'); t(x1, 'touchend');
+    }, [x0, x1]).then(() => page.waitForTimeout(300));
+    await c('[data-modo="enpaso"]');
+    await desliza(80, 230); const lejos = !(await enInicio());
+    await desliza(8, 60); const corto = !(await enInicio());
+    await desliza(8, 170);
+    r.deslizar = lejos && corto && await enInicio();
+    // Hojas: «Papel» con la imagen del cuaderno y el PDF versionado; esencia con «✨ IA»
+    await c('[data-hoja="arbol"]'); await c('[data-hv-modo="papel"]');
+    await page.waitForFunction(() => { const i = document.querySelector('.papel img'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 8000 });
+    r.papel = /docs\/esquemas\/arbol-a4-lumbar\.png$/.test(await page.$eval('.papel img', i => i.src));
+    await page.waitForFunction(() => /\.pdf\?v=/.test(document.querySelector('#hojaCuerpo .enlace-ext')?.getAttribute('href') || ''), null, { timeout: 5000 });
+    r.pdf = true;
+    await c('[data-hv-tipo="esencia"]');
+    r.esencia = (await page.$$('.esencia')).length === 6 && (await page.$$('.esencia .ia-parrafo-ir')).length > 0;
+    await c('[data-acc="inicio"]');
+    // Instalable: manifest propio y el service worker de la app
+    r.manifest = await page.evaluate(async () => { const m = await (await fetch(document.querySelector('link[rel=manifest]').href)).json(); return m.start_url === '/physiq/assessment/entrena.html' && m.scope === '/physiq/assessment/entrena'; });
+    r.sw = await page.evaluate(async () => { for (let i = 0; i < 30; i++) { const g = await navigator.serviceWorker.getRegistration(); if (g) return true; await new Promise(res => setTimeout(res, 100)); } return false; });
+    // Cabe a 320 px con letra grande
+    await page.addStyleTag({ content: 'html,body{font-size:21px!important}' });
+    r.cabe = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+    r.fallidas = fallidas;
+  } catch (e) { r.error = e.message; }
+  await context.close();
+  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'papel', 'pdf', 'esencia', 'manifest', 'sw', 'cabe'].every(k => r[k]);
+  return r;
+}
+
 async function checkGuia(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   await portapapelesPropio(context);   // la copia del nombre para CIMA, sin el portapapeles del navegador
@@ -7555,13 +7626,17 @@ async function checkGuia(browser, errors) {
       const href = await app.evaluate(() => document.getElementById('sessionHojas').href);
       r.enlaceApp = /guia\.html#hojas$/.test(href) && (await app.request.get(href.replace(/#.*/, ''))).ok()
         && await app.evaluate(() => document.getElementById('sessionHojas').target === '_blank');
+      // Y Entrena, en la región de la valoración
+      await app.evaluate(() => { window.toggleSessionPanel(); window.state.region = 'rodilla'; window.toggleSessionPanel(); });
+      const ent = await app.evaluate(() => { const a = document.getElementById('sessionEntrena'); return a && { href: a.href, nueva: a.target === '_blank' }; });
+      r.enlaceEntrena = !!ent && /entrena\.html#rodilla$/.test(ent.href) && ent.nueva && (await app.request.get(ent.href.replace(/#.*/, ''))).ok();
       await app.close();
     }
   } catch (e) { r.error = e.message; }
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol && r.saltos && r.saltoVa
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.tensionPkGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.tensionPkGuia && r.enlaceApp && r.enlaceEntrena && r.sinSesion && !fallidas.length;
   return r;
 }
 
@@ -8107,6 +8182,12 @@ const SECCIONES = [
     const c = await checkGuia(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; la pauta y el pronóstico de cada hipótesis, con la derivación a la vista; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con los cuadernos a doble cara, la versión de cada hoja y su PDF, y el filtro por región; condiciones especiales (#condiciones) sin estado del paciente; fármacos (#farmacos) con la copia del nombre para CIMA y «¿Otro fármaco o duda?» (modo «Fármacos» de la IA, sin guardar el destino); irritabilidad suelta (#irritabilidad); la app la enlaza desde el panel de sesión («Hojas para imprimir»); cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
+  } },
+
+  { id: 'entrena', titulo: 'Entrena (entrena.html, el juego de los árboles y los tests, instalable):', run: async ({ browser, errors }) => {
+    const r = await checkEntrena(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'guia-cambios', titulo: 'Guía: qué cambió desde la hoja impresa (320 px):', run: async ({ browser, errors }) => {
