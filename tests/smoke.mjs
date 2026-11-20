@@ -7177,6 +7177,18 @@ async function checkEntrena(browser, errors) {
     await page.goto(BASE_URL.replace(/\/$/, '') + '/entrena.html#lumbar', { waitUntil: 'networkidle' });
     await page.waitForSelector('[data-modo="flechas"]', { timeout: 10000 });
     r.region = (await page.$eval('.titulo-region .h1', e => e.textContent)).includes('Lumbar');
+    // Menú de región en dos columnas: 7 regiones, dos por fila, la última a todo el ancho, sin texto partido
+    await c('.titulo-region');
+    const menu = await page.evaluate(() => {
+      const b = [...document.querySelectorAll('.lista-2col .sel-op')].map(x => x.getBoundingClientRect());
+      const nombres = [...document.querySelectorAll('.lista-2col .sel-op span')];
+      return { n: b.length, fila: Math.abs(b[0].top - b[1].top) < 2 && b[1].left > b[0].right,
+        ultima: Math.abs(b[6].width - (b[1].right - b[0].left)) < 2, unaLinea: nombres.every(s => s.getClientRects().length === 1),
+        cabe: document.documentElement.scrollWidth <= innerWidth };
+    });
+    await page.keyboard.press('Escape'); await page.waitForTimeout(150);
+    r.region = r.region && menu.n === 7 && menu.fila && menu.ultima && menu.unaLinea && menu.cabe;
+    if (!r.region) r.menuDetalle = menu;
     // Un modo de cada tipo arranca y vuelve
     r.modos = true;
     for (const m of ['flechas', 'desliza', 'enpaso', 'caso', 'completa', 'dequien', 'bateria', 'positivo', 'pesa']) {
@@ -8233,7 +8245,7 @@ const SECCIONES = [
 
   { id: 'entrena', titulo: 'Entrena (entrena.html, el juego de los árboles y los tests, instalable):', run: async ({ browser, errors }) => {
     const r = await checkEntrena(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no), cancelando el gesto del navegador; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; en «Texto», los tests enlazan su anatomía en Kenhub en una pestaña nueva; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; el menú de región en dos columnas; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no), cancelando el gesto del navegador; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; en «Texto», los tests enlazan su anatomía en Kenhub en una pestaña nueva; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

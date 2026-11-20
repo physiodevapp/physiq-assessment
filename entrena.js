@@ -367,7 +367,8 @@ function pintarInicio() {
 }
 function menuRegion() {
   selector({ cab: '<div class="sel-cab"><p class="etq">Región</p><b>¿Qué árbol quieres entrenar?</b></div>',
-    items: Object.keys(DATOS).map(k => ({ v: k, html: `<span>${esc(DATOS[k].nombre)}</span><small style="margin-left:auto">${DATOS[k].steps.length} pasos</small>` })), valor: [REG.id],
+    columnas: 2, // 7 regiones en dos columnas: cabe sin scroll también con letra grande (decisión del usuario, 2026-11)
+    items: Object.keys(DATOS).map(k => ({ v: k, html: `<span>${esc(DATOS[k].nombre)}</span><small>${DATOS[k].steps.length} pasos</small>` })), valor: [REG.id],
     alListo: v => { if (v[0] !== REG.id) { guardar(); usarRegion(v[0]); PREFS.region = v[0]; guardarPrefs(); } }, alCerrar: () => { inicio(); const b = document.querySelector('.titulo-region'); if (b) b.focus(); } });
 }
 
@@ -1080,11 +1081,11 @@ function deslizarParaCerrar(velo, cerrar) {
   velo.addEventListener('touchcancel', () => soltar(true), { passive: true });
 }
 // Hoja inferior para elegir: una opción (se cierra al tocar) o varias (con «Listo»).
-function selector({ cab, items, multi = false, exclusivo = null, valor = [], alListo, alCerrar }) {
+function selector({ cab, items, multi = false, exclusivo = null, valor = [], alListo, alCerrar, columnas = 1 }) {
   const sel = new Set(valor);
   const velo = document.createElement('div'); velo.className = 'velo';
   velo.innerHTML = `<div class="hoja-sel" role="dialog" aria-modal="true" aria-label="Elegir">${ASA}${cab}
-    <div class="lista">${items.map(it => `<button class="sel-op" data-sel="${esc(it.v)}">${it.html}</button>`).join('')}</div>
+    <div class="lista${columnas === 2 ? ' lista-2col' : ''}">${items.map(it => `<button class="sel-op" data-sel="${esc(it.v)}">${it.html}</button>`).join('')}</div>
     <div class="fila-btn"><button class="btn" data-sel-acc="cerrar">Cancelar</button>${multi ? '<button class="btn btn-pri" data-sel-acc="listo">Listo</button>' : ''}</div></div>`;
   const marcar = () => velo.querySelectorAll('[data-sel]').forEach(b => b.setAttribute('aria-pressed', String(sel.has(b.dataset.sel))));
   marcar();

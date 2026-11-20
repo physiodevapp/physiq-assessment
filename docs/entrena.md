@@ -46,6 +46,9 @@ Tiempo por pregunta según lo que hay que leer (`segundosLectura()`: 12 s + 1 s 
 hasta 30); los puntos por rapidez van en proporción a ese tiempo. Logros, medallas por región, racha,
 sonidos (Web Audio, se pueden silenciar) y animaciones (desactivadas con «reducir movimiento»).
 
+La región se elige tocando su nombre en el título: un menú de dos columnas (nombre y número de pasos),
+con la última a todo el ancho.
+
 ## Consultar sin salir
 
 - **Hojas** de cada región: Esencia (el árbol en una línea y qué busca cada paso), Árbol y
