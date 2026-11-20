@@ -7215,13 +7215,19 @@ async function checkEntrena(browser, errors) {
     const arrastraHoja = dy => page.evaluate(async dy => {
       const h = document.querySelector('.hoja-sel'), y0 = h.getBoundingClientRect().top + 10;
       const t = (y, tipo) => { const toque = new Touch({ identifier: 2, target: h, clientX: 160, clientY: y }); h.dispatchEvent(new TouchEvent(tipo, { touches: tipo === 'touchend' ? [] : [toque], changedTouches: [toque], bubbles: true })); };
-      t(y0, 'touchstart'); for (let k = 1; k <= 10; k++) { await new Promise(r => setTimeout(r, 30)); t(y0 + dy * k / 10, 'touchmove'); } t(y0 + dy, 'touchend');
+      let cancelado = true;
+      t(y0, 'touchstart');
+      for (let k = 1; k <= 10; k++) { await new Promise(r => setTimeout(r, 30)); const toque = new Touch({ identifier: 2, target: h, clientX: 160, clientY: y0 + dy * k / 10 }); const ev = new TouchEvent('touchmove', { touches: [toque], changedTouches: [toque], bubbles: true, cancelable: true }); h.dispatchEvent(ev); cancelado = cancelado && ev.defaultPrevented; }
+      t(y0 + dy, 'touchend');
+      window._arrastreCancelado = cancelado;
     }, dy).then(() => page.waitForTimeout(450));
     await c('[data-acc="preguntar-ia"]');
     const conAsa = !!(await page.$('.hoja-sel .asa'));
     await page.waitForTimeout(300); await arrastraHoja(30); const quieta = !!(await page.$('.velo'));
     await page.waitForTimeout(300); await arrastraHoja(160);
-    r.asa = conAsa && quieta && !(await page.$('.velo')) && await enInicio();
+    // Cada touchmove del arrastre cancela el gesto del navegador (si no, «tirar para recargar» lo cortaba en Android)
+    const sinGestoNativo = await page.evaluate(() => window._arrastreCancelado === true);
+    r.asa = conAsa && quieta && sinGestoNativo && !(await page.$('.velo')) && await enInicio();
     // Hojas: «Papel» con la imagen del cuaderno y el PDF versionado; esencia con «✨ IA»
     await c('[data-hoja="arbol"]'); await c('[data-hv-modo="papel"]');
     await page.waitForFunction(() => { const i = document.querySelector('.papel img'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 8000 });
@@ -8227,7 +8233,7 @@ const SECCIONES = [
 
   { id: 'entrena', titulo: 'Entrena (entrena.html, el juego de los árboles y los tests, instalable):', run: async ({ browser, errors }) => {
     const r = await checkEntrena(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no); la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; en «Texto», los tests enlazan su anatomía en Kenhub en una pestaña nueva; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no), cancelando el gesto del navegador; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; en «Texto», los tests enlazan su anatomía en Kenhub en una pestaña nueva; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

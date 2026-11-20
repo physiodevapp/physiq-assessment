@@ -1051,7 +1051,10 @@ function abrirHueco(k) {
 }
 // Asa de las hojas inferiores: arrastrar hacia abajo desde arriba de la hoja (72 px) la cierra, como
 // las hojas de la app (initSwipe, app.js): más de 80 px o un gesto rápido; si no, vuelve a su sitio.
-// Cerrar así es como cerrar con su botón: gasta su entrada del historial.
+// Cerrar así es como cerrar con su botón: gasta su entrada del historial. El touchmove no es pasivo:
+// mientras se arrastra la hoja hacia abajo cancela el gesto del navegador, porque la hoja no tiene
+// scroll propio y, con la página arriba del todo, Chrome lo tomaba como «tirar para recargar» y
+// mandaba touchcancel: la hoja volvía a su sitio sin cerrarse (visto en Android, 2026-11).
 const ASA = '<div class="asa" aria-hidden="true"></div>';
 function deslizarParaCerrar(velo, cerrar) {
   const EASE = 'transform .3s cubic-bezier(.32,.72,0,1)';
@@ -1064,7 +1067,8 @@ function deslizarParaCerrar(velo, cerrar) {
   velo.addEventListener('touchmove', e => {
     if (!hoja) return;
     delta = Math.max(0, e.touches[0].clientY - y0); hoja.style.transform = delta ? `translateY(${delta}px)` : '';
-  }, { passive: true });
+    if (delta && e.cancelable) e.preventDefault();
+  }, { passive: false });
   const soltar = cancelar => {
     if (!hoja) return; const h = hoja; hoja = null;
     h.style.transition = EASE;
