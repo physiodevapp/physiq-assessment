@@ -7228,6 +7228,10 @@ async function checkEntrena(browser, errors) {
     r.papel = /docs\/esquemas\/arbol-a4-lumbar\.png$/.test(await page.$eval('.papel img', i => i.src));
     await page.waitForFunction(() => /\.pdf\?v=/.test(document.querySelector('#hojaCuerpo .enlace-ext')?.getAttribute('href') || ''), null, { timeout: 5000 });
     r.pdf = true;
+    // Confirmación en texto: los tests con «Anatomía» enlazan Kenhub en una pestaña nueva
+    await c('[data-hv-tipo="confirmacion"]'); await c('[data-hv-modo="texto"]');
+    r.kenhub = await page.evaluate(() => { const d = [...document.querySelectorAll('.test-det')].find(x => x.querySelector('.anat a')); if (!d) return false; d.open = true;
+      const a = d.querySelector('.anat a'); return /^https:\/\/www\.kenhub\.com\//.test(a.href) && a.target === '_blank' && /noopener/.test(a.rel) && a.getBoundingClientRect().height > 0; });
     await c('[data-hv-tipo="esencia"]');
     r.esencia = (await page.$$('.esencia')).length === 6 && (await page.$$('.esencia .ia-parrafo-ir')).length > 0;
     await c('[data-acc="inicio"]');
@@ -7265,7 +7269,7 @@ async function checkEntrena(browser, errors) {
     if (!r.version) r.versionDetalle = { enInicio, cabeV, fueraEnJuego, vuelve, cerrado, pie };
     await ctxV.close();
   } catch (e) { r.error = (r.error || '') + ' versión: ' + e.message; }
-  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'asa', 'papel', 'pdf', 'esencia', 'manifest', 'sw', 'cabe', 'version'].every(k => r[k]);
+  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'asa', 'papel', 'pdf', 'kenhub', 'esencia', 'manifest', 'sw', 'cabe', 'version'].every(k => r[k]);
   return r;
 }
 
@@ -8223,7 +8227,7 @@ const SECCIONES = [
 
   { id: 'entrena', titulo: 'Entrena (entrena.html, el juego de los árboles y los tests, instalable):', run: async ({ browser, errors }) => {
     const r = await checkEntrena(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no); la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no); la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; en «Texto», los tests enlazan su anatomía en Kenhub en una pestaña nueva; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

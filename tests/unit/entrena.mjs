@@ -5,7 +5,7 @@ import { assert, leer, test, CIF_TREES, HYPOTHESES } from './comun.mjs';
 const E = await import('../../lib/entrena.js');
 const { etiquetaPaso, numeroHipotesis, ORDEN_REGIONES } = await import('../../lib/esquemas.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
-const { pesoTest } = await import('../../lib/tests-4b.js');
+const { pesoTest, enlacesAnatomia } = await import('../../lib/tests-4b.js');
 
 const DATOS = Object.fromEntries(ORDEN_REGIONES.map(r => [r, E.datosRegion(r, CIF_TREES, HYPOTHESES)]));
 const test_ = (d, hid, i) => d.hyp[hid].tests[i];
@@ -39,6 +39,16 @@ test('entrena: «cuánto pesa» sale de pesoTest(), como la app y la hoja de con
   // Lumbar tiene las seis categorías (por eso «¿Cuánto pesa?» se juega allí)
   const cats = new Set(Object.values(DATOS.lumbar.hyp).flatMap(h => h.tests.map(x => x.c)));
   for (const c of ['confirma', 'descarta', 'ambas', 'cluster', 'hallazgo', 'pronostico']) assert.ok(cats.has(c), c);
+});
+
+test('entrena: «Anatomía» de cada test con los enlaces a Kenhub de la app, en una pestaña nueva', () => {
+  let con = 0;
+  for (const r of ORDEN_REGIONES) for (const [hid, h] of Object.entries(DATOS[r].hyp))
+    h.tests.forEach((x, i) => { assert.deepEqual(x.an, enlacesAnatomia(HYPOTHESES[hid].tests[i]), `${hid} ${i}`); if (x.an.length) con++; });
+  assert.ok(con > 50, `tests con anatomía: ${con}`);
+  const js = leer('entrena.js');
+  assert.match(js, /function anatomiaHTML\(x\)[^\n]*\n[^\n]*\n[^\n]*target="_blank" rel="noopener noreferrer"/);
+  assert.ok(!/<iframe/.test(js), 'nunca un iframe');
 });
 
 test('entrena: «Positivo si…» deja fuera alias, pruebas complementarias y criterios que solo repiten el nombre', () => {

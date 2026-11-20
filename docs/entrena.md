@@ -56,6 +56,9 @@ sonidos (Web Audio, se pueden silenciar) y animaciones (desactivadas con «reduc
 - **«✨ Ampliar con IA»** (`ampliar-ia.js`, el de la app) en los textos de los datos —hojas, preguntas,
   respuestas, hallazgos, tests, porqués— y nunca en la interfaz (títulos, botones, marcadores). Botón
   ✨ «Preguntar a la IA» con la región como único contexto.
+- **Anatomía (Kenhub)** de cada test que la tiene en la app (`anatomia`, `enlacesAnatomia()`): en la
+  hoja de confirmación en texto y en la corrección de los modos de la 4b, en una pestaña nueva; el
+  artículo en español si existe, si no el inglés marcado «EN». Nunca un iframe.
 
 ## Navegación
 
