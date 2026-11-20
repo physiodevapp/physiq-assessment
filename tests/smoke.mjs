@@ -7626,13 +7626,17 @@ async function checkGuia(browser, errors) {
       const href = await app.evaluate(() => document.getElementById('sessionHojas').href);
       r.enlaceApp = /guia\.html#hojas$/.test(href) && (await app.request.get(href.replace(/#.*/, ''))).ok()
         && await app.evaluate(() => document.getElementById('sessionHojas').target === '_blank');
+      // Y Entrena, en la región de la valoración
+      await app.evaluate(() => { window.toggleSessionPanel(); window.state.region = 'rodilla'; window.toggleSessionPanel(); });
+      const ent = await app.evaluate(() => { const a = document.getElementById('sessionEntrena'); return a && { href: a.href, nueva: a.target === '_blank' }; });
+      r.enlaceEntrena = !!ent && /entrena\.html#rodilla$/.test(ent.href) && ent.nueva && (await app.request.get(ent.href.replace(/#.*/, ''))).ok();
       await app.close();
     }
   } catch (e) { r.error = e.message; }
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol && r.saltos && r.saltoVa
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.tensionPkGuia && r.enlaceApp && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.menuRegion && r.apariencia && r.pauta && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.hojasRespuestas && r.cuadernos && r.filtroHojas && r.condiciones && r.farmacos && r.preguntaFarmacos && r.irrSuelta && r.fase1 && r.banderasGuia && r.calcBeighton && r.calcTA && r.condConsulta && r.tecnica4b && r.formArbol && r.cuestGuia && r.planGuia && r.preguntaEjercicio && r.iconoIA && r.pieRegiones && r.sintomasGuia && r.relojGuia && r.tensionPkGuia && r.enlaceApp && r.enlaceEntrena && r.sinSesion && !fallidas.length;
   return r;
 }
 

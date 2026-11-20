@@ -109,4 +109,6 @@ test('entrena: se despliega, se instala aparte y la guía lo enlaza', () => {
   assert.notEqual(man.scope, JSON.parse(leer('manifest.json')).scope, 'scope propio: se instala como app aparte');
   assert.ok(man.icons.some(i => i.sizes === '512x512') && man.icons.some(i => i.sizes === '192x192'));
   assert.ok(leer('guia.js').includes('entrena.html#'), 'la guía enlaza el juego desde el árbol y la confirmación');
+  assert.ok(leer('guia.js').includes('<a href="entrena.html">'), 'y desde su pie');
+  assert.ok(/id="sessionEntrena" href="\.\/entrena\.html/.test(leer('app.js')), 'la app lo enlaza desde el panel de sesión');
 });

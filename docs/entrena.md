@@ -70,7 +70,8 @@ tiene ese gesto, pero sí en la app instalada en iPhone, que no tiene Atrás.
 `entrena.webmanifest` con su propio `scope` (`/physiq/assessment/entrena`) e icono: se instala como
 una app aparte («Entrena») de la de valoración. Usa el service worker de la app (`sw.js`), que la deja
 sin conexión tras la primera visita. Se llega desde la guía (el árbol y la confirmación de cada
-región, y por tanto desde el QR de las hojas impresas) y por `entrena.html#<región>`.
+región, y por tanto desde el QR de las hojas impresas, y su pie), desde el panel de sesión de la app
+(«Entrena ↗», en la región de la valoración) y por `entrena.html#<región>`.
 
 ## Pruebas
 
