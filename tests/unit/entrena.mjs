@@ -95,6 +95,14 @@ test('entrena: solo módulos puros, ningún dato del paciente y solo sus propias
   for (const k of claves) assert.ok(/^physiq-entrena-/.test(k), k);
 });
 
+test('entrena: avisa de una versión nueva como la app (lib/version.js y version.json sin caché), solo en su inicio', () => {
+  const js = leer('entrena.js');
+  assert.match(js, /from '\.\/lib\/version\.js'/);
+  assert.match(js, /fetch\('\.\/version\.json', \{ cache: 'no-store' \}\)/);
+  assert.match(js, /esVersionNueva\(publicada\)/);
+  assert.ok(/function mostrarAvisoVersion\(\) \{\n  if \(!_versionNueva [^\n]*\|\| J \|\|/.test(js), 'nunca durante una partida');
+});
+
 test('entrena: se despliega, se instala aparte y la guía lo enlaza', () => {
   const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
   for (const f of ['entrena.html', 'entrena.js', 'entrena.webmanifest', 'entrena.svg', 'lib/entrena.js', 'icons/entrena-192.png', 'icons/entrena-512.png'])

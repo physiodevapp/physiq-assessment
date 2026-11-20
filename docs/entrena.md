@@ -65,6 +65,14 @@ juego; cerrar con su botón gasta su entrada. Deslizar desde el borde izquierdo 
 recorrido) hace lo mismo, con una flecha que sigue al dedo; no se activa en Safari de iPhone, que ya
 tiene ese gesto, pero sí en la app instalada en iPhone, que no tiene Atrás.
 
+## Versión nueva
+
+Como la app: compara su `lib/version.js` con `version.json` (sin caché) al abrir y al volver, como
+mucho una vez por minuto. Con una versión nueva, el inicio del juego (nunca una partida) muestra abajo
+«Hay una versión nueva · Actualizar»; «×» lo cierra para esa versión y el pie mantiene «Actualizar».
+Antes de recargar vuelve a pedir sus archivos sin caché; si tras recargar la versión aún no ha llegado,
+dice que se está publicando (`sessionStorage` `physiq-entrena-recarga`).
+
 ## Instalación
 
 `entrena.webmanifest` con su propio `scope` (`/physiq/assessment/entrena`) e icono: se instala como
