@@ -1043,11 +1043,37 @@ function abrirHueco(k) {
       ...Object.keys(HIP).sort((a, b) => HIP[a].n - HIP[b].n).map(id => ({ v: id, html: `<span class="n">${HIP[id].n}</span><span>${esc(nombreCorto(id))}<br><small>${esc(nombreSub(id))}</small></span>` }))],
     alListo: v => { J.huecos[k] = v; }, alCerrar: volver });
 }
+// Asa de las hojas inferiores: arrastrar hacia abajo desde arriba de la hoja (72 px) la cierra, como
+// las hojas de la app (initSwipe, app.js): más de 80 px o un gesto rápido; si no, vuelve a su sitio.
+// Cerrar así es como cerrar con su botón: gasta su entrada del historial.
+const ASA = '<div class="asa" aria-hidden="true"></div>';
+function deslizarParaCerrar(velo, cerrar) {
+  const EASE = 'transform .3s cubic-bezier(.32,.72,0,1)';
+  let hoja = null, y0 = 0, t0 = 0, delta = 0;
+  velo.addEventListener('touchstart', e => {
+    hoja = e.touches.length === 1 ? velo.querySelector('.hoja-sel') : null;
+    if (!hoja || e.touches[0].clientY - hoja.getBoundingClientRect().top > 72) { hoja = null; return; }
+    y0 = e.touches[0].clientY; t0 = Date.now(); delta = 0; hoja.style.transition = 'none';
+  }, { passive: true });
+  velo.addEventListener('touchmove', e => {
+    if (!hoja) return;
+    delta = Math.max(0, e.touches[0].clientY - y0); hoja.style.transform = delta ? `translateY(${delta}px)` : '';
+  }, { passive: true });
+  const soltar = cancelar => {
+    if (!hoja) return; const h = hoja; hoja = null;
+    h.style.transition = EASE;
+    if (!cancelar && (delta > 80 || (delta > 20 && delta / Math.max(1, Date.now() - t0) > 0.3))) {
+      h.style.transform = 'translateY(110%)'; setTimeout(() => cerrar(), 300);
+    } else { h.style.transform = ''; setTimeout(() => { h.style.transition = ''; }, 310); }
+  };
+  velo.addEventListener('touchend', () => soltar(false), { passive: true });
+  velo.addEventListener('touchcancel', () => soltar(true), { passive: true });
+}
 // Hoja inferior para elegir: una opción (se cierra al tocar) o varias (con «Listo»).
 function selector({ cab, items, multi = false, exclusivo = null, valor = [], alListo, alCerrar }) {
   const sel = new Set(valor);
   const velo = document.createElement('div'); velo.className = 'velo';
-  velo.innerHTML = `<div class="hoja-sel" role="dialog" aria-modal="true" aria-label="Elegir">${cab}
+  velo.innerHTML = `<div class="hoja-sel" role="dialog" aria-modal="true" aria-label="Elegir">${ASA}${cab}
     <div class="lista">${items.map(it => `<button class="sel-op" data-sel="${esc(it.v)}">${it.html}</button>`).join('')}</div>
     <div class="fila-btn"><button class="btn" data-sel-acc="cerrar">Cancelar</button>${multi ? '<button class="btn btn-pri" data-sel-acc="listo">Listo</button>' : ''}</div></div>`;
   const marcar = () => velo.querySelectorAll('[data-sel]').forEach(b => b.setAttribute('aria-pressed', String(sel.has(b.dataset.sel))));
@@ -1066,7 +1092,7 @@ function selector({ cab, items, multi = false, exclusivo = null, valor = [], alL
     }
     if (a) { if (a.dataset.selAcc === 'listo' && sel.size) alListo([...sel]); cerrar(); }
   });
-  document.body.appendChild(velo); abrirCapa(cerrar);
+  document.body.appendChild(velo); abrirCapa(cerrar); deslizarParaCerrar(velo, cerrar);
   (velo.querySelector('[aria-pressed="true"]') || velo.querySelector('.sel-op')).focus();
 }
 
@@ -1364,19 +1390,19 @@ function abrirAyuda() {
   pausarReloj(); J.ayuda = true;
   const b0 = document.querySelector('.ayuda-btn'); if (b0) b0.classList.add('usada');
   const velo = document.createElement('div'); velo.className = 'velo';
-  velo.innerHTML = `<div class="hoja-sel" role="dialog" aria-modal="true" aria-label="Qué busca cada paso">
+  velo.innerHTML = `<div class="hoja-sel" role="dialog" aria-modal="true" aria-label="Qué busca cada paso">${ASA}
     <div class="sel-cab"><p class="etq">${esc(REG.nombre)} · ayuda</p><b>Qué busca cada paso</b><span>El tiempo está parado. Esta partida ya no cuenta para récords ni logros.</span></div>
     <div class="lista">${PASOS.map(s => `<div class="esencia-fila"><span class="num-paso">${s.num}</span><div><b>${esc(titPaso(s))}</b>${s.porque ? `<p ${ctxPasoAttr(s)}>${esc(primeraFrase(s.porque))}</p>` : ''}</div></div>`).join('')}</div>
     <button class="btn btn-pri" data-x="cerrar">Volver al juego</button></div>`;
   const tecla = e => { if (e.key === 'Escape') cerrar(); };
   const cerrar = (o = {}) => { if (!velo.isConnected) return; velo.remove(); soltarCapa(cerrar, o); document.removeEventListener('keydown', tecla); reanudarReloj(); const b = document.querySelector('.ayuda-btn'); if (b) b.focus(); };
   velo.addEventListener('click', e => { if (e.target === velo || e.target.closest('[data-x]')) cerrar(); });
-  document.addEventListener('keydown', tecla); document.body.appendChild(velo); abrirCapa(cerrar); velo.querySelector('[data-x]').focus();
+  document.addEventListener('keydown', tecla); document.body.appendChild(velo); abrirCapa(cerrar); deslizarParaCerrar(velo, cerrar); velo.querySelector('[data-x]').focus();
 }
 function verEsencia(id) {
   const s = PASOS.find(x => x.id === id); if (!s) return;
   const velo = document.createElement('div'); velo.className = 'velo';
-  velo.innerHTML = `<div class="hoja-sel" role="dialog" aria-modal="true" aria-label="Paso ${s.num}">
+  velo.innerHTML = `<div class="hoja-sel" role="dialog" aria-modal="true" aria-label="Paso ${s.num}">${ASA}
     <div class="esencia-cab"><span class="num-paso">${s.num}</span><b>${esc(titPaso(s))}</b></div>
     ${s.porque ? `<p class="porque" ${ctxPasoAttr(s)}>${esc(primeraFrase(s.porque))}</p>` : ''}
     <p class="progreso">Pregunta: «${esc(s.q)}»</p>
@@ -1388,7 +1414,7 @@ function verEsencia(id) {
     const b = e.target.closest('[data-x]'); if (!b) return;
     cerrar(); if (b.dataset.x === 'esencia') { HV.q = ''; window.scrollTo(0, 0); pintarHojas('esencia', 'esencia-' + id); }
   });
-  document.addEventListener('keydown', tecla); document.body.appendChild(velo); abrirCapa(cerrar); velo.querySelector('[data-x="esencia"]').focus();
+  document.addEventListener('keydown', tecla); document.body.appendChild(velo); abrirCapa(cerrar); deslizarParaCerrar(velo, cerrar); velo.querySelector('[data-x="esencia"]').focus();
 }
 // «✨ Preguntar a la IA»: los tres modos de la app (promptPregunta) con la región como único contexto.
 function preguntarIA() {
@@ -1396,7 +1422,7 @@ function preguntarIA() {
   const velo = document.createElement('div'); velo.className = 'velo';
   const pintar = () => {
     const d = destinoIA(), t = TIPOS_PREGUNTA[tipo], valido = texto.trim().length >= 3;
-    velo.innerHTML = `<div class="hoja-sel pregunta-ia" role="dialog" aria-modal="true" aria-label="Preguntar a la IA">
+    velo.innerHTML = `<div class="hoja-sel pregunta-ia" role="dialog" aria-modal="true" aria-label="Preguntar a la IA">${ASA}
       <div class="sel-cab"><p class="etq">Preguntar a la IA · ${esc(REG.min)}</p><b>Una duda que no está en las hojas</b></div>
       <div class="selector-fila" role="group" aria-label="Tipo de pregunta">${Object.entries(TIPOS_PREGUNTA).map(([k, v]) => `<button data-tp="${k}" aria-pressed="${k === tipo}">${esc(v.corto || v.nombre)}</button>`).join('')}</div>
       <textarea id="preguntaTexto" maxlength="${MAX_TEXTO_IA}" placeholder="${esc(t.placeholder)}" aria-label="Tu pregunta">${esc(texto)}</textarea>
@@ -1424,7 +1450,7 @@ function preguntarIA() {
     a.setAttribute('aria-disabled', String(!valido)); a.href = valido ? urlIA(destinoIA(), promptPregunta({ contexto: REG.min, pregunta: texto, tipo })) : '#';
   });
   velo.addEventListener('keydown', e => { if (e.target.id === 'preguntaTexto' && e.key === 'Enter' && !e.shiftKey && texto.trim().length >= 3) { e.preventDefault(); velo.querySelector('.btn-ir').click(); } });
-  pintar(); document.addEventListener('keydown', tecla); document.body.appendChild(velo); abrirCapa(cerrar);
+  pintar(); document.addEventListener('keydown', tecla); document.body.appendChild(velo); abrirCapa(cerrar); deslizarParaCerrar(velo, cerrar);
   const ta = velo.querySelector('textarea'); if (!matchMedia('(pointer: coarse)').matches) ta.focus(); else velo.querySelector('.hoja-sel').setAttribute('tabindex', '-1');
 }
 function abrirLupa(nombre) {

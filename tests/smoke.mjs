@@ -7210,6 +7210,18 @@ async function checkEntrena(browser, errors) {
     await desliza(8, 60); const corto = !(await enInicio());
     await desliza(8, 170);
     r.deslizar = lejos && corto && await enInicio();
+    // Asa de las hojas inferiores: arrastrar poco la deja; arrastrar hacia abajo la cierra (y gasta su entrada)
+    // A ritmo de dedo (30 ms por paso), para que un arrastre corto no cuente como gesto rápido
+    const arrastraHoja = dy => page.evaluate(async dy => {
+      const h = document.querySelector('.hoja-sel'), y0 = h.getBoundingClientRect().top + 10;
+      const t = (y, tipo) => { const toque = new Touch({ identifier: 2, target: h, clientX: 160, clientY: y }); h.dispatchEvent(new TouchEvent(tipo, { touches: tipo === 'touchend' ? [] : [toque], changedTouches: [toque], bubbles: true })); };
+      t(y0, 'touchstart'); for (let k = 1; k <= 10; k++) { await new Promise(r => setTimeout(r, 30)); t(y0 + dy * k / 10, 'touchmove'); } t(y0 + dy, 'touchend');
+    }, dy).then(() => page.waitForTimeout(450));
+    await c('[data-acc="preguntar-ia"]');
+    const conAsa = !!(await page.$('.hoja-sel .asa'));
+    await page.waitForTimeout(300); await arrastraHoja(30); const quieta = !!(await page.$('.velo'));
+    await page.waitForTimeout(300); await arrastraHoja(160);
+    r.asa = conAsa && quieta && !(await page.$('.velo')) && await enInicio();
     // Hojas: «Papel» con la imagen del cuaderno y el PDF versionado; esencia con «✨ IA»
     await c('[data-hoja="arbol"]'); await c('[data-hv-modo="papel"]');
     await page.waitForFunction(() => { const i = document.querySelector('.papel img'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 8000 });
@@ -7253,7 +7265,7 @@ async function checkEntrena(browser, errors) {
     if (!r.version) r.versionDetalle = { enInicio, cabeV, fueraEnJuego, vuelve, cerrado, pie };
     await ctxV.close();
   } catch (e) { r.error = (r.error || '') + ' versión: ' + e.message; }
-  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'papel', 'pdf', 'esencia', 'manifest', 'sw', 'cabe', 'version'].every(k => r[k]);
+  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'asa', 'papel', 'pdf', 'esencia', 'manifest', 'sw', 'cabe', 'version'].every(k => r[k]);
   return r;
 }
 
@@ -8211,7 +8223,7 @@ const SECCIONES = [
 
   { id: 'entrena', titulo: 'Entrena (entrena.html, el juego de los árboles y los tests, instalable):', run: async ({ browser, errors }) => {
     const r = await checkEntrena(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no); la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
