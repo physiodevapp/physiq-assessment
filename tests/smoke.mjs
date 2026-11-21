@@ -7180,6 +7180,9 @@ async function checkEntrena(browser, errors) {
     await page.goto(BASE_URL.replace(/\/$/, '') + '/entrena.html#lumbar', { waitUntil: 'networkidle' });
     await page.waitForSelector('[data-modo="flechas"]', { timeout: 10000 });
     r.region = (await page.$eval('.titulo-region .h1', e => e.textContent)).includes('Lumbar');
+    // Los títulos de los grupos dicen de qué hoja son los modos
+    r.titulos = await page.evaluate(() => { const t = [...document.querySelectorAll('.grupo h2')].map(h => h.textContent);
+      return ['Árbol · rápidos', 'Árbol · para pensar', 'Confirmación (4b) · tests'].every(x => t.includes(x)) && /árbol y tests/.test(document.querySelector('[data-modo="mezcla"]').textContent); });
     // Menú de región en dos columnas: 7 regiones, dos por fila, la última a todo el ancho, sin texto partido
     await c('.titulo-region');
     const menu = await page.evaluate(() => {
@@ -7290,7 +7293,7 @@ async function checkEntrena(browser, errors) {
     if (!r.version) r.versionDetalle = { enInicio, cabeV, fueraEnJuego, vuelve, cerrado, pie };
     await ctxV.close();
   } catch (e) { r.error = (r.error || '') + ' versión: ' + e.message; }
-  r.ok = !r.error && !r.fallidas?.length && ['region', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'asa', 'papel', 'pdf', 'kenhub', 'esencia', 'manifest', 'sw', 'cabe', 'version'].every(k => r[k]);
+  r.ok = !r.error && !r.fallidas?.length && ['region', 'titulos', 'modos', 'pista', 'hoja', 'atras', 'atrasVentana', 'atrasDos', 'sinEntradasSueltas', 'deslizar', 'asa', 'papel', 'pdf', 'kenhub', 'esencia', 'manifest', 'sw', 'cabe', 'version'].every(k => r[k]);
   return r;
 }
 
@@ -8248,7 +8251,7 @@ const SECCIONES = [
 
   { id: 'entrena', titulo: 'Entrena (entrena.html, el juego de los árboles y los tests, instalable):', run: async ({ browser, errors }) => {
     const r = await checkEntrena(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; el menú de región en dos columnas; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no), cancelando el gesto del navegador; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; en «Texto», los tests enlazan su anatomía en Kenhub en una pestaña nueva; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} carga sin errores ni peticiones fallidas; la región por #región; el menú de región en dos columnas; los títulos de los grupos dicen de qué hoja son; un modo de cada tipo (Flechas, Desliza, «¿En qué paso?», Caso, Completa el paso con pista, Hoja fantasma, los cuatro de la 4b) en lumbar; Atrás desde un juego vuelve al inicio sin salir de la página, y con una ventana abierta (ayuda) la cierra primero; cerrar una ventana con su botón no deja entradas en el historial; deslizar desde el borde izquierdo vuelve al inicio, y no lo hace lejos del borde ni con un recorrido corto; las hojas inferiores llevan asa y arrastrarlas hacia abajo las cierra (poco, no), cancelando el gesto del navegador; la hoja «Papel» es la imagen de docs/esquemas con su PDF versionado; en «Texto», los tests enlazan su anatomía en Kenhub en una pestaña nueva; la esencia con «✨ IA»; su manifest propio y el service worker; cabe a 320 px con letra grande; con una versión nueva publicada, el aviso «Actualizar» en el inicio (no durante una partida), que «×» cierra y deja «Actualizar» en el pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
