@@ -3755,6 +3755,9 @@ async function checkCitas(browser, errors) {
   await page.evaluate(() => goToPhase(4));
   r.cambiarFase = await cerrada();
   await page.evaluate(() => goToPhase(5));
+  // goToPhase() sube con scroll suave: si sigue en marcha al abrir la ficha, la mueve más de 24 px y la
+  // cierra (fallo intermitente en CI, 2026-11). Se espera a que el scroll se quede quieto.
+  await page.waitForFunction(() => new Promise(res => { const y = scrollY; requestAnimationFrame(() => requestAnimationFrame(() => res(scrollY === y && y === 0))); }), null, { timeout: 5000 });
   // Teclado: Enter abre y el foco pasa a «Abrir ↗»; Escape lo devuelve a la cita
   await page.evaluate(() => { const x = document.querySelector('#phase5 .cita[data-prueba]'); x.scrollIntoView({ block: 'center' }); x.focus(); });
   await page.keyboard.press('Enter');
