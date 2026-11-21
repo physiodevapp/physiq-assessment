@@ -27,6 +27,10 @@ paso sale cada hipótesis, qué sale junto, dónde están las derivaciones y los
 
 ## Modos
 
+En el inicio, los títulos dicen de qué hoja son los modos (decisión 2026-11): «Árbol · rápidos»,
+«Árbol · para pensar» y «Confirmación (4b) · tests»; «Mezcla de regiones», que pregunta de las dos,
+lo dice bajo su nombre («árbol y tests»).
+
 - **Hoy:** reto del día de la región (5 preguntas iguales todo el día, mantiene su racha) y de todas.
 - **Rápidos:** Desliza (verdadero o falso, 60 s), Flechas (15 preguntas, 3 vidas; fallar una
   derivación cuesta 2), ¿En qué paso? (60 s; fallar dónde está una derivación resta 15), Muerte
